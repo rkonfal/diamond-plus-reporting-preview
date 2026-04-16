@@ -1,0 +1,952 @@
+{
+  "generatedAt": "2026-04-16T10:14:38.463574+02:00",
+  "reportDate": "2026-04-15",
+  "window": {
+    "from": "2026-04-15T00:00:00+02:00",
+    "to": "2026-04-15T23:59:59+02:00"
+  },
+  "warnings": [],
+  "quickSummary": {
+    "orders": {
+      "value": 418,
+      "baseline": 451.29,
+      "deltaPct": -7.4
+    },
+    "revenueWithVat": {
+      "value": 600410.6,
+      "baseline": 716192.18,
+      "deltaPct": -16.2
+    },
+    "shipmentsTotal": 569,
+    "alerts": [
+      "3 problematických nebo stornovaných objednávek.",
+      "2 včera prodaných produktů je teď na nízkém skladu.",
+      "10 skladových pozic je v mínusu."
+    ]
+  },
+  "eshop": {
+    "orders": 418,
+    "revenueWithVat": 600410.6,
+    "averageOrderValue": 1436.39,
+    "cancelledOrders": 3,
+    "problematicOrders": 3,
+    "statuses": [
+      {
+        "name": "přijatá",
+        "count": 275
+      },
+      {
+        "name": "expedováno",
+        "count": 104
+      },
+      {
+        "name": "nová",
+        "count": 15
+      },
+      {
+        "name": "připraveno k vyzvednutí",
+        "count": 13
+      },
+      {
+        "name": "doručeno",
+        "count": 8
+      },
+      {
+        "name": "chyba",
+        "count": 3
+      }
+    ],
+    "paymentMethods": [
+      {
+        "name": "Bezpečná platba online",
+        "count": 246
+      },
+      {
+        "name": "Platba převodem",
+        "count": 116
+      },
+      {
+        "name": "Dobírkou",
+        "count": 46
+      },
+      {
+        "name": "Platba kartou",
+        "count": 4
+      },
+      {
+        "name": "Twisto - kup teď, zaplať později",
+        "count": 2
+      },
+      {
+        "name": "Hotově",
+        "count": 2
+      },
+      {
+        "name": "Twisto - kup teď, zaplať na třetiny",
+        "count": 1
+      },
+      {
+        "name": "Faktura",
+        "count": 1
+      }
+    ],
+    "deliveryMethods": [
+      {
+        "name": "Balíkovna",
+        "count": 190
+      },
+      {
+        "name": "Balíkovna na adresu",
+        "count": 116
+      },
+      {
+        "name": "Zásilkovna",
+        "count": 59
+      },
+      {
+        "name": "DPD Doručenie na adresu",
+        "count": 19
+      },
+      {
+        "name": "SK DPD pickup",
+        "count": 10
+      },
+      {
+        "name": "Zásielkovňa",
+        "count": 7
+      },
+      {
+        "name": "Osobní odběr",
+        "count": 7
+      },
+      {
+        "name": "Packeta na adresu",
+        "count": 4
+      },
+      {
+        "name": "DPD doručení na adresu",
+        "count": 4
+      },
+      {
+        "name": "DPD výdejní místo",
+        "count": 1
+      },
+      {
+        "name": "DORUČENÍ na adresu",
+        "count": 1
+      }
+    ],
+    "topProductsByUnits": [
+      {
+        "code": "64404-2",
+        "name": "Jemný intimní gel",
+        "label": "64404-2 · Jemný intimní gel",
+        "value": 137.0,
+        "formatted": "137 ks"
+      },
+      {
+        "code": "44402-2",
+        "name": "Fytogel Slaviton",
+        "label": "44402-2 · Fytogel Slaviton",
+        "value": 128.0,
+        "formatted": "128 ks"
+      },
+      {
+        "code": "61914",
+        "name": "Dámské bylinné slipové vložky Nefritová svěžest",
+        "label": "61914 · Dámské bylinné slipové vložky Nefritová svěžest",
+        "value": 114.0,
+        "formatted": "114 ks"
+      },
+      {
+        "code": "61911",
+        "name": "Denní vložky s extraktem aloe Nefritová svěžest",
+        "label": "61911 · Denní vložky s extraktem aloe Nefritová svěžest",
+        "value": 97.0,
+        "formatted": "97 ks"
+      },
+      {
+        "code": "61912",
+        "name": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
+        "label": "61912 · Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
+        "value": 93.0,
+        "formatted": "93 ks"
+      }
+    ],
+    "topProductsByRevenue": [
+      {
+        "code": "44402-2",
+        "name": "Fytogel Slaviton",
+        "label": "44402-2 · Fytogel Slaviton",
+        "value": 35095.4,
+        "formatted": "35 095 Kč"
+      },
+      {
+        "code": "64404-2",
+        "name": "Jemný intimní gel",
+        "label": "64404-2 · Jemný intimní gel",
+        "value": 32067.8,
+        "formatted": "32 068 Kč"
+      },
+      {
+        "code": "10118",
+        "name": "Sérum pro hloubkovou obnovu pleti Ženšen a fytoextrakty",
+        "label": "10118 · Sérum pro hloubkovou obnovu pleti Ženšen a fytoextrakty",
+        "value": 16125.95,
+        "formatted": "16 126 Kč"
+      },
+      {
+        "code": "10117",
+        "name": "Krém pro hloubkovou obnovu pleti Ženšen a orchidej",
+        "label": "10117 · Krém pro hloubkovou obnovu pleti Ženšen a orchidej",
+        "value": 13709.0,
+        "formatted": "13 709 Kč"
+      },
+      {
+        "code": "61914",
+        "name": "Dámské bylinné slipové vložky Nefritová svěžest",
+        "label": "61914 · Dámské bylinné slipové vložky Nefritová svěžest",
+        "value": 11838.9,
+        "formatted": "11 839 Kč"
+      }
+    ],
+    "soldProductCodes": [
+      "000040",
+      "000083",
+      "000087",
+      "000090",
+      "10101",
+      "10106",
+      "10108",
+      "10110",
+      "10111",
+      "10112",
+      "10114",
+      "10115",
+      "10116",
+      "10117",
+      "10118",
+      "10131",
+      "101491",
+      "10201",
+      "10202",
+      "10206-2",
+      "10261",
+      "10262",
+      "10263",
+      "10302",
+      "10303",
+      "10304",
+      "10305",
+      "10305/01",
+      "10306",
+      "10308",
+      "113004",
+      "113011",
+      "113012",
+      "113013",
+      "11307",
+      "11317",
+      "11319",
+      "11320",
+      "11321",
+      "11323",
+      "120105",
+      "12106",
+      "12114",
+      "12115",
+      "12116",
+      "12117",
+      "12703",
+      "12704",
+      "12705",
+      "12707",
+      "12710",
+      "12711",
+      "12712",
+      "135415-1",
+      "135455",
+      "135456",
+      "135460",
+      "140110",
+      "140111",
+      "144313",
+      "14601",
+      "14601/1",
+      "14602",
+      "14604",
+      "147801",
+      "14802",
+      "15102",
+      "15103",
+      "15104",
+      "15105",
+      "15602",
+      "15603",
+      "16001",
+      "16304",
+      "16312",
+      "16313",
+      "16314",
+      "17003",
+      "17101",
+      "17102",
+      "17103",
+      "17104",
+      "17105",
+      "191005",
+      "191006",
+      "191008",
+      "191014",
+      "195429",
+      "195458",
+      "195464",
+      "195466",
+      "195469",
+      "195926",
+      "198812",
+      "20101",
+      "20102",
+      "20107",
+      "20109",
+      "20115",
+      "20117",
+      "20127",
+      "20144",
+      "20151",
+      "20155",
+      "20159-2",
+      "20161-2",
+      "20163-2",
+      "20164",
+      "21308",
+      "21310",
+      "21311",
+      "21315",
+      "21316",
+      "23401",
+      "23402",
+      "23403",
+      "25106",
+      "27005",
+      "30101",
+      "30106",
+      "30111",
+      "30115",
+      "30117/01",
+      "30117/03",
+      "30117/05",
+      "30118/01",
+      "30118/03",
+      "30118/05",
+      "30132/01",
+      "30132/02",
+      "30138-2",
+      "30140",
+      "30158",
+      "30160-2",
+      "30162-2",
+      "30201",
+      "30204",
+      "30207",
+      "30213",
+      "30215",
+      "30222",
+      "30223",
+      "32602",
+      "32604",
+      "34401-2",
+      "34413-2",
+      "35412-02",
+      "36006",
+      "40101",
+      "40102",
+      "40104",
+      "40105",
+      "40106",
+      "40109",
+      "40120",
+      "40203",
+      "41101",
+      "41102",
+      "41105/01",
+      "41105/03",
+      "41105/05",
+      "41106/01",
+      "41314/01",
+      "41314/05",
+      "41314/10",
+      "41320",
+      "41328/01",
+      "41328/07",
+      "41328/10",
+      "44402-2",
+      "44605",
+      "46903-2",
+      "50101",
+      "50104",
+      "50109",
+      "50111",
+      "50116",
+      "50120",
+      "52901/03",
+      "52902",
+      "52902/03",
+      "52903",
+      "52911",
+      "52912",
+      "54103",
+      "54104",
+      "54105",
+      "54106",
+      "54108",
+      "55605",
+      "56005",
+      "56007",
+      "56311",
+      "57010",
+      "60140",
+      "60141",
+      "60142",
+      "60143",
+      "60144",
+      "60145/01",
+      "60145/05",
+      "60145/10",
+      "60146",
+      "60149-2",
+      "60150",
+      "60151-2",
+      "60152-2",
+      "60153-2",
+      "61901",
+      "61902",
+      "61903",
+      "61911",
+      "61912",
+      "61913",
+      "61914",
+      "61915",
+      "61921",
+      "61922",
+      "61923",
+      "63601/01",
+      "63601/05",
+      "63601/08",
+      "63601/10",
+      "64404-2",
+      "65301-2",
+      "65913-2",
+      "65914-2",
+      "65916-2",
+      "67007",
+      "67108",
+      "67109",
+      "80112/03",
+      "80112/05",
+      "80112/07",
+      "80112/08",
+      "80112/09",
+      "80145",
+      "80904/01",
+      "80904/02",
+      "80921/01",
+      "80921/02",
+      "85607",
+      "86004",
+      "90141",
+      "90148/01",
+      "90148/03",
+      "90148/04",
+      "90153/01",
+      "90153/03",
+      "90153/04",
+      "90165/01",
+      "90165/02",
+      "90175",
+      "90187",
+      "90200",
+      "90204",
+      "980155",
+      "980156",
+      "980168",
+      "980192",
+      "980193",
+      "980198",
+      "980201",
+      "98898",
+      "BIO014",
+      "BIOANALYZA013",
+      "DOPL001",
+      "IGE009",
+      "POP00060",
+      "PROMO116",
+      "PROMO71",
+      "PROMO74",
+      "VSTUP200526"
+    ]
+  },
+  "stock": {
+    "lowStockSoldYesterday": [
+      {
+        "code": "POP00060",
+        "title": "GREPAVIT® – grep extrakt z jader, 100 ml",
+        "stock": 0.0,
+        "reportedStock": 0.0,
+        "stores": [
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 17.0
+          }
+        ],
+        "priceWithVat": 495.0,
+        "visible": true
+      },
+      {
+        "code": "195464",
+        "title": "Krémová banánová polévka se zeleninou",
+        "stock": 2.0,
+        "reportedStock": 0.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 1.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 1.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 0.0
+          }
+        ],
+        "priceWithVat": 84.0,
+        "visible": true
+      }
+    ],
+    "lowStockOverall": [
+      {
+        "code": "34404-1",
+        "title": "...",
+        "stock": 0.0,
+        "reportedStock": 0.0,
+        "stores": [
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 0.0
+          }
+        ],
+        "priceWithVat": 0.0,
+        "visible": true
+      },
+      {
+        "code": "34413-1",
+        "title": "...",
+        "stock": 0.0,
+        "reportedStock": 0.0,
+        "stores": [
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 12.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 0.0
+          }
+        ],
+        "priceWithVat": 0.0,
+        "visible": true
+      },
+      {
+        "code": "80411/1",
+        "title": "...",
+        "stock": 0.0,
+        "reportedStock": 0.0,
+        "stores": [
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 0.0
+          }
+        ],
+        "priceWithVat": 0.0,
+        "visible": true
+      },
+      {
+        "code": "80411/2",
+        "title": "...",
+        "stock": 0.0,
+        "reportedStock": 0.0,
+        "stores": [
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 0.0
+          }
+        ],
+        "priceWithVat": 0.0,
+        "visible": true
+      },
+      {
+        "code": "90149",
+        "title": "...",
+        "stock": 0.0,
+        "reportedStock": 0.0,
+        "stores": [
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 0.0
+          }
+        ],
+        "priceWithVat": 4348.0,
+        "visible": true
+      },
+      {
+        "code": "90159",
+        "title": "...",
+        "stock": 0.0,
+        "reportedStock": 0.0,
+        "stores": [
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 11.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 0.0
+          }
+        ],
+        "priceWithVat": 0.0,
+        "visible": true
+      },
+      {
+        "code": "90165",
+        "title": "...",
+        "stock": 0.0,
+        "reportedStock": 0.0,
+        "stores": [
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 0.0
+          }
+        ],
+        "priceWithVat": 102.0,
+        "visible": true
+      },
+      {
+        "code": "980148",
+        "title": "...",
+        "stock": 0.0,
+        "reportedStock": 0.0,
+        "stores": [
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 0.0
+          }
+        ],
+        "priceWithVat": 206.0,
+        "visible": true
+      },
+      {
+        "code": "57010/03",
+        "title": "57010/03",
+        "stock": 0.0,
+        "reportedStock": 0.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 6.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 0.0
+          }
+        ],
+        "priceWithVat": 261.0,
+        "visible": true
+      },
+      {
+        "code": "POP00098",
+        "title": "Antistres, originální bylinné kapky, 50 ml",
+        "stock": 0.0,
+        "reportedStock": 0.0,
+        "stores": [
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 5.0
+          }
+        ],
+        "priceWithVat": 149.0,
+        "visible": true
+      }
+    ],
+    "negativeStoreStock": [
+      {
+        "code": "00102",
+        "title": "Uvítací brožura",
+        "storeName": "[FlexiBee] Sklad Měčín",
+        "inStore": -8339.0
+      },
+      {
+        "code": "OMA1",
+        "title": "Královské omalovánky",
+        "storeName": "[FlexiBee] Sklad Měčín",
+        "inStore": -723.0
+      },
+      {
+        "code": "SET04",
+        "title": "SET04",
+        "storeName": "[FlexiBee] Sklad Měčín",
+        "inStore": -432.0
+      },
+      {
+        "code": "52902",
+        "title": "Revitalizační maska na obličej a krk Lingzhi",
+        "storeName": "[FlexiBee] Sklad Měčín",
+        "inStore": -277.0
+      },
+      {
+        "code": "000077",
+        "title": "Brožura Detoxikace",
+        "storeName": "[FlexiBee] Sklad Měčín",
+        "inStore": -149.0
+      },
+      {
+        "code": "PROMO114",
+        "title": "Děkujeme za důvěru ",
+        "storeName": "[FlexiBee] Sklad LTM",
+        "inStore": -135.0
+      },
+      {
+        "code": "PROMO114",
+        "title": "Děkujeme za důvěru ",
+        "storeName": "[FlexiBee] Sklad Měčín",
+        "inStore": -108.0
+      },
+      {
+        "code": "000087",
+        "title": "Brožura Péče o vlasy",
+        "storeName": "[FlexiBee] Sklad Měčín",
+        "inStore": -105.0
+      },
+      {
+        "code": "15TOP",
+        "title": "TOP 15 produktů",
+        "storeName": "[FlexiBee] Sklad Měčín",
+        "inStore": -100.0
+      },
+      {
+        "code": "SET03",
+        "title": "Zázvorový nápoj 2+1",
+        "storeName": "[FlexiBee] Sklad Měčín",
+        "inStore": -80.0
+      }
+    ],
+    "largestMovesSinceLastSnapshot": [
+      {
+        "code": "44605",
+        "title": "Omlazující krém-booster na ruce s mucinem hlemýžďů",
+        "currentStock": 1056.0,
+        "previousStock": 1058.0,
+        "delta": -2.0
+      },
+      {
+        "code": "64404-2",
+        "title": "Jemný intimní gel",
+        "currentStock": 2338.0,
+        "previousStock": 2340.0,
+        "delta": -2.0
+      },
+      {
+        "code": "44402-2",
+        "title": "Fytogel Slaviton",
+        "currentStock": 2730.0,
+        "previousStock": 2732.0,
+        "delta": -2.0
+      },
+      {
+        "code": "12705",
+        "title": "Zpevňující a liftingová emulze na obličej a krk",
+        "currentStock": 635.0,
+        "previousStock": 636.0,
+        "delta": -1.0
+      },
+      {
+        "code": "40105",
+        "title": "Vyživující hydratační krém na ruce Ovčí mléko",
+        "currentStock": 353.0,
+        "previousStock": 354.0,
+        "delta": -1.0
+      },
+      {
+        "code": "21308",
+        "title": "Šampón na vlasy „Zlatý zázvor“",
+        "currentStock": 171.0,
+        "previousStock": 172.0,
+        "delta": -1.0
+      },
+      {
+        "code": "10304",
+        "title": "Hydratační krém z ovčí placenty kosmetiky tianDe",
+        "currentStock": 109.0,
+        "previousStock": 110.0,
+        "delta": -1.0
+      },
+      {
+        "code": "61912",
+        "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
+        "currentStock": 720.0,
+        "previousStock": 721.0,
+        "delta": -1.0
+      },
+      {
+        "code": "61913",
+        "title": "Dámské bylinné menstruační vložky Nefritová svěžest. noční super",
+        "currentStock": 645.0,
+        "previousStock": 646.0,
+        "delta": -1.0
+      },
+      {
+        "code": "61921",
+        "title": "Dámské bylinné slipové vložky Nefritová svěžest - super tenké",
+        "currentStock": 711.0,
+        "previousStock": 712.0,
+        "delta": -1.0
+      }
+    ]
+  },
+  "logistics": {
+    "shipmentsTotal": 569,
+    "byAccount": {
+      "CZ": 503,
+      "SK": 66
+    },
+    "carrierCounts": [
+      {
+        "name": "F1401",
+        "count": 427
+      },
+      {
+        "name": "F1406",
+        "count": 89
+      },
+      {
+        "name": "F1403",
+        "count": 33
+      },
+      {
+        "name": "F1402",
+        "count": 20
+      }
+    ],
+    "logisticsCounts": [
+      {
+        "name": "F1401",
+        "count": 427
+      },
+      {
+        "name": "F1406",
+        "count": 89
+      },
+      {
+        "name": "F1403",
+        "count": 33
+      },
+      {
+        "name": "F1402",
+        "count": 20
+      }
+    ],
+    "statusCounts": [
+      {
+        "name": "C",
+        "count": 273
+      },
+      {
+        "name": "P",
+        "count": 234
+      },
+      {
+        "name": "S",
+        "count": 62
+      }
+    ],
+    "coverageWarnings": [],
+    "expiringProducts": [],
+    "notes": [
+      "Zdroj expirací zatím chybí, dostupné API vrací jen batch_no bez data spotřeby."
+    ]
+  },
+  "priorities": [
+    "Dohlédnout POP00060 (GREPAVIT® – grep extrakt z jader, 100 ml), aktuálně 0 ks.",
+    "Dohlédnout 195464 (Krémová banánová polévka se zeleninou), aktuálně 2 ks.",
+    "Projít 3 problematických nebo stornovaných objednávek z včerejška.",
+    "Dohledat spolehlivý zdroj expirací, 4PX inventory zatím vrací jen batch_no bez data spotřeby."
+  ]
+}

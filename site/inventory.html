@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sklad, Reporting V2</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>Reporting V2</span></div>
+    <div class="sidebar-section-label">Přehled</div>
+    <nav class="sidebar-nav">
+      <a href="index.html">🏠 Portal</a>
+      <a class="active" href="inventory.html">📦 Sklad</a>
+      <a href="logistics.html">🚚 Logistika 4PX</a>
+      <a href="eshop.html">🛒 E-shop / WPJ</a>
+    </nav>
+    <div class="sidebar-footer">Low-stock, pending stock a přehled účtů CZ / SK.</div>
+  </aside>
+
+  <main class="main">
+    <header class="header">
+      <div class="header-row">
+        <div>
+          <h1>Skladový přehled</h1>
+          <div class="header-sub">
+            <span class="badge live" id="inventory-generated">Načítám refresh…</span>
+            <span class="badge info">Zdroj: 4PX Open API</span>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+    </header>
+
+    <section class="grid kpi-grid" id="inventory-kpis"></section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2 class="section-title">Produkty s nízkým skladem</h2>
+        <p class="section-subtitle">Kusů 10 a méně, podle 4PX available_stock.</p>
+        <table class="table">
+          <thead>
+            <tr><th>Účet</th><th>SKU</th><th>Batch</th><th class="num">Available</th><th class="num">Pending</th></tr>
+          </thead>
+          <tbody id="low-stock-table"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2 class="section-title">Operační poznámky</h2>
+        <div id="inventory-notes"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+    (async () => {
+      const summary = await DP.loadJson('../data/current/portal_summary.json');
+      const cz = await DP.loadJson('../data/current/4px_cz_inventory.json');
+      const sk = await DP.loadJson('../data/current/4px_sk_inventory.json');
+      document.getElementById('inventory-generated').textContent = `Poslední refresh: ${DP.fmtDateTime(summary.generatedAt)}`;
+
+      const kpis = [
+        ['CZ, dostupné kusy', DP.fmtNumber(summary.accounts.cz.inventory.availableStockTotal), `${DP.fmtNumber(summary.accounts.cz.inventory.items)} řádků`, 'green'],
+        ['SK, dostupné kusy', DP.fmtNumber(summary.accounts.sk.inventory.availableStockTotal), `${DP.fmtNumber(summary.accounts.sk.inventory.items)} řádků`, 'blue'],
+        ['CZ low-stock', DP.fmtNumber(summary.accounts.cz.inventory.lowStockItems), 'hranice ≤ 10 ks', 'gold'],
+        ['SK low-stock', DP.fmtNumber(summary.accounts.sk.inventory.lowStockItems), 'hranice ≤ 10 ks', 'red']
+      ];
+      document.getElementById('inventory-kpis').innerHTML = kpis.map(([label, value, sub, klass]) => `
+        <div class="card kpi-card ${klass}"><div class="kpi-label">${label}</div><div class="kpi-value">${value}</div><div class="kpi-sub">${sub}</div></div>
+      `).join('');
+
+      const lows = [
+        ...cz.lowStock.map(x => ({...x, account:'CZ'})),
+        ...sk.lowStock.map(x => ({...x, account:'SK'}))
+      ].sort((a,b) => Number(a.available_stock) - Number(b.available_stock)).slice(0, 30);
+
+      document.getElementById('low-stock-table').innerHTML = lows.map(item => `
+        <tr>
+          <td>${item.account}</td>
+          <td>${item.sku_code}</td>
+          <td>${item.batch_no || '–'}</td>
+          <td class="num">${DP.fmtNumber(item.available_stock)}</td>
+          <td class="num">${DP.fmtNumber(item.pending_stock)}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('inventory-notes').innerHTML = [
+        `CZ pending stock celkem: <strong>${DP.fmtNumber(summary.accounts.cz.inventory.pendingStockTotal)}</strong>`,
+        `SK pending stock celkem: <strong>${DP.fmtNumber(summary.accounts.sk.inventory.pendingStockTotal)}</strong>`,
+        `CZ skladový warehouse code: <strong>${summary.config.warehouseCode}</strong>`,
+        `WPJ cross-check zatím není zapojený, takže toto je čistě 4PX pohled.`
+      ].map(x => `<div class="block-item"><p>${x}</p></div>`).join('');
+    })();
+  </script>
+</body>
+</html>

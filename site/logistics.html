@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logistika 4PX, Reporting V2</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>Reporting V2</span></div>
+    <div class="sidebar-section-label">Přehled</div>
+    <nav class="sidebar-nav">
+      <a href="index.html">🏠 Portal</a>
+      <a href="inventory.html">📦 Sklad</a>
+      <a class="active" href="logistics.html">🚚 Logistika 4PX</a>
+      <a href="eshop.html">🛒 E-shop / WPJ</a>
+    </nav>
+    <div class="sidebar-footer">Recent outbound feed bez závislosti na starém snapshot dashboardu.</div>
+  </aside>
+
+  <main class="main">
+    <header class="header">
+      <div class="header-row">
+        <div>
+          <h1>Logistika a expedice</h1>
+          <div class="header-sub">
+            <span class="badge live" id="logistics-generated">Načítám refresh…</span>
+            <span class="badge info">Zdroj: 4PX outbound list</span>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+    </header>
+
+    <section class="grid kpi-grid" id="logistics-kpis"></section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2 class="section-title">Rozpad podle země / účtu</h2>
+        <table class="table">
+          <thead><tr><th>Účet</th><th>Země</th><th class="num">Zásilek</th></tr></thead>
+          <tbody id="country-table"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2 class="section-title">Rozpad podle produktu 4PX</h2>
+        <table class="table">
+          <thead><tr><th>Účet</th><th>Produkt</th><th class="num">Zásilek</th></tr></thead>
+          <tbody id="product-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2 class="section-title">Nejnovější zásilky</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Účet</th>
+            <th>Ref</th>
+            <th>Tracking</th>
+            <th>Země</th>
+            <th>Produkt</th>
+            <th>Stav</th>
+            <th class="num">Váha</th>
+          </tr>
+        </thead>
+        <tbody id="recent-table"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+    function groupCounts(list, key) {
+      const out = new Map();
+      for (const item of list) out.set(item[key] || '–', (out.get(item[key] || '–') || 0) + 1);
+      return [...out.entries()].sort((a,b) => b[1] - a[1]);
+    }
+    (async () => {
+      const summary = await DP.loadJson('../data/current/portal_summary.json');
+      const cz = await DP.loadJson('../data/current/4px_cz_outbound_recent.json');
+      const sk = await DP.loadJson('../data/current/4px_sk_outbound_recent.json');
+      document.getElementById('logistics-generated').textContent = `Poslední refresh: ${DP.fmtDateTime(summary.generatedAt)}`;
+      document.getElementById('logistics-kpis').innerHTML = [
+        ['CZ recent zásilky', DP.fmtNumber(cz.items.length), `${cz.scannedPages} stránek`, 'green'],
+        ['SK recent zásilky', DP.fmtNumber(sk.items.length), `${sk.scannedPages} stránek`, 'blue'],
+        ['CZ top produkt', summary.accounts.cz.outbound.topLogisticsProduct || '–', 'nejčastější produkt 4PX', 'gold'],
+        ['SK top produkt', summary.accounts.sk.outbound.topLogisticsProduct || '–', 'nejčastější produkt 4PX', 'red']
+      ].map(([label, value, sub, klass]) => `
+        <div class="card kpi-card ${klass}"><div class="kpi-label">${label}</div><div class="kpi-value">${value}</div><div class="kpi-sub">${sub}</div></div>
+      `).join('');
+
+      const countryRows = [
+        ...groupCounts(cz.items.map(x => ({...x, account:'CZ'})), 'country').map(([country, count]) => ['CZ', country, count]),
+        ...groupCounts(sk.items.map(x => ({...x, account:'SK'})), 'country').map(([country, count]) => ['SK', country, count])
+      ];
+      document.getElementById('country-table').innerHTML = countryRows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td class="num">${DP.fmtNumber(r[2])}</td></tr>`).join('');
+
+      const productRows = [
+        ...groupCounts(cz.items.map(x => ({...x, account:'CZ'})), 'logistics_product_code').slice(0,8).map(([p,count]) => ['CZ', p, count]),
+        ...groupCounts(sk.items.map(x => ({...x, account:'SK'})), 'logistics_product_code').slice(0,8).map(([p,count]) => ['SK', p, count])
+      ];
+      document.getElementById('product-table').innerHTML = productRows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td class="num">${DP.fmtNumber(r[2])}</td></tr>`).join('');
+
+      const recent = [
+        ...cz.items.slice(0,15).map(x => ({...x, account:'CZ'})),
+        ...sk.items.slice(0,15).map(x => ({...x, account:'SK'}))
+      ].sort((a,b) => Number(b.create_time || 0) - Number(a.create_time || 0)).slice(0, 24);
+
+      document.getElementById('recent-table').innerHTML = recent.map(item => `
+        <tr>
+          <td>${item.account}</td>
+          <td>${item.ref_no || '–'}</td>
+          <td>${item.shipping_no || item['4px_tracking_no'] || '–'}</td>
+          <td>${item.country || '–'}</td>
+          <td>${item.logistics_product_code || '–'}</td>
+          <td>${item.status || '–'}</td>
+          <td class="num">${DP.fmtNumber(item.total_weight || 0)}</td>
+        </tr>
+      `).join('');
+    })();
+  </script>
+</body>
+</html>

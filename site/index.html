@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond Plus Reporting V2</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <h2>Diamond Plus</h2>
+      <span>Reporting V2, rebuild od nuly</span>
+    </div>
+    <div class="sidebar-section-label">Přehled</div>
+    <nav class="sidebar-nav">
+      <a class="active" href="index.html">🏠 Portal</a>
+      <a href="inventory.html">📦 Sklad</a>
+      <a href="logistics.html">🚚 Logistika 4PX</a>
+      <a href="eshop.html">🛒 E-shop / WPJ</a>
+    </nav>
+    <div class="sidebar-footer">Nový reporting stack. Data jako zdroj pravdy, ne HTML snapshoty.</div>
+  </aside>
+
+  <main class="main">
+    <header class="header">
+      <div class="header-row">
+        <div>
+          <h1>Reporting portal, nová generace</h1>
+          <div class="header-sub">
+            <span class="badge live">● hodinový refresh</span>
+            <span class="badge info" id="generated-at">Načítám poslední refresh…</span>
+            <span class="badge warn" id="warnings-count">Čekám na stav zdrojů…</span>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+    </header>
+
+    <section class="grid kpi-grid" id="top-kpis"></section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2 class="section-title">Co už je hotové</h2>
+        <div class="block-list" id="done-list"></div>
+      </div>
+      <div class="card">
+        <h2 class="section-title">Aktuální blokery</h2>
+        <div id="blockers"></div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2 class="section-title">Stav zdrojů</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Zdroj</th>
+            <th>Stav</th>
+            <th>Detail</th>
+            <th class="num">Objektů</th>
+          </tr>
+        </thead>
+        <tbody id="sources-table"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+    const doneItems = [
+      ['4PX API napojení', 'CZ i SK připojené napřímo přes Open API.'],
+      ['WPJ GraphQL napojení', 'Objednávky i skladová vrstva se tahají přímo z WPJ přes X-Access-Token.'],
+      ['Nová datová vrstva', 'Refresh skript zapisuje normalizovaná JSON data, snapshoty a ranní report.'],
+      ['Nový portál', 'Sdílené assets, společný vizuální systém, bez kopírování stylů mezi HTML.'],
+      ['Hodinový refresh připraven', 'Cron job je připravený pro automatický běh.']
+    ];
+
+    (async () => {
+      const summary = await DP.loadJson('../data/current/portal_summary.json');
+      document.getElementById('generated-at').textContent = `Poslední refresh: ${DP.fmtDateTime(summary.generatedAt)}`;
+      document.getElementById('warnings-count').textContent = `Upozornění: ${summary.warnings.length}`;
+
+      const kpis = [
+        ['CZ sklad, dostupné kusy', DP.fmtNumber(summary.accounts.cz.inventory.availableStockTotal), `${DP.fmtNumber(summary.accounts.cz.inventory.items)} skladových řádků`, 'green'],
+        ['SK sklad, dostupné kusy', DP.fmtNumber(summary.accounts.sk.inventory.availableStockTotal), `${DP.fmtNumber(summary.accounts.sk.inventory.items)} skladových řádků`, 'blue'],
+        ['WPJ objednávky včera', DP.fmtNumber(summary.wpJ.orders || 0), `${DP.fmtNumber(Math.round(summary.wpJ.revenueWithVat || 0))} Kč`, 'gold'],
+        ['4PX zásilky včera', DP.fmtNumber(summary.report.shipments || 0), `${summary.report.date}`, 'red']
+      ];
+      document.getElementById('top-kpis').innerHTML = kpis.map(([label, value, sub, klass]) => `
+        <div class="card kpi-card ${klass}">
+          <div class="kpi-label">${label}</div>
+          <div class="kpi-value">${value}</div>
+          <div class="kpi-sub">${sub}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('done-list').innerHTML = doneItems.map(([title, desc]) => `
+        <div class="block-item"><h4>${title}</h4><p>${desc}</p></div>
+      `).join('');
+
+      document.getElementById('blockers').innerHTML = (summary.warnings.length ? summary.warnings : (summary.report.alerts || []).length ? summary.report.alerts : ['Žádné zásadní blokery v aktivní vrstvě.']).map(w => `<div class="alert warn">${w}</div>`).join('');
+
+      const sourceRows = [
+        ['4PX CZ inventory', 'OK', `Warehouse ${summary.config.warehouseCode}`, summary.accounts.cz.inventory.items],
+        ['4PX SK inventory', 'OK', `Warehouse ${summary.config.warehouseCode}`, summary.accounts.sk.inventory.items],
+        ['4PX CZ outbound', 'OK', `Recent pages: ${summary.accounts.cz.outbound.scannedPages}`, summary.accounts.cz.outbound.items],
+        ['4PX SK outbound', 'OK', `Recent pages: ${summary.accounts.sk.outbound.scannedPages}`, summary.accounts.sk.outbound.items],
+        ['WPJ / GraphQL', summary.wpJ.ready ? 'OK' : 'Čeká', summary.wpJ.message, summary.wpJ.orders || 0],
+        ['Ranní report', 'OK', `Alerty: ${(summary.report.alerts || []).length}`, summary.report.shipments || 0]
+      ];
+      document.getElementById('sources-table').innerHTML = sourceRows.map(row => `
+        <tr>
+          <td>${row[0]}</td>
+          <td>${row[1] === 'OK' ? DP.statusPill('OK','success') : DP.statusPill(row[1],'warning')}</td>
+          <td>${row[2]}</td>
+          <td class="num">${DP.fmtNumber(row[3])}</td>
+        </tr>
+      `).join('');
+    })().catch(err => {
+      document.getElementById('blockers').innerHTML = `<div class="alert danger">Nepodařilo se načíst portálová data: ${err.message}</div>`;
+    });
+  </script>
+</body>
+</html>

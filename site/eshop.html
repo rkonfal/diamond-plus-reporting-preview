@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-shop / WPJ, Reporting V2</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>Reporting V2</span></div>
+    <div class="sidebar-section-label">Přehled</div>
+    <nav class="sidebar-nav">
+      <a href="index.html">🏠 Portal</a>
+      <a href="inventory.html">📦 Sklad</a>
+      <a href="logistics.html">🚚 Logistika 4PX</a>
+      <a class="active" href="eshop.html">🛒 E-shop / WPJ</a>
+    </nav>
+    <div class="sidebar-footer">WPJ GraphQL je živě připojené, ranní report se generuje do datové vrstvy.</div>
+  </aside>
+
+  <main class="main">
+    <header class="header">
+      <div class="header-row">
+        <div>
+          <h1>E-shop výkon</h1>
+          <div class="header-sub">
+            <span class="badge live" id="wpj-state">Načítám WPJ…</span>
+            <span class="badge info" id="wpj-window">Načítám období…</span>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+    </header>
+
+    <section class="grid kpi-grid" id="wpj-kpis"></section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2 class="section-title">Platební metody</h2>
+        <table class="table">
+          <thead><tr><th>Metoda</th><th class="num">Objednávek</th></tr></thead>
+          <tbody id="payments-table"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2 class="section-title">Dopravní metody</h2>
+        <table class="table">
+          <thead><tr><th>Metoda</th><th class="num">Objednávek</th></tr></thead>
+          <tbody id="deliveries-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid two-col" style="margin-top:18px;">
+      <div class="card">
+        <h2 class="section-title">Top produkty podle kusů</h2>
+        <table class="table">
+          <thead><tr><th>Produkt</th><th class="num">Kusy</th></tr></thead>
+          <tbody id="units-table"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2 class="section-title">Top produkty podle obratu</h2>
+        <table class="table">
+          <thead><tr><th>Produkt</th><th class="num">Obrat</th></tr></thead>
+          <tbody id="revenue-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2 class="section-title">Náhled ranního reportu</h2>
+      <div class="block-item">
+        <p id="wpj-message">Načítám vygenerovaný text reportu…</p>
+      </div>
+      <pre id="report-preview" style="white-space:pre-wrap; font:inherit; margin:0;"></pre>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+
+    function formatDateRange(windowData) {
+      const from = new Date(windowData.from);
+      if (Number.isNaN(from.getTime())) return 'Neznámé období';
+      return `Včerejšek: ${new Intl.DateTimeFormat('cs-CZ', { dateStyle: 'medium' }).format(from)}`;
+    }
+
+    function renderRows(targetId, rows, formatter) {
+      document.getElementById(targetId).innerHTML = (rows || []).map(row => `
+        <tr>
+          <td>${row.label || row.name}</td>
+          <td class="num">${formatter(row)}</td>
+        </tr>
+      `).join('');
+    }
+
+    (async () => {
+      const summary = await DP.loadJson('../data/current/portal_summary.json');
+      const report = await DP.loadJson('../data/current/morning_report_previous_day.json');
+      const text = await fetch('../data/current/morning_report_previous_day.txt', { cache: 'no-store' }).then(r => r.text());
+      const eshop = report.eshop;
+
+      document.getElementById('wpj-state').textContent = summary.wpJ.ready ? 'WPJ připojeno' : 'WPJ není připojeno';
+      document.getElementById('wpj-window').textContent = formatDateRange(report.window);
+      document.getElementById('wpj-message').textContent = summary.wpJ.message;
+
+      document.getElementById('wpj-kpis').innerHTML = [
+        ['Objednávky včera', DP.fmtNumber(eshop.orders), `${eshop.problematicOrders} problematické`, 'green'],
+        ['Obrat s DPH', `${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč`, `${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč / objednávka`, 'blue'],
+        ['Top platba', eshop.paymentMethods[0]?.name || '–', `${DP.fmtNumber(eshop.paymentMethods[0]?.count || 0)} objednávek`, 'gold'],
+        ['Top doprava', eshop.deliveryMethods[0]?.name || '–', `${DP.fmtNumber(eshop.deliveryMethods[0]?.count || 0)} objednávek`, 'red']
+      ].map(([label, value, sub, klass]) => `
+        <div class="card kpi-card ${klass}">
+          <div class="kpi-label">${label}</div>
+          <div class="kpi-value">${value}</div>
+          <div class="kpi-sub">${sub}</div>
+        </div>
+      `).join('');
+
+      renderRows('payments-table', eshop.paymentMethods.slice(0, 8), row => DP.fmtNumber(row.count));
+      renderRows('deliveries-table', eshop.deliveryMethods.slice(0, 8), row => DP.fmtNumber(row.count));
+      renderRows('units-table', eshop.topProductsByUnits, row => row.formatted || DP.fmtNumber(row.value));
+      renderRows('revenue-table', eshop.topProductsByRevenue, row => row.formatted || `${DP.fmtNumber(row.value)} Kč`);
+      document.getElementById('report-preview').textContent = text;
+    })().catch(err => {
+      document.getElementById('wpj-message').textContent = `Nepodařilo se načíst WPJ report: ${err.message}`;
+    });
+  </script>
+</body>
+</html>
