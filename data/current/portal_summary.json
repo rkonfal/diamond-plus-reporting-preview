@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T16:09:15.040487+02:00",
+  "generatedAt": "2026-04-16T16:39:00.942703+02:00",
   "config": {
     "warehouseCode": "CZPRGA",
     "outboundMaxPages": 20,
@@ -14,8 +14,8 @@
       "label": "CZ",
       "inventory": {
         "items": 768,
-        "availableStockTotal": 308116,
-        "pendingStockTotal": 1952,
+        "availableStockTotal": 308074,
+        "pendingStockTotal": 1888,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -23,8 +23,8 @@
         "items": 800,
         "scannedPages": 8,
         "topLogisticsProduct": "F1401",
-        "oldestTimestamp": "2026-04-14T22:40:19+02:00",
-        "newestTimestamp": "2026-04-16T16:07:22+02:00"
+        "oldestTimestamp": "2026-04-14T22:45:59+02:00",
+        "newestTimestamp": "2026-04-16T16:30:02+02:00"
       }
     },
     "sk": {
@@ -32,7 +32,7 @@
       "inventory": {
         "items": 621,
         "availableStockTotal": 70871,
-        "pendingStockTotal": 50,
+        "pendingStockTotal": 40,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -85,8 +85,8 @@
   },
   "finance": {
     "ready": true,
-    "mode": "legacy_snapshot",
-    "message": "Zatím čerpáno z posledního dostupného ABRA Flexi výřezu v původním dashboardu, ne z živého API.",
+    "mode": "mixed_live_legacy",
+    "message": "Závazky z přijatých faktur jsou tahány živě z ABRA API. Měsíční P&L zatím zůstává na legacy snapshotu.",
     "currentMonth": {
       "label": "3/2026",
       "revenue": 16130000,
@@ -110,42 +110,58 @@
     },
     "cash": {
       "cashOnAccounts": 10255308.0,
-      "unpaidInvoices": 1579560.0,
+      "unpaidInvoices": 6123421.87,
       "netCashPosition": 8675748.0,
-      "overdueInvoicesCount": 4,
-      "overdueInvoicesAmount": 85645.0,
+      "overdueInvoicesCount": 1,
+      "overdueInvoicesAmount": 3242928.73,
       "largestPayables": [
+        {
+          "code": "PF0349/2026",
+          "vendor": "\"ASTI GROUP\" SIA",
+          "dueDate": "20.03.2026",
+          "amountTotal": 3242928.73,
+          "amountDue": 3242928.73,
+          "status": "27 dní PO SPLATNOSTI"
+        },
+        {
+          "code": "PF0461/2026",
+          "vendor": "ISTA CORPORATION s.r.o.",
+          "dueDate": "20.04.2026",
+          "amountTotal": 1111968.39,
+          "amountDue": 1111968.39,
+          "status": "4 dní do splatnosti"
+        },
         {
           "code": "PF0412/2026",
           "vendor": "4PX Express CZ",
           "dueDate": "30.04.2026",
-          "amountTotal": 706145.0,
-          "amountDue": 706145.0,
-          "status": "18 dní do splatnosti"
+          "amountTotal": 706144.53,
+          "amountDue": 706144.53,
+          "status": "14 dní do splatnosti"
         },
         {
           "code": "PF0446/2026",
-          "vendor": "Česká pošta, s.p.",
+          "vendor": "Česká pošta, s.p., Odštěpný závod Balíkové služby",
           "dueDate": "24.04.2026",
-          "amountTotal": 558254.0,
-          "amountDue": 558254.0,
-          "status": "12 dní do splatnosti"
+          "amountTotal": 558253.85,
+          "amountDue": 558253.85,
+          "status": "8 dní do splatnosti"
         },
         {
-          "code": "PF0426/2026",
-          "vendor": "wpj s.r.o.",
-          "dueDate": "22.04.2026",
-          "amountTotal": 150393.0,
-          "amountDue": 150393.0,
+          "code": "PF0460/2026",
+          "vendor": "ISTA CORPORATION s.r.o.",
+          "dueDate": "20.04.2026",
+          "amountTotal": 235393.78,
+          "amountDue": 235393.78,
+          "status": "4 dní do splatnosti"
+        },
+        {
+          "code": "Z0030/2026",
+          "vendor": "Effectix.com, s.r.o.",
+          "dueDate": "26.04.2026",
+          "amountTotal": 97284.0,
+          "amountDue": 97284.0,
           "status": "10 dní do splatnosti"
-        },
-        {
-          "code": "PF0428/2026",
-          "vendor": "ProfiSMS s.r.o.",
-          "dueDate": "09.04.2026",
-          "amountTotal": 60000.0,
-          "amountDue": 60000.0,
-          "status": "3 dny PO SPLATNOSTI"
         },
         {
           "code": "PF0429/2026",
@@ -153,31 +169,15 @@
           "dueDate": "30.04.2026",
           "amountTotal": 43560.0,
           "amountDue": 43560.0,
-          "status": "18 dní do splatnosti"
+          "status": "14 dní do splatnosti"
         },
         {
           "code": "PF0413/2026",
           "vendor": "4PX Express CZ",
           "dueDate": "30.04.2026",
-          "amountTotal": 27981.0,
-          "amountDue": 27981.0,
-          "status": "18 dní do splatnosti"
-        },
-        {
-          "code": "Z0118/2025",
-          "vendor": "Quintessence Naturprodukte GmbH",
-          "dueDate": "31.12.2025",
-          "amountTotal": 20221.0,
-          "amountDue": 20221.0,
-          "status": "102 dní PO SPLATNOSTI"
-        },
-        {
-          "code": "PF0392/2026",
-          "vendor": "O2 Czech Republic a.s.",
-          "dueDate": "23.04.2026",
-          "amountTotal": 8332.0,
-          "amountDue": 4749.0,
-          "status": "11 dní do splatnosti (43% uhrazeno)"
+          "amountTotal": 27981.25,
+          "amountDue": 27981.25,
+          "status": "14 dní do splatnosti"
         }
       ]
     }

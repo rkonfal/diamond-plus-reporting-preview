@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T16:09:15.040487+02:00",
+  "generatedAt": "2026-04-16T16:39:00.942703+02:00",
   "items": [
     {
       "consignment_no": "OC149400622604160028",
@@ -388,7 +388,7 @@
       "4px_tracking_no": "601111351404",
       "ref_no": "261270102",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1406",
@@ -397,7 +397,7 @@
       "shipping_no": "601111351404",
       "total_weight": 501.0,
       "billing_weight": 501.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 501.0,
       "total_volume": 2443.95,
       "billing_amount": 0.0,
       "currency": "",
@@ -411,8 +411,9 @@
       "audit_time": 1776338118000,
       "create_time": 1776338117000,
       "create_user": "14940062",
-      "update_time": 1776348451000,
+      "update_time": 1776348859000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776348852000,
       "remark": "kralovstvi-tiande.sk|",
       "country": "SK",
       "state": "",
