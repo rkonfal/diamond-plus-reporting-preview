@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T16:39:00.942703+02:00",
+  "generatedAt": "2026-04-16T17:11:02.385859+02:00",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
     "to": "2026-04-15T23:59:59+02:00"
@@ -42032,8 +42032,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 38.65,
@@ -46120,8 +46120,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 1780,
@@ -48272,8 +48272,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 2443,
@@ -50000,8 +50000,8 @@
       "cancelled": false,
       "isPaid": false,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 1271,
@@ -52100,8 +52100,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 2051,
@@ -53144,8 +53144,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 1093,
@@ -57711,15 +57711,15 @@
       },
       {
         "name": "doručeno",
-        "count": 71
+        "count": 77
       },
       {
         "name": "připraveno k vyzvednutí",
-        "count": 46
+        "count": 43
       },
       {
         "name": "expedováno",
-        "count": 32
+        "count": 29
       },
       {
         "name": "nová",

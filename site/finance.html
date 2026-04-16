@@ -110,6 +110,64 @@
         </table>
       </div>
     </section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2 class="section-title">Trendy z účetního deníku</h2>
+        <div class="section-subtitle">Live nákladové a výnosové zápisy za poslední 3 měsíce. Je to čitelnější mezivrstva nad surovým deníkem, ne finální účetní výkaz.</div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Měsíc</th>
+                <th class="num">Náklady 5xx</th>
+                <th class="num">Výnosy 6xx</th>
+                <th>Nejsilnější nákladová třída</th>
+              </tr>
+            </thead>
+            <tbody id="journal-trend-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Top nákladové účty v aktuálním měsíci</h2>
+        <div class="section-subtitle">Které účty teď táhnou nákladovou stranu. Užitečné pro nefinančníka i pro rychlý drilldown.</div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Účet</th>
+                <th>Třída</th>
+                <th class="num">Částka</th>
+              </tr>
+            </thead>
+            <tbody id="journal-accounts-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Live náhled účetního deníku</h2>
+      <div class="section-subtitle">Největší aktuální nákladové a výnosové zápisy, aby šlo rychle přejít od trendu ke konkrétnímu dokladu.</div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Datum</th>
+              <th>Doklad</th>
+              <th>Směr</th>
+              <th>Účet</th>
+              <th>Protiúčet</th>
+              <th>Popis</th>
+              <th class="num">Částka</th>
+            </tr>
+          </thead>
+          <tbody id="journal-entries-table"></tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <script src="assets/app.js"></script>
@@ -136,6 +194,9 @@
       const current = data.currentMonth || {};
       const cash = data.cash || {};
       const previous = data.previousMonth || {};
+      const journal = data.journal || {};
+      const journalCurrent = journal.currentMonth || {};
+      const journalTopClass = (journalCurrent.topExpenseClasses || [])[0];
       const hero = [
         ['Výnosy', money(current.revenue), `${pct(current.grossMarginPct)} hrubá marže`, 'accent'],
         ['Čistý zisk', money(current.profit), `${pct(current.profitPct)} z výnosů`, ''],
@@ -152,6 +213,7 @@
       document.getElementById('finance-focus').innerHTML = [
         [`Aktuální měsíc: ${current.label || '–'}`, `Výnosy ${money(current.revenue)}, provozní marže ${money(current.operatingMargin)} a zisk ${money(current.profit)}.`],
         [`Cash po odečtení FP: ${money(cash.netCashPosition)}`, `${DP.fmtNumber(cash.overdueInvoicesCount || 0)} závazků je po splatnosti, celkem ${money(cash.overdueInvoicesAmount)}.`],
+        journalCurrent.label ? [`Live deník: ${journalCurrent.label}`, journalTopClass ? `Nejsilnější nákladová třída je ${journalTopClass.label} za ${money(journalTopClass.amount)}.` : 'Live deník je načtený, ale zatím bez výrazné nákladové dominance.'] : null,
         previous.label ? [`Minulý měsíc pro srovnání: ${previous.label}`, `Výnosy ${money(previous.revenue)} a zisk ${money(previous.profit)}.`] : null,
       ].filter(Boolean).map(([title, text], index) => `
         <div class="ux-item">
@@ -214,6 +276,35 @@
           <td class="num">${money(row.amountDue)}</td>
         </tr>
       `).join('');
+
+      document.getElementById('journal-trend-table').innerHTML = (journal.monthly || []).map(row => `
+        <tr>
+          <td>${row.label}</td>
+          <td class="num">${money(row.expenseTotal)}</td>
+          <td class="num">${money(row.revenueTotal)}</td>
+          <td>${row.topExpenseClass ? `${row.topExpenseClass.label} (${money(row.topExpenseClass.amount)})` : '–'}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="4">Live trendy z účetního deníku zatím nejsou dostupné.</td></tr>';
+
+      document.getElementById('journal-accounts-table').innerHTML = (journalCurrent.topExpenseAccounts || []).map(row => `
+        <tr>
+          <td>${row.code}: ${row.label}</td>
+          <td>${row.classLabel}</td>
+          <td class="num">${money(row.amount)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="3">Top nákladové účty zatím nejsou k dispozici.</td></tr>';
+
+      document.getElementById('journal-entries-table').innerHTML = (journalCurrent.recentEntries || []).map(row => `
+        <tr>
+          <td>${row.date}</td>
+          <td>${row.document}</td>
+          <td>${row.side}</td>
+          <td>${row.accountCode ? `${row.accountCode}: ${row.accountLabel || ''}` : '–'}</td>
+          <td>${row.counterCode ? `${row.counterCode}: ${row.counterLabel || ''}` : '–'}</td>
+          <td>${row.description}</td>
+          <td class="num">${money(row.amount)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="7">Live účetní deník zatím není k dispozici.</td></tr>';
     })().catch(err => {
       document.getElementById('source-alert').innerHTML = `<div class="alert danger">Nepodařilo se načíst finance data: ${err.message}</div>`;
     });

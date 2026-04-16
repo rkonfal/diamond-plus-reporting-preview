@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T16:39:00.942703+02:00",
+  "generatedAt": "2026-04-16T17:11:02.385859+02:00",
   "source": {
     "status": "mixed_live_legacy",
     "message": "Závazky z přijatých faktur jsou tahány živě z ABRA API. Měsíční P&L zatím zůstává na legacy snapshotu."
@@ -210,5 +210,337 @@
         "status": "14 dní do splatnosti"
       }
     ]
+  },
+  "journal": {
+    "source": {
+      "status": "live",
+      "message": "Účetní deník pro poslední 3 měsíce je tahán živě z ABRA API a agregovaný do srozumitelnějšího přehledu."
+    },
+    "monthly": [
+      {
+        "label": "2/2026",
+        "expenseTotal": 3852589.84,
+        "revenueTotal": 5445511.13,
+        "topExpenseClass": {
+          "code": "50",
+          "label": "Spotřeba a zboží",
+          "amount": 3116993.8
+        }
+      },
+      {
+        "label": "3/2026",
+        "expenseTotal": 4052114.36,
+        "revenueTotal": 5314381.36,
+        "topExpenseClass": {
+          "code": "50",
+          "label": "Spotřeba a zboží",
+          "amount": 3372846.09
+        }
+      },
+      {
+        "label": "4/2026",
+        "expenseTotal": 4032218.24,
+        "revenueTotal": 5120806.41,
+        "topExpenseClass": {
+          "code": "50",
+          "label": "Spotřeba a zboží",
+          "amount": 3490153.88
+        }
+      }
+    ],
+    "currentMonth": {
+      "label": "4/2026",
+      "topExpenseAccounts": [
+        {
+          "code": "504001",
+          "label": "Nákup zboží 2",
+          "amount": 3460992.81,
+          "classCode": "50",
+          "classLabel": "Spotřeba a zboží"
+        },
+        {
+          "code": "518901",
+          "label": "Reklama a marketing",
+          "amount": 249586.78,
+          "classCode": "51",
+          "classLabel": "Služby"
+        },
+        {
+          "code": "518700",
+          "label": "Software a IT",
+          "amount": 141252.32,
+          "classCode": "51",
+          "classLabel": "Služby"
+        },
+        {
+          "code": "518800",
+          "label": "Nájemné",
+          "amount": 38107.44,
+          "classCode": "51",
+          "classLabel": "Služby"
+        },
+        {
+          "code": "518201",
+          "label": "Přepravní služby",
+          "amount": 37815.04,
+          "classCode": "51",
+          "classLabel": "Služby"
+        },
+        {
+          "code": "568100",
+          "label": "Bankovní poplatky",
+          "amount": 27325.76,
+          "classCode": "56",
+          "classLabel": "Finanční náklady"
+        },
+        {
+          "code": "501100",
+          "label": "Režie - materiál, kancelář",
+          "amount": 15526.1,
+          "classCode": "50",
+          "classLabel": "Spotřeba a zboží"
+        },
+        {
+          "code": "513001",
+          "label": "Reprezentace a občerstvení",
+          "amount": 12997.0,
+          "classCode": "51",
+          "classLabel": "Služby"
+        },
+        {
+          "code": "518600",
+          "label": "Školení a vzdělávání",
+          "amount": 11931.08,
+          "classCode": "51",
+          "classLabel": "Služby"
+        },
+        {
+          "code": "501300",
+          "label": "Drobný majetek",
+          "amount": 10818.18,
+          "classCode": "50",
+          "classLabel": "Spotřeba a zboží"
+        }
+      ],
+      "topExpenseClasses": [
+        {
+          "code": "50",
+          "label": "Spotřeba a zboží",
+          "amount": 3490153.88
+        },
+        {
+          "code": "51",
+          "label": "Služby",
+          "amount": 503311.79
+        },
+        {
+          "code": "56",
+          "label": "Finanční náklady",
+          "amount": 32767.32
+        },
+        {
+          "code": "54",
+          "label": "Jiné provozní náklady",
+          "amount": 5985.25
+        }
+      ],
+      "recentEntries": [
+        {
+          "date": "10.04.2026",
+          "document": "PF0450/2026",
+          "amount": 200000.0,
+          "side": "náklad",
+          "accountCode": "518901",
+          "accountLabel": "Reklama a marketing",
+          "counterCode": "321001",
+          "counterLabel": "Závazky z obchodních vztahů",
+          "description": "Březen 2026",
+          "vendor": "Selfcareacademy s.r.o.",
+          "module": "Faktury přijaté"
+        },
+        {
+          "date": "08.04.2026",
+          "document": "PF0426/2026",
+          "amount": 124292.0,
+          "side": "náklad",
+          "accountCode": "518700",
+          "accountLabel": "Software a IT",
+          "counterCode": "321001",
+          "counterLabel": "Závazky z obchodních vztahů",
+          "description": "pronájem komplexního systému",
+          "vendor": "wpj s.r.o.",
+          "module": "Faktury přijaté"
+        },
+        {
+          "date": "09.04.2026",
+          "document": "PF0428/2026",
+          "amount": 49586.78,
+          "side": "náklad",
+          "accountCode": "518901",
+          "accountLabel": "Reklama a marketing",
+          "counterCode": "321001",
+          "counterLabel": "Závazky z obchodních vztahů",
+          "description": "Prodej kreditů-SMS",
+          "vendor": "ProfiSMS s.r.o.",
+          "module": "Faktury přijaté"
+        },
+        {
+          "date": "09.04.2026",
+          "document": "PF0448/2026",
+          "amount": 37107.44,
+          "side": "náklad",
+          "accountCode": "518800",
+          "accountLabel": "Nájemné",
+          "counterCode": "321001",
+          "counterLabel": "Závazky z obchodních vztahů",
+          "description": "18.05.2026Deposit 27010526 - Pronájem sálu, technika, servisní poplatek (Zaplaceno dne:09.04.2026)",
+          "vendor": "Le-Investment, spol. s r.o.",
+          "module": "Faktury přijaté"
+        },
+        {
+          "date": "12.04.2026",
+          "document": "PF0422/2026",
+          "amount": 24850.52,
+          "side": "náklad",
+          "accountCode": "518201",
+          "accountLabel": "Přepravní služby",
+          "counterCode": "321001",
+          "counterLabel": "Závazky z obchodních vztahů",
+          "description": "Dopravné",
+          "vendor": "Zásilkovna s.r.o.",
+          "module": "Faktury přijaté"
+        },
+        {
+          "date": "10.04.2026",
+          "document": "PF0451/2026",
+          "amount": 15590.0,
+          "side": "náklad",
+          "accountCode": "518700",
+          "accountLabel": "Software a IT",
+          "counterCode": "321001",
+          "counterLabel": "Závazky z obchodních vztahů",
+          "description": "Březen 2026",
+          "vendor": "Selfcareacademy s.r.o.",
+          "module": "Faktury přijaté"
+        },
+        {
+          "date": "05.04.2026",
+          "document": "PF0425/2026",
+          "amount": 12964.52,
+          "side": "náklad",
+          "accountCode": "518201",
+          "accountLabel": "Přepravní služby",
+          "counterCode": "321001",
+          "counterLabel": "Závazky z obchodních vztahů",
+          "description": "Dopravné",
+          "vendor": "Zásilkovna s.r.o.",
+          "module": "Faktury přijaté"
+        },
+        {
+          "date": "04.04.2026",
+          "document": "PF0393/2026",
+          "amount": 11931.08,
+          "side": "náklad",
+          "accountCode": "518600",
+          "accountLabel": "Školení a vzdělávání",
+          "counterCode": "321001",
+          "counterLabel": "Závazky z obchodních vztahů",
+          "description": "Děkuji, že využíváte mých služeb a dovoluji si Vám fakturovat za:",
+          "vendor": "Pavel Minář",
+          "module": "Faktury přijaté"
+        },
+        {
+          "date": "13.04.2026",
+          "document": "PF0466/2026",
+          "amount": 10818.18,
+          "side": "náklad",
+          "accountCode": "501300",
+          "accountLabel": "Drobný majetek",
+          "counterCode": "321001",
+          "counterLabel": "Závazky z obchodních vztahů",
+          "description": "050i7 Elektronická čtečka PocketBook1041 Color Note Stormy Sea190r Nehmotný produkt Doprava - AlzaBox",
+          "vendor": "Alza.cz a.s.",
+          "module": "Faktury přijaté"
+        },
+        {
+          "date": "10.04.2026",
+          "document": "VF1-36318/2026",
+          "amount": 10381.01,
+          "side": "výnos",
+          "accountCode": "604001",
+          "accountLabel": "Tržby z prodeje zboží",
+          "counterCode": "311001",
+          "counterLabel": "Pohledávky z obchodních vztahů",
+          "description": "Tržby z prodeje zboží  2",
+          "vendor": "Martina Havlíková",
+          "module": "Faktury vydané"
+        },
+        {
+          "date": "11.04.2026",
+          "document": "VF1-36424/2026",
+          "amount": 8070.26,
+          "side": "výnos",
+          "accountCode": "604001",
+          "accountLabel": "Tržby z prodeje zboží",
+          "counterCode": "311001",
+          "counterLabel": "Pohledávky z obchodních vztahů",
+          "description": "Tržby z prodeje zboží  2",
+          "vendor": "Kateřina Stránělová",
+          "module": "Faktury vydané"
+        },
+        {
+          "date": "13.04.2026",
+          "document": "VF1-36880/2026",
+          "amount": 7176.05,
+          "side": "výnos",
+          "accountCode": "604001",
+          "accountLabel": "Tržby z prodeje zboží",
+          "counterCode": "311001",
+          "counterLabel": "Pohledávky z obchodních vztahů",
+          "description": "Tržby z prodeje zboží  2",
+          "vendor": "Vendula Scheichlová",
+          "module": "Faktury vydané"
+        },
+        {
+          "date": "09.04.2026",
+          "document": "PF0452/2026",
+          "amount": 7110.52,
+          "side": "náklad",
+          "accountCode": "501100",
+          "accountLabel": "Režie - materiál, kancelář",
+          "counterCode": "321001",
+          "counterLabel": "Závazky z obchodních vztahů",
+          "description": "SK270c6 Kancelářský papír Canon Red LabelPrestige A4 80gSB508f Toner Canon 045H azurovýSB508h Toner Canon 045H žlutýADL24u Monitor 24\" Dell Pro 24 (E2425HSM)17o",
+          "vendor": "Alza.cz a.s.",
+          "module": "Faktury přijaté"
+        },
+        {
+          "date": "10.04.2026",
+          "document": "S-32886/2026",
+          "amount": 6951.83,
+          "side": "náklad",
+          "accountCode": "504001",
+          "accountLabel": "Nákup zboží 2",
+          "counterCode": "132001",
+          "counterLabel": "Zboží na skladě a v prodejnách",
+          "description": "Tržby z prodeje zboží  2",
+          "vendor": "Martina Havlíková",
+          "module": "Sklad"
+        },
+        {
+          "date": "10.04.2026",
+          "document": "S-32662/2026",
+          "amount": 6297.17,
+          "side": "náklad",
+          "accountCode": "504001",
+          "accountLabel": "Nákup zboží 2",
+          "counterCode": "132002",
+          "counterLabel": "Zboží na skladě a v prodejnách",
+          "description": "Tržby z prodeje zboží  2",
+          "vendor": "Diamond",
+          "module": "Sklad"
+        }
+      ]
+    }
   }
 }
