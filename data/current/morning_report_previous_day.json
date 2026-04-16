@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T11:34:22.754683+02:00",
+  "generatedAt": "2026-04-16T11:52:53.788421+02:00",
   "reportDate": "2026-04-15",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
@@ -37,11 +37,11 @@
       },
       {
         "name": "expedováno",
-        "count": 89
+        "count": 78
       },
       {
         "name": "připraveno k vyzvednutí",
-        "count": 28
+        "count": 37
       },
       {
         "name": "nová",
@@ -49,7 +49,7 @@
       },
       {
         "name": "doručeno",
-        "count": 9
+        "count": 11
       },
       {
         "name": "chyba",
@@ -808,78 +808,7 @@
         "inStore": -80.0
       }
     ],
-    "largestMovesSinceLastSnapshot": [
-      {
-        "code": "61915",
-        "title": "Dámské bylinné slipové vložky s anionty Nefritová svěžest",
-        "currentStock": 809.0,
-        "previousStock": 821.0,
-        "delta": -12.0
-      },
-      {
-        "code": "198812",
-        "title": "Rozpustný čekankový nápoj s extrakty parchy saflorové a rezavce šikmého",
-        "currentStock": 1099.0,
-        "previousStock": 1108.0,
-        "delta": -9.0
-      },
-      {
-        "code": "000075",
-        "title": "Brožura Fytogely",
-        "currentStock": 3550.0,
-        "previousStock": 3559.0,
-        "delta": -9.0
-      },
-      {
-        "code": "40203",
-        "title": "Peeling Broskvový",
-        "currentStock": 2309.0,
-        "previousStock": 2318.0,
-        "delta": -9.0
-      },
-      {
-        "code": "UA132",
-        "title": "Peeling Broskovový 1+1",
-        "currentStock": 2299.0,
-        "previousStock": 2308.0,
-        "delta": -9.0
-      },
-      {
-        "code": "TI076",
-        "title": "Rozpustný čakankový nápoj s extraktmi parchy saflorovej a rezavce šikmého 1+1",
-        "currentStock": 1059.0,
-        "previousStock": 1068.0,
-        "delta": -9.0
-      },
-      {
-        "code": "41328",
-        "title": "Levandulová náplast na nohy",
-        "currentStock": 2290.0,
-        "previousStock": 2297.0,
-        "delta": -7.0
-      },
-      {
-        "code": "44402-2",
-        "title": "Fytogel Slaviton",
-        "currentStock": 2711.0,
-        "previousStock": 2718.0,
-        "delta": -7.0
-      },
-      {
-        "code": "AE596",
-        "title": "Detoxikační balíček pro nohy s bylinným bonusem",
-        "currentStock": 1018.0,
-        "previousStock": 1024.0,
-        "delta": -6.0
-      },
-      {
-        "code": "GP767",
-        "title": "Lehké nohy přes noc s levandulí 1+1",
-        "currentStock": 1263.0,
-        "previousStock": 1269.0,
-        "delta": -6.0
-      }
-    ]
+    "largestMovesSinceLastSnapshot": []
   },
   "logistics": {
     "shipmentsTotal": 569,
@@ -938,15 +867,74 @@
       }
     ],
     "coverageWarnings": [],
-    "expiringProducts": [],
-    "notes": [
-      "Zdroj expirací zatím chybí, dostupné API vrací jen batch_no bez data spotřeby."
-    ]
+    "expiringProducts": [
+      {
+        "account": "CZ",
+        "sku": "40203",
+        "dateExpiry": "2026-05-08",
+        "daysToExpiry": 22,
+        "datedStock": 2645.0,
+        "stockAtNearestExpiry": 2645.0,
+        "batchCount": 14,
+        "riskScore": 44.89,
+        "title": "Peeling Broskvový",
+        "label": "40203 · Peeling Broskvový (CZ)"
+      },
+      {
+        "account": "CZ",
+        "sku": "52902/03",
+        "dateExpiry": "2026-05-07",
+        "daysToExpiry": 21,
+        "datedStock": 398.0,
+        "stockAtNearestExpiry": 398.0,
+        "batchCount": 3,
+        "riskScore": 7.16,
+        "title": "Revitalizační maska na obličej a krk Lingzhi - 3ks",
+        "label": "52902/03 · Revitalizační maska na obličej a krk Lingzhi - 3ks (CZ)"
+      },
+      {
+        "account": "CZ",
+        "sku": "PROMO74",
+        "dateExpiry": "2027-02-09",
+        "daysToExpiry": 299,
+        "datedStock": 9492.0,
+        "stockAtNearestExpiry": 2372.0,
+        "batchCount": 18,
+        "riskScore": 5.72,
+        "title": "Královská bylinná směs zdravá žena ",
+        "label": "PROMO74 · Královská bylinná směs zdravá žena  (CZ)"
+      },
+      {
+        "account": "CZ",
+        "sku": "63601/01",
+        "dateExpiry": "2026-12-31",
+        "daysToExpiry": 259,
+        "datedStock": 7633.0,
+        "stockAtNearestExpiry": 7633.0,
+        "batchCount": 14,
+        "riskScore": 5.54,
+        "title": "Denní vložka Energie života (Počet kusů: 1ks)",
+        "label": "63601/01 · Denní vložka Energie života (Počet kusů: 1ks) (CZ)"
+      },
+      {
+        "account": "CZ",
+        "sku": "30111",
+        "dateExpiry": "2026-12-10",
+        "daysToExpiry": 238,
+        "datedStock": 6406.0,
+        "stockAtNearestExpiry": 6406.0,
+        "batchCount": 18,
+        "riskScore": 5.18,
+        "title": "Kosmetická tělová fytonáplast Yaoshen Forte",
+        "label": "30111 · Kosmetická tělová fytonáplast Yaoshen Forte (CZ)"
+      }
+    ],
+    "notes": []
   },
   "priorities": [
     "Dohlédnout POP00060 (GREPAVIT® – grep extrakt z jader, 100 ml), aktuálně 0 ks.",
     "Dohlédnout 195464 (Krémová banánová polévka se zeleninou), aktuálně 2 ks.",
     "Projít 3 problematických nebo stornovaných objednávek z včerejška.",
-    "Dohledat spolehlivý zdroj expirací, 4PX inventory zatím vrací jen batch_no bez data spotřeby."
+    "Projít nejbližší expirace v 4PX a rozhodnout o doprodeji nebo přesunu zásoby."
   ]
 }

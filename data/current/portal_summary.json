@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T11:27:31.688379+02:00",
+  "generatedAt": "2026-04-16T11:51:44.008732+02:00",
   "config": {
     "warehouseCode": "CZPRGA",
     "outboundMaxPages": 20,
@@ -14,8 +14,8 @@
       "label": "CZ",
       "inventory": {
         "items": 768,
-        "availableStockTotal": 309106,
-        "pendingStockTotal": 4213,
+        "availableStockTotal": 308959,
+        "pendingStockTotal": 4370,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -23,8 +23,8 @@
         "items": 700,
         "scannedPages": 7,
         "topLogisticsProduct": "F1401",
-        "oldestTimestamp": "2026-04-14T22:33:40+02:00",
-        "newestTimestamp": "2026-04-16T11:25:04+02:00"
+        "oldestTimestamp": "2026-04-14T22:52:29+02:00",
+        "newestTimestamp": "2026-04-16T11:50:07+02:00"
       }
     },
     "sk": {
@@ -65,8 +65,13 @@
       "Dohlédnout POP00060 (GREPAVIT® – grep extrakt z jader, 100 ml), aktuálně 0 ks.",
       "Dohlédnout 195464 (Krémová banánová polévka se zeleninou), aktuálně 2 ks.",
       "Projít 3 problematických nebo stornovaných objednávek z včerejška.",
-      "Dohledat spolehlivý zdroj expirací, 4PX inventory zatím vrací jen batch_no bez data spotřeby."
+      "Projít nejbližší expirace v 4PX a rozhodnout o doprodeji nebo přesunu zásoby."
     ]
+  },
+  "expiries": {
+    "datedSkuCount": 618,
+    "czSkuCount": 318,
+    "skSkuCount": 300
   },
   "pairing": {
     "allCodes": 2964,

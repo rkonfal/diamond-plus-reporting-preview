@@ -16,7 +16,7 @@
       <a class="active" href="logistics.html">🚚 Logistika 4PX</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">Logistika už teď běží nad párovanou vrstvou a vytahuje i 4PX položky, které nemají vazbu do WPJ.</div>
+    <div class="sidebar-footer">Logistika už teď umí i expirace přes detailní 4PX inventory pull po SKU dávkách.</div>
   </aside>
 
   <main class="main">
@@ -27,7 +27,7 @@
           <div class="header-sub">
             <span class="badge live" id="log-window">Načítám okno…</span>
             <span class="badge info" id="log-shipments">Načítám zásilky…</span>
-            <span class="badge warn" id="log-expiry">Expirace: hledá se zdroj</span>
+            <span class="badge warn" id="log-expiry">Načítám expirace…</span>
           </div>
         </div>
         <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
@@ -69,6 +69,23 @@
 
     <section class="grid two-col" style="margin-top:20px;">
       <div class="card">
+        <h2 class="section-title">Nejvyšší expirační riziko</h2>
+        <div class="section-subtitle">4PX detail vrací u SKU s expirací pole <code>expiry_date</code>. Shortlist je řazený kombinací blízkosti expirace a velikosti zásoby.</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kód / produkt</th>
+              <th class="num">Účet</th>
+              <th class="num">Expirace</th>
+              <th class="num">Dní do expirace</th>
+              <th class="num">Expirující sklad</th>
+            </tr>
+          </thead>
+          <tbody id="expiry-table"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
         <h2 class="section-title">SKU pouze v 4PX</h2>
         <div class="section-subtitle">Tady jsou položky, které se expedují nebo leží ve 4PX, ale nevidíme je správně ve WPJ.</div>
         <table class="table">
@@ -82,23 +99,30 @@
           <tbody id="only-4px-log-table"></tbody>
         </table>
       </div>
+    </section>
 
+    <section class="grid two-col" style="margin-top:20px;">
       <div class="card">
-        <h2 class="section-title">Poznámky k chybějícím datům</h2>
+        <h2 class="section-title">Poznámky k datům</h2>
         <div class="block-list">
           <div class="block-item">
             <h4>Expirace</h4>
-            <p>4PX inventory vrací batch číslo, ale ne datum expirace. Proto expirace ještě nejsou v ostré logistické kartě dopočítané.</p>
+            <p>Expirace teď bereme přes <code>fu.wms.inventory.getdetail</code> po dávkách max 100 SKU. Pokud SKU expiraci nepoužívá, pole <code>expiry_date</code> v detailu není.</p>
           </div>
           <div class="block-item">
             <h4>Párování SKU</h4>
-            <p>Teď párujeme primárně přes kód produktu / SKU. Další krok je shortlist produktů, kde kódy nesedí a je potřeba ruční mapování.</p>
+            <p>Teď párujeme primárně přes kód produktu / SKU. Další krok je dočištění orphan variant, aby expirace i mismatchy seděly ještě přesněji.</p>
           </div>
           <div class="block-item">
             <h4>Auto publish</h4>
-            <p>Po každém refreshi se preview publikuje samo na GitHub Pages, takže logistická vrstva je už vidět bez ručního zásahu.</p>
+            <p>Po každém refreshi se preview publikuje samo na GitHub Pages, takže logistická vrstva je vidět bez ručního zásahu.</p>
           </div>
         </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Rychlé shrnutí expirací</h2>
+        <div class="block-list" id="expiry-summary"></div>
       </div>
     </section>
   </main>
@@ -112,22 +136,23 @@
     }
 
     function label(row) {
-      return `${row.code || '–'} · ${row.title || 'Bez názvu'}`;
+      return `${row.code || row.sku || '–'} · ${row.title || 'Bez názvu'}`;
     }
 
     (async () => {
       const overview = await DP.loadJson('../data/current/combined_inventory_overview.json');
       const report = await DP.loadJson('../data/current/morning_report_previous_day.json');
-      const portal = await DP.loadJson('../data/current/portal_summary.json');
+      const expiries = await DP.loadJson('../data/current/4px_expiry_overview.json');
 
       document.getElementById('log-window').textContent = `Okno: ${new Date(report.window.from).toLocaleDateString('cs-CZ')}`;
       document.getElementById('log-shipments').textContent = `Zásilky: ${fmt(report.logistics.shipmentsTotal)}`;
+      document.getElementById('log-expiry').textContent = `Expirační SKU: ${fmt(expiries.summary.datedSkuCount || 0)}`;
 
       const topCarrier = report.logistics.carrierCounts[0]?.name || '–';
       document.getElementById('log-kpis').innerHTML = [
         ['Zásilky celkem', fmt(report.logistics.shipmentsTotal), `CZ ${fmt(report.logistics.byAccount.CZ)} / SK ${fmt(report.logistics.byAccount.SK)}`, 'green'],
         ['Top dopravce', topCarrier, `${fmt(report.logistics.carrierCounts[0]?.count || 0)} zásilek`, 'gold'],
-        ['SKU pouze v 4PX', fmt(overview.counts.onlyIn4px), 'chybí vazba do WPJ', 'red'],
+        ['SKU s expirací', fmt(expiries.summary.datedSkuCount || 0), `CZ ${fmt(expiries.summary.czSkuCount || 0)} / SK ${fmt(expiries.summary.skSkuCount || 0)}`, 'red'],
         ['Top outbound SKU', label(overview.topOutboundProducts[0] || { code: '–', title: '–' }), `${fmt((overview.topOutboundProducts[0]?.yesterdayOutbound?.czUnits || 0) + (overview.topOutboundProducts[0]?.yesterdayOutbound?.skUnits || 0))} ks`, 'blue']
       ].map(([label, value, sub, klass]) => `
         <div class="card kpi-card ${klass}">
@@ -152,6 +177,16 @@
         </tr>
       `).join('') || '<tr><td colspan="2">Žádná data o dopravci.</td></tr>';
 
+      document.getElementById('expiry-table').innerHTML = (expiries.topExpiring || []).slice(0, 20).map(row => `
+        <tr>
+          <td>${row.sku} · ${row.title}</td>
+          <td class="num">${row.account}</td>
+          <td class="num">${row.dateExpiry}</td>
+          <td class="num">${fmt(row.daysToExpiry)}</td>
+          <td class="num">${fmt(row.datedStock)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="5">Zatím bez expiračních dat.</td></tr>';
+
       document.getElementById('only-4px-log-table').innerHTML = overview.onlyIn4px.map(row => `
         <tr>
           <td>${label(row)}</td>
@@ -159,6 +194,13 @@
           <td class="num">${fmt(row.yesterdayOutbound.czUnits + row.yesterdayOutbound.skUnits)}</td>
         </tr>
       `).join('') || '<tr><td colspan="3">Aktuálně bez orphan 4PX SKU.</td></tr>';
+
+      document.getElementById('expiry-summary').innerHTML = [
+        `SKU s datovanou expirací: <strong>${fmt(expiries.summary.datedSkuCount || 0)}</strong>`,
+        `CZ účet: <strong>${fmt(expiries.summary.czSkuCount || 0)}</strong>`,
+        `SK účet: <strong>${fmt(expiries.summary.skSkuCount || 0)}</strong>`,
+        expiries.topExpiring?.[0] ? `Top expirační riziko: <strong>${expiries.topExpiring[0].sku}</strong>, expirace ${expiries.topExpiring[0].dateExpiry}, sklad ${fmt(expiries.topExpiring[0].datedStock)} ks` : 'Bez expiračního rizika.'
+      ].map(text => `<div class="block-item"><p>${text}</p></div>`).join('');
     })().catch(err => {
       document.getElementById('log-window').textContent = `Nepodařilo se načíst data: ${err.message}`;
     });
