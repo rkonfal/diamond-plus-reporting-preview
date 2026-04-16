@@ -131,8 +131,8 @@
       </div>
 
       <div class="card">
-        <h2 class="section-title">Top nákladové účty v aktuálním měsíci</h2>
-        <div class="section-subtitle">Které účty teď táhnou nákladovou stranu. Užitečné pro nefinančníka i pro rychlý drilldown.</div>
+        <h2 class="section-title">Top nákladové účty vybraného měsíce</h2>
+        <div class="section-subtitle">Které účty táhnou nákladovou stranu ve vybraném období. Užitečné pro nefinančníka i pro rychlý drilldown.</div>
         <div class="ux-table-wrap" style="margin-top:16px;">
           <table class="table mobile-stack">
             <thead>
@@ -151,6 +151,8 @@
     <section class="card">
       <h2 class="section-title">Live náhled účetního deníku</h2>
       <div class="section-subtitle">Největší aktuální nákladové a výnosové zápisy, aby šlo rychle přejít od trendu ke konkrétnímu dokladu.</div>
+      <div id="journal-filter-bar" class="journal-filter-bar" style="margin-top:18px;"></div>
+      <div id="journal-filter-note" class="section-subtitle" style="margin-top:12px;"></div>
       <div class="ux-table-wrap" style="margin-top:16px;">
         <table class="table mobile-stack">
           <thead>
@@ -195,8 +197,25 @@
       const cash = data.cash || {};
       const previous = data.previousMonth || {};
       const journal = data.journal || {};
+      const monthlyJournal = journal.monthly || [];
       const journalCurrent = journal.currentMonth || {};
       const journalTopClass = (journalCurrent.topExpenseClasses || [])[0];
+      const journalState = {
+        month: journalCurrent.label || monthlyJournal[monthlyJournal.length - 1]?.label || '',
+        side: 'all',
+        account: 'all',
+        vendor: 'all',
+      };
+
+      const getSelectedMonth = () => monthlyJournal.find(row => row.label === journalState.month) || monthlyJournal[monthlyJournal.length - 1] || { recentEntries: [], topExpenseAccounts: [], topVendors: [] };
+      const selectHtml = (id, label, value, options) => `
+        <label style="display:grid; gap:6px; font-size:12px; color:var(--text-muted);">
+          <span>${label}</span>
+          <select id="${id}" style="border:1px solid var(--border); border-radius:12px; padding:10px 12px; background:var(--card); color:var(--text); font:inherit;">
+            ${options.map(option => `<option value="${option.value}" ${option.value === value ? 'selected' : ''}>${option.label}</option>`).join('')}
+          </select>
+        </label>
+      `;
       const hero = [
         ['Výnosy', money(current.revenue), `${pct(current.grossMarginPct)} hrubá marže`, 'accent'],
         ['Čistý zisk', money(current.profit), `${pct(current.profitPct)} z výnosů`, ''],
@@ -286,25 +305,88 @@
         </tr>
       `).join('') || '<tr><td colspan="4">Live trendy z účetního deníku zatím nejsou dostupné.</td></tr>';
 
-      document.getElementById('journal-accounts-table').innerHTML = (journalCurrent.topExpenseAccounts || []).map(row => `
-        <tr>
-          <td data-label="Účet">${row.code}: ${row.label}</td>
-          <td data-label="Třída">${row.classLabel}</td>
-          <td class="num" data-label="Částka">${money(row.amount)}</td>
-        </tr>
-      `).join('') || '<tr><td colspan="3">Top nákladové účty zatím nejsou k dispozici.</td></tr>';
+      function renderJournalFilterBar() {
+        const selectedMonth = getSelectedMonth();
+        const accountOptions = [{ value: 'all', label: 'Všechny účty' }].concat(
+          Array.from(new Map((selectedMonth.recentEntries || []).map(row => [row.accountCode, row.accountLabel || row.accountCode])).entries())
+            .filter(([code]) => code)
+            .map(([code, label]) => ({ value: code, label: `${code}: ${label}` }))
+            .slice(0, 80)
+        );
+        const vendorOptions = [{ value: 'all', label: 'Všichni dodavatelé / protistrany' }].concat(
+          Array.from(new Set((selectedMonth.recentEntries || []).map(row => row.vendor).filter(Boolean)))
+            .slice(0, 80)
+            .map(name => ({ value: name, label: name }))
+        );
 
-      document.getElementById('journal-entries-table').innerHTML = (journalCurrent.recentEntries || []).map(row => `
-        <tr>
-          <td data-label="Datum">${row.date}</td>
-          <td data-label="Doklad">${row.document}</td>
-          <td data-label="Směr">${row.side}</td>
-          <td data-label="Účet">${row.accountCode ? `${row.accountCode}: ${row.accountLabel || ''}` : '–'}</td>
-          <td data-label="Protiúčet">${row.counterCode ? `${row.counterCode}: ${row.counterLabel || ''}` : '–'}</td>
-          <td data-label="Popis">${row.description}</td>
-          <td class="num" data-label="Částka">${money(row.amount)}</td>
-        </tr>
-      `).join('') || '<tr><td colspan="7">Live účetní deník zatím není k dispozici.</td></tr>';
+        if (!accountOptions.some(option => option.value === journalState.account)) journalState.account = 'all';
+        if (!vendorOptions.some(option => option.value === journalState.vendor)) journalState.vendor = 'all';
+
+        document.getElementById('journal-filter-bar').innerHTML = [
+          selectHtml('journal-month-filter', 'Měsíc', journalState.month, monthlyJournal.map(row => ({ value: row.label, label: row.label }))),
+          selectHtml('journal-side-filter', 'Směr zápisu', journalState.side, [
+            { value: 'all', label: 'Náklady i výnosy' },
+            { value: 'náklad', label: 'Jen náklady' },
+            { value: 'výnos', label: 'Jen výnosy' },
+          ]),
+          selectHtml('journal-account-filter', 'Účet', journalState.account, accountOptions),
+          selectHtml('journal-vendor-filter', 'Dodavatel / protistrana', journalState.vendor, vendorOptions),
+        ].join('');
+
+        document.getElementById('journal-month-filter').addEventListener('change', event => {
+          journalState.month = event.target.value;
+          journalState.account = 'all';
+          journalState.vendor = 'all';
+          renderJournalTables();
+        });
+        document.getElementById('journal-side-filter').addEventListener('change', event => {
+          journalState.side = event.target.value;
+          renderJournalTables();
+        });
+        document.getElementById('journal-account-filter').addEventListener('change', event => {
+          journalState.account = event.target.value;
+          renderJournalTables();
+        });
+        document.getElementById('journal-vendor-filter').addEventListener('change', event => {
+          journalState.vendor = event.target.value;
+          renderJournalTables();
+        });
+      }
+
+      function renderJournalTables() {
+        const selectedMonth = getSelectedMonth();
+        const entries = (selectedMonth.recentEntries || []).filter(row => {
+          if (journalState.side !== 'all' && row.side !== journalState.side) return false;
+          if (journalState.account !== 'all' && row.accountCode !== journalState.account) return false;
+          if (journalState.vendor !== 'all' && row.vendor !== journalState.vendor) return false;
+          return true;
+        });
+
+        document.getElementById('journal-accounts-table').innerHTML = (selectedMonth.topExpenseAccounts || []).map(row => `
+          <tr>
+            <td data-label="Účet">${row.code}: ${row.label}</td>
+            <td data-label="Třída">${row.classLabel}</td>
+            <td class="num" data-label="Částka">${money(row.amount)}</td>
+          </tr>
+        `).join('') || '<tr><td colspan="3">Top nákladové účty zatím nejsou k dispozici.</td></tr>';
+
+        document.getElementById('journal-entries-table').innerHTML = entries.map(row => `
+          <tr>
+            <td data-label="Datum">${row.date}</td>
+            <td data-label="Doklad">${row.document}</td>
+            <td data-label="Směr">${row.side}</td>
+            <td data-label="Účet">${row.accountCode ? `${row.accountCode}: ${row.accountLabel || ''}` : '–'}</td>
+            <td data-label="Protiúčet">${row.counterCode ? `${row.counterCode}: ${row.counterLabel || ''}` : '–'}</td>
+            <td data-label="Popis">${row.description}</td>
+            <td class="num" data-label="Částka">${money(row.amount)}</td>
+          </tr>
+        `).join('') || '<tr><td colspan="7">Pro zvolenou kombinaci filtrů tu teď nic není.</td></tr>';
+
+        document.getElementById('journal-filter-note').textContent = `${selectedMonth.label || '–'} • ${entries.length} zobrazených zápisů • top třída: ${selectedMonth.topExpenseClass ? selectedMonth.topExpenseClass.label : '–'}`;
+        renderJournalFilterBar();
+      }
+
+      renderJournalTables();
     })().catch(err => {
       document.getElementById('source-alert').innerHTML = `<div class="alert danger">Nepodařilo se načíst finance data: ${err.message}</div>`;
     });
