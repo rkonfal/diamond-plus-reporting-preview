@@ -774,6 +774,21 @@ pre {
   margin: 0;
 }
 
+.ux-date-note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border-strong);
+  background: rgba(200,162,75,.08);
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.ux-date-note strong {
+  color: var(--text);
+}
+
 .journal-filter-bar {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
