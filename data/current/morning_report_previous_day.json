@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T10:14:38.463574+02:00",
+  "generatedAt": "2026-04-16T11:04:48.024272+02:00",
   "reportDate": "2026-04-15",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
@@ -33,23 +33,23 @@
     "statuses": [
       {
         "name": "přijatá",
-        "count": 275
+        "count": 274
       },
       {
         "name": "expedováno",
-        "count": 104
+        "count": 94
+      },
+      {
+        "name": "připraveno k vyzvednutí",
+        "count": 23
       },
       {
         "name": "nová",
         "count": 15
       },
       {
-        "name": "připraveno k vyzvednutí",
-        "count": 13
-      },
-      {
         "name": "doručeno",
-        "count": 8
+        "count": 9
       },
       {
         "name": "chyba",
@@ -808,78 +808,7 @@
         "inStore": -80.0
       }
     ],
-    "largestMovesSinceLastSnapshot": [
-      {
-        "code": "44605",
-        "title": "Omlazující krém-booster na ruce s mucinem hlemýžďů",
-        "currentStock": 1056.0,
-        "previousStock": 1058.0,
-        "delta": -2.0
-      },
-      {
-        "code": "64404-2",
-        "title": "Jemný intimní gel",
-        "currentStock": 2338.0,
-        "previousStock": 2340.0,
-        "delta": -2.0
-      },
-      {
-        "code": "44402-2",
-        "title": "Fytogel Slaviton",
-        "currentStock": 2730.0,
-        "previousStock": 2732.0,
-        "delta": -2.0
-      },
-      {
-        "code": "12705",
-        "title": "Zpevňující a liftingová emulze na obličej a krk",
-        "currentStock": 635.0,
-        "previousStock": 636.0,
-        "delta": -1.0
-      },
-      {
-        "code": "40105",
-        "title": "Vyživující hydratační krém na ruce Ovčí mléko",
-        "currentStock": 353.0,
-        "previousStock": 354.0,
-        "delta": -1.0
-      },
-      {
-        "code": "21308",
-        "title": "Šampón na vlasy „Zlatý zázvor“",
-        "currentStock": 171.0,
-        "previousStock": 172.0,
-        "delta": -1.0
-      },
-      {
-        "code": "10304",
-        "title": "Hydratační krém z ovčí placenty kosmetiky tianDe",
-        "currentStock": 109.0,
-        "previousStock": 110.0,
-        "delta": -1.0
-      },
-      {
-        "code": "61912",
-        "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
-        "currentStock": 720.0,
-        "previousStock": 721.0,
-        "delta": -1.0
-      },
-      {
-        "code": "61913",
-        "title": "Dámské bylinné menstruační vložky Nefritová svěžest. noční super",
-        "currentStock": 645.0,
-        "previousStock": 646.0,
-        "delta": -1.0
-      },
-      {
-        "code": "61921",
-        "title": "Dámské bylinné slipové vložky Nefritová svěžest - super tenké",
-        "currentStock": 711.0,
-        "previousStock": 712.0,
-        "delta": -1.0
-      }
-    ]
+    "largestMovesSinceLastSnapshot": []
   },
   "logistics": {
     "shipmentsTotal": 569,

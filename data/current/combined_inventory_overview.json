@@ -1,0 +1,3974 @@
+{
+  "generatedAt": "2026-04-16T11:03:41.839142+02:00",
+  "window": {
+    "from": "2026-04-15T00:00:00+02:00",
+    "to": "2026-04-15T23:59:59+02:00"
+  },
+  "counts": {
+    "allCodes": 2964,
+    "pairedProducts": 375,
+    "onlyInWpj": 1449,
+    "onlyIn4px": 50,
+    "stockMismatch": 680,
+    "lowAfterSales": 2
+  },
+  "lowAfterSales": [
+    {
+      "code": "VSTUP200526",
+      "title": "Margit Slimáková v Praze",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/margit-slimakova-v-praze_z8272/",
+      "visible": true,
+      "wpj": {
+        "inStore": 199.0,
+        "fourpxStoreTotal": 200.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 200.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 1.0,
+        "revenueWithVat": 790.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 200.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch",
+        "low_after_sales"
+      ]
+    },
+    {
+      "code": "195464",
+      "title": "Krémová banánová polévka se zeleninou",
+      "ean": "4650061392789",
+      "url": "https://www.kralovstvi-tiande.cz/kremova-bananova-polevka-se-zeleninou_z5236/",
+      "visible": true,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 2.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 1.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 1.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 0.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "195464",
+          "skuIds": [
+            "922001041502"
+          ],
+          "batchNos": [],
+          "availableStock": 1.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "195464",
+          "skuIds": [
+            "922001037839"
+          ],
+          "batchNos": [],
+          "availableStock": 1.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 2.0
+      },
+      "yesterdaySales": {
+        "units": 1.0,
+        "revenueWithVat": 55.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 1.0,
+        "skUnits": 0.0,
+        "shipments": 1
+      },
+      "stockDelta": 0.0,
+      "flags": [
+        "low_after_sales"
+      ]
+    }
+  ],
+  "stockMismatches": [
+    {
+      "code": "63601",
+      "title": "Denní vložka Energie života",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/denni-vlozka-energie-zivota_z94/",
+      "visible": true,
+      "wpj": {
+        "inStore": 7556.0,
+        "fourpxStoreTotal": 12433.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 8693.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 3740.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 22.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 100.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "63601",
+          "skuIds": [
+            "922001040836"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "63601",
+          "skuIds": [
+            "922001037008"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 12433.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "60145",
+      "title": "Denní hygienická vložka „Jemná péče“",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/denni-hygienicka-vlozka-jemna-pece_z95/",
+      "visible": true,
+      "wpj": {
+        "inStore": 932.0,
+        "fourpxStoreTotal": 6059.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 4568.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 1491.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 18.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 94.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "60145",
+          "skuIds": [
+            "922001040838"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "60145",
+          "skuIds": [
+            "922001037010"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 6059.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "41314",
+      "title": "Náplast na nohy",
+      "ean": "6925466291868",
+      "url": "https://www.kralovstvi-tiande.cz/naplast-na-nohy_z144/",
+      "visible": true,
+      "wpj": {
+        "inStore": 162.0,
+        "fourpxStoreTotal": 5426.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 4629.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 797.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 1026.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 412.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "41314",
+          "skuIds": [
+            "922001040889"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "41314",
+          "skuIds": [
+            "922001037060"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 5426.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "41106",
+      "title": "Preventivní krém na nohy s hadím olejem",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/preventivni-krem-na-nohy-s-hadim-olejem_z82/",
+      "visible": true,
+      "wpj": {
+        "inStore": 2639.0,
+        "fourpxStoreTotal": 4655.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 3305.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 1350.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 37.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 24.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "41106",
+          "skuIds": [
+            "922001040822"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "41106",
+          "skuIds": [
+            "922001036994"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 4655.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "30117",
+      "title": "Kosmetická fytonáplast Jian Kang",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/kosmeticka-fytonaplast-jian-kang_z3158/",
+      "visible": true,
+      "wpj": {
+        "inStore": 1877.0,
+        "fourpxStoreTotal": 3808.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2537.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 1271.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 9,
+            "storeName": "Fiktivní SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 30.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 62.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "30117",
+          "skuIds": [
+            "922001041274"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "30117",
+          "skuIds": [
+            "922001037658"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 3808.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "41105",
+      "title": "Regenerační krém na nohy s hadím olejem",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/regeneracni-krem-na-nohy-s-hadim-olejem_z83/",
+      "visible": true,
+      "wpj": {
+        "inStore": 109.0,
+        "fourpxStoreTotal": 3660.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2717.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 943.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 20.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 77.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "41105",
+          "skuIds": [
+            "922001040824"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "41105",
+          "skuIds": [
+            "922001036996"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 3660.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "30118",
+      "title": "Kosmetická fytonáplast Wutong",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/kosmeticka-fytonaplast-wutong_z3160/",
+      "visible": true,
+      "wpj": {
+        "inStore": 1811.0,
+        "fourpxStoreTotal": 3288.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2243.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 1045.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 56.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 86.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "30118",
+          "skuIds": [
+            "922001041276"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "30118",
+          "skuIds": [
+            "922001037660"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 3288.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "CZ385",
+      "title": "Křišťálová kolagenová maska 1=2",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/kristalova-kolagenova-maska-1-2_z7214/",
+      "visible": false,
+      "wpj": {
+        "inStore": 2671.0,
+        "fourpxStoreTotal": 3141.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2671.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 470.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 9,
+            "storeName": "Fiktivní SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 37.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 3141.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "GD574",
+      "title": "Regenerační SPA balíček pro dokonalé ruce a nohy",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/regeneracni-spa-balicek-pro-dokonale-ruce-a-nohy_z8275/",
+      "visible": true,
+      "wpj": {
+        "inStore": 2643.0,
+        "fourpxStoreTotal": 2957.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2643.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 314.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 10.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 9.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 2957.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "TW935",
+      "title": "Kompletní péče o ruce a nohy s hadím olejem",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/kompletni-pece-o-ruce-a-nohy-s-hadim-olejem_z8274/",
+      "visible": true,
+      "wpj": {
+        "inStore": 2490.0,
+        "fourpxStoreTotal": 2804.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2490.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 314.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 9.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 2804.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "KE276",
+      "title": "Hadřík na nádobí, 1 ks (EcoDeViva)",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/hadrik-na-nadobi-1-ks-ecodeviva_z8162/",
+      "visible": false,
+      "wpj": {
+        "inStore": 2265.0,
+        "fourpxStoreTotal": 2450.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2265.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 185.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 6.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 14.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 2450.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "UA132",
+      "title": "Peeling Broskovový 1+1",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/peeling-broskovovy-1-1_z7427/",
+      "visible": false,
+      "wpj": {
+        "inStore": 2316.0,
+        "fourpxStoreTotal": 2316.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2316.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 9,
+            "storeName": "Fiktivní SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 19.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 2316.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "41328",
+      "title": "Levandulová náplast na nohy",
+      "ean": "6970757000353",
+      "url": "https://www.kralovstvi-tiande.cz/levandulova-naplast-na-nohy_z3162/",
+      "visible": true,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 2302.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 1383.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 919.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": -46.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 539.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "41328",
+          "skuIds": [
+            "922001041278"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "41328",
+          "skuIds": [
+            "922001037662"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 2302.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "LZ772",
+      "title": "Hydratační pleťová PGA-maska s pivoňkou a pupečníkem asijským",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/hydratacni-pletova-pga-maska-s-pivonkou-a-pupecnikem-asijskym_z8149/",
+      "visible": false,
+      "wpj": {
+        "inStore": 1938.0,
+        "fourpxStoreTotal": 2233.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 1938.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 295.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 12.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 17.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 2233.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "PW005",
+      "title": "Dvojitá hydratační síla PGA-masek pro dokonalou pleť 1+1",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/dvojita-hydratacni-sila-pga-masek-pro-dokonalou-plet-1-1_z8129/",
+      "visible": false,
+      "wpj": {
+        "inStore": 1938.0,
+        "fourpxStoreTotal": 2233.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 1938.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 295.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 12.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 17.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 2233.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "CU462",
+      "title": "Omlazující duo pro unavenou pleť",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/omlazujici-duo-pro-unavenou-plet_z8028/",
+      "visible": false,
+      "wpj": {
+        "inStore": 2099.0,
+        "fourpxStoreTotal": 2231.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2099.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 132.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 2.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 0.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 2231.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "MZ984",
+      "title": "Luxusní péče pro hedvábně jemné ruce",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/luxusni-pece-pro-hedvabne-jemne-ruce_z8070/",
+      "visible": false,
+      "wpj": {
+        "inStore": 1925.0,
+        "fourpxStoreTotal": 2219.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 1925.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 294.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 1.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 9.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 2219.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "TW154",
+      "title": "Péče o ruce s hadím tukem",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/pece-o-ruce-s-hadim-tukem_z6776/",
+      "visible": false,
+      "wpj": {
+        "inStore": 1925.0,
+        "fourpxStoreTotal": 2219.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 1925.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 294.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 9,
+            "storeName": "Fiktivní SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 10.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 2219.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "DB290",
+      "title": "Přírodní rovnováha pro aktivní ženu – rozchodnice, bylinné vložky a fytonáplast tianDe",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/prirodni-rovnovaha-pro-aktivni-zenu-rozchodnice-bylinne-vlozky-a-fytonaplast-tiande_z8334/",
+      "visible": false,
+      "wpj": {
+        "inStore": 1888.0,
+        "fourpxStoreTotal": 2034.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 1888.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 146.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 11.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 2034.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "UL375",
+      "title": "Nápoj s extraktem z pomerančovníku a šťávou z malin 1+1",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/napoj-s-extraktem-z-pomerancovniku-a-stavou-z-malin-1-1_z8122/",
+      "visible": false,
+      "wpj": {
+        "inStore": 1665.0,
+        "fourpxStoreTotal": 1839.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 1665.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 174.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 20.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 20.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": []
+        },
+        "availableTotal": 0.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": 1839.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    }
+  ],
+  "onlyIn4px": [
+    {
+      "code": "63601/01",
+      "title": "Denní vložka Energie života (Počet kusů: 1ks)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "63601/01",
+          "skuIds": [
+            "922001244432"
+          ],
+          "batchNos": [],
+          "availableStock": 7574.0,
+          "pendingStock": 91.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "63601/01",
+          "skuIds": [
+            "922001198213"
+          ],
+          "batchNos": [],
+          "availableStock": 2665.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 10239.0
+      },
+      "yesterdaySales": {
+        "units": 20.0,
+        "revenueWithVat": 880.8
+      },
+      "yesterdayOutbound": {
+        "czUnits": 20.0,
+        "skUnits": 2.0,
+        "shipments": 14
+      },
+      "stockDelta": -10239.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41314/01",
+      "title": "Náplast na nohy (Počet kusů: 1ks)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "41314/01",
+          "skuIds": [
+            "922001331745"
+          ],
+          "batchNos": [],
+          "availableStock": 4273.0,
+          "pendingStock": 8.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "41314/01",
+          "skuIds": [
+            "922001331723"
+          ],
+          "batchNos": [],
+          "availableStock": 439.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 4712.0
+      },
+      "yesterdaySales": {
+        "units": 20.0,
+        "revenueWithVat": 2100.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 21.0,
+        "skUnits": 0.0,
+        "shipments": 12
+      },
+      "stockDelta": -4712.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "60145/01",
+      "title": "Denní hygienická vložka „Jemná péče“ (Počet kusů: 1ks)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "60145/01",
+          "skuIds": [
+            "922001331743"
+          ],
+          "batchNos": [],
+          "availableStock": 3346.0,
+          "pendingStock": 27.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "60145/01",
+          "skuIds": [
+            "922001331721"
+          ],
+          "batchNos": [],
+          "availableStock": 409.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 3755.0
+      },
+      "yesterdaySales": {
+        "units": 29.0,
+        "revenueWithVat": 1329.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 25.0,
+        "skUnits": 1.0,
+        "shipments": 9
+      },
+      "stockDelta": -3755.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41106/01",
+      "title": "Preventivní krém na nohy s hadím olejem Počet kusů: 1ks",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "41106/01",
+          "skuIds": [
+            "922001433037"
+          ],
+          "batchNos": [],
+          "availableStock": 2653.0,
+          "pendingStock": 20.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "41106/01",
+          "skuIds": [
+            "922001433051"
+          ],
+          "batchNos": [],
+          "availableStock": 470.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 3123.0
+      },
+      "yesterdaySales": {
+        "units": 9.0,
+        "revenueWithVat": 291.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 17.0,
+        "skUnits": 0.0,
+        "shipments": 12
+      },
+      "stockDelta": -3123.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41105/01",
+      "title": "Regenerační krém na nohy s hadím olejem Počet kusů: 1ks",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "41105/01",
+          "skuIds": [
+            "922001402617"
+          ],
+          "batchNos": [],
+          "availableStock": 2500.0,
+          "pendingStock": 29.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "41105/01",
+          "skuIds": [
+            "922001411838"
+          ],
+          "batchNos": [],
+          "availableStock": 449.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 2949.0
+      },
+      "yesterdaySales": {
+        "units": 25.0,
+        "revenueWithVat": 810.85
+      },
+      "yesterdayOutbound": {
+        "czUnits": 32.0,
+        "skUnits": 9.0,
+        "shipments": 22
+      },
+      "stockDelta": -2949.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "30117/01",
+      "title": "Kosmetická fytonáplast Jian Kang (Počet kusů: 1ks)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "30117/01",
+          "skuIds": [
+            "922001433029"
+          ],
+          "batchNos": [],
+          "availableStock": 1898.0,
+          "pendingStock": 41.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "30117/01",
+          "skuIds": [
+            "922001433043"
+          ],
+          "batchNos": [],
+          "availableStock": 399.0,
+          "pendingStock": 1.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 2297.0
+      },
+      "yesterdaySales": {
+        "units": 55.0,
+        "revenueWithVat": 5645.2
+      },
+      "yesterdayOutbound": {
+        "czUnits": 60.0,
+        "skUnits": 11.0,
+        "shipments": 50
+      },
+      "stockDelta": -2297.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "30118/01",
+      "title": "Kosmetická fytonáplast Wutong Počet kusů: 1ks",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "30118/01",
+          "skuIds": [
+            "922001433031"
+          ],
+          "batchNos": [],
+          "availableStock": 1825.0,
+          "pendingStock": 58.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "30118/01",
+          "skuIds": [
+            "922001433045"
+          ],
+          "batchNos": [],
+          "availableStock": 457.0,
+          "pendingStock": 2.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 2282.0
+      },
+      "yesterdaySales": {
+        "units": 76.0,
+        "revenueWithVat": 8472.4
+      },
+      "yesterdayOutbound": {
+        "czUnits": 94.0,
+        "skUnits": 8.0,
+        "shipments": 68
+      },
+      "stockDelta": -2282.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "60145/05",
+      "title": "Denná hygienická slipová vložka „Jemná starostlivosť“ (Ks: 5)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "60145/05",
+          "skuIds": [
+            "922001302795"
+          ],
+          "batchNos": [],
+          "availableStock": 1000.0,
+          "pendingStock": 16.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "60145/05",
+          "skuIds": [
+            "922001302799"
+          ],
+          "batchNos": [],
+          "availableStock": 859.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 1859.0
+      },
+      "yesterdaySales": {
+        "units": 8.0,
+        "revenueWithVat": 1483.2
+      },
+      "yesterdayOutbound": {
+        "czUnits": 14.0,
+        "skUnits": 2.0,
+        "shipments": 15
+      },
+      "stockDelta": -1859.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41328/01",
+      "title": "Levandulová náplast na nohy (Počet kusů: 1ks)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "41328/01",
+          "skuIds": [
+            "922001333593"
+          ],
+          "batchNos": [],
+          "availableStock": 891.0,
+          "pendingStock": 99.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "41328/01",
+          "skuIds": [
+            "922001333575"
+          ],
+          "batchNos": [],
+          "availableStock": 394.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 1285.0
+      },
+      "yesterdaySales": {
+        "units": 87.0,
+        "revenueWithVat": 5069.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 148.0,
+        "skUnits": 23.0,
+        "shipments": 64
+      },
+      "stockDelta": -1285.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "63601/05",
+      "title": "Denní vložka Energie života (Počet kusů: 5ks)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "63601/05",
+          "skuIds": [
+            "922001060951"
+          ],
+          "batchNos": [],
+          "availableStock": 759.0,
+          "pendingStock": 10.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "63601/05",
+          "skuIds": [
+            "922001058456"
+          ],
+          "batchNos": [],
+          "availableStock": 425.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 1184.0
+      },
+      "yesterdaySales": {
+        "units": 11.0,
+        "revenueWithVat": 2491.1
+      },
+      "yesterdayOutbound": {
+        "czUnits": 12.0,
+        "skUnits": 1.0,
+        "shipments": 13
+      },
+      "stockDelta": -1184.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "30117/03",
+      "title": "Kosmetická fytonáplast Jian Kang (Počet kusů: 3ks)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "30117/03",
+          "skuIds": [
+            "922001423291"
+          ],
+          "batchNos": [],
+          "availableStock": 495.0,
+          "pendingStock": 7.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "30117/03",
+          "skuIds": [
+            "922001423299"
+          ],
+          "batchNos": [],
+          "availableStock": 627.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 1122.0
+      },
+      "yesterdaySales": {
+        "units": 5.0,
+        "revenueWithVat": 1988.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 4.0,
+        "skUnits": 2.0,
+        "shipments": 6
+      },
+      "stockDelta": -1122.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41106/05",
+      "title": "Bez názvu",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "41106/05",
+          "skuIds": [
+            "922001433041"
+          ],
+          "batchNos": [],
+          "availableStock": 317.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "41106/05",
+          "skuIds": [
+            "922001433055"
+          ],
+          "batchNos": [],
+          "availableStock": 478.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 795.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0
+      },
+      "stockDelta": -795.0,
+      "flags": [
+        "only_in_4px"
+      ]
+    },
+    {
+      "code": "41106/03",
+      "title": "Preventivní krém na nohy s hadím olejem 3ks",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "41106/03",
+          "skuIds": [
+            "922001433039"
+          ],
+          "batchNos": [],
+          "availableStock": 335.0,
+          "pendingStock": 1.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "41106/03",
+          "skuIds": [
+            "922001433053"
+          ],
+          "batchNos": [],
+          "availableStock": 402.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 737.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 1.0,
+        "skUnits": 0.0,
+        "shipments": 1
+      },
+      "stockDelta": -737.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "90148/04",
+      "title": "Zubní kartáček ProDental (Kartáček ProDental: Oranžový)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "90148/04",
+          "skuIds": [
+            "922001041755"
+          ],
+          "batchNos": [],
+          "availableStock": 471.0,
+          "pendingStock": 3.0,
+          "freezeStock": 0.0,
+          "onwayStock": 3.0
+        },
+        "sk": {
+          "code": "90148/04",
+          "skuIds": [
+            "922001038114"
+          ],
+          "batchNos": [],
+          "availableStock": 245.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 716.0
+      },
+      "yesterdaySales": {
+        "units": 2.0,
+        "revenueWithVat": 268.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 3.0,
+        "skUnits": 0.0,
+        "shipments": 3
+      },
+      "stockDelta": -716.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "63601/10",
+      "title": "Denní vložka Energie života Počet kusů: 10ks",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "63601/10",
+          "skuIds": [
+            "922001060953"
+          ],
+          "batchNos": [],
+          "availableStock": 172.0,
+          "pendingStock": 13.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "63601/10",
+          "skuIds": [
+            "922001058465"
+          ],
+          "batchNos": [],
+          "availableStock": 436.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 608.0
+      },
+      "yesterdaySales": {
+        "units": 14.0,
+        "revenueWithVat": 6337.2
+      },
+      "yesterdayOutbound": {
+        "czUnits": 16.0,
+        "skUnits": 6.0,
+        "shipments": 17
+      },
+      "stockDelta": -608.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "30118/05",
+      "title": "Kosmetická fytonáplast Wutong (Počet kusů: 5ks)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "30118/05",
+          "skuIds": [
+            "922001433035"
+          ],
+          "batchNos": [],
+          "availableStock": 244.0,
+          "pendingStock": 7.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "30118/05",
+          "skuIds": [
+            "922001433049"
+          ],
+          "batchNos": [],
+          "availableStock": 271.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 515.0
+      },
+      "yesterdaySales": {
+        "units": 6.0,
+        "revenueWithVat": 3588.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 8.0,
+        "skUnits": 2.0,
+        "shipments": 9
+      },
+      "stockDelta": -515.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "80112/07",
+      "title": "Ovocný balzám na rty (Ovocný balzám na rty: 07 Jahoda)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "80112/07",
+          "skuIds": [
+            "922001041779"
+          ],
+          "batchNos": [],
+          "availableStock": 419.0,
+          "pendingStock": 6.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "80112/07",
+          "skuIds": [
+            "922001038138"
+          ],
+          "batchNos": [],
+          "availableStock": 82.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 501.0
+      },
+      "yesterdaySales": {
+        "units": 8.0,
+        "revenueWithVat": 544.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 10.0,
+        "skUnits": 3.0,
+        "shipments": 10
+      },
+      "stockDelta": -501.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "30118/03",
+      "title": "Kosmetická fytonáplast Wutong (Počet kusů: 3ks)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "30118/03",
+          "skuIds": [
+            "922001433033"
+          ],
+          "batchNos": [],
+          "availableStock": 174.0,
+          "pendingStock": 7.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "30118/03",
+          "skuIds": [
+            "922001433047"
+          ],
+          "batchNos": [],
+          "availableStock": 317.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 491.0
+      },
+      "yesterdaySales": {
+        "units": 8.0,
+        "revenueWithVat": 3451.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 10.0,
+        "skUnits": 1.0,
+        "shipments": 9
+      },
+      "stockDelta": -491.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41328/07",
+      "title": "Levanduľová náplasť na nohy (Ks: 7)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "41328/07",
+          "skuIds": [
+            "922002034256"
+          ],
+          "batchNos": [],
+          "availableStock": 361.0,
+          "pendingStock": 5.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "41328/07",
+          "skuIds": [
+            "922002034270"
+          ],
+          "batchNos": [],
+          "availableStock": 96.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 457.0
+      },
+      "yesterdaySales": {
+        "units": 4.0,
+        "revenueWithVat": 1151.2
+      },
+      "yesterdayOutbound": {
+        "czUnits": 7.0,
+        "skUnits": 2.0,
+        "shipments": 8
+      },
+      "stockDelta": -457.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "90148/03",
+      "title": "Zubní kartáček ProDental (Kartáček ProDental: Zelený)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "90148/03",
+          "skuIds": [
+            "922001041759"
+          ],
+          "batchNos": [],
+          "availableStock": 215.0,
+          "pendingStock": 1.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "90148/03",
+          "skuIds": [
+            "922001038118"
+          ],
+          "batchNos": [],
+          "availableStock": 235.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 450.0
+      },
+      "yesterdaySales": {
+        "units": 1.0,
+        "revenueWithVat": 134.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 1.0,
+        "skUnits": 0.0,
+        "shipments": 1
+      },
+      "stockDelta": -450.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    }
+  ],
+  "topOutboundProducts": [
+    {
+      "code": "40203",
+      "title": "Peeling Broskvový",
+      "ean": "6921570933328",
+      "url": "https://www.kralovstvi-tiande.cz/peeling-broskvovy_z5809/",
+      "visible": true,
+      "wpj": {
+        "inStore": 2215.0,
+        "fourpxStoreTotal": 2326.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2321.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 5.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 19.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "40203",
+          "skuIds": [
+            "922001041534"
+          ],
+          "batchNos": [],
+          "availableStock": 2321.0,
+          "pendingStock": 425.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "40203",
+          "skuIds": [
+            "922001037871"
+          ],
+          "batchNos": [],
+          "availableStock": 5.0,
+          "pendingStock": 4.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 2326.0
+      },
+      "yesterdaySales": {
+        "units": 7.0,
+        "revenueWithVat": 167.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 505.0,
+        "skUnits": 25.0,
+        "shipments": 402
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "000075",
+      "title": "Brožura Fytogely",
+      "ean": "5690271694471",
+      "url": "https://www.kralovstvi-tiande.cz/brozura-fytogely_z4666/",
+      "visible": true,
+      "wpj": {
+        "inStore": 3509.0,
+        "fourpxStoreTotal": 3562.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 3562.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": -1.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 3.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "000075",
+          "skuIds": [
+            "922001041431"
+          ],
+          "batchNos": [],
+          "availableStock": 3562.0,
+          "pendingStock": 177.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "000075",
+          "skuIds": [
+            "922001037769"
+          ],
+          "batchNos": [],
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 3562.0
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 217.0,
+        "skUnits": 0.0,
+        "shipments": 214
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "44402-2",
+      "title": "Fytogel Slaviton",
+      "ean": "6922782629528",
+      "url": "https://www.kralovstvi-tiande.cz/fytogel-slaviton_z8039/",
+      "visible": true,
+      "wpj": {
+        "inStore": 2230.0,
+        "fourpxStoreTotal": 2721.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2290.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 431.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 33.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 69.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "44402-2",
+          "skuIds": [
+            "922002239194"
+          ],
+          "batchNos": [],
+          "availableStock": 2290.0,
+          "pendingStock": 126.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "44402-2",
+          "skuIds": [
+            "922002239201"
+          ],
+          "batchNos": [],
+          "availableStock": 431.0,
+          "pendingStock": 3.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 2721.0
+      },
+      "yesterdaySales": {
+        "units": 128.0,
+        "revenueWithVat": 35095.4
+      },
+      "yesterdayOutbound": {
+        "czUnits": 161.0,
+        "skUnits": 14.0,
+        "shipments": 110
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "41328/01",
+      "title": "Levandulová náplast na nohy (Počet kusů: 1ks)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "41328/01",
+          "skuIds": [
+            "922001333593"
+          ],
+          "batchNos": [],
+          "availableStock": 891.0,
+          "pendingStock": 99.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "41328/01",
+          "skuIds": [
+            "922001333575"
+          ],
+          "batchNos": [],
+          "availableStock": 394.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 1285.0
+      },
+      "yesterdaySales": {
+        "units": 87.0,
+        "revenueWithVat": 5069.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 148.0,
+        "skUnits": 23.0,
+        "shipments": 64
+      },
+      "stockDelta": -1285.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "64404-2",
+      "title": "Jemný intimní gel",
+      "ean": "6922782629542",
+      "url": "https://www.kralovstvi-tiande.cz/jemny-intimni-gel_z7619/",
+      "visible": true,
+      "wpj": {
+        "inStore": 1923.0,
+        "fourpxStoreTotal": 2332.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 1997.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 335.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 9,
+            "storeName": "Fiktivní SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 6.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 26.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "64404-2",
+          "skuIds": [
+            "922001733501"
+          ],
+          "batchNos": [],
+          "availableStock": 1997.0,
+          "pendingStock": 113.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "64404-2",
+          "skuIds": [
+            "922001733504"
+          ],
+          "batchNos": [],
+          "availableStock": 335.0,
+          "pendingStock": 1.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 2332.0
+      },
+      "yesterdaySales": {
+        "units": 137.0,
+        "revenueWithVat": 32067.8
+      },
+      "yesterdayOutbound": {
+        "czUnits": 148.0,
+        "skUnits": 18.0,
+        "shipments": 114
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "61915",
+      "title": "Dámské bylinné slipové vložky s anionty Nefritová svěžest",
+      "ean": "6921336330798",
+      "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-slipove-vlozky-s-anionty-nefritova-svezest_z2110/",
+      "visible": true,
+      "wpj": {
+        "inStore": 674.0,
+        "fourpxStoreTotal": 823.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 725.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 98.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 11.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 51.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "61915",
+          "skuIds": [
+            "922001041143"
+          ],
+          "batchNos": [],
+          "availableStock": 725.0,
+          "pendingStock": 117.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "61915",
+          "skuIds": [
+            "922001037530"
+          ],
+          "batchNos": [],
+          "availableStock": 98.0,
+          "pendingStock": 2.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 823.0
+      },
+      "yesterdaySales": {
+        "units": 49.0,
+        "revenueWithVat": 5430.6
+      },
+      "yesterdayOutbound": {
+        "czUnits": 144.0,
+        "skUnits": 18.0,
+        "shipments": 133
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "61914",
+      "title": "Dámské bylinné slipové vložky Nefritová svěžest",
+      "ean": "6921336330781",
+      "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-slipove-vlozky-nefritova-svezest_z2025/",
+      "visible": true,
+      "wpj": {
+        "inStore": 530.0,
+        "fourpxStoreTotal": 713.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 568.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 145.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 7.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 40.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "61914",
+          "skuIds": [
+            "922001041131"
+          ],
+          "batchNos": [],
+          "availableStock": 568.0,
+          "pendingStock": 118.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "61914",
+          "skuIds": [
+            "922001037517"
+          ],
+          "batchNos": [],
+          "availableStock": 145.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 713.0
+      },
+      "yesterdaySales": {
+        "units": 114.0,
+        "revenueWithVat": 11838.9
+      },
+      "yesterdayOutbound": {
+        "czUnits": 120.0,
+        "skUnits": 21.0,
+        "shipments": 75
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "56007",
+      "title": "Tající kolagenová liftingová pleťová maska s mořskými řasami",
+      "ean": "6925466272010",
+      "url": "https://www.kralovstvi-tiande.cz/tajici-kolagenova-liftingova-pletova-maska-s-morskymi-rasami_z8125/",
+      "visible": true,
+      "wpj": {
+        "inStore": 793.0,
+        "fourpxStoreTotal": 1405.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 826.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 579.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 9,
+            "storeName": "Fiktivní SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 22.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 86.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "56007",
+          "skuIds": [
+            "922002402836"
+          ],
+          "batchNos": [],
+          "availableStock": 826.0,
+          "pendingStock": 76.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "56007",
+          "skuIds": [
+            "922002402844"
+          ],
+          "batchNos": [],
+          "availableStock": 579.0,
+          "pendingStock": 3.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 1405.0
+      },
+      "yesterdaySales": {
+        "units": 48.0,
+        "revenueWithVat": 3610.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 113.0,
+        "skUnits": 11.0,
+        "shipments": 54
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "61911",
+      "title": "Denní vložky s extraktem aloe Nefritová svěžest",
+      "ean": "6921336301057",
+      "url": "https://www.kralovstvi-tiande.cz/denni-vlozky-s-extraktem-aloe-nefritova-svezest_z142/",
+      "visible": true,
+      "wpj": {
+        "inStore": 826.0,
+        "fourpxStoreTotal": 1060.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 855.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 205.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 23.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 87.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "61911",
+          "skuIds": [
+            "922001040885"
+          ],
+          "batchNos": [],
+          "availableStock": 855.0,
+          "pendingStock": 108.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "61911",
+          "skuIds": [
+            "922001037056"
+          ],
+          "batchNos": [],
+          "availableStock": 205.0,
+          "pendingStock": 1.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 1060.0
+      },
+      "yesterdaySales": {
+        "units": 97.0,
+        "revenueWithVat": 9941.2
+      },
+      "yesterdayOutbound": {
+        "czUnits": 103.0,
+        "skUnits": 15.0,
+        "shipments": 66
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "35412-02",
+      "title": "Povzbuzující krém pro dokonalá stehna",
+      "ean": "4813409002515",
+      "url": "https://www.kralovstvi-tiande.cz/povzbuzujici-krem-pro-dokonala-stehna_z7139/",
+      "visible": true,
+      "wpj": {
+        "inStore": 138.0,
+        "fourpxStoreTotal": 173.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 168.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 5.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 7.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 12.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "35412-02",
+          "skuIds": [
+            "922001439603"
+          ],
+          "batchNos": [],
+          "availableStock": 168.0,
+          "pendingStock": 89.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "35412-02",
+          "skuIds": [
+            "922001439609"
+          ],
+          "batchNos": [],
+          "availableStock": 5.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 173.0
+      },
+      "yesterdaySales": {
+        "units": 68.0,
+        "revenueWithVat": 10340.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 105.0,
+        "skUnits": 12.0,
+        "shipments": 50
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "61912",
+      "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
+      "ean": "6921336330767",
+      "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-menstruacni-vlozky-nefritova-svezest-denni-super_z2024/",
+      "visible": true,
+      "wpj": {
+        "inStore": 413.0,
+        "fourpxStoreTotal": 710.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 439.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 271.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 20.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 26.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "61912",
+          "skuIds": [
+            "922001041129"
+          ],
+          "batchNos": [],
+          "availableStock": 439.0,
+          "pendingStock": 116.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "61912",
+          "skuIds": [
+            "922001037515"
+          ],
+          "batchNos": [],
+          "availableStock": 271.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 710.0
+      },
+      "yesterdaySales": {
+        "units": 93.0,
+        "revenueWithVat": 11403.6
+      },
+      "yesterdayOutbound": {
+        "czUnits": 97.0,
+        "skUnits": 18.0,
+        "shipments": 60
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "52911",
+      "title": "Obnovující maska na obličej a krk s fullereny a polypeptidy",
+      "ean": "6950079111838",
+      "url": "https://www.kralovstvi-tiande.cz/obnovujici-maska-na-oblicej-a-krk-s-fullereny-a-polypeptidy_z6346/",
+      "visible": true,
+      "wpj": {
+        "inStore": 1452.0,
+        "fourpxStoreTotal": 1752.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 1465.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 287.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 1.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 15.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "52911",
+          "skuIds": [
+            "922001041585"
+          ],
+          "batchNos": [],
+          "availableStock": 1465.0,
+          "pendingStock": 48.0,
+          "freezeStock": 0.0,
+          "onwayStock": 12.0
+        },
+        "sk": {
+          "code": "52911",
+          "skuIds": [
+            "922001037941"
+          ],
+          "batchNos": [],
+          "availableStock": 287.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 1752.0
+      },
+      "yesterdaySales": {
+        "units": 39.0,
+        "revenueWithVat": 1215.35
+      },
+      "yesterdayOutbound": {
+        "czUnits": 94.0,
+        "skUnits": 13.0,
+        "shipments": 55
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "30118/01",
+      "title": "Kosmetická fytonáplast Wutong Počet kusů: 1ks",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "30118/01",
+          "skuIds": [
+            "922001433031"
+          ],
+          "batchNos": [],
+          "availableStock": 1825.0,
+          "pendingStock": 58.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "30118/01",
+          "skuIds": [
+            "922001433045"
+          ],
+          "batchNos": [],
+          "availableStock": 457.0,
+          "pendingStock": 2.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 2282.0
+      },
+      "yesterdaySales": {
+        "units": 76.0,
+        "revenueWithVat": 8472.4
+      },
+      "yesterdayOutbound": {
+        "czUnits": 94.0,
+        "skUnits": 8.0,
+        "shipments": 68
+      },
+      "stockDelta": -2282.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "10117",
+      "title": "Krém pro hloubkovou obnovu pleti Ženšen a orchidej",
+      "ean": "6926568333890",
+      "url": "https://www.kralovstvi-tiande.cz/krem-pro-hloubkovou-obnovu-pleti-zensen-a-orchidej_z8342/",
+      "visible": true,
+      "wpj": {
+        "inStore": 402.0,
+        "fourpxStoreTotal": 504.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 415.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 89.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 9,
+            "storeName": "Fiktivní SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 7.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "10117",
+          "skuIds": [
+            "922002618346"
+          ],
+          "batchNos": [],
+          "availableStock": 415.0,
+          "pendingStock": 72.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "10117",
+          "skuIds": [
+            "922002618353"
+          ],
+          "batchNos": [],
+          "availableStock": 89.0,
+          "pendingStock": 1.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 504.0
+      },
+      "yesterdaySales": {
+        "units": 24.0,
+        "revenueWithVat": 13709.0
+      },
+      "yesterdayOutbound": {
+        "czUnits": 80.0,
+        "skUnits": 10.0,
+        "shipments": 88
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "61902",
+      "title": "Denní menstruační vložky s fytomembránou „Energie bylin“",
+      "ean": "6921336301019",
+      "url": "https://www.kralovstvi-tiande.cz/denni-menstruacni-vlozky-s-fytomembranou-energie-bylin_z134/",
+      "visible": true,
+      "wpj": {
+        "inStore": 602.0,
+        "fourpxStoreTotal": 996.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 654.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 342.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 20.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 34.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "61902",
+          "skuIds": [
+            "922001040877"
+          ],
+          "batchNos": [],
+          "availableStock": 654.0,
+          "pendingStock": 64.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "61902",
+          "skuIds": [
+            "922001037048"
+          ],
+          "batchNos": [],
+          "availableStock": 342.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 996.0
+      },
+      "yesterdaySales": {
+        "units": 76.0,
+        "revenueWithVat": 11753.4
+      },
+      "yesterdayOutbound": {
+        "czUnits": 72.0,
+        "skUnits": 10.0,
+        "shipments": 39
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "10118",
+      "title": "Sérum pro hloubkovou obnovu pleti Ženšen a fytoextrakty",
+      "ean": "6926568333913",
+      "url": "https://www.kralovstvi-tiande.cz/serum-pro-hloubkovou-obnovu-pleti-zensen-a-fytoextrakty_z8343/",
+      "visible": true,
+      "wpj": {
+        "inStore": 414.0,
+        "fourpxStoreTotal": 516.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 427.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 89.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 9,
+            "storeName": "Fiktivní SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 7.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "10118",
+          "skuIds": [
+            "922002618348"
+          ],
+          "batchNos": [],
+          "availableStock": 427.0,
+          "pendingStock": 62.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "10118",
+          "skuIds": [
+            "922002618355"
+          ],
+          "batchNos": [],
+          "availableStock": 89.0,
+          "pendingStock": 1.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 516.0
+      },
+      "yesterdaySales": {
+        "units": 26.0,
+        "revenueWithVat": 16125.95
+      },
+      "yesterdayOutbound": {
+        "czUnits": 68.0,
+        "skUnits": 10.0,
+        "shipments": 77
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "30117/01",
+      "title": "Kosmetická fytonáplast Jian Kang (Počet kusů: 1ks)",
+      "ean": null,
+      "url": null,
+      "visible": false,
+      "wpj": {
+        "inStore": 0.0,
+        "fourpxStoreTotal": 0,
+        "stores": []
+      },
+      "fourpx": {
+        "cz": {
+          "code": "30117/01",
+          "skuIds": [
+            "922001433029"
+          ],
+          "batchNos": [],
+          "availableStock": 1898.0,
+          "pendingStock": 41.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "30117/01",
+          "skuIds": [
+            "922001433043"
+          ],
+          "batchNos": [],
+          "availableStock": 399.0,
+          "pendingStock": 1.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 2297.0
+      },
+      "yesterdaySales": {
+        "units": 55.0,
+        "revenueWithVat": 5645.2
+      },
+      "yesterdayOutbound": {
+        "czUnits": 60.0,
+        "skUnits": 11.0,
+        "shipments": 50
+      },
+      "stockDelta": -2297.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "67007",
+      "title": "Slipové vložky se stříbrem. super tenké",
+      "ean": "6921336331108",
+      "url": "https://www.kralovstvi-tiande.cz/slipove-vlozky-se-stribrem-super-tenke_z5233/",
+      "visible": true,
+      "wpj": {
+        "inStore": 864.0,
+        "fourpxStoreTotal": 1253.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 899.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 354.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 2.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 60.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "67007",
+          "skuIds": [
+            "922001041500"
+          ],
+          "batchNos": [],
+          "availableStock": 899.0,
+          "pendingStock": 54.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "67007",
+          "skuIds": [
+            "922001037837"
+          ],
+          "batchNos": [],
+          "availableStock": 354.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 1253.0
+      },
+      "yesterdaySales": {
+        "units": 53.0,
+        "revenueWithVat": 5947.2
+      },
+      "yesterdayOutbound": {
+        "czUnits": 61.0,
+        "skUnits": 6.0,
+        "shipments": 38
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "61913",
+      "title": "Dámské bylinné menstruační vložky Nefritová svěžest. noční super",
+      "ean": "6921336330774",
+      "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-menstruacni-vlozky-nefritova-svezest-nocni-super_z2111/",
+      "visible": true,
+      "wpj": {
+        "inStore": 493.0,
+        "fourpxStoreTotal": 645.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 500.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 145.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 9.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 51.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "61913",
+          "skuIds": [
+            "922001041145"
+          ],
+          "batchNos": [],
+          "availableStock": 500.0,
+          "pendingStock": 63.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "61913",
+          "skuIds": [
+            "922001037532"
+          ],
+          "batchNos": [],
+          "availableStock": 145.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 645.0
+      },
+      "yesterdaySales": {
+        "units": 54.0,
+        "revenueWithVat": 7441.6
+      },
+      "yesterdayOutbound": {
+        "czUnits": 57.0,
+        "skUnits": 9.0,
+        "shipments": 30
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    },
+    {
+      "code": "20164",
+      "title": "Multikomplex pro posílení kořínků a růst vlasů Ženšen",
+      "ean": "6926568333920",
+      "url": "https://www.kralovstvi-tiande.cz/multikomplex-pro-posileni-korinku-a-rust-vlasu-zensen_z8344/",
+      "visible": true,
+      "wpj": {
+        "inStore": 446.0,
+        "fourpxStoreTotal": 530.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 448.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 82.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 9,
+            "storeName": "Fiktivní SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 8.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "code": "20164",
+          "skuIds": [
+            "922002618350"
+          ],
+          "batchNos": [],
+          "availableStock": 448.0,
+          "pendingStock": 37.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "sk": {
+          "code": "20164",
+          "skuIds": [
+            "922002618357"
+          ],
+          "batchNos": [],
+          "availableStock": 82.0,
+          "pendingStock": 1.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0
+        },
+        "availableTotal": 530.0
+      },
+      "yesterdaySales": {
+        "units": 12.0,
+        "revenueWithVat": 4637.1
+      },
+      "yesterdayOutbound": {
+        "czUnits": 47.0,
+        "skUnits": 17.0,
+        "shipments": 58
+      },
+      "stockDelta": 0.0,
+      "flags": []
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T10:13:23.506555+02:00",
+  "generatedAt": "2026-04-16T11:03:41.839142+02:00",
   "config": {
     "warehouseCode": "CZPRGA",
     "outboundMaxPages": 20,
@@ -14,25 +14,25 @@
       "label": "CZ",
       "inventory": {
         "items": 768,
-        "availableStockTotal": 309393,
-        "pendingStockTotal": 4607,
+        "availableStockTotal": 309372,
+        "pendingStockTotal": 4913,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
       "outbound": {
-        "items": 600,
-        "scannedPages": 6,
+        "items": 700,
+        "scannedPages": 7,
         "topLogisticsProduct": "F1401",
-        "oldestTimestamp": "2026-04-14T23:41:12+02:00",
-        "newestTimestamp": "2026-04-16T10:10:04+02:00"
+        "oldestTimestamp": "2026-04-14T22:05:44+02:00",
+        "newestTimestamp": "2026-04-16T11:00:15+02:00"
       }
     },
     "sk": {
       "label": "SK",
       "inventory": {
         "items": 621,
-        "availableStockTotal": 70946,
-        "pendingStockTotal": 88,
+        "availableStockTotal": 70942,
+        "pendingStockTotal": 92,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -40,8 +40,8 @@
         "items": 100,
         "scannedPages": 1,
         "topLogisticsProduct": "F1403",
-        "oldestTimestamp": "2026-04-14T19:42:13+02:00",
-        "newestTimestamp": "2026-04-16T10:00:18+02:00"
+        "oldestTimestamp": "2026-04-14T19:52:11+02:00",
+        "newestTimestamp": "2026-04-16T10:15:10+02:00"
       }
     }
   },
@@ -67,5 +67,13 @@
       "Projít 3 problematických nebo stornovaných objednávek z včerejška.",
       "Dohledat spolehlivý zdroj expirací, 4PX inventory zatím vrací jen batch_no bez data spotřeby."
     ]
+  },
+  "pairing": {
+    "allCodes": 2964,
+    "pairedProducts": 375,
+    "onlyInWpj": 1449,
+    "onlyIn4px": 50,
+    "stockMismatch": 680,
+    "lowAfterSales": 2
   }
 }
