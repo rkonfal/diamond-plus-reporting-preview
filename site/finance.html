@@ -76,7 +76,7 @@
       <h2 class="section-title">Měsíční P&L přehled</h2>
       <div class="section-subtitle">Výnosy, marže, marketing a výsledek po jednotlivých měsících z dostupného ABRA výřezu.</div>
       <div class="ux-table-wrap" style="margin-top:16px;">
-        <table class="table">
+        <table class="table mobile-stack">
           <thead>
             <tr>
               <th>Měsíc</th>
@@ -96,7 +96,7 @@
       <h2 class="section-title">Největší otevřené závazky</h2>
       <div class="section-subtitle">Kdo a kolik teď čeká na úhradu.</div>
       <div class="ux-table-wrap" style="margin-top:16px;">
-        <table class="table">
+        <table class="table mobile-stack">
           <thead>
             <tr>
               <th>Kód</th>
@@ -116,7 +116,7 @@
         <h2 class="section-title">Trendy z účetního deníku</h2>
         <div class="section-subtitle">Live nákladové a výnosové zápisy za poslední 3 měsíce. Je to čitelnější mezivrstva nad surovým deníkem, ne finální účetní výkaz.</div>
         <div class="ux-table-wrap" style="margin-top:16px;">
-          <table class="table">
+          <table class="table mobile-stack">
             <thead>
               <tr>
                 <th>Měsíc</th>
@@ -134,7 +134,7 @@
         <h2 class="section-title">Top nákladové účty v aktuálním měsíci</h2>
         <div class="section-subtitle">Které účty teď táhnou nákladovou stranu. Užitečné pro nefinančníka i pro rychlý drilldown.</div>
         <div class="ux-table-wrap" style="margin-top:16px;">
-          <table class="table">
+          <table class="table mobile-stack">
             <thead>
               <tr>
                 <th>Účet</th>
@@ -152,7 +152,7 @@
       <h2 class="section-title">Live náhled účetního deníku</h2>
       <div class="section-subtitle">Největší aktuální nákladové a výnosové zápisy, aby šlo rychle přejít od trendu ke konkrétnímu dokladu.</div>
       <div class="ux-table-wrap" style="margin-top:16px;">
-        <table class="table">
+        <table class="table mobile-stack">
           <thead>
             <tr>
               <th>Datum</th>
@@ -258,51 +258,51 @@
 
       document.getElementById('monthly-table').innerHTML = (data.monthly || []).map(row => `
         <tr>
-          <td>${row.label}</td>
-          <td class="num">${money(row.revenue)}</td>
-          <td class="num">${money(row.marketing)}</td>
-          <td class="num">${money(row.logistics)}</td>
-          <td class="num">${money(row.operatingMargin)}</td>
-          <td class="num">${money(row.profit)}</td>
+          <td data-label="Měsíc">${row.label}</td>
+          <td class="num" data-label="Výnosy">${money(row.revenue)}</td>
+          <td class="num" data-label="Marketing">${money(row.marketing)}</td>
+          <td class="num" data-label="Logistika">${money(row.logistics)}</td>
+          <td class="num" data-label="Provozní marže">${money(row.operatingMargin)}</td>
+          <td class="num" data-label="Zisk">${money(row.profit)}</td>
         </tr>
       `).join('');
 
       document.getElementById('payables-table').innerHTML = (cash.largestPayables || []).map(row => `
         <tr>
-          <td>${row.code}</td>
-          <td>${row.vendor}</td>
-          <td>${row.dueDate}</td>
-          <td>${row.status}</td>
-          <td class="num">${money(row.amountDue)}</td>
+          <td data-label="Kód">${row.code}</td>
+          <td data-label="Dodavatel">${row.vendor}</td>
+          <td data-label="Splatnost">${row.dueDate}</td>
+          <td data-label="Status">${row.status}</td>
+          <td class="num" data-label="Zbývá uhradit">${money(row.amountDue)}</td>
         </tr>
       `).join('');
 
       document.getElementById('journal-trend-table').innerHTML = (journal.monthly || []).map(row => `
         <tr>
-          <td>${row.label}</td>
-          <td class="num">${money(row.expenseTotal)}</td>
-          <td class="num">${money(row.revenueTotal)}</td>
-          <td>${row.topExpenseClass ? `${row.topExpenseClass.label} (${money(row.topExpenseClass.amount)})` : '–'}</td>
+          <td data-label="Měsíc">${row.label}</td>
+          <td class="num" data-label="Náklady 5xx">${money(row.expenseTotal)}</td>
+          <td class="num" data-label="Výnosy 6xx">${money(row.revenueTotal)}</td>
+          <td data-label="Nejsilnější nákladová třída">${row.topExpenseClass ? `${row.topExpenseClass.label} (${money(row.topExpenseClass.amount)})` : '–'}</td>
         </tr>
       `).join('') || '<tr><td colspan="4">Live trendy z účetního deníku zatím nejsou dostupné.</td></tr>';
 
       document.getElementById('journal-accounts-table').innerHTML = (journalCurrent.topExpenseAccounts || []).map(row => `
         <tr>
-          <td>${row.code}: ${row.label}</td>
-          <td>${row.classLabel}</td>
-          <td class="num">${money(row.amount)}</td>
+          <td data-label="Účet">${row.code}: ${row.label}</td>
+          <td data-label="Třída">${row.classLabel}</td>
+          <td class="num" data-label="Částka">${money(row.amount)}</td>
         </tr>
       `).join('') || '<tr><td colspan="3">Top nákladové účty zatím nejsou k dispozici.</td></tr>';
 
       document.getElementById('journal-entries-table').innerHTML = (journalCurrent.recentEntries || []).map(row => `
         <tr>
-          <td>${row.date}</td>
-          <td>${row.document}</td>
-          <td>${row.side}</td>
-          <td>${row.accountCode ? `${row.accountCode}: ${row.accountLabel || ''}` : '–'}</td>
-          <td>${row.counterCode ? `${row.counterCode}: ${row.counterLabel || ''}` : '–'}</td>
-          <td>${row.description}</td>
-          <td class="num">${money(row.amount)}</td>
+          <td data-label="Datum">${row.date}</td>
+          <td data-label="Doklad">${row.document}</td>
+          <td data-label="Směr">${row.side}</td>
+          <td data-label="Účet">${row.accountCode ? `${row.accountCode}: ${row.accountLabel || ''}` : '–'}</td>
+          <td data-label="Protiúčet">${row.counterCode ? `${row.counterCode}: ${row.counterLabel || ''}` : '–'}</td>
+          <td data-label="Popis">${row.description}</td>
+          <td class="num" data-label="Částka">${money(row.amount)}</td>
         </tr>
       `).join('') || '<tr><td colspan="7">Live účetní deník zatím není k dispozici.</td></tr>';
     })().catch(err => {
