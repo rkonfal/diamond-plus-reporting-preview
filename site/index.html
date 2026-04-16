@@ -148,13 +148,13 @@
         {
           label: 'Objednávky včera',
           value: DP.fmtNumber(report.eshop.orders || 0),
-          sub: `${pctText(report.quickSummary?.orders?.deltaPct)} · AOV ${fmtMoney(report.eshop.averageOrderValue || 0)}`,
+          sub: `${pctText(report.quickSummary?.orders?.deltaPct)} · celý WPJShop · AOV ${fmtMoney(report.eshop.averageOrderValue || 0)}`,
           klass: 'accent'
         },
         {
           label: 'Tržby s DPH',
           value: fmtMoney(report.eshop.revenueWithVat || 0),
-          sub: `${pctText(report.quickSummary?.revenueWithVat?.deltaPct)} · detail v ranním reportu`,
+          sub: `${pctText(report.quickSummary?.revenueWithVat?.deltaPct)} · celý WPJShop www.kralovstvi-tiande`,
           klass: ''
         },
         {
@@ -196,8 +196,8 @@
       `).join('');
 
       document.getElementById('report-mini').innerHTML = [
-        ['Objednávky', DP.fmtNumber(report.eshop.orders || 0)],
-        ['Tržby', fmtMoney(report.eshop.revenueWithVat || 0)],
+        ['Objednávky WPJShop', DP.fmtNumber(report.eshop.orders || 0)],
+        ['Tržby WPJShop', fmtMoney(report.eshop.revenueWithVat || 0)],
         ['4PX sklad CZ+SK', DP.fmtNumber(Math.round(report.inventory?.availableStockTotal || total4pxStock || 0))],
         ['Expedice CZ+SK', `${DP.fmtNumber(report.logistics.shipmentsTotal || 0)} (${report.logistics.byAccount?.CZ || 0}/${report.logistics.byAccount?.SK || 0})`],
         ['Problematické', DP.fmtNumber(report.eshop.problematicOrders || 0)],
@@ -210,7 +210,7 @@
       `).join('');
 
       const statusRows = [
-        ['WPJ a objednávky', summary.wpJ.ready ? 'Připojeno a připraveno pro operativu.' : summary.wpJ.message],
+        ['WPJ a objednávky', summary.wpJ.ready ? 'Připojeno, bere se kompletní výsledek celého www.kralovstvi-tiande.' : summary.wpJ.message],
         ['4PX sklady a logistika', 'CZ i SK běží živě a propsaly se do přehledu.'],
         ['Finance a marketing', summary.finance?.message || 'Zatím bez finance zprávy.']
       ];
@@ -249,7 +249,7 @@
         ['4PX SK inventory', 'OK', `Warehouse ${summary.config.warehouseCode}`, summary.accounts.sk.inventory.items],
         ['4PX CZ outbound', 'OK', `Recent pages: ${summary.accounts.cz.outbound.scannedPages}`, summary.accounts.cz.outbound.items],
         ['4PX SK outbound', 'OK', `Recent pages: ${summary.accounts.sk.outbound.scannedPages}`, summary.accounts.sk.outbound.items],
-        ['WPJ / GraphQL', summary.wpJ.ready ? 'OK' : 'Čeká', summary.wpJ.message, summary.wpJ.orders || 0],
+        ['WPJ / GraphQL', summary.wpJ.ready ? 'OK' : 'Čeká', summary.wpJ.ready ? 'Kompletní výsledek www.kralovstvi-tiande' : summary.wpJ.message, summary.wpJ.orders || 0],
         ['ABRA Flexi / finance', summary.finance?.ready ? 'OK' : 'Čeká', summary.finance?.message || 'Bez dat', Math.round(summary.finance?.currentMonth?.revenue || 0)],
         ['Marketing', summary.marketing?.ready ? 'OK' : 'Čeká', summary.marketing?.message || 'Bez dat', Math.round(summary.marketing?.currentMonth?.totalSpend || 0)],
         ['Ranní report', 'OK', `Alerty: ${(summary.report.alerts || []).length}`, summary.report.shipments || 0]

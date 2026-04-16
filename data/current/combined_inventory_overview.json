@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T19:10:51.385868+02:00",
+  "generatedAt": "2026-04-16T19:18:55.322667+02:00",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
     "to": "2026-04-15T23:59:59+02:00"
@@ -9,7 +9,7 @@
     "pairedProducts": 390,
     "onlyInWpj": 1435,
     "onlyIn4px": 1,
-    "stockMismatch": 670,
+    "stockMismatch": 669,
     "lowAfterSales": 2,
     "manualMapped4pxAliases": 0,
     "autoMapped4pxAliases": 73
@@ -245,9 +245,9 @@
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 2184.0,
+      "wpj4pxStock": 2183.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 2184.0,
+      "stockDelta": 2183.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -382,36 +382,17 @@
       "code": "61912",
       "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
       "priority": "high",
-      "score": 52.12,
+      "score": 52.1,
       "reasons": [
         "včera se prodalo 93 ks",
         "včera se expedovalo 115 ks"
       ],
       "recommendedAction": "Prověřit rozdíl mezi WPJ store stavem a 4PX inventory pull em.",
-      "wpj4pxStock": 677.0,
-      "fourpxAvailable": 683.0,
-      "stockDelta": -6.0,
+      "wpj4pxStock": 672.0,
+      "fourpxAvailable": 677.0,
+      "stockDelta": -5.0,
       "yesterdaySalesUnits": 93.0,
       "yesterdayOutboundUnits": 115.0,
-      "flags": [
-        "stock_mismatch"
-      ]
-    },
-    {
-      "code": "61913",
-      "title": "Dámské bylinné menstruační vložky Nefritová svěžest. noční super",
-      "priority": "high",
-      "score": 52.12,
-      "reasons": [
-        "včera se prodalo 54 ks",
-        "včera se expedovalo 66 ks"
-      ],
-      "recommendedAction": "Prověřit rozdíl mezi WPJ store stavem a 4PX inventory pull em.",
-      "wpj4pxStock": 616.0,
-      "fourpxAvailable": 622.0,
-      "stockDelta": -6.0,
-      "yesterdaySalesUnits": 54.0,
-      "yesterdayOutboundUnits": 66.0,
       "flags": [
         "stock_mismatch"
       ]
@@ -509,6 +490,26 @@
       "wpj4pxStock": 1500.0,
       "fourpxAvailable": 0.0,
       "stockDelta": 1500.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 0.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "DN402",
+      "title": "Regenerační krém na nohy s hadím olejem 1+1",
+      "priority": "high",
+      "score": 49.16,
+      "reasons": [
+        "WPJ ukazuje 4PX kontext, ale 4PX inventory nesedí",
+        "4PX available je nula"
+      ],
+      "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
+      "wpj4pxStock": 1458.0,
+      "fourpxAvailable": 0.0,
+      "stockDelta": 1458.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -1730,14 +1731,14 @@
       "url": "https://www.kralovstvi-tiande.cz/peeling-broskovovy-1-1_z7427/",
       "visible": false,
       "wpj": {
-        "inStore": 2184.0,
-        "fourpxStoreTotal": 2184.0,
+        "inStore": 2183.0,
+        "fourpxStoreTotal": 2183.0,
         "priceWithVat": 42.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2184.0
+            "inStore": 2183.0
           },
           {
             "storeId": 7,
@@ -1810,7 +1811,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 2184.0,
+      "stockDelta": 2183.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -2779,14 +2780,14 @@
       "url": "https://www.kralovstvi-tiande.cz/peeling-broskvovy_z5809/",
       "visible": true,
       "wpj": {
-        "inStore": 2081.0,
-        "fourpxStoreTotal": 2194.0,
+        "inStore": 2082.0,
+        "fourpxStoreTotal": 2193.0,
         "priceWithVat": 45.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2189.0
+            "inStore": 2188.0
           },
           {
             "storeId": 7,
@@ -2819,8 +2820,8 @@
             "922001041534"
           ],
           "batchNos": [],
-          "availableStock": 2191.0,
-          "pendingStock": 86.0,
+          "availableStock": 2189.0,
+          "pendingStock": 88.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -2842,7 +2843,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2196.0,
+        "availableTotal": 2194.0,
         "sourceCodes": [
           "40203"
         ],
@@ -2869,7 +2870,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -2.0,
+      "stockDelta": -1.0,
       "flags": []
     },
     {
@@ -2880,13 +2881,13 @@
       "visible": true,
       "wpj": {
         "inStore": 3431.0,
-        "fourpxStoreTotal": 3478.0,
+        "fourpxStoreTotal": 3477.0,
         "priceWithVat": 20.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 3478.0
+            "inStore": 3477.0
           },
           {
             "storeId": 7,
@@ -2967,7 +2968,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 0.0,
+      "stockDelta": -1.0,
       "flags": []
     },
     {
@@ -3675,14 +3676,14 @@
       "url": "https://www.kralovstvi-tiande.cz/kosmeticka-fytonaplast-wutong_z3160/",
       "visible": true,
       "wpj": {
-        "inStore": 1775.0,
-        "fourpxStoreTotal": 3240.0,
+        "inStore": 1771.0,
+        "fourpxStoreTotal": 3239.0,
         "priceWithVat": 184.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2200.0
+            "inStore": 2199.0
           },
           {
             "storeId": 7,
@@ -3827,7 +3828,7 @@
           "30118/05"
         ]
       },
-      "stockDelta": 0.0,
+      "stockDelta": -1.0,
       "flags": [
         "auto_mapped_4px_alias"
       ]
@@ -4044,14 +4045,14 @@
       "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-menstruacni-vlozky-nefritova-svezest-denni-super_z2024/",
       "visible": true,
       "wpj": {
-        "inStore": 383.0,
-        "fourpxStoreTotal": 677.0,
+        "inStore": 379.0,
+        "fourpxStoreTotal": 672.0,
         "priceWithVat": 206.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 412.0
+            "inStore": 407.0
           },
           {
             "storeId": 7,
@@ -4089,8 +4090,8 @@
             "922001041129"
           ],
           "batchNos": [],
-          "availableStock": 418.0,
-          "pendingStock": 19.0,
+          "availableStock": 412.0,
+          "pendingStock": 25.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4112,7 +4113,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 683.0,
+        "availableTotal": 677.0,
         "sourceCodes": [
           "61912"
         ],
@@ -4139,7 +4140,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -6.0,
+      "stockDelta": -5.0,
       "flags": [
         "stock_mismatch"
       ]
@@ -4256,14 +4257,14 @@
       "url": "https://www.kralovstvi-tiande.cz/krem-pro-hloubkovou-obnovu-pleti-zensen-a-orchidej_z8342/",
       "visible": true,
       "wpj": {
-        "inStore": 398.0,
-        "fourpxStoreTotal": 501.0,
+        "inStore": 397.0,
+        "fourpxStoreTotal": 500.0,
         "priceWithVat": 916.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 412.0
+            "inStore": 411.0
           },
           {
             "storeId": 7,
@@ -4356,7 +4357,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 0.0,
+      "stockDelta": -1.0,
       "flags": []
     },
     {
@@ -4635,14 +4636,14 @@
       "url": "https://www.kralovstvi-tiande.cz/serum-pro-hloubkovou-obnovu-pleti-zensen-a-fytoextrakty_z8343/",
       "visible": true,
       "wpj": {
-        "inStore": 410.0,
-        "fourpxStoreTotal": 514.0,
+        "inStore": 409.0,
+        "fourpxStoreTotal": 513.0,
         "priceWithVat": 990.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 425.0
+            "inStore": 424.0
           },
           {
             "storeId": 7,
@@ -4735,7 +4736,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 0.0,
+      "stockDelta": -1.0,
       "flags": []
     },
     {
@@ -4890,8 +4891,8 @@
             "922001041145"
           ],
           "batchNos": [],
-          "availableStock": 486.0,
-          "pendingStock": 11.0,
+          "availableStock": 480.0,
+          "pendingStock": 17.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4913,7 +4914,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 622.0,
+        "availableTotal": 616.0,
         "sourceCodes": [
           "61913"
         ],
@@ -4940,10 +4941,8 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -6.0,
-      "flags": [
-        "stock_mismatch"
-      ]
+      "stockDelta": 0.0,
+      "flags": []
     },
     {
       "code": "20164",
