@@ -859,7 +859,120 @@ pre {
     color: var(--text-faint);
   }
 
-  .journal-filter-bar {
-    grid-template-columns: 1fr;
-  }
+.journal-filter-bar {
+  grid-template-columns: 1fr;
+}
+}
+
+.leadership-note-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 22px;
+}
+
+.leadership-notes-head {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 4px;
+}
+
+.leadership-notes-kicker {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.leadership-notes-head h2 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: -.03em;
+}
+
+.leadership-notes-head p {
+  margin: 0;
+  color: var(--text-muted);
+  max-width: 720px;
+  line-height: 1.65;
+}
+
+.leadership-note {
+  position: relative;
+  overflow: hidden;
+  border-color: var(--border-strong);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.92), rgba(250,246,239,.88));
+  box-shadow: 0 18px 42px rgba(63, 47, 36, 0.08);
+  padding-left: 28px;
+}
+
+[data-theme="dark"] .leadership-note {
+  background: linear-gradient(180deg, rgba(28,24,39,.95), rgba(22,19,31,.92));
+}
+
+.leadership-note::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--accent), var(--brand-light));
+}
+
+.leadership-note::after {
+  content: '';
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -80px;
+  top: -110px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(200,162,75,.12), transparent 70%);
+  pointer-events: none;
+}
+
+.leadership-note.board::after {
+  background: radial-gradient(circle, rgba(80,120,200,.12), transparent 70%);
+}
+
+.leadership-note.board::before {
+  background: linear-gradient(180deg, var(--info), var(--brand-light));
+}
+
+.leadership-note-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.leadership-note-label::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--brand-light));
+  box-shadow: 0 0 0 6px rgba(200,162,75,.10);
+}
+
+.leadership-note.board .leadership-note-label::before {
+  background: linear-gradient(135deg, var(--info), var(--brand-light));
+  box-shadow: 0 0 0 6px rgba(80,120,200,.10);
+}
+
+.leadership-note p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 14.5px;
+}
+
+.leadership-note strong {
+  color: var(--text);
 }

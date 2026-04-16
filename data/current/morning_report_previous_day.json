@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T20:48:09.211345+02:00",
+  "generatedAt": "2026-04-16T21:58:30.166293+02:00",
   "reportDate": "2026-04-15",
   "detailUrl": "https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html",
   "window": {
@@ -33,16 +33,12 @@
     "problematicOrders": 6,
     "statuses": [
       {
-        "name": "přijatá",
-        "count": 213
+        "name": "expedováno",
+        "count": 275
       },
       {
         "name": "doručeno",
         "count": 89
-      },
-      {
-        "name": "expedováno",
-        "count": 63
       },
       {
         "name": "připraveno k vyzvednutí",
@@ -55,6 +51,10 @@
       {
         "name": "chyba",
         "count": 6
+      },
+      {
+        "name": "přijatá",
+        "count": 1
       }
     ],
     "paymentMethods": [
@@ -811,83 +811,83 @@
     ],
     "largestMovesSinceLastSnapshot": [
       {
-        "code": "195469",
-        "title": "Nápoj s glycinem a tryptofanem",
-        "currentStock": 573.0,
-        "previousStock": 579.0,
-        "delta": -6.0
-      },
-      {
-        "code": "61911",
-        "title": "Denní vložky s extraktem aloe Nefritová svěžest",
-        "currentStock": 1012.0,
-        "previousStock": 1017.0,
-        "delta": -5.0
-      },
-      {
         "code": "40203",
         "title": "Peeling Broskvový",
-        "currentStock": 2166.0,
-        "previousStock": 2171.0,
-        "delta": -5.0
+        "currentStock": 2139.0,
+        "previousStock": 2157.0,
+        "delta": -18.0
       },
       {
         "code": "UA132",
         "title": "Peeling Broskovový 1+1",
-        "currentStock": 2156.0,
-        "previousStock": 2161.0,
-        "delta": -5.0
-      },
-      {
-        "code": "63601",
-        "title": "Denní vložka Energie života",
-        "currentStock": 12402.0,
-        "previousStock": 12405.0,
-        "delta": -3.0
-      },
-      {
-        "code": "MF192",
-        "title": "Balíček Úleva a regenerace",
-        "currentStock": 500.0,
-        "previousStock": 503.0,
-        "delta": -3.0
-      },
-      {
-        "code": "EE147",
-        "title": "Úleva a regenerace",
-        "currentStock": 500.0,
-        "previousStock": 503.0,
-        "delta": -3.0
+        "currentStock": 2129.0,
+        "previousStock": 2147.0,
+        "delta": -18.0
       },
       {
         "code": "52911",
         "title": "Obnovující maska na obličej a krk s fullereny a polypeptidy",
-        "currentStock": 1720.0,
-        "previousStock": 1722.0,
-        "delta": -2.0
-      },
-      {
-        "code": "IU299",
-        "title": "Peeling Broskvový 3+3",
-        "currentStock": 718.0,
-        "previousStock": 720.0,
-        "delta": -2.0
+        "currentStock": 1702.0,
+        "previousStock": 1717.0,
+        "delta": -15.0
       },
       {
         "code": "RK715",
         "title": "Regenerační rituál pro obličej, krk a ruce",
-        "currentStock": 1718.0,
-        "previousStock": 1720.0,
-        "delta": -2.0
+        "currentStock": 1700.0,
+        "previousStock": 1715.0,
+        "delta": -15.0
+      },
+      {
+        "code": "AU572",
+        "title": "Revitalizační maska na obličej a krk s fullereny – výhodný balíček dvou masek",
+        "currentStock": 1700.0,
+        "previousStock": 1715.0,
+        "delta": -15.0
+      },
+      {
+        "code": "CG170",
+        "title": "Kompletní menstruační péče - Nefritová harmonie",
+        "currentStock": 445.0,
+        "previousStock": 459.0,
+        "delta": -14.0
+      },
+      {
+        "code": "TV498",
+        "title": "Svěžest a pohodlí",
+        "currentStock": 445.0,
+        "previousStock": 459.0,
+        "delta": -14.0
+      },
+      {
+        "code": "GR258",
+        "title": "Balíček Svěžest a pohodlí",
+        "currentStock": 445.0,
+        "previousStock": 459.0,
+        "delta": -14.0
+      },
+      {
+        "code": "61912",
+        "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
+        "currentStock": 651.0,
+        "previousStock": 664.0,
+        "delta": -13.0
+      },
+      {
+        "code": "000075",
+        "title": "Brožura Fytogely",
+        "currentStock": 3440.0,
+        "previousStock": 3453.0,
+        "delta": -13.0
       }
     ]
   },
   "inventory": {
-    "availableStockTotal": 379813.0,
+    "availableStockTotal": 379387.0,
     "itemsTotal": 1389,
     "byAccount": {
-      "CZ": 308937.0,
-      "SK": 70876.0
+      "CZ": 308566.0,
+      "SK": 70821.0
     },
     "itemsByAccount": {
       "CZ": 768,
