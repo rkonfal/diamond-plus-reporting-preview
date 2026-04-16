@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-04-16T19:18:55.322667+02:00",
+  "generatedAt": "2026-04-16T20:26:48.880478+02:00",
   "window": {
-    "from": "2026-04-15T00:00:00+02:00",
-    "to": "2026-04-15T23:59:59+02:00"
+    "from": "2026-04-15T00:00:01+02:00",
+    "to": "2026-04-16T00:00:00+02:00"
   },
   "items": [
     {
@@ -1988,8 +1988,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 1,
-        "name": "přijatá"
+        "id": 3,
+        "name": "expedováno"
       },
       "totalPrice": {
         "withVat": 51.55,
@@ -3440,8 +3440,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 1,
-        "name": "přijatá"
+        "id": 3,
+        "name": "expedováno"
       },
       "totalPrice": {
         "withVat": 42.5,
@@ -3780,8 +3780,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 1,
-        "name": "přijatá"
+        "id": 3,
+        "name": "expedováno"
       },
       "totalPrice": {
         "withVat": 28.35,
@@ -5184,8 +5184,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 1,
-        "name": "přijatá"
+        "id": 3,
+        "name": "expedováno"
       },
       "totalPrice": {
         "withVat": 1247,
@@ -5850,10 +5850,10 @@
       "code": "261269869",
       "dateCreated": "2026-04-15T21:25:25+02:00",
       "cancelled": false,
-      "isPaid": false,
+      "isPaid": true,
       "status": {
-        "id": 0,
-        "name": "nová"
+        "id": 1,
+        "name": "přijatá"
       },
       "totalPrice": {
         "withVat": 1771,
@@ -11024,8 +11024,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 1,
-        "name": "přijatá"
+        "id": 3,
+        "name": "expedováno"
       },
       "totalPrice": {
         "withVat": 69.5,
@@ -16668,8 +16668,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 1,
-        "name": "přijatá"
+        "id": 3,
+        "name": "expedováno"
       },
       "totalPrice": {
         "withVat": 97.05,
@@ -17588,8 +17588,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 1,
-        "name": "přijatá"
+        "id": 3,
+        "name": "expedováno"
       },
       "totalPrice": {
         "withVat": 23.75,
@@ -46912,8 +46912,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 1006,
@@ -47144,8 +47144,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 2337,
@@ -49076,8 +49076,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 2032,
@@ -57707,23 +57707,23 @@
     "statuses": [
       {
         "name": "přijatá",
-        "count": 220
+        "count": 214
       },
       {
         "name": "doručeno",
-        "count": 86
+        "count": 89
       },
       {
         "name": "expedováno",
-        "count": 56
+        "count": 62
       },
       {
         "name": "připraveno k vyzvednutí",
-        "count": 38
+        "count": 36
       },
       {
         "name": "nová",
-        "count": 12
+        "count": 11
       },
       {
         "name": "chyba",
