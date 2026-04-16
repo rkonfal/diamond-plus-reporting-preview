@@ -140,6 +140,9 @@
         DP.loadJson('../data/current/portal_summary.json'),
         DP.loadJson('../data/current/morning_report_previous_day.json')
       ]);
+      const total4pxStock = (summary.accounts.cz.inventory.availableStockTotal || 0) + (summary.accounts.sk.inventory.availableStockTotal || 0);
+      const total4pxRows = (summary.accounts.cz.inventory.items || 0) + (summary.accounts.sk.inventory.items || 0);
+      const totalLowStockRows = (summary.accounts.cz.inventory.lowStockItems || 0) + (summary.accounts.sk.inventory.lowStockItems || 0);
 
       const heroMetrics = [
         {
@@ -155,9 +158,9 @@
           klass: ''
         },
         {
-          label: 'Expedice 4PX',
-          value: DP.fmtNumber(report.logistics.shipmentsTotal || 0),
-          sub: `CZ ${report.logistics.byAccount?.CZ || 0} · SK ${report.logistics.byAccount?.SK || 0} · ${summary.report.date}`,
+          label: 'CZ + SK dohromady',
+          value: DP.fmtNumber(Math.round(total4pxStock || 0)),
+          sub: `4PX sklad celkem · CZ ${DP.fmtNumber(summary.accounts.cz.inventory.availableStockTotal || 0)} · SK ${DP.fmtNumber(summary.accounts.sk.inventory.availableStockTotal || 0)}`,
           klass: ''
         }
       ];
@@ -195,8 +198,9 @@
       document.getElementById('report-mini').innerHTML = [
         ['Objednávky', DP.fmtNumber(report.eshop.orders || 0)],
         ['Tržby', fmtMoney(report.eshop.revenueWithVat || 0)],
+        ['4PX sklad CZ+SK', DP.fmtNumber(Math.round(report.inventory?.availableStockTotal || total4pxStock || 0))],
+        ['Expedice CZ+SK', `${DP.fmtNumber(report.logistics.shipmentsTotal || 0)} (${report.logistics.byAccount?.CZ || 0}/${report.logistics.byAccount?.SK || 0})`],
         ['Problematické', DP.fmtNumber(report.eshop.problematicOrders || 0)],
-        ['Nízký sklad po prodeji', DP.fmtNumber((report.stock.lowStockSoldYesterday || []).length)],
         ['Expirace k řešení', DP.fmtNumber((report.logistics.expiringProducts || []).length)]
       ].map(([label, value]) => `
         <div class="ux-stat-row">
@@ -221,8 +225,8 @@
       `).join('');
 
       const kpis = [
-        ['CZ sklad, dostupné kusy', DP.fmtNumber(summary.accounts.cz.inventory.availableStockTotal), `${DP.fmtNumber(summary.accounts.cz.inventory.items)} skladových řádků`, 'green'],
-        ['SK sklad, dostupné kusy', DP.fmtNumber(summary.accounts.sk.inventory.availableStockTotal), `${DP.fmtNumber(summary.accounts.sk.inventory.items)} skladových řádků`, 'blue'],
+        ['4PX sklad CZ + SK', DP.fmtNumber(Math.round(total4pxStock)), `CZ ${DP.fmtNumber(summary.accounts.cz.inventory.availableStockTotal)} · SK ${DP.fmtNumber(summary.accounts.sk.inventory.availableStockTotal)}`, 'green'],
+        ['4PX skladové řádky', DP.fmtNumber(total4pxRows), `${DP.fmtNumber(totalLowStockRows)} nízkých skladových řádků napříč CZ+SK`, 'blue'],
         ['Finance, čistá cash pozice', DP.fmtNumber(Math.round(summary.finance?.cash?.netCashPosition || 0)), summary.finance?.mode === 'mixed_live_legacy' ? 'live závazky + legacy P&L' : summary.finance?.mode === 'legacy_with_live_error' ? 'legacy + chyba live API' : summary.finance?.mode === 'legacy_snapshot' ? 'legacy ABRA snapshot' : 'finance zdroj', 'gold'],
         ['Marketing, poslední měsíc', DP.fmtNumber(Math.round(summary.marketing?.currentMonth?.totalSpend || 0)), `${(summary.marketing?.currentMonth?.spendShareOfRevenuePct ?? 0).toFixed(1)} % z výnosů`, 'red']
       ];
