@@ -1,7 +1,7 @@
 # Diamond Plus Reporting Preview
 
-Static preview export of the reporting-v2 dashboards.
+Static preview export of reporting-v2.
 
-- Open `site/index.html` for the main preview
-- Data source for the static preview lives under `data/current/`
-- Preview boards live under `previews/`
+- Main preview: `site/index.html`
+- Current preview data: `data/current/`
+- Preview boards: `previews/`
