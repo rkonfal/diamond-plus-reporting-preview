@@ -8,7 +8,7 @@
 </head>
 <body>
   <aside class="sidebar">
-    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>Reporting V2</span></div>
+    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>Sklad v přehlednějším, operativně vedeném dashboardu</span></div>
     <div class="sidebar-section-label">Přehled</div>
 <nav class="sidebar-nav">
       <a href="index.html">🏠 Portal</a>
@@ -18,25 +18,54 @@
       <a href="logistics.html">🚚 Logistika 4PX</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">Skladová stránka teď spojuje roční analytiku, mismatch shortlist i mapovací návrhy mezi WPJ a 4PX.</div>
+    <div class="sidebar-footer">Skladová stránka nově začíná tím, co je potřeba řešit, a teprve potom ukazuje explorer, mismatchy a analytiku.</div>
   </aside>
 
-  <main class="main">
+  <main class="main page-stack">
     <header class="header">
-      <div class="header-row">
-        <div>
-          <h1>Sklad a párování dat</h1>
-          <div class="header-sub">
-            <span class="badge live" id="inventory-window">Načítám okno…</span>
-            <span class="badge info" id="inventory-paired">Načítám pairing…</span>
-            <span class="badge warn" id="inventory-mismatch">Načítám mismatch…</span>
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Sklad a párování • operativa na první pohled</div>
+          <h1 class="ux-title">Sklad, kde člověk hned ví co řešit</h1>
+          <p class="ux-subtitle">Nejdřív kritické položky, mismatchy a pohyby. Až pod tím detailní explorer, shortlisty a delší analytické přehledy.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/morning_report_previous_day.txt" target="_blank" rel="noopener">Otevřít ranní report</a>
+            <a class="ux-button secondary" href="logistics.html">Na logistiku</a>
+            <a class="ux-button secondary" href="index.html">Na portal</a>
           </div>
         </div>
         <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
       </div>
+      <section class="ux-hero-metrics" id="inventory-hero"></section>
     </header>
 
     <section class="grid kpi-grid" id="inventory-kpis"></section>
+
+    <section class="ux-grid">
+      <div class="ux-focus-card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="ux-section-title">Na co se podívat jako první</h2>
+            <p class="ux-section-subtitle">Krátká operativní fronta pro sklad bez potřeby hned otevírat explorer.</p>
+          </div>
+          <span class="badge warn" id="inventory-attention-badge">Načítám priority…</span>
+        </div>
+        <div class="ux-list" id="inventory-attention-list"></div>
+      </div>
+
+      <div class="ux-side-stack">
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Rychlý snapshot</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Základní přehled skladu a párování bez čtení dlouhých tabulek.</p>
+          <div class="ux-stat-list" id="inventory-stat-list"></div>
+        </div>
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Jak stránku používat</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Explorer zůstává silný, ale hlavní práce má jít rychle i bez něj.</p>
+          <div class="ux-side-list" id="inventory-usage-list"></div>
+        </div>
+      </div>
+    </section>
 
     <section class="card" style="margin-top:20px;">
       <div class="toolbar">
@@ -464,9 +493,17 @@
         applyExplorerState(savedState);
       } catch (_) {}
 
-      document.getElementById('inventory-window').textContent = `Okno: ${new Date(overview.window.from).toLocaleDateString('cs-CZ')}`;
-      document.getElementById('inventory-paired').textContent = `Spárované: ${fmt(overview.counts.pairedProducts)} • manuální ${fmt(overview.counts.manualMapped4pxAliases || 0)} • auto ${fmt(overview.counts.autoMapped4pxAliases || 0)}`;
-      document.getElementById('inventory-mismatch').textContent = `Mismatchy: ${fmt(overview.counts.stockMismatch)}`;
+      document.getElementById('inventory-hero').innerHTML = [
+        ['Spárované produkty', fmt(overview.counts.pairedProducts), `auto alias ${fmt(overview.counts.autoMapped4pxAliases || 0)} · ruční ${fmt(overview.counts.manualMapped4pxAliases || 0)}`, 'accent'],
+        ['Stock mismatchy', fmt(overview.counts.stockMismatch), `${fmt(overview.counts.lowAfterSales || 0)} nízký sklad po prodeji`, ''],
+        ['Pouze v 4PX', fmt(overview.counts.onlyIn4px), `${fmt(overview.counts.onlyInWpj || 0)} jen ve WPJ`, '']
+      ].map(([label, value, sub, klass]) => `
+        <div class="ux-hero-metric ${klass}">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          <div class="sub">${sub}</div>
+        </div>
+      `).join('');
 
       document.getElementById('inventory-kpis').innerHTML = [
         ['Spárované produkty', fmt(overview.counts.pairedProducts), 'WPJ + 4PX mají vazbu', 'green'],
@@ -478,6 +515,47 @@
           <div class="kpi-label">${label}</div>
           <div class="kpi-value">${value}</div>
           <div class="kpi-sub">${sub}</div>
+        </div>
+      `).join('');
+
+      const lowStockRows = overview.lowAfterSales || [];
+      const only4pxRows = overview.onlyIn4px || [];
+      const priorityRows = overview.priorityShortlist || [];
+
+      document.getElementById('inventory-attention-badge').textContent = `${fmt(lowStockRows.length + only4pxRows.length + Math.min(priorityRows.length, 3))} signálů k řešení`;
+      document.getElementById('inventory-attention-list').innerHTML = [
+        lowStockRows[0] ? [`Nízký sklad po včerejším prodeji`, `${lowStockRows[0].code} · ${lowStockRows[0].title} má teď ${fmt(lowStockRows[0].fourpx?.availableTotal)} ks.`] : null,
+        priorityRows[0] ? [`Prioritní mismatch`, `${priorityRows[0].code} · ${priorityRows[0].title} patří mezi nejdůležitější ke kontrole.`] : null,
+        only4pxRows[0] ? [`Položky pouze v 4PX`, `${fmt(only4pxRows.length)} orphan SKU je potřeba dopárovat nebo vědomě ignorovat.`] : null,
+      ].filter(Boolean).map(([title, text], index) => `
+        <div class="ux-item">
+          <span class="ux-dot ${index === 1 ? 'gold' : 'blue'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('inventory-stat-list').innerHTML = [
+        ['Okno reportu', new Date(overview.window.from).toLocaleDateString('cs-CZ')],
+        ['Spárované produkty', fmt(overview.counts.pairedProducts)],
+        ['Mismatchy', fmt(overview.counts.stockMismatch)],
+        ['Nízký sklad po prodeji', fmt(overview.counts.lowAfterSales || 0)],
+        ['Pouze v 4PX', fmt(overview.counts.onlyIn4px || 0)],
+      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+      document.getElementById('inventory-usage-list').innerHTML = [
+        ['Quick filtry', 'Na první kontrolu používej mismatch, nízký sklad po prodeji a prodané včera.'],
+        ['Presety pohledu', 'Operativa a mismatch preset zrychlí běžnou ranní práci.'],
+        ['Export CSV', 'Když potřebuješ něco sdílet dál, exportuje celý aktuálně filtrovaný výběr.']
+      ].map(([title, text], index) => `
+        <div class="ux-side-item">
+          <span class="ux-dot ${index === 1 ? 'gold' : index === 2 ? 'green' : 'blue'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
         </div>
       `).join('');
 

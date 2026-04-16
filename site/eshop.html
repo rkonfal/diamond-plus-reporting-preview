@@ -8,9 +8,9 @@
 </head>
 <body>
   <aside class="sidebar">
-    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>Reporting V2</span></div>
+    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>WPJ výkon v přehlednějším dashboardu</span></div>
     <div class="sidebar-section-label">Přehled</div>
-<nav class="sidebar-nav">
+    <nav class="sidebar-nav">
       <a href="index.html">🏠 Portal</a>
       <a href="finance.html">💰 Finance / ABRA</a>
       <a href="marketing.html">📣 Marketing</a>
@@ -18,65 +18,95 @@
       <a href="logistics.html">🚚 Logistika 4PX</a>
       <a class="active" href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">WPJ GraphQL je živě připojené, ranní report se generuje do datové vrstvy.</div>
+    <div class="sidebar-footer">E-shop stránka nově vede od výkonu dne a problémových objednávek k top produktům a až potom k detailním breakdownům.</div>
   </aside>
 
-  <main class="main">
+  <main class="main page-stack">
     <header class="header">
-      <div class="header-row">
-        <div>
-          <h1>E-shop výkon</h1>
-          <div class="header-sub">
-            <span class="badge live" id="wpj-state">Načítám WPJ…</span>
-            <span class="badge info" id="wpj-window">Načítám období…</span>
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">E-shop / WPJ • výkon bez přetížení</div>
+          <h1 class="ux-title">E-shop výkon, který řekne co se stalo a co s tím</h1>
+          <p class="ux-subtitle">Přednost dostávají objednávky, obrat, AOV a problémové případy. Teprve potom přichází breakdown podle plateb, dopravy a produktů.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/morning_report_previous_day.txt" target="_blank" rel="noopener">Otevřít ranní report</a>
+            <a class="ux-button secondary" href="inventory.html">Na sklad</a>
+            <a class="ux-button secondary" href="index.html">Na portal</a>
           </div>
         </div>
         <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
       </div>
+      <section class="ux-hero-metrics" id="eshop-hero"></section>
     </header>
+
+    <section class="ux-grid">
+      <div class="ux-focus-card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="ux-section-title">Co e-shop říká dnes</h2>
+            <p class="ux-section-subtitle">První obrazovka má ukázat výkon, rizika a hned navrhnout směr další kontroly.</p>
+          </div>
+          <span class="badge live" id="wpj-state">Načítám WPJ…</span>
+        </div>
+        <div class="ux-list" id="eshop-focus"></div>
+      </div>
+
+      <div class="ux-side-stack">
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Včerejší snapshot</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Základní přehled bez potřeby číst celý ranní report.</p>
+          <div class="ux-stat-list" id="eshop-stat-list"></div>
+        </div>
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Náhled ranního reportu</h3>
+          <p id="wpj-message" style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Načítám vygenerovaný text reportu…</p>
+          <pre id="report-preview" style="white-space:pre-wrap; font:inherit; margin:16px 0 0; max-height:340px; overflow:auto;"></pre>
+        </div>
+      </div>
+    </section>
 
     <section class="grid kpi-grid" id="wpj-kpis"></section>
 
     <section class="grid two-col">
       <div class="card">
         <h2 class="section-title">Platební metody</h2>
-        <table class="table">
-          <thead><tr><th>Metoda</th><th class="num">Objednávek</th></tr></thead>
-          <tbody id="payments-table"></tbody>
-        </table>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead><tr><th>Metoda</th><th class="num">Objednávek</th></tr></thead>
+            <tbody id="payments-table"></tbody>
+          </table>
+        </div>
       </div>
       <div class="card">
         <h2 class="section-title">Dopravní metody</h2>
-        <table class="table">
-          <thead><tr><th>Metoda</th><th class="num">Objednávek</th></tr></thead>
-          <tbody id="deliveries-table"></tbody>
-        </table>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead><tr><th>Metoda</th><th class="num">Objednávek</th></tr></thead>
+            <tbody id="deliveries-table"></tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <section class="grid two-col" style="margin-top:18px;">
+    <section class="grid two-col">
       <div class="card">
         <h2 class="section-title">Top produkty podle kusů</h2>
-        <table class="table">
-          <thead><tr><th>Produkt</th><th class="num">Kusy</th></tr></thead>
-          <tbody id="units-table"></tbody>
-        </table>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead><tr><th>Produkt</th><th class="num">Kusy</th></tr></thead>
+            <tbody id="units-table"></tbody>
+          </table>
+        </div>
       </div>
       <div class="card">
         <h2 class="section-title">Top produkty podle obratu</h2>
-        <table class="table">
-          <thead><tr><th>Produkt</th><th class="num">Obrat</th></tr></thead>
-          <tbody id="revenue-table"></tbody>
-        </table>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead><tr><th>Produkt</th><th class="num">Obrat</th></tr></thead>
+            <tbody id="revenue-table"></tbody>
+          </table>
+        </div>
       </div>
-    </section>
-
-    <section class="card" style="margin-top:18px;">
-      <h2 class="section-title">Náhled ranního reportu</h2>
-      <div class="block-item">
-        <p id="wpj-message">Načítám vygenerovaný text reportu…</p>
-      </div>
-      <pre id="report-preview" style="white-space:pre-wrap; font:inherit; margin:0;"></pre>
     </section>
   </main>
 
@@ -106,8 +136,42 @@
       const eshop = report.eshop;
 
       document.getElementById('wpj-state').textContent = summary.wpJ.ready ? 'WPJ připojeno' : 'WPJ není připojeno';
-      document.getElementById('wpj-window').textContent = formatDateRange(report.window);
       document.getElementById('wpj-message').textContent = summary.wpJ.message;
+
+      const hero = [
+        ['Objednávky včera', DP.fmtNumber(eshop.orders), `${eshop.problematicOrders} problematické`, 'accent'],
+        ['Obrat s DPH', `${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč`, `${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč / objednávka`, ''],
+        ['Top doprava', eshop.deliveryMethods[0]?.name || '–', `${DP.fmtNumber(eshop.deliveryMethods[0]?.count || 0)} objednávek`, '']
+      ];
+      document.getElementById('eshop-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
+        <div class="ux-hero-metric ${klass}">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          <div class="sub">${sub}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('eshop-focus').innerHTML = [
+        [`Výkon dne: ${DP.fmtNumber(eshop.orders)} objednávek`, `Obrat ${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč, AOV ${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč.`],
+        [`Problematické / stornované`, `${eshop.cancelledOrders} stornované a ${eshop.problematicOrders} problematické objednávky.`],
+        [eshop.topProductsByUnits[0] ? `Top produkt podle kusů: ${eshop.topProductsByUnits[0].label}` : 'Top produkt zatím není', eshop.topProductsByUnits[0] ? `${eshop.topProductsByUnits[0].formatted || eshop.topProductsByUnits[0].value}` : 'Bez dat.']
+      ].map(([title, text], index) => `
+        <div class="ux-item">
+          <span class="ux-dot ${index === 1 ? '' : index === 2 ? 'gold' : 'blue'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('eshop-stat-list').innerHTML = [
+        ['Období', formatDateRange(report.window)],
+        ['Objednávky', DP.fmtNumber(eshop.orders)],
+        ['Obrat', `${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč`],
+        ['AOV', `${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč`],
+        ['Top platba', eshop.paymentMethods[0]?.name || '–'],
+      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
 
       document.getElementById('wpj-kpis').innerHTML = [
         ['Objednávky včera', DP.fmtNumber(eshop.orders), `${eshop.problematicOrders} problematické`, 'green'],

@@ -10,7 +10,7 @@
   <aside class="sidebar">
     <div class="sidebar-logo">
       <h2>Diamond Plus</h2>
-      <span>Marketing vrstva, první napojení</span>
+      <span>Marketing v čistším, rozhodovacím dashboardu</span>
     </div>
     <div class="sidebar-section-label">Přehled</div>
     <nav class="sidebar-nav">
@@ -21,75 +21,111 @@
       <a href="logistics.html">🚚 Logistika 4PX</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">Teď je to finance-side bootstrap z ABRA výřezu. Další krok je přímé napojení reklamních platforem a výkonových metrik.</div>
+    <div class="sidebar-footer">Marketing stránka nově mluví jazykem rozhodnutí: kolik utrácíme, kde je koncentrace spendu a co z toho plyne.</div>
   </aside>
 
-  <main class="main">
+  <main class="main page-stack">
     <header class="header">
-      <div class="header-row">
-        <div>
-          <h1>Marketing</h1>
-          <div class="header-sub">
-            <span class="badge warn" id="source-mode">Načítám zdroj…</span>
-            <span class="badge info" id="period-label">Načítám období…</span>
-            <span class="badge info" id="generated-at">Načítám refresh…</span>
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Marketing • méně účetního šumu, víc kontextu</div>
+          <h1 class="ux-title">Marketingové náklady, které jdou rychle přečíst</h1>
+          <p class="ux-subtitle">První vrstva má ukázat celkový spend, výkonové versus ostatní náklady a koncentraci u dodavatelů. Detailní položky zůstávají níž pro hlubší kontrolu.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/marketing_overview.json" target="_blank" rel="noopener">Otevřít marketing data</a>
+            <a class="ux-button secondary" href="finance.html">Na finance</a>
+            <a class="ux-button secondary" href="index.html">Na portal</a>
           </div>
         </div>
         <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
       </div>
+      <section class="ux-hero-metrics" id="marketing-hero"></section>
     </header>
 
-    <div id="source-alert" style="margin-top:20px;"></div>
-    <section class="grid kpi-grid" id="top-kpis"></section>
+    <div id="source-alert"></div>
 
-    <section class="grid two-col" style="margin-top:20px;">
-      <div class="card">
-        <h2 class="section-title">Měsíční spend</h2>
-        <div class="section-subtitle">Rozseknuté na PPC a ostatní marketing z dostupného ABRA výřezu.</div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Měsíc</th>
-              <th class="num">PPC</th>
-              <th class="num">Marketing</th>
-              <th class="num">Celkem</th>
-              <th class="num">% z výnosů</th>
-            </tr>
-          </thead>
-          <tbody id="monthly-table"></tbody>
-        </table>
+    <section class="ux-grid">
+      <div class="ux-focus-card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="ux-section-title">Co marketing říká teď</h2>
+            <p class="ux-section-subtitle">Stručný kontext, který pomůže číst spend bez účetního výpisu.</p>
+          </div>
+          <span class="badge warn" id="source-mode">Načítám zdroj…</span>
+        </div>
+        <div class="ux-list" id="marketing-focus"></div>
       </div>
-      <div class="card">
-        <h2 class="section-title">Top dodavatelé, aktuální měsíc</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Dodavatel</th>
-              <th class="num">Částka</th>
-            </tr>
-          </thead>
-          <tbody id="suppliers-table"></tbody>
-        </table>
+
+      <div class="ux-side-stack">
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Aktuální měsíc</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Kolik jde do výkonu a kolik do širšího marketingu.</p>
+          <div class="ux-stat-list" id="marketing-current"></div>
+        </div>
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Top dodavatelé</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Kdo teď táhne největší podíl marketingových nákladů.</p>
+          <div class="ux-side-list" id="suppliers-list"></div>
+        </div>
       </div>
     </section>
 
-    <section class="card" style="margin-top:20px;">
+    <section class="grid kpi-grid" id="top-kpis"></section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2 class="section-title">Měsíční spend</h2>
+        <div class="section-subtitle">Rozseknuté na PPC a ostatní marketing z dostupného ABRA výřezu.</div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Měsíc</th>
+                <th class="num">PPC</th>
+                <th class="num">Marketing</th>
+                <th class="num">Celkem</th>
+                <th class="num">% z výnosů</th>
+              </tr>
+            </thead>
+            <tbody id="monthly-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h2 class="section-title">Top dodavatelé, aktuální měsíc</h2>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Dodavatel</th>
+                <th class="num">Částka</th>
+              </tr>
+            </thead>
+            <tbody id="suppliers-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
       <h2 class="section-title">Aktuální marketingové položky</h2>
-      <div class="section-subtitle">První operativní rozpad podle účetních položek, než dopojím Meta / Google / další kanály napřímo.</div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Datum</th>
-            <th>Dodavatel</th>
-            <th>Popis</th>
-            <th>Modul</th>
-            <th>Účet</th>
-            <th>Středisko</th>
-            <th class="num">Částka</th>
-          </tr>
-        </thead>
-        <tbody id="entries-table"></tbody>
-      </table>
+      <div class="section-subtitle">Operativní rozpad podle účetních položek, než se dopojí Meta, Google a další kanály napřímo.</div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Datum</th>
+              <th>Dodavatel</th>
+              <th>Popis</th>
+              <th>Modul</th>
+              <th>Účet</th>
+              <th>Středisko</th>
+              <th class="num">Částka</th>
+            </tr>
+          </thead>
+          <tbody id="entries-table"></tbody>
+        </table>
+      </div>
     </section>
   </main>
 
@@ -98,16 +134,64 @@
     DP.initThemeToggle();
     const money = value => `${DP.fmtNumber(Math.round(value || 0))} Kč`;
     const pct = value => value == null ? '–' : `${Number(value).toFixed(1)} %`;
+    const sourceMeta = status => ({
+      legacy_snapshot: { label: 'legacy snapshot', tone: 'warn' },
+      missing: { label: 'bez zdroje', tone: 'danger' },
+    }[status] || { label: status || 'marketing ready', tone: 'info' });
 
     (async () => {
       const data = await DP.loadJson('../data/current/marketing_overview.json');
-      document.getElementById('source-mode').textContent = data.source?.status === 'legacy_snapshot' ? 'legacy snapshot' : 'marketing ready';
-      document.getElementById('period-label').textContent = `Aktuální měsíc: ${data.currentMonth?.label || '–'}`;
-      document.getElementById('generated-at').textContent = `Poslední refresh: ${DP.fmtDateTime(data.generatedAt)}`;
+      const source = sourceMeta(data.source?.status);
+      document.getElementById('source-mode').textContent = source.label;
+      document.getElementById('source-mode').className = `badge ${source.tone}`;
       document.getElementById('source-alert').innerHTML = `<div class="alert warn">${data.source?.message || 'Bez zdrojové poznámky.'}</div>`;
 
       const current = data.currentMonth || {};
       const topSupplier = (data.topSuppliersCurrentMonth || [])[0];
+      const hero = [
+        ['Marketing spend', money(current.totalSpend), `${pct(current.spendShareOfRevenuePct)} z výnosů`, 'accent'],
+        ['PPC spend', money(current.performanceSpend), 'výkonové kanály', ''],
+        ['Ostatní marketing', money(current.brandSpend), 'produkce, SMS, služby', '']
+      ];
+      document.getElementById('marketing-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
+        <div class="ux-hero-metric ${klass}">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          <div class="sub">${sub}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('marketing-focus').innerHTML = [
+        [`Aktuální měsíc: ${current.label || '–'}`, `Celkový spend je ${money(current.totalSpend)}, což dělá ${pct(current.spendShareOfRevenuePct)} z výnosů.`],
+        [`Výkonové kanály vs ostatní`, `PPC ${money(current.performanceSpend)} oproti ostatnímu marketingu ${money(current.brandSpend)}.`],
+        topSupplier ? [`Největší dodavatel: ${topSupplier.name}`, `Aktuálně ${money(topSupplier.amount)} v tomto měsíci.`] : null,
+      ].filter(Boolean).map(([title, text], index) => `
+        <div class="ux-item">
+          <span class="ux-dot ${index === 1 ? 'blue' : 'gold'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('marketing-current').innerHTML = [
+        ['PPC spend', money(current.performanceSpend)],
+        ['Ostatní marketing', money(current.brandSpend)],
+        ['Celkem', money(current.totalSpend)],
+        ['Podíl z výnosů', pct(current.spendShareOfRevenuePct)],
+      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+      document.getElementById('suppliers-list').innerHTML = (data.topSuppliersCurrentMonth || []).slice(0, 4).map((row, index) => `
+        <div class="ux-side-item">
+          <span class="ux-dot ${index === 0 ? 'gold' : 'green'}"></span>
+          <div>
+            <strong>${row.name}</strong>
+            <span>${money(row.amount)}</span>
+          </div>
+        </div>
+      `).join('') || `<div class="ux-side-item"><span class="ux-dot green"></span><div><strong>Bez dat</strong><span>Aktuálně není co zobrazit.</span></div></div>`;
+
       const kpis = [
         ['Marketing spend', money(current.totalSpend), `${pct(current.spendShareOfRevenuePct)} z výnosů`, 'gold'],
         ['PPC spend', money(current.performanceSpend), 'výkonové kanály', 'blue'],

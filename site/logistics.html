@@ -8,9 +8,9 @@
 </head>
 <body>
   <aside class="sidebar">
-    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>Reporting V2</span></div>
+    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>4PX logistika v přehlednějším provozním dashboardu</span></div>
     <div class="sidebar-section-label">Přehled</div>
-<nav class="sidebar-nav">
+    <nav class="sidebar-nav">
       <a href="index.html">🏠 Portal</a>
       <a href="finance.html">💰 Finance / ABRA</a>
       <a href="marketing.html">📣 Marketing</a>
@@ -18,113 +18,123 @@
       <a class="active" href="logistics.html">🚚 Logistika 4PX</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">Logistika už teď umí i expirace přes detailní 4PX inventory pull po SKU dávkách.</div>
+    <div class="sidebar-footer">Logistika nově začíná tím, co je potřeba vědět a řešit, teprve potom jde do technických detailů a tabulek.</div>
   </aside>
 
-  <main class="main">
+  <main class="main page-stack">
     <header class="header">
-      <div class="header-row">
-        <div>
-          <h1>Logistika 4PX</h1>
-          <div class="header-sub">
-            <span class="badge live" id="log-window">Načítám okno…</span>
-            <span class="badge info" id="log-shipments">Načítám zásilky…</span>
-            <span class="badge warn" id="log-expiry">Načítám expirace…</span>
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">4PX logistika • přehled pro běžný provoz</div>
+          <h1 class="ux-title">Logistika, která ukáže expedice i rizika bez hledání</h1>
+          <p class="ux-subtitle">Hlavní vrstva nově ukazuje počet zásilek, expirační rizika a orphan položky dřív, než se člověk ponoří do detailních tabulek dopravců a SKU.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="inventory.html">Přejít do skladu</a>
+            <a class="ux-button secondary" href="../data/current/4px_expiry_overview.json" target="_blank" rel="noopener">Otevřít expirační data</a>
+            <a class="ux-button secondary" href="index.html">Na portal</a>
           </div>
         </div>
         <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
       </div>
+      <section class="ux-hero-metrics" id="logistics-hero"></section>
     </header>
+
+    <section class="ux-grid">
+      <div class="ux-focus-card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="ux-section-title">Na co se podívat jako první</h2>
+            <p class="ux-section-subtitle">Provozní fronta pro expirace, expedice a orphan SKU.</p>
+          </div>
+          <span class="badge warn" id="log-expiry">Načítám expirace…</span>
+        </div>
+        <div class="ux-list" id="logistics-focus"></div>
+      </div>
+
+      <div class="ux-side-stack">
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Rychlý snapshot</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Jedna karta pro včerejší logistické okno.</p>
+          <div class="ux-stat-list" id="logistics-stat-list"></div>
+        </div>
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Data a poznámky</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Co je teď spolehlivé a co je ještě potřeba brát s kontextem.</p>
+          <div class="ux-side-list" id="logistics-notes"></div>
+        </div>
+      </div>
+    </section>
 
     <section class="grid kpi-grid" id="log-kpis"></section>
 
-    <section class="grid two-col" style="margin-top:20px;">
+    <section class="grid two-col">
       <div class="card">
         <h2 class="section-title">Top outbound produkty včera</h2>
         <div class="section-subtitle">Párování expedovaných SKU s produktem a počtem zásilek.</div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Kód / produkt</th>
-              <th class="num">Expedované kusy</th>
-              <th class="num">Zásilky</th>
-            </tr>
-          </thead>
-          <tbody id="top-outbound-table"></tbody>
-        </table>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Kód / produkt</th>
+                <th class="num">Expedované kusy</th>
+                <th class="num">Zásilky</th>
+              </tr>
+            </thead>
+            <tbody id="top-outbound-table"></tbody>
+          </table>
+        </div>
       </div>
-
       <div class="card">
         <h2 class="section-title">Rozpad podle dopravce</h2>
         <div class="section-subtitle">Včerejší 4PX okno přes carrier brand names.</div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Dopravce</th>
-              <th class="num">Zásilek</th>
-            </tr>
-          </thead>
-          <tbody id="carrier-table"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="grid two-col" style="margin-top:20px;">
-      <div class="card">
-        <h2 class="section-title">Nejvyšší expirační riziko</h2>
-        <div class="section-subtitle">4PX detail vrací u SKU s expirací pole <code>expiry_date</code>. Shortlist je řazený kombinací blízkosti expirace a velikosti zásoby.</div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Kód / produkt</th>
-              <th class="num">Účet</th>
-              <th class="num">Expirace</th>
-              <th class="num">Dní do expirace</th>
-              <th class="num">Expirující sklad</th>
-            </tr>
-          </thead>
-          <tbody id="expiry-table"></tbody>
-        </table>
-      </div>
-
-      <div class="card">
-        <h2 class="section-title">SKU pouze v 4PX</h2>
-        <div class="section-subtitle">Tady jsou položky, které se expedují nebo leží ve 4PX, ale nevidíme je správně ve WPJ.</div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Kód / produkt</th>
-              <th class="num">4PX sklad</th>
-              <th class="num">Expedované kusy</th>
-            </tr>
-          </thead>
-          <tbody id="only-4px-log-table"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="grid two-col" style="margin-top:20px;">
-      <div class="card">
-        <h2 class="section-title">Poznámky k datům</h2>
-        <div class="block-list">
-          <div class="block-item">
-            <h4>Expirace</h4>
-            <p>Expirace teď bereme přes <code>fu.wms.inventory.getdetail</code> po dávkách max 100 SKU. Pokud SKU expiraci nepoužívá, pole <code>expiry_date</code> v detailu není.</p>
-          </div>
-          <div class="block-item">
-            <h4>Párování SKU</h4>
-            <p>Teď párujeme primárně přes kód produktu / SKU. Další krok je dočištění orphan variant, aby expirace i mismatchy seděly ještě přesněji.</p>
-          </div>
-          <div class="block-item">
-            <h4>Auto publish</h4>
-            <p>Po každém refreshi se preview publikuje samo na GitHub Pages, takže logistická vrstva je vidět bez ručního zásahu.</p>
-          </div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Dopravce</th>
+                <th class="num">Zásilek</th>
+              </tr>
+            </thead>
+            <tbody id="carrier-table"></tbody>
+          </table>
         </div>
       </div>
+    </section>
 
+    <section class="grid two-col">
       <div class="card">
-        <h2 class="section-title">Rychlé shrnutí expirací</h2>
-        <div class="block-list" id="expiry-summary"></div>
+        <h2 class="section-title">Nejvyšší expirační riziko</h2>
+        <div class="section-subtitle">Shortlist je řazený kombinací blízkosti expirace a velikosti zásoby.</div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Kód / produkt</th>
+                <th class="num">Účet</th>
+                <th class="num">Expirace</th>
+                <th class="num">Dní do expirace</th>
+                <th class="num">Expirující sklad</th>
+              </tr>
+            </thead>
+            <tbody id="expiry-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h2 class="section-title">SKU pouze v 4PX</h2>
+        <div class="section-subtitle">Položky, které se expedují nebo leží ve 4PX, ale nevidíme je správně ve WPJ.</div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Kód / produkt</th>
+                <th class="num">4PX sklad</th>
+                <th class="num">Expedované kusy</th>
+              </tr>
+            </thead>
+            <tbody id="only-4px-log-table"></tbody>
+          </table>
+        </div>
       </div>
     </section>
   </main>
@@ -132,25 +142,73 @@
   <script src="assets/app.js"></script>
   <script>
     DP.initThemeToggle();
-
-    function fmt(value) {
-      return DP.fmtNumber(Math.round(Number(value || 0)));
-    }
-
-    function label(row) {
-      return `${row.code || row.sku || '–'} · ${row.title || 'Bez názvu'}`;
-    }
+    function fmt(value) { return DP.fmtNumber(Math.round(Number(value || 0))); }
+    function label(row) { return `${row.code || row.sku || '–'} · ${row.title || 'Bez názvu'}`; }
 
     (async () => {
-      const overview = await DP.loadJson('../data/current/combined_inventory_overview.json');
-      const report = await DP.loadJson('../data/current/morning_report_previous_day.json');
-      const expiries = await DP.loadJson('../data/current/4px_expiry_overview.json');
+      const [overview, report, expiries] = await Promise.all([
+        DP.loadJson('../data/current/combined_inventory_overview.json'),
+        DP.loadJson('../data/current/morning_report_previous_day.json'),
+        DP.loadJson('../data/current/4px_expiry_overview.json')
+      ]);
 
-      document.getElementById('log-window').textContent = `Okno: ${new Date(report.window.from).toLocaleDateString('cs-CZ')}`;
-      document.getElementById('log-shipments').textContent = `Zásilky: ${fmt(report.logistics.shipmentsTotal)}`;
       document.getElementById('log-expiry').textContent = `Expirační SKU: ${fmt(expiries.summary.datedSkuCount || 0)}`;
-
       const topCarrier = report.logistics.carrierCounts[0]?.name || '–';
+      const hero = [
+        ['Zásilky celkem', fmt(report.logistics.shipmentsTotal), `CZ ${fmt(report.logistics.byAccount.CZ)} · SK ${fmt(report.logistics.byAccount.SK)}`, 'accent'],
+        ['Top dopravce', topCarrier, `${fmt(report.logistics.carrierCounts[0]?.count || 0)} zásilek`, ''],
+        ['SKU s expirací', fmt(expiries.summary.datedSkuCount || 0), `CZ ${fmt(expiries.summary.czSkuCount || 0)} · SK ${fmt(expiries.summary.skSkuCount || 0)}`, '']
+      ];
+      document.getElementById('logistics-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
+        <div class="ux-hero-metric ${klass}">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          <div class="sub">${sub}</div>
+        </div>
+      `).join('');
+
+      const focusRows = [];
+      if (expiries.topExpiring?.[0]) {
+        const top = expiries.topExpiring[0];
+        focusRows.push([`Top expirační riziko: ${top.sku}`, `Expirace ${top.dateExpiry}, expirující sklad ${fmt(top.datedStock)} ks.`]);
+      }
+      if (overview.onlyIn4px?.length) {
+        focusRows.push([`Pouze v 4PX: ${fmt(overview.onlyIn4px.length)} položek`, `Orphan SKU je potřeba postupně dopárovat nebo vědomě ignorovat.`]);
+      }
+      if (report.logistics.coverageWarnings?.length) {
+        focusRows.push([`Pozor na pokrytí včerejšího okna`, report.logistics.coverageWarnings[0]]);
+      }
+      document.getElementById('logistics-focus').innerHTML = (focusRows.length ? focusRows : [['Bez zásadního logistického alertu', 'Momentálně není nic kritického na první pohled.']]).map(([title, text], index) => `
+        <div class="ux-item">
+          <span class="ux-dot ${index === 1 ? 'gold' : 'blue'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('logistics-stat-list').innerHTML = [
+        ['Okno reportu', new Date(report.window.from).toLocaleDateString('cs-CZ')],
+        ['Zásilky celkem', fmt(report.logistics.shipmentsTotal)],
+        ['CZ účet', fmt(report.logistics.byAccount.CZ)],
+        ['SK účet', fmt(report.logistics.byAccount.SK)],
+      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+      document.getElementById('logistics-notes').innerHTML = [
+        ['Expirace', 'Expirace se teď berou přes detailní 4PX inventory pull po SKU dávkách.'],
+        ['Párování SKU', 'Primárně párujeme přes kód produktu / SKU, orphany zůstávají na watchlistu.'],
+        ['Auto publish', 'Po refreshi se preview publikuje na GitHub Pages bez ručního zásahu.']
+      ].map(([title, text], index) => `
+        <div class="ux-side-item">
+          <span class="ux-dot ${index === 1 ? 'gold' : index === 2 ? 'blue' : 'green'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
       document.getElementById('log-kpis').innerHTML = [
         ['Zásilky celkem', fmt(report.logistics.shipmentsTotal), `CZ ${fmt(report.logistics.byAccount.CZ)} / SK ${fmt(report.logistics.byAccount.SK)}`, 'green'],
         ['Top dopravce', topCarrier, `${fmt(report.logistics.carrierCounts[0]?.count || 0)} zásilek`, 'gold'],
@@ -196,15 +254,8 @@
           <td class="num">${fmt(row.yesterdayOutbound.czUnits + row.yesterdayOutbound.skUnits)}</td>
         </tr>
       `).join('') || '<tr><td colspan="3">Aktuálně bez orphan 4PX SKU.</td></tr>';
-
-      document.getElementById('expiry-summary').innerHTML = [
-        `SKU s datovanou expirací: <strong>${fmt(expiries.summary.datedSkuCount || 0)}</strong>`,
-        `CZ účet: <strong>${fmt(expiries.summary.czSkuCount || 0)}</strong>`,
-        `SK účet: <strong>${fmt(expiries.summary.skSkuCount || 0)}</strong>`,
-        expiries.topExpiring?.[0] ? `Top expirační riziko: <strong>${expiries.topExpiring[0].sku}</strong>, expirace ${expiries.topExpiring[0].dateExpiry}, sklad ${fmt(expiries.topExpiring[0].datedStock)} ks` : 'Bez expiračního rizika.'
-      ].map(text => `<div class="block-item"><p>${text}</p></div>`).join('');
     })().catch(err => {
-      document.getElementById('log-window').textContent = `Nepodařilo se načíst data: ${err.message}`;
+      document.getElementById('logistics-focus').innerHTML = `<div class="ux-item"><span class="ux-dot"></span><div><strong>Nepodařilo se načíst logistiku</strong><span>${err.message}</span></div></div>`;
     });
   </script>
 </body>

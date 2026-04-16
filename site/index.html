@@ -10,7 +10,7 @@
   <aside class="sidebar">
     <div class="sidebar-logo">
       <h2>Diamond Plus</h2>
-      <span>Reporting V2, rebuild od nuly</span>
+      <span>Reporting V2, čistší a prouživatelsky vedený portál</span>
     </div>
     <div class="sidebar-section-label">Přehled</div>
     <nav class="sidebar-nav">
@@ -21,23 +21,63 @@
       <a href="logistics.html">🚚 Logistika 4PX</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">Nový reporting stack. Data jako zdroj pravdy, ne HTML snapshoty.</div>
+    <div class="sidebar-footer">Směr V2: méně technického šumu, rychlejší orientace, jasnější priority a lepší použitelnost i pro operativu.</div>
   </aside>
 
-  <main class="main">
+  <main class="main page-stack">
     <header class="header">
-      <div class="header-row">
-        <div>
-          <h1>Reporting portal, nová generace</h1>
-          <div class="header-sub">
-            <span class="badge live">● hodinový refresh</span>
-            <span class="badge info" id="generated-at">Načítám poslední refresh…</span>
-            <span class="badge warn" id="warnings-count">Čekám na stav zdrojů…</span>
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Reporting portal • redesign schválený směr</div>
+          <h1 class="ux-title">Reporting portál, který se čte během minuty</h1>
+          <p class="ux-subtitle">První obrazovka má nově ukázat, co se stalo, co je potřeba řešit a kam má člověk kliknout dál. Až pod tím zůstává technický monitoring zdrojů a detailnější tabulky.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/morning_report_previous_day.txt" target="_blank" rel="noopener">Otevřít ranní report</a>
+            <a class="ux-button secondary" href="inventory.html">Přejít do skladu</a>
+            <a class="ux-button secondary" href="eshop.html">Přejít do e-shopu</a>
           </div>
         </div>
         <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
       </div>
+      <section class="ux-hero-metrics" id="hero-metrics"></section>
     </header>
+
+    <section class="ux-grid">
+      <div class="ux-focus-card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="ux-section-title">Co dnes řešit jako první</h2>
+            <p class="ux-section-subtitle">Jedna operativní plocha místo hledání v pěti různých blocích.</p>
+          </div>
+          <span class="badge warn" id="attention-badge">Načítám priority…</span>
+        </div>
+        <div class="ux-list" id="attention-list"></div>
+
+        <div style="height:18px"></div>
+
+        <div class="ux-section-head" style="margin-bottom:12px;">
+          <div>
+            <h2 class="ux-section-title" style="font-size:20px;">Dnešní priority</h2>
+            <p class="ux-section-subtitle">Navržené další kroky bez technického balastu.</p>
+          </div>
+        </div>
+        <div class="ux-list" id="priority-list"></div>
+      </div>
+
+      <div class="ux-side-stack">
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Ranní report v jedné kartě</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Místo skákání mezi stránkami je tady mini snapshot včerejšího výkonu a okamžitý vstup do detailu.</p>
+          <div class="ux-stat-list" id="report-mini"></div>
+        </div>
+
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Co běží dobře</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Pro běžné používání je důležité rychle vidět, že zdroje žijí a kde je případný problém.</p>
+          <div class="ux-side-list" id="status-list"></div>
+        </div>
+      </div>
+    </section>
 
     <section class="grid kpi-grid" id="top-kpis"></section>
 
@@ -52,19 +92,26 @@
       </div>
     </section>
 
-    <section class="card" style="margin-top:18px;">
-      <h2 class="section-title">Stav zdrojů</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Zdroj</th>
-            <th>Stav</th>
-            <th>Detail</th>
-            <th class="num">Objektů</th>
-          </tr>
-        </thead>
-        <tbody id="sources-table"></tbody>
-      </table>
+    <section class="card">
+      <div class="ux-section-head" style="margin-bottom:0;">
+        <div>
+          <h2 class="ux-section-title">Stav zdrojů, ale civilněji</h2>
+          <p class="ux-section-subtitle">Technická vrstva zůstává, ale už nepřebíjí první dojem z dashboardu.</p>
+        </div>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Zdroj</th>
+              <th>Stav</th>
+              <th>Co z něj vidíme</th>
+              <th class="num">Objektů</th>
+            </tr>
+          </thead>
+          <tbody id="sources-table"></tbody>
+        </table>
+      </div>
     </section>
   </main>
 
@@ -78,21 +125,106 @@
       ['Marketing bootstrap', 'Marketingové náklady jsou rozseknuté na PPC a ostatní marketing a připravené pro další napojení.'],
       ['Nová datová vrstva', 'Refresh skript zapisuje normalizovaná JSON data, snapshoty a ranní report.'],
       ['Nový portál', 'Sdílené assets, společný vizuální systém, bez kopírování stylů mezi HTML.'],
-      ['Hodinový refresh připraven', 'Cron job je připravený pro automatický běh.']
+      ['Automatické reporty', 'Ranní report se generuje a odesílá automaticky každý den v 8:00.']
     ];
 
+    const fmtMoney = value => `${DP.fmtNumber(Math.round(value || 0))} Kč`;
+    const pctText = value => {
+      if (value == null) return 'bez srovnání';
+      const sign = value > 0 ? '+' : '';
+      return `${sign}${Number(value).toFixed(1)} % vs 7denní průměr`;
+    };
+
     (async () => {
-      const summary = await DP.loadJson('../data/current/portal_summary.json');
-      document.getElementById('generated-at').textContent = `Poslední refresh: ${DP.fmtDateTime(summary.generatedAt)}`;
-      document.getElementById('warnings-count').textContent = `Upozornění: ${summary.warnings.length}`;
+      const [summary, report] = await Promise.all([
+        DP.loadJson('../data/current/portal_summary.json'),
+        DP.loadJson('../data/current/morning_report_previous_day.json')
+      ]);
+
+      const heroMetrics = [
+        {
+          label: 'Objednávky včera',
+          value: DP.fmtNumber(report.eshop.orders || 0),
+          sub: `${pctText(report.quickSummary?.orders?.deltaPct)} · AOV ${fmtMoney(report.eshop.averageOrderValue || 0)}`,
+          klass: 'accent'
+        },
+        {
+          label: 'Tržby s DPH',
+          value: fmtMoney(report.eshop.revenueWithVat || 0),
+          sub: `${pctText(report.quickSummary?.revenueWithVat?.deltaPct)} · detail v ranním reportu`,
+          klass: ''
+        },
+        {
+          label: 'Expedice 4PX',
+          value: DP.fmtNumber(report.logistics.shipmentsTotal || 0),
+          sub: `CZ ${report.logistics.byAccount?.CZ || 0} · SK ${report.logistics.byAccount?.SK || 0} · ${summary.report.date}`,
+          klass: ''
+        }
+      ];
+      document.getElementById('hero-metrics').innerHTML = heroMetrics.map(card => `
+        <div class="ux-hero-metric ${card.klass}">
+          <div class="label">${card.label}</div>
+          <div class="value">${card.value}</div>
+          <div class="sub">${card.sub}</div>
+        </div>
+      `).join('');
+
+      const alerts = report.quickSummary?.alerts || [];
+      document.getElementById('attention-badge').textContent = alerts.length ? `${alerts.length} věcí k pozornosti` : 'Bez zásadního alertu';
+      document.getElementById('attention-badge').className = `badge ${alerts.length ? 'warn' : 'live'}`;
+      document.getElementById('attention-list').innerHTML = (alerts.length ? alerts : ['Bez zásadního provozního varování.']).map(item => `
+        <div class="ux-item">
+          <span class="ux-dot"></span>
+          <div>
+            <strong>${item}</strong>
+            <span>${item.includes('sklad') ? 'Vysoká relevance pro sklad a operativu.' : item.includes('objednávek') ? 'Dává smysl otevřít e-shop detail a zkontrolovat stav objednávek.' : 'Vyžaduje rychlou kontrolu v detailu.'}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('priority-list').innerHTML = (report.priorities || []).map(item => `
+        <div class="ux-item">
+          <span class="ux-dot gold"></span>
+          <div>
+            <strong>${item}</strong>
+            <span>Navržený další krok pro dnešní práci.</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('report-mini').innerHTML = [
+        ['Objednávky', DP.fmtNumber(report.eshop.orders || 0)],
+        ['Tržby', fmtMoney(report.eshop.revenueWithVat || 0)],
+        ['Problematické', DP.fmtNumber(report.eshop.problematicOrders || 0)],
+        ['Nízký sklad po prodeji', DP.fmtNumber((report.stock.lowStockSoldYesterday || []).length)],
+        ['Expirace k řešení', DP.fmtNumber((report.logistics.expiringProducts || []).length)]
+      ].map(([label, value]) => `
+        <div class="ux-stat-row">
+          <span>${label}</span>
+          <strong>${value}</strong>
+        </div>
+      `).join('');
+
+      const statusRows = [
+        ['WPJ a objednávky', summary.wpJ.ready ? 'Připojeno a připraveno pro operativu.' : summary.wpJ.message],
+        ['4PX sklady a logistika', 'CZ i SK běží živě a propsaly se do přehledu.'],
+        ['Finance a marketing', summary.finance?.message || 'Zatím bez finance zprávy.']
+      ];
+      document.getElementById('status-list').innerHTML = statusRows.map(([title, text], index) => `
+        <div class="ux-side-item">
+          <span class="ux-dot ${index === 1 ? 'blue' : index === 2 ? 'gold' : 'green'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
 
       const kpis = [
         ['CZ sklad, dostupné kusy', DP.fmtNumber(summary.accounts.cz.inventory.availableStockTotal), `${DP.fmtNumber(summary.accounts.cz.inventory.items)} skladových řádků`, 'green'],
         ['SK sklad, dostupné kusy', DP.fmtNumber(summary.accounts.sk.inventory.availableStockTotal), `${DP.fmtNumber(summary.accounts.sk.inventory.items)} skladových řádků`, 'blue'],
-        ['WPJ objednávky včera', DP.fmtNumber(summary.wpJ.orders || 0), `${DP.fmtNumber(Math.round(summary.wpJ.revenueWithVat || 0))} Kč`, 'gold'],
-        ['4PX zásilky včera', DP.fmtNumber(summary.report.shipments || 0), `${summary.report.date}`, 'red'],
         ['Finance, čistá cash pozice', DP.fmtNumber(Math.round(summary.finance?.cash?.netCashPosition || 0)), summary.finance?.mode === 'mixed_live_legacy' ? 'live závazky + legacy P&L' : summary.finance?.mode === 'legacy_with_live_error' ? 'legacy + chyba live API' : summary.finance?.mode === 'legacy_snapshot' ? 'legacy ABRA snapshot' : 'finance zdroj', 'gold'],
-        ['Marketing, poslední měsíc', DP.fmtNumber(Math.round(summary.marketing?.currentMonth?.totalSpend || 0)), `${(summary.marketing?.currentMonth?.spendShareOfRevenuePct ?? 0).toFixed(1)} % z výnosů`, 'blue']
+        ['Marketing, poslední měsíc', DP.fmtNumber(Math.round(summary.marketing?.currentMonth?.totalSpend || 0)), `${(summary.marketing?.currentMonth?.spendShareOfRevenuePct ?? 0).toFixed(1)} % z výnosů`, 'red']
       ];
       document.getElementById('top-kpis').innerHTML = kpis.map(([label, value, sub, klass]) => `
         <div class="card kpi-card ${klass}">
@@ -127,7 +259,7 @@
         </tr>
       `).join('');
     })().catch(err => {
-      document.getElementById('blockers').innerHTML = `<div class="alert danger">Nepodařilo se načíst portálová data: ${err.message}</div>`;
+      document.getElementById('attention-list').innerHTML = `<div class="ux-item"><span class="ux-dot"></span><div><strong>Nepodařilo se načíst portál</strong><span>${err.message}</span></div></div>`;
     });
   </script>
 </body>

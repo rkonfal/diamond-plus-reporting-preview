@@ -10,7 +10,7 @@
   <aside class="sidebar">
     <div class="sidebar-logo">
       <h2>Diamond Plus</h2>
-      <span>Finance vrstva, ABRA Flexi bootstrap</span>
+      <span>Finance vrstva v čistším, srozumitelnějším rozhraní</span>
     </div>
     <div class="sidebar-section-label">Přehled</div>
     <nav class="sidebar-nav">
@@ -21,74 +21,94 @@
       <a href="logistics.html">🚚 Logistika 4PX</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">První finance vrstva je už v nové datové struktuře. Další krok je vyměnit legacy snapshot za živý Flexi adapter.</div>
+    <div class="sidebar-footer">Finance stránka má nově vést uživatele od stavu měsíce přes cash a závazky až k hlubším tabulkám.</div>
   </aside>
 
-  <main class="main">
+  <main class="main page-stack">
     <header class="header">
-      <div class="header-row">
-        <div>
-          <h1>Finance / ABRA Flexi</h1>
-          <div class="header-sub">
-            <span class="badge warn" id="source-mode">Načítám zdroj…</span>
-            <span class="badge info" id="period-label">Načítám období…</span>
-            <span class="badge info" id="generated-at">Načítám refresh…</span>
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Finance / ABRA • lidsky čitelné vedení</div>
+          <h1 class="ux-title">Finance, které nejdřív řeknou, co je podstatné</h1>
+          <p class="ux-subtitle">Místo tvrdého účetního dumpu jde tahle obrazovka nejdřív po aktuálním měsíci, hotovosti a otevřených závazcích. Až pod tím zůstává plný měsíční přehled a detailní tabulky.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/finance_overview.json" target="_blank" rel="noopener">Otevřít finance data</a>
+            <a class="ux-button secondary" href="marketing.html">Na marketing</a>
+            <a class="ux-button secondary" href="index.html">Na portal</a>
           </div>
         </div>
         <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
       </div>
+      <section class="ux-hero-metrics" id="finance-hero"></section>
     </header>
 
-    <div id="source-alert" style="margin-top:20px;"></div>
+    <div id="source-alert"></div>
+
+    <section class="ux-grid">
+      <div class="ux-focus-card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="ux-section-title">Co finance říkají teď</h2>
+            <p class="ux-section-subtitle">Pohled pro rychlé rozhodnutí, ne jen účetní inventuru.</p>
+          </div>
+          <span class="badge warn" id="source-mode">Načítám zdroj…</span>
+        </div>
+        <div class="ux-list" id="finance-focus"></div>
+      </div>
+
+      <div class="ux-side-stack">
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Aktuální měsíc</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Základní snapshot pro rychlé čtení bez skákání do tabulek.</p>
+          <div class="ux-stat-list" id="current-month-list"></div>
+        </div>
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Cash a závazky</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Kolik hotovosti je k dispozici a co je potřeba uhlídat.</p>
+          <div class="ux-stat-list" id="cash-list"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="grid kpi-grid" id="top-kpis"></section>
 
-    <section class="grid two-col" style="margin-top:20px;">
-      <div class="card">
-        <h2 class="section-title">Aktuální měsíc</h2>
-        <table class="table">
-          <tbody id="current-month-table"></tbody>
-        </table>
-      </div>
-      <div class="card">
-        <h2 class="section-title">Cash a závazky</h2>
-        <table class="table">
-          <tbody id="cash-table"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="card" style="margin-top:20px;">
+    <section class="card">
       <h2 class="section-title">Měsíční P&L přehled</h2>
       <div class="section-subtitle">Výnosy, marže, marketing a výsledek po jednotlivých měsících z dostupného ABRA výřezu.</div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Měsíc</th>
-            <th class="num">Výnosy</th>
-            <th class="num">Marketing</th>
-            <th class="num">Logistika</th>
-            <th class="num">Provozní marže</th>
-            <th class="num">Zisk</th>
-          </tr>
-        </thead>
-        <tbody id="monthly-table"></tbody>
-      </table>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Měsíc</th>
+              <th class="num">Výnosy</th>
+              <th class="num">Marketing</th>
+              <th class="num">Logistika</th>
+              <th class="num">Provozní marže</th>
+              <th class="num">Zisk</th>
+            </tr>
+          </thead>
+          <tbody id="monthly-table"></tbody>
+        </table>
+      </div>
     </section>
 
-    <section class="card" style="margin-top:20px;">
+    <section class="card">
       <h2 class="section-title">Největší otevřené závazky</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Kód</th>
-            <th>Dodavatel</th>
-            <th>Splatnost</th>
-            <th>Status</th>
-            <th class="num">Zbývá uhradit</th>
-          </tr>
-        </thead>
-        <tbody id="payables-table"></tbody>
-      </table>
+      <div class="section-subtitle">Kdo a kolik teď čeká na úhradu.</div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kód</th>
+              <th>Dodavatel</th>
+              <th>Splatnost</th>
+              <th>Status</th>
+              <th class="num">Zbývá uhradit</th>
+            </tr>
+          </thead>
+          <tbody id="payables-table"></tbody>
+        </table>
+      </div>
     </section>
   </main>
 
@@ -111,12 +131,55 @@
       const source = sourceMeta(data.source?.status);
       document.getElementById('source-mode').textContent = source.label;
       document.getElementById('source-mode').className = `badge ${source.tone}`;
-      document.getElementById('period-label').textContent = `Aktuální měsíc: ${data.currentMonth?.label || '–'}`;
-      document.getElementById('generated-at').textContent = `Poslední refresh: ${DP.fmtDateTime(data.generatedAt)}`;
       document.getElementById('source-alert').innerHTML = `<div class="alert ${source.tone === 'success' ? 'success' : source.tone === 'danger' ? 'danger' : 'warn'}">${data.source?.message || 'Bez zdrojové poznámky.'}</div>`;
 
       const current = data.currentMonth || {};
       const cash = data.cash || {};
+      const previous = data.previousMonth || {};
+      const hero = [
+        ['Výnosy', money(current.revenue), `${pct(current.grossMarginPct)} hrubá marže`, 'accent'],
+        ['Čistý zisk', money(current.profit), `${pct(current.profitPct)} z výnosů`, ''],
+        ['Čistá cash pozice', money(cash.netCashPosition), `${DP.fmtNumber(cash.overdueInvoicesCount || 0)} po splatnosti`, '']
+      ];
+      document.getElementById('finance-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
+        <div class="ux-hero-metric ${klass}">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          <div class="sub">${sub}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('finance-focus').innerHTML = [
+        [`Aktuální měsíc: ${current.label || '–'}`, `Výnosy ${money(current.revenue)}, provozní marže ${money(current.operatingMargin)} a zisk ${money(current.profit)}.`],
+        [`Cash po odečtení FP: ${money(cash.netCashPosition)}`, `${DP.fmtNumber(cash.overdueInvoicesCount || 0)} závazků je po splatnosti, celkem ${money(cash.overdueInvoicesAmount)}.`],
+        previous.label ? [`Minulý měsíc pro srovnání: ${previous.label}`, `Výnosy ${money(previous.revenue)} a zisk ${money(previous.profit)}.`] : null,
+      ].filter(Boolean).map(([title, text], index) => `
+        <div class="ux-item">
+          <span class="ux-dot ${index === 1 ? 'gold' : 'blue'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('current-month-list').innerHTML = [
+        ['Výnosy', money(current.revenue)],
+        ['Hrubá marže po COGS + poplatcích', money(current.grossMargin)],
+        ['Marketing', `${money(current.marketing)} (${pct(current.marketingPct)})`],
+        ['Logistika', `${money(current.logistics)} (${pct(current.logisticsPct)})`],
+        ['Provozní marže', `${money(current.operatingMargin)} (${pct(current.operatingMarginPct)})`],
+        ['Zisk', `${money(current.profit)} (${pct(current.profitPct)})`],
+      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+      document.getElementById('cash-list').innerHTML = [
+        ['Cash na účtech', money(cash.cashOnAccounts)],
+        ['Neuhrazené faktury přijaté', money(cash.unpaidInvoices)],
+        ['Čistá cash pozice', money(cash.netCashPosition)],
+        ['Faktury po splatnosti', `${DP.fmtNumber(cash.overdueInvoicesCount || 0)} ks`],
+        ['Pohled po splatnosti', money(cash.overdueInvoicesAmount)],
+      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
       const kpis = [
         ['Výnosy', money(current.revenue), pct(current.grossMarginPct), 'gold'],
         ['Čistý zisk', money(current.profit), pct(current.profitPct), 'green'],
@@ -130,23 +193,6 @@
           <div class="kpi-sub">${sub}</div>
         </div>
       `).join('');
-
-      document.getElementById('current-month-table').innerHTML = [
-        ['Výnosy', money(current.revenue)],
-        ['Hrubá marže po COGS + poplatcích', money(current.grossMargin)],
-        ['Marketing', `${money(current.marketing)} (${pct(current.marketingPct)})`],
-        ['Logistika', `${money(current.logistics)} (${pct(current.logisticsPct)})`],
-        ['Provozní marže', `${money(current.operatingMargin)} (${pct(current.operatingMarginPct)})`],
-        ['Zisk', `${money(current.profit)} (${pct(current.profitPct)})`],
-      ].map(([label, value]) => `<tr><td>${label}</td><td class="num">${value}</td></tr>`).join('');
-
-      document.getElementById('cash-table').innerHTML = [
-        ['Cash na účtech', money(cash.cashOnAccounts)],
-        ['Neuhrazené faktury přijaté', money(cash.unpaidInvoices)],
-        ['Čistá cash pozice', money(cash.netCashPosition)],
-        ['Faktury po splatnosti', `${DP.fmtNumber(cash.overdueInvoicesCount || 0)} ks`],
-        ['Pohled po splatnosti', money(cash.overdueInvoicesAmount)],
-      ].map(([label, value]) => `<tr><td>${label}</td><td class="num">${value}</td></tr>`).join('');
 
       document.getElementById('monthly-table').innerHTML = (data.monthly || []).map(row => `
         <tr>

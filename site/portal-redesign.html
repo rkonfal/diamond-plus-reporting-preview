@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond Plus Reporting V2, Portal redesign draft</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .draft-shell {
+      display: grid;
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .draft-topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .draft-intro {
+      max-width: 780px;
+    }
+    .draft-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(200,162,75,.12);
+      color: var(--brand-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      border: 1px solid var(--border-strong);
+      margin-bottom: 14px;
+    }
+    .draft-title {
+      margin: 0;
+      font-size: 40px;
+      line-height: 1.02;
+      letter-spacing: -.04em;
+    }
+    .draft-subtitle {
+      margin: 14px 0 0;
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.65;
+      max-width: 760px;
+    }
+    .draft-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .draft-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 750;
+      border: 1px solid transparent;
+      transition: .18s ease;
+    }
+    .draft-button.primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-light));
+      color: #fffaf4;
+      box-shadow: 0 14px 26px rgba(107,61,99,.18);
+    }
+    .draft-button.secondary {
+      background: rgba(255,255,255,.72);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .draft-button:hover { transform: translateY(-1px); }
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .hero-metric {
+      background: linear-gradient(180deg, rgba(255,255,255,.84), rgba(250,246,239,.98));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+    }
+    .hero-metric .label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--text-faint);
+    }
+    .hero-metric .value {
+      margin-top: 10px;
+      font-size: 32px;
+      font-weight: 850;
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+    .hero-metric .sub {
+      margin-top: 10px;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .hero-metric.accent {
+      background: linear-gradient(135deg, rgba(107,61,99,.96), rgba(142,93,128,.92));
+      color: #fffaf5;
+      border-color: rgba(255,255,255,.10);
+    }
+    .hero-metric.accent .label,
+    .hero-metric.accent .sub { color: rgba(255,250,245,.82); }
+    .draft-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(340px, .75fr);
+      gap: 20px;
+    }
+    .attention-card {
+      padding: 26px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(250,246,239,.98));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+    .attention-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .attention-title {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: -.03em;
+    }
+    .attention-sub {
+      margin: 6px 0 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .attention-list,
+    .priority-list,
+    .status-list {
+      display: grid;
+      gap: 12px;
+    }
+    .attention-item,
+    .priority-item,
+    .status-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 15px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.68);
+    }
+    .attention-dot,
+    .priority-dot,
+    .status-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      margin-top: 5px;
+      flex: none;
+    }
+    .attention-dot { background: var(--danger); }
+    .priority-dot { background: var(--accent); }
+    .status-dot { background: var(--success); }
+    .attention-item strong,
+    .priority-item strong,
+    .status-item strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+    .attention-item span,
+    .priority-item span,
+    .status-item span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .mini-panel {
+      display: grid;
+      gap: 16px;
+    }
+    .panel-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+    }
+    .panel-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -.02em;
+    }
+    .panel-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .report-mini {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .report-mini-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 13px;
+    }
+    .report-mini-row:last-child { border-bottom: 0; }
+    .report-mini-row strong { font-size: 14px; }
+    .usability-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .usability-card {
+      background: var(--card-soft);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+    }
+    .usability-card h4 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: -.02em;
+    }
+    .usability-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .source-table-wrap {
+      overflow: auto;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.62);
+      margin-top: 16px;
+    }
+    .source-table-wrap table { margin: 0; }
+    @media (max-width: 1180px) {
+      .hero-metrics,
+      .usability-grid,
+      .draft-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <h2>Diamond Plus</h2>
+      <span>Reporting V2, redesign draft pro lepší UX a čitelnost</span>
+    </div>
+    <div class="sidebar-section-label">Návrh dashboardu</div>
+    <nav class="sidebar-nav">
+      <a class="active" href="portal-redesign.html">✨ Portal redesign</a>
+      <a href="index.html">🏠 Aktuální portal</a>
+      <a href="finance.html">💰 Finance / ABRA</a>
+      <a href="marketing.html">📣 Marketing</a>
+      <a href="inventory.html">📦 Sklad</a>
+      <a href="logistics.html">🚚 Logistika 4PX</a>
+      <a href="eshop.html">🛒 E-shop / WPJ</a>
+    </nav>
+    <div class="sidebar-footer">Směr: méně technického šumu, víc priorit, rychlejší orientace a nižší kognitivní zátěž pro běžné operátory.</div>
+  </aside>
+
+  <main class="main">
+    <header class="header">
+      <div class="draft-topbar">
+        <div class="draft-intro">
+          <div class="draft-kicker">UX / UI návrh • první dashboard koncept</div>
+          <h1 class="draft-title">Reporting portál, který se čte během minuty</h1>
+          <p class="draft-subtitle">Tahle varianta staví na stejné barevnosti, ale mění informační hierarchii. Nejdřív ukáže, co se stalo, co potřebuje pozornost a kam má člověk kliknout dál. Méně monitoringu pro monitoring, víc skutečného vedení uživatele.</p>
+          <div class="draft-actions">
+            <a class="draft-button primary" href="../data/current/morning_report_previous_day.txt" target="_blank" rel="noopener">Otevřít ranní report</a>
+            <a class="draft-button secondary" href="inventory.html">Přejít do skladu</a>
+            <a class="draft-button secondary" href="eshop.html">Přejít do e-shopu</a>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+
+      <section class="hero-metrics" id="hero-metrics"></section>
+    </header>
+
+    <div class="draft-shell">
+      <section class="draft-grid">
+        <div class="attention-card">
+          <div class="attention-head">
+            <div>
+              <h2 class="attention-title">Co dnes řešit jako první</h2>
+              <p class="attention-sub">Jeden operativní pohled místo hledání v pěti tabulkách.</p>
+            </div>
+            <span class="badge warn" id="attention-badge">Načítám priority…</span>
+          </div>
+          <div class="attention-list" id="attention-list"></div>
+
+          <div style="height:18px"></div>
+
+          <div class="attention-head" style="margin-bottom:12px;">
+            <div>
+              <h2 class="attention-title" style="font-size:20px;">Dnešní priority</h2>
+              <p class="attention-sub">Navržené další kroky bez technického balastu.</p>
+            </div>
+          </div>
+          <div class="priority-list" id="priority-list"></div>
+        </div>
+
+        <div class="mini-panel">
+          <div class="panel-card">
+            <h3>Ranní report v jedné kartě</h3>
+            <p>Místo skákání mezi stránkami je tady mini snapshot včerejšího výkonu a okamžitý vstup do detailu.</p>
+            <div class="report-mini" id="report-mini"></div>
+          </div>
+
+          <div class="panel-card">
+            <h3>Co běží dobře</h3>
+            <p>Pro běžné používání je důležité rychle vidět, že zdroje žijí a kde je případný problém.</p>
+            <div class="status-list" id="status-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="attention-head" style="margin-bottom:14px;">
+          <div>
+            <h2 class="attention-title">Proč je tahle varianta použitelnější</h2>
+            <p class="attention-sub">Stejná data, menší únava při čtení, lepší orientace pro operátora i vedení.</p>
+          </div>
+        </div>
+        <div class="usability-grid">
+          <div class="usability-card">
+            <h4>1. Nejdřív priorita, až pak systém</h4>
+            <ul>
+              <li>nejdřív vidíš, co je důležité řešit</li>
+              <li>alerty nejsou schované pod technickými tabulkami</li>
+              <li>pro člověka z provozu je to rychlejší</li>
+            </ul>
+          </div>
+          <div class="usability-card">
+            <h4>2. Méně kognitivního šumu</h4>
+            <ul>
+              <li>méně sekcí na první obrazovce</li>
+              <li>větší rozestupy a jasnější titulky</li>
+              <li>větší důraz na 3 hlavní metriky dne</li>
+            </ul>
+          </div>
+          <div class="usability-card">
+            <h4>3. Přímé cesty dál</h4>
+            <ul>
+              <li>ranní report je otevřitelný jedním klikem</li>
+              <li>sklad a e-shop jsou hned po ruce</li>
+              <li>dashboard není slepá nástěnka, ale rozcestník</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="attention-head" style="margin-bottom:0;">
+          <div>
+            <h2 class="attention-title">Stav zdrojů, ale civilněji</h2>
+            <p class="attention-sub">Spodní část zůstává technická, ale už nepřebíjí první dojem z dashboardu.</p>
+          </div>
+        </div>
+        <div class="source-table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Zdroj</th>
+                <th>Stav</th>
+                <th>Co z něj vidíme</th>
+                <th class="num">Objektů</th>
+              </tr>
+            </thead>
+            <tbody id="sources-table"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+
+    const fmtMoney = value => `${DP.fmtNumber(Math.round(value || 0))} Kč`;
+    const pctText = value => {
+      if (value == null) return 'bez srovnání';
+      const sign = value > 0 ? '+' : '';
+      return `${sign}${Number(value).toFixed(1)} % vs 7denní průměr`;
+    };
+
+    (async () => {
+      const [summary, report] = await Promise.all([
+        DP.loadJson('../data/current/portal_summary.json'),
+        DP.loadJson('../data/current/morning_report_previous_day.json')
+      ]);
+
+      const heroMetrics = [
+        {
+          label: 'Objednávky včera',
+          value: DP.fmtNumber(report.eshop.orders || 0),
+          sub: `${pctText(report.quickSummary?.orders?.deltaPct)} · AOV ${fmtMoney(report.eshop.averageOrderValue || 0)}`,
+          klass: 'accent'
+        },
+        {
+          label: 'Tržby s DPH',
+          value: fmtMoney(report.eshop.revenueWithVat || 0),
+          sub: `${pctText(report.quickSummary?.revenueWithVat?.deltaPct)} · detail v ranním reportu`,
+          klass: ''
+        },
+        {
+          label: 'Expedice 4PX',
+          value: DP.fmtNumber(report.logistics.shipmentsTotal || 0),
+          sub: `CZ ${report.logistics.byAccount?.CZ || 0} · SK ${report.logistics.byAccount?.SK || 0} · ${summary.report.date}`,
+          klass: ''
+        }
+      ];
+      document.getElementById('hero-metrics').innerHTML = heroMetrics.map(card => `
+        <div class="hero-metric ${card.klass}">
+          <div class="label">${card.label}</div>
+          <div class="value">${card.value}</div>
+          <div class="sub">${card.sub}</div>
+        </div>
+      `).join('');
+
+      const alerts = report.quickSummary?.alerts || [];
+      document.getElementById('attention-badge').textContent = alerts.length ? `${alerts.length} věcí k pozornosti` : 'Bez zásadního alertu';
+      document.getElementById('attention-badge').className = `badge ${alerts.length ? 'warn' : 'live'}`;
+      document.getElementById('attention-list').innerHTML = (alerts.length ? alerts : ['Bez zásadního provozního varování.']).map(item => `
+        <div class="attention-item">
+          <span class="attention-dot"></span>
+          <div>
+            <strong>${item}</strong>
+            <span>${item.includes('sklad') ? 'Vysoká relevance pro sklad a operativu.' : item.includes('objednávek') ? 'Dává smysl otevřít e-shop detail a zkontrolovat stav objednávek.' : 'Vyžaduje rychlou kontrolu v detailu.'}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('priority-list').innerHTML = (report.priorities || []).map(item => `
+        <div class="priority-item">
+          <span class="priority-dot"></span>
+          <div>
+            <strong>${item}</strong>
+            <span>Navržený další krok pro dnešní práci.</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('report-mini').innerHTML = [
+        ['Objednávky', DP.fmtNumber(report.eshop.orders || 0)],
+        ['Tržby', fmtMoney(report.eshop.revenueWithVat || 0)],
+        ['Problematické', DP.fmtNumber(report.eshop.problematicOrders || 0)],
+        ['Nízký sklad po prodeji', DP.fmtNumber((report.stock.lowStockSoldYesterday || []).length)],
+        ['Expirace k řešení', DP.fmtNumber((report.logistics.expiringProducts || []).length)]
+      ].map(([label, value]) => `
+        <div class="report-mini-row">
+          <span>${label}</span>
+          <strong>${value}</strong>
+        </div>
+      `).join('');
+
+      const statusRows = [
+        ['WPJ a objednávky', summary.wpJ.ready ? 'Připojeno a připraveno pro operativu.' : summary.wpJ.message],
+        ['4PX sklady a logistika', 'CZ i SK běží živě a propsaly se do přehledu.'],
+        ['Finance a marketing', summary.finance?.message || 'Zatím bez finance zprávy.']
+      ];
+      document.getElementById('status-list').innerHTML = statusRows.map(([title, text]) => `
+        <div class="status-item">
+          <span class="status-dot"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      const sourceRows = [
+        ['4PX CZ inventory', 'OK', `Warehouse ${summary.config.warehouseCode}`, summary.accounts.cz.inventory.items],
+        ['4PX SK inventory', 'OK', `Warehouse ${summary.config.warehouseCode}`, summary.accounts.sk.inventory.items],
+        ['4PX CZ outbound', 'OK', `Recent pages: ${summary.accounts.cz.outbound.scannedPages}`, summary.accounts.cz.outbound.items],
+        ['4PX SK outbound', 'OK', `Recent pages: ${summary.accounts.sk.outbound.scannedPages}`, summary.accounts.sk.outbound.items],
+        ['WPJ / GraphQL', summary.wpJ.ready ? 'OK' : 'Čeká', summary.wpJ.message, summary.wpJ.orders || 0],
+        ['ABRA Flexi / finance', summary.finance?.ready ? 'OK' : 'Čeká', summary.finance?.message || 'Bez dat', Math.round(summary.finance?.currentMonth?.revenue || 0)],
+        ['Marketing', summary.marketing?.ready ? 'OK' : 'Čeká', summary.marketing?.message || 'Bez dat', Math.round(summary.marketing?.currentMonth?.totalSpend || 0)],
+        ['Ranní report', 'OK', `Alerty: ${(summary.report.alerts || []).length}`, summary.report.shipments || 0]
+      ];
+      document.getElementById('sources-table').innerHTML = sourceRows.map(row => `
+        <tr>
+          <td>${row[0]}</td>
+          <td>${row[1] === 'OK' ? DP.statusPill('OK','success') : DP.statusPill(row[1],'warning')}</td>
+          <td>${row[2]}</td>
+          <td class="num">${DP.fmtNumber(row[3])}</td>
+        </tr>
+      `).join('');
+    })().catch(err => {
+      document.getElementById('attention-list').innerHTML = `<div class="attention-item"><span class="attention-dot"></span><div><strong>Nepodařilo se načíst návrh</strong><span>${err.message}</span></div></div>`;
+    });
+  </script>
+</body>
+</html>
