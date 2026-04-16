@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T16:00:00.732323+02:00",
+  "generatedAt": "2026-04-16T16:09:15.040487+02:00",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
     "to": "2026-04-15T23:59:59+02:00"
@@ -245,9 +245,9 @@
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 2216.0,
+      "wpj4pxStock": 2215.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 2216.0,
+      "stockDelta": 2215.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -1550,99 +1550,6 @@
       ]
     },
     {
-      "code": "UA132",
-      "title": "Peeling Broskovový 1+1",
-      "ean": null,
-      "url": "https://www.kralovstvi-tiande.cz/peeling-broskovovy-1-1_z7427/",
-      "visible": false,
-      "wpj": {
-        "inStore": 2216.0,
-        "fourpxStoreTotal": 2216.0,
-        "priceWithVat": 42.0,
-        "stores": [
-          {
-            "storeId": 6,
-            "storeName": "4PX CZ",
-            "inStore": 2216.0
-          },
-          {
-            "storeId": 7,
-            "storeName": "4PX SK",
-            "inStore": 0.0
-          },
-          {
-            "storeId": 8,
-            "storeName": "Fiktivní CZ",
-            "inStore": 0.0
-          },
-          {
-            "storeId": 9,
-            "storeName": "Fiktivní SK",
-            "inStore": 0.0
-          },
-          {
-            "storeId": 10,
-            "storeName": "[FlexiBee] Sklad Měčín",
-            "inStore": 0.0
-          },
-          {
-            "storeId": 11,
-            "storeName": "[FlexiBee] Sklad LTM",
-            "inStore": 19.0
-          }
-        ]
-      },
-      "fourpx": {
-        "cz": {
-          "availableStock": 0.0,
-          "pendingStock": 0.0,
-          "freezeStock": 0.0,
-          "onwayStock": 0.0,
-          "batchNos": [],
-          "skuIds": [],
-          "sourceCodes": [],
-          "mappedSourceCodes": [],
-          "mappingRules": []
-        },
-        "sk": {
-          "availableStock": 0.0,
-          "pendingStock": 0.0,
-          "freezeStock": 0.0,
-          "onwayStock": 0.0,
-          "batchNos": [],
-          "skuIds": [],
-          "sourceCodes": [],
-          "mappedSourceCodes": [],
-          "mappingRules": []
-        },
-        "availableTotal": 0.0,
-        "sourceCodes": [],
-        "mappedSourceCodes": [],
-        "manualMappedSourceCodes": [],
-        "autoMappedSourceCodes": [],
-        "mappingRules": []
-      },
-      "yesterdaySales": {
-        "units": 0.0,
-        "revenueWithVat": 0.0,
-        "sourceCodes": []
-      },
-      "yesterdayOutbound": {
-        "czUnits": 0.0,
-        "skUnits": 0.0,
-        "shipments": 0,
-        "sourceCodes": [],
-        "mappedSourceCodes": [],
-        "manualMappedSourceCodes": [],
-        "autoMappedSourceCodes": []
-      },
-      "stockDelta": 2216.0,
-      "flags": [
-        "only_in_wpj_4px_context",
-        "stock_mismatch"
-      ]
-    },
-    {
       "code": "MZ984",
       "title": "Luxusní péče pro hedvábně jemné ruce",
       "ean": null,
@@ -1765,6 +1672,99 @@
             "storeId": 11,
             "storeName": "[FlexiBee] Sklad LTM",
             "inStore": 10.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": [],
+          "sourceCodes": [],
+          "mappedSourceCodes": [],
+          "mappingRules": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": [],
+          "sourceCodes": [],
+          "mappedSourceCodes": [],
+          "mappingRules": []
+        },
+        "availableTotal": 0.0,
+        "sourceCodes": [],
+        "mappedSourceCodes": [],
+        "manualMappedSourceCodes": [],
+        "autoMappedSourceCodes": [],
+        "mappingRules": []
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0,
+        "sourceCodes": []
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0,
+        "sourceCodes": [],
+        "mappedSourceCodes": [],
+        "manualMappedSourceCodes": [],
+        "autoMappedSourceCodes": []
+      },
+      "stockDelta": 2215.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
+      "code": "UA132",
+      "title": "Peeling Broskovový 1+1",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/peeling-broskovovy-1-1_z7427/",
+      "visible": false,
+      "wpj": {
+        "inStore": 2215.0,
+        "fourpxStoreTotal": 2215.0,
+        "priceWithVat": 42.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2215.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 9,
+            "storeName": "Fiktivní SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 19.0
           }
         ]
       },
@@ -2782,13 +2782,13 @@
       "visible": true,
       "wpj": {
         "inStore": 2116.0,
-        "fourpxStoreTotal": 2226.0,
+        "fourpxStoreTotal": 2225.0,
         "priceWithVat": 45.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2221.0
+            "inStore": 2220.0
           },
           {
             "storeId": 7,
@@ -2821,7 +2821,7 @@
             "922001041534"
           ],
           "batchNos": [],
-          "availableStock": 2221.0,
+          "availableStock": 2220.0,
           "pendingStock": 156.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
@@ -2844,7 +2844,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2226.0,
+        "availableTotal": 2225.0,
         "sourceCodes": [
           "40203"
         ],
@@ -2881,14 +2881,14 @@
       "url": "https://www.kralovstvi-tiande.cz/brozura-fytogely_z4666/",
       "visible": true,
       "wpj": {
-        "inStore": 3455.0,
-        "fourpxStoreTotal": 3500.0,
+        "inStore": 3454.0,
+        "fourpxStoreTotal": 3498.0,
         "priceWithVat": 20.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 3500.0
+            "inStore": 3498.0
           },
           {
             "storeId": 7,
@@ -2921,7 +2921,7 @@
             "922001041431"
           ],
           "batchNos": [],
-          "availableStock": 3500.0,
+          "availableStock": 3498.0,
           "pendingStock": 74.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
@@ -2944,7 +2944,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 3500.0,
+        "availableTotal": 3498.0,
         "sourceCodes": [
           "000075"
         ],
@@ -3152,14 +3152,14 @@
       "url": "https://www.kralovstvi-tiande.cz/fytogel-slaviton_z8039/",
       "visible": true,
       "wpj": {
-        "inStore": 2198.0,
-        "fourpxStoreTotal": 2681.0,
+        "inStore": 2196.0,
+        "fourpxStoreTotal": 2680.0,
         "priceWithVat": 434.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2250.0
+            "inStore": 2249.0
           },
           {
             "storeId": 7,
@@ -3192,8 +3192,8 @@
             "922002239194"
           ],
           "batchNos": [],
-          "availableStock": 2250.0,
-          "pendingStock": 50.0,
+          "availableStock": 2249.0,
+          "pendingStock": 51.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3210,12 +3210,12 @@
             "922002239201"
           ],
           "batchNos": [],
-          "availableStock": 431.0,
-          "pendingStock": 0.0,
+          "availableStock": 430.0,
+          "pendingStock": 1.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2681.0,
+        "availableTotal": 2679.0,
         "sourceCodes": [
           "44402-2"
         ],
@@ -3242,7 +3242,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 0.0,
+      "stockDelta": 1.0,
       "flags": []
     },
     {
@@ -3252,14 +3252,14 @@
       "url": "https://www.kralovstvi-tiande.cz/jemny-intimni-gel_z7619/",
       "visible": true,
       "wpj": {
-        "inStore": 1888.0,
-        "fourpxStoreTotal": 2291.0,
+        "inStore": 1887.0,
+        "fourpxStoreTotal": 2290.0,
         "priceWithVat": 385.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1956.0
+            "inStore": 1955.0
           },
           {
             "storeId": 7,
@@ -3302,8 +3302,8 @@
             "922001733501"
           ],
           "batchNos": [],
-          "availableStock": 1956.0,
-          "pendingStock": 60.0,
+          "availableStock": 1955.0,
+          "pendingStock": 61.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3325,7 +3325,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2291.0,
+        "availableTotal": 2290.0,
         "sourceCodes": [
           "64404-2"
         ],
@@ -3362,14 +3362,14 @@
       "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-slipove-vlozky-s-anionty-nefritova-svezest_z2110/",
       "visible": true,
       "wpj": {
-        "inStore": 635.0,
-        "fourpxStoreTotal": 778.0,
+        "inStore": 633.0,
+        "fourpxStoreTotal": 776.0,
         "priceWithVat": 176.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 682.0
+            "inStore": 680.0
           },
           {
             "storeId": 7,
@@ -3407,7 +3407,7 @@
             "922001041143"
           ],
           "batchNos": [],
-          "availableStock": 682.0,
+          "availableStock": 680.0,
           "pendingStock": 57.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
@@ -3430,7 +3430,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 778.0,
+        "availableTotal": 776.0,
         "sourceCodes": [
           "61915"
         ],
@@ -3508,7 +3508,7 @@
           ],
           "batchNos": [],
           "availableStock": 555.0,
-          "pendingStock": 32.0,
+          "pendingStock": 31.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3772,12 +3772,12 @@
             "922001433049"
           ],
           "batchNos": [],
-          "availableStock": 1044.0,
-          "pendingStock": 0.0,
+          "availableStock": 1043.0,
+          "pendingStock": 1.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 3267.0,
+        "availableTotal": 3266.0,
         "sourceCodes": [
           "30118",
           "30118/01",
@@ -3829,7 +3829,7 @@
           "30118/05"
         ]
       },
-      "stockDelta": 0.0,
+      "stockDelta": 1.0,
       "flags": [
         "auto_mapped_4px_alias"
       ]
@@ -3887,7 +3887,7 @@
           ],
           "batchNos": [],
           "availableStock": 845.0,
-          "pendingStock": 38.0,
+          "pendingStock": 37.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4047,13 +4047,13 @@
       "visible": true,
       "wpj": {
         "inStore": 404.0,
-        "fourpxStoreTotal": 703.0,
+        "fourpxStoreTotal": 695.0,
         "priceWithVat": 206.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 432.0
+            "inStore": 424.0
           },
           {
             "storeId": 7,
@@ -4091,8 +4091,8 @@
             "922001041129"
           ],
           "batchNos": [],
-          "availableStock": 432.0,
-          "pendingStock": 30.0,
+          "availableStock": 424.0,
+          "pendingStock": 37.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4114,7 +4114,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 703.0,
+        "availableTotal": 695.0,
         "sourceCodes": [
           "61912"
         ],
@@ -4466,12 +4466,12 @@
             "922001433043"
           ],
           "batchNos": [],
-          "availableStock": 1271.0,
-          "pendingStock": 0.0,
+          "availableStock": 1270.0,
+          "pendingStock": 1.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 3795.0,
+        "availableTotal": 3794.0,
         "sourceCodes": [
           "30117",
           "30117/01",
@@ -4523,7 +4523,7 @@
           "30117/05"
         ]
       },
-      "stockDelta": 0.0,
+      "stockDelta": 1.0,
       "flags": [
         "auto_mapped_4px_alias"
       ]
@@ -4576,7 +4576,7 @@
           ],
           "batchNos": [],
           "availableStock": 639.0,
-          "pendingStock": 34.0,
+          "pendingStock": 33.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4791,7 +4791,7 @@
           ],
           "batchNos": [],
           "availableStock": 887.0,
-          "pendingStock": 19.0,
+          "pendingStock": 18.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },

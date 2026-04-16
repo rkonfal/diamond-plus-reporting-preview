@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T16:00:00.732323+02:00",
+  "generatedAt": "2026-04-16T16:09:15.040487+02:00",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
     "to": "2026-04-15T23:59:59+02:00"
@@ -43868,8 +43868,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 4,
+        "name": "připraveno k vyzvednutí"
       },
       "totalPrice": {
         "withVat": 624,
@@ -45480,8 +45480,8 @@
       "cancelled": false,
       "isPaid": false,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 1309,
@@ -57711,7 +57711,7 @@
       },
       {
         "name": "doručeno",
-        "count": 59
+        "count": 60
       },
       {
         "name": "připraveno k vyzvednutí",
@@ -57719,7 +57719,7 @@
       },
       {
         "name": "expedováno",
-        "count": 36
+        "count": 35
       },
       {
         "name": "nová",
