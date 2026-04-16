@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Logistika 4PX, Reporting V2</title>
+  <title>Logistika / 4PX, Reporting V2</title>
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
@@ -16,112 +16,152 @@
       <a class="active" href="logistics.html">🚚 Logistika 4PX</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">Recent outbound feed bez závislosti na starém snapshot dashboardu.</div>
+    <div class="sidebar-footer">Logistika už teď běží nad párovanou vrstvou a vytahuje i 4PX položky, které nemají vazbu do WPJ.</div>
   </aside>
 
   <main class="main">
     <header class="header">
       <div class="header-row">
         <div>
-          <h1>Logistika a expedice</h1>
+          <h1>Logistika 4PX</h1>
           <div class="header-sub">
-            <span class="badge live" id="logistics-generated">Načítám refresh…</span>
-            <span class="badge info">Zdroj: 4PX outbound list</span>
+            <span class="badge live" id="log-window">Načítám okno…</span>
+            <span class="badge info" id="log-shipments">Načítám zásilky…</span>
+            <span class="badge warn" id="log-expiry">Expirace: hledá se zdroj</span>
           </div>
         </div>
         <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
       </div>
     </header>
 
-    <section class="grid kpi-grid" id="logistics-kpis"></section>
+    <section class="grid kpi-grid" id="log-kpis"></section>
 
-    <section class="grid two-col">
+    <section class="grid two-col" style="margin-top:20px;">
       <div class="card">
-        <h2 class="section-title">Rozpad podle země / účtu</h2>
+        <h2 class="section-title">Top outbound produkty včera</h2>
+        <div class="section-subtitle">Párování expedovaných SKU s produktem a počtem zásilek.</div>
         <table class="table">
-          <thead><tr><th>Účet</th><th>Země</th><th class="num">Zásilek</th></tr></thead>
-          <tbody id="country-table"></tbody>
+          <thead>
+            <tr>
+              <th>Kód / produkt</th>
+              <th class="num">Expedované kusy</th>
+              <th class="num">Zásilky</th>
+            </tr>
+          </thead>
+          <tbody id="top-outbound-table"></tbody>
         </table>
       </div>
+
       <div class="card">
-        <h2 class="section-title">Rozpad podle produktu 4PX</h2>
+        <h2 class="section-title">Rozpad podle dopravce</h2>
+        <div class="section-subtitle">Včerejší 4PX okno přes carrier brand names.</div>
         <table class="table">
-          <thead><tr><th>Účet</th><th>Produkt</th><th class="num">Zásilek</th></tr></thead>
-          <tbody id="product-table"></tbody>
+          <thead>
+            <tr>
+              <th>Dopravce</th>
+              <th class="num">Zásilek</th>
+            </tr>
+          </thead>
+          <tbody id="carrier-table"></tbody>
         </table>
       </div>
     </section>
 
-    <section class="card" style="margin-top:18px;">
-      <h2 class="section-title">Nejnovější zásilky</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Účet</th>
-            <th>Ref</th>
-            <th>Tracking</th>
-            <th>Země</th>
-            <th>Produkt</th>
-            <th>Stav</th>
-            <th class="num">Váha</th>
-          </tr>
-        </thead>
-        <tbody id="recent-table"></tbody>
-      </table>
+    <section class="grid two-col" style="margin-top:20px;">
+      <div class="card">
+        <h2 class="section-title">SKU pouze v 4PX</h2>
+        <div class="section-subtitle">Tady jsou položky, které se expedují nebo leží ve 4PX, ale nevidíme je správně ve WPJ.</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kód / produkt</th>
+              <th class="num">4PX sklad</th>
+              <th class="num">Expedované kusy</th>
+            </tr>
+          </thead>
+          <tbody id="only-4px-log-table"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Poznámky k chybějícím datům</h2>
+        <div class="block-list">
+          <div class="block-item">
+            <h4>Expirace</h4>
+            <p>4PX inventory vrací batch číslo, ale ne datum expirace. Proto expirace ještě nejsou v ostré logistické kartě dopočítané.</p>
+          </div>
+          <div class="block-item">
+            <h4>Párování SKU</h4>
+            <p>Teď párujeme primárně přes kód produktu / SKU. Další krok je shortlist produktů, kde kódy nesedí a je potřeba ruční mapování.</p>
+          </div>
+          <div class="block-item">
+            <h4>Auto publish</h4>
+            <p>Po každém refreshi se preview publikuje samo na GitHub Pages, takže logistická vrstva je už vidět bez ručního zásahu.</p>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
   <script src="assets/app.js"></script>
   <script>
     DP.initThemeToggle();
-    function groupCounts(list, key) {
-      const out = new Map();
-      for (const item of list) out.set(item[key] || '–', (out.get(item[key] || '–') || 0) + 1);
-      return [...out.entries()].sort((a,b) => b[1] - a[1]);
+
+    function fmt(value) {
+      return DP.fmtNumber(Math.round(Number(value || 0)));
     }
+
+    function label(row) {
+      return `${row.code || '–'} · ${row.title || 'Bez názvu'}`;
+    }
+
     (async () => {
-      const summary = await DP.loadJson('../data/current/portal_summary.json');
-      const cz = await DP.loadJson('../data/current/4px_cz_outbound_recent.json');
-      const sk = await DP.loadJson('../data/current/4px_sk_outbound_recent.json');
-      document.getElementById('logistics-generated').textContent = `Poslední refresh: ${DP.fmtDateTime(summary.generatedAt)}`;
-      document.getElementById('logistics-kpis').innerHTML = [
-        ['CZ recent zásilky', DP.fmtNumber(cz.items.length), `${cz.scannedPages} stránek`, 'green'],
-        ['SK recent zásilky', DP.fmtNumber(sk.items.length), `${sk.scannedPages} stránek`, 'blue'],
-        ['CZ top produkt', summary.accounts.cz.outbound.topLogisticsProduct || '–', 'nejčastější produkt 4PX', 'gold'],
-        ['SK top produkt', summary.accounts.sk.outbound.topLogisticsProduct || '–', 'nejčastější produkt 4PX', 'red']
+      const overview = await DP.loadJson('../data/current/combined_inventory_overview.json');
+      const report = await DP.loadJson('../data/current/morning_report_previous_day.json');
+      const portal = await DP.loadJson('../data/current/portal_summary.json');
+
+      document.getElementById('log-window').textContent = `Okno: ${new Date(report.window.from).toLocaleDateString('cs-CZ')}`;
+      document.getElementById('log-shipments').textContent = `Zásilky: ${fmt(report.logistics.shipmentsTotal)}`;
+
+      const topCarrier = report.logistics.carrierCounts[0]?.name || '–';
+      document.getElementById('log-kpis').innerHTML = [
+        ['Zásilky celkem', fmt(report.logistics.shipmentsTotal), `CZ ${fmt(report.logistics.byAccount.CZ)} / SK ${fmt(report.logistics.byAccount.SK)}`, 'green'],
+        ['Top dopravce', topCarrier, `${fmt(report.logistics.carrierCounts[0]?.count || 0)} zásilek`, 'gold'],
+        ['SKU pouze v 4PX', fmt(overview.counts.onlyIn4px), 'chybí vazba do WPJ', 'red'],
+        ['Top outbound SKU', label(overview.topOutboundProducts[0] || { code: '–', title: '–' }), `${fmt((overview.topOutboundProducts[0]?.yesterdayOutbound?.czUnits || 0) + (overview.topOutboundProducts[0]?.yesterdayOutbound?.skUnits || 0))} ks`, 'blue']
       ].map(([label, value, sub, klass]) => `
-        <div class="card kpi-card ${klass}"><div class="kpi-label">${label}</div><div class="kpi-value">${value}</div><div class="kpi-sub">${sub}</div></div>
+        <div class="card kpi-card ${klass}">
+          <div class="kpi-label">${label}</div>
+          <div class="kpi-value">${value}</div>
+          <div class="kpi-sub">${sub}</div>
+        </div>
       `).join('');
 
-      const countryRows = [
-        ...groupCounts(cz.items.map(x => ({...x, account:'CZ'})), 'country').map(([country, count]) => ['CZ', country, count]),
-        ...groupCounts(sk.items.map(x => ({...x, account:'SK'})), 'country').map(([country, count]) => ['SK', country, count])
-      ];
-      document.getElementById('country-table').innerHTML = countryRows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td class="num">${DP.fmtNumber(r[2])}</td></tr>`).join('');
-
-      const productRows = [
-        ...groupCounts(cz.items.map(x => ({...x, account:'CZ'})), 'logistics_product_code').slice(0,8).map(([p,count]) => ['CZ', p, count]),
-        ...groupCounts(sk.items.map(x => ({...x, account:'SK'})), 'logistics_product_code').slice(0,8).map(([p,count]) => ['SK', p, count])
-      ];
-      document.getElementById('product-table').innerHTML = productRows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td class="num">${DP.fmtNumber(r[2])}</td></tr>`).join('');
-
-      const recent = [
-        ...cz.items.slice(0,15).map(x => ({...x, account:'CZ'})),
-        ...sk.items.slice(0,15).map(x => ({...x, account:'SK'}))
-      ].sort((a,b) => Number(b.create_time || 0) - Number(a.create_time || 0)).slice(0, 24);
-
-      document.getElementById('recent-table').innerHTML = recent.map(item => `
+      document.getElementById('top-outbound-table').innerHTML = overview.topOutboundProducts.map(row => `
         <tr>
-          <td>${item.account}</td>
-          <td>${item.ref_no || '–'}</td>
-          <td>${item.shipping_no || item['4px_tracking_no'] || '–'}</td>
-          <td>${item.country || '–'}</td>
-          <td>${item.logistics_product_code || '–'}</td>
-          <td>${item.status || '–'}</td>
-          <td class="num">${DP.fmtNumber(item.total_weight || 0)}</td>
+          <td>${label(row)}</td>
+          <td class="num">${fmt(row.yesterdayOutbound.czUnits + row.yesterdayOutbound.skUnits)}</td>
+          <td class="num">${fmt(row.yesterdayOutbound.shipments)}</td>
         </tr>
-      `).join('');
-    })();
+      `).join('') || '<tr><td colspan="3">Zatím bez včerejších expedic.</td></tr>';
+
+      document.getElementById('carrier-table').innerHTML = report.logistics.carrierCounts.map(row => `
+        <tr>
+          <td>${row.name}</td>
+          <td class="num">${fmt(row.count)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="2">Žádná data o dopravci.</td></tr>';
+
+      document.getElementById('only-4px-log-table').innerHTML = overview.onlyIn4px.map(row => `
+        <tr>
+          <td>${label(row)}</td>
+          <td class="num">${fmt(row.fourpx.availableTotal)}</td>
+          <td class="num">${fmt(row.yesterdayOutbound.czUnits + row.yesterdayOutbound.skUnits)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="3">Aktuálně bez orphan 4PX SKU.</td></tr>';
+    })().catch(err => {
+      document.getElementById('log-window').textContent = `Nepodařilo se načíst data: ${err.message}`;
+    });
   </script>
 </body>
 </html>
