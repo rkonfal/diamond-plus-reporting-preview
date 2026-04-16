@@ -87,6 +87,23 @@
     </section>
 
     <section class="card" style="margin-top:20px;">
+      <h2 class="section-title">Mapovací návrhy pro orphan SKU</h2>
+      <div class="section-subtitle">První heuristika pro 4PX kódy, které vypadají jako varianta existujícího WPJ produktu, typicky přes suffix typu <code>/01</code>.</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>4PX orphan SKU</th>
+            <th>Navržený WPJ produkt</th>
+            <th class="num">Expedováno včera</th>
+            <th class="num">4PX sklad</th>
+            <th>Pravidlo</th>
+          </tr>
+        </thead>
+        <tbody id="mapping-suggestions-table"></tbody>
+      </table>
+    </section>
+
+    <section class="card" style="margin-top:20px;">
       <h2 class="section-title">Top stock mismatchy</h2>
       <div class="section-subtitle">Porovnání WPJ 4PX store stavu proti reálnému 4PX inventory pullu.</div>
       <table class="table">
@@ -186,6 +203,16 @@
           </td>
         </tr>
       `).join('') || '<tr><td colspan="5">Zatím bez prioritního shortlistu.</td></tr>';
+
+      document.getElementById('mapping-suggestions-table').innerHTML = (overview.mappingSuggestions || []).map(row => `
+        <tr>
+          <td>${row.orphanCode} · ${row.orphanTitle}</td>
+          <td>${row.suggestedWpjCode} · ${row.suggestedWpjTitle}</td>
+          <td class="num">${fmt(row.yesterdayOutboundUnits)}</td>
+          <td class="num">${fmt(row.fourpxAvailable)}</td>
+          <td>${row.rule}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="5">Zatím bez mapovacích návrhů.</td></tr>';
     })().catch(err => {
       document.getElementById('inventory-window').textContent = `Nepodařilo se načíst data: ${err.message}`;
     });

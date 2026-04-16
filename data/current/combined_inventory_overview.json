@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T11:11:53.864509+02:00",
+  "generatedAt": "2026-04-16T11:15:15.496029+02:00",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
     "to": "2026-04-15T23:59:59+02:00"
@@ -185,7 +185,7 @@
       "code": "41328/01",
       "title": "Levandulová náplast na nohy (Počet kusů: 1ks)",
       "priority": "critical",
-      "score": 91.7,
+      "score": 91.6,
       "reasons": [
         "včera se prodalo 87 ks",
         "včera se expedovalo 171 ks",
@@ -193,8 +193,8 @@
       ],
       "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
       "wpj4pxStock": 0,
-      "fourpxAvailable": 1285.0,
-      "stockDelta": -1285.0,
+      "fourpxAvailable": 1280.0,
+      "stockDelta": -1280.0,
       "yesterdaySalesUnits": 87.0,
       "yesterdayOutboundUnits": 171.0,
       "flags": [
@@ -437,7 +437,7 @@
       "code": "41105/03",
       "title": "Regenerační krém na nohy s hadím olejem (Počet kusů: 3ks)",
       "priority": "critical",
-      "score": 72.52,
+      "score": 72.5,
       "reasons": [
         "včera se prodalo 10 ks",
         "včera se expedovalo 11 ks",
@@ -445,8 +445,8 @@
       ],
       "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
       "wpj4pxStock": 0,
-      "fourpxAvailable": 326.0,
-      "stockDelta": -326.0,
+      "fourpxAvailable": 325.0,
+      "stockDelta": -325.0,
       "yesterdaySalesUnits": 10.0,
       "yesterdayOutboundUnits": 11.0,
       "flags": [
@@ -537,6 +537,547 @@
         "only_in_4px",
         "shipped_without_wpj_product"
       ]
+    }
+  ],
+  "mappingSuggestions": [
+    {
+      "orphanCode": "41328/01",
+      "orphanTitle": "Levandulová náplast na nohy (Počet kusů: 1ks)",
+      "suggestedWpjCode": "41328",
+      "suggestedWpjTitle": "Levandulová náplast na nohy",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 1280.0,
+      "yesterdaySalesUnits": 87.0,
+      "yesterdayOutboundUnits": 171.0
+    },
+    {
+      "orphanCode": "30118/01",
+      "orphanTitle": "Kosmetická fytonáplast Wutong Počet kusů: 1ks",
+      "suggestedWpjCode": "30118",
+      "suggestedWpjTitle": "Kosmetická fytonáplast Wutong",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 2281.0,
+      "yesterdaySalesUnits": 76.0,
+      "yesterdayOutboundUnits": 102.0
+    },
+    {
+      "orphanCode": "30117/01",
+      "orphanTitle": "Kosmetická fytonáplast Jian Kang (Počet kusů: 1ks)",
+      "suggestedWpjCode": "30117",
+      "suggestedWpjTitle": "Kosmetická fytonáplast Jian Kang",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 2297.0,
+      "yesterdaySalesUnits": 55.0,
+      "yesterdayOutboundUnits": 71.0
+    },
+    {
+      "orphanCode": "41105/01",
+      "orphanTitle": "Regenerační krém na nohy s hadím olejem Počet kusů: 1ks",
+      "suggestedWpjCode": "41105",
+      "suggestedWpjTitle": "Regenerační krém na nohy s hadím olejem",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 2949.0,
+      "yesterdaySalesUnits": 25.0,
+      "yesterdayOutboundUnits": 41.0
+    },
+    {
+      "orphanCode": "60145/01",
+      "orphanTitle": "Denní hygienická vložka „Jemná péče“ (Počet kusů: 1ks)",
+      "suggestedWpjCode": "60145",
+      "suggestedWpjTitle": "Denní hygienická vložka „Jemná péče“",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 3755.0,
+      "yesterdaySalesUnits": 29.0,
+      "yesterdayOutboundUnits": 26.0
+    },
+    {
+      "orphanCode": "63601/01",
+      "orphanTitle": "Denní vložka Energie života (Počet kusů: 1ks)",
+      "suggestedWpjCode": "63601",
+      "suggestedWpjTitle": "Denní vložka Energie života",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 10239.0,
+      "yesterdaySalesUnits": 20.0,
+      "yesterdayOutboundUnits": 22.0
+    },
+    {
+      "orphanCode": "63601/10",
+      "orphanTitle": "Denní vložka Energie života Počet kusů: 10ks",
+      "suggestedWpjCode": "63601",
+      "suggestedWpjTitle": "Denní vložka Energie života",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 607.0,
+      "yesterdaySalesUnits": 14.0,
+      "yesterdayOutboundUnits": 22.0
+    },
+    {
+      "orphanCode": "41314/01",
+      "orphanTitle": "Náplast na nohy (Počet kusů: 1ks)",
+      "suggestedWpjCode": "41314",
+      "suggestedWpjTitle": "Náplast na nohy",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 4712.0,
+      "yesterdaySalesUnits": 20.0,
+      "yesterdayOutboundUnits": 21.0
+    },
+    {
+      "orphanCode": "41106/01",
+      "orphanTitle": "Preventivní krém na nohy s hadím olejem Počet kusů: 1ks",
+      "suggestedWpjCode": "41106",
+      "suggestedWpjTitle": "Preventivní krém na nohy s hadím olejem",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 3123.0,
+      "yesterdaySalesUnits": 9.0,
+      "yesterdayOutboundUnits": 17.0
+    },
+    {
+      "orphanCode": "60145/05",
+      "orphanTitle": "Denná hygienická slipová vložka „Jemná starostlivosť“ (Ks: 5)",
+      "suggestedWpjCode": "60145",
+      "suggestedWpjTitle": "Denní hygienická vložka „Jemná péče“",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 1857.0,
+      "yesterdaySalesUnits": 8.0,
+      "yesterdayOutboundUnits": 16.0
+    },
+    {
+      "orphanCode": "41328/10",
+      "orphanTitle": "Levandulová náplast na nohy (Počet kusů: 10ks)",
+      "suggestedWpjCode": "41328",
+      "suggestedWpjTitle": "Levandulová náplast na nohy",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 335.0,
+      "yesterdaySalesUnits": 5.0,
+      "yesterdayOutboundUnits": 15.0
+    },
+    {
+      "orphanCode": "41314/05",
+      "orphanTitle": "Náplast na nohy (Počet kusů: 5ks)",
+      "suggestedWpjCode": "41314",
+      "suggestedWpjTitle": "Náplast na nohy",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 328.0,
+      "yesterdaySalesUnits": 6.0,
+      "yesterdayOutboundUnits": 14.0
+    },
+    {
+      "orphanCode": "63601/05",
+      "orphanTitle": "Denní vložka Energie života (Počet kusů: 5ks)",
+      "suggestedWpjCode": "63601",
+      "suggestedWpjTitle": "Denní vložka Energie života",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 1184.0,
+      "yesterdaySalesUnits": 11.0,
+      "yesterdayOutboundUnits": 13.0
+    },
+    {
+      "orphanCode": "80112/07",
+      "orphanTitle": "Ovocný balzám na rty (Ovocný balzám na rty: 07 Jahoda)",
+      "suggestedWpjCode": "80112",
+      "suggestedWpjTitle": "Ovocný balzám na rty",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 501.0,
+      "yesterdaySalesUnits": 8.0,
+      "yesterdayOutboundUnits": 13.0
+    },
+    {
+      "orphanCode": "41105/03",
+      "orphanTitle": "Regenerační krém na nohy s hadím olejem (Počet kusů: 3ks)",
+      "suggestedWpjCode": "41105",
+      "suggestedWpjTitle": "Regenerační krém na nohy s hadím olejem",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 325.0,
+      "yesterdaySalesUnits": 10.0,
+      "yesterdayOutboundUnits": 11.0
+    },
+    {
+      "orphanCode": "30118/03",
+      "orphanTitle": "Kosmetická fytonáplast Wutong (Počet kusů: 3ks)",
+      "suggestedWpjCode": "30118",
+      "suggestedWpjTitle": "Kosmetická fytonáplast Wutong",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 491.0,
+      "yesterdaySalesUnits": 8.0,
+      "yesterdayOutboundUnits": 11.0
+    },
+    {
+      "orphanCode": "30118/05",
+      "orphanTitle": "Kosmetická fytonáplast Wutong (Počet kusů: 5ks)",
+      "suggestedWpjCode": "30118",
+      "suggestedWpjTitle": "Kosmetická fytonáplast Wutong",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 515.0,
+      "yesterdaySalesUnits": 6.0,
+      "yesterdayOutboundUnits": 10.0
+    },
+    {
+      "orphanCode": "60145/10",
+      "orphanTitle": "Denní hygienická vložka „Jemná péče“ (Počet kusů: 10ks)",
+      "suggestedWpjCode": "60145",
+      "suggestedWpjTitle": "Denní hygienická vložka „Jemná péče“",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 445.0,
+      "yesterdaySalesUnits": 7.0,
+      "yesterdayOutboundUnits": 9.0
+    },
+    {
+      "orphanCode": "41328/07",
+      "orphanTitle": "Levanduľová náplasť na nohy (Ks: 7)",
+      "suggestedWpjCode": "41328",
+      "suggestedWpjTitle": "Levandulová náplast na nohy",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 457.0,
+      "yesterdaySalesUnits": 4.0,
+      "yesterdayOutboundUnits": 9.0
+    },
+    {
+      "orphanCode": "80112/05",
+      "orphanTitle": "Ovocný balzám na rty (Ovocný balzám na rty: 05 Višeň)",
+      "suggestedWpjCode": "80112",
+      "suggestedWpjTitle": "Ovocný balzám na rty",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 187.0,
+      "yesterdaySalesUnits": 5.0,
+      "yesterdayOutboundUnits": 7.0
+    },
+    {
+      "orphanCode": "30117/03",
+      "orphanTitle": "Kosmetická fytonáplast Jian Kang (Počet kusů: 3ks)",
+      "suggestedWpjCode": "30117",
+      "suggestedWpjTitle": "Kosmetická fytonáplast Jian Kang",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 1122.0,
+      "yesterdaySalesUnits": 5.0,
+      "yesterdayOutboundUnits": 6.0
+    },
+    {
+      "orphanCode": "41328/05",
+      "orphanTitle": "Levandulová náplast na nohy",
+      "suggestedWpjCode": "41328",
+      "suggestedWpjTitle": "Levandulová náplast na nohy",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 225.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 6.0
+    },
+    {
+      "orphanCode": "41105/05",
+      "orphanTitle": "Regenerační krém na nohy s hadím olejem (Počet kusů: 5ks)",
+      "suggestedWpjCode": "41105",
+      "suggestedWpjTitle": "Regenerační krém na nohy s hadím olejem",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 385.0,
+      "yesterdaySalesUnits": 4.0,
+      "yesterdayOutboundUnits": 5.0
+    },
+    {
+      "orphanCode": "80921/02",
+      "orphanTitle": "Sametový pleťový pudr Duo (Odstín pudru: odstín 02)",
+      "suggestedWpjCode": "80921",
+      "suggestedWpjTitle": "Sametový pleťový pudr Duo",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 203.0,
+      "yesterdaySalesUnits": 4.0,
+      "yesterdayOutboundUnits": 5.0
+    },
+    {
+      "orphanCode": "30117/05",
+      "orphanTitle": "Kosmetická fytonáplast Jian Kang (Počet kusů: 5ks)",
+      "suggestedWpjCode": "30117",
+      "suggestedWpjTitle": "Kosmetická fytonáplast Jian Kang",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 389.0,
+      "yesterdaySalesUnits": 3.0,
+      "yesterdayOutboundUnits": 5.0
+    },
+    {
+      "orphanCode": "80921/01",
+      "orphanTitle": "Sametový pleťový pudr Duo (Odstín pudru: odstín 01)",
+      "suggestedWpjCode": "80921",
+      "suggestedWpjTitle": "Sametový pleťový pudr Duo",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 225.0,
+      "yesterdaySalesUnits": 2.0,
+      "yesterdayOutboundUnits": 5.0
+    },
+    {
+      "orphanCode": "80904/01",
+      "orphanTitle": "Ceruzka na pery a oči Odtieň ceruzka: Odstín 01",
+      "suggestedWpjCode": "80904",
+      "suggestedWpjTitle": "Tužka na rty a oči",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 104.0,
+      "yesterdaySalesUnits": 2.0,
+      "yesterdayOutboundUnits": 5.0
+    },
+    {
+      "orphanCode": "90148/01",
+      "orphanTitle": "Zubní kartáček ProDental (Kartáček ProDental: Růžový)",
+      "suggestedWpjCode": "90148",
+      "suggestedWpjTitle": "Zubní kartáček ProDental",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 128.0,
+      "yesterdaySalesUnits": 4.0,
+      "yesterdayOutboundUnits": 3.0
+    },
+    {
+      "orphanCode": "52901/03",
+      "orphanTitle": "Intenzivní hydratační maska na obličej a krk Hyaluronová kyselina Počet kusů: 3ks",
+      "suggestedWpjCode": "52901",
+      "suggestedWpjTitle": "Intenzivní hydratační maska na obličej a krk Hyaluronová kyselina",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 434.0,
+      "yesterdaySalesUnits": 3.0,
+      "yesterdayOutboundUnits": 3.0
+    },
+    {
+      "orphanCode": "41314/10",
+      "orphanTitle": "Náplast na nohy (Počet kusů: 10ks)",
+      "suggestedWpjCode": "41314",
+      "suggestedWpjTitle": "Náplast na nohy",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 386.0,
+      "yesterdaySalesUnits": 3.0,
+      "yesterdayOutboundUnits": 3.0
+    },
+    {
+      "orphanCode": "90148/04",
+      "orphanTitle": "Zubní kartáček ProDental (Kartáček ProDental: Oranžový)",
+      "suggestedWpjCode": "90148",
+      "suggestedWpjTitle": "Zubní kartáček ProDental",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 716.0,
+      "yesterdaySalesUnits": 2.0,
+      "yesterdayOutboundUnits": 3.0
+    },
+    {
+      "orphanCode": "80112/08",
+      "orphanTitle": "Ovocný balzám na rty (Ovocný balzám na rty: 08 Malina)",
+      "suggestedWpjCode": "80112",
+      "suggestedWpjTitle": "Ovocný balzám na rty",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 193.0,
+      "yesterdaySalesUnits": 1.0,
+      "yesterdayOutboundUnits": 3.0
+    },
+    {
+      "orphanCode": "63601/08",
+      "orphanTitle": "Denní vložka Energie života (Počet kusů: 8ks)",
+      "suggestedWpjCode": "63601",
+      "suggestedWpjTitle": "Denní vložka Energie života",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 402.0,
+      "yesterdaySalesUnits": 2.0,
+      "yesterdayOutboundUnits": 2.0
+    },
+    {
+      "orphanCode": "90153/04",
+      "orphanTitle": "Dětský zubní kartáček  (Dětský kartáček: Fialový)",
+      "suggestedWpjCode": "90153",
+      "suggestedWpjTitle": "Dětský zubní kartáček ",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 195.0,
+      "yesterdaySalesUnits": 1.0,
+      "yesterdayOutboundUnits": 2.0
+    },
+    {
+      "orphanCode": "80906/01",
+      "orphanTitle": "Tužka na obočí",
+      "suggestedWpjCode": "80906",
+      "suggestedWpjTitle": "Tužka na obočí",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 136.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 2.0
+    },
+    {
+      "orphanCode": "90148/02",
+      "orphanTitle": "Zubní kartáček ProDental-modrý",
+      "suggestedWpjCode": "90148",
+      "suggestedWpjTitle": "Zubní kartáček ProDental",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 35.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 2.0
+    },
+    {
+      "orphanCode": "90148/03",
+      "orphanTitle": "Zubní kartáček ProDental (Kartáček ProDental: Zelený)",
+      "suggestedWpjCode": "90148",
+      "suggestedWpjTitle": "Zubní kartáček ProDental",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 450.0,
+      "yesterdaySalesUnits": 1.0,
+      "yesterdayOutboundUnits": 1.0
+    },
+    {
+      "orphanCode": "80112/09",
+      "orphanTitle": "Ovocný balzám na rty (Ovocný balzám na rty: 09 Broskev)",
+      "suggestedWpjCode": "80112",
+      "suggestedWpjTitle": "Ovocný balzám na rty",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 203.0,
+      "yesterdaySalesUnits": 1.0,
+      "yesterdayOutboundUnits": 1.0
+    },
+    {
+      "orphanCode": "80904/02",
+      "orphanTitle": "Ceruzka na pery a oči Odtieň ceruzka: Odstín 02",
+      "suggestedWpjCode": "80904",
+      "suggestedWpjTitle": "Tužka na rty a oči",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 177.0,
+      "yesterdaySalesUnits": 1.0,
+      "yesterdayOutboundUnits": 1.0
+    },
+    {
+      "orphanCode": "90153/03",
+      "orphanTitle": "Dětský zubní kartáček  (Dětský kartáček: Modrý)",
+      "suggestedWpjCode": "90153",
+      "suggestedWpjTitle": "Dětský zubní kartáček ",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 127.0,
+      "yesterdaySalesUnits": 1.0,
+      "yesterdayOutboundUnits": 1.0
+    },
+    {
+      "orphanCode": "80112/03",
+      "orphanTitle": "Ovocný balzám na rty (Ovocný balzám na rty: 03 Vanilka)",
+      "suggestedWpjCode": "80112",
+      "suggestedWpjTitle": "Ovocný balzám na rty",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 86.0,
+      "yesterdaySalesUnits": 1.0,
+      "yesterdayOutboundUnits": 1.0
+    },
+    {
+      "orphanCode": "41106/03",
+      "orphanTitle": "Preventivní krém na nohy s hadím olejem 3ks",
+      "suggestedWpjCode": "41106",
+      "suggestedWpjTitle": "Preventivní krém na nohy s hadím olejem",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 737.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 1.0
+    },
+    {
+      "orphanCode": "11317/03",
+      "orphanTitle": "Čistící náplast na nos Čisté póry 3 ks",
+      "suggestedWpjCode": "11317",
+      "suggestedWpjTitle": "Čistící náplast na nos Čisté póry 10ks",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 3.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 1.0
+    },
+    {
+      "orphanCode": "90153/01",
+      "orphanTitle": "Dětský zubní kartáček  (Dětský kartáček: Zelený) (Kód: 90153)",
+      "suggestedWpjCode": "90153",
+      "suggestedWpjTitle": "Dětský zubní kartáček ",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 283.0,
+      "yesterdaySalesUnits": 1.0,
+      "yesterdayOutboundUnits": 0.0
+    },
+    {
+      "orphanCode": "41106/05",
+      "orphanTitle": "Bez názvu",
+      "suggestedWpjCode": "41106",
+      "suggestedWpjTitle": "Preventivní krém na nohy s hadím olejem",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 795.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 0.0
+    },
+    {
+      "orphanCode": "52903/03",
+      "orphanTitle": "Bez názvu",
+      "suggestedWpjCode": "52903",
+      "suggestedWpjTitle": "Intenzivní omlazující maska na obličej a krk Q10",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 320.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 0.0
+    },
+    {
+      "orphanCode": "90153/02",
+      "orphanTitle": "Bez názvu",
+      "suggestedWpjCode": "90153",
+      "suggestedWpjTitle": "Dětský zubní kartáček ",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 184.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 0.0
+    },
+    {
+      "orphanCode": "80904/03",
+      "orphanTitle": "Bez názvu",
+      "suggestedWpjCode": "80904",
+      "suggestedWpjTitle": "Tužka na rty a oči",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 99.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 0.0
+    },
+    {
+      "orphanCode": "80112/02",
+      "orphanTitle": "Bez názvu",
+      "suggestedWpjCode": "80112",
+      "suggestedWpjTitle": "Ovocný balzám na rty",
+      "confidence": "high",
+      "rule": "strip_/variant_suffix",
+      "fourpxAvailable": 1.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 0.0
     }
   ],
   "lowAfterSales": [
@@ -739,7 +1280,7 @@
       "url": "https://www.kralovstvi-tiande.cz/denni-hygienicka-vlozka-jemna-pece_z95/",
       "visible": true,
       "wpj": {
-        "inStore": 929.0,
+        "inStore": 927.0,
         "fourpxStoreTotal": 6057.0,
         "stores": [
           {
@@ -1038,12 +1579,12 @@
       "visible": true,
       "wpj": {
         "inStore": 109.0,
-        "fourpxStoreTotal": 3660.0,
+        "fourpxStoreTotal": 3659.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2717.0
+            "inStore": 2716.0
           },
           {
             "storeId": 7,
@@ -1096,7 +1637,7 @@
         "skUnits": 0.0,
         "shipments": 0
       },
-      "stockDelta": 3660.0,
+      "stockDelta": 3659.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -1186,13 +1727,13 @@
       "url": "https://www.kralovstvi-tiande.cz/kristalova-kolagenova-maska-1-2_z7214/",
       "visible": false,
       "wpj": {
-        "inStore": 2671.0,
-        "fourpxStoreTotal": 3141.0,
+        "inStore": 2670.0,
+        "fourpxStoreTotal": 3140.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2671.0
+            "inStore": 2670.0
           },
           {
             "storeId": 7,
@@ -1249,7 +1790,7 @@
         "skUnits": 0.0,
         "shipments": 0
       },
-      "stockDelta": 3141.0,
+      "stockDelta": 3140.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -1460,13 +2001,13 @@
       "url": "https://www.kralovstvi-tiande.cz/peeling-broskovovy-1-1_z7427/",
       "visible": false,
       "wpj": {
-        "inStore": 2311.0,
-        "fourpxStoreTotal": 2311.0,
+        "inStore": 2308.0,
+        "fourpxStoreTotal": 2308.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2311.0
+            "inStore": 2308.0
           },
           {
             "storeId": 7,
@@ -1523,7 +2064,7 @@
         "skUnits": 0.0,
         "shipments": 0
       },
-      "stockDelta": 2311.0,
+      "stockDelta": 2308.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -1537,12 +2078,12 @@
       "visible": true,
       "wpj": {
         "inStore": 0.0,
-        "fourpxStoreTotal": 2302.0,
+        "fourpxStoreTotal": 2297.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1383.0
+            "inStore": 1378.0
           },
           {
             "storeId": 7,
@@ -1595,7 +2136,7 @@
         "skUnits": 0.0,
         "shipments": 0
       },
-      "stockDelta": 2302.0,
+      "stockDelta": 2297.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -2014,13 +2555,13 @@
       "url": "https://www.kralovstvi-tiande.cz/napoj-s-extraktem-z-pomerancovniku-a-stavou-z-malin-1-1_z8122/",
       "visible": false,
       "wpj": {
-        "inStore": 1665.0,
-        "fourpxStoreTotal": 1839.0,
+        "inStore": 1664.0,
+        "fourpxStoreTotal": 1838.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1665.0
+            "inStore": 1664.0
           },
           {
             "storeId": 7,
@@ -2067,7 +2608,7 @@
         "skUnits": 0.0,
         "shipments": 0
       },
-      "stockDelta": 1839.0,
+      "stockDelta": 1838.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -2501,8 +3042,8 @@
             "922001333593"
           ],
           "batchNos": [],
-          "availableStock": 891.0,
-          "pendingStock": 74.0,
+          "availableStock": 886.0,
+          "pendingStock": 79.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -2517,7 +3058,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1285.0
+        "availableTotal": 1280.0
       },
       "yesterdaySales": {
         "units": 87.0,
@@ -2528,7 +3069,7 @@
         "skUnits": 23.0,
         "shipments": 64
       },
-      "stockDelta": -1285.0,
+      "stockDelta": -1280.0,
       "flags": [
         "only_in_4px",
         "shipped_without_wpj_product"
@@ -3103,13 +3644,13 @@
       "url": "https://www.kralovstvi-tiande.cz/peeling-broskvovy_z5809/",
       "visible": true,
       "wpj": {
-        "inStore": 2207.0,
-        "fourpxStoreTotal": 2321.0,
+        "inStore": 2202.0,
+        "fourpxStoreTotal": 2318.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2316.0
+            "inStore": 2313.0
           },
           {
             "storeId": 7,
@@ -3135,8 +3676,8 @@
             "922001041534"
           ],
           "batchNos": [],
-          "availableStock": 2316.0,
-          "pendingStock": 329.0,
+          "availableStock": 2313.0,
+          "pendingStock": 332.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3151,7 +3692,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2321.0
+        "availableTotal": 2318.0
       },
       "yesterdaySales": {
         "units": 7.0,
@@ -3172,13 +3713,13 @@
       "url": "https://www.kralovstvi-tiande.cz/brozura-fytogely_z4666/",
       "visible": true,
       "wpj": {
-        "inStore": 3509.0,
-        "fourpxStoreTotal": 3560.0,
+        "inStore": 3505.0,
+        "fourpxStoreTotal": 3559.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 3560.0
+            "inStore": 3559.0
           },
           {
             "storeId": 7,
@@ -3204,8 +3745,8 @@
             "922001041431"
           ],
           "batchNos": [],
-          "availableStock": 3560.0,
-          "pendingStock": 151.0,
+          "availableStock": 3559.0,
+          "pendingStock": 152.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3220,7 +3761,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 3560.0
+        "availableTotal": 3559.0
       },
       "yesterdaySales": {
         "units": 0.0,
@@ -3241,13 +3782,13 @@
       "url": "https://www.kralovstvi-tiande.cz/fytogel-slaviton_z8039/",
       "visible": true,
       "wpj": {
-        "inStore": 2232.0,
-        "fourpxStoreTotal": 2719.0,
+        "inStore": 2229.0,
+        "fourpxStoreTotal": 2718.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2288.0
+            "inStore": 2287.0
           },
           {
             "storeId": 7,
@@ -3273,8 +3814,8 @@
             "922002239194"
           ],
           "batchNos": [],
-          "availableStock": 2288.0,
-          "pendingStock": 112.0,
+          "availableStock": 2287.0,
+          "pendingStock": 113.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3289,7 +3830,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2719.0
+        "availableTotal": 2718.0
       },
       "yesterdaySales": {
         "units": 128.0,
@@ -3321,8 +3862,8 @@
             "922001333593"
           ],
           "batchNos": [],
-          "availableStock": 891.0,
-          "pendingStock": 74.0,
+          "availableStock": 886.0,
+          "pendingStock": 79.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3337,7 +3878,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1285.0
+        "availableTotal": 1280.0
       },
       "yesterdaySales": {
         "units": 87.0,
@@ -3348,7 +3889,7 @@
         "skUnits": 23.0,
         "shipments": 64
       },
-      "stockDelta": -1285.0,
+      "stockDelta": -1280.0,
       "flags": [
         "only_in_4px",
         "shipped_without_wpj_product"
@@ -3440,13 +3981,13 @@
       "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-slipove-vlozky-s-anionty-nefritova-svezest_z2110/",
       "visible": true,
       "wpj": {
-        "inStore": 674.0,
-        "fourpxStoreTotal": 822.0,
+        "inStore": 667.0,
+        "fourpxStoreTotal": 821.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 724.0
+            "inStore": 723.0
           },
           {
             "storeId": 7,
@@ -3477,8 +4018,8 @@
             "922001041143"
           ],
           "batchNos": [],
-          "availableStock": 724.0,
-          "pendingStock": 100.0,
+          "availableStock": 723.0,
+          "pendingStock": 101.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3493,7 +4034,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 822.0
+        "availableTotal": 821.0
       },
       "yesterdaySales": {
         "units": 49.0,
@@ -3583,13 +4124,13 @@
       "url": "https://www.kralovstvi-tiande.cz/tajici-kolagenova-liftingova-pletova-maska-s-morskymi-rasami_z8125/",
       "visible": true,
       "wpj": {
-        "inStore": 804.0,
-        "fourpxStoreTotal": 1404.0,
+        "inStore": 800.0,
+        "fourpxStoreTotal": 1401.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 825.0
+            "inStore": 822.0
           },
           {
             "storeId": 7,
@@ -3625,8 +4166,8 @@
             "922002402836"
           ],
           "batchNos": [],
-          "availableStock": 825.0,
-          "pendingStock": 56.0,
+          "availableStock": 822.0,
+          "pendingStock": 59.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3641,7 +4182,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1404.0
+        "availableTotal": 1401.0
       },
       "yesterdaySales": {
         "units": 48.0,
@@ -3662,13 +4203,13 @@
       "url": "https://www.kralovstvi-tiande.cz/denni-vlozky-s-extraktem-aloe-nefritova-svezest_z142/",
       "visible": true,
       "wpj": {
-        "inStore": 823.0,
-        "fourpxStoreTotal": 1058.0,
+        "inStore": 822.0,
+        "fourpxStoreTotal": 1057.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 853.0
+            "inStore": 852.0
           },
           {
             "storeId": 7,
@@ -3699,8 +4240,8 @@
             "922001040885"
           ],
           "batchNos": [],
-          "availableStock": 853.0,
-          "pendingStock": 88.0,
+          "availableStock": 852.0,
+          "pendingStock": 89.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3715,7 +4256,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1058.0
+        "availableTotal": 1057.0
       },
       "yesterdaySales": {
         "units": 97.0,
