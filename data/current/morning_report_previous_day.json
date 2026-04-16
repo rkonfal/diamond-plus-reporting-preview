@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T12:12:52.465879+02:00",
+  "generatedAt": "2026-04-16T09:46:01.072379+02:00",
   "reportDate": "2026-04-15",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
@@ -17,7 +17,7 @@
       "baseline": 716192.18,
       "deltaPct": -16.2
     },
-    "shipmentsTotal": 569,
+    "shipmentsTotal": 571,
     "alerts": [
       "3 problematických nebo stornovaných objednávek.",
       "2 včera prodaných produktů je teď na nízkém skladu.",
@@ -33,23 +33,23 @@
     "statuses": [
       {
         "name": "přijatá",
-        "count": 273
+        "count": 274
       },
       {
         "name": "expedováno",
-        "count": 72
-      },
-      {
-        "name": "připraveno k vyzvednutí",
-        "count": 40
+        "count": 108
       },
       {
         "name": "nová",
-        "count": 15
+        "count": 16
+      },
+      {
+        "name": "připraveno k vyzvednutí",
+        "count": 10
       },
       {
         "name": "doručeno",
-        "count": 15
+        "count": 7
       },
       {
         "name": "chyba",
@@ -810,49 +810,91 @@
     ],
     "largestMovesSinceLastSnapshot": [
       {
-        "code": "UA132",
-        "title": "Peeling Broskovový 1+1",
-        "currentStock": 2272.0,
-        "previousStock": 2274.0,
+        "code": "10101",
+        "title": "Regenerační sérum v kapslích",
+        "currentStock": 722.0,
+        "previousStock": 724.0,
         "delta": -2.0
       },
       {
-        "code": "DK720",
-        "title": "Šetrné čištění pleti",
-        "currentStock": 162.0,
-        "previousStock": 163.0,
+        "code": "36006",
+        "title": "Hyaluronový gel-lotion na obličej a tělo s mořskými řasami, 220 ml",
+        "currentStock": 380.0,
+        "previousStock": 382.0,
+        "delta": -2.0
+      },
+      {
+        "code": "12712",
+        "title": "Collagen active -  jemné hydratační tonikum z kolagenu",
+        "currentStock": 504.0,
+        "previousStock": 505.0,
         "delta": -1.0
       },
       {
-        "code": "LO785",
-        "title": "ECO na praní i do myčky",
-        "currentStock": 203.0,
-        "previousStock": 204.0,
+        "code": "15104",
+        "title": "Krém pro obnovu pleti hadí tuk",
+        "currentStock": 516.0,
+        "previousStock": 517.0,
         "delta": -1.0
       },
       {
-        "code": "LW867",
-        "title": "ECO úklid + cestovní lahev",
-        "currentStock": 203.0,
-        "previousStock": 204.0,
+        "code": "54105",
+        "title": "Pleťová beauty maska s granátovým jablkem",
+        "currentStock": 2331.0,
+        "previousStock": 2332.0,
+        "delta": -1.0
+      },
+      {
+        "code": "61914",
+        "title": "Dámské bylinné slipové vložky Nefritová svěžest",
+        "currentStock": 727.0,
+        "previousStock": 728.0,
+        "delta": -1.0
+      },
+      {
+        "code": "61915",
+        "title": "Dámské bylinné slipové vložky s anionty Nefritová svěžest",
+        "currentStock": 833.0,
+        "previousStock": 834.0,
+        "delta": -1.0
+      },
+      {
+        "code": "980156",
+        "title": "Japonský exfoliační ručník pro celé tělo (středně hrubý)",
+        "currentStock": 558.0,
+        "previousStock": 559.0,
+        "delta": -1.0
+      },
+      {
+        "code": "000075",
+        "title": "Brožura Fytogely",
+        "currentStock": 3582.0,
+        "previousStock": 3583.0,
+        "delta": -1.0
+      },
+      {
+        "code": "40203",
+        "title": "Peeling Broskvový",
+        "currentStock": 2350.0,
+        "previousStock": 2351.0,
         "delta": -1.0
       }
     ]
   },
   "logistics": {
-    "shipmentsTotal": 569,
+    "shipmentsTotal": 571,
     "byAccount": {
-      "CZ": 503,
+      "CZ": 505,
       "SK": 66
     },
     "carrierCounts": [
       {
         "name": "F1401",
-        "count": 427
+        "count": 428
       },
       {
         "name": "F1406",
-        "count": 89
+        "count": 90
       },
       {
         "name": "F1403",
@@ -866,11 +908,11 @@
     "logisticsCounts": [
       {
         "name": "F1401",
-        "count": 427
+        "count": 428
       },
       {
         "name": "F1406",
-        "count": 89
+        "count": 90
       },
       {
         "name": "F1403",
@@ -883,87 +925,28 @@
     ],
     "statusCounts": [
       {
-        "name": "C",
-        "count": 341
+        "name": "P",
+        "count": 313
       },
       {
-        "name": "P",
-        "count": 166
+        "name": "C",
+        "count": 195
       },
       {
         "name": "S",
-        "count": 62
+        "count": 63
       }
     ],
     "coverageWarnings": [],
-    "expiringProducts": [
-      {
-        "account": "CZ",
-        "sku": "40203",
-        "dateExpiry": "2026-05-08",
-        "daysToExpiry": 22,
-        "datedStock": 2645.0,
-        "stockAtNearestExpiry": 2645.0,
-        "batchCount": 14,
-        "riskScore": 44.89,
-        "title": "Peeling Broskvový",
-        "label": "40203 · Peeling Broskvový (CZ)"
-      },
-      {
-        "account": "CZ",
-        "sku": "52902/03",
-        "dateExpiry": "2026-05-07",
-        "daysToExpiry": 21,
-        "datedStock": 398.0,
-        "stockAtNearestExpiry": 398.0,
-        "batchCount": 3,
-        "riskScore": 7.16,
-        "title": "Revitalizační maska na obličej a krk Lingzhi - 3ks",
-        "label": "52902/03 · Revitalizační maska na obličej a krk Lingzhi - 3ks (CZ)"
-      },
-      {
-        "account": "CZ",
-        "sku": "PROMO74",
-        "dateExpiry": "2027-02-09",
-        "daysToExpiry": 299,
-        "datedStock": 9492.0,
-        "stockAtNearestExpiry": 2372.0,
-        "batchCount": 18,
-        "riskScore": 5.72,
-        "title": "Královská bylinná směs zdravá žena ",
-        "label": "PROMO74 · Královská bylinná směs zdravá žena  (CZ)"
-      },
-      {
-        "account": "CZ",
-        "sku": "63601/01",
-        "dateExpiry": "2026-12-31",
-        "daysToExpiry": 259,
-        "datedStock": 7633.0,
-        "stockAtNearestExpiry": 7633.0,
-        "batchCount": 14,
-        "riskScore": 5.54,
-        "title": "Denní vložka Energie života (Počet kusů: 1ks)",
-        "label": "63601/01 · Denní vložka Energie života (Počet kusů: 1ks) (CZ)"
-      },
-      {
-        "account": "CZ",
-        "sku": "30111",
-        "dateExpiry": "2026-12-10",
-        "daysToExpiry": 238,
-        "datedStock": 6406.0,
-        "stockAtNearestExpiry": 6406.0,
-        "batchCount": 18,
-        "riskScore": 5.18,
-        "title": "Kosmetická tělová fytonáplast Yaoshen Forte",
-        "label": "30111 · Kosmetická tělová fytonáplast Yaoshen Forte (CZ)"
-      }
-    ],
-    "notes": []
+    "expiringProducts": [],
+    "notes": [
+      "Zdroj expirací zatím chybí, dostupné API vrací jen batch_no bez data spotřeby."
+    ]
   },
   "priorities": [
     "Dohlédnout POP00060 (GREPAVIT® – grep extrakt z jader, 100 ml), aktuálně 0 ks.",
     "Dohlédnout 195464 (Krémová banánová polévka se zeleninou), aktuálně 2 ks.",
     "Projít 3 problematických nebo stornovaných objednávek z včerejška.",
-    "Projít nejbližší expirace v 4PX a rozhodnout o doprodeji nebo přesunu zásoby."
+    "Dohledat spolehlivý zdroj expirací, 4PX inventory zatím vrací jen batch_no bez data spotřeby."
   ]
 }
