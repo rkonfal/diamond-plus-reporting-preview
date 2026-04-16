@@ -58,10 +58,26 @@
               <option value="lowAfterSales">Jen nízký sklad po prodeji</option>
               <option value="manualAlias">Jen ruční override</option>
               <option value="autoAlias">Jen auto alias</option>
+              <option value="visible">Jen viditelné produkty</option>
+              <option value="soldYesterday">Jen prodané včera</option>
+              <option value="shippedYesterday">Jen expedované včera</option>
+              <option value="negativeDelta">Jen negativní delta</option>
+              <option value="zero4px">Jen bez 4PX skladu</option>
               <option value="fastLowCover">Jen nízké pokrytí</option>
               <option value="deadStock">Jen dead stock</option>
               <option value="slowMover">Jen ležáky</option>
               <option value="inStock">Jen s 4PX skladem &gt; 0</option>
+            </select>
+          </label>
+          <label class="control-group">
+            <span class="control-label">Řadit</span>
+            <select id="inventory-sort" class="select">
+              <option value="priority">Priorita / relevance</option>
+              <option value="delta">Největší delta</option>
+              <option value="stock">Největší 4PX sklad</option>
+              <option value="sales365d">Největší prodej 365d</option>
+              <option value="coverAsc">Nejnižší pokrytí</option>
+              <option value="code">Kód A–Z</option>
             </select>
           </label>
           <label class="control-group">
@@ -73,7 +89,31 @@
               <option value="250">250</option>
             </select>
           </label>
+          <button id="inventory-export-csv" class="quick-filter" type="button">Export CSV</button>
         </div>
+      </div>
+
+      <div class="quick-filters" id="inventory-quick-filters">
+        <button class="quick-filter active" type="button" data-filter="all">Všechno</button>
+        <button class="quick-filter" type="button" data-filter="mismatch">Mismatchy</button>
+        <button class="quick-filter" type="button" data-filter="lowAfterSales">Nízký sklad po prodeji</button>
+        <button class="quick-filter" type="button" data-filter="soldYesterday">Prodané včera</button>
+        <button class="quick-filter" type="button" data-filter="visible">Viditelné</button>
+        <button class="quick-filter" type="button" data-filter="negativeDelta">Negativní delta</button>
+        <button class="quick-filter" type="button" data-filter="only4px">Pouze v 4PX</button>
+        <button class="quick-filter" type="button" data-filter="zero4px">Bez 4PX skladu</button>
+        <button class="quick-filter" type="button" data-filter="manualAlias">Ruční override</button>
+        <button class="quick-filter" type="button" data-filter="autoAlias">Auto alias</button>
+        <button class="quick-filter" type="button" data-filter="fastLowCover">Nízké pokrytí</button>
+        <button class="quick-filter" type="button" data-filter="deadStock">Dead stock</button>
+      </div>
+
+      <div class="quick-filters" id="inventory-presets">
+        <button class="quick-filter" type="button" data-preset="operativa">Preset: Operativa</button>
+        <button class="quick-filter" type="button" data-preset="mismatch">Preset: Mismatchy</button>
+        <button class="quick-filter" type="button" data-preset="mapping">Preset: Mapování</button>
+        <button class="quick-filter" type="button" data-preset="deadstock">Preset: Dead stock</button>
+        <button class="quick-filter" type="button" data-preset="reset">Reset pohledu</button>
       </div>
 
       <div class="section-subtitle" id="inventory-explorer-summary">Načítám explorer…</div>
@@ -331,6 +371,11 @@
         case 'lowAfterSales': return flags.has('low_after_sales');
         case 'manualAlias': return list(row.fourpx?.manualMappedSourceCodes).length > 0;
         case 'autoAlias': return flags.has('auto_mapped_4px_alias');
+        case 'visible': return Boolean(row.visible);
+        case 'soldYesterday': return Number(row.yesterdaySales?.units || 0) > 0;
+        case 'shippedYesterday': return Number(row.yesterdayOutbound?.czUnits || 0) + Number(row.yesterdayOutbound?.skUnits || 0) > 0;
+        case 'negativeDelta': return Number(row.stockDelta || 0) < 0;
+        case 'zero4px': return Number(row.fourpx?.availableTotal || 0) <= 0;
         case 'fastLowCover': return tags.has('fast_mover_low_cover');
         case 'deadStock': return tags.has('dead_stock');
         case 'slowMover': return tags.has('slow_mover');
@@ -355,6 +400,20 @@
       return score;
     }
 
+    function csvCell(value) {
+      const text = String(value ?? '');
+      return `"${text.replace(/"/g, '""')}"`;
+    }
+
+    const EXPLORER_STATE_KEY = 'dp-inventory-explorer-state-v1';
+    const EXPLORER_PRESETS = {
+      operativa: { filter: 'lowAfterSales', sort: 'coverAsc', limit: '100', search: '' },
+      mismatch: { filter: 'mismatch', sort: 'delta', limit: '100', search: '' },
+      mapping: { filter: 'autoAlias', sort: 'priority', limit: '100', search: '' },
+      deadstock: { filter: 'deadStock', sort: 'stock', limit: '100', search: '' },
+      reset: { filter: 'all', sort: 'priority', limit: '50', search: '' },
+    };
+
     (async () => {
       const [overview, analytics, combined] = await Promise.all([
         DP.loadJson('../data/current/combined_inventory_overview.json'),
@@ -370,9 +429,40 @@
 
       const searchInput = document.getElementById('inventory-search');
       const filterSelect = document.getElementById('inventory-filter');
+      const sortSelect = document.getElementById('inventory-sort');
       const limitSelect = document.getElementById('inventory-limit');
+      const exportButton = document.getElementById('inventory-export-csv');
+      const quickFilterButtons = Array.from(document.querySelectorAll('#inventory-quick-filters [data-filter]'));
+      const presetButtons = Array.from(document.querySelectorAll('#inventory-presets [data-preset]'));
       const explorerSummary = document.getElementById('inventory-explorer-summary');
       const explorerTable = document.getElementById('inventory-explorer-table');
+
+      function syncQuickFilterButtons() {
+        quickFilterButtons.forEach(button => button.classList.toggle('active', button.dataset.filter === filterSelect.value));
+      }
+
+      function persistExplorerState() {
+        localStorage.setItem(EXPLORER_STATE_KEY, JSON.stringify({
+          search: searchInput.value,
+          filter: filterSelect.value,
+          sort: sortSelect.value,
+          limit: limitSelect.value,
+        }));
+      }
+
+      function applyExplorerState(nextState) {
+        if (!nextState) return;
+        if (typeof nextState.search === 'string') searchInput.value = nextState.search;
+        if (nextState.filter) filterSelect.value = nextState.filter;
+        if (nextState.sort) sortSelect.value = nextState.sort;
+        if (nextState.limit) limitSelect.value = String(nextState.limit);
+        syncQuickFilterButtons();
+      }
+
+      try {
+        const savedState = JSON.parse(localStorage.getItem(EXPLORER_STATE_KEY) || 'null');
+        applyExplorerState(savedState);
+      } catch (_) {}
 
       document.getElementById('inventory-window').textContent = `Okno: ${new Date(overview.window.from).toLocaleDateString('cs-CZ')}`;
       document.getElementById('inventory-paired').textContent = `Spárované: ${fmt(overview.counts.pairedProducts)} • manuální ${fmt(overview.counts.manualMapped4pxAliases || 0)} • auto ${fmt(overview.counts.autoMapped4pxAliases || 0)}`;
@@ -391,22 +481,54 @@
         </div>
       `).join('');
 
-      function renderExplorer() {
+      function getExplorerRows() {
         const query = searchInput.value.trim().toLowerCase();
         const filter = filterSelect.value;
-        const limit = Number(limitSelect.value || 50);
-
+        const sort = sortSelect.value;
         const rows = explorerRows
           .filter(({ row, metric }) => matchesExplorerFilter(row, metric, filter))
-          .filter(({ row, metric }) => !query || explorerSearchBlob(row, metric).includes(query))
-          .sort((a, b) => explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric)
+          .filter(({ row, metric }) => !query || explorerSearchBlob(row, metric).includes(query));
+
+        rows.sort((a, b) => {
+          if (sort === 'delta') {
+            return Math.abs(Number(b.row.stockDelta || 0)) - Math.abs(Number(a.row.stockDelta || 0))
+              || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
+          }
+          if (sort === 'stock') {
+            return Number(b.row.fourpx?.availableTotal || 0) - Number(a.row.fourpx?.availableTotal || 0)
+              || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
+          }
+          if (sort === 'sales365d') {
+            return Number(b.metric.units365d || 0) - Number(a.metric.units365d || 0)
+              || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
+          }
+          if (sort === 'coverAsc') {
+            const aCover = a.metric.daysOfCover365d == null ? Number.POSITIVE_INFINITY : Number(a.metric.daysOfCover365d);
+            const bCover = b.metric.daysOfCover365d == null ? Number.POSITIVE_INFINITY : Number(b.metric.daysOfCover365d);
+            return aCover - bCover || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
+          }
+          if (sort === 'code') {
+            return String(a.row.code || '').localeCompare(String(b.row.code || ''), 'cs');
+          }
+          return explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric)
             || Math.abs(Number(b.row.stockDelta || 0)) - Math.abs(Number(a.row.stockDelta || 0))
             || Number(b.metric.units365d || 0) - Number(a.metric.units365d || 0)
             || Number(b.row.fourpx?.availableTotal || 0) - Number(a.row.fourpx?.availableTotal || 0)
-            || String(a.row.code || '').localeCompare(String(b.row.code || ''), 'cs'));
+            || String(a.row.code || '').localeCompare(String(b.row.code || ''), 'cs');
+        });
+
+        return rows;
+      }
+
+      function renderExplorer() {
+        const filter = filterSelect.value;
+        const sort = sortSelect.value;
+        const limit = Number(limitSelect.value || 50);
+        const rows = getExplorerRows();
 
         const visible = rows.slice(0, limit);
-        explorerSummary.textContent = `Zobrazeno ${fmt(visible.length)} z ${fmt(rows.length)} výsledků, celkem ${fmt(explorerRows.length)} produktových řádků v kombinovaném skladu.`;
+        explorerSummary.textContent = `Zobrazeno ${fmt(visible.length)} z ${fmt(rows.length)} výsledků, celkem ${fmt(explorerRows.length)} produktových řádků v kombinovaném skladu. Filtr: ${filterSelect.options[filterSelect.selectedIndex].text}. Řazení: ${sortSelect.options[sortSelect.selectedIndex].text}. Export CSV bere celý aktuálně filtrovaný výběr.`;
+        persistExplorerState();
 
         explorerTable.innerHTML = visible.map(({ row, metric }) => `
           <tr>
@@ -428,7 +550,72 @@
 
       searchInput.addEventListener('input', renderExplorer);
       filterSelect.addEventListener('change', renderExplorer);
+      sortSelect.addEventListener('change', renderExplorer);
       limitSelect.addEventListener('change', renderExplorer);
+      exportButton.addEventListener('click', () => {
+        const rows = getExplorerRows();
+        const header = [
+          'code',
+          'title',
+          'visible',
+          'flags',
+          'fourpx_available',
+          'wpj_4px_stock',
+          'stock_delta',
+          'sold_yesterday_units',
+          'outbound_yesterday_units',
+          'units_365d',
+          'days_of_cover_365d',
+          'source_codes',
+          'manual_aliases',
+          'auto_aliases'
+        ];
+        const lines = [header.map(csvCell).join(';')];
+        rows.forEach(({ row, metric }) => {
+          lines.push([
+            row.code,
+            row.title,
+            row.visible ? '1' : '0',
+            list(row.flags).join(','),
+            row.fourpx?.availableTotal ?? '',
+            row.wpj?.fourpxStoreTotal ?? '',
+            row.stockDelta ?? '',
+            row.yesterdaySales?.units ?? '',
+            Number(row.yesterdayOutbound?.czUnits || 0) + Number(row.yesterdayOutbound?.skUnits || 0),
+            metric.units365d ?? '',
+            metric.daysOfCover365d ?? '',
+            list(row.fourpx?.sourceCodes).join(','),
+            list(row.fourpx?.manualMappedSourceCodes).join(','),
+            list(row.fourpx?.autoMappedSourceCodes).join(','),
+          ].map(csvCell).join(';'));
+        });
+
+        const blob = new Blob(['\uFEFF' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `inventory-explorer-${new Date().toISOString().slice(0, 10)}.csv`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      });
+      quickFilterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          filterSelect.value = button.dataset.filter;
+          syncQuickFilterButtons();
+          renderExplorer();
+        });
+      });
+      presetButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          applyExplorerState(EXPLORER_PRESETS[button.dataset.preset]);
+          renderExplorer();
+        });
+      });
+      filterSelect.addEventListener('change', () => {
+        syncQuickFilterButtons();
+      });
       renderExplorer();
 
       document.getElementById('priority-shortlist-table').innerHTML = (overview.priorityShortlist || []).map(row => `

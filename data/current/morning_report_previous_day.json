@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T13:33:35.855057+02:00",
+  "generatedAt": "2026-04-16T14:01:42.561838+02:00",
   "reportDate": "2026-04-15",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
@@ -41,11 +41,11 @@
       },
       {
         "name": "expedováno",
-        "count": 52
+        "count": 49
       },
       {
         "name": "doručeno",
-        "count": 24
+        "count": 27
       },
       {
         "name": "nová",
@@ -810,74 +810,74 @@
     ],
     "largestMovesSinceLastSnapshot": [
       {
-        "code": "63601",
-        "title": "Denní vložka Energie života",
-        "currentStock": 12423.0,
-        "previousStock": 12425.0,
-        "delta": -2.0
-      },
-      {
-        "code": "23403",
-        "title": "BIO REHAB - Tonikum-aktivátor růstu vlasů",
-        "currentStock": 1403.0,
-        "previousStock": 1405.0,
-        "delta": -2.0
-      },
-      {
-        "code": "61901",
-        "title": "Denní vložky s fytomembránou „Energie bylin“",
-        "currentStock": 888.0,
-        "previousStock": 890.0,
-        "delta": -2.0
-      },
-      {
-        "code": "61903",
-        "title": "Noční menstruační vložky s fytomembránou „Energie bylin“",
-        "currentStock": 322.0,
-        "previousStock": 324.0,
-        "delta": -2.0
-      },
-      {
-        "code": "61911",
-        "title": "Denní vložky s extraktem aloe Nefritová svěžest",
-        "currentStock": 1052.0,
-        "previousStock": 1054.0,
-        "delta": -2.0
-      },
-      {
-        "code": "61914",
-        "title": "Dámské bylinné slipové vložky Nefritová svěžest",
-        "currentStock": 702.0,
-        "previousStock": 704.0,
-        "delta": -2.0
-      },
-      {
         "code": "40203",
         "title": "Peeling Broskvový",
-        "currentStock": 2259.0,
-        "previousStock": 2261.0,
-        "delta": -2.0
-      },
-      {
-        "code": "RX843",
-        "title": "Podpora ženského zdraví s Energií bylin",
-        "currentStock": 291.0,
-        "previousStock": 293.0,
-        "delta": -2.0
+        "currentStock": 2250.0,
+        "previousStock": 2259.0,
+        "delta": -9.0
       },
       {
         "code": "UA132",
         "title": "Peeling Broskovový 1+1",
-        "currentStock": 2249.0,
-        "previousStock": 2251.0,
-        "delta": -2.0
+        "currentStock": 2240.0,
+        "previousStock": 2249.0,
+        "delta": -9.0
       },
       {
-        "code": "HU988",
-        "title": "Balíček Energie bylin",
-        "currentStock": 286.0,
-        "previousStock": 288.0,
-        "delta": -2.0
+        "code": "44402-2",
+        "title": "Fytogel Slaviton",
+        "currentStock": 2682.0,
+        "previousStock": 2690.0,
+        "delta": -8.0
+      },
+      {
+        "code": "40106",
+        "title": "Omlazující krém na ruce Lingzhi",
+        "currentStock": 490.0,
+        "previousStock": 495.0,
+        "delta": -5.0
+      },
+      {
+        "code": "52911",
+        "title": "Obnovující maska na obličej a krk s fullereny a polypeptidy",
+        "currentStock": 1742.0,
+        "previousStock": 1747.0,
+        "delta": -5.0
+      },
+      {
+        "code": "DK720",
+        "title": "Šetrné čištění pleti",
+        "currentStock": 153.0,
+        "previousStock": 158.0,
+        "delta": -5.0
+      },
+      {
+        "code": "RK715",
+        "title": "Regenerační rituál pro obličej, krk a ruce",
+        "currentStock": 1740.0,
+        "previousStock": 1745.0,
+        "delta": -5.0
+      },
+      {
+        "code": "BC836",
+        "title": "Revitalizační balíček Lingzhi pro mladistvou pleť",
+        "currentStock": 121.0,
+        "previousStock": 126.0,
+        "delta": -5.0
+      },
+      {
+        "code": "BT835",
+        "title": "Revitalizace citlivé oblasti očí",
+        "currentStock": 245.0,
+        "previousStock": 250.0,
+        "delta": -5.0
+      },
+      {
+        "code": "AU572",
+        "title": "Revitalizační maska na obličej a krk s fullereny – výhodný balíček dvou masek",
+        "currentStock": 1740.0,
+        "previousStock": 1745.0,
+        "delta": -5.0
       }
     ]
   },
@@ -926,11 +926,11 @@
     "statusCounts": [
       {
         "name": "C",
-        "count": 419
+        "count": 464
       },
       {
         "name": "P",
-        "count": 143
+        "count": 98
       },
       {
         "name": "S",
@@ -944,10 +944,10 @@
         "sku": "40203",
         "dateExpiry": "2026-05-08",
         "daysToExpiry": 22,
-        "datedStock": 2564.0,
-        "stockAtNearestExpiry": 2564.0,
+        "datedStock": 2508.0,
+        "stockAtNearestExpiry": 2508.0,
         "batchCount": 14,
-        "riskScore": 43.52,
+        "riskScore": 42.57,
         "title": "Peeling Broskvový",
         "label": "40203 · Peeling Broskvový (CZ)"
       },
@@ -956,10 +956,10 @@
         "sku": "52902/03",
         "dateExpiry": "2026-05-07",
         "daysToExpiry": 21,
-        "datedStock": 390.0,
-        "stockAtNearestExpiry": 390.0,
+        "datedStock": 383.0,
+        "stockAtNearestExpiry": 383.0,
         "batchCount": 3,
-        "riskScore": 7.01,
+        "riskScore": 6.89,
         "title": "Revitalizační maska na obličej a krk Lingzhi - 3ks",
         "label": "52902/03 · Revitalizační maska na obličej a krk Lingzhi - 3ks (CZ)"
       },
@@ -968,10 +968,10 @@
         "sku": "PROMO74",
         "dateExpiry": "2027-02-09",
         "daysToExpiry": 299,
-        "datedStock": 9491.0,
-        "stockAtNearestExpiry": 2371.0,
+        "datedStock": 9490.0,
+        "stockAtNearestExpiry": 2370.0,
         "batchCount": 18,
-        "riskScore": 5.72,
+        "riskScore": 5.71,
         "title": "Královská bylinná směs zdravá žena ",
         "label": "PROMO74 · Královská bylinná směs zdravá žena  (CZ)"
       },
