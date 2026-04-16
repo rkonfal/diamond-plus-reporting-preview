@@ -36,6 +36,23 @@
 
     <section class="grid kpi-grid" id="inventory-kpis"></section>
 
+    <section class="card" style="margin-top:20px;">
+      <h2 class="section-title">Prioritní mismatch shortlist</h2>
+      <div class="section-subtitle">Ne dlouhý dump, ale pořadník toho, co má smysl řešit jako první.</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Priorita / produkt</th>
+            <th class="num">Score</th>
+            <th class="num">WPJ 4PX</th>
+            <th class="num">4PX available</th>
+            <th>Důvod / doporučení</th>
+          </tr>
+        </thead>
+        <tbody id="priority-shortlist-table"></tbody>
+      </table>
+    </section>
+
     <section class="grid two-col" style="margin-top:20px;">
       <div class="card">
         <h2 class="section-title">Nízký sklad po včerejším prodeji</h2>
@@ -104,6 +121,11 @@
       return flags.map(flag => `<span class="pill warning">${flag}</span>`).join(' ');
     }
 
+    function priorityPill(priority) {
+      const tone = priority === 'critical' ? 'danger' : priority === 'high' ? 'warning' : 'info';
+      return `<span class="pill ${tone}">${priority}</span>`;
+    }
+
     (async () => {
       const overview = await DP.loadJson('../data/current/combined_inventory_overview.json');
       const portal = await DP.loadJson('../data/current/portal_summary.json');
@@ -151,6 +173,19 @@
           <td>${flagsHtml(row.flags)}</td>
         </tr>
       `).join('') || '<tr><td colspan="5">Žádné mismatchy.</td></tr>';
+
+      document.getElementById('priority-shortlist-table').innerHTML = overview.priorityShortlist.map(row => `
+        <tr>
+          <td>${priorityPill(row.priority)}<div style="margin-top:8px;">${row.code} · ${row.title}</div></td>
+          <td class="num">${fmt(row.score)}</td>
+          <td class="num">${fmt(row.wpj4pxStock)}</td>
+          <td class="num">${fmt(row.fourpxAvailable)}</td>
+          <td>
+            <div>${(row.reasons || []).join(', ')}</div>
+            <div class="muted small" style="margin-top:6px;">${row.recommendedAction}</div>
+          </td>
+        </tr>
+      `).join('') || '<tr><td colspan="5">Zatím bez prioritního shortlistu.</td></tr>';
     })().catch(err => {
       document.getElementById('inventory-window').textContent = `Nepodařilo se načíst data: ${err.message}`;
     });

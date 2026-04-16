@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T11:05:22.751611+02:00",
+  "generatedAt": "2026-04-16T11:11:53.864509+02:00",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
     "to": "2026-04-15T23:59:59+02:00"
@@ -12,6 +12,533 @@
     "stockMismatch": 680,
     "lowAfterSales": 2
   },
+  "priorityShortlist": [
+    {
+      "code": "30117/01",
+      "title": "Kosmetická fytonáplast Jian Kang (Počet kusů: 1ks)",
+      "priority": "critical",
+      "score": 106,
+      "reasons": [
+        "včera se prodalo 55 ks",
+        "včera se expedovalo 71 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 2297.0,
+      "stockDelta": -2297.0,
+      "yesterdaySalesUnits": 55.0,
+      "yesterdayOutboundUnits": 71.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "30118/01",
+      "title": "Kosmetická fytonáplast Wutong Počet kusů: 1ks",
+      "priority": "critical",
+      "score": 106,
+      "reasons": [
+        "včera se prodalo 76 ks",
+        "včera se expedovalo 102 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 2281.0,
+      "stockDelta": -2281.0,
+      "yesterdaySalesUnits": 76.0,
+      "yesterdayOutboundUnits": 102.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41105/01",
+      "title": "Regenerační krém na nohy s hadím olejem Počet kusů: 1ks",
+      "priority": "critical",
+      "score": 106,
+      "reasons": [
+        "včera se prodalo 25 ks",
+        "včera se expedovalo 41 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 2949.0,
+      "stockDelta": -2949.0,
+      "yesterdaySalesUnits": 25.0,
+      "yesterdayOutboundUnits": 41.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41106/01",
+      "title": "Preventivní krém na nohy s hadím olejem Počet kusů: 1ks",
+      "priority": "critical",
+      "score": 106,
+      "reasons": [
+        "včera se prodalo 9 ks",
+        "včera se expedovalo 17 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 3123.0,
+      "stockDelta": -3123.0,
+      "yesterdaySalesUnits": 9.0,
+      "yesterdayOutboundUnits": 17.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41314/01",
+      "title": "Náplast na nohy (Počet kusů: 1ks)",
+      "priority": "critical",
+      "score": 106,
+      "reasons": [
+        "včera se prodalo 20 ks",
+        "včera se expedovalo 21 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 4712.0,
+      "stockDelta": -4712.0,
+      "yesterdaySalesUnits": 20.0,
+      "yesterdayOutboundUnits": 21.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "60145/01",
+      "title": "Denní hygienická vložka „Jemná péče“ (Počet kusů: 1ks)",
+      "priority": "critical",
+      "score": 106,
+      "reasons": [
+        "včera se prodalo 29 ks",
+        "včera se expedovalo 26 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 3755.0,
+      "stockDelta": -3755.0,
+      "yesterdaySalesUnits": 29.0,
+      "yesterdayOutboundUnits": 26.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "63601/01",
+      "title": "Denní vložka Energie života (Počet kusů: 1ks)",
+      "priority": "critical",
+      "score": 106,
+      "reasons": [
+        "včera se prodalo 20 ks",
+        "včera se expedovalo 22 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 10239.0,
+      "stockDelta": -10239.0,
+      "yesterdaySalesUnits": 20.0,
+      "yesterdayOutboundUnits": 22.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "60145/05",
+      "title": "Denná hygienická slipová vložka „Jemná starostlivosť“ (Ks: 5)",
+      "priority": "critical",
+      "score": 103.14,
+      "reasons": [
+        "včera se prodalo 8 ks",
+        "včera se expedovalo 16 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 1857.0,
+      "stockDelta": -1857.0,
+      "yesterdaySalesUnits": 8.0,
+      "yesterdayOutboundUnits": 16.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41328/01",
+      "title": "Levandulová náplast na nohy (Počet kusů: 1ks)",
+      "priority": "critical",
+      "score": 91.7,
+      "reasons": [
+        "včera se prodalo 87 ks",
+        "včera se expedovalo 171 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 1285.0,
+      "stockDelta": -1285.0,
+      "yesterdaySalesUnits": 87.0,
+      "yesterdayOutboundUnits": 171.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "63601/05",
+      "title": "Denní vložka Energie života (Počet kusů: 5ks)",
+      "priority": "critical",
+      "score": 89.68,
+      "reasons": [
+        "včera se prodalo 11 ks",
+        "včera se expedovalo 13 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 1184.0,
+      "stockDelta": -1184.0,
+      "yesterdaySalesUnits": 11.0,
+      "yesterdayOutboundUnits": 13.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "30117/03",
+      "title": "Kosmetická fytonáplast Jian Kang (Počet kusů: 3ks)",
+      "priority": "critical",
+      "score": 88.44,
+      "reasons": [
+        "včera se prodalo 5 ks",
+        "včera se expedovalo 6 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 1122.0,
+      "stockDelta": -1122.0,
+      "yesterdaySalesUnits": 5.0,
+      "yesterdayOutboundUnits": 6.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "63601/10",
+      "title": "Denní vložka Energie života Počet kusů: 10ks",
+      "priority": "critical",
+      "score": 78.14,
+      "reasons": [
+        "včera se prodalo 14 ks",
+        "včera se expedovalo 22 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 607.0,
+      "stockDelta": -607.0,
+      "yesterdaySalesUnits": 14.0,
+      "yesterdayOutboundUnits": 22.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "30118/05",
+      "title": "Kosmetická fytonáplast Wutong (Počet kusů: 5ks)",
+      "priority": "critical",
+      "score": 76.3,
+      "reasons": [
+        "včera se prodalo 6 ks",
+        "včera se expedovalo 10 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 515.0,
+      "stockDelta": -515.0,
+      "yesterdaySalesUnits": 6.0,
+      "yesterdayOutboundUnits": 10.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "80112/07",
+      "title": "Ovocný balzám na rty (Ovocný balzám na rty: 07 Jahoda)",
+      "priority": "critical",
+      "score": 76.02,
+      "reasons": [
+        "včera se prodalo 8 ks",
+        "včera se expedovalo 13 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 501.0,
+      "stockDelta": -501.0,
+      "yesterdaySalesUnits": 8.0,
+      "yesterdayOutboundUnits": 13.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "30118/03",
+      "title": "Kosmetická fytonáplast Wutong (Počet kusů: 3ks)",
+      "priority": "critical",
+      "score": 75.82,
+      "reasons": [
+        "včera se prodalo 8 ks",
+        "včera se expedovalo 11 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 491.0,
+      "stockDelta": -491.0,
+      "yesterdaySalesUnits": 8.0,
+      "yesterdayOutboundUnits": 11.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41328/07",
+      "title": "Levanduľová náplasť na nohy (Ks: 7)",
+      "priority": "critical",
+      "score": 75.14,
+      "reasons": [
+        "včera se prodalo 4 ks",
+        "včera se expedovalo 9 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 457.0,
+      "stockDelta": -457.0,
+      "yesterdaySalesUnits": 4.0,
+      "yesterdayOutboundUnits": 9.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "60145/10",
+      "title": "Denní hygienická vložka „Jemná péče“ (Počet kusů: 10ks)",
+      "priority": "critical",
+      "score": 74.9,
+      "reasons": [
+        "včera se prodalo 7 ks",
+        "včera se expedovalo 9 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 445.0,
+      "stockDelta": -445.0,
+      "yesterdaySalesUnits": 7.0,
+      "yesterdayOutboundUnits": 9.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41105/05",
+      "title": "Regenerační krém na nohy s hadím olejem (Počet kusů: 5ks)",
+      "priority": "critical",
+      "score": 72.7,
+      "reasons": [
+        "včera se prodalo 4 ks",
+        "včera se expedovalo 5 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 385.0,
+      "stockDelta": -385.0,
+      "yesterdaySalesUnits": 4.0,
+      "yesterdayOutboundUnits": 5.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41328/10",
+      "title": "Levandulová náplast na nohy (Počet kusů: 10ks)",
+      "priority": "critical",
+      "score": 72.7,
+      "reasons": [
+        "včera se prodalo 5 ks",
+        "včera se expedovalo 15 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 335.0,
+      "stockDelta": -335.0,
+      "yesterdaySalesUnits": 5.0,
+      "yesterdayOutboundUnits": 15.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41314/05",
+      "title": "Náplast na nohy (Počet kusů: 5ks)",
+      "priority": "critical",
+      "score": 72.56,
+      "reasons": [
+        "včera se prodalo 6 ks",
+        "včera se expedovalo 14 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 328.0,
+      "stockDelta": -328.0,
+      "yesterdaySalesUnits": 6.0,
+      "yesterdayOutboundUnits": 14.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "41105/03",
+      "title": "Regenerační krém na nohy s hadím olejem (Počet kusů: 3ks)",
+      "priority": "critical",
+      "score": 72.52,
+      "reasons": [
+        "včera se prodalo 10 ks",
+        "včera se expedovalo 11 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 326.0,
+      "stockDelta": -326.0,
+      "yesterdaySalesUnits": 10.0,
+      "yesterdayOutboundUnits": 11.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "90148/04",
+      "title": "Zubní kartáček ProDental (Kartáček ProDental: Oranžový)",
+      "priority": "critical",
+      "score": 70.72,
+      "reasons": [
+        "včera se prodalo 2 ks",
+        "včera se expedovalo 3 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 716.0,
+      "stockDelta": -716.0,
+      "yesterdaySalesUnits": 2.0,
+      "yesterdayOutboundUnits": 3.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "30117/05",
+      "title": "Kosmetická fytonáplast Jian Kang (Počet kusů: 5ks)",
+      "priority": "critical",
+      "score": 70.28,
+      "reasons": [
+        "včera se prodalo 3 ks",
+        "včera se expedovalo 5 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 389.0,
+      "stockDelta": -389.0,
+      "yesterdaySalesUnits": 3.0,
+      "yesterdayOutboundUnits": 5.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "80112/05",
+      "title": "Ovocný balzám na rty (Ovocný balzám na rty: 05 Višeň)",
+      "priority": "critical",
+      "score": 69.74,
+      "reasons": [
+        "včera se prodalo 5 ks",
+        "včera se expedovalo 7 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 187.0,
+      "stockDelta": -187.0,
+      "yesterdaySalesUnits": 5.0,
+      "yesterdayOutboundUnits": 7.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    },
+    {
+      "code": "80921/02",
+      "title": "Sametový pleťový pudr Duo (Odstín pudru: odstín 02)",
+      "priority": "critical",
+      "score": 69.06,
+      "reasons": [
+        "včera se prodalo 4 ks",
+        "včera se expedovalo 5 ks",
+        "existuje jen ve 4PX"
+      ],
+      "recommendedAction": "Doplnit nebo opravit vazbu SKU mezi 4PX a WPJ.",
+      "wpj4pxStock": 0,
+      "fourpxAvailable": 203.0,
+      "stockDelta": -203.0,
+      "yesterdaySalesUnits": 4.0,
+      "yesterdayOutboundUnits": 5.0,
+      "flags": [
+        "only_in_4px",
+        "shipped_without_wpj_product"
+      ]
+    }
+  ],
   "lowAfterSales": [
     {
       "code": "VSTUP200526",
@@ -141,12 +668,12 @@
       "visible": true,
       "wpj": {
         "inStore": 7556.0,
-        "fourpxStoreTotal": 12433.0,
+        "fourpxStoreTotal": 12432.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 8693.0
+            "inStore": 8692.0
           },
           {
             "storeId": 7,
@@ -199,7 +726,7 @@
         "skUnits": 0.0,
         "shipments": 0
       },
-      "stockDelta": 12433.0,
+      "stockDelta": 12432.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -212,13 +739,13 @@
       "url": "https://www.kralovstvi-tiande.cz/denni-hygienicka-vlozka-jemna-pece_z95/",
       "visible": true,
       "wpj": {
-        "inStore": 933.0,
-        "fourpxStoreTotal": 6059.0,
+        "inStore": 929.0,
+        "fourpxStoreTotal": 6057.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 4568.0
+            "inStore": 4566.0
           },
           {
             "storeId": 7,
@@ -271,7 +798,7 @@
         "skUnits": 0.0,
         "shipments": 0
       },
-      "stockDelta": 6059.0,
+      "stockDelta": 6057.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -428,7 +955,7 @@
       "url": "https://www.kralovstvi-tiande.cz/kosmeticka-fytonaplast-jian-kang_z3158/",
       "visible": true,
       "wpj": {
-        "inStore": 1879.0,
+        "inStore": 1878.0,
         "fourpxStoreTotal": 3808.0,
         "stores": [
           {
@@ -582,7 +1109,7 @@
       "url": "https://www.kralovstvi-tiande.cz/kosmeticka-fytonaplast-wutong_z3160/",
       "visible": true,
       "wpj": {
-        "inStore": 1811.0,
+        "inStore": 1810.0,
         "fourpxStoreTotal": 3287.0,
         "stores": [
           {
@@ -933,13 +1460,13 @@
       "url": "https://www.kralovstvi-tiande.cz/peeling-broskovovy-1-1_z7427/",
       "visible": false,
       "wpj": {
-        "inStore": 2315.0,
-        "fourpxStoreTotal": 2315.0,
+        "inStore": 2311.0,
+        "fourpxStoreTotal": 2311.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2315.0
+            "inStore": 2311.0
           },
           {
             "storeId": 7,
@@ -996,7 +1523,7 @@
         "skUnits": 0.0,
         "shipments": 0
       },
-      "stockDelta": 2315.0,
+      "stockDelta": 2311.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -1213,13 +1740,13 @@
       "url": "https://www.kralovstvi-tiande.cz/omlazujici-duo-pro-unavenou-plet_z8028/",
       "visible": false,
       "wpj": {
-        "inStore": 2099.0,
-        "fourpxStoreTotal": 2231.0,
+        "inStore": 2098.0,
+        "fourpxStoreTotal": 2230.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2099.0
+            "inStore": 2098.0
           },
           {
             "storeId": 7,
@@ -1266,7 +1793,7 @@
         "skUnits": 0.0,
         "shipments": 0
       },
-      "stockDelta": 2231.0,
+      "stockDelta": 2230.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -1923,8 +2450,8 @@
             "922001302795"
           ],
           "batchNos": [],
-          "availableStock": 1000.0,
-          "pendingStock": 13.0,
+          "availableStock": 998.0,
+          "pendingStock": 15.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -1939,7 +2466,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1859.0
+        "availableTotal": 1857.0
       },
       "yesterdaySales": {
         "units": 8.0,
@@ -1950,7 +2477,7 @@
         "skUnits": 2.0,
         "shipments": 15
       },
-      "stockDelta": -1859.0,
+      "stockDelta": -1857.0,
       "flags": [
         "only_in_4px",
         "shipped_without_wpj_product"
@@ -2279,8 +2806,8 @@
             "922001060953"
           ],
           "batchNos": [],
-          "availableStock": 172.0,
-          "pendingStock": 11.0,
+          "availableStock": 171.0,
+          "pendingStock": 12.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -2295,7 +2822,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 608.0
+        "availableTotal": 607.0
       },
       "yesterdaySales": {
         "units": 14.0,
@@ -2306,7 +2833,7 @@
         "skUnits": 6.0,
         "shipments": 17
       },
-      "stockDelta": -608.0,
+      "stockDelta": -607.0,
       "flags": [
         "only_in_4px",
         "shipped_without_wpj_product"
@@ -2576,13 +3103,13 @@
       "url": "https://www.kralovstvi-tiande.cz/peeling-broskvovy_z5809/",
       "visible": true,
       "wpj": {
-        "inStore": 2212.0,
-        "fourpxStoreTotal": 2325.0,
+        "inStore": 2207.0,
+        "fourpxStoreTotal": 2321.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2320.0
+            "inStore": 2316.0
           },
           {
             "storeId": 7,
@@ -2608,8 +3135,8 @@
             "922001041534"
           ],
           "batchNos": [],
-          "availableStock": 2320.0,
-          "pendingStock": 325.0,
+          "availableStock": 2316.0,
+          "pendingStock": 329.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -2624,7 +3151,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2325.0
+        "availableTotal": 2321.0
       },
       "yesterdaySales": {
         "units": 7.0,
@@ -2645,13 +3172,13 @@
       "url": "https://www.kralovstvi-tiande.cz/brozura-fytogely_z4666/",
       "visible": true,
       "wpj": {
-        "inStore": 3514.0,
-        "fourpxStoreTotal": 3562.0,
+        "inStore": 3509.0,
+        "fourpxStoreTotal": 3560.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 3562.0
+            "inStore": 3560.0
           },
           {
             "storeId": 7,
@@ -2677,8 +3204,8 @@
             "922001041431"
           ],
           "batchNos": [],
-          "availableStock": 3562.0,
-          "pendingStock": 149.0,
+          "availableStock": 3560.0,
+          "pendingStock": 151.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -2693,7 +3220,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 3562.0
+        "availableTotal": 3560.0
       },
       "yesterdaySales": {
         "units": 0.0,
@@ -2714,13 +3241,13 @@
       "url": "https://www.kralovstvi-tiande.cz/fytogel-slaviton_z8039/",
       "visible": true,
       "wpj": {
-        "inStore": 2234.0,
-        "fourpxStoreTotal": 2721.0,
+        "inStore": 2232.0,
+        "fourpxStoreTotal": 2719.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2290.0
+            "inStore": 2288.0
           },
           {
             "storeId": 7,
@@ -2746,8 +3273,8 @@
             "922002239194"
           ],
           "batchNos": [],
-          "availableStock": 2290.0,
-          "pendingStock": 110.0,
+          "availableStock": 2288.0,
+          "pendingStock": 112.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -2762,7 +3289,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2721.0
+        "availableTotal": 2719.0
       },
       "yesterdaySales": {
         "units": 128.0,
@@ -2834,13 +3361,13 @@
       "url": "https://www.kralovstvi-tiande.cz/jemny-intimni-gel_z7619/",
       "visible": true,
       "wpj": {
-        "inStore": 1924.0,
-        "fourpxStoreTotal": 2332.0,
+        "inStore": 1920.0,
+        "fourpxStoreTotal": 2328.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1997.0
+            "inStore": 1993.0
           },
           {
             "storeId": 7,
@@ -2876,8 +3403,8 @@
             "922001733501"
           ],
           "batchNos": [],
-          "availableStock": 1997.0,
-          "pendingStock": 96.0,
+          "availableStock": 1993.0,
+          "pendingStock": 100.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -2892,7 +3419,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2332.0
+        "availableTotal": 2328.0
       },
       "yesterdaySales": {
         "units": 137.0,
@@ -2913,13 +3440,13 @@
       "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-slipove-vlozky-s-anionty-nefritova-svezest_z2110/",
       "visible": true,
       "wpj": {
-        "inStore": 675.0,
-        "fourpxStoreTotal": 823.0,
+        "inStore": 674.0,
+        "fourpxStoreTotal": 822.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 725.0
+            "inStore": 724.0
           },
           {
             "storeId": 7,
@@ -2950,8 +3477,8 @@
             "922001041143"
           ],
           "batchNos": [],
-          "availableStock": 725.0,
-          "pendingStock": 99.0,
+          "availableStock": 724.0,
+          "pendingStock": 100.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -2966,7 +3493,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 823.0
+        "availableTotal": 822.0
       },
       "yesterdaySales": {
         "units": 49.0,
@@ -2987,13 +3514,13 @@
       "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-slipove-vlozky-nefritova-svezest_z2025/",
       "visible": true,
       "wpj": {
-        "inStore": 533.0,
-        "fourpxStoreTotal": 713.0,
+        "inStore": 532.0,
+        "fourpxStoreTotal": 712.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 568.0
+            "inStore": 567.0
           },
           {
             "storeId": 7,
@@ -3019,8 +3546,8 @@
             "922001041131"
           ],
           "batchNos": [],
-          "availableStock": 568.0,
-          "pendingStock": 91.0,
+          "availableStock": 567.0,
+          "pendingStock": 92.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3035,7 +3562,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 713.0
+        "availableTotal": 712.0
       },
       "yesterdaySales": {
         "units": 114.0,
@@ -3056,13 +3583,13 @@
       "url": "https://www.kralovstvi-tiande.cz/tajici-kolagenova-liftingova-pletova-maska-s-morskymi-rasami_z8125/",
       "visible": true,
       "wpj": {
-        "inStore": 808.0,
-        "fourpxStoreTotal": 1405.0,
+        "inStore": 804.0,
+        "fourpxStoreTotal": 1404.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 826.0
+            "inStore": 825.0
           },
           {
             "storeId": 7,
@@ -3098,8 +3625,8 @@
             "922002402836"
           ],
           "batchNos": [],
-          "availableStock": 826.0,
-          "pendingStock": 55.0,
+          "availableStock": 825.0,
+          "pendingStock": 56.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3114,7 +3641,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1405.0
+        "availableTotal": 1404.0
       },
       "yesterdaySales": {
         "units": 48.0,
@@ -3135,13 +3662,13 @@
       "url": "https://www.kralovstvi-tiande.cz/denni-vlozky-s-extraktem-aloe-nefritova-svezest_z142/",
       "visible": true,
       "wpj": {
-        "inStore": 826.0,
-        "fourpxStoreTotal": 1060.0,
+        "inStore": 823.0,
+        "fourpxStoreTotal": 1058.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 855.0
+            "inStore": 853.0
           },
           {
             "storeId": 7,
@@ -3172,8 +3699,8 @@
             "922001040885"
           ],
           "batchNos": [],
-          "availableStock": 855.0,
-          "pendingStock": 86.0,
+          "availableStock": 853.0,
+          "pendingStock": 88.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3188,7 +3715,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1060.0
+        "availableTotal": 1058.0
       },
       "yesterdaySales": {
         "units": 97.0,
@@ -3278,13 +3805,13 @@
       "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-menstruacni-vlozky-nefritova-svezest-denni-super_z2024/",
       "visible": true,
       "wpj": {
-        "inStore": 419.0,
-        "fourpxStoreTotal": 710.0,
+        "inStore": 418.0,
+        "fourpxStoreTotal": 709.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 439.0
+            "inStore": 438.0
           },
           {
             "storeId": 7,
@@ -3315,8 +3842,8 @@
             "922001041129"
           ],
           "batchNos": [],
-          "availableStock": 439.0,
-          "pendingStock": 97.0,
+          "availableStock": 438.0,
+          "pendingStock": 98.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3331,7 +3858,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 710.0
+        "availableTotal": 709.0
       },
       "yesterdaySales": {
         "units": 93.0,
@@ -3556,13 +4083,13 @@
       "url": "https://www.kralovstvi-tiande.cz/denni-menstruacni-vlozky-s-fytomembranou-energie-bylin_z134/",
       "visible": true,
       "wpj": {
-        "inStore": 602.0,
-        "fourpxStoreTotal": 996.0,
+        "inStore": 598.0,
+        "fourpxStoreTotal": 994.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 654.0
+            "inStore": 652.0
           },
           {
             "storeId": 7,
@@ -3588,8 +4115,8 @@
             "922001040877"
           ],
           "batchNos": [],
-          "availableStock": 654.0,
-          "pendingStock": 58.0,
+          "availableStock": 652.0,
+          "pendingStock": 60.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3604,7 +4131,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 996.0
+        "availableTotal": 994.0
       },
       "yesterdaySales": {
         "units": 76.0,
@@ -3755,13 +4282,13 @@
       "url": "https://www.kralovstvi-tiande.cz/slipove-vlozky-se-stribrem-super-tenke_z5233/",
       "visible": true,
       "wpj": {
-        "inStore": 868.0,
-        "fourpxStoreTotal": 1253.0,
+        "inStore": 866.0,
+        "fourpxStoreTotal": 1252.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 899.0
+            "inStore": 898.0
           },
           {
             "storeId": 7,
@@ -3792,8 +4319,8 @@
             "922001041500"
           ],
           "batchNos": [],
-          "availableStock": 899.0,
-          "pendingStock": 43.0,
+          "availableStock": 898.0,
+          "pendingStock": 44.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3808,7 +4335,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1253.0
+        "availableTotal": 1252.0
       },
       "yesterdaySales": {
         "units": 53.0,
@@ -3829,13 +4356,13 @@
       "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-menstruacni-vlozky-nefritova-svezest-nocni-super_z2111/",
       "visible": true,
       "wpj": {
-        "inStore": 493.0,
-        "fourpxStoreTotal": 645.0,
+        "inStore": 492.0,
+        "fourpxStoreTotal": 644.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 500.0
+            "inStore": 499.0
           },
           {
             "storeId": 7,
@@ -3861,8 +4388,8 @@
             "922001041145"
           ],
           "batchNos": [],
-          "availableStock": 500.0,
-          "pendingStock": 49.0,
+          "availableStock": 499.0,
+          "pendingStock": 50.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3877,7 +4404,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 645.0
+        "availableTotal": 644.0
       },
       "yesterdaySales": {
         "units": 54.0,

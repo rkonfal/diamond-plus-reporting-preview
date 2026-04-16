@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T11:06:32.665355+02:00",
+  "generatedAt": "2026-04-16T11:13:08.600201+02:00",
   "reportDate": "2026-04-15",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
@@ -37,11 +37,11 @@
       },
       {
         "name": "expedováno",
-        "count": 92
+        "count": 90
       },
       {
         "name": "připraveno k vyzvednutí",
-        "count": 25
+        "count": 27
       },
       {
         "name": "nová",
@@ -808,78 +808,7 @@
         "inStore": -80.0
       }
     ],
-    "largestMovesSinceLastSnapshot": [
-      {
-        "code": "23403",
-        "title": "BIO REHAB - Tonikum-aktivátor růstu vlasů",
-        "currentStock": 1411.0,
-        "previousStock": 1414.0,
-        "delta": -3.0
-      },
-      {
-        "code": "23401",
-        "title": "Šampon - aktivátor růstu vlasů",
-        "currentStock": 1025.0,
-        "previousStock": 1027.0,
-        "delta": -2.0
-      },
-      {
-        "code": "23402",
-        "title": "BIO REHAB Maska-aktivátor růstu vlasů",
-        "currentStock": 1353.0,
-        "previousStock": 1355.0,
-        "delta": -2.0
-      },
-      {
-        "code": "WM139",
-        "title": "Sada pro růst vlasů",
-        "currentStock": 1005.0,
-        "previousStock": 1007.0,
-        "delta": -2.0
-      },
-      {
-        "code": "AX659",
-        "title": "Bio rehab - pro aktivní růst vlasů silou přírody",
-        "currentStock": 1005.0,
-        "previousStock": 1007.0,
-        "delta": -2.0
-      },
-      {
-        "code": "JW560",
-        "title": "Kompletní systém pro aktivaci růstu vlasů",
-        "currentStock": 1005.0,
-        "previousStock": 1007.0,
-        "delta": -2.0
-      },
-      {
-        "code": "BM742",
-        "title": "BIO REHAB Trojice pro silné, husté a vitální vlasy",
-        "currentStock": 1005.0,
-        "previousStock": 1007.0,
-        "delta": -2.0
-      },
-      {
-        "code": "10306",
-        "title": "Krém na oční okolí z ovčí placenty",
-        "currentStock": 317.0,
-        "previousStock": 318.0,
-        "delta": -1.0
-      },
-      {
-        "code": "30118",
-        "title": "Kosmetická fytonáplast Wutong",
-        "currentStock": 3287.0,
-        "previousStock": 3288.0,
-        "delta": -1.0
-      },
-      {
-        "code": "40203",
-        "title": "Peeling Broskvový",
-        "currentStock": 2325.0,
-        "previousStock": 2326.0,
-        "delta": -1.0
-      }
-    ]
+    "largestMovesSinceLastSnapshot": []
   },
   "logistics": {
     "shipmentsTotal": 569,
