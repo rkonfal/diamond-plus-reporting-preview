@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T11:51:44.008732+02:00",
+  "generatedAt": "2026-04-16T12:11:31.806122+02:00",
   "config": {
     "warehouseCode": "CZPRGA",
     "outboundMaxPages": 20,
@@ -14,8 +14,8 @@
       "label": "CZ",
       "inventory": {
         "items": 768,
-        "availableStockTotal": 308959,
-        "pendingStockTotal": 4370,
+        "availableStockTotal": 308862,
+        "pendingStockTotal": 4467,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -23,8 +23,8 @@
         "items": 700,
         "scannedPages": 7,
         "topLogisticsProduct": "F1401",
-        "oldestTimestamp": "2026-04-14T22:52:29+02:00",
-        "newestTimestamp": "2026-04-16T11:50:07+02:00"
+        "oldestTimestamp": "2026-04-14T23:19:17+02:00",
+        "newestTimestamp": "2026-04-16T12:10:04+02:00"
       }
     },
     "sk": {
@@ -80,5 +80,121 @@
     "onlyIn4px": 50,
     "stockMismatch": 680,
     "lowAfterSales": 2
+  },
+  "finance": {
+    "ready": true,
+    "mode": "legacy_snapshot",
+    "message": "Zatím čerpáno z posledního dostupného ABRA Flexi výřezu v původním dashboardu, ne z živého API.",
+    "currentMonth": {
+      "label": "3/2026",
+      "revenue": 16130000,
+      "cogsAndFees": 11566057.87,
+      "logistics": 100848.43,
+      "marketing": 245438.02,
+      "opex": 1019389.35,
+      "depreciation": 385502.0,
+      "other": -1175388.08,
+      "grossMargin": 4563942.13,
+      "afterLogistics": 4463093.7,
+      "afterMarketing": 4217655.68,
+      "operatingMargin": 3198266.33,
+      "ebit": 2812764.33,
+      "profit": 1637376.25,
+      "grossMarginPct": 28.3,
+      "marketingPct": 1.5,
+      "logisticsPct": 0.6,
+      "operatingMarginPct": 19.8,
+      "profitPct": 10.2
+    },
+    "cash": {
+      "cashOnAccounts": 10255308.0,
+      "unpaidInvoices": 1579560.0,
+      "netCashPosition": 8675748.0,
+      "overdueInvoicesCount": 4,
+      "overdueInvoicesAmount": 85645.0,
+      "largestPayables": [
+        {
+          "code": "PF0412/2026",
+          "vendor": "4PX Express CZ",
+          "dueDate": "30.04.2026",
+          "amountTotal": 706145.0,
+          "amountDue": 706145.0,
+          "status": "18 dní do splatnosti"
+        },
+        {
+          "code": "PF0446/2026",
+          "vendor": "Česká pošta, s.p.",
+          "dueDate": "24.04.2026",
+          "amountTotal": 558254.0,
+          "amountDue": 558254.0,
+          "status": "12 dní do splatnosti"
+        },
+        {
+          "code": "PF0426/2026",
+          "vendor": "wpj s.r.o.",
+          "dueDate": "22.04.2026",
+          "amountTotal": 150393.0,
+          "amountDue": 150393.0,
+          "status": "10 dní do splatnosti"
+        },
+        {
+          "code": "PF0428/2026",
+          "vendor": "ProfiSMS s.r.o.",
+          "dueDate": "09.04.2026",
+          "amountTotal": 60000.0,
+          "amountDue": 60000.0,
+          "status": "3 dny PO SPLATNOSTI"
+        },
+        {
+          "code": "PF0429/2026",
+          "vendor": "coworkers.ai s.r.o.",
+          "dueDate": "30.04.2026",
+          "amountTotal": 43560.0,
+          "amountDue": 43560.0,
+          "status": "18 dní do splatnosti"
+        },
+        {
+          "code": "PF0413/2026",
+          "vendor": "4PX Express CZ",
+          "dueDate": "30.04.2026",
+          "amountTotal": 27981.0,
+          "amountDue": 27981.0,
+          "status": "18 dní do splatnosti"
+        },
+        {
+          "code": "Z0118/2025",
+          "vendor": "Quintessence Naturprodukte GmbH",
+          "dueDate": "31.12.2025",
+          "amountTotal": 20221.0,
+          "amountDue": 20221.0,
+          "status": "102 dní PO SPLATNOSTI"
+        },
+        {
+          "code": "PF0392/2026",
+          "vendor": "O2 Czech Republic a.s.",
+          "dueDate": "23.04.2026",
+          "amountTotal": 8332.0,
+          "amountDue": 4749.0,
+          "status": "11 dní do splatnosti (43% uhrazeno)"
+        }
+      ]
+    }
+  },
+  "marketing": {
+    "ready": true,
+    "mode": "legacy_snapshot",
+    "message": "Zatím čerpáno z posledního dostupného ABRA Flexi výřezu v původním dashboardu, ne z živého API.",
+    "currentMonth": {
+      "label": "3/2026",
+      "performanceSpend": 7438.02,
+      "brandSpend": 238000.0,
+      "totalSpend": 245438.02,
+      "revenue": 16130000,
+      "spendShareOfRevenuePct": 1.5
+    },
+    "topSupplier": {
+      "name": "Selfcareacademy s.r.o.",
+      "amount": 155355.37
+    }
   }
 }

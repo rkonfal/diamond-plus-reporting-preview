@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond Plus Reporting V2, Marketing</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <h2>Diamond Plus</h2>
+      <span>Marketing vrstva, první napojení</span>
+    </div>
+    <div class="sidebar-section-label">Přehled</div>
+    <nav class="sidebar-nav">
+      <a href="index.html">🏠 Portal</a>
+      <a href="finance.html">💰 Finance / ABRA</a>
+      <a class="active" href="marketing.html">📣 Marketing</a>
+      <a href="inventory.html">📦 Sklad</a>
+      <a href="logistics.html">🚚 Logistika 4PX</a>
+      <a href="eshop.html">🛒 E-shop / WPJ</a>
+    </nav>
+    <div class="sidebar-footer">Teď je to finance-side bootstrap z ABRA výřezu. Další krok je přímé napojení reklamních platforem a výkonových metrik.</div>
+  </aside>
+
+  <main class="main">
+    <header class="header">
+      <div class="header-row">
+        <div>
+          <h1>Marketing</h1>
+          <div class="header-sub">
+            <span class="badge warn" id="source-mode">Načítám zdroj…</span>
+            <span class="badge info" id="period-label">Načítám období…</span>
+            <span class="badge info" id="generated-at">Načítám refresh…</span>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+    </header>
+
+    <div id="source-alert" style="margin-top:20px;"></div>
+    <section class="grid kpi-grid" id="top-kpis"></section>
+
+    <section class="grid two-col" style="margin-top:20px;">
+      <div class="card">
+        <h2 class="section-title">Měsíční spend</h2>
+        <div class="section-subtitle">Rozseknuté na PPC a ostatní marketing z dostupného ABRA výřezu.</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Měsíc</th>
+              <th class="num">PPC</th>
+              <th class="num">Marketing</th>
+              <th class="num">Celkem</th>
+              <th class="num">% z výnosů</th>
+            </tr>
+          </thead>
+          <tbody id="monthly-table"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2 class="section-title">Top dodavatelé, aktuální měsíc</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Dodavatel</th>
+              <th class="num">Částka</th>
+            </tr>
+          </thead>
+          <tbody id="suppliers-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:20px;">
+      <h2 class="section-title">Aktuální marketingové položky</h2>
+      <div class="section-subtitle">První operativní rozpad podle účetních položek, než dopojím Meta / Google / další kanály napřímo.</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Datum</th>
+            <th>Dodavatel</th>
+            <th>Popis</th>
+            <th>Modul</th>
+            <th>Účet</th>
+            <th>Středisko</th>
+            <th class="num">Částka</th>
+          </tr>
+        </thead>
+        <tbody id="entries-table"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+    const money = value => `${DP.fmtNumber(Math.round(value || 0))} Kč`;
+    const pct = value => value == null ? '–' : `${Number(value).toFixed(1)} %`;
+
+    (async () => {
+      const data = await DP.loadJson('../data/current/marketing_overview.json');
+      document.getElementById('source-mode').textContent = data.source?.status === 'legacy_snapshot' ? 'legacy snapshot' : 'marketing ready';
+      document.getElementById('period-label').textContent = `Aktuální měsíc: ${data.currentMonth?.label || '–'}`;
+      document.getElementById('generated-at').textContent = `Poslední refresh: ${DP.fmtDateTime(data.generatedAt)}`;
+      document.getElementById('source-alert').innerHTML = `<div class="alert warn">${data.source?.message || 'Bez zdrojové poznámky.'}</div>`;
+
+      const current = data.currentMonth || {};
+      const topSupplier = (data.topSuppliersCurrentMonth || [])[0];
+      const kpis = [
+        ['Marketing spend', money(current.totalSpend), `${pct(current.spendShareOfRevenuePct)} z výnosů`, 'gold'],
+        ['PPC spend', money(current.performanceSpend), 'výkonové kanály', 'blue'],
+        ['Ostatní marketing', money(current.brandSpend), 'produkce, SMS, služby', 'green'],
+        ['Top dodavatel', topSupplier ? money(topSupplier.amount) : '0 Kč', topSupplier ? topSupplier.name : 'bez dat', 'red']
+      ];
+      document.getElementById('top-kpis').innerHTML = kpis.map(([label, value, sub, klass]) => `
+        <div class="card kpi-card ${klass}">
+          <div class="kpi-label">${label}</div>
+          <div class="kpi-value">${value}</div>
+          <div class="kpi-sub">${sub}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('monthly-table').innerHTML = (data.monthly || []).map(row => `
+        <tr>
+          <td>${row.label}</td>
+          <td class="num">${money(row.performanceSpend)}</td>
+          <td class="num">${money(row.brandSpend)}</td>
+          <td class="num">${money(row.totalSpend)}</td>
+          <td class="num">${pct(row.spendShareOfRevenuePct)}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('suppliers-table').innerHTML = (data.topSuppliersCurrentMonth || []).map(row => `
+        <tr>
+          <td>${row.name}</td>
+          <td class="num">${money(row.amount)}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('entries-table').innerHTML = (data.entriesCurrentMonth || []).map(row => `
+        <tr>
+          <td>${row.date || '–'}</td>
+          <td>${row.supplier || '–'}</td>
+          <td>${row.description || '–'}</td>
+          <td>${row.module || '–'}</td>
+          <td>${row.account || '–'}</td>
+          <td>${row.costCenter || '–'}</td>
+          <td class="num">${money(row.amount)}</td>
+        </tr>
+      `).join('');
+    })().catch(err => {
+      document.getElementById('source-alert').innerHTML = `<div class="alert danger">Nepodařilo se načíst marketing data: ${err.message}</div>`;
+    });
+  </script>
+</body>
+</html>

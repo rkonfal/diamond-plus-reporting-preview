@@ -15,6 +15,8 @@
     <div class="sidebar-section-label">Přehled</div>
     <nav class="sidebar-nav">
       <a class="active" href="index.html">🏠 Portal</a>
+      <a href="finance.html">💰 Finance / ABRA</a>
+      <a href="marketing.html">📣 Marketing</a>
       <a href="inventory.html">📦 Sklad</a>
       <a href="logistics.html">🚚 Logistika 4PX</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
@@ -72,6 +74,8 @@
     const doneItems = [
       ['4PX API napojení', 'CZ i SK připojené napřímo přes Open API.'],
       ['WPJ GraphQL napojení', 'Objednávky i skladová vrstva se tahají přímo z WPJ přes X-Access-Token.'],
+      ['Finance / ABRA bootstrap', 'Do nové vrstvy je vytažený poslední dostupný ABRA Flexi snapshot z původního dashboardu.'],
+      ['Marketing bootstrap', 'Marketingové náklady jsou rozseknuté na PPC a ostatní marketing a připravené pro další napojení.'],
       ['Nová datová vrstva', 'Refresh skript zapisuje normalizovaná JSON data, snapshoty a ranní report.'],
       ['Nový portál', 'Sdílené assets, společný vizuální systém, bez kopírování stylů mezi HTML.'],
       ['Hodinový refresh připraven', 'Cron job je připravený pro automatický běh.']
@@ -86,7 +90,9 @@
         ['CZ sklad, dostupné kusy', DP.fmtNumber(summary.accounts.cz.inventory.availableStockTotal), `${DP.fmtNumber(summary.accounts.cz.inventory.items)} skladových řádků`, 'green'],
         ['SK sklad, dostupné kusy', DP.fmtNumber(summary.accounts.sk.inventory.availableStockTotal), `${DP.fmtNumber(summary.accounts.sk.inventory.items)} skladových řádků`, 'blue'],
         ['WPJ objednávky včera', DP.fmtNumber(summary.wpJ.orders || 0), `${DP.fmtNumber(Math.round(summary.wpJ.revenueWithVat || 0))} Kč`, 'gold'],
-        ['4PX zásilky včera', DP.fmtNumber(summary.report.shipments || 0), `${summary.report.date}`, 'red']
+        ['4PX zásilky včera', DP.fmtNumber(summary.report.shipments || 0), `${summary.report.date}`, 'red'],
+        ['Finance, čistá cash pozice', DP.fmtNumber(Math.round(summary.finance?.cash?.netCashPosition || 0)), summary.finance?.mode === 'legacy_snapshot' ? 'legacy ABRA snapshot' : 'finance zdroj', 'gold'],
+        ['Marketing, poslední měsíc', DP.fmtNumber(Math.round(summary.marketing?.currentMonth?.totalSpend || 0)), `${(summary.marketing?.currentMonth?.spendShareOfRevenuePct ?? 0).toFixed(1)} % z výnosů`, 'blue']
       ];
       document.getElementById('top-kpis').innerHTML = kpis.map(([label, value, sub, klass]) => `
         <div class="card kpi-card ${klass}">
@@ -108,6 +114,8 @@
         ['4PX CZ outbound', 'OK', `Recent pages: ${summary.accounts.cz.outbound.scannedPages}`, summary.accounts.cz.outbound.items],
         ['4PX SK outbound', 'OK', `Recent pages: ${summary.accounts.sk.outbound.scannedPages}`, summary.accounts.sk.outbound.items],
         ['WPJ / GraphQL', summary.wpJ.ready ? 'OK' : 'Čeká', summary.wpJ.message, summary.wpJ.orders || 0],
+        ['ABRA Flexi / finance', summary.finance?.ready ? 'OK' : 'Čeká', summary.finance?.message || 'Bez dat', Math.round(summary.finance?.currentMonth?.revenue || 0)],
+        ['Marketing', summary.marketing?.ready ? 'OK' : 'Čeká', summary.marketing?.message || 'Bez dat', Math.round(summary.marketing?.currentMonth?.totalSpend || 0)],
         ['Ranní report', 'OK', `Alerty: ${(summary.report.alerts || []).length}`, summary.report.shipments || 0]
       ];
       document.getElementById('sources-table').innerHTML = sourceRows.map(row => `
