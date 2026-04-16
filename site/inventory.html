@@ -16,7 +16,7 @@
       <a href="logistics.html">🚚 Logistika 4PX</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">Tahle stránka už běží nad kombinovanou vrstvou WPJ + 4PX a ukazuje hlavně operační rozdíly a rizika.</div>
+    <div class="sidebar-footer">Skladová stránka teď spojuje roční analytiku, mismatch shortlist i mapovací návrhy mezi WPJ a 4PX.</div>
   </aside>
 
   <main class="main">
@@ -38,7 +38,7 @@
 
     <section class="card" style="margin-top:20px;">
       <h2 class="section-title">Prioritní mismatch shortlist</h2>
-      <div class="section-subtitle">Ne dlouhý dump, ale pořadník toho, co má smysl řešit jako první.</div>
+      <div class="section-subtitle">Ne dump, ale pořadník toho, co má největší dopad na provoz a co dává smysl řešit jako první.</div>
       <table class="table">
         <thead>
           <tr>
@@ -55,8 +55,76 @@
 
     <section class="grid two-col" style="margin-top:20px;">
       <div class="card">
+        <h2 class="section-title">Obrátkovost, top produkty za 365 dní</h2>
+        <div class="section-subtitle">Pohled na nejtočivější produkty za poslední rok a orientační dobu pokrytí zásob.</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kód / produkt</th>
+              <th class="num">Prodej 365d</th>
+              <th class="num">Aktuální sklad</th>
+              <th class="num">Dny pokrytí</th>
+            </tr>
+          </thead>
+          <tbody id="turnover-table"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Riziko nízkého pokrytí</h2>
+        <div class="section-subtitle">Rychle se točí a na skladu toho není moc, tohle je operativní watchlist.</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kód / produkt</th>
+              <th class="num">Prodej 365d</th>
+              <th class="num">Aktuální sklad</th>
+              <th class="num">Dny pokrytí</th>
+            </tr>
+          </thead>
+          <tbody id="fast-low-cover-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid two-col" style="margin-top:20px;">
+      <div class="card">
+        <h2 class="section-title">Ležáky</h2>
+        <div class="section-subtitle">Zásoba leží dlouho bez prodeje nebo má extrémně dlouhé pokrytí.</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kód / produkt</th>
+              <th class="num">Aktuální sklad</th>
+              <th class="num">Bez prodeje dnů</th>
+              <th class="num">Dny pokrytí</th>
+            </tr>
+          </thead>
+          <tbody id="slow-movers-table"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Dead stock</h2>
+        <div class="section-subtitle">Zboží na skladu bez prodeje za posledních 365 dní.</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kód / produkt</th>
+              <th class="num">Aktuální sklad</th>
+              <th class="num">Prodej 365d</th>
+              <th class="num">Prodejní hodnota skladu</th>
+            </tr>
+          </thead>
+          <tbody id="dead-stock-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid two-col" style="margin-top:20px;">
+      <div class="card">
         <h2 class="section-title">Nízký sklad po včerejším prodeji</h2>
-        <div class="section-subtitle">Tohle je shortlist produktů, které se včera prodaly a dnes jsou už na hraně.</div>
+        <div class="section-subtitle">Produkty, které se včera prodaly a dnes jsou už na hraně.</div>
         <table class="table">
           <thead>
             <tr>
@@ -72,7 +140,7 @@
 
       <div class="card">
         <h2 class="section-title">Pouze v 4PX</h2>
-        <div class="section-subtitle">Produkty, které jsou fyzicky v 4PX, ale v párovaném WPJ produktu zatím chybí.</div>
+        <div class="section-subtitle">Produkty, které jsou fyzicky v 4PX, ale ve WPJ zatím nemají správnou vazbu.</div>
         <table class="table">
           <thead>
             <tr>
@@ -145,7 +213,7 @@
 
     (async () => {
       const overview = await DP.loadJson('../data/current/combined_inventory_overview.json');
-      const portal = await DP.loadJson('../data/current/portal_summary.json');
+      const analytics = await DP.loadJson('../data/current/inventory_analytics_365d.json');
 
       document.getElementById('inventory-window').textContent = `Okno: ${new Date(overview.window.from).toLocaleDateString('cs-CZ')}`;
       document.getElementById('inventory-paired').textContent = `Spárované produkty: ${fmt(overview.counts.pairedProducts)}`;
@@ -155,7 +223,7 @@
         ['Spárované produkty', fmt(overview.counts.pairedProducts), 'WPJ + 4PX mají vazbu', 'green'],
         ['Stock mismatchy', fmt(overview.counts.stockMismatch), 'potřebují shortlist a kontrolu', 'red'],
         ['Pouze v 4PX', fmt(overview.counts.onlyIn4px), 'chybí nebo nejsou svázané ve WPJ', 'gold'],
-        ['Low after sales', fmt(overview.counts.lowAfterSales), 'včerejší prodej vs dnešní sklad', 'blue']
+        ['Dead stock', fmt(analytics.summary.deadStockItems || 0), 'bez prodeje za posledních 365 dní', 'blue']
       ].map(([label, value, sub, klass]) => `
         <div class="card kpi-card ${klass}">
           <div class="kpi-label">${label}</div>
@@ -164,34 +232,7 @@
         </div>
       `).join('');
 
-      document.getElementById('low-stock-table').innerHTML = overview.lowAfterSales.map(row => `
-        <tr>
-          <td>${productLabel(row)}</td>
-          <td class="num">${fmt(row.yesterdaySales.units)}</td>
-          <td class="num">${fmt(row.fourpx.availableTotal)}</td>
-          <td class="num">${fmt(row.stockDelta)}</td>
-        </tr>
-      `).join('') || '<tr><td colspan="4">Aktuálně bez kritického shortlistu.</td></tr>';
-
-      document.getElementById('only-4px-table').innerHTML = overview.onlyIn4px.map(row => `
-        <tr>
-          <td>${productLabel(row)}</td>
-          <td class="num">${fmt(row.fourpx.availableTotal)}</td>
-          <td class="num">${fmt(row.yesterdayOutbound.czUnits + row.yesterdayOutbound.skUnits)}</td>
-        </tr>
-      `).join('') || '<tr><td colspan="3">Aktuálně bez orphan 4PX SKU.</td></tr>';
-
-      document.getElementById('mismatch-table').innerHTML = overview.stockMismatches.map(row => `
-        <tr>
-          <td>${productLabel(row)}</td>
-          <td class="num">${fmt(row.wpj.fourpxStoreTotal)}</td>
-          <td class="num">${fmt(row.fourpx.availableTotal)}</td>
-          <td class="num">${fmt(row.stockDelta)}</td>
-          <td>${flagsHtml(row.flags)}</td>
-        </tr>
-      `).join('') || '<tr><td colspan="5">Žádné mismatchy.</td></tr>';
-
-      document.getElementById('priority-shortlist-table').innerHTML = overview.priorityShortlist.map(row => `
+      document.getElementById('priority-shortlist-table').innerHTML = (overview.priorityShortlist || []).map(row => `
         <tr>
           <td>${priorityPill(row.priority)}<div style="margin-top:8px;">${row.code} · ${row.title}</div></td>
           <td class="num">${fmt(row.score)}</td>
@@ -204,6 +245,59 @@
         </tr>
       `).join('') || '<tr><td colspan="5">Zatím bez prioritního shortlistu.</td></tr>';
 
+      document.getElementById('turnover-table').innerHTML = (analytics.topTurnover || []).slice(0, 20).map(row => `
+        <tr>
+          <td>${row.code} · ${row.title}</td>
+          <td class="num">${fmt(row.units365d)}</td>
+          <td class="num">${fmt(row.effectiveStock)}</td>
+          <td class="num">${row.daysOfCover365d ?? '–'}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="4">Zatím bez roční analytiky.</td></tr>';
+
+      document.getElementById('fast-low-cover-table').innerHTML = (analytics.fastLowCover || []).slice(0, 20).map(row => `
+        <tr>
+          <td>${row.code} · ${row.title}</td>
+          <td class="num">${fmt(row.units365d)}</td>
+          <td class="num">${fmt(row.effectiveStock)}</td>
+          <td class="num">${row.daysOfCover365d ?? '–'}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="4">Aktuálně bez low-cover shortlistu.</td></tr>';
+
+      document.getElementById('slow-movers-table').innerHTML = (analytics.slowMovers || []).slice(0, 20).map(row => `
+        <tr>
+          <td>${row.code} · ${row.title}</td>
+          <td class="num">${fmt(row.effectiveStock)}</td>
+          <td class="num">${row.daysSinceLastSale ?? '–'}</td>
+          <td class="num">${row.daysOfCover365d ?? '–'}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="4">Aktuálně bez ležáků.</td></tr>';
+
+      document.getElementById('dead-stock-table').innerHTML = (analytics.deadStock || []).slice(0, 20).map(row => `
+        <tr>
+          <td>${row.code} · ${row.title}</td>
+          <td class="num">${fmt(row.effectiveStock)}</td>
+          <td class="num">${fmt(row.units365d)}</td>
+          <td class="num">${row.stockValueSelling ? `${fmt(row.stockValueSelling)} Kč` : '–'}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="4">Aktuálně bez dead stocku.</td></tr>';
+
+      document.getElementById('low-stock-table').innerHTML = (overview.lowAfterSales || []).map(row => `
+        <tr>
+          <td>${productLabel(row)}</td>
+          <td class="num">${fmt(row.yesterdaySales.units)}</td>
+          <td class="num">${fmt(row.fourpx.availableTotal)}</td>
+          <td class="num">${fmt(row.stockDelta)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="4">Aktuálně bez kritického shortlistu.</td></tr>';
+
+      document.getElementById('only-4px-table').innerHTML = (overview.onlyIn4px || []).map(row => `
+        <tr>
+          <td>${productLabel(row)}</td>
+          <td class="num">${fmt(row.fourpx.availableTotal)}</td>
+          <td class="num">${fmt(row.yesterdayOutbound.czUnits + row.yesterdayOutbound.skUnits)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="3">Aktuálně bez orphan 4PX SKU.</td></tr>';
+
       document.getElementById('mapping-suggestions-table').innerHTML = (overview.mappingSuggestions || []).map(row => `
         <tr>
           <td>${row.orphanCode} · ${row.orphanTitle}</td>
@@ -213,6 +307,16 @@
           <td>${row.rule}</td>
         </tr>
       `).join('') || '<tr><td colspan="5">Zatím bez mapovacích návrhů.</td></tr>';
+
+      document.getElementById('mismatch-table').innerHTML = (overview.stockMismatches || []).map(row => `
+        <tr>
+          <td>${productLabel(row)}</td>
+          <td class="num">${fmt(row.wpj.fourpxStoreTotal)}</td>
+          <td class="num">${fmt(row.fourpx.availableTotal)}</td>
+          <td class="num">${fmt(row.stockDelta)}</td>
+          <td>${flagsHtml(row.flags)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="5">Žádné mismatchy.</td></tr>';
     })().catch(err => {
       document.getElementById('inventory-window').textContent = `Nepodařilo se načíst data: ${err.message}`;
     });
