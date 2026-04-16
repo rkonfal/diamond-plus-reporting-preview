@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-04-16T14:01:42.561838+02:00",
+  "generatedAt": "2026-04-16T15:32:34.504428+02:00",
   "reportDate": "2026-04-15",
+  "detailUrl": "https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
     "to": "2026-04-15T23:59:59+02:00"
@@ -33,19 +34,19 @@
     "statuses": [
       {
         "name": "přijatá",
-        "count": 270
+        "count": 265
       },
       {
         "name": "připraveno k vyzvednutí",
-        "count": 54
-      },
-      {
-        "name": "expedováno",
-        "count": 49
+        "count": 59
       },
       {
         "name": "doručeno",
-        "count": 27
+        "count": 48
+      },
+      {
+        "name": "expedováno",
+        "count": 28
       },
       {
         "name": "nová",
@@ -104,7 +105,7 @@
         "count": 59
       },
       {
-        "name": "DPD Doručenie na adresu",
+        "name": "GLS",
         "count": 19
       },
       {
@@ -781,13 +782,13 @@
         "code": "PROMO114",
         "title": "Děkujeme za důvěru ",
         "storeName": "[FlexiBee] Sklad LTM",
-        "inStore": -135.0
+        "inStore": -136.0
       },
       {
         "code": "PROMO114",
         "title": "Děkujeme za důvěru ",
         "storeName": "[FlexiBee] Sklad Měčín",
-        "inStore": -108.0
+        "inStore": -109.0
       },
       {
         "code": "000087",
@@ -808,78 +809,7 @@
         "inStore": -80.0
       }
     ],
-    "largestMovesSinceLastSnapshot": [
-      {
-        "code": "40203",
-        "title": "Peeling Broskvový",
-        "currentStock": 2250.0,
-        "previousStock": 2259.0,
-        "delta": -9.0
-      },
-      {
-        "code": "UA132",
-        "title": "Peeling Broskovový 1+1",
-        "currentStock": 2240.0,
-        "previousStock": 2249.0,
-        "delta": -9.0
-      },
-      {
-        "code": "44402-2",
-        "title": "Fytogel Slaviton",
-        "currentStock": 2682.0,
-        "previousStock": 2690.0,
-        "delta": -8.0
-      },
-      {
-        "code": "40106",
-        "title": "Omlazující krém na ruce Lingzhi",
-        "currentStock": 490.0,
-        "previousStock": 495.0,
-        "delta": -5.0
-      },
-      {
-        "code": "52911",
-        "title": "Obnovující maska na obličej a krk s fullereny a polypeptidy",
-        "currentStock": 1742.0,
-        "previousStock": 1747.0,
-        "delta": -5.0
-      },
-      {
-        "code": "DK720",
-        "title": "Šetrné čištění pleti",
-        "currentStock": 153.0,
-        "previousStock": 158.0,
-        "delta": -5.0
-      },
-      {
-        "code": "RK715",
-        "title": "Regenerační rituál pro obličej, krk a ruce",
-        "currentStock": 1740.0,
-        "previousStock": 1745.0,
-        "delta": -5.0
-      },
-      {
-        "code": "BC836",
-        "title": "Revitalizační balíček Lingzhi pro mladistvou pleť",
-        "currentStock": 121.0,
-        "previousStock": 126.0,
-        "delta": -5.0
-      },
-      {
-        "code": "BT835",
-        "title": "Revitalizace citlivé oblasti očí",
-        "currentStock": 245.0,
-        "previousStock": 250.0,
-        "delta": -5.0
-      },
-      {
-        "code": "AU572",
-        "title": "Revitalizační maska na obličej a krk s fullereny – výhodný balíček dvou masek",
-        "currentStock": 1740.0,
-        "previousStock": 1745.0,
-        "delta": -5.0
-      }
-    ]
+    "largestMovesSinceLastSnapshot": []
   },
   "logistics": {
     "shipmentsTotal": 569,
@@ -926,15 +856,11 @@
     "statusCounts": [
       {
         "name": "C",
-        "count": 464
+        "count": 515
       },
       {
         "name": "P",
-        "count": 98
-      },
-      {
-        "name": "S",
-        "count": 7
+        "count": 54
       }
     ],
     "coverageWarnings": [],
@@ -944,10 +870,10 @@
         "sku": "40203",
         "dateExpiry": "2026-05-08",
         "daysToExpiry": 22,
-        "datedStock": 2508.0,
-        "stockAtNearestExpiry": 2508.0,
+        "datedStock": 2423.0,
+        "stockAtNearestExpiry": 2423.0,
         "batchCount": 14,
-        "riskScore": 42.57,
+        "riskScore": 41.13,
         "title": "Peeling Broskvový",
         "label": "40203 · Peeling Broskvový (CZ)"
       },
@@ -956,10 +882,10 @@
         "sku": "52902/03",
         "dateExpiry": "2026-05-07",
         "daysToExpiry": 21,
-        "datedStock": 383.0,
-        "stockAtNearestExpiry": 383.0,
+        "datedStock": 371.0,
+        "stockAtNearestExpiry": 371.0,
         "batchCount": 3,
-        "riskScore": 6.89,
+        "riskScore": 6.67,
         "title": "Revitalizační maska na obličej a krk Lingzhi - 3ks",
         "label": "52902/03 · Revitalizační maska na obličej a krk Lingzhi - 3ks (CZ)"
       },
@@ -968,8 +894,8 @@
         "sku": "PROMO74",
         "dateExpiry": "2027-02-09",
         "daysToExpiry": 299,
-        "datedStock": 9490.0,
-        "stockAtNearestExpiry": 2370.0,
+        "datedStock": 9480.0,
+        "stockAtNearestExpiry": 2360.0,
         "batchCount": 18,
         "riskScore": 5.71,
         "title": "Královská bylinná směs zdravá žena ",
@@ -980,10 +906,10 @@
         "sku": "63601/01",
         "dateExpiry": "2026-12-31",
         "daysToExpiry": 259,
-        "datedStock": 7631.0,
-        "stockAtNearestExpiry": 7631.0,
+        "datedStock": 7547.0,
+        "stockAtNearestExpiry": 7547.0,
         "batchCount": 14,
-        "riskScore": 5.53,
+        "riskScore": 5.47,
         "title": "Denní vložka Energie života",
         "label": "63601/01 · Denní vložka Energie života (CZ)"
       },

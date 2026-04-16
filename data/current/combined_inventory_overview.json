@@ -1,33 +1,33 @@
 {
-  "generatedAt": "2026-04-16T14:00:00.835791+02:00",
+  "generatedAt": "2026-04-16T15:31:11.523336+02:00",
   "window": {
     "from": "2026-04-15T00:00:00+02:00",
     "to": "2026-04-15T23:59:59+02:00"
   },
   "counts": {
-    "allCodes": 2890,
-    "pairedProducts": 389,
+    "allCodes": 2891,
+    "pairedProducts": 390,
     "onlyInWpj": 1435,
     "onlyIn4px": 1,
     "stockMismatch": 667,
     "lowAfterSales": 2,
     "manualMapped4pxAliases": 0,
-    "autoMapped4pxAliases": 74
+    "autoMapped4pxAliases": 73
   },
   "priorityShortlist": [
     {
       "code": "52901",
       "title": "Intenzivní hydratační maska na obličej a krk Hyaluronová kyselina",
       "priority": "high",
-      "score": 62.1,
+      "score": 62.12,
       "reasons": [
         "včera se prodalo 3 ks",
         "včera se expedovalo 3 ks"
       ],
       "recommendedAction": "Prověřit rozdíl mezi WPJ store stavem a 4PX inventory pull em.",
-      "wpj4pxStock": 862.0,
+      "wpj4pxStock": 861.0,
       "fourpxAvailable": 1722.0,
-      "stockDelta": -860.0,
+      "stockDelta": -861.0,
       "yesterdaySalesUnits": 3.0,
       "yesterdayOutboundUnits": 3.0,
       "flags": [
@@ -65,9 +65,9 @@
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 3137.0,
+      "wpj4pxStock": 3130.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 3137.0,
+      "stockDelta": 3130.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -105,9 +105,9 @@
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 2952.0,
+      "wpj4pxStock": 2939.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 2952.0,
+      "stockDelta": 2939.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -165,9 +165,9 @@
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 2217.0,
+      "wpj4pxStock": 2215.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 2217.0,
+      "stockDelta": 2215.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -205,9 +205,9 @@
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 2217.0,
+      "wpj4pxStock": 2215.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 2217.0,
+      "stockDelta": 2215.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -225,9 +225,9 @@
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 2797.0,
+      "wpj4pxStock": 2796.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 2797.0,
+      "stockDelta": 2796.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -245,34 +245,14 @@
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 2240.0,
+      "wpj4pxStock": 2220.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 2240.0,
+      "stockDelta": 2220.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
-      ]
-    },
-    {
-      "code": "52903",
-      "title": "Intenzivní omlazující maska na obličej a krk Q10",
-      "priority": "high",
-      "score": 58.4,
-      "reasons": [
-        "včera se prodalo 22 ks",
-        "včera se expedovalo 23 ks"
-      ],
-      "recommendedAction": "Prověřit rozdíl mezi WPJ store stavem a 4PX inventory pull em.",
-      "wpj4pxStock": 1327.0,
-      "fourpxAvailable": 1647.0,
-      "stockDelta": -320.0,
-      "yesterdaySalesUnits": 22.0,
-      "yesterdayOutboundUnits": 23.0,
-      "flags": [
-        "stock_mismatch",
-        "auto_mapped_4px_alias"
       ]
     },
     {
@@ -299,15 +279,15 @@
       "code": "AU572",
       "title": "Revitalizační maska na obličej a krk s fullereny – výhodný balíček dvou masek",
       "priority": "high",
-      "score": 54.8,
+      "score": 54.62,
       "reasons": [
         "WPJ ukazuje 4PX kontext, ale 4PX inventory nesedí",
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 1740.0,
+      "wpj4pxStock": 1731.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 1740.0,
+      "stockDelta": 1731.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -319,15 +299,15 @@
       "code": "RK715",
       "title": "Regenerační rituál pro obličej, krk a ruce",
       "priority": "high",
-      "score": 54.8,
+      "score": 54.62,
       "reasons": [
         "WPJ ukazuje 4PX kontext, ale 4PX inventory nesedí",
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 1740.0,
+      "wpj4pxStock": 1731.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 1740.0,
+      "stockDelta": 1731.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -442,15 +422,15 @@
       "code": "ZH518",
       "title": "Křišťálová kolagenová maska 2=3",
       "priority": "high",
-      "score": 51.36,
+      "score": 51.28,
       "reasons": [
         "WPJ ukazuje 4PX kontext, ale 4PX inventory nesedí",
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 1568.0,
+      "wpj4pxStock": 1564.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 1568.0,
+      "stockDelta": 1564.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -462,15 +442,15 @@
       "code": "OV098",
       "title": "Preventivní krém na nohy s hadím olejem 1+1",
       "priority": "high",
-      "score": 50.98,
+      "score": 50.84,
       "reasons": [
         "WPJ ukazuje 4PX kontext, ale 4PX inventory nesedí",
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 1549.0,
+      "wpj4pxStock": 1542.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 1549.0,
+      "stockDelta": 1542.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -517,21 +497,29 @@
         "only_in_wpj_4px_context",
         "stock_mismatch"
       ]
+    },
+    {
+      "code": "KR044",
+      "title": "Hydratační krémová maska na obličej Aloe 1+1",
+      "priority": "high",
+      "score": 48.98,
+      "reasons": [
+        "WPJ ukazuje 4PX kontext, ale 4PX inventory nesedí",
+        "4PX available je nula"
+      ],
+      "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
+      "wpj4pxStock": 1449.0,
+      "fourpxAvailable": 0.0,
+      "stockDelta": 1449.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 0.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
     }
   ],
   "mappingSuggestions": [
-    {
-      "orphanCode": "52903/03",
-      "orphanTitle": "Intenzivní omlazující maska na obličej a krk Q10",
-      "suggestedWpjCode": "52903",
-      "suggestedWpjTitle": "Intenzivní omlazující maska na obličej a krk Q10",
-      "confidence": "high",
-      "rule": "strip_/variant_suffix",
-      "applied": true,
-      "fourpxAvailable": 1647.0,
-      "yesterdaySalesUnits": 22.0,
-      "yesterdayOutboundUnits": 23.0
-    },
     {
       "orphanCode": "52901/03",
       "orphanTitle": "Intenzivní hydratační maska na obličej a krk Hyaluronová kyselina",
@@ -798,7 +786,7 @@
     }
   ],
   "manualMappedAliases": 0,
-  "autoMappedAliases": 74,
+  "autoMappedAliases": 73,
   "lowAfterSales": [
     {
       "code": "VSTUP200526",
@@ -977,14 +965,14 @@
       "url": "https://www.kralovstvi-tiande.cz/kristalova-kolagenova-maska-1-2_z7214/",
       "visible": false,
       "wpj": {
-        "inStore": 2668.0,
-        "fourpxStoreTotal": 3137.0,
+        "inStore": 2661.0,
+        "fourpxStoreTotal": 3130.0,
         "priceWithVat": 108.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2668.0
+            "inStore": 2661.0
           },
           {
             "storeId": 7,
@@ -1057,7 +1045,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 3137.0,
+      "stockDelta": 3130.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -1070,14 +1058,14 @@
       "url": "https://www.kralovstvi-tiande.cz/regeneracni-spa-balicek-pro-dokonale-ruce-a-nohy_z8275/",
       "visible": true,
       "wpj": {
-        "inStore": 2638.0,
-        "fourpxStoreTotal": 2952.0,
+        "inStore": 2625.0,
+        "fourpxStoreTotal": 2939.0,
         "priceWithVat": 162.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2638.0
+            "inStore": 2625.0
           },
           {
             "storeId": 7,
@@ -1140,7 +1128,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 2952.0,
+      "stockDelta": 2939.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -1153,14 +1141,14 @@
       "url": "https://www.kralovstvi-tiande.cz/kompletni-pece-o-ruce-a-nohy-s-hadim-olejem_z8274/",
       "visible": true,
       "wpj": {
-        "inStore": 2483.0,
-        "fourpxStoreTotal": 2797.0,
+        "inStore": 2482.0,
+        "fourpxStoreTotal": 2796.0,
         "priceWithVat": 162.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2483.0
+            "inStore": 2482.0
           },
           {
             "storeId": 7,
@@ -1223,7 +1211,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 2797.0,
+      "stockDelta": 2796.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -1307,99 +1295,6 @@
         "autoMappedSourceCodes": []
       },
       "stockDelta": 2450.0,
-      "flags": [
-        "only_in_wpj_4px_context",
-        "stock_mismatch"
-      ]
-    },
-    {
-      "code": "UA132",
-      "title": "Peeling Broskovový 1+1",
-      "ean": null,
-      "url": "https://www.kralovstvi-tiande.cz/peeling-broskovovy-1-1_z7427/",
-      "visible": false,
-      "wpj": {
-        "inStore": 2240.0,
-        "fourpxStoreTotal": 2240.0,
-        "priceWithVat": 42.0,
-        "stores": [
-          {
-            "storeId": 6,
-            "storeName": "4PX CZ",
-            "inStore": 2240.0
-          },
-          {
-            "storeId": 7,
-            "storeName": "4PX SK",
-            "inStore": 0.0
-          },
-          {
-            "storeId": 8,
-            "storeName": "Fiktivní CZ",
-            "inStore": 0.0
-          },
-          {
-            "storeId": 9,
-            "storeName": "Fiktivní SK",
-            "inStore": 0.0
-          },
-          {
-            "storeId": 10,
-            "storeName": "[FlexiBee] Sklad Měčín",
-            "inStore": 0.0
-          },
-          {
-            "storeId": 11,
-            "storeName": "[FlexiBee] Sklad LTM",
-            "inStore": 19.0
-          }
-        ]
-      },
-      "fourpx": {
-        "cz": {
-          "availableStock": 0.0,
-          "pendingStock": 0.0,
-          "freezeStock": 0.0,
-          "onwayStock": 0.0,
-          "batchNos": [],
-          "skuIds": [],
-          "sourceCodes": [],
-          "mappedSourceCodes": [],
-          "mappingRules": []
-        },
-        "sk": {
-          "availableStock": 0.0,
-          "pendingStock": 0.0,
-          "freezeStock": 0.0,
-          "onwayStock": 0.0,
-          "batchNos": [],
-          "skuIds": [],
-          "sourceCodes": [],
-          "mappedSourceCodes": [],
-          "mappingRules": []
-        },
-        "availableTotal": 0.0,
-        "sourceCodes": [],
-        "mappedSourceCodes": [],
-        "manualMappedSourceCodes": [],
-        "autoMappedSourceCodes": [],
-        "mappingRules": []
-      },
-      "yesterdaySales": {
-        "units": 0.0,
-        "revenueWithVat": 0.0,
-        "sourceCodes": []
-      },
-      "yesterdayOutbound": {
-        "czUnits": 0.0,
-        "skUnits": 0.0,
-        "shipments": 0,
-        "sourceCodes": [],
-        "mappedSourceCodes": [],
-        "manualMappedSourceCodes": [],
-        "autoMappedSourceCodes": []
-      },
-      "stockDelta": 2240.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -1655,20 +1550,113 @@
       ]
     },
     {
+      "code": "UA132",
+      "title": "Peeling Broskovový 1+1",
+      "ean": null,
+      "url": "https://www.kralovstvi-tiande.cz/peeling-broskovovy-1-1_z7427/",
+      "visible": false,
+      "wpj": {
+        "inStore": 2220.0,
+        "fourpxStoreTotal": 2220.0,
+        "priceWithVat": 42.0,
+        "stores": [
+          {
+            "storeId": 6,
+            "storeName": "4PX CZ",
+            "inStore": 2220.0
+          },
+          {
+            "storeId": 7,
+            "storeName": "4PX SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 8,
+            "storeName": "Fiktivní CZ",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 9,
+            "storeName": "Fiktivní SK",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 10,
+            "storeName": "[FlexiBee] Sklad Měčín",
+            "inStore": 0.0
+          },
+          {
+            "storeId": 11,
+            "storeName": "[FlexiBee] Sklad LTM",
+            "inStore": 19.0
+          }
+        ]
+      },
+      "fourpx": {
+        "cz": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": [],
+          "sourceCodes": [],
+          "mappedSourceCodes": [],
+          "mappingRules": []
+        },
+        "sk": {
+          "availableStock": 0.0,
+          "pendingStock": 0.0,
+          "freezeStock": 0.0,
+          "onwayStock": 0.0,
+          "batchNos": [],
+          "skuIds": [],
+          "sourceCodes": [],
+          "mappedSourceCodes": [],
+          "mappingRules": []
+        },
+        "availableTotal": 0.0,
+        "sourceCodes": [],
+        "mappedSourceCodes": [],
+        "manualMappedSourceCodes": [],
+        "autoMappedSourceCodes": [],
+        "mappingRules": []
+      },
+      "yesterdaySales": {
+        "units": 0.0,
+        "revenueWithVat": 0.0,
+        "sourceCodes": []
+      },
+      "yesterdayOutbound": {
+        "czUnits": 0.0,
+        "skUnits": 0.0,
+        "shipments": 0,
+        "sourceCodes": [],
+        "mappedSourceCodes": [],
+        "manualMappedSourceCodes": [],
+        "autoMappedSourceCodes": []
+      },
+      "stockDelta": 2220.0,
+      "flags": [
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
+      ]
+    },
+    {
       "code": "MZ984",
       "title": "Luxusní péče pro hedvábně jemné ruce",
       "ean": null,
       "url": "https://www.kralovstvi-tiande.cz/luxusni-pece-pro-hedvabne-jemne-ruce_z8070/",
       "visible": false,
       "wpj": {
-        "inStore": 1923.0,
-        "fourpxStoreTotal": 2217.0,
+        "inStore": 1921.0,
+        "fourpxStoreTotal": 2215.0,
         "priceWithVat": 177.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1923.0
+            "inStore": 1921.0
           },
           {
             "storeId": 7,
@@ -1731,7 +1719,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 2217.0,
+      "stockDelta": 2215.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -1744,14 +1732,14 @@
       "url": "https://www.kralovstvi-tiande.cz/pece-o-ruce-s-hadim-tukem_z6776/",
       "visible": false,
       "wpj": {
-        "inStore": 1923.0,
-        "fourpxStoreTotal": 2217.0,
+        "inStore": 1921.0,
+        "fourpxStoreTotal": 2215.0,
         "priceWithVat": 162.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1923.0
+            "inStore": 1921.0
           },
           {
             "storeId": 7,
@@ -1824,7 +1812,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 2217.0,
+      "stockDelta": 2215.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -2003,14 +1991,14 @@
       "url": "https://www.kralovstvi-tiande.cz/revitalizacni-maska-na-oblicej-a-krk-s-fullereny-vyhodny-balicek-dvou-masek_z8338/",
       "visible": true,
       "wpj": {
-        "inStore": 1456.0,
-        "fourpxStoreTotal": 1740.0,
+        "inStore": 1447.0,
+        "fourpxStoreTotal": 1731.0,
         "priceWithVat": 88.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1456.0
+            "inStore": 1447.0
           },
           {
             "storeId": 7,
@@ -2073,7 +2061,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 1740.0,
+      "stockDelta": 1731.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -2086,14 +2074,14 @@
       "url": "https://www.kralovstvi-tiande.cz/regeneracni-ritual-pro-oblicej-krk-a-ruce_z7740/",
       "visible": false,
       "wpj": {
-        "inStore": 1456.0,
-        "fourpxStoreTotal": 1740.0,
+        "inStore": 1447.0,
+        "fourpxStoreTotal": 1731.0,
         "priceWithVat": 148.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1456.0
+            "inStore": 1447.0
           },
           {
             "storeId": 7,
@@ -2156,7 +2144,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 1740.0,
+      "stockDelta": 1731.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -2624,14 +2612,14 @@
       "url": "https://www.kralovstvi-tiande.cz/kristalova-kolagenova-maska-2-3_z7012/",
       "visible": false,
       "wpj": {
-        "inStore": 1334.0,
-        "fourpxStoreTotal": 1568.0,
+        "inStore": 1330.0,
+        "fourpxStoreTotal": 1564.0,
         "priceWithVat": 215.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1334.0
+            "inStore": 1330.0
           },
           {
             "storeId": 7,
@@ -2704,7 +2692,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 1568.0,
+      "stockDelta": 1564.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -2793,14 +2781,14 @@
       "url": "https://www.kralovstvi-tiande.cz/peeling-broskvovy_z5809/",
       "visible": true,
       "wpj": {
-        "inStore": 2149.0,
-        "fourpxStoreTotal": 2250.0,
+        "inStore": 2121.0,
+        "fourpxStoreTotal": 2230.0,
         "priceWithVat": 45.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2245.0
+            "inStore": 2225.0
           },
           {
             "storeId": 7,
@@ -2833,8 +2821,8 @@
             "922001041534"
           ],
           "batchNos": [],
-          "availableStock": 2246.0,
-          "pendingStock": 262.0,
+          "availableStock": 2225.0,
+          "pendingStock": 198.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -2856,7 +2844,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2251.0,
+        "availableTotal": 2230.0,
         "sourceCodes": [
           "40203"
         ],
@@ -2883,7 +2871,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -1.0,
+      "stockDelta": 0.0,
       "flags": []
     },
     {
@@ -2893,14 +2881,14 @@
       "url": "https://www.kralovstvi-tiande.cz/brozura-fytogely_z4666/",
       "visible": true,
       "wpj": {
-        "inStore": 3471.0,
-        "fourpxStoreTotal": 3514.0,
+        "inStore": 3458.0,
+        "fourpxStoreTotal": 3502.0,
         "priceWithVat": 20.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 3514.0
+            "inStore": 3502.0
           },
           {
             "storeId": 7,
@@ -2933,8 +2921,8 @@
             "922001041431"
           ],
           "batchNos": [],
-          "availableStock": 3514.0,
-          "pendingStock": 133.0,
+          "availableStock": 3502.0,
+          "pendingStock": 101.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -2956,7 +2944,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 3514.0,
+        "availableTotal": 3502.0,
         "sourceCodes": [
           "000075"
         ],
@@ -2992,13 +2980,13 @@
       "visible": true,
       "wpj": {
         "inStore": 0.0,
-        "fourpxStoreTotal": 2282.0,
+        "fourpxStoreTotal": 2281.0,
         "priceWithVat": 119.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1364.0
+            "inStore": 1363.0
           },
           {
             "storeId": 7,
@@ -3051,8 +3039,8 @@
             "922002034256"
           ],
           "batchNos": [],
-          "availableStock": 1364.0,
-          "pendingStock": 48.0,
+          "availableStock": 1363.0,
+          "pendingStock": 37.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3094,7 +3082,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2282.0,
+        "availableTotal": 2281.0,
         "sourceCodes": [
           "41328",
           "41328/01",
@@ -3164,7 +3152,7 @@
       "url": "https://www.kralovstvi-tiande.cz/fytogel-slaviton_z8039/",
       "visible": true,
       "wpj": {
-        "inStore": 2196.0,
+        "inStore": 2199.0,
         "fourpxStoreTotal": 2682.0,
         "priceWithVat": 434.0,
         "stores": [
@@ -3205,7 +3193,7 @@
           ],
           "batchNos": [],
           "availableStock": 2251.0,
-          "pendingStock": 98.0,
+          "pendingStock": 63.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3264,14 +3252,14 @@
       "url": "https://www.kralovstvi-tiande.cz/jemny-intimni-gel_z7619/",
       "visible": true,
       "wpj": {
-        "inStore": 1893.0,
-        "fourpxStoreTotal": 2296.0,
+        "inStore": 1889.0,
+        "fourpxStoreTotal": 2292.0,
         "priceWithVat": 385.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1961.0
+            "inStore": 1957.0
           },
           {
             "storeId": 7,
@@ -3314,8 +3302,8 @@
             "922001733501"
           ],
           "batchNos": [],
-          "availableStock": 1961.0,
-          "pendingStock": 88.0,
+          "availableStock": 1957.0,
+          "pendingStock": 72.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3337,7 +3325,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2296.0,
+        "availableTotal": 2292.0,
         "sourceCodes": [
           "64404-2"
         ],
@@ -3374,14 +3362,14 @@
       "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-slipove-vlozky-s-anionty-nefritova-svezest_z2110/",
       "visible": true,
       "wpj": {
-        "inStore": 644.0,
-        "fourpxStoreTotal": 787.0,
+        "inStore": 637.0,
+        "fourpxStoreTotal": 780.0,
         "priceWithVat": 176.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 691.0
+            "inStore": 684.0
           },
           {
             "storeId": 7,
@@ -3419,8 +3407,8 @@
             "922001041143"
           ],
           "batchNos": [],
-          "availableStock": 691.0,
-          "pendingStock": 86.0,
+          "availableStock": 684.0,
+          "pendingStock": 80.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3442,7 +3430,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 787.0,
+        "availableTotal": 780.0,
         "sourceCodes": [
           "61915"
         ],
@@ -3479,14 +3467,14 @@
       "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-slipove-vlozky-nefritova-svezest_z2025/",
       "visible": true,
       "wpj": {
-        "inStore": 526.0,
-        "fourpxStoreTotal": 702.0,
+        "inStore": 522.0,
+        "fourpxStoreTotal": 700.0,
         "priceWithVat": 176.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 560.0
+            "inStore": 558.0
           },
           {
             "storeId": 7,
@@ -3519,8 +3507,8 @@
             "922001041131"
           ],
           "batchNos": [],
-          "availableStock": 560.0,
-          "pendingStock": 70.0,
+          "availableStock": 558.0,
+          "pendingStock": 47.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3542,7 +3530,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 702.0,
+        "availableTotal": 700.0,
         "sourceCodes": [
           "61914"
         ],
@@ -3574,19 +3562,19 @@
     },
     {
       "code": "56007",
-      "title": "Tající kolagenová liftingová pleťová maska s mořskými řasami",
+      "title": "Tající kolagenová liftingová pleťová maska s mořskými řasami\t",
       "ean": "6925466272010",
       "url": "https://www.kralovstvi-tiande.cz/tajici-kolagenova-liftingova-pletova-maska-s-morskymi-rasami_z8125/",
       "visible": true,
       "wpj": {
-        "inStore": 799.0,
-        "fourpxStoreTotal": 1388.0,
+        "inStore": 781.0,
+        "fourpxStoreTotal": 1374.0,
         "priceWithVat": 114.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 812.0
+            "inStore": 798.0
           },
           {
             "storeId": 7,
@@ -3629,8 +3617,8 @@
             "922002402836"
           ],
           "batchNos": [],
-          "availableStock": 812.0,
-          "pendingStock": 44.0,
+          "availableStock": 798.0,
+          "pendingStock": 48.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3652,7 +3640,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1388.0,
+        "availableTotal": 1374.0,
         "sourceCodes": [
           "56007"
         ],
@@ -3689,14 +3677,14 @@
       "url": "https://www.kralovstvi-tiande.cz/kosmeticka-fytonaplast-wutong_z3160/",
       "visible": true,
       "wpj": {
-        "inStore": 1801.0,
-        "fourpxStoreTotal": 3271.0,
+        "inStore": 1798.0,
+        "fourpxStoreTotal": 3268.0,
         "priceWithVat": 184.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 2227.0
+            "inStore": 2224.0
           },
           {
             "storeId": 7,
@@ -3750,8 +3738,8 @@
             "922001433035"
           ],
           "batchNos": [],
-          "availableStock": 2227.0,
-          "pendingStock": 52.0,
+          "availableStock": 2224.0,
+          "pendingStock": 38.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3789,7 +3777,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 3271.0,
+        "availableTotal": 3268.0,
         "sourceCodes": [
           "30118",
           "30118/01",
@@ -3853,14 +3841,14 @@
       "url": "https://www.kralovstvi-tiande.cz/denni-vlozky-s-extraktem-aloe-nefritova-svezest_z142/",
       "visible": true,
       "wpj": {
-        "inStore": 825.0,
-        "fourpxStoreTotal": 1052.0,
+        "inStore": 818.0,
+        "fourpxStoreTotal": 1047.0,
         "priceWithVat": 176.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 850.0
+            "inStore": 845.0
           },
           {
             "storeId": 7,
@@ -3898,8 +3886,8 @@
             "922001040885"
           ],
           "batchNos": [],
-          "availableStock": 850.0,
-          "pendingStock": 58.0,
+          "availableStock": 845.0,
+          "pendingStock": 51.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3921,7 +3909,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1052.0,
+        "availableTotal": 1047.0,
         "sourceCodes": [
           "61911"
         ],
@@ -3958,14 +3946,14 @@
       "url": "https://www.kralovstvi-tiande.cz/povzbuzujici-krem-pro-dokonala-stehna_z7139/",
       "visible": true,
       "wpj": {
-        "inStore": 137.0,
-        "fourpxStoreTotal": 165.0,
+        "inStore": 129.0,
+        "fourpxStoreTotal": 161.0,
         "priceWithVat": 385.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 160.0
+            "inStore": 156.0
           },
           {
             "storeId": 7,
@@ -3998,8 +3986,8 @@
             "922001439603"
           ],
           "batchNos": [],
-          "availableStock": 160.0,
-          "pendingStock": 68.0,
+          "availableStock": 156.0,
+          "pendingStock": 50.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4021,7 +4009,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 165.0,
+        "availableTotal": 161.0,
         "sourceCodes": [
           "35412-02"
         ],
@@ -4058,14 +4046,14 @@
       "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-menstruacni-vlozky-nefritova-svezest-denni-super_z2024/",
       "visible": true,
       "wpj": {
-        "inStore": 418.0,
-        "fourpxStoreTotal": 707.0,
+        "inStore": 411.0,
+        "fourpxStoreTotal": 703.0,
         "priceWithVat": 206.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 436.0
+            "inStore": 432.0
           },
           {
             "storeId": 7,
@@ -4103,8 +4091,8 @@
             "922001041129"
           ],
           "batchNos": [],
-          "availableStock": 436.0,
-          "pendingStock": 78.0,
+          "availableStock": 432.0,
+          "pendingStock": 54.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4126,7 +4114,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 707.0,
+        "availableTotal": 703.0,
         "sourceCodes": [
           "61912"
         ],
@@ -4163,14 +4151,14 @@
       "url": "https://www.kralovstvi-tiande.cz/obnovujici-maska-na-oblicej-a-krk-s-fullereny-a-polypeptidy_z6346/",
       "visible": true,
       "wpj": {
-        "inStore": 1450.0,
-        "fourpxStoreTotal": 1742.0,
+        "inStore": 1439.0,
+        "fourpxStoreTotal": 1733.0,
         "priceWithVat": 65.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1457.0
+            "inStore": 1448.0
           },
           {
             "storeId": 7,
@@ -4208,8 +4196,8 @@
             "922001041585"
           ],
           "batchNos": [],
-          "availableStock": 1457.0,
-          "pendingStock": 27.0,
+          "availableStock": 1448.0,
+          "pendingStock": 24.0,
           "freezeStock": 0.0,
           "onwayStock": 9.0
         },
@@ -4231,7 +4219,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1742.0,
+        "availableTotal": 1733.0,
         "sourceCodes": [
           "52911"
         ],
@@ -4268,14 +4256,14 @@
       "url": "https://www.kralovstvi-tiande.cz/krem-pro-hloubkovou-obnovu-pleti-zensen-a-orchidej_z8342/",
       "visible": true,
       "wpj": {
-        "inStore": 404.0,
-        "fourpxStoreTotal": 504.0,
+        "inStore": 400.0,
+        "fourpxStoreTotal": 503.0,
         "priceWithVat": 916.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 415.0
+            "inStore": 414.0
           },
           {
             "storeId": 7,
@@ -4295,7 +4283,7 @@
           {
             "storeId": 10,
             "storeName": "[FlexiBee] Sklad Měčín",
-            "inStore": 0.0
+            "inStore": -1.0
           },
           {
             "storeId": 11,
@@ -4318,8 +4306,8 @@
             "922002618346"
           ],
           "batchNos": [],
-          "availableStock": 415.0,
-          "pendingStock": 24.0,
+          "availableStock": 414.0,
+          "pendingStock": 7.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4341,7 +4329,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 504.0,
+        "availableTotal": 503.0,
         "sourceCodes": [
           "10117"
         ],
@@ -4378,7 +4366,7 @@
       "url": "https://www.kralovstvi-tiande.cz/kosmeticka-fytonaplast-jian-kang_z3158/",
       "visible": true,
       "wpj": {
-        "inStore": 1868.0,
+        "inStore": 1869.0,
         "fourpxStoreTotal": 3796.0,
         "priceWithVat": 184.0,
         "stores": [
@@ -4445,7 +4433,7 @@
           ],
           "batchNos": [],
           "availableStock": 2525.0,
-          "pendingStock": 44.0,
+          "pendingStock": 34.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4547,14 +4535,14 @@
       "url": "https://www.kralovstvi-tiande.cz/denni-menstruacni-vlozky-s-fytomembranou-energie-bylin_z134/",
       "visible": true,
       "wpj": {
-        "inStore": 592.0,
-        "fourpxStoreTotal": 985.0,
+        "inStore": 584.0,
+        "fourpxStoreTotal": 981.0,
         "priceWithVat": 253.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 643.0
+            "inStore": 639.0
           },
           {
             "storeId": 7,
@@ -4587,8 +4575,8 @@
             "922001040877"
           ],
           "batchNos": [],
-          "availableStock": 643.0,
-          "pendingStock": 68.0,
+          "availableStock": 639.0,
+          "pendingStock": 49.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4610,7 +4598,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 985.0,
+        "availableTotal": 981.0,
         "sourceCodes": [
           "61902"
         ],
@@ -4647,14 +4635,14 @@
       "url": "https://www.kralovstvi-tiande.cz/serum-pro-hloubkovou-obnovu-pleti-zensen-a-fytoextrakty_z8343/",
       "visible": true,
       "wpj": {
-        "inStore": 416.0,
-        "fourpxStoreTotal": 516.0,
+        "inStore": 411.0,
+        "fourpxStoreTotal": 515.0,
         "priceWithVat": 990.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 427.0
+            "inStore": 426.0
           },
           {
             "storeId": 7,
@@ -4674,7 +4662,7 @@
           {
             "storeId": 10,
             "storeName": "[FlexiBee] Sklad Měčín",
-            "inStore": 0.0
+            "inStore": -1.0
           },
           {
             "storeId": 11,
@@ -4697,8 +4685,8 @@
             "922002618348"
           ],
           "batchNos": [],
-          "availableStock": 427.0,
-          "pendingStock": 19.0,
+          "availableStock": 426.0,
+          "pendingStock": 5.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4720,7 +4708,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 516.0,
+        "availableTotal": 515.0,
         "sourceCodes": [
           "10118"
         ],
@@ -4803,7 +4791,7 @@
           ],
           "batchNos": [],
           "availableStock": 887.0,
-          "pendingStock": 47.0,
+          "pendingStock": 29.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4862,14 +4850,14 @@
       "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-menstruacni-vlozky-nefritova-svezest-nocni-super_z2111/",
       "visible": true,
       "wpj": {
-        "inStore": 491.0,
-        "fourpxStoreTotal": 642.0,
+        "inStore": 488.0,
+        "fourpxStoreTotal": 641.0,
         "priceWithVat": 206.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 497.0
+            "inStore": 496.0
           },
           {
             "storeId": 7,
@@ -4902,8 +4890,8 @@
             "922001041145"
           ],
           "batchNos": [],
-          "availableStock": 497.0,
-          "pendingStock": 44.0,
+          "availableStock": 496.0,
+          "pendingStock": 35.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4925,7 +4913,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 642.0,
+        "availableTotal": 641.0,
         "sourceCodes": [
           "61913"
         ],
@@ -4962,14 +4950,14 @@
       "url": "https://www.kralovstvi-tiande.cz/multikomplex-pro-posileni-korinku-a-rust-vlasu-zensen_z8344/",
       "visible": true,
       "wpj": {
-        "inStore": 446.0,
-        "fourpxStoreTotal": 529.0,
+        "inStore": 442.0,
+        "fourpxStoreTotal": 528.0,
         "priceWithVat": 707.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 447.0
+            "inStore": 446.0
           },
           {
             "storeId": 7,
@@ -5012,8 +5000,8 @@
             "922002618350"
           ],
           "batchNos": [],
-          "availableStock": 447.0,
-          "pendingStock": 14.0,
+          "availableStock": 446.0,
+          "pendingStock": 13.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -5035,7 +5023,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 529.0,
+        "availableTotal": 528.0,
         "sourceCodes": [
           "20164"
         ],

@@ -91,7 +91,7 @@
         ['SK sklad, dostupné kusy', DP.fmtNumber(summary.accounts.sk.inventory.availableStockTotal), `${DP.fmtNumber(summary.accounts.sk.inventory.items)} skladových řádků`, 'blue'],
         ['WPJ objednávky včera', DP.fmtNumber(summary.wpJ.orders || 0), `${DP.fmtNumber(Math.round(summary.wpJ.revenueWithVat || 0))} Kč`, 'gold'],
         ['4PX zásilky včera', DP.fmtNumber(summary.report.shipments || 0), `${summary.report.date}`, 'red'],
-        ['Finance, čistá cash pozice', DP.fmtNumber(Math.round(summary.finance?.cash?.netCashPosition || 0)), summary.finance?.mode === 'legacy_snapshot' ? 'legacy ABRA snapshot' : 'finance zdroj', 'gold'],
+        ['Finance, čistá cash pozice', DP.fmtNumber(Math.round(summary.finance?.cash?.netCashPosition || 0)), summary.finance?.mode === 'mixed_live_legacy' ? 'live závazky + legacy P&L' : summary.finance?.mode === 'legacy_with_live_error' ? 'legacy + chyba live API' : summary.finance?.mode === 'legacy_snapshot' ? 'legacy ABRA snapshot' : 'finance zdroj', 'gold'],
         ['Marketing, poslední měsíc', DP.fmtNumber(Math.round(summary.marketing?.currentMonth?.totalSpend || 0)), `${(summary.marketing?.currentMonth?.spendShareOfRevenuePct ?? 0).toFixed(1)} % z výnosů`, 'blue']
       ];
       document.getElementById('top-kpis').innerHTML = kpis.map(([label, value, sub, klass]) => `

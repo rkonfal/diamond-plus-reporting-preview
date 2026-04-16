@@ -97,13 +97,23 @@
     DP.initThemeToggle();
     const money = value => `${DP.fmtNumber(Math.round(value || 0))} Kč`;
     const pct = value => value == null ? '–' : `${Number(value).toFixed(1)} %`;
+    const sourceMeta = status => ({
+      legacy_snapshot: { label: 'legacy snapshot', tone: 'warn' },
+      mixed_live_legacy: { label: 'live závazky + legacy P&L', tone: 'success' },
+      live_payables_only: { label: 'live závazky', tone: 'success' },
+      legacy_with_live_error: { label: 'legacy + chyba live API', tone: 'danger' },
+      error: { label: 'chyba live API', tone: 'danger' },
+      missing: { label: 'bez zdroje', tone: 'danger' },
+    }[status] || { label: status || 'finance ready', tone: 'info' });
 
     (async () => {
       const data = await DP.loadJson('../data/current/finance_overview.json');
-      document.getElementById('source-mode').textContent = data.source?.status === 'legacy_snapshot' ? 'legacy snapshot' : 'finance ready';
+      const source = sourceMeta(data.source?.status);
+      document.getElementById('source-mode').textContent = source.label;
+      document.getElementById('source-mode').className = `badge ${source.tone}`;
       document.getElementById('period-label').textContent = `Aktuální měsíc: ${data.currentMonth?.label || '–'}`;
       document.getElementById('generated-at').textContent = `Poslední refresh: ${DP.fmtDateTime(data.generatedAt)}`;
-      document.getElementById('source-alert').innerHTML = `<div class="alert warn">${data.source?.message || 'Bez zdrojové poznámky.'}</div>`;
+      document.getElementById('source-alert').innerHTML = `<div class="alert ${source.tone === 'success' ? 'success' : source.tone === 'danger' ? 'danger' : 'warn'}">${data.source?.message || 'Bez zdrojové poznámky.'}</div>`;
 
       const current = data.currentMonth || {};
       const cash = data.cash || {};

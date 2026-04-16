@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T14:00:00.835791+02:00",
+  "generatedAt": "2026-04-16T15:31:11.523336+02:00",
   "config": {
     "warehouseCode": "CZPRGA",
     "outboundMaxPages": 20,
@@ -14,8 +14,8 @@
       "label": "CZ",
       "inventory": {
         "items": 768,
-        "availableStockTotal": 308468,
-        "pendingStockTotal": 3346,
+        "availableStockTotal": 308184,
+        "pendingStockTotal": 2523,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -23,8 +23,8 @@
         "items": 800,
         "scannedPages": 8,
         "topLogisticsProduct": "F1401",
-        "oldestTimestamp": "2026-04-14T21:59:53+02:00",
-        "newestTimestamp": "2026-04-16T14:00:02+02:00"
+        "oldestTimestamp": "2026-04-14T22:26:43+02:00",
+        "newestTimestamp": "2026-04-16T15:27:08+02:00"
       }
     },
     "sk": {
@@ -74,14 +74,14 @@
     "skSkuCount": 300
   },
   "pairing": {
-    "allCodes": 2890,
-    "pairedProducts": 389,
+    "allCodes": 2891,
+    "pairedProducts": 390,
     "onlyInWpj": 1435,
     "onlyIn4px": 1,
     "stockMismatch": 667,
     "lowAfterSales": 2,
     "manualMapped4pxAliases": 0,
-    "autoMapped4pxAliases": 74
+    "autoMapped4pxAliases": 73
   },
   "finance": {
     "ready": true,
