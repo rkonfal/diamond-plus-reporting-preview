@@ -428,7 +428,7 @@
         case 'manualAlias': return list(row.fourpx?.manualMappedSourceCodes).length > 0;
         case 'autoAlias': return flags.has('auto_mapped_4px_alias');
         case 'visible': return Boolean(row.visible);
-        case 'soldYesterday': return Number(row.yesterdaySales?.units || 0) > 0;
+        case 'soldYesterday': return salesUnitsInView(row) > 0;
         case 'shippedYesterday': return Number(row.yesterdayOutbound?.czUnits || 0) + Number(row.yesterdayOutbound?.skUnits || 0) > 0;
         case 'negativeDelta': return Number(row.stockDelta || 0) < 0;
         case 'zero4px': return Number(row.fourpx?.availableTotal || 0) <= 0;
@@ -555,8 +555,41 @@
         return viewDefs[view].stockValue(row);
       }
 
+      function nestedNumber(source, path) {
+        let current = source;
+        for (const key of path) {
+          if (current == null || typeof current !== 'object' || !(key in current)) return null;
+          current = current[key];
+        }
+        const value = Number(current);
+        return Number.isFinite(value) ? value : null;
+      }
+
+      function salesUnitsInView(row, view = activeView) {
+        const splitValue = nestedNumber(row, ['yesterdaySales', 'byView', view, 'units']);
+        if (splitValue != null) return splitValue;
+        if (view === 'complete') return Number(row.yesterdaySales?.units || 0);
+        if (view === 'cz') return nestedNumber(row, ['yesterdaySales', 'czUnits']) ?? Number(row.yesterdaySales?.units || 0);
+        if (view === 'sk') return nestedNumber(row, ['yesterdaySales', 'skUnits']) ?? Number(row.yesterdaySales?.units || 0);
+        return nestedNumber(row, ['yesterdaySales', `${view}Units`]) ?? 0;
+      }
+
+      function units365dInView(metric, view = activeView) {
+        const splitValue = nestedNumber(metric, ['byView', view, 'units365d']);
+        if (splitValue != null) return splitValue;
+        if (view === 'complete') return Number(metric.units365d || 0);
+        return nestedNumber(metric, [`${view}Units365d`]) ?? Number(metric.units365d || 0);
+      }
+
+      function avgMonthlyUnitsInView(metric, view = activeView) {
+        const splitValue = nestedNumber(metric, ['byView', view, 'avgMonthlyUnits365d']);
+        if (splitValue != null) return splitValue;
+        const units365d = units365dInView(metric, view);
+        return units365d ? units365d / 12 : 0;
+      }
+
       function daysOfCoverInView(row, metric, view = activeView) {
-        const units365d = Number(metric.units365d || 0);
+        const units365d = units365dInView(metric, view);
         const stock = stockInView(row, view);
         if (!units365d) return stock > 0 ? null : 0;
         return stock * 365 / units365d;
@@ -684,7 +717,7 @@
               || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
           }
           if (sort === 'sales365d') {
-            return Number(b.metric.units365d || 0) - Number(a.metric.units365d || 0)
+            return units365dInView(b.metric) - units365dInView(a.metric)
               || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
           }
           if (sort === 'coverAsc') {
@@ -699,7 +732,7 @@
           }
           return explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric)
             || stockInView(b.row) - stockInView(a.row)
-            || Number(b.metric.units365d || 0) - Number(a.metric.units365d || 0)
+            || units365dInView(b.metric) - units365dInView(a.metric)
             || String(a.row.code || '').localeCompare(String(b.row.code || ''), 'cs');
         });
 
@@ -749,12 +782,12 @@
             </td>
             <td>${inventoryBadges(row, metric)}</td>
             <td class="num">${fmt(stockInView(row))}</td>
-            <td class="num">${fmt(metric.units365d || 0)}</td>
-            <td class="num">${fmtOne(Number(metric.units365d || 0) / 12)}</td>
+            <td class="num">${fmt(units365dInView(metric))}</td>
+            <td class="num">${fmtOne(avgMonthlyUnitsInView(metric))}</td>
             <td class="num">${daysOfCoverInView(row, metric) == null ? 'bez prodeje' : `${fmtCover(daysOfCoverInView(row, metric))} dnů`}</td>
             <td>
               ${explorerSourceCodes(row)}
-              <div class="muted small" style="margin-top:6px;">včera prodáno ${fmt(row.yesterdaySales?.units || 0)} ks · expedováno ${fmt(Number(row.yesterdayOutbound?.czUnits || 0) + Number(row.yesterdayOutbound?.skUnits || 0))} ks</div>
+              <div class="muted small" style="margin-top:6px;">včera prodáno ${fmt(salesUnitsInView(row))} ks · expedováno ${fmt(Number(row.yesterdayOutbound?.czUnits || 0) + Number(row.yesterdayOutbound?.skUnits || 0))} ks</div>
             </td>
           </tr>
         `).join('') || '<tr><td colspan="7">Nic neodpovídá aktuálnímu pohledu nebo filtru.</td></tr>';
@@ -806,14 +839,14 @@
             row.title,
             list(row.flags).join(','),
             stockInView(row),
-            metric.units365d ?? '',
-            (Number(metric.units365d || 0) / 12).toFixed(1),
+            units365dInView(metric),
+            avgMonthlyUnitsInView(metric).toFixed(1),
             daysOfCoverInView(row, metric) == null ? '' : daysOfCoverInView(row, metric).toFixed(1),
             czQty(row),
             skQty(row),
             ltmQty(row),
             mecinQty(row),
-            row.yesterdaySales?.units ?? '',
+            salesUnitsInView(row),
             Number(row.yesterdayOutbound?.czUnits || 0) + Number(row.yesterdayOutbound?.skUnits || 0),
             list(row.fourpx?.sourceCodes).join(','),
             list(row.fourpx?.manualMappedSourceCodes).join(','),
