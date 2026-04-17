@@ -87,33 +87,20 @@
 
     <section class="grid two-col" style="margin-top:20px;">
       <div class="card">
-        <h2 class="section-title">Sklad LTM</h2>
-        <div class="section-subtitle" id="ltm-store-summary">Načítám sklad LTM…</div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Produkt</th>
-              <th class="num">LTM</th>
-              <th class="num">Prodej 365d</th>
-            </tr>
-          </thead>
-          <tbody id="ltm-store-table"></tbody>
-        </table>
+        <h2 class="section-title">Pohled do skladů</h2>
+        <div class="section-subtitle">Vyber si, jestli chceš kompletní výpis všeho, jen LTM, nebo jen Měčín. Výběr se promítne do exploreru níže.</div>
+        <div class="quick-filters" id="inventory-warehouse-switch">
+          <button class="quick-filter active" type="button" data-warehouse-view="all">Vše</button>
+          <button class="quick-filter" type="button" data-warehouse-view="ltm">LTM</button>
+          <button class="quick-filter" type="button" data-warehouse-view="mecin">Měčín</button>
+        </div>
+        <div class="ux-stat-list" id="inventory-warehouse-stats"></div>
       </div>
 
       <div class="card">
-        <h2 class="section-title">Sklad Měčín</h2>
-        <div class="section-subtitle" id="mecin-store-summary">Načítám sklad Měčín…</div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Produkt</th>
-              <th class="num">Měčín</th>
-              <th class="num">Prodej 365d</th>
-            </tr>
-          </thead>
-          <tbody id="mecin-store-table"></tbody>
-        </table>
+        <h2 class="section-title">Co právě vidíš</h2>
+        <div class="section-subtitle" id="inventory-warehouse-note">Načítám warehouse pohled…</div>
+        <div class="ux-side-list" id="inventory-warehouse-list"></div>
       </div>
     </section>
 
@@ -134,8 +121,6 @@
               <option value="all">Všechno</option>
               <option value="mismatch">Jen mismatchy</option>
               <option value="only4px">Jen pouze v 4PX</option>
-              <option value="ltmStock">Jen ve skladu LTM</option>
-              <option value="mecinStock">Jen ve skladu Měčín</option>
               <option value="lowAfterSales">Jen nízký sklad po prodeji</option>
               <option value="manualAlias">Jen ruční mapování</option>
               <option value="autoAlias">Jen auto alias</option>
@@ -180,27 +165,18 @@
       <div class="quick-filters" id="inventory-quick-filters">
         <button class="quick-filter active" type="button" data-filter="all">Všechno</button>
         <button class="quick-filter" type="button" data-filter="mismatch">Mismatchy</button>
-        <button class="quick-filter" type="button" data-filter="ltmStock">LTM</button>
-        <button class="quick-filter" type="button" data-filter="mecinStock">Měčín</button>
         <button class="quick-filter" type="button" data-filter="lowAfterSales">Nízký sklad po prodeji</button>
         <button class="quick-filter" type="button" data-filter="soldYesterday">Prodané včera</button>
         <button class="quick-filter" type="button" data-filter="visible">Viditelné</button>
         <button class="quick-filter" type="button" data-filter="negativeDelta">Negativní delta</button>
-        <button class="quick-filter" type="button" data-filter="only4px">Pouze v 4PX</button>
         <button class="quick-filter" type="button" data-filter="zero4px">Bez 4PX skladu</button>
-        <button class="quick-filter" type="button" data-filter="manualAlias">Ruční mapování</button>
-        <button class="quick-filter" type="button" data-filter="autoAlias">Auto alias</button>
         <button class="quick-filter" type="button" data-filter="fastLowCover">Nízké pokrytí</button>
-        <button class="quick-filter" type="button" data-filter="deadStock">Mrtvý sklad</button>
       </div>
 
       <div class="quick-filters" id="inventory-presets">
         <button class="quick-filter" type="button" data-preset="operativa">Pohled: Operativa</button>
         <button class="quick-filter" type="button" data-preset="mismatch">Pohled: Mismatchy</button>
-        <button class="quick-filter" type="button" data-preset="ltm">Pohled: LTM komplet</button>
-        <button class="quick-filter" type="button" data-preset="mecin">Pohled: Měčín komplet</button>
         <button class="quick-filter" type="button" data-preset="mapping">Pohled: Mapování</button>
-        <button class="quick-filter" type="button" data-preset="deadstock">Pohled: Mrtvý sklad</button>
         <button class="quick-filter" type="button" data-preset="reset">Reset pohledu</button>
       </div>
 
@@ -521,9 +497,6 @@
       operativa: { filter: 'lowAfterSales', sort: 'coverAsc', limit: '100', search: '' },
       mismatch: { filter: 'mismatch', sort: 'delta', limit: '100', search: '' },
       mapping: { filter: 'autoAlias', sort: 'priority', limit: '100', search: '' },
-      deadstock: { filter: 'deadStock', sort: 'stock', limit: '100', search: '' },
-      ltm: { filter: 'ltmStock', sort: 'ltm', limit: 'all', search: '' },
-      mecin: { filter: 'mecinStock', sort: 'mecin', limit: 'all', search: '' },
       reset: { filter: 'all', sort: 'priority', limit: '50', search: '' },
     };
 
@@ -556,11 +529,17 @@
       const exportButton = document.getElementById('inventory-export-csv');
       const quickFilterButtons = Array.from(document.querySelectorAll('#inventory-quick-filters [data-filter]'));
       const presetButtons = Array.from(document.querySelectorAll('#inventory-presets [data-preset]'));
+      const warehouseViewButtons = Array.from(document.querySelectorAll('#inventory-warehouse-switch [data-warehouse-view]'));
       const explorerSummary = document.getElementById('inventory-explorer-summary');
       const explorerTable = document.getElementById('inventory-explorer-table');
+      let warehouseView = 'all';
 
       function syncQuickFilterButtons() {
         quickFilterButtons.forEach(button => button.classList.toggle('active', button.dataset.filter === filterSelect.value));
+      }
+
+      function syncWarehouseViewButtons() {
+        warehouseViewButtons.forEach(button => button.classList.toggle('active', button.dataset.warehouseView === warehouseView));
       }
 
       function persistExplorerState() {
@@ -569,6 +548,7 @@
           filter: filterSelect.value,
           sort: sortSelect.value,
           limit: limitSelect.value,
+          warehouseView,
         }));
       }
 
@@ -578,7 +558,9 @@
         if (nextState.filter) filterSelect.value = nextState.filter;
         if (nextState.sort) sortSelect.value = nextState.sort;
         if (nextState.limit) limitSelect.value = String(nextState.limit);
+        if (['all', 'ltm', 'mecin'].includes(nextState.warehouseView)) warehouseView = nextState.warehouseView;
         syncQuickFilterButtons();
+        syncWarehouseViewButtons();
       }
 
       try {
@@ -639,28 +621,9 @@
         ['Nízký sklad po prodeji', fmt(overview.counts.lowAfterSales || 0)],
       ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
 
-      document.getElementById('ltm-store-summary').textContent = `${fmt(ltmRows.length)} SKU, ${fmt(ltmRows.reduce((sum, item) => sum + item.qty, 0))} ks celkem. Pro kompletní výpis použij níže preset „Pohled: LTM komplet“ a limit „Vše“.`;
-      document.getElementById('mecin-store-summary').textContent = `${fmt(mecinRows.length)} SKU, ${fmt(mecinRows.reduce((sum, item) => sum + item.qty, 0))} ks celkem. Pro kompletní výpis použij níže preset „Pohled: Měčín komplet“ a limit „Vše“.`;
-
-      document.getElementById('ltm-store-table').innerHTML = ltmRows.slice(0, 15).map(({ row, metric, qty }) => `
-        <tr>
-          <td>${productLabel(row)}</td>
-          <td class="num">${fmt(qty)}</td>
-          <td class="num">${fmt(metric.units365d || 0)}</td>
-        </tr>
-      `).join('') || '<tr><td colspan="3">Ve skladu LTM teď nic nevidíme.</td></tr>';
-
-      document.getElementById('mecin-store-table').innerHTML = mecinRows.slice(0, 15).map(({ row, metric, qty }) => `
-        <tr>
-          <td>${productLabel(row)}</td>
-          <td class="num">${fmt(qty)}</td>
-          <td class="num">${fmt(metric.units365d || 0)}</td>
-        </tr>
-      `).join('') || '<tr><td colspan="3">Ve skladu Měčín teď nic nevidíme.</td></tr>';
-
       document.getElementById('inventory-usage-list').innerHTML = [
         ['Rychlé filtry', 'Začni mismatchy, nízkým skladem po prodeji a prodaným včera.'],
-        ['Presety pohledu', 'Operativa a mismatch zrychlí běžnou ranní práci, LTM komplet a Měčín komplet ukážou celý obsah skladu.'],
+        ['Pohled do skladů', 'Přepínač Vše / LTM / Měčín ti dole přepne celý kompletní výpis skladu.'],
         ['Export CSV', 'Když potřebuješ něco sdílet dál, exportuje celý aktuálně filtrovaný výběr.']
       ].map(([title, text], index) => `
         <div class="ux-side-item">
@@ -672,11 +635,65 @@
         </div>
       `).join('');
 
+      function getWarehouseMeta() {
+        const meta = {
+          all: {
+            title: 'Všechny sklady',
+            subtitle: 'Kompletní spárovaný výpis bez omezení na konkrétní sklad.',
+            count: explorerRows.length,
+            units: ltmRows.reduce((sum, item) => sum + item.qty, 0) + mecinRows.reduce((sum, item) => sum + item.qty, 0),
+            topRows: [ltmRows[0], mecinRows[0]].filter(Boolean),
+          },
+          ltm: {
+            title: 'Sklad LTM',
+            subtitle: 'Vidíš jen produkty, které teď mají něco na LTM.',
+            count: ltmRows.length,
+            units: ltmRows.reduce((sum, item) => sum + item.qty, 0),
+            topRows: ltmRows.slice(0, 3),
+          },
+          mecin: {
+            title: 'Sklad Měčín',
+            subtitle: 'Vidíš jen produkty, které teď mají něco v Měčíně.',
+            count: mecinRows.length,
+            units: mecinRows.reduce((sum, item) => sum + item.qty, 0),
+            topRows: mecinRows.slice(0, 3),
+          }
+        };
+        return meta[warehouseView] || meta.all;
+      }
+
+      function renderWarehousePanel() {
+        const meta = getWarehouseMeta();
+        document.getElementById('inventory-warehouse-stats').innerHTML = [
+          ['Aktivní pohled', meta.title],
+          ['Počet SKU', fmt(meta.count)],
+          ['Ks v pohledu', `${fmt(meta.units)} ks`],
+        ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+        document.getElementById('inventory-warehouse-note').textContent = meta.subtitle;
+        document.getElementById('inventory-warehouse-list').innerHTML = meta.topRows.map((item, index) => `
+          <div class="ux-side-item">
+            <span class="ux-dot ${index === 1 ? 'gold' : index === 2 ? 'green' : 'blue'}"></span>
+            <div>
+              <strong>${productLabel(item.row)}</strong>
+              <span>${warehouseView === 'mecin' ? fmt(mecinQty(item.row)) : warehouseView === 'ltm' ? fmt(ltmQty(item.row)) : `${fmt(ltmQty(item.row))} LTM / ${fmt(mecinQty(item.row))} Měčín`} ks · ${fmt(item.metric.units365d || 0)} ks / 365d</span>
+            </div>
+          </div>
+        `).join('') || '<div class="ux-side-item"><span class="ux-dot blue"></span><div><strong>Bez dat</strong><span>V tomhle pohledu teď nic nevidíme.</span></div></div>';
+      }
+
+      function matchesWarehouseView(row) {
+        if (warehouseView === 'ltm') return ltmQty(row) > 0;
+        if (warehouseView === 'mecin') return mecinQty(row) > 0;
+        return true;
+      }
+
       function getExplorerRows() {
         const query = searchInput.value.trim().toLowerCase();
         const filter = filterSelect.value;
         const sort = sortSelect.value;
         const rows = explorerRows
+          .filter(({ row }) => matchesWarehouseView(row))
           .filter(({ row, metric }) => matchesExplorerFilter(row, metric, filter))
           .filter(({ row, metric }) => !query || explorerSearchBlob(row, metric).includes(query));
 
@@ -726,10 +743,12 @@
         const sort = sortSelect.value;
         const limitValue = limitSelect.value || '50';
         const rows = getExplorerRows();
+        const warehouseMeta = getWarehouseMeta();
 
         const visible = limitValue === 'all' ? rows : rows.slice(0, Number(limitValue));
-        explorerSummary.textContent = `Zobrazeno ${fmt(visible.length)} z ${fmt(rows.length)} výsledků. Celkem ${fmt(explorerRows.length)} produktových řádků. Filtr: ${filterSelect.options[filterSelect.selectedIndex].text}. Řazení: ${sortSelect.options[sortSelect.selectedIndex].text}. Limit: ${limitValue === 'all' ? 'Vše' : limitValue}. Export CSV bere celý filtrovaný výběr.`;
+        explorerSummary.textContent = `Pohled: ${warehouseMeta.title}. Zobrazeno ${fmt(visible.length)} z ${fmt(rows.length)} výsledků. Filtr: ${filterSelect.options[filterSelect.selectedIndex].text}. Řazení: ${sortSelect.options[sortSelect.selectedIndex].text}. Limit: ${limitValue === 'all' ? 'Vše' : limitValue}. Export CSV bere celý aktuální výběr.`;
         persistExplorerState();
+        renderWarehousePanel();
 
         explorerTable.innerHTML = visible.map(({ row, metric }) => `
           <tr>
@@ -820,9 +839,17 @@
           renderExplorer();
         });
       });
+      warehouseViewButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          warehouseView = button.dataset.warehouseView;
+          syncWarehouseViewButtons();
+          renderExplorer();
+        });
+      });
       filterSelect.addEventListener('change', () => {
         syncQuickFilterButtons();
       });
+      syncWarehouseViewButtons();
       renderExplorer();
 
       document.getElementById('priority-shortlist-table').innerHTML = (overview.priorityShortlist || []).map(row => `
