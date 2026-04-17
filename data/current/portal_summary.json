@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T08:03:14.957494+02:00",
+  "generatedAt": "2026-04-17T10:00:16.372916+02:00",
   "config": {
     "warehouseCode": "CZPRGA",
     "outboundMaxPages": 20,
@@ -14,8 +14,8 @@
       "label": "CZ",
       "inventory": {
         "items": 768,
-        "availableStockTotal": 308098,
-        "pendingStockTotal": 2333,
+        "availableStockTotal": 307728,
+        "pendingStockTotal": 2703,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -23,16 +23,16 @@
         "items": 500,
         "scannedPages": 5,
         "topLogisticsProduct": "F1401",
-        "oldestTimestamp": "2026-04-15T19:40:04+02:00",
-        "newestTimestamp": "2026-04-17T08:00:05+02:00"
+        "oldestTimestamp": "2026-04-15T20:40:03+02:00",
+        "newestTimestamp": "2026-04-17T09:55:04+02:00"
       }
     },
     "sk": {
       "label": "SK",
       "inventory": {
         "items": 621,
-        "availableStockTotal": 70771,
-        "pendingStockTotal": 326,
+        "availableStockTotal": 70755,
+        "pendingStockTotal": 342,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -40,8 +40,8 @@
         "items": 100,
         "scannedPages": 1,
         "topLogisticsProduct": "F1403",
-        "oldestTimestamp": "2026-04-15T00:04:15+02:00",
-        "newestTimestamp": "2026-04-17T07:20:14+02:00"
+        "oldestTimestamp": "2026-04-15T06:11:38+02:00",
+        "newestTimestamp": "2026-04-17T09:55:11+02:00"
       }
     }
   },
@@ -51,20 +51,20 @@
     "orders": 410,
     "revenueWithVat": 574331.1,
     "averageOrderValue": 1400.81,
-    "problematicOrders": 3
+    "problematicOrders": 4
   },
   "report": {
     "date": "2026-04-16",
     "shipments": 408,
     "alerts": [
-      "3 problematických nebo stornovaných objednávek.",
+      "4 problematických nebo stornovaných objednávek.",
       "2 včera prodaných produktů je teď na nízkém skladu.",
       "10 skladových pozic je v mínusu."
     ],
     "priorities": [
       "Dohlédnout BIOANALYZA007 (BIOREZONANČNÍ ANALÝZA ENERGETICKÉHO STAVU), aktuálně 0 ks.",
       "Dohlédnout 54107 (Pleťová beauty maska \"Černý briliant\"), aktuálně 2 ks.",
-      "Projít 3 problematických nebo stornovaných objednávek z včerejška.",
+      "Projít 4 problematických nebo stornovaných objednávek z včerejška.",
       "Projít nejbližší expirace v 4PX a rozhodnout o doprodeji nebo přesunu zásoby."
     ]
   },
@@ -78,7 +78,7 @@
     "pairedProducts": 390,
     "onlyInWpj": 1435,
     "onlyIn4px": 1,
-    "stockMismatch": 668,
+    "stockMismatch": 669,
     "lowAfterSales": 3,
     "manualMapped4pxAliases": 0,
     "autoMapped4pxAliases": 73

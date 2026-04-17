@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T08:09:09.189589+02:00",
+  "generatedAt": "2026-04-17T10:06:16.882948+02:00",
   "reportDate": "2026-04-16",
   "detailUrl": "https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html",
   "window": {
@@ -20,7 +20,7 @@
     },
     "shipmentsTotal": 408,
     "alerts": [
-      "3 problematických nebo stornovaných objednávek.",
+      "4 problematických nebo stornovaných objednávek.",
       "2 včera prodaných produktů je teď na nízkém skladu.",
       "10 skladových pozic je v mínusu."
     ]
@@ -29,32 +29,32 @@
     "orders": 410,
     "revenueWithVat": 574331.1,
     "averageOrderValue": 1400.81,
-    "cancelledOrders": 3,
-    "problematicOrders": 3,
+    "cancelledOrders": 4,
+    "problematicOrders": 4,
     "statuses": [
       {
         "name": "přijatá",
-        "count": 223
+        "count": 224
       },
       {
         "name": "expedováno",
-        "count": 163
-      },
-      {
-        "name": "nová",
-        "count": 13
-      },
-      {
-        "name": "doručeno",
-        "count": 7
-      },
-      {
-        "name": "chyba",
-        "count": 3
+        "count": 138
       },
       {
         "name": "připraveno k vyzvednutí",
-        "count": 1
+        "count": 23
+      },
+      {
+        "name": "nová",
+        "count": 11
+      },
+      {
+        "name": "doručeno",
+        "count": 10
+      },
+      {
+        "name": "chyba",
+        "count": 4
       }
     ],
     "paymentMethods": [
@@ -827,81 +827,81 @@
       {
         "code": "40203",
         "title": "Peeling Broskvový",
-        "currentStock": 2105.0,
-        "previousStock": 2115.0,
-        "delta": -10.0
+        "currentStock": 2079.0,
+        "previousStock": 2097.0,
+        "delta": -18.0
       },
       {
         "code": "UA132",
         "title": "Peeling Broskovový 1+1",
-        "currentStock": 2095.0,
-        "previousStock": 2105.0,
-        "delta": -10.0
+        "currentStock": 2069.0,
+        "previousStock": 2087.0,
+        "delta": -18.0
       },
       {
-        "code": "52911",
-        "title": "Obnovující maska na obličej a krk s fullereny a polypeptidy",
-        "currentStock": 1687.0,
-        "previousStock": 1693.0,
-        "delta": -6.0
+        "code": "RV824",
+        "title": "Regenerační balíček pro dokonalé nohy",
+        "currentStock": 379.0,
+        "previousStock": 363.0,
+        "delta": 16.0
       },
       {
-        "code": "RK715",
-        "title": "Regenerační rituál pro obličej, krk a ruce",
-        "currentStock": 1685.0,
-        "previousStock": 1691.0,
-        "delta": -6.0
+        "code": "44402-2",
+        "title": "Fytogel Slaviton",
+        "currentStock": 2596.0,
+        "previousStock": 2611.0,
+        "delta": -15.0
       },
       {
-        "code": "AU572",
-        "title": "Revitalizační maska na obličej a krk s fullereny – výhodný balíček dvou masek",
-        "currentStock": 1685.0,
-        "previousStock": 1691.0,
-        "delta": -6.0
+        "code": "30118",
+        "title": "Kosmetická fytonáplast Wutong",
+        "currentStock": 3206.0,
+        "previousStock": 3215.0,
+        "delta": -9.0
       },
       {
-        "code": "41105",
-        "title": "Regenerační krém na nohy s hadím olejem",
-        "currentStock": 3617.0,
-        "previousStock": 3622.0,
-        "delta": -5.0
+        "code": "ZW265",
+        "title": "Detoxikační náplasti + cestovní lahev",
+        "currentStock": 160.0,
+        "previousStock": 151.0,
+        "delta": 9.0
       },
       {
-        "code": "10101",
-        "title": "Regenerační sérum v kapslích",
-        "currentStock": 708.0,
-        "previousStock": 713.0,
-        "delta": -5.0
+        "code": "JS051",
+        "title": "l",
+        "currentStock": 214.0,
+        "previousStock": 205.0,
+        "delta": 9.0
       },
       {
-        "code": "000075",
-        "title": "Brožura Fytogely",
-        "currentStock": 3422.0,
-        "previousStock": 3427.0,
-        "delta": -5.0
+        "code": "DW794",
+        "title": "Detox v balíčku",
+        "currentStock": 47.0,
+        "previousStock": 38.0,
+        "delta": 9.0
       },
       {
-        "code": "56007",
-        "title": "Tající kolagenová liftingová pleťová maska s mořskými řasami\t",
-        "currentStock": 1342.0,
-        "previousStock": 1347.0,
-        "delta": -5.0
+        "code": "30117",
+        "title": "Kosmetická fytonáplast Jian Kang",
+        "currentStock": 3753.0,
+        "previousStock": 3761.0,
+        "delta": -8.0
       },
       {
-        "code": "TW935",
-        "title": "Kompletní péče o ruce a nohy s hadím olejem",
-        "currentStock": 2771.0,
-        "previousStock": 2776.0,
-        "delta": -5.0
+        "code": "980193",
+        "title": "Expres utěrka na čištění skla",
+        "currentStock": 186.0,
+        "previousStock": 194.0,
+        "delta": -8.0
       }
     ]
   },
   "inventory": {
-    "availableStockTotal": 378869.0,
+    "availableStockTotal": 378483.0,
     "itemsTotal": 1389,
     "byAccount": {
-      "CZ": 308098.0,
-      "SK": 70771.0
+      "CZ": 307728.0,
+      "SK": 70755.0
     },
     "itemsByAccount": {
       "CZ": 768,
@@ -952,16 +952,16 @@
     ],
     "statusCounts": [
       {
+        "name": "P",
+        "count": 222
+      },
+      {
         "name": "C",
         "count": 183
       },
       {
-        "name": "P",
-        "count": 175
-      },
-      {
         "name": "S",
-        "count": 50
+        "count": 3
       }
     ],
     "coverageWarnings": [],
@@ -1032,7 +1032,7 @@
   "priorities": [
     "Dohlédnout BIOANALYZA007 (BIOREZONANČNÍ ANALÝZA ENERGETICKÉHO STAVU), aktuálně 0 ks.",
     "Dohlédnout 54107 (Pleťová beauty maska \"Černý briliant\"), aktuálně 2 ks.",
-    "Projít 3 problematických nebo stornovaných objednávek z včerejška.",
+    "Projít 4 problematických nebo stornovaných objednávek z včerejška.",
     "Projít nejbližší expirace v 4PX a rozhodnout o doprodeji nebo přesunu zásoby."
   ]
 }
