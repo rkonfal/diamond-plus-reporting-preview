@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T17:18:48.976938+02:00",
+  "generatedAt": "2026-04-17T18:00:00.996157+02:00",
   "window": {
     "from": "2026-04-16T00:00:01+02:00",
     "to": "2026-04-17T00:00:00+02:00"
@@ -30600,8 +30600,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 1512,
@@ -38628,8 +38628,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 120.8,
@@ -39354,8 +39354,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 1620,
@@ -40512,8 +40512,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 1611,
@@ -43272,8 +43272,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 1557,
@@ -43626,8 +43626,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 3083,
@@ -47952,8 +47952,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 2072,
@@ -55164,8 +55164,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 2040,
@@ -55992,8 +55992,8 @@
       "cancelled": false,
       "isPaid": false,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 2661,
@@ -58069,15 +58069,15 @@
       },
       {
         "name": "doručeno",
-        "count": 103
+        "count": 112
       },
       {
         "name": "připraveno k vyzvednutí",
-        "count": 56
+        "count": 52
       },
       {
         "name": "expedováno",
-        "count": 28
+        "count": 23
       },
       {
         "name": "nová",
@@ -58545,15 +58545,15 @@
           },
           {
             "name": "doručeno",
-            "count": 103
+            "count": 112
           },
           {
             "name": "připraveno k vyzvednutí",
-            "count": 56
+            "count": 52
           },
           {
             "name": "expedováno",
-            "count": 28
+            "count": 23
           },
           {
             "name": "nová",
@@ -59021,19 +59021,19 @@
           },
           {
             "name": "doručeno",
-            "count": 95
+            "count": 103
           },
           {
             "name": "připraveno k vyzvednutí",
-            "count": 54
-          },
-          {
-            "name": "expedováno",
-            "count": 12
+            "count": 51
           },
           {
             "name": "nová",
             "count": 9
+          },
+          {
+            "name": "expedováno",
+            "count": 7
           },
           {
             "name": "chyba",
@@ -59464,11 +59464,11 @@
             "count": 7
           },
           {
-            "name": "připraveno k vyzvednutí",
+            "name": "doručeno",
             "count": 2
           },
           {
-            "name": "doručeno",
+            "name": "připraveno k vyzvednutí",
             "count": 1
           }
         ],
