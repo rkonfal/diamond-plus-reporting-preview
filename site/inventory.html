@@ -345,6 +345,10 @@
       return value == null ? '–' : Number(value).toFixed(1);
     }
 
+    function fmtOne(value) {
+      return value == null ? '–' : Number(value).toLocaleString('cs-CZ', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    }
+
     function list(value) {
       return Array.isArray(value) ? value : [];
     }
@@ -460,12 +464,6 @@
     }
 
     const EXPLORER_STATE_KEY = 'dp-inventory-explorer-state-v1';
-    const EXPLORER_PRESETS = {
-      operativa: { filter: 'lowAfterSales', sort: 'coverAsc', limit: '100', search: '' },
-      mismatch: { filter: 'mismatch', sort: 'delta', limit: '100', search: '' },
-      mapping: { filter: 'autoAlias', sort: 'priority', limit: '100', search: '' },
-      reset: { filter: 'all', sort: 'priority', limit: '50', search: '' },
-    };
 
     (async () => {
       const [overview, analytics, combined] = await Promise.all([
@@ -492,21 +490,88 @@
       const searchInput = document.getElementById('inventory-search');
       const filterSelect = document.getElementById('inventory-filter');
       const sortSelect = document.getElementById('inventory-sort');
-      const limitSelect = document.getElementById('inventory-limit');
+      const pageSizeSelect = document.getElementById('inventory-page-size');
       const exportButton = document.getElementById('inventory-export-csv');
       const quickFilterButtons = Array.from(document.querySelectorAll('#inventory-quick-filters [data-filter]'));
-      const presetButtons = Array.from(document.querySelectorAll('#inventory-presets [data-preset]'));
-      const warehouseViewButtons = Array.from(document.querySelectorAll('#inventory-warehouse-switch [data-warehouse-view]'));
+      const viewButtons = Array.from(document.querySelectorAll('#inventory-view-tabs [data-view]'));
       const explorerSummary = document.getElementById('inventory-explorer-summary');
+      const explorerHead = document.getElementById('inventory-explorer-head');
       const explorerTable = document.getElementById('inventory-explorer-table');
-      let warehouseView = 'all';
+      const viewSummary = document.getElementById('inventory-view-summary');
+      const paginationSummary = document.getElementById('inventory-pagination-summary');
+      const prevPageButton = document.getElementById('inventory-page-prev');
+      const nextPageButton = document.getElementById('inventory-page-next');
+
+      let activeView = 'complete';
+      let currentPage = 1;
+
+      const viewDefs = {
+        complete: {
+          label: 'KOMPLET',
+          stockLabel: 'Sklad komplet',
+          stockValue: row => czQty(row) + skQty(row) + ltmQty(row) + mecinQty(row),
+          matches: () => true,
+          detail: row => `CZ ${fmt(czQty(row))} · SK ${fmt(skQty(row))} · LTM ${fmt(ltmQty(row))} · Měčín ${fmt(mecinQty(row))}`,
+        },
+        cz: {
+          label: 'CZ',
+          stockLabel: 'CZ sklad',
+          stockValue: row => czQty(row),
+          matches: row => czQty(row) > 0,
+          detail: row => `4PX CZ · SK ${fmt(skQty(row))} · LTM ${fmt(ltmQty(row))} · Měčín ${fmt(mecinQty(row))}`,
+        },
+        sk: {
+          label: 'SK',
+          stockLabel: 'SK sklad',
+          stockValue: row => skQty(row),
+          matches: row => skQty(row) > 0,
+          detail: row => `4PX SK · CZ ${fmt(czQty(row))} · LTM ${fmt(ltmQty(row))} · Měčín ${fmt(mecinQty(row))}`,
+        },
+        ltm: {
+          label: 'LTM',
+          stockLabel: 'LTM sklad',
+          stockValue: row => ltmQty(row),
+          matches: row => ltmQty(row) > 0,
+          detail: row => `LTM · CZ ${fmt(czQty(row))} · SK ${fmt(skQty(row))} · Měčín ${fmt(mecinQty(row))}`,
+        },
+        mecin: {
+          label: 'MĚČÍN',
+          stockLabel: 'Měčín sklad',
+          stockValue: row => mecinQty(row),
+          matches: row => mecinQty(row) > 0,
+          detail: row => `Měčín · CZ ${fmt(czQty(row))} · SK ${fmt(skQty(row))} · LTM ${fmt(ltmQty(row))}`,
+        },
+      };
+
+      function czQty(row) {
+        return Number(row.fourpx?.cz?.availableStock || 0);
+      }
+
+      function skQty(row) {
+        return Number(row.fourpx?.sk?.availableStock || 0);
+      }
+
+      function stockInView(row, view = activeView) {
+        return viewDefs[view].stockValue(row);
+      }
+
+      function daysOfCoverInView(row, metric, view = activeView) {
+        const units365d = Number(metric.units365d || 0);
+        const stock = stockInView(row, view);
+        if (!units365d) return stock > 0 ? null : 0;
+        return stock * 365 / units365d;
+      }
 
       function syncQuickFilterButtons() {
         quickFilterButtons.forEach(button => button.classList.toggle('active', button.dataset.filter === filterSelect.value));
       }
 
-      function syncWarehouseViewButtons() {
-        warehouseViewButtons.forEach(button => button.classList.toggle('active', button.dataset.warehouseView === warehouseView));
+      function syncViewButtons() {
+        viewButtons.forEach(button => button.classList.toggle('active', button.dataset.view === activeView));
+      }
+
+      function resetExplorerPage() {
+        currentPage = 1;
       }
 
       function persistExplorerState() {
@@ -514,20 +579,22 @@
           search: searchInput.value,
           filter: filterSelect.value,
           sort: sortSelect.value,
-          limit: limitSelect.value,
-          warehouseView,
+          pageSize: pageSizeSelect.value,
+          activeView,
+          currentPage,
         }));
       }
 
       function applyExplorerState(nextState) {
         if (!nextState) return;
         if (typeof nextState.search === 'string') searchInput.value = nextState.search;
-        if (nextState.filter) filterSelect.value = nextState.filter;
-        if (nextState.sort) sortSelect.value = nextState.sort;
-        if (nextState.limit) limitSelect.value = String(nextState.limit);
-        if (['all', 'ltm', 'mecin'].includes(nextState.warehouseView)) warehouseView = nextState.warehouseView;
+        if ([...filterSelect.options].some(option => option.value === nextState.filter)) filterSelect.value = nextState.filter;
+        if ([...sortSelect.options].some(option => option.value === nextState.sort)) sortSelect.value = nextState.sort;
+        if ([...pageSizeSelect.options].some(option => option.value === String(nextState.pageSize))) pageSizeSelect.value = String(nextState.pageSize);
+        if (viewDefs[nextState.activeView]) activeView = nextState.activeView;
+        if (Number.isFinite(Number(nextState.currentPage)) && Number(nextState.currentPage) > 0) currentPage = Number(nextState.currentPage);
         syncQuickFilterButtons();
-        syncWarehouseViewButtons();
+        syncViewButtons();
       }
 
       try {
@@ -590,8 +657,8 @@
 
       document.getElementById('inventory-usage-list').innerHTML = [
         ['Rychlé filtry', 'Začni mismatchy, nízkým skladem po prodeji a prodaným včera.'],
-        ['Pohled do skladů', 'Přepínač Vše / LTM / Měčín ti dole přepne celý kompletní výpis skladu.'],
-        ['Export CSV', 'Když potřebuješ něco sdílet dál, exportuje celý aktuálně filtrovaný výběr.']
+        ['Pohled skladu', 'Přepínač KOMPLET / CZ / SK / LTM / MĚČÍN přepne celý výpis i pokrytí zásoby.'],
+        ['Stránkování', 'Explorer ukazuje jen aktuální stránku, takže se v něm neztratíš.']
       ].map(([title, text], index) => `
         <div class="ux-side-item">
           <span class="ux-dot ${index === 1 ? 'gold' : index === 2 ? 'green' : 'blue'}"></span>
@@ -602,85 +669,18 @@
         </div>
       `).join('');
 
-      function getWarehouseMeta() {
-        const meta = {
-          all: {
-            title: 'Všechny sklady',
-            subtitle: 'Kompletní spárovaný výpis bez omezení na konkrétní sklad.',
-            count: explorerRows.length,
-            units: ltmRows.reduce((sum, item) => sum + item.qty, 0) + mecinRows.reduce((sum, item) => sum + item.qty, 0),
-            topRows: [ltmRows[0], mecinRows[0]].filter(Boolean),
-          },
-          ltm: {
-            title: 'Sklad LTM',
-            subtitle: 'Vidíš jen produkty, které teď mají něco na LTM.',
-            count: ltmRows.length,
-            units: ltmRows.reduce((sum, item) => sum + item.qty, 0),
-            topRows: ltmRows.slice(0, 3),
-          },
-          mecin: {
-            title: 'Sklad Měčín',
-            subtitle: 'Vidíš jen produkty, které teď mají něco v Měčíně.',
-            count: mecinRows.length,
-            units: mecinRows.reduce((sum, item) => sum + item.qty, 0),
-            topRows: mecinRows.slice(0, 3),
-          }
-        };
-        return meta[warehouseView] || meta.all;
-      }
-
-      function renderWarehousePanel() {
-        const meta = getWarehouseMeta();
-        document.getElementById('inventory-warehouse-stats').innerHTML = [
-          ['Aktivní pohled', meta.title],
-          ['Počet SKU', fmt(meta.count)],
-          ['Ks v pohledu', `${fmt(meta.units)} ks`],
-        ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
-
-        document.getElementById('inventory-warehouse-note').textContent = meta.subtitle;
-        document.getElementById('inventory-warehouse-list').innerHTML = meta.topRows.map((item, index) => `
-          <div class="ux-side-item">
-            <span class="ux-dot ${index === 1 ? 'gold' : index === 2 ? 'green' : 'blue'}"></span>
-            <div>
-              <strong>${productLabel(item.row)}</strong>
-              <span>${warehouseView === 'mecin' ? fmt(mecinQty(item.row)) : warehouseView === 'ltm' ? fmt(ltmQty(item.row)) : `${fmt(ltmQty(item.row))} LTM / ${fmt(mecinQty(item.row))} Měčín`} ks · ${fmt(item.metric.units365d || 0)} ks / 365d</span>
-            </div>
-          </div>
-        `).join('') || '<div class="ux-side-item"><span class="ux-dot blue"></span><div><strong>Bez dat</strong><span>V tomhle pohledu teď nic nevidíme.</span></div></div>';
-      }
-
-      function matchesWarehouseView(row) {
-        if (warehouseView === 'ltm') return ltmQty(row) > 0;
-        if (warehouseView === 'mecin') return mecinQty(row) > 0;
-        return true;
-      }
-
       function getExplorerRows() {
         const query = searchInput.value.trim().toLowerCase();
         const filter = filterSelect.value;
         const sort = sortSelect.value;
         const rows = explorerRows
-          .filter(({ row }) => matchesWarehouseView(row))
+          .filter(({ row }) => viewDefs[activeView].matches(row))
           .filter(({ row, metric }) => matchesExplorerFilter(row, metric, filter))
           .filter(({ row, metric }) => !query || explorerSearchBlob(row, metric).includes(query));
 
         rows.sort((a, b) => {
-          if (sort === 'ltm') {
-            return ltmQty(b.row) - ltmQty(a.row)
-              || Number(b.metric.units365d || 0) - Number(a.metric.units365d || 0)
-              || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
-          }
-          if (sort === 'mecin') {
-            return mecinQty(b.row) - mecinQty(a.row)
-              || Number(b.metric.units365d || 0) - Number(a.metric.units365d || 0)
-              || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
-          }
-          if (sort === 'delta') {
-            return Math.abs(Number(b.row.stockDelta || 0)) - Math.abs(Number(a.row.stockDelta || 0))
-              || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
-          }
-          if (sort === 'stock') {
-            return Number(b.row.fourpx?.availableTotal || 0) - Number(a.row.fourpx?.availableTotal || 0)
+          if (sort === 'stockInView') {
+            return stockInView(b.row) - stockInView(a.row)
               || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
           }
           if (sort === 'sales365d') {
@@ -688,75 +688,112 @@
               || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
           }
           if (sort === 'coverAsc') {
-            const aCover = a.metric.daysOfCover365d == null ? Number.POSITIVE_INFINITY : Number(a.metric.daysOfCover365d);
-            const bCover = b.metric.daysOfCover365d == null ? Number.POSITIVE_INFINITY : Number(b.metric.daysOfCover365d);
+            const aCoverRaw = daysOfCoverInView(a.row, a.metric);
+            const bCoverRaw = daysOfCoverInView(b.row, b.metric);
+            const aCover = aCoverRaw == null ? Number.POSITIVE_INFINITY : Number(aCoverRaw);
+            const bCover = bCoverRaw == null ? Number.POSITIVE_INFINITY : Number(bCoverRaw);
             return aCover - bCover || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
           }
           if (sort === 'code') {
             return String(a.row.code || '').localeCompare(String(b.row.code || ''), 'cs');
           }
           return explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric)
-            || Math.abs(Number(b.row.stockDelta || 0)) - Math.abs(Number(a.row.stockDelta || 0))
+            || stockInView(b.row) - stockInView(a.row)
             || Number(b.metric.units365d || 0) - Number(a.metric.units365d || 0)
-            || Number(b.row.fourpx?.availableTotal || 0) - Number(a.row.fourpx?.availableTotal || 0)
             || String(a.row.code || '').localeCompare(String(b.row.code || ''), 'cs');
         });
 
         return rows;
       }
 
+      function renderExplorerHead() {
+        explorerHead.innerHTML = `
+          <tr>
+            <th>Produkt</th>
+            <th>Stav</th>
+            <th class="num">${viewDefs[activeView].stockLabel}</th>
+            <th class="num">Prodej 365d</th>
+            <th class="num">Průměr / měsíc</th>
+            <th class="num">Pokrytí</th>
+            <th>Detail / SKU</th>
+          </tr>
+        `;
+      }
+
       function renderExplorer() {
         const filter = filterSelect.value;
         const sort = sortSelect.value;
-        const limitValue = limitSelect.value || '50';
+        const pageSize = Number(pageSizeSelect.value || 50);
         const rows = getExplorerRows();
-        const warehouseMeta = getWarehouseMeta();
 
-        const visible = limitValue === 'all' ? rows : rows.slice(0, Number(limitValue));
-        explorerSummary.textContent = `Pohled: ${warehouseMeta.title}. Zobrazeno ${fmt(visible.length)} z ${fmt(rows.length)} výsledků. Filtr: ${filterSelect.options[filterSelect.selectedIndex].text}. Řazení: ${sortSelect.options[sortSelect.selectedIndex].text}. Limit: ${limitValue === 'all' ? 'Vše' : limitValue}. Export CSV bere celý aktuální výběr.`;
+        const totalUnits = rows.reduce((sum, item) => sum + stockInView(item.row), 0);
+        const totalPages = Math.max(1, Math.ceil(rows.length / pageSize));
+        currentPage = Math.min(currentPage, totalPages);
+        const pageStart = (currentPage - 1) * pageSize;
+        const visible = rows.slice(pageStart, pageStart + pageSize);
+
+        viewSummary.textContent = `Pohled ${viewDefs[activeView].label}: ${fmt(rows.length)} SKU, ${fmt(totalUnits)} ks celkem.`;
+        explorerSummary.textContent = `Filtr: ${filterSelect.options[filterSelect.selectedIndex].text}. Řazení: ${sortSelect.options[sortSelect.selectedIndex].text}. Tabulka ukazuje pouze aktuální výběr.`;
+        paginationSummary.textContent = `Strana ${fmt(currentPage)} z ${fmt(totalPages)} · zobrazeno ${fmt(visible.length)} z ${fmt(rows.length)} řádků.`;
         persistExplorerState();
-        renderWarehousePanel();
+        renderExplorerHead();
+
+        prevPageButton.disabled = currentPage <= 1;
+        nextPageButton.disabled = currentPage >= totalPages;
 
         explorerTable.innerHTML = visible.map(({ row, metric }) => `
           <tr>
             <td>
               <div><strong>${productLabel(row)}</strong></div>
-              <div class="muted small" style="margin-top:6px;">WPJ 4PX: ${fmt(row.wpj?.fourpxStoreTotal)} ks</div>
+              <div class="muted small" style="margin-top:6px;">${viewDefs[activeView].detail(row)}</div>
             </td>
             <td>${inventoryBadges(row, metric)}</td>
-            <td class="num">${fmt(ltmQty(row))}</td>
-            <td class="num">${fmt(mecinQty(row))}</td>
-            <td class="num">${fmt(row.fourpx?.availableTotal)}</td>
-            <td class="num">${fmt(row.stockDelta)}</td>
+            <td class="num">${fmt(stockInView(row))}</td>
+            <td class="num">${fmt(metric.units365d || 0)}</td>
+            <td class="num">${fmtOne(Number(metric.units365d || 0) / 12)}</td>
+            <td class="num">${daysOfCoverInView(row, metric) == null ? 'bez prodeje' : `${fmtCover(daysOfCoverInView(row, metric))} dnů`}</td>
             <td>
-              <div>${fmt(metric.units365d || 0)} ks / 365d</div>
-              <div class="muted small" style="margin-top:6px;">pokrytí ${fmtCover(metric.daysOfCover365d)} dnů</div>
+              ${explorerSourceCodes(row)}
+              <div class="muted small" style="margin-top:6px;">včera prodáno ${fmt(row.yesterdaySales?.units || 0)} ks · expedováno ${fmt(Number(row.yesterdayOutbound?.czUnits || 0) + Number(row.yesterdayOutbound?.skUnits || 0))} ks</div>
             </td>
-            <td>${explorerSourceCodes(row)}</td>
           </tr>
-        `).join('') || '<tr><td colspan="8">Nic neodpovídá filtru nebo hledání.</td></tr>';
+        `).join('') || '<tr><td colspan="7">Nic neodpovídá aktuálnímu pohledu nebo filtru.</td></tr>';
       }
 
-      searchInput.addEventListener('input', renderExplorer);
-      filterSelect.addEventListener('change', renderExplorer);
-      sortSelect.addEventListener('change', renderExplorer);
-      limitSelect.addEventListener('change', renderExplorer);
+      searchInput.addEventListener('input', () => {
+        resetExplorerPage();
+        renderExplorer();
+      });
+      filterSelect.addEventListener('change', () => {
+        syncQuickFilterButtons();
+        resetExplorerPage();
+        renderExplorer();
+      });
+      sortSelect.addEventListener('change', () => {
+        resetExplorerPage();
+        renderExplorer();
+      });
+      pageSizeSelect.addEventListener('change', () => {
+        resetExplorerPage();
+        renderExplorer();
+      });
       exportButton.addEventListener('click', () => {
         const rows = getExplorerRows();
         const header = [
+          'view',
           'code',
           'title',
-          'visible',
           'flags',
+          'stock_in_view',
+          'units_365d',
+          'avg_units_per_month',
+          'days_of_cover_in_view',
+          'cz_stock',
+          'sk_stock',
           'ltm_stock',
           'mecin_stock',
-          'fourpx_available',
-          'wpj_4px_stock',
-          'stock_delta',
           'sold_yesterday_units',
           'outbound_yesterday_units',
-          'units_365d',
-          'days_of_cover_365d',
           'source_codes',
           'manual_aliases',
           'auto_aliases'
@@ -764,19 +801,20 @@
         const lines = [header.map(csvCell).join(';')];
         rows.forEach(({ row, metric }) => {
           lines.push([
+            viewDefs[activeView].label,
             row.code,
             row.title,
-            row.visible ? '1' : '0',
             list(row.flags).join(','),
+            stockInView(row),
+            metric.units365d ?? '',
+            (Number(metric.units365d || 0) / 12).toFixed(1),
+            daysOfCoverInView(row, metric) == null ? '' : daysOfCoverInView(row, metric).toFixed(1),
+            czQty(row),
+            skQty(row),
             ltmQty(row),
             mecinQty(row),
-            row.fourpx?.availableTotal ?? '',
-            row.wpj?.fourpxStoreTotal ?? '',
-            row.stockDelta ?? '',
             row.yesterdaySales?.units ?? '',
             Number(row.yesterdayOutbound?.czUnits || 0) + Number(row.yesterdayOutbound?.skUnits || 0),
-            metric.units365d ?? '',
-            metric.daysOfCover365d ?? '',
             list(row.fourpx?.sourceCodes).join(','),
             list(row.fourpx?.manualMappedSourceCodes).join(','),
             list(row.fourpx?.autoMappedSourceCodes).join(','),
@@ -797,26 +835,30 @@
         button.addEventListener('click', () => {
           filterSelect.value = button.dataset.filter;
           syncQuickFilterButtons();
+          resetExplorerPage();
           renderExplorer();
         });
       });
-      presetButtons.forEach(button => {
+      viewButtons.forEach(button => {
         button.addEventListener('click', () => {
-          applyExplorerState(EXPLORER_PRESETS[button.dataset.preset]);
+          activeView = button.dataset.view;
+          syncViewButtons();
+          resetExplorerPage();
           renderExplorer();
         });
       });
-      warehouseViewButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          warehouseView = button.dataset.warehouseView;
-          syncWarehouseViewButtons();
+      prevPageButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage -= 1;
           renderExplorer();
-        });
+        }
       });
-      filterSelect.addEventListener('change', () => {
-        syncQuickFilterButtons();
+      nextPageButton.addEventListener('click', () => {
+        currentPage += 1;
+        renderExplorer();
       });
-      syncWarehouseViewButtons();
+
+      syncViewButtons();
       renderExplorer();
 
       document.getElementById('priority-shortlist-table').innerHTML = (overview.priorityShortlist || []).map(row => `
