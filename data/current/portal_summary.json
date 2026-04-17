@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T13:00:01.050851+02:00",
+  "generatedAt": "2026-04-17T13:39:03.280885+02:00",
   "config": {
     "warehouseCode": "CZPRGA",
     "outboundMaxPages": 20,
@@ -14,8 +14,8 @@
       "label": "CZ",
       "inventory": {
         "items": 768,
-        "availableStockTotal": 307123,
-        "pendingStockTotal": 1743,
+        "availableStockTotal": 307069,
+        "pendingStockTotal": 1678,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -23,15 +23,15 @@
         "items": 500,
         "scannedPages": 5,
         "topLogisticsProduct": "F1401",
-        "oldestTimestamp": "2026-04-15T22:10:04+02:00",
-        "newestTimestamp": "2026-04-17T13:00:02+02:00"
+        "oldestTimestamp": "2026-04-15T22:20:06+02:00",
+        "newestTimestamp": "2026-04-17T13:30:03+02:00"
       }
     },
     "sk": {
       "label": "SK",
       "inventory": {
         "items": 621,
-        "availableStockTotal": 70722,
+        "availableStockTotal": 70712,
         "pendingStockTotal": 32,
         "freezeStockTotal": 0,
         "lowStockItems": 100
@@ -40,8 +40,8 @@
         "items": 100,
         "scannedPages": 1,
         "topLogisticsProduct": "F1403",
-        "oldestTimestamp": "2026-04-15T09:12:46+02:00",
-        "newestTimestamp": "2026-04-17T12:30:13+02:00"
+        "oldestTimestamp": "2026-04-15T09:52:09+02:00",
+        "newestTimestamp": "2026-04-17T13:25:10+02:00"
       }
     }
   },
@@ -89,27 +89,27 @@
     "message": "Měsíční finance se tahají přímo z ABRA reportu Výkaz hospodaření za měsíc za všechna střediska. Cash a závazky jsou také live z ABRA API.",
     "currentMonth": {
       "label": "4/2026",
-      "revenue": 7858792.64,
-      "cogsAndFees": 5686703.57,
+      "revenue": 7879320.35,
+      "cogsAndFees": 5700417.12,
       "logistics": 37815.04,
       "marketing": 257841.46,
-      "opex": 232929.28,
+      "opex": 237253.68,
       "depreciation": 385502.0,
-      "other": -5329.83,
-      "grossMargin": 2172089.07,
-      "afterLogistics": 2134274.03,
-      "afterMarketing": 1876432.57,
-      "operatingMargin": 1643503.29,
-      "ebit": 1258001.29,
-      "profit": 1252671.46,
-      "grossMarginPct": 27.6,
+      "other": -5460.68,
+      "grossMargin": 2178903.23,
+      "afterLogistics": 2141088.19,
+      "afterMarketing": 1883246.73,
+      "operatingMargin": 1645993.05,
+      "ebit": 1260491.05,
+      "profit": 1255030.37,
+      "grossMarginPct": 27.7,
       "marketingPct": 3.3,
       "logisticsPct": 0.5,
       "operatingMarginPct": 20.9,
       "profitPct": 15.9
     },
     "cash": {
-      "unpaidInvoices": 2883692.48,
+      "unpaidInvoices": 3038318.85,
       "overdueInvoicesCount": 0,
       "overdueInvoicesAmount": 0.0,
       "largestPayables": [
@@ -146,6 +146,14 @@
           "status": "3 dní do splatnosti"
         },
         {
+          "code": "PF0470/2026",
+          "vendor": "ISTA CORPORATION s.r.o.",
+          "dueDate": "21.04.2026",
+          "amountTotal": 151560.49,
+          "amountDue": 151560.49,
+          "status": "4 dní do splatnosti"
+        },
+        {
           "code": "Z0030/2026",
           "vendor": "Effectix.com, s.r.o.",
           "dueDate": "26.04.2026",
@@ -168,14 +176,6 @@
           "amountTotal": 27981.25,
           "amountDue": 27981.25,
           "status": "13 dní do splatnosti"
-        },
-        {
-          "code": "PF0459/2026",
-          "vendor": "ISTA CORPORATION s.r.o.",
-          "dueDate": "20.04.2026",
-          "amountTotal": 23539.38,
-          "amountDue": 23539.38,
-          "status": "3 dní do splatnosti"
         }
       ]
     },
@@ -193,7 +193,7 @@
       "performanceSpend": 6957.68,
       "brandSpend": 250883.78,
       "totalSpend": 257841.46,
-      "revenue": 7858792.64,
+      "revenue": 7879320.35,
       "spendShareOfRevenuePct": 3.3
     },
     "topSupplier": null

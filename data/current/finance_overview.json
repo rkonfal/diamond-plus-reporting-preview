@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T13:00:01.050851+02:00",
+  "generatedAt": "2026-04-17T13:39:03.280885+02:00",
   "source": {
     "status": "live_report",
     "message": "Měsíční finance se tahají přímo z ABRA reportu Výkaz hospodaření za měsíc za všechna střediska. Cash a závazky jsou také live z ABRA API."
@@ -59,15 +59,15 @@
       "cogsAndFees": 11047833.53,
       "logistics": 1255165.15,
       "marketing": 724066.69,
-      "opex": 2145142.56,
+      "opex": 2145731.44,
       "depreciation": 385502.0,
       "other": -104856.64,
       "grossMargin": 5265200.58,
       "afterLogistics": 4010035.43,
       "afterMarketing": 3285968.74,
-      "operatingMargin": 1140826.18,
-      "ebit": 755324.18,
-      "profit": 650467.54,
+      "operatingMargin": 1140237.3,
+      "ebit": 754735.3,
+      "profit": 649878.66,
       "grossMarginPct": 32.3,
       "marketingPct": 4.4,
       "logisticsPct": 7.7,
@@ -76,20 +76,20 @@
     },
     {
       "label": "4/2026",
-      "revenue": 7858792.64,
-      "cogsAndFees": 5686703.57,
+      "revenue": 7879320.35,
+      "cogsAndFees": 5700417.12,
       "logistics": 37815.04,
       "marketing": 257841.46,
-      "opex": 232929.28,
+      "opex": 237253.68,
       "depreciation": 385502.0,
-      "other": -5329.83,
-      "grossMargin": 2172089.07,
-      "afterLogistics": 2134274.03,
-      "afterMarketing": 1876432.57,
-      "operatingMargin": 1643503.29,
-      "ebit": 1258001.29,
-      "profit": 1252671.46,
-      "grossMarginPct": 27.6,
+      "other": -5460.68,
+      "grossMargin": 2178903.23,
+      "afterLogistics": 2141088.19,
+      "afterMarketing": 1883246.73,
+      "operatingMargin": 1645993.05,
+      "ebit": 1260491.05,
+      "profit": 1255030.37,
+      "grossMarginPct": 27.7,
       "marketingPct": 3.3,
       "logisticsPct": 0.5,
       "operatingMarginPct": 20.9,
@@ -98,20 +98,20 @@
   ],
   "currentMonth": {
     "label": "4/2026",
-    "revenue": 7858792.64,
-    "cogsAndFees": 5686703.57,
+    "revenue": 7879320.35,
+    "cogsAndFees": 5700417.12,
     "logistics": 37815.04,
     "marketing": 257841.46,
-    "opex": 232929.28,
+    "opex": 237253.68,
     "depreciation": 385502.0,
-    "other": -5329.83,
-    "grossMargin": 2172089.07,
-    "afterLogistics": 2134274.03,
-    "afterMarketing": 1876432.57,
-    "operatingMargin": 1643503.29,
-    "ebit": 1258001.29,
-    "profit": 1252671.46,
-    "grossMarginPct": 27.6,
+    "other": -5460.68,
+    "grossMargin": 2178903.23,
+    "afterLogistics": 2141088.19,
+    "afterMarketing": 1883246.73,
+    "operatingMargin": 1645993.05,
+    "ebit": 1260491.05,
+    "profit": 1255030.37,
+    "grossMarginPct": 27.7,
     "marketingPct": 3.3,
     "logisticsPct": 0.5,
     "operatingMarginPct": 20.9,
@@ -123,15 +123,15 @@
     "cogsAndFees": 11047833.53,
     "logistics": 1255165.15,
     "marketing": 724066.69,
-    "opex": 2145142.56,
+    "opex": 2145731.44,
     "depreciation": 385502.0,
     "other": -104856.64,
     "grossMargin": 5265200.58,
     "afterLogistics": 4010035.43,
     "afterMarketing": 3285968.74,
-    "operatingMargin": 1140826.18,
-    "ebit": 755324.18,
-    "profit": 650467.54,
+    "operatingMargin": 1140237.3,
+    "ebit": 754735.3,
+    "profit": 649878.66,
     "grossMarginPct": 32.3,
     "marketingPct": 4.4,
     "logisticsPct": 7.7,
@@ -139,7 +139,7 @@
     "profitPct": 4.0
   },
   "cash": {
-    "unpaidInvoices": 2883692.48,
+    "unpaidInvoices": 3038318.85,
     "overdueInvoicesCount": 0,
     "overdueInvoicesAmount": 0.0,
     "largestPayables": [
@@ -176,6 +176,14 @@
         "status": "3 dní do splatnosti"
       },
       {
+        "code": "PF0470/2026",
+        "vendor": "ISTA CORPORATION s.r.o.",
+        "dueDate": "21.04.2026",
+        "amountTotal": 151560.49,
+        "amountDue": 151560.49,
+        "status": "4 dní do splatnosti"
+      },
+      {
         "code": "Z0030/2026",
         "vendor": "Effectix.com, s.r.o.",
         "dueDate": "26.04.2026",
@@ -198,14 +206,6 @@
         "amountTotal": 27981.25,
         "amountDue": 27981.25,
         "status": "13 dní do splatnosti"
-      },
-      {
-        "code": "PF0459/2026",
-        "vendor": "ISTA CORPORATION s.r.o.",
-        "dueDate": "20.04.2026",
-        "amountTotal": 23539.38,
-        "amountDue": 23539.38,
-        "status": "3 dní do splatnosti"
       }
     ]
   },
@@ -4397,12 +4397,12 @@
       },
       {
         "label": "4/2026",
-        "expenseTotal": 4034639.77,
-        "revenueTotal": 5118054.33,
+        "expenseTotal": 4035228.2,
+        "revenueTotal": 5117684.91,
         "topExpenseClass": {
           "code": "50",
           "label": "Spotřeba a zboží",
-          "amount": 3490528.28
+          "amount": 3491116.71
         },
         "topExpenseAccounts": [
           {
@@ -4450,7 +4450,7 @@
           {
             "code": "501100",
             "label": "Režie - materiál, kancelář",
-            "amount": 15900.5,
+            "amount": 16488.93,
             "classCode": "50",
             "classLabel": "Spotřeba a zboží"
           },
@@ -4494,7 +4494,7 @@
           {
             "code": "50",
             "label": "Spotřeba a zboží",
-            "amount": 3490528.28
+            "amount": 3491116.71
           },
           {
             "code": "51",
@@ -6215,22 +6215,6 @@
             "month": "4/2026",
             "date": "14.04.2026",
             "dateSort": "2026-04-14T02:00:00+02:00",
-            "document": "VF1-37440/2026",
-            "amount": 315.7,
-            "side": "výnos",
-            "accountCode": "604001",
-            "accountLabel": "Tržby z prodeje zboží",
-            "counterCode": "311001",
-            "counterLabel": "Pohledávky z obchodních vztahů",
-            "description": "Tržby z prodeje zboží  2",
-            "vendor": "Robert ŘÍHA",
-            "module": "Faktury vydané",
-            "costCenter": "C: Centrála"
-          },
-          {
-            "month": "4/2026",
-            "date": "14.04.2026",
-            "dateSort": "2026-04-14T02:00:00+02:00",
             "document": "VF1-37373/2026",
             "amount": 309.82,
             "side": "výnos",
@@ -6482,18 +6466,34 @@
             "vendor": "OC KVARTET s.r.o.",
             "module": "Faktury vydané",
             "costCenter": "C: Centrála"
+          },
+          {
+            "month": "4/2026",
+            "date": "14.04.2026",
+            "dateSort": "2026-04-14T02:00:00+02:00",
+            "document": "VF1-37357/2026",
+            "amount": 69.64,
+            "side": "výnos",
+            "accountCode": "604001",
+            "accountLabel": "Tržby z prodeje zboží",
+            "counterCode": "311001",
+            "counterLabel": "Pohledávky z obchodních vztahů",
+            "description": "Tržby z prodeje zboží  2",
+            "vendor": "Romana Raisová",
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           }
         ]
       }
     ],
     "currentMonth": {
       "label": "4/2026",
-      "expenseTotal": 4034639.77,
-      "revenueTotal": 5118054.33,
+      "expenseTotal": 4035228.2,
+      "revenueTotal": 5117684.91,
       "topExpenseClass": {
         "code": "50",
         "label": "Spotřeba a zboží",
-        "amount": 3490528.28
+        "amount": 3491116.71
       },
       "topExpenseAccounts": [
         {
@@ -6541,7 +6541,7 @@
         {
           "code": "501100",
           "label": "Režie - materiál, kancelář",
-          "amount": 15900.5,
+          "amount": 16488.93,
           "classCode": "50",
           "classLabel": "Spotřeba a zboží"
         },
@@ -6585,7 +6585,7 @@
         {
           "code": "50",
           "label": "Spotřeba a zboží",
-          "amount": 3490528.28
+          "amount": 3491116.71
         },
         {
           "code": "51",
@@ -8306,22 +8306,6 @@
           "month": "4/2026",
           "date": "14.04.2026",
           "dateSort": "2026-04-14T02:00:00+02:00",
-          "document": "VF1-37440/2026",
-          "amount": 315.7,
-          "side": "výnos",
-          "accountCode": "604001",
-          "accountLabel": "Tržby z prodeje zboží",
-          "counterCode": "311001",
-          "counterLabel": "Pohledávky z obchodních vztahů",
-          "description": "Tržby z prodeje zboží  2",
-          "vendor": "Robert ŘÍHA",
-          "module": "Faktury vydané",
-          "costCenter": "C: Centrála"
-        },
-        {
-          "month": "4/2026",
-          "date": "14.04.2026",
-          "dateSort": "2026-04-14T02:00:00+02:00",
           "document": "VF1-37373/2026",
           "amount": 309.82,
           "side": "výnos",
@@ -8571,6 +8555,22 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "OC KVARTET s.r.o.",
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
+        },
+        {
+          "month": "4/2026",
+          "date": "14.04.2026",
+          "dateSort": "2026-04-14T02:00:00+02:00",
+          "document": "VF1-37357/2026",
+          "amount": 69.64,
+          "side": "výnos",
+          "accountCode": "604001",
+          "accountLabel": "Tržby z prodeje zboží",
+          "counterCode": "311001",
+          "counterLabel": "Pohledávky z obchodních vztahů",
+          "description": "Tržby z prodeje zboží  2",
+          "vendor": "Romana Raisová",
           "module": "Faktury vydané",
           "costCenter": "C: Centrála"
         }

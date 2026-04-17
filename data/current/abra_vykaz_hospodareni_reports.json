@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T13:00:01.050851+02:00",
+  "generatedAt": "2026-04-17T13:39:03.280885+02:00",
   "source": {
     "status": "live",
     "message": "Report Výkaz hospodaření za měsíc se tahá přímo z ABRA report endpointu."
@@ -66,16 +66,16 @@
         "cogsAndFees": 11047833.53,
         "marketing": 724066.69,
         "logistics": 1255165.15,
-        "opex": 2145142.56,
+        "opex": 2145731.44,
         "depreciation": 385502.0,
         "other": -104856.64,
         "grossMargin": 5265200.58,
         "afterLogistics": 4010035.43,
         "afterMarketing": 3285968.74,
-        "operatingMargin": 1140826.18,
-        "ebit": 755324.18,
-        "profit": 650467.54,
-        "expenseTotal": 15674022.62,
+        "operatingMargin": 1140237.3,
+        "ebit": 754735.3,
+        "profit": 649878.66,
+        "expenseTotal": 15674611.5,
         "incomeTotal": 16324490.16,
         "bankFees": 92740.85
       }
@@ -87,21 +87,21 @@
       "contentType": "application/ms-excel",
       "url": "https://tiande-fb.arit.cz:5505/c/diamond_plus_s_r_o_/vykaz-hospodareni.xls?auth=http&report-name=vykazHospodareni&ucetniObdobi=2026&mesicRok=04%2F2026&mena=code%3ACZK",
       "parsed": {
-        "revenue": 7858792.64,
-        "cogsAndFees": 5686703.57,
+        "revenue": 7879320.35,
+        "cogsAndFees": 5700417.12,
         "marketing": 257841.46,
         "logistics": 37815.04,
-        "opex": 232929.28,
+        "opex": 237253.68,
         "depreciation": 385502.0,
-        "other": -5329.83,
-        "grossMargin": 2172089.07,
-        "afterLogistics": 2134274.03,
-        "afterMarketing": 1876432.57,
-        "operatingMargin": 1643503.29,
-        "ebit": 1258001.29,
-        "profit": 1252671.46,
-        "expenseTotal": 6606585.15,
-        "incomeTotal": 7859256.61,
+        "other": -5460.68,
+        "grossMargin": 2178903.23,
+        "afterLogistics": 2141088.19,
+        "afterMarketing": 1883246.73,
+        "operatingMargin": 1645993.05,
+        "ebit": 1260491.05,
+        "profit": 1255030.37,
+        "expenseTotal": 6624753.95,
+        "incomeTotal": 7879784.32,
         "bankFees": 33396.91
       }
     }

@@ -85,30 +85,11 @@
       </div>
     </section>
 
-    <section class="grid two-col" style="margin-top:20px;">
-      <div class="card">
-        <h2 class="section-title">Pohled do skladů</h2>
-        <div class="section-subtitle">Vyber si, jestli chceš kompletní výpis všeho, jen LTM, nebo jen Měčín. Výběr se promítne do exploreru níže.</div>
-        <div class="quick-filters" id="inventory-warehouse-switch">
-          <button class="quick-filter active" type="button" data-warehouse-view="all">Vše</button>
-          <button class="quick-filter" type="button" data-warehouse-view="ltm">LTM</button>
-          <button class="quick-filter" type="button" data-warehouse-view="mecin">Měčín</button>
-        </div>
-        <div class="ux-stat-list" id="inventory-warehouse-stats"></div>
-      </div>
-
-      <div class="card">
-        <h2 class="section-title">Co právě vidíš</h2>
-        <div class="section-subtitle" id="inventory-warehouse-note">Načítám warehouse pohled…</div>
-        <div class="ux-side-list" id="inventory-warehouse-list"></div>
-      </div>
-    </section>
-
     <section class="card" style="margin-top:20px;">
       <div class="toolbar">
         <div>
           <h2 class="section-title">Aktivní skladový explorer</h2>
-      <div class="section-subtitle">Hledání a filtry nad celým spárovaným skladem včetně aliasů mezi WPJ a 4PX.</div>
+      <div class="section-subtitle">Jeden čistý výpis, který se přepíná podle pohledu skladu. V tabulce vždy vidíš jen to, co sis opravdu vybral.</div>
         </div>
         <div class="toolbar-controls">
           <label class="control-group">
@@ -120,83 +101,69 @@
             <select id="inventory-filter" class="select">
               <option value="all">Všechno</option>
               <option value="mismatch">Jen mismatchy</option>
-              <option value="only4px">Jen pouze v 4PX</option>
               <option value="lowAfterSales">Jen nízký sklad po prodeji</option>
-              <option value="manualAlias">Jen ruční mapování</option>
-              <option value="autoAlias">Jen auto alias</option>
-              <option value="visible">Jen viditelné produkty</option>
               <option value="soldYesterday">Jen prodané včera</option>
-              <option value="shippedYesterday">Jen expedované včera</option>
               <option value="negativeDelta">Jen negativní delta</option>
-              <option value="zero4px">Jen bez 4PX skladu</option>
               <option value="fastLowCover">Jen nízké pokrytí</option>
               <option value="deadStock">Jen mrtvý sklad</option>
-              <option value="slowMover">Jen ležáky</option>
-              <option value="inStock">Jen s 4PX skladem &gt; 0</option>
             </select>
           </label>
           <label class="control-group">
             <span class="control-label">Řadit</span>
             <select id="inventory-sort" class="select">
               <option value="priority">Priorita / relevance</option>
-              <option value="ltm">Největší LTM sklad</option>
-              <option value="mecin">Největší Měčín sklad</option>
-              <option value="delta">Největší delta</option>
-              <option value="stock">Největší 4PX sklad</option>
+              <option value="stockInView">Největší sklad v pohledu</option>
               <option value="sales365d">Největší prodej 365d</option>
               <option value="coverAsc">Nejnižší pokrytí</option>
               <option value="code">Kód A–Z</option>
             </select>
           </label>
           <label class="control-group">
-            <span class="control-label">Řádků</span>
-            <select id="inventory-limit" class="select">
+            <span class="control-label">Na stránku</span>
+            <select id="inventory-page-size" class="select">
               <option value="25">25</option>
               <option value="50" selected>50</option>
               <option value="100">100</option>
-              <option value="250">250</option>
-              <option value="all">Vše</option>
             </select>
           </label>
           <button id="inventory-export-csv" class="quick-filter" type="button">Export CSV</button>
         </div>
       </div>
 
+      <div class="quick-filters" id="inventory-view-tabs">
+        <button class="quick-filter active" type="button" data-view="complete">KOMPLET</button>
+        <button class="quick-filter" type="button" data-view="cz">CZ</button>
+        <button class="quick-filter" type="button" data-view="sk">SK</button>
+        <button class="quick-filter" type="button" data-view="ltm">LTM</button>
+        <button class="quick-filter" type="button" data-view="mecin">MĚČÍN</button>
+      </div>
+
+      <div class="section-subtitle" id="inventory-view-summary">Načítám pohled skladu…</div>
+
       <div class="quick-filters" id="inventory-quick-filters">
         <button class="quick-filter active" type="button" data-filter="all">Všechno</button>
         <button class="quick-filter" type="button" data-filter="mismatch">Mismatchy</button>
         <button class="quick-filter" type="button" data-filter="lowAfterSales">Nízký sklad po prodeji</button>
         <button class="quick-filter" type="button" data-filter="soldYesterday">Prodané včera</button>
-        <button class="quick-filter" type="button" data-filter="visible">Viditelné</button>
         <button class="quick-filter" type="button" data-filter="negativeDelta">Negativní delta</button>
-        <button class="quick-filter" type="button" data-filter="zero4px">Bez 4PX skladu</button>
         <button class="quick-filter" type="button" data-filter="fastLowCover">Nízké pokrytí</button>
-      </div>
-
-      <div class="quick-filters" id="inventory-presets">
-        <button class="quick-filter" type="button" data-preset="operativa">Pohled: Operativa</button>
-        <button class="quick-filter" type="button" data-preset="mismatch">Pohled: Mismatchy</button>
-        <button class="quick-filter" type="button" data-preset="mapping">Pohled: Mapování</button>
-        <button class="quick-filter" type="button" data-preset="reset">Reset pohledu</button>
+        <button class="quick-filter" type="button" data-filter="deadStock">Mrtvý sklad</button>
       </div>
 
       <div class="section-subtitle" id="inventory-explorer-summary">Načítám explorer…</div>
 
       <table class="table">
-        <thead>
-          <tr>
-            <th>Produkt</th>
-            <th>Stav</th>
-            <th class="num">LTM</th>
-            <th class="num">Měčín</th>
-            <th class="num">4PX sklad</th>
-            <th class="num">Delta</th>
-            <th>365d / pokrytí</th>
-            <th>Zdrojová SKU</th>
-          </tr>
-        </thead>
+        <thead id="inventory-explorer-head"></thead>
         <tbody id="inventory-explorer-table"></tbody>
       </table>
+
+      <div class="toolbar" style="margin-top:16px;">
+        <div class="section-subtitle" id="inventory-pagination-summary">Načítám stránkování…</div>
+        <div class="quick-filters" style="margin:0;">
+          <button id="inventory-page-prev" class="quick-filter" type="button">Předchozí</button>
+          <button id="inventory-page-next" class="quick-filter" type="button">Další</button>
+        </div>
+      </div>
     </section>
 
     <section class="card" style="margin-top:20px;">

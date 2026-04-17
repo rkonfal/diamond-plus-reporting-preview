@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T13:06:02.728131+02:00",
+  "generatedAt": "2026-04-17T13:50:40.478448+02:00",
   "reportDate": "2026-04-16",
   "detailUrl": "https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html",
   "window": {
@@ -37,16 +37,16 @@
         "count": 226
       },
       {
-        "name": "expedováno",
-        "count": 80
+        "name": "připraveno k vyzvednutí",
+        "count": 70
       },
       {
-        "name": "připraveno k vyzvednutí",
+        "name": "expedováno",
         "count": 67
       },
       {
         "name": "doručeno",
-        "count": 24
+        "count": 34
       },
       {
         "name": "nová",
@@ -825,83 +825,83 @@
     ],
     "largestMovesSinceLastSnapshot": [
       {
-        "code": "61901",
-        "title": "Denní vložky s fytomembránou „Energie bylin“",
-        "currentStock": 841.0,
-        "previousStock": 845.0,
+        "code": "44402-2",
+        "title": "Fytogel Slaviton",
+        "currentStock": 2575.0,
+        "previousStock": 2583.0,
+        "delta": -8.0
+      },
+      {
+        "code": "UA132",
+        "title": "Peeling Broskovový 1+1",
+        "currentStock": 2022.0,
+        "previousStock": 2027.0,
+        "delta": -5.0
+      },
+      {
+        "code": "000075",
+        "title": "Brožura Fytogely",
+        "currentStock": 3382.0,
+        "previousStock": 3386.0,
         "delta": -4.0
       },
       {
-        "code": "61912",
-        "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
-        "currentStock": 621.0,
-        "previousStock": 625.0,
+        "code": "40203",
+        "title": "Peeling Broskvový",
+        "currentStock": 2032.0,
+        "previousStock": 2036.0,
         "delta": -4.0
       },
       {
-        "code": "35412-02",
-        "title": "Povzbuzující krém pro dokonalá stehna",
-        "currentStock": 117.0,
-        "previousStock": 121.0,
+        "code": "BC836",
+        "title": "Revitalizační balíček Lingzhi pro mladistvou pleť",
+        "currentStock": 58.0,
+        "previousStock": 62.0,
         "delta": -4.0
       },
       {
-        "code": "GS645",
-        "title": "Komplexní péče pro krásnou postavu",
-        "currentStock": 102.0,
-        "previousStock": 106.0,
-        "delta": -4.0
+        "code": "12116",
+        "title": "Vysoce účinný hydratační krém na obličej",
+        "currentStock": 538.0,
+        "previousStock": 541.0,
+        "delta": -3.0
       },
       {
-        "code": "ME825",
-        "title": "Tvarující tělová kúra pro dokonalé křivky",
-        "currentStock": 102.0,
-        "previousStock": 106.0,
-        "delta": -4.0
+        "code": "41328",
+        "title": "Levandulová náplast na nohy",
+        "currentStock": 2247.0,
+        "previousStock": 2250.0,
+        "delta": -3.0
       },
       {
-        "code": "VU823",
-        "title": "Harmonizační balíček pro zdravé hubnutí",
-        "currentStock": 102.0,
-        "previousStock": 106.0,
-        "delta": -4.0
+        "code": "DK720",
+        "title": "Šetrné čištění pleti",
+        "currentStock": 98.0,
+        "previousStock": 101.0,
+        "delta": -3.0
       },
       {
-        "code": "IC931",
-        "title": "Rozproudění lymfy",
-        "currentStock": 102.0,
-        "previousStock": 106.0,
-        "delta": -4.0
+        "code": "YZ776",
+        "title": "Základní menstruační balíček - Nefritový start",
+        "currentStock": 487.0,
+        "previousStock": 490.0,
+        "delta": -3.0
       },
       {
-        "code": "NQ771",
-        "title": "Proměna postavy - intenzivní program pro vaše tělo",
-        "currentStock": 102.0,
-        "previousStock": 106.0,
-        "delta": -4.0
-      },
-      {
-        "code": "PX373",
-        "title": "Základní balíček k hubnutí TOP produkty",
-        "currentStock": 102.0,
-        "previousStock": 106.0,
-        "delta": -4.0
-      },
-      {
-        "code": "JP928",
-        "title": "Povzbuzující péče o stehna ve dvojitém balení",
-        "currentStock": 102.0,
-        "previousStock": 106.0,
-        "delta": -4.0
+        "code": "CJ659",
+        "title": "Balíček Menstruace s lehkostí",
+        "currentStock": 487.0,
+        "previousStock": 490.0,
+        "delta": -3.0
       }
     ]
   },
   "inventory": {
-    "availableStockTotal": 377845.0,
+    "availableStockTotal": 377781.0,
     "itemsTotal": 1389,
     "byAccount": {
-      "CZ": 307123.0,
-      "SK": 70722.0
+      "CZ": 307069.0,
+      "SK": 70712.0
     },
     "itemsByAccount": {
       "CZ": 768,
@@ -953,11 +953,11 @@
     "statusCounts": [
       {
         "name": "C",
-        "count": 358
+        "count": 364
       },
       {
         "name": "P",
-        "count": 47
+        "count": 41
       },
       {
         "name": "S",
@@ -971,10 +971,10 @@
         "sku": "40203",
         "dateExpiry": "2026-05-08",
         "daysToExpiry": 21,
-        "datedStock": 2152.0,
-        "stockAtNearestExpiry": 2152.0,
+        "datedStock": 2145.0,
+        "stockAtNearestExpiry": 2145.0,
         "batchCount": 14,
-        "riskScore": 38.7,
+        "riskScore": 38.57,
         "title": "Peeling Broskvový",
         "label": "40203 · Peeling Broskvový (CZ)"
       },
@@ -983,10 +983,10 @@
         "sku": "52902/03",
         "dateExpiry": "2026-05-07",
         "daysToExpiry": 20,
-        "datedStock": 338.0,
-        "stockAtNearestExpiry": 338.0,
+        "datedStock": 334.0,
+        "stockAtNearestExpiry": 334.0,
         "batchCount": 3,
-        "riskScore": 6.46,
+        "riskScore": 6.38,
         "title": "Revitalizační maska na obličej a krk Lingzhi - 3ks",
         "label": "52902/03 · Revitalizační maska na obličej a krk Lingzhi - 3ks (CZ)"
       },
