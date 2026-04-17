@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T12:33:37.532353+02:00",
+  "generatedAt": "2026-04-17T13:00:01.050851+02:00",
   "window": {
     "from": "2026-04-16T00:00:01+02:00",
     "to": "2026-04-17T00:00:00+02:00"
@@ -35200,8 +35200,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 354,
@@ -37616,8 +37616,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 4,
+        "name": "připraveno k vyzvednutí"
       },
       "totalPrice": {
         "withVat": 499,
@@ -38336,8 +38336,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 4,
+        "name": "připraveno k vyzvednutí"
       },
       "totalPrice": {
         "withVat": 609,
@@ -39852,8 +39852,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 4,
+        "name": "připraveno k vyzvednutí"
       },
       "totalPrice": {
         "withVat": 256,
@@ -43008,8 +43008,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 612,
@@ -43556,8 +43556,8 @@
       "cancelled": false,
       "isPaid": false,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 4,
+        "name": "připraveno k vyzvednutí"
       },
       "totalPrice": {
         "withVat": 689,
@@ -47224,8 +47224,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 3,
-        "name": "expedováno"
+        "id": 4,
+        "name": "připraveno k vyzvednutí"
       },
       "totalPrice": {
         "withVat": 731,
@@ -48312,8 +48312,8 @@
       "cancelled": false,
       "isPaid": true,
       "status": {
-        "id": 4,
-        "name": "připraveno k vyzvednutí"
+        "id": 5,
+        "name": "doručeno"
       },
       "totalPrice": {
         "withVat": 529,
@@ -53975,15 +53975,15 @@
       },
       {
         "name": "expedováno",
-        "count": 85
+        "count": 80
       },
       {
         "name": "připraveno k vyzvednutí",
-        "count": 65
+        "count": 67
       },
       {
         "name": "doručeno",
-        "count": 21
+        "count": 24
       },
       {
         "name": "nová",

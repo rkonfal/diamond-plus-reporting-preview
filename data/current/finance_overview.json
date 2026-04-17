@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T12:33:37.532353+02:00",
+  "generatedAt": "2026-04-17T13:00:01.050851+02:00",
   "source": {
     "status": "live_report",
     "message": "Měsíční finance se tahají přímo z ABRA reportu Výkaz hospodaření za měsíc za všechna střediska. Cash a závazky jsou také live z ABRA API."
@@ -76,19 +76,19 @@
     },
     {
       "label": "4/2026",
-      "revenue": 7849731.47,
-      "cogsAndFees": 5681829.77,
+      "revenue": 7858792.64,
+      "cogsAndFees": 5686703.57,
       "logistics": 37815.04,
       "marketing": 257841.46,
-      "opex": 229570.59,
+      "opex": 232929.28,
       "depreciation": 385502.0,
       "other": -5329.83,
-      "grossMargin": 2167901.7,
-      "afterLogistics": 2130086.66,
-      "afterMarketing": 1872245.2,
-      "operatingMargin": 1642674.61,
-      "ebit": 1257172.61,
-      "profit": 1251842.78,
+      "grossMargin": 2172089.07,
+      "afterLogistics": 2134274.03,
+      "afterMarketing": 1876432.57,
+      "operatingMargin": 1643503.29,
+      "ebit": 1258001.29,
+      "profit": 1252671.46,
       "grossMarginPct": 27.6,
       "marketingPct": 3.3,
       "logisticsPct": 0.5,
@@ -98,19 +98,19 @@
   ],
   "currentMonth": {
     "label": "4/2026",
-    "revenue": 7849731.47,
-    "cogsAndFees": 5681829.77,
+    "revenue": 7858792.64,
+    "cogsAndFees": 5686703.57,
     "logistics": 37815.04,
     "marketing": 257841.46,
-    "opex": 229570.59,
+    "opex": 232929.28,
     "depreciation": 385502.0,
     "other": -5329.83,
-    "grossMargin": 2167901.7,
-    "afterLogistics": 2130086.66,
-    "afterMarketing": 1872245.2,
-    "operatingMargin": 1642674.61,
-    "ebit": 1257172.61,
-    "profit": 1251842.78,
+    "grossMargin": 2172089.07,
+    "afterLogistics": 2134274.03,
+    "afterMarketing": 1876432.57,
+    "operatingMargin": 1643503.29,
+    "ebit": 1258001.29,
+    "profit": 1252671.46,
     "grossMarginPct": 27.6,
     "marketingPct": 3.3,
     "logisticsPct": 0.5,
@@ -139,7 +139,7 @@
     "profitPct": 4.0
   },
   "cash": {
-    "unpaidInvoices": 2880493.14,
+    "unpaidInvoices": 2883692.48,
     "overdueInvoicesCount": 0,
     "overdueInvoicesAmount": 0.0,
     "largestPayables": [
@@ -4397,12 +4397,12 @@
       },
       {
         "label": "4/2026",
-        "expenseTotal": 4032218.24,
-        "revenueTotal": 5120806.41,
+        "expenseTotal": 4034639.77,
+        "revenueTotal": 5118054.33,
         "topExpenseClass": {
           "code": "50",
           "label": "Spotřeba a zboží",
-          "amount": 3490153.88
+          "amount": 3490528.28
         },
         "topExpenseAccounts": [
           {
@@ -4450,7 +4450,7 @@
           {
             "code": "501100",
             "label": "Režie - materiál, kancelář",
-            "amount": 15526.1,
+            "amount": 15900.5,
             "classCode": "50",
             "classLabel": "Spotřeba a zboží"
           },
@@ -4494,12 +4494,12 @@
           {
             "code": "50",
             "label": "Spotřeba a zboží",
-            "amount": 3490153.88
+            "amount": 3490528.28
           },
           {
             "code": "51",
             "label": "Služby",
-            "amount": 503311.79
+            "amount": 505358.92
           },
           {
             "code": "56",
@@ -4547,7 +4547,7 @@
           },
           {
             "name": "Alza.cz a.s.",
-            "amount": 19374.03
+            "amount": 19748.43
           },
           {
             "name": "Pavel Minář",
@@ -5120,22 +5120,6 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Klára Hanáková",
-            "module": "Faktury vydané",
-            "costCenter": "C: Centrála"
-          },
-          {
-            "month": "4/2026",
-            "date": "14.04.2026",
-            "dateSort": "2026-04-14T02:00:00+02:00",
-            "document": "VF1-37443/2026",
-            "amount": 1507.44,
-            "side": "výnos",
-            "accountCode": "604001",
-            "accountLabel": "Tržby z prodeje zboží",
-            "counterCode": "311001",
-            "counterLabel": "Pohledávky z obchodních vztahů",
-            "description": "Tržby z prodeje zboží  2",
-            "vendor": "Simona Schebestiková",
             "module": "Faktury vydané",
             "costCenter": "C: Centrála"
           },
@@ -5767,22 +5751,6 @@
             "month": "4/2026",
             "date": "14.04.2026",
             "dateSort": "2026-04-14T02:00:00+02:00",
-            "document": "VF1-37442/2026",
-            "amount": 700.83,
-            "side": "výnos",
-            "accountCode": "604001",
-            "accountLabel": "Tržby z prodeje zboží",
-            "counterCode": "311001",
-            "counterLabel": "Pohledávky z obchodních vztahů",
-            "description": "Tržby z prodeje zboží  2",
-            "vendor": "Petra Němcová",
-            "module": "Faktury vydané",
-            "costCenter": "C: Centrála"
-          },
-          {
-            "month": "4/2026",
-            "date": "14.04.2026",
-            "dateSort": "2026-04-14T02:00:00+02:00",
             "document": "VF1-37341/2026",
             "amount": 696.43,
             "side": "výnos",
@@ -6231,22 +6199,6 @@
             "month": "4/2026",
             "date": "14.04.2026",
             "dateSort": "2026-04-14T02:00:00+02:00",
-            "document": "VF1-37441/2026",
-            "amount": 358.68,
-            "side": "výnos",
-            "accountCode": "604001",
-            "accountLabel": "Tržby z prodeje zboží",
-            "counterCode": "311001",
-            "counterLabel": "Pohledávky z obchodních vztahů",
-            "description": "Tržby z prodeje zboží  2",
-            "vendor": "Nora Dolezalova",
-            "module": "Faktury vydané",
-            "costCenter": "C: Centrála"
-          },
-          {
-            "month": "4/2026",
-            "date": "14.04.2026",
-            "dateSort": "2026-04-14T02:00:00+02:00",
             "document": "VF1-37340/2026",
             "amount": 333.05,
             "side": "výnos",
@@ -6455,22 +6407,6 @@
             "month": "4/2026",
             "date": "14.04.2026",
             "dateSort": "2026-04-14T02:00:00+02:00",
-            "document": "VF1-37441/2026",
-            "amount": 123.97,
-            "side": "výnos",
-            "accountCode": "604001",
-            "accountLabel": "Tržby z prodeje zboží",
-            "counterCode": "311001",
-            "counterLabel": "Pohledávky z obchodních vztahů",
-            "description": "Dobírkou - DPD doručení na adresu",
-            "vendor": "Nora Dolezalova",
-            "module": "Faktury vydané",
-            "costCenter": "C: Centrála"
-          },
-          {
-            "month": "4/2026",
-            "date": "14.04.2026",
-            "dateSort": "2026-04-14T02:00:00+02:00",
             "document": "VF1-37386/2026",
             "amount": 103.31,
             "side": "výnos",
@@ -6482,18 +6418,82 @@
             "vendor": "Simona Zajíčková",
             "module": "Faktury vydané",
             "costCenter": "C: Centrála"
+          },
+          {
+            "month": "4/2026",
+            "date": "14.04.2026",
+            "dateSort": "2026-04-14T02:00:00+02:00",
+            "document": "VF1-37409/2026",
+            "amount": 103.31,
+            "side": "výnos",
+            "accountCode": "604001",
+            "accountLabel": "Tržby z prodeje zboží",
+            "counterCode": "311001",
+            "counterLabel": "Pohledávky z obchodních vztahů",
+            "description": "Dobírkou - Zásilkovna",
+            "vendor": "Věra Čiháková",
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
+          },
+          {
+            "month": "4/2026",
+            "date": "14.04.2026",
+            "dateSort": "2026-04-14T02:00:00+02:00",
+            "document": "VF1-37410/2026",
+            "amount": 91.74,
+            "side": "výnos",
+            "accountCode": "604001",
+            "accountLabel": "Tržby z prodeje zboží",
+            "counterCode": "311001",
+            "counterLabel": "Pohledávky z obchodních vztahů",
+            "description": "Dobírkou - Balíkovna",
+            "vendor": "Lucie Váňová",
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
+          },
+          {
+            "month": "4/2026",
+            "date": "14.04.2026",
+            "dateSort": "2026-04-14T02:00:00+02:00",
+            "document": "VF1-37423/2026",
+            "amount": 73.55,
+            "side": "výnos",
+            "accountCode": "604001",
+            "accountLabel": "Tržby z prodeje zboží",
+            "counterCode": "311001",
+            "counterLabel": "Pohledávky z obchodních vztahů",
+            "description": "Platba převodem - Packeta na adresu",
+            "vendor": "IDA TICHÁČKOVÁ",
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
+          },
+          {
+            "month": "4/2026",
+            "date": "14.04.2026",
+            "dateSort": "2026-04-14T02:00:00+02:00",
+            "document": "VF1-37421/2026",
+            "amount": 70.53,
+            "side": "výnos",
+            "accountCode": "604001",
+            "accountLabel": "Tržby z prodeje zboží",
+            "counterCode": "311001",
+            "counterLabel": "Pohledávky z obchodních vztahů",
+            "description": "Tržby z prodeje zboží  2",
+            "vendor": "OC KVARTET s.r.o.",
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           }
         ]
       }
     ],
     "currentMonth": {
       "label": "4/2026",
-      "expenseTotal": 4032218.24,
-      "revenueTotal": 5120806.41,
+      "expenseTotal": 4034639.77,
+      "revenueTotal": 5118054.33,
       "topExpenseClass": {
         "code": "50",
         "label": "Spotřeba a zboží",
-        "amount": 3490153.88
+        "amount": 3490528.28
       },
       "topExpenseAccounts": [
         {
@@ -6541,7 +6541,7 @@
         {
           "code": "501100",
           "label": "Režie - materiál, kancelář",
-          "amount": 15526.1,
+          "amount": 15900.5,
           "classCode": "50",
           "classLabel": "Spotřeba a zboží"
         },
@@ -6585,12 +6585,12 @@
         {
           "code": "50",
           "label": "Spotřeba a zboží",
-          "amount": 3490153.88
+          "amount": 3490528.28
         },
         {
           "code": "51",
           "label": "Služby",
-          "amount": 503311.79
+          "amount": 505358.92
         },
         {
           "code": "56",
@@ -6638,7 +6638,7 @@
         },
         {
           "name": "Alza.cz a.s.",
-          "amount": 19374.03
+          "amount": 19748.43
         },
         {
           "name": "Pavel Minář",
@@ -7211,22 +7211,6 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Klára Hanáková",
-          "module": "Faktury vydané",
-          "costCenter": "C: Centrála"
-        },
-        {
-          "month": "4/2026",
-          "date": "14.04.2026",
-          "dateSort": "2026-04-14T02:00:00+02:00",
-          "document": "VF1-37443/2026",
-          "amount": 1507.44,
-          "side": "výnos",
-          "accountCode": "604001",
-          "accountLabel": "Tržby z prodeje zboží",
-          "counterCode": "311001",
-          "counterLabel": "Pohledávky z obchodních vztahů",
-          "description": "Tržby z prodeje zboží  2",
-          "vendor": "Simona Schebestiková",
           "module": "Faktury vydané",
           "costCenter": "C: Centrála"
         },
@@ -7858,22 +7842,6 @@
           "month": "4/2026",
           "date": "14.04.2026",
           "dateSort": "2026-04-14T02:00:00+02:00",
-          "document": "VF1-37442/2026",
-          "amount": 700.83,
-          "side": "výnos",
-          "accountCode": "604001",
-          "accountLabel": "Tržby z prodeje zboží",
-          "counterCode": "311001",
-          "counterLabel": "Pohledávky z obchodních vztahů",
-          "description": "Tržby z prodeje zboží  2",
-          "vendor": "Petra Němcová",
-          "module": "Faktury vydané",
-          "costCenter": "C: Centrála"
-        },
-        {
-          "month": "4/2026",
-          "date": "14.04.2026",
-          "dateSort": "2026-04-14T02:00:00+02:00",
           "document": "VF1-37341/2026",
           "amount": 696.43,
           "side": "výnos",
@@ -8322,22 +8290,6 @@
           "month": "4/2026",
           "date": "14.04.2026",
           "dateSort": "2026-04-14T02:00:00+02:00",
-          "document": "VF1-37441/2026",
-          "amount": 358.68,
-          "side": "výnos",
-          "accountCode": "604001",
-          "accountLabel": "Tržby z prodeje zboží",
-          "counterCode": "311001",
-          "counterLabel": "Pohledávky z obchodních vztahů",
-          "description": "Tržby z prodeje zboží  2",
-          "vendor": "Nora Dolezalova",
-          "module": "Faktury vydané",
-          "costCenter": "C: Centrála"
-        },
-        {
-          "month": "4/2026",
-          "date": "14.04.2026",
-          "dateSort": "2026-04-14T02:00:00+02:00",
           "document": "VF1-37340/2026",
           "amount": 333.05,
           "side": "výnos",
@@ -8546,22 +8498,6 @@
           "month": "4/2026",
           "date": "14.04.2026",
           "dateSort": "2026-04-14T02:00:00+02:00",
-          "document": "VF1-37441/2026",
-          "amount": 123.97,
-          "side": "výnos",
-          "accountCode": "604001",
-          "accountLabel": "Tržby z prodeje zboží",
-          "counterCode": "311001",
-          "counterLabel": "Pohledávky z obchodních vztahů",
-          "description": "Dobírkou - DPD doručení na adresu",
-          "vendor": "Nora Dolezalova",
-          "module": "Faktury vydané",
-          "costCenter": "C: Centrála"
-        },
-        {
-          "month": "4/2026",
-          "date": "14.04.2026",
-          "dateSort": "2026-04-14T02:00:00+02:00",
           "document": "VF1-37386/2026",
           "amount": 103.31,
           "side": "výnos",
@@ -8571,6 +8507,70 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Dobírkou - Zásilkovna",
           "vendor": "Simona Zajíčková",
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
+        },
+        {
+          "month": "4/2026",
+          "date": "14.04.2026",
+          "dateSort": "2026-04-14T02:00:00+02:00",
+          "document": "VF1-37409/2026",
+          "amount": 103.31,
+          "side": "výnos",
+          "accountCode": "604001",
+          "accountLabel": "Tržby z prodeje zboží",
+          "counterCode": "311001",
+          "counterLabel": "Pohledávky z obchodních vztahů",
+          "description": "Dobírkou - Zásilkovna",
+          "vendor": "Věra Čiháková",
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
+        },
+        {
+          "month": "4/2026",
+          "date": "14.04.2026",
+          "dateSort": "2026-04-14T02:00:00+02:00",
+          "document": "VF1-37410/2026",
+          "amount": 91.74,
+          "side": "výnos",
+          "accountCode": "604001",
+          "accountLabel": "Tržby z prodeje zboží",
+          "counterCode": "311001",
+          "counterLabel": "Pohledávky z obchodních vztahů",
+          "description": "Dobírkou - Balíkovna",
+          "vendor": "Lucie Váňová",
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
+        },
+        {
+          "month": "4/2026",
+          "date": "14.04.2026",
+          "dateSort": "2026-04-14T02:00:00+02:00",
+          "document": "VF1-37423/2026",
+          "amount": 73.55,
+          "side": "výnos",
+          "accountCode": "604001",
+          "accountLabel": "Tržby z prodeje zboží",
+          "counterCode": "311001",
+          "counterLabel": "Pohledávky z obchodních vztahů",
+          "description": "Platba převodem - Packeta na adresu",
+          "vendor": "IDA TICHÁČKOVÁ",
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
+        },
+        {
+          "month": "4/2026",
+          "date": "14.04.2026",
+          "dateSort": "2026-04-14T02:00:00+02:00",
+          "document": "VF1-37421/2026",
+          "amount": 70.53,
+          "side": "výnos",
+          "accountCode": "604001",
+          "accountLabel": "Tržby z prodeje zboží",
+          "counterCode": "311001",
+          "counterLabel": "Pohledávky z obchodních vztahů",
+          "description": "Tržby z prodeje zboží  2",
+          "vendor": "OC KVARTET s.r.o.",
           "module": "Faktury vydané",
           "costCenter": "C: Centrála"
         }

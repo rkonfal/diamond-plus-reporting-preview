@@ -88,7 +88,7 @@
     <section class="grid two-col" style="margin-top:20px;">
       <div class="card">
         <h2 class="section-title">Sklad LTM</h2>
-        <div class="section-subtitle">Největší zásoba podle WPJ / ABRA store stavu.</div>
+        <div class="section-subtitle" id="ltm-store-summary">Načítám sklad LTM…</div>
         <table class="table">
           <thead>
             <tr>
@@ -103,7 +103,7 @@
 
       <div class="card">
         <h2 class="section-title">Sklad Měčín</h2>
-        <div class="section-subtitle">Největší zásoba podle WPJ / ABRA store stavu.</div>
+        <div class="section-subtitle" id="mecin-store-summary">Načítám sklad Měčín…</div>
         <table class="table">
           <thead>
             <tr>
@@ -134,6 +134,8 @@
               <option value="all">Všechno</option>
               <option value="mismatch">Jen mismatchy</option>
               <option value="only4px">Jen pouze v 4PX</option>
+              <option value="ltmStock">Jen ve skladu LTM</option>
+              <option value="mecinStock">Jen ve skladu Měčín</option>
               <option value="lowAfterSales">Jen nízký sklad po prodeji</option>
               <option value="manualAlias">Jen ruční mapování</option>
               <option value="autoAlias">Jen auto alias</option>
@@ -152,6 +154,8 @@
             <span class="control-label">Řadit</span>
             <select id="inventory-sort" class="select">
               <option value="priority">Priorita / relevance</option>
+              <option value="ltm">Největší LTM sklad</option>
+              <option value="mecin">Největší Měčín sklad</option>
               <option value="delta">Největší delta</option>
               <option value="stock">Největší 4PX sklad</option>
               <option value="sales365d">Největší prodej 365d</option>
@@ -166,6 +170,7 @@
               <option value="50" selected>50</option>
               <option value="100">100</option>
               <option value="250">250</option>
+              <option value="all">Vše</option>
             </select>
           </label>
           <button id="inventory-export-csv" class="quick-filter" type="button">Export CSV</button>
@@ -175,6 +180,8 @@
       <div class="quick-filters" id="inventory-quick-filters">
         <button class="quick-filter active" type="button" data-filter="all">Všechno</button>
         <button class="quick-filter" type="button" data-filter="mismatch">Mismatchy</button>
+        <button class="quick-filter" type="button" data-filter="ltmStock">LTM</button>
+        <button class="quick-filter" type="button" data-filter="mecinStock">Měčín</button>
         <button class="quick-filter" type="button" data-filter="lowAfterSales">Nízký sklad po prodeji</button>
         <button class="quick-filter" type="button" data-filter="soldYesterday">Prodané včera</button>
         <button class="quick-filter" type="button" data-filter="visible">Viditelné</button>
@@ -190,6 +197,8 @@
       <div class="quick-filters" id="inventory-presets">
         <button class="quick-filter" type="button" data-preset="operativa">Pohled: Operativa</button>
         <button class="quick-filter" type="button" data-preset="mismatch">Pohled: Mismatchy</button>
+        <button class="quick-filter" type="button" data-preset="ltm">Pohled: LTM komplet</button>
+        <button class="quick-filter" type="button" data-preset="mecin">Pohled: Měčín komplet</button>
         <button class="quick-filter" type="button" data-preset="mapping">Pohled: Mapování</button>
         <button class="quick-filter" type="button" data-preset="deadstock">Pohled: Mrtvý sklad</button>
         <button class="quick-filter" type="button" data-preset="reset">Reset pohledu</button>
@@ -431,12 +440,31 @@
       return lines.join('') || '<span class="muted small">bez aliasů</span>';
     }
 
+    function normalizeStoreName(value) {
+      return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+
+    function warehouseQty(row, matcher) {
+      return (row.wpj?.stores || [])
+        .filter(store => matcher(normalizeStoreName(store.storeName)))
+        .reduce((sum, store) => sum + Number(store.inStore || 0), 0);
+    }
+
+    function ltmQty(row) {
+      return warehouseQty(row, name => name.includes('ltm'));
+    }
+
+    function mecinQty(row) {
+      return warehouseQty(row, name => name.includes('mecin'));
+    }
+
     function explorerSearchBlob(row, metric) {
       return [
         row.code,
         row.title,
         ...list(row.flags),
         ...list(metric?.tags),
+        ...(row.wpj?.stores || []).map(store => store.storeName),
         ...list(row.fourpx?.sourceCodes),
         ...list(row.yesterdaySales?.sourceCodes),
         ...list(row.yesterdayOutbound?.sourceCodes)
@@ -461,6 +489,8 @@
         case 'deadStock': return tags.has('dead_stock');
         case 'slowMover': return tags.has('slow_mover');
         case 'inStock': return Number(row.fourpx?.availableTotal || 0) > 0;
+        case 'ltmStock': return ltmQty(row) > 0;
+        case 'mecinStock': return mecinQty(row) > 0;
         default: return true;
       }
     }
@@ -492,6 +522,8 @@
       mismatch: { filter: 'mismatch', sort: 'delta', limit: '100', search: '' },
       mapping: { filter: 'autoAlias', sort: 'priority', limit: '100', search: '' },
       deadstock: { filter: 'deadStock', sort: 'stock', limit: '100', search: '' },
+      ltm: { filter: 'ltmStock', sort: 'ltm', limit: 'all', search: '' },
+      mecin: { filter: 'mecinStock', sort: 'mecin', limit: 'all', search: '' },
       reset: { filter: 'all', sort: 'priority', limit: '50', search: '' },
     };
 
@@ -507,13 +539,6 @@
         row,
         metric: analyticsByCode.get(row.code) || {}
       }));
-
-      const normalizeStoreName = (value) => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-      const warehouseQty = (row, matcher) => (row.wpj?.stores || [])
-        .filter(store => matcher(normalizeStoreName(store.storeName)))
-        .reduce((sum, store) => sum + Number(store.inStore || 0), 0);
-      const ltmQty = (row) => warehouseQty(row, name => name.includes('ltm'));
-      const mecinQty = (row) => warehouseQty(row, name => name.includes('mecin'));
 
       const ltmRows = explorerRows
         .map(({ row, metric }) => ({ row, metric, qty: ltmQty(row) }))
@@ -614,6 +639,9 @@
         ['Nízký sklad po prodeji', fmt(overview.counts.lowAfterSales || 0)],
       ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
 
+      document.getElementById('ltm-store-summary').textContent = `${fmt(ltmRows.length)} SKU, ${fmt(ltmRows.reduce((sum, item) => sum + item.qty, 0))} ks celkem. Pro kompletní výpis použij níže preset „Pohled: LTM komplet“ a limit „Vše“.`;
+      document.getElementById('mecin-store-summary').textContent = `${fmt(mecinRows.length)} SKU, ${fmt(mecinRows.reduce((sum, item) => sum + item.qty, 0))} ks celkem. Pro kompletní výpis použij níže preset „Pohled: Měčín komplet“ a limit „Vše“.`;
+
       document.getElementById('ltm-store-table').innerHTML = ltmRows.slice(0, 15).map(({ row, metric, qty }) => `
         <tr>
           <td>${productLabel(row)}</td>
@@ -632,7 +660,7 @@
 
       document.getElementById('inventory-usage-list').innerHTML = [
         ['Rychlé filtry', 'Začni mismatchy, nízkým skladem po prodeji a prodaným včera.'],
-        ['Presety pohledu', 'Operativa a mismatch zrychlí běžnou ranní práci.'],
+        ['Presety pohledu', 'Operativa a mismatch zrychlí běžnou ranní práci, LTM komplet a Měčín komplet ukážou celý obsah skladu.'],
         ['Export CSV', 'Když potřebuješ něco sdílet dál, exportuje celý aktuálně filtrovaný výběr.']
       ].map(([title, text], index) => `
         <div class="ux-side-item">
@@ -653,6 +681,16 @@
           .filter(({ row, metric }) => !query || explorerSearchBlob(row, metric).includes(query));
 
         rows.sort((a, b) => {
+          if (sort === 'ltm') {
+            return ltmQty(b.row) - ltmQty(a.row)
+              || Number(b.metric.units365d || 0) - Number(a.metric.units365d || 0)
+              || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
+          }
+          if (sort === 'mecin') {
+            return mecinQty(b.row) - mecinQty(a.row)
+              || Number(b.metric.units365d || 0) - Number(a.metric.units365d || 0)
+              || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
+          }
           if (sort === 'delta') {
             return Math.abs(Number(b.row.stockDelta || 0)) - Math.abs(Number(a.row.stockDelta || 0))
               || explorerScore(b.row, b.metric) - explorerScore(a.row, a.metric);
@@ -686,11 +724,11 @@
       function renderExplorer() {
         const filter = filterSelect.value;
         const sort = sortSelect.value;
-        const limit = Number(limitSelect.value || 50);
+        const limitValue = limitSelect.value || '50';
         const rows = getExplorerRows();
 
-        const visible = rows.slice(0, limit);
-        explorerSummary.textContent = `Zobrazeno ${fmt(visible.length)} z ${fmt(rows.length)} výsledků. Celkem ${fmt(explorerRows.length)} produktových řádků. Filtr: ${filterSelect.options[filterSelect.selectedIndex].text}. Řazení: ${sortSelect.options[sortSelect.selectedIndex].text}. Export CSV bere celý filtrovaný výběr.`;
+        const visible = limitValue === 'all' ? rows : rows.slice(0, Number(limitValue));
+        explorerSummary.textContent = `Zobrazeno ${fmt(visible.length)} z ${fmt(rows.length)} výsledků. Celkem ${fmt(explorerRows.length)} produktových řádků. Filtr: ${filterSelect.options[filterSelect.selectedIndex].text}. Řazení: ${sortSelect.options[sortSelect.selectedIndex].text}. Limit: ${limitValue === 'all' ? 'Vše' : limitValue}. Export CSV bere celý filtrovaný výběr.`;
         persistExplorerState();
 
         explorerTable.innerHTML = visible.map(({ row, metric }) => `

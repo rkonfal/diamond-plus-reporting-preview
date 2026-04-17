@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T12:33:37.532353+02:00",
+  "generatedAt": "2026-04-17T13:00:01.050851+02:00",
   "items": [
     {
       "consignment_no": "OC149400622604170026",
@@ -7,7 +7,7 @@
       "4px_tracking_no": "601111402363",
       "ref_no": "261270427",
       "from_warehouse_code": "CZPRGA",
-      "status": "S",
+      "status": "P",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1402",
@@ -30,7 +30,7 @@
       "audit_time": 1776421814000,
       "create_time": 1776421813000,
       "create_user": "14940062",
-      "update_time": 1776421815000,
+      "update_time": 1776423491000,
       "update_user": "diamond.plus.sk@4px.com",
       "remark": "kralovstvi-tiande.sk|SK20558",
       "country": "SK",
@@ -454,7 +454,7 @@
       "4px_tracking_no": "601111395616",
       "ref_no": "261270381",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1403",
@@ -463,7 +463,7 @@
       "shipping_no": "601111395616",
       "total_weight": 2171.0,
       "billing_weight": 2171.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 2171.0,
       "total_volume": 4537.447,
       "billing_amount": 0.0,
       "currency": "",
@@ -477,8 +477,9 @@
       "audit_time": 1776413110000,
       "create_time": 1776413109000,
       "create_user": "14940062",
-      "update_time": 1776413478000,
+      "update_time": 1776423569000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776423561000,
       "remark": "kralovstvi-tiande.sk|",
       "country": "SK",
       "state": "",
@@ -614,6 +615,53 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170023",
+          "length": 19.5,
+          "width": 16.555,
+          "height": 15.254,
+          "package_type": "C",
+          "package_weight": 2.171,
+          "shipped_weight": 2.171,
+          "parcel_no": "PAOC149400622604170023-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "195453",
+              "sku_id": "922001037727"
+            },
+            {
+              "sku_code": "20107",
+              "sku_id": "922001037042"
+            },
+            {
+              "sku_code": "10308",
+              "sku_id": "922001037251"
+            },
+            {
+              "sku_code": "44402-2",
+              "sku_id": "922002239201"
+            },
+            {
+              "sku_code": "20109",
+              "sku_id": "922001037255"
+            },
+            {
+              "sku_code": "12705",
+              "sku_id": "922001036970"
+            },
+            {
+              "sku_code": "30115",
+              "sku_id": "922001037202"
+            },
+            {
+              "sku_code": "90200",
+              "sku_id": "922001037745"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -625,7 +673,7 @@
       "4px_tracking_no": "601111395469",
       "ref_no": "261270376",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1403",
@@ -634,7 +682,7 @@
       "shipping_no": "601111395469",
       "total_weight": 1348.0,
       "billing_weight": 1348.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 1348.0,
       "total_volume": 2285.172,
       "billing_amount": 0.0,
       "currency": "",
@@ -648,8 +696,9 @@
       "audit_time": 1776412512000,
       "create_time": 1776412511000,
       "create_user": "14940062",
-      "update_time": 1776413478000,
+      "update_time": 1776423569000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776423561000,
       "remark": "kralovstvi-tiande.sk|",
       "country": "SK",
       "state": "",
@@ -755,6 +804,41 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170022",
+          "length": 20.0,
+          "width": 13.172,
+          "height": 10.689,
+          "package_type": "C",
+          "package_weight": 1.348,
+          "shipped_weight": 1.348,
+          "parcel_no": "PAOC149400622604170022-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "30223",
+              "sku_id": "922001036948"
+            },
+            {
+              "sku_code": "40106",
+              "sku_id": "922001036980"
+            },
+            {
+              "sku_code": "60142",
+              "sku_id": "922001037168"
+            },
+            {
+              "sku_code": "30117/05",
+              "sku_id": "922001423327"
+            },
+            {
+              "sku_code": "64404-2",
+              "sku_id": "922001733504"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -766,7 +850,7 @@
       "4px_tracking_no": "601111393759",
       "ref_no": "261270374",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1406",
@@ -775,7 +859,7 @@
       "shipping_no": "601111393759",
       "total_weight": 924.0,
       "billing_weight": 924.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 924.0,
       "total_volume": 3313.722,
       "billing_amount": 0.0,
       "currency": "",
@@ -789,8 +873,9 @@
       "audit_time": 1776411915000,
       "create_time": 1776411914000,
       "create_user": "14940062",
-      "update_time": 1776413478000,
+      "update_time": 1776423569000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776423561000,
       "remark": "kralovstvi-tiande.sk|33218",
       "country": "SK",
       "state": "",
@@ -896,6 +981,41 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170021",
+          "length": 20.0,
+          "width": 14.909,
+          "height": 12.872,
+          "package_type": "C",
+          "package_weight": 0.924,
+          "shipped_weight": 0.924,
+          "parcel_no": "PAOC149400622604170021-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "30118/01",
+              "sku_id": "922001433045"
+            },
+            {
+              "sku_code": "44402-2",
+              "sku_id": "922002239201"
+            },
+            {
+              "sku_code": "61915",
+              "sku_id": "922001037530"
+            },
+            {
+              "sku_code": "PROMO75",
+              "sku_id": "922001509129"
+            },
+            {
+              "sku_code": "000072",
+              "sku_id": "922001037747"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -907,7 +1027,7 @@
       "4px_tracking_no": "601111388830",
       "ref_no": "261270334",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1406",
@@ -916,7 +1036,7 @@
       "shipping_no": "601111388830",
       "total_weight": 2269.0,
       "billing_weight": 2269.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 2269.0,
       "total_volume": 5073.03,
       "billing_amount": 0.0,
       "currency": "",
@@ -930,8 +1050,9 @@
       "audit_time": 1776403215000,
       "create_time": 1776403214000,
       "create_user": "14940062",
-      "update_time": 1776413478000,
+      "update_time": 1776423569000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776423561000,
       "remark": "kralovstvi-tiande.sk|20791",
       "country": "SK",
       "state": "",
@@ -1087,6 +1208,61 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170020",
+          "length": 24.0,
+          "width": 17.183,
+          "height": 14.539,
+          "package_type": "C",
+          "package_weight": 2.269,
+          "shipped_weight": 2.269,
+          "parcel_no": "PAOC149400622604170020-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "21309",
+              "sku_id": "922001037030"
+            },
+            {
+              "sku_code": "10308",
+              "sku_id": "922001037251"
+            },
+            {
+              "sku_code": "25106",
+              "sku_id": "922001037012"
+            },
+            {
+              "sku_code": "12115",
+              "sku_id": "922001037112"
+            },
+            {
+              "sku_code": "90148/04",
+              "sku_id": "922001038114"
+            },
+            {
+              "sku_code": "61902",
+              "sku_id": "922001037048"
+            },
+            {
+              "sku_code": "21308",
+              "sku_id": "922001037028"
+            },
+            {
+              "sku_code": "20127",
+              "sku_id": "922001037170"
+            },
+            {
+              "sku_code": "61901",
+              "sku_id": "922001037050"
+            },
+            {
+              "sku_code": "61914",
+              "sku_id": "922001037517"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -1098,7 +1274,7 @@
       "4px_tracking_no": "601111388084",
       "ref_no": "261270329",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1406",
@@ -1107,7 +1283,7 @@
       "shipping_no": "601111388084",
       "total_weight": 1106.0,
       "billing_weight": 1106.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 1106.0,
       "total_volume": 2280.375,
       "billing_amount": 0.0,
       "currency": "",
@@ -1121,8 +1297,9 @@
       "audit_time": 1776398439000,
       "create_time": 1776398438000,
       "create_user": "14940062",
-      "update_time": 1776402532000,
+      "update_time": 1776423569000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776423561000,
       "remark": "kralovstvi-tiande.sk|36290",
       "country": "SK",
       "state": "",
@@ -1218,6 +1395,37 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170019",
+          "length": 13.162,
+          "width": 13.162,
+          "height": 13.162,
+          "package_type": "C",
+          "package_weight": 1.106,
+          "shipped_weight": 1.106,
+          "parcel_no": "PAOC149400622604170019-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "980168",
+              "sku_id": "922001037705"
+            },
+            {
+              "sku_code": "195429",
+              "sku_id": "922001037693"
+            },
+            {
+              "sku_code": "12115",
+              "sku_id": "922001037112"
+            },
+            {
+              "sku_code": "61915",
+              "sku_id": "922001037530"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -1229,7 +1437,7 @@
       "4px_tracking_no": "601111387883",
       "ref_no": "261270325",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1406",
@@ -1238,7 +1446,7 @@
       "shipping_no": "601111387883",
       "total_weight": 311.0,
       "billing_weight": 311.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 311.0,
       "total_volume": 2308.25,
       "billing_amount": 0.0,
       "currency": "",
@@ -1252,8 +1460,9 @@
       "audit_time": 1776396610000,
       "create_time": 1776396609000,
       "create_user": "14940062",
-      "update_time": 1776402532000,
+      "update_time": 1776423569000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776423561000,
       "remark": "kralovstvi-tiande.sk|19819",
       "country": "SK",
       "state": "",
@@ -1329,6 +1538,29 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170018",
+          "length": 29.0,
+          "width": 13.216,
+          "height": 8.922,
+          "package_type": "C",
+          "package_weight": 0.311,
+          "shipped_weight": 0.311,
+          "parcel_no": "PAOC149400622604170018-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "41328/01",
+              "sku_id": "922001333575"
+            },
+            {
+              "sku_code": "30126",
+              "sku_id": "922001037501"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -1694,7 +1926,7 @@
       "4px_tracking_no": "601111378421",
       "ref_no": "261270307",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1406",
@@ -1703,7 +1935,7 @@
       "shipping_no": "601111378421",
       "total_weight": 979.0,
       "billing_weight": 979.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 979.0,
       "total_volume": 2460.356,
       "billing_amount": 0.0,
       "currency": "",
@@ -1717,8 +1949,9 @@
       "audit_time": 1776370813000,
       "create_time": 1776370812000,
       "create_user": "14940062",
-      "update_time": 1776402532000,
+      "update_time": 1776423569000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776423561000,
       "remark": "kralovstvi-tiande.sk|37426",
       "country": "SK",
       "state": "",
@@ -1864,6 +2097,57 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170015",
+          "length": 22.0,
+          "width": 13.5,
+          "height": 10.575,
+          "package_type": "C",
+          "package_weight": 0.979,
+          "shipped_weight": 0.979,
+          "parcel_no": "PAOC149400622604170015-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "980168",
+              "sku_id": "922001037705"
+            },
+            {
+              "sku_code": "30117/01",
+              "sku_id": "922001433043"
+            },
+            {
+              "sku_code": "195429",
+              "sku_id": "922001037693"
+            },
+            {
+              "sku_code": "30118/01",
+              "sku_id": "922001433045"
+            },
+            {
+              "sku_code": "44402-2",
+              "sku_id": "922002239201"
+            },
+            {
+              "sku_code": "40106",
+              "sku_id": "922001036980"
+            },
+            {
+              "sku_code": "60145/05",
+              "sku_id": "922001302799"
+            },
+            {
+              "sku_code": "80112/07",
+              "sku_id": "922001038138"
+            },
+            {
+              "sku_code": "10114",
+              "sku_id": "922002251737"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -2765,7 +3049,7 @@
       "4px_tracking_no": "601111375348",
       "ref_no": "261270269",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1403",
@@ -2774,7 +3058,7 @@
       "shipping_no": "601111375348",
       "total_weight": 1781.0,
       "billing_weight": 1781.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 1781.0,
       "total_volume": 3035.303,
       "billing_amount": 0.0,
       "currency": "",
@@ -2788,8 +3072,9 @@
       "audit_time": 1776365418000,
       "create_time": 1776365417000,
       "create_user": "14940062",
-      "update_time": 1776402532000,
+      "update_time": 1776423569000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776423561000,
       "remark": "kralovstvi-tiande.sk|",
       "country": "SK",
       "state": "",
@@ -2935,6 +3220,57 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170010",
+          "length": 21.0,
+          "width": 14.479,
+          "height": 12.022,
+          "package_type": "C",
+          "package_weight": 1.781,
+          "shipped_weight": 1.781,
+          "parcel_no": "PAOC149400622604170010-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "198812",
+              "sku_id": "922001037739"
+            },
+            {
+              "sku_code": "30101",
+              "sku_id": "922001037020"
+            },
+            {
+              "sku_code": "10304",
+              "sku_id": "922001037120"
+            },
+            {
+              "sku_code": "144313",
+              "sku_id": "922001037582"
+            },
+            {
+              "sku_code": "20102",
+              "sku_id": "922001037044"
+            },
+            {
+              "sku_code": "10302",
+              "sku_id": "922001037066"
+            },
+            {
+              "sku_code": "40106",
+              "sku_id": "922001036980"
+            },
+            {
+              "sku_code": "980193",
+              "sku_id": "922001037687"
+            },
+            {
+              "sku_code": "000072",
+              "sku_id": "922001037747"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -3519,7 +3855,7 @@
       "4px_tracking_no": "601111372154",
       "ref_no": "261270223",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1403",
@@ -3528,7 +3864,7 @@
       "shipping_no": "601111372154",
       "total_weight": 910.0,
       "billing_weight": 910.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 910.0,
       "total_volume": 1291.25,
       "billing_amount": 0.0,
       "currency": "",
@@ -3542,8 +3878,9 @@
       "audit_time": 1776358212000,
       "create_time": 1776358211000,
       "create_user": "14940062",
-      "update_time": 1776402532000,
+      "update_time": 1776423568000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776423561000,
       "remark": "kralovstvi-tiande.sk|",
       "country": "SK",
       "state": "",
@@ -3669,6 +4006,49 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170006",
+          "length": 20.0,
+          "width": 10.889,
+          "height": 8.035,
+          "package_type": "C",
+          "package_weight": 0.91,
+          "shipped_weight": 0.91,
+          "parcel_no": "PAOC149400622604170006-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "12117",
+              "sku_id": "922001037819"
+            },
+            {
+              "sku_code": "000083",
+              "sku_id": "922001038001"
+            },
+            {
+              "sku_code": "12115",
+              "sku_id": "922001037112"
+            },
+            {
+              "sku_code": "PROMO33",
+              "sku_id": "922001433027"
+            },
+            {
+              "sku_code": "30115",
+              "sku_id": "922001037202"
+            },
+            {
+              "sku_code": "12114",
+              "sku_id": "922001037108"
+            },
+            {
+              "sku_code": "000072",
+              "sku_id": "922001037747"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -4010,7 +4390,7 @@
       "4px_tracking_no": "601111371537",
       "ref_no": "261270211",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1403",
@@ -4019,7 +4399,7 @@
       "shipping_no": "601111371537",
       "total_weight": 1524.0,
       "billing_weight": 1524.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 1524.0,
       "total_volume": 4133.3,
       "billing_amount": 0.0,
       "currency": "",
@@ -4033,8 +4413,9 @@
       "audit_time": 1776356410000,
       "create_time": 1776356409000,
       "create_user": "14940062",
-      "update_time": 1776402532000,
+      "update_time": 1776423569000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776423561000,
       "remark": "kralovstvi-tiande.sk|",
       "country": "SK",
       "state": "",
@@ -4160,6 +4541,49 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170003",
+          "length": 20.0,
+          "width": 16.048,
+          "height": 14.376,
+          "package_type": "C",
+          "package_weight": 1.524,
+          "shipped_weight": 1.524,
+          "parcel_no": "PAOC149400622604170003-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "17101",
+              "sku_id": "922001037929"
+            },
+            {
+              "sku_code": "44402-2",
+              "sku_id": "922002239201"
+            },
+            {
+              "sku_code": "56007",
+              "sku_id": "922002402844"
+            },
+            {
+              "sku_code": "56005",
+              "sku_id": "922001037993"
+            },
+            {
+              "sku_code": "195458",
+              "sku_id": "922001038457"
+            },
+            {
+              "sku_code": "34401-2",
+              "sku_id": "922001841721"
+            },
+            {
+              "sku_code": "000072",
+              "sku_id": "922001037747"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -4460,7 +4884,7 @@
       "4px_tracking_no": "601111371268",
       "ref_no": "261270199",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1403",
@@ -4469,7 +4893,7 @@
       "shipping_no": "601111371268",
       "total_weight": 710.0,
       "billing_weight": 710.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 710.0,
       "total_volume": 2071.5,
       "billing_amount": 0.0,
       "currency": "",
@@ -4483,8 +4907,9 @@
       "audit_time": 1776355215000,
       "create_time": 1776355214000,
       "create_user": "14940062",
-      "update_time": 1776402532000,
+      "update_time": 1776423569000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776423561000,
       "remark": "kralovstvi-tiande.sk|",
       "country": "SK",
       "state": "",
@@ -4570,6 +4995,33 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170001",
+          "length": 12.748,
+          "width": 12.748,
+          "height": 12.748,
+          "package_type": "C",
+          "package_weight": 0.71,
+          "shipped_weight": 0.71,
+          "parcel_no": "PAOC149400622604170001-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "195429",
+              "sku_id": "922001037693"
+            },
+            {
+              "sku_code": "61915",
+              "sku_id": "922001037530"
+            },
+            {
+              "sku_code": "10106",
+              "sku_id": "922001037644"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -4898,7 +5350,7 @@
       "4px_tracking_no": "601111370915",
       "ref_no": "261267715",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1402",
@@ -4907,7 +5359,7 @@
       "shipping_no": "601111370915",
       "total_weight": 145.0,
       "billing_weight": 145.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 145.0,
       "total_volume": 1776.464,
       "billing_amount": 0.0,
       "currency": "",
@@ -4921,8 +5373,9 @@
       "audit_time": 1776354311000,
       "create_time": 1776354310000,
       "create_user": "14940062",
-      "update_time": 1776402532000,
+      "update_time": 1776423569000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776423561000,
       "remark": "kralovstvi-tiande.sk|SK21718",
       "country": "SK",
       "state": "",
@@ -5008,6 +5461,33 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604160033",
+          "length": 22.0,
+          "width": 12.111,
+          "height": 8.986,
+          "package_type": "C",
+          "package_weight": 0.145,
+          "shipped_weight": 0.145,
+          "parcel_no": "PAOC149400622604160033-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "67007",
+              "sku_id": "922001037837"
+            },
+            {
+              "sku_code": "195469",
+              "sku_id": "922001038331"
+            },
+            {
+              "sku_code": "60145/05",
+              "sku_id": "922001302799"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T12:33:37.532353+02:00",
+  "generatedAt": "2026-04-17T13:00:01.050851+02:00",
   "config": {
     "warehouseCode": "CZPRGA",
     "outboundMaxPages": 20,
@@ -14,8 +14,8 @@
       "label": "CZ",
       "inventory": {
         "items": 768,
-        "availableStockTotal": 307169,
-        "pendingStockTotal": 1786,
+        "availableStockTotal": 307123,
+        "pendingStockTotal": 1743,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -23,8 +23,8 @@
         "items": 500,
         "scannedPages": 5,
         "topLogisticsProduct": "F1401",
-        "oldestTimestamp": "2026-04-15T22:00:04+02:00",
-        "newestTimestamp": "2026-04-17T12:30:04+02:00"
+        "oldestTimestamp": "2026-04-15T22:10:04+02:00",
+        "newestTimestamp": "2026-04-17T13:00:02+02:00"
       }
     },
     "sk": {
@@ -32,7 +32,7 @@
       "inventory": {
         "items": 621,
         "availableStockTotal": 70722,
-        "pendingStockTotal": 147,
+        "pendingStockTotal": 32,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -89,19 +89,19 @@
     "message": "Měsíční finance se tahají přímo z ABRA reportu Výkaz hospodaření za měsíc za všechna střediska. Cash a závazky jsou také live z ABRA API.",
     "currentMonth": {
       "label": "4/2026",
-      "revenue": 7849731.47,
-      "cogsAndFees": 5681829.77,
+      "revenue": 7858792.64,
+      "cogsAndFees": 5686703.57,
       "logistics": 37815.04,
       "marketing": 257841.46,
-      "opex": 229570.59,
+      "opex": 232929.28,
       "depreciation": 385502.0,
       "other": -5329.83,
-      "grossMargin": 2167901.7,
-      "afterLogistics": 2130086.66,
-      "afterMarketing": 1872245.2,
-      "operatingMargin": 1642674.61,
-      "ebit": 1257172.61,
-      "profit": 1251842.78,
+      "grossMargin": 2172089.07,
+      "afterLogistics": 2134274.03,
+      "afterMarketing": 1876432.57,
+      "operatingMargin": 1643503.29,
+      "ebit": 1258001.29,
+      "profit": 1252671.46,
       "grossMarginPct": 27.6,
       "marketingPct": 3.3,
       "logisticsPct": 0.5,
@@ -109,7 +109,7 @@
       "profitPct": 15.9
     },
     "cash": {
-      "unpaidInvoices": 2880493.14,
+      "unpaidInvoices": 2883692.48,
       "overdueInvoicesCount": 0,
       "overdueInvoicesAmount": 0.0,
       "largestPayables": [
@@ -193,7 +193,7 @@
       "performanceSpend": 6957.68,
       "brandSpend": 250883.78,
       "totalSpend": 257841.46,
-      "revenue": 7849731.47,
+      "revenue": 7858792.64,
       "spendShareOfRevenuePct": 3.3
     },
     "topSupplier": null
