@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T10:06:30.160267+02:00",
+  "generatedAt": "2026-04-17T11:49:19.351163+02:00",
   "reportDate": "2026-04-16",
   "detailUrl": "https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html",
   "window": {
@@ -34,23 +34,23 @@
     "statuses": [
       {
         "name": "přijatá",
-        "count": 224
+        "count": 226
       },
       {
         "name": "expedováno",
-        "count": 138
+        "count": 100
       },
       {
         "name": "připraveno k vyzvednutí",
-        "count": 23
-      },
-      {
-        "name": "nová",
-        "count": 11
+        "count": 54
       },
       {
         "name": "doručeno",
-        "count": 10
+        "count": 17
+      },
+      {
+        "name": "nová",
+        "count": 9
       },
       {
         "name": "chyba",
@@ -827,81 +827,81 @@
       {
         "code": "40203",
         "title": "Peeling Broskvový",
-        "currentStock": 2079.0,
-        "previousStock": 2097.0,
-        "delta": -18.0
+        "currentStock": 2054.0,
+        "previousStock": 2067.0,
+        "delta": -13.0
       },
       {
         "code": "UA132",
         "title": "Peeling Broskovový 1+1",
-        "currentStock": 2069.0,
-        "previousStock": 2087.0,
-        "delta": -18.0
+        "currentStock": 2044.0,
+        "previousStock": 2057.0,
+        "delta": -13.0
       },
       {
-        "code": "RV824",
-        "title": "Regenerační balíček pro dokonalé nohy",
-        "currentStock": 379.0,
-        "previousStock": 363.0,
-        "delta": 16.0
+        "code": "61902",
+        "title": "Denní menstruační vložky s fytomembránou „Energie bylin“",
+        "currentStock": 932.0,
+        "previousStock": 942.0,
+        "delta": -10.0
+      },
+      {
+        "code": "000075",
+        "title": "Brožura Fytogely",
+        "currentStock": 3396.0,
+        "previousStock": 3405.0,
+        "delta": -9.0
+      },
+      {
+        "code": "64404-2",
+        "title": "Jemný intimní gel",
+        "currentStock": 2224.0,
+        "previousStock": 2231.0,
+        "delta": -7.0
+      },
+      {
+        "code": "61915",
+        "title": "Dámské bylinné slipové vložky s anionty Nefritová svěžest",
+        "currentStock": 705.0,
+        "previousStock": 710.0,
+        "delta": -5.0
       },
       {
         "code": "44402-2",
         "title": "Fytogel Slaviton",
-        "currentStock": 2596.0,
-        "previousStock": 2611.0,
-        "delta": -15.0
+        "currentStock": 2587.0,
+        "previousStock": 2592.0,
+        "delta": -5.0
       },
       {
-        "code": "30118",
-        "title": "Kosmetická fytonáplast Wutong",
-        "currentStock": 3206.0,
-        "previousStock": 3215.0,
-        "delta": -9.0
+        "code": "61911",
+        "title": "Denní vložky s extraktem aloe Nefritová svěžest",
+        "currentStock": 972.0,
+        "previousStock": 976.0,
+        "delta": -4.0
       },
       {
-        "code": "ZW265",
-        "title": "Detoxikační náplasti + cestovní lahev",
-        "currentStock": 160.0,
-        "previousStock": 151.0,
-        "delta": 9.0
+        "code": "61921",
+        "title": "Dámské bylinné slipové vložky Nefritová svěžest - super tenké",
+        "currentStock": 661.0,
+        "previousStock": 665.0,
+        "delta": -4.0
       },
       {
-        "code": "JS051",
-        "title": "l",
-        "currentStock": 214.0,
-        "previousStock": 205.0,
-        "delta": 9.0
-      },
-      {
-        "code": "DW794",
-        "title": "Detox v balíčku",
-        "currentStock": 47.0,
-        "previousStock": 38.0,
-        "delta": 9.0
-      },
-      {
-        "code": "30117",
-        "title": "Kosmetická fytonáplast Jian Kang",
-        "currentStock": 3753.0,
-        "previousStock": 3761.0,
-        "delta": -8.0
-      },
-      {
-        "code": "980193",
-        "title": "Expres utěrka na čištění skla",
-        "currentStock": 186.0,
-        "previousStock": 194.0,
-        "delta": -8.0
+        "code": "90148",
+        "title": "Zubní kartáček ProDental",
+        "currentStock": 1320.0,
+        "previousStock": 1324.0,
+        "delta": -4.0
       }
     ]
   },
   "inventory": {
-    "availableStockTotal": 378483.0,
+    "availableStockTotal": 378141.0,
     "itemsTotal": 1389,
     "byAccount": {
-      "CZ": 307728.0,
-      "SK": 70755.0
+      "CZ": 307409.0,
+      "SK": 70732.0
     },
     "itemsByAccount": {
       "CZ": 768,
