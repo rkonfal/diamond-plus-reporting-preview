@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T08:00:03.213169+02:00",
+  "generatedAt": "2026-04-17T08:03:14.957494+02:00",
   "items": [
     {
       "consignment_no": "OC149400632604170131",
@@ -11725,7 +11725,7 @@
       "audit_time": 1776365410000,
       "create_time": 1776365409000,
       "create_user": "14940063",
-      "update_time": 1776396783000,
+      "update_time": 1776405664000,
       "update_user": "diamond.plus.cz11@4px.com",
       "remark": "kralovstvi-tiande.cz|31283",
       "country": "CZ",
@@ -11842,6 +11842,45 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400632604170063",
+          "length": 20.67,
+          "width": 12.329,
+          "height": 9.521,
+          "package_type": "C",
+          "package_weight": 1.296,
+          "shipped_weight": 1.296,
+          "parcel_no": "PAOC149400632604170063-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "144313",
+              "sku_id": "922001041196"
+            },
+            {
+              "sku_code": "000075",
+              "sku_id": "922001041431"
+            },
+            {
+              "sku_code": "64404-2",
+              "sku_id": "922001733501"
+            },
+            {
+              "sku_code": "40106",
+              "sku_id": "922001040808"
+            },
+            {
+              "sku_code": "56005",
+              "sku_id": "922001041635"
+            },
+            {
+              "sku_code": "40203",
+              "sku_id": "922001041534"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -37304,7 +37343,7 @@
       "audit_time": 1776335704000,
       "create_time": 1776335703000,
       "create_user": "14940063",
-      "update_time": 1776396784000,
+      "update_time": 1776405724000,
       "update_user": "diamond.plus.cz11@4px.com",
       "remark": "kralovstvi-tiande.cz|36244",
       "country": "CZ",
@@ -37411,6 +37450,41 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400632604160312",
+          "length": 20.3,
+          "width": 11.844,
+          "height": 9.046,
+          "package_type": "C",
+          "package_weight": 0.608,
+          "shipped_weight": 0.608,
+          "parcel_no": "PAOC149400632604160312-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "40102",
+              "sku_id": "922001040816"
+            },
+            {
+              "sku_code": "000075",
+              "sku_id": "922001041431"
+            },
+            {
+              "sku_code": "40203",
+              "sku_id": "922001041534"
+            },
+            {
+              "sku_code": "44402-2",
+              "sku_id": "922002239194"
+            },
+            {
+              "sku_code": "40101",
+              "sku_id": "922001040812"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
