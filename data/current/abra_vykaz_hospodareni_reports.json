@@ -1,10 +1,35 @@
 {
-  "generatedAt": "2026-04-17T12:24:04.168847+02:00",
+  "generatedAt": "2026-04-17T12:33:37.532353+02:00",
   "source": {
     "status": "live",
     "message": "Report Výkaz hospodaření za měsíc se tahá přímo z ABRA report endpointu."
   },
   "months": [
+    {
+      "label": "1/2026",
+      "monthKey": "01/2026",
+      "fileName": "abra_vykaz_hospodareni_2026-01.xls",
+      "contentType": "application/ms-excel",
+      "url": "https://tiande-fb.arit.cz:5505/c/diamond_plus_s_r_o_/vykaz-hospodareni.xls?auth=http&report-name=vykazHospodareni&ucetniObdobi=2026&mesicRok=01%2F2026&mena=code%3ACZK",
+      "parsed": {
+        "revenue": 14672016.32,
+        "cogsAndFees": 9978186.62,
+        "marketing": 682555.29,
+        "logistics": 1144478.38,
+        "opex": 1955172.07,
+        "depreciation": 383046.0,
+        "other": -65458.82,
+        "grossMargin": 4693829.7,
+        "afterLogistics": 3549351.32,
+        "afterMarketing": 2866796.03,
+        "operatingMargin": 911623.96,
+        "ebit": 528577.96,
+        "profit": 463119.14,
+        "expenseTotal": 14252052.39,
+        "incomeTotal": 14715171.53,
+        "bankFees": 78573.69
+      }
+    },
     {
       "label": "2/2026",
       "monthKey": "02/2026",
@@ -62,21 +87,21 @@
       "contentType": "application/ms-excel",
       "url": "https://tiande-fb.arit.cz:5505/c/diamond_plus_s_r_o_/vykaz-hospodareni.xls?auth=http&report-name=vykazHospodareni&ucetniObdobi=2026&mesicRok=04%2F2026&mena=code%3ACZK",
       "parsed": {
-        "revenue": 7846669.47,
-        "cogsAndFees": 5678333.59,
+        "revenue": 7849731.47,
+        "cogsAndFees": 5681829.77,
         "marketing": 257841.46,
         "logistics": 37815.04,
         "opex": 229570.59,
         "depreciation": 385502.0,
         "other": -5329.83,
-        "grossMargin": 2168335.88,
-        "afterLogistics": 2130520.84,
-        "afterMarketing": 1872679.38,
-        "operatingMargin": 1643108.79,
-        "ebit": 1257606.79,
-        "profit": 1252276.96,
-        "expenseTotal": 6594856.48,
-        "incomeTotal": 7847133.44,
+        "grossMargin": 2167901.7,
+        "afterLogistics": 2130086.66,
+        "afterMarketing": 1872245.2,
+        "operatingMargin": 1642674.61,
+        "ebit": 1257172.61,
+        "profit": 1251842.78,
+        "expenseTotal": 6598352.66,
+        "incomeTotal": 7850195.44,
         "bankFees": 33396.91
       }
     }
