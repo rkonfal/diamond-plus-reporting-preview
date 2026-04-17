@@ -90,6 +90,12 @@
         </div>
 
         <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Rozpad e-shop zdrojů</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Včerejší výkon podle CZ, SK a kamenných prodejen.</p>
+          <div class="ux-stat-list" id="eshop-source-split"></div>
+        </div>
+
+        <div class="ux-panel-card">
           <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Co běží dobře</h3>
           <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Rychlá kontrola, že zdroje běží a kde je případný problém.</p>
           <div class="ux-side-list" id="status-list"></div>
@@ -220,6 +226,19 @@
         ['Expedice CZ+SK', `${DP.fmtNumber(report.logistics.shipmentsTotal || 0)} (${report.logistics.byAccount?.CZ || 0}/${report.logistics.byAccount?.SK || 0})`],
         ['Problematické', DP.fmtNumber(report.eshop.problematicOrders || 0)],
         ['Expirace k řešení', DP.fmtNumber((report.logistics.expiringProducts || []).length)]
+      ].map(([label, value]) => `
+        <div class="ux-stat-row">
+          <span>${label}</span>
+          <strong>${value}</strong>
+        </div>
+      `).join('');
+
+      const byView = report.eshop.byView || {};
+      document.getElementById('eshop-source-split').innerHTML = [
+        ['CZ e-shop', `${DP.fmtNumber(byView.cz?.orders || 0)} / ${fmtMoney(byView.cz?.revenueWithVat || 0)}`],
+        ['SK e-shop', `${DP.fmtNumber(byView.sk?.orders || 0)} / ${fmtMoney(byView.sk?.revenueWithVat || 0)}`],
+        ['Litoměřice', `${DP.fmtNumber(byView.ltm?.orders || 0)} / ${fmtMoney(byView.ltm?.revenueWithVat || 0)}`],
+        ['Měčín', `${DP.fmtNumber(byView.mecin?.orders || 0)} / ${fmtMoney(byView.mecin?.revenueWithVat || 0)}`]
       ].map(([label, value]) => `
         <div class="ux-stat-row">
           <span>${label}</span>

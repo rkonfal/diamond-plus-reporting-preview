@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-04-17T15:30:53.046566+02:00",
+  "generatedAt": "2026-04-17T17:18:48.976938+02:00",
   "source": {
-    "status": "live_report",
-    "message": "Měsíční finance se tahají přímo z ABRA reportu Výkaz hospodaření za měsíc za všechna střediska. Cash a závazky jsou také live z ABRA API."
+    "status": "mixed_live_legacy",
+    "message": "Měsíční finance se tahají přímo z ABRA reportu Výkaz hospodaření za měsíc za všechna střediska. Závazky jsou live z ABRA API, cash na účtech a čistá cash pozice zatím zůstávají z posledního ABRA snapshotu."
   },
   "months": [
     "1/2026",
@@ -76,46 +76,46 @@
     },
     {
       "label": "4/2026",
-      "revenue": 7951855.41,
-      "cogsAndFees": 5736170.73,
+      "revenue": 7982055.34,
+      "cogsAndFees": 5754347.69,
       "logistics": 37815.04,
       "marketing": 257841.46,
       "opex": 251053.68,
       "depreciation": 385502.0,
       "other": -5460.68,
-      "grossMargin": 2215684.68,
-      "afterLogistics": 2177869.64,
-      "afterMarketing": 1920028.18,
-      "operatingMargin": 1668974.5,
-      "ebit": 1283472.5,
-      "profit": 1278011.82,
+      "grossMargin": 2227707.65,
+      "afterLogistics": 2189892.61,
+      "afterMarketing": 1932051.15,
+      "operatingMargin": 1680997.47,
+      "ebit": 1295495.47,
+      "profit": 1290034.79,
       "grossMarginPct": 27.9,
       "marketingPct": 3.2,
       "logisticsPct": 0.5,
-      "operatingMarginPct": 21.0,
-      "profitPct": 16.1
+      "operatingMarginPct": 21.1,
+      "profitPct": 16.2
     }
   ],
   "currentMonth": {
     "label": "4/2026",
-    "revenue": 7951855.41,
-    "cogsAndFees": 5736170.73,
+    "revenue": 7982055.34,
+    "cogsAndFees": 5754347.69,
     "logistics": 37815.04,
     "marketing": 257841.46,
     "opex": 251053.68,
     "depreciation": 385502.0,
     "other": -5460.68,
-    "grossMargin": 2215684.68,
-    "afterLogistics": 2177869.64,
-    "afterMarketing": 1920028.18,
-    "operatingMargin": 1668974.5,
-    "ebit": 1283472.5,
-    "profit": 1278011.82,
+    "grossMargin": 2227707.65,
+    "afterLogistics": 2189892.61,
+    "afterMarketing": 1932051.15,
+    "operatingMargin": 1680997.47,
+    "ebit": 1295495.47,
+    "profit": 1290034.79,
     "grossMarginPct": 27.9,
     "marketingPct": 3.2,
     "logisticsPct": 0.5,
-    "operatingMarginPct": 21.0,
-    "profitPct": 16.1
+    "operatingMarginPct": 21.1,
+    "profitPct": 16.2
   },
   "previousMonth": {
     "label": "3/2026",
@@ -139,7 +139,9 @@
     "profitPct": 3.1
   },
   "cash": {
+    "cashOnAccounts": 10255308.0,
     "unpaidInvoices": 3038318.85,
+    "netCashPosition": 8675748.0,
     "overdueInvoicesCount": 0,
     "overdueInvoicesAmount": 0.0,
     "largestPayables": [

@@ -1,6 +1,177 @@
 {
-  "generatedAt": "2026-04-17T15:30:53.046566+02:00",
+  "generatedAt": "2026-04-17T17:18:48.976938+02:00",
   "items": [
+    {
+      "consignment_no": "OC149400622604170030",
+      "customer_code": "14940062",
+      "4px_tracking_no": "601111410768",
+      "ref_no": "261270481",
+      "from_warehouse_code": "CZPRGA",
+      "status": "S",
+      "sub_status": "",
+      "consignment_type": "S",
+      "logistics_product_code": "F1403",
+      "return_service": "N",
+      "signature_service": "N",
+      "shipping_no": "601111410768",
+      "total_weight": 1622.0,
+      "billing_weight": 1622.0,
+      "shipping_weight": 0.0,
+      "total_volume": 4496.45,
+      "billing_amount": 0.0,
+      "currency": "",
+      "is_oda": "O",
+      "sales_platform": "",
+      "seller_id": "261270481",
+      "sales_no": "80 EUR|80 EUR",
+      "insure_services": "",
+      "insure_value": 0.0,
+      "audit_user": "",
+      "audit_time": 1776437115000,
+      "create_time": 1776437114000,
+      "create_user": "14940062",
+      "update_time": 1776437116000,
+      "update_user": "diamond.plus.sk@4px.com",
+      "remark": "kralovstvi-tiande.sk|",
+      "country": "SK",
+      "state": "",
+      "city": "Nové Zámky",
+      "district": "",
+      "post_code": "94002",
+      "street": "Vypalisko 53",
+      "house_number": "",
+      "company": "",
+      "last_name": "Salgo",
+      "first_name": "Miroslav",
+      "phone": "+421905159799",
+      "email": "miro.salgo@gmail.com",
+      "id_card": "",
+      "outboundlist_sku": [
+        {
+          "consignment_no": "OC149400622604170030",
+          "sku_code": "12707",
+          "product_code": "6921570931775",
+          "qty": 1,
+          "stock_quality": "G",
+          "sku_id": "922001037187",
+          "sku_name": "Modelující gel na tvar obličeje",
+          "batch_no": ""
+        },
+        {
+          "consignment_no": "OC149400622604170030",
+          "sku_code": "61915",
+          "product_code": "6921336330798",
+          "qty": 2,
+          "stock_quality": "G",
+          "sku_id": "922001037530",
+          "sku_name": "Dámské bylinné slipové vložky s anionty Nefritová svěžest",
+          "batch_no": ""
+        },
+        {
+          "consignment_no": "OC149400622604170030",
+          "sku_code": "000072",
+          "product_code": "1210017853040",
+          "qty": 1,
+          "stock_quality": "G",
+          "sku_id": "922001037747",
+          "sku_name": "Brožura Ženské zdraví",
+          "batch_no": ""
+        },
+        {
+          "consignment_no": "OC149400622604170030",
+          "sku_code": "64404-2",
+          "product_code": "6922782629542",
+          "qty": 2,
+          "stock_quality": "G",
+          "sku_id": "922001733504",
+          "sku_name": "Jemný intimní gel",
+          "batch_no": ""
+        },
+        {
+          "consignment_no": "OC149400622604170030",
+          "sku_code": "61903",
+          "product_code": "6921336301026",
+          "qty": 1,
+          "stock_quality": "G",
+          "sku_id": "922001037052",
+          "sku_name": "Noční menstruační vložky s fytomembránou „Energie bylin“",
+          "batch_no": ""
+        },
+        {
+          "consignment_no": "OC149400622604170030",
+          "sku_code": "15601",
+          "product_code": "6922782622314",
+          "qty": 1,
+          "stock_quality": "G",
+          "sku_id": "922001037204",
+          "sku_name": "Fucoidan čistící mléko na obličej a dekolt",
+          "batch_no": ""
+        },
+        {
+          "consignment_no": "OC149400622604170030",
+          "sku_code": "61902",
+          "product_code": "6921336301019",
+          "qty": 1,
+          "stock_quality": "G",
+          "sku_id": "922001037048",
+          "sku_name": "Denní menstruační vložky s fytomembránou „Energie bylin“",
+          "batch_no": ""
+        },
+        {
+          "consignment_no": "OC149400622604170030",
+          "sku_code": "61911",
+          "product_code": "6921336301057",
+          "qty": 3,
+          "stock_quality": "G",
+          "sku_id": "922001037056",
+          "sku_name": "Denní vložky s extraktem aloe Nefritová svěžest",
+          "batch_no": ""
+        }
+      ],
+      "extend_fields": {
+        "consignmentNo": "OC149400622604170030",
+        "referenceNo": "",
+        "payNo": "",
+        "payCompany": "",
+        "payCompanyNo": "",
+        "freight": 0.0,
+        "isValuation": 0,
+        "valuationValue": 0.0,
+        "valuationFee": 0.0,
+        "orderTime": 1776437114000,
+        "taxAmount": 0.0,
+        "discount": 0.0,
+        "deductionAmount": 0.0,
+        "actualAmount": 0.0,
+        "orderType": 1,
+        "interBillNo": "",
+        "buyerRegNo": "",
+        "orderName": "",
+        "orderPhone": "",
+        "orderCardNo": "",
+        "poNumber": "",
+        "pickupVendor": "",
+        "expectArriveDate": "",
+        "totalSkuQty": 0,
+        "planPalletQty": 0,
+        "actualPalletQty": 0,
+        "returnMailLabelNo": "",
+        "updateTime": 1776437114000,
+        "updateUser": "updater",
+        "expectedReceiptDate": "",
+        "customerType": "",
+        "isPii": "N",
+        "piiUrl": ""
+      },
+      "outboundlist_serial_no": [],
+      "carrier_code": "",
+      "return_flag": "N",
+      "error_message_origin": "",
+      "address_type": "",
+      "estimated_number_of_pallets": 0,
+      "actual_number_of_pallets": 0,
+      "carrier_brand_name": ""
+    },
     {
       "consignment_no": "OC149400622604170029",
       "customer_code": "14940062",
@@ -613,7 +784,7 @@
       "4px_tracking_no": "601111397522",
       "ref_no": "261270398",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1406",
@@ -622,7 +793,7 @@
       "shipping_no": "601111397522",
       "total_weight": 947.0,
       "billing_weight": 947.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 947.0,
       "total_volume": 1701.88,
       "billing_amount": 0.0,
       "currency": "",
@@ -636,8 +807,9 @@
       "audit_time": 1776416413000,
       "create_time": 1776416412000,
       "create_user": "14940062",
-      "update_time": 1776431433000,
+      "update_time": 1776433726000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776433713000,
       "remark": "kralovstvi-tiande.sk|6345",
       "country": "SK",
       "state": "",
@@ -753,6 +925,45 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170025",
+          "length": 17.8,
+          "width": 11.939,
+          "height": 9.778,
+          "package_type": "C",
+          "package_weight": 0.947,
+          "shipped_weight": 0.947,
+          "parcel_no": "PAOC149400622604170025-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "23401",
+              "sku_id": "922001037022"
+            },
+            {
+              "sku_code": "56007",
+              "sku_id": "922002402844"
+            },
+            {
+              "sku_code": "23402",
+              "sku_id": "922001037024"
+            },
+            {
+              "sku_code": "61915",
+              "sku_id": "922001037530"
+            },
+            {
+              "sku_code": "30117/05",
+              "sku_id": "922001423327"
+            },
+            {
+              "sku_code": "23403",
+              "sku_id": "922001037026"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -764,7 +975,7 @@
       "4px_tracking_no": "601111396673",
       "ref_no": "261270391",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1406",
@@ -773,7 +984,7 @@
       "shipping_no": "601111396673",
       "total_weight": 16.0,
       "billing_weight": 16.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 16.0,
       "total_volume": 16.5,
       "billing_amount": 0.0,
       "currency": "",
@@ -787,8 +998,9 @@
       "audit_time": 1776415212000,
       "create_time": 1776415211000,
       "create_user": "14940062",
-      "update_time": 1776429369000,
+      "update_time": 1776433726000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776433713000,
       "remark": "kralovstvi-tiande.sk|",
       "country": "SK",
       "state": "",
@@ -862,10 +1074,15 @@
           "height": 0.1,
           "package_type": "C",
           "package_weight": 0.016,
-          "shipped_weight": 0.0,
-          "parcel_no": "",
+          "shipped_weight": 0.016,
+          "parcel_no": "PAOC149400622604170024-001",
           "subor_no": "",
-          "skus": []
+          "skus": [
+            {
+              "sku_code": "30118/01",
+              "sku_id": "922001433045"
+            }
+          ]
         }
       ],
       "address_type": "",
@@ -4485,7 +4702,7 @@
       "4px_tracking_no": "601111371904",
       "ref_no": "261270218",
       "from_warehouse_code": "CZPRGA",
-      "status": "P",
+      "status": "C",
       "sub_status": "",
       "consignment_type": "S",
       "logistics_product_code": "F1406",
@@ -4494,7 +4711,7 @@
       "shipping_no": "601111371904",
       "total_weight": 1379.0,
       "billing_weight": 1379.0,
-      "shipping_weight": 0.0,
+      "shipping_weight": 1379.0,
       "total_volume": 6616.568,
       "billing_amount": 0.0,
       "currency": "",
@@ -4508,8 +4725,9 @@
       "audit_time": 1776357312000,
       "create_time": 1776357311000,
       "create_user": "14940062",
-      "update_time": 1776431764000,
+      "update_time": 1776433725000,
       "update_user": "diamond.plus.sk@4px.com",
+      "complete_time": 1776433713000,
       "remark": "kralovstvi-tiande.sk|18488",
       "country": "SK",
       "state": "",
@@ -4655,6 +4873,57 @@
       "carrier_code": "",
       "return_flag": "N",
       "error_message_origin": "",
+      "consignment_packages": [
+        {
+          "consignment_no": "OC149400622604170005",
+          "length": 18.773,
+          "width": 18.773,
+          "height": 18.773,
+          "package_type": "C",
+          "package_weight": 1.379,
+          "shipped_weight": 1.379,
+          "parcel_no": "PAOC149400622604170005-001",
+          "subor_no": "",
+          "skus": [
+            {
+              "sku_code": "61923",
+              "sku_id": "922001155977"
+            },
+            {
+              "sku_code": "61911",
+              "sku_id": "922001037056"
+            },
+            {
+              "sku_code": "12115",
+              "sku_id": "922001037112"
+            },
+            {
+              "sku_code": "61915",
+              "sku_id": "922001037530"
+            },
+            {
+              "sku_code": "61913",
+              "sku_id": "922001037532"
+            },
+            {
+              "sku_code": "61922",
+              "sku_id": "922001156146"
+            },
+            {
+              "sku_code": "61912",
+              "sku_id": "922001037515"
+            },
+            {
+              "sku_code": "65301-2",
+              "sku_id": "922002153254"
+            },
+            {
+              "sku_code": "60149-2",
+              "sku_id": "922001841725"
+            }
+          ]
+        }
+      ],
       "address_type": "",
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
@@ -22167,232 +22436,13 @@
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
       "carrier_brand_name": ""
-    },
-    {
-      "consignment_no": "OC149400622604150052",
-      "customer_code": "14940062",
-      "4px_tracking_no": "601111242476",
-      "ref_no": "261269573",
-      "from_warehouse_code": "CZPRGA",
-      "status": "C",
-      "sub_status": "",
-      "consignment_type": "S",
-      "logistics_product_code": "F1403",
-      "return_service": "N",
-      "signature_service": "N",
-      "shipping_no": "601111242476",
-      "total_weight": 1584.0,
-      "billing_weight": 1584.0,
-      "shipping_weight": 1584.0,
-      "total_volume": 4711.642,
-      "billing_amount": 0.0,
-      "currency": "",
-      "is_oda": "O",
-      "sales_platform": "",
-      "seller_id": "",
-      "sales_no": "|99.25 EUR",
-      "insure_services": "",
-      "insure_value": 0.0,
-      "audit_user": "",
-      "audit_time": 1776240164000,
-      "create_time": 1776240163000,
-      "create_user": "14940062",
-      "update_time": 1776251134000,
-      "update_user": "diamond.plus.sk@4px.com",
-      "complete_time": 1776251123000,
-      "remark": "kralovstvi-tiande.sk|",
-      "country": "SK",
-      "state": "",
-      "city": "Košice - okolie",
-      "district": "",
-      "post_code": "04412",
-      "street": "Hýľov 115",
-      "house_number": "",
-      "company": "",
-      "last_name": "Mikulová",
-      "first_name": "Mária",
-      "phone": "+421908066702",
-      "email": "maria.mikulova.72@gmail.com",
-      "id_card": "",
-      "outboundlist_sku": [
-        {
-          "consignment_no": "OC149400622604150052",
-          "sku_code": "63601/10",
-          "product_code": "1362489578965",
-          "qty": 1,
-          "stock_quality": "G",
-          "sku_id": "922001058465",
-          "sku_name": "Denní vložka Energie života 10ks (Kód: 63601/10)",
-          "batch_no": ""
-        },
-        {
-          "consignment_no": "OC149400622604150052",
-          "sku_code": "41328/10",
-          "product_code": "1548769547895",
-          "qty": 1,
-          "stock_quality": "G",
-          "sku_id": "922001403998",
-          "sku_name": "Levandulová náplast na nohy",
-          "batch_no": ""
-        },
-        {
-          "consignment_no": "OC149400622604150052",
-          "sku_code": "PROMO116",
-          "product_code": "5265895412563",
-          "qty": 1,
-          "stock_quality": "G",
-          "sku_id": "922002578371",
-          "sku_name": "Krabička vzorky",
-          "batch_no": ""
-        },
-        {
-          "consignment_no": "OC149400622604150052",
-          "sku_code": "113013",
-          "product_code": "4607078690278",
-          "qty": 1,
-          "stock_quality": "G",
-          "sku_id": "922001037656",
-          "sku_name": "Tablety s extraktem z jader vinné révy se sladidlem",
-          "batch_no": ""
-        },
-        {
-          "consignment_no": "OC149400622604150052",
-          "sku_code": "PROMO74",
-          "product_code": "8954103655985",
-          "qty": 1,
-          "stock_quality": "G",
-          "sku_id": "922001509127",
-          "sku_name": "Královská bylinná směs zdravá žena ",
-          "batch_no": ""
-        },
-        {
-          "consignment_no": "OC149400622604150052",
-          "sku_code": "80921/02",
-          "product_code": "6971501940451",
-          "qty": 1,
-          "stock_quality": "G",
-          "sku_id": "922001236595",
-          "sku_name": "Sametový pleťový pudr Duo",
-          "batch_no": ""
-        },
-        {
-          "consignment_no": "OC149400622604150052",
-          "sku_code": "60145/05",
-          "product_code": "1234567891234",
-          "qty": 1,
-          "stock_quality": "G",
-          "sku_id": "922001302799",
-          "sku_name": "Denní hygienická vložka „Jemná péče“ 5kusů",
-          "batch_no": ""
-        },
-        {
-          "consignment_no": "OC149400622604150052",
-          "sku_code": "44402-2",
-          "product_code": "6922782629528",
-          "qty": 1,
-          "stock_quality": "G",
-          "sku_id": "922002239201",
-          "sku_name": "Slaviton ",
-          "batch_no": ""
-        }
-      ],
-      "extend_fields": {
-        "consignmentNo": "OC149400622604150052",
-        "referenceNo": "",
-        "payNo": "",
-        "payCompany": "",
-        "payCompanyNo": "",
-        "freight": 0.0,
-        "isValuation": 0,
-        "valuationValue": 0.0,
-        "valuationFee": 0.0,
-        "orderTime": 1776240163000,
-        "taxAmount": 0.0,
-        "discount": 0.0,
-        "deductionAmount": 0.0,
-        "actualAmount": 0.0,
-        "orderType": 1,
-        "interBillNo": "",
-        "buyerRegNo": "",
-        "orderName": "",
-        "orderPhone": "",
-        "orderCardNo": "",
-        "poNumber": "",
-        "pickupVendor": "",
-        "expectArriveDate": "",
-        "totalSkuQty": 0,
-        "planPalletQty": 0,
-        "actualPalletQty": 0,
-        "returnMailLabelNo": "",
-        "updateTime": 1776240163000,
-        "updateUser": "updater",
-        "expectedReceiptDate": "",
-        "customerType": "",
-        "isPii": "N",
-        "piiUrl": ""
-      },
-      "outboundlist_serial_no": [],
-      "carrier_code": "",
-      "return_flag": "N",
-      "error_message_origin": "",
-      "consignment_packages": [
-        {
-          "consignment_no": "OC149400622604150052",
-          "length": 22.0,
-          "width": 16.765,
-          "height": 14.634,
-          "package_type": "C",
-          "package_weight": 1.584,
-          "shipped_weight": 1.584,
-          "parcel_no": "PAOC149400622604150052-001",
-          "subor_no": "",
-          "skus": [
-            {
-              "sku_code": "63601/10",
-              "sku_id": "922001058465"
-            },
-            {
-              "sku_code": "44402-2",
-              "sku_id": "922002239201"
-            },
-            {
-              "sku_code": "PROMO116",
-              "sku_id": "922002578371"
-            },
-            {
-              "sku_code": "60145/05",
-              "sku_id": "922001302799"
-            },
-            {
-              "sku_code": "113013",
-              "sku_id": "922001037656"
-            },
-            {
-              "sku_code": "80921/02",
-              "sku_id": "922001236595"
-            },
-            {
-              "sku_code": "41328/10",
-              "sku_id": "922001403998"
-            },
-            {
-              "sku_code": "PROMO74",
-              "sku_id": "922001509127"
-            }
-          ]
-        }
-      ],
-      "address_type": "",
-      "estimated_number_of_pallets": 0,
-      "actual_number_of_pallets": 0,
-      "carrier_brand_name": ""
     }
   ],
   "scannedPages": 1,
   "hitMaxPages": false,
   "crossedStopBoundary": true,
-  "newestTimestamp": "2026-04-17T14:00:14+02:00",
-  "oldestTimestamp": "2026-04-15T10:02:43+02:00",
+  "newestTimestamp": "2026-04-17T16:45:14+02:00",
+  "oldestTimestamp": "2026-04-15T10:22:37+02:00",
   "topLogisticsProducts": [
     [
       "F1403",

@@ -85,6 +85,23 @@
 
     <section class="grid kpi-grid" id="wpj-kpis"></section>
 
+    <section class="card" style="margin-bottom:20px;">
+      <div class="ux-section-head" style="margin-bottom:12px;">
+        <div>
+          <h2 class="ux-section-title">Pohled podle zdroje prodeje</h2>
+          <p class="ux-section-subtitle">Stejný způsob přepínání jako ve skladu, jen nad výkonem e-shopu.</p>
+        </div>
+      </div>
+      <div class="quick-filters" id="eshop-view-tabs">
+        <button class="quick-filter active" type="button" data-view="complete">KOMPLET</button>
+        <button class="quick-filter" type="button" data-view="cz">CZ E-SHOP</button>
+        <button class="quick-filter" type="button" data-view="sk">SK E-SHOP</button>
+        <button class="quick-filter" type="button" data-view="ltm">LITOMĚŘICE</button>
+        <button class="quick-filter" type="button" data-view="mecin">MĚČÍN</button>
+      </div>
+      <div class="section-subtitle" id="eshop-view-summary">Načítám rozdělení zdrojů…</div>
+    </section>
+
     <section class="grid two-col">
       <div class="card">
         <h2 class="section-title">Platební metody</h2>
@@ -151,64 +168,109 @@
       const summary = await DP.loadJson('../data/current/portal_summary.json');
       const report = await DP.loadJson('../data/current/morning_report_previous_day.json');
       const text = await fetch('../data/current/morning_report_previous_day.txt', { cache: 'no-store' }).then(r => r.text());
-      const eshop = report.eshop;
+      const complete = report.eshop;
+      const viewButtons = Array.from(document.querySelectorAll('#eshop-view-tabs [data-view]'));
+      const viewSummary = document.getElementById('eshop-view-summary');
+      let activeView = 'complete';
+
+      const viewDefs = {
+        complete: { label: 'Komplet', accent: 'Kompletní WPJShop včetně CZ, SK a obou prodejen.' },
+        cz: { label: 'CZ e-shop', accent: 'Jen objednávky klasifikované jako CZ e-shop.' },
+        sk: { label: 'SK e-shop', accent: 'Jen objednávky klasifikované jako SK e-shop.' },
+        ltm: { label: 'Prodejna Litoměřice', accent: 'Jen objednávky z pokladny Litoměřice.' },
+        mecin: { label: 'Prodejna Měčín', accent: 'Jen objednávky z pokladny Měčín.' },
+      };
+
+      function syncViewButtons() {
+        viewButtons.forEach(button => button.classList.toggle('active', button.dataset.view === activeView));
+      }
+
+      function getViewData(view) {
+        if (view === 'complete') return complete;
+        return (complete.byView || {})[view] || {
+          orders: 0,
+          revenueWithVat: 0,
+          averageOrderValue: 0,
+          cancelledOrders: 0,
+          problematicOrders: 0,
+          statuses: [],
+          paymentMethods: [],
+          deliveryMethods: [],
+          topProductsByUnits: [],
+          topProductsByRevenue: [],
+          soldProductCodes: [],
+        };
+      }
+
+      function renderView(view) {
+        activeView = view;
+        syncViewButtons();
+        const eshop = getViewData(view);
+        const viewMeta = viewDefs[view] || viewDefs.complete;
+
+        viewSummary.textContent = `${viewMeta.label}: ${DP.fmtNumber(eshop.orders || 0)} objednávek, obrat ${DP.fmtNumber(Math.round(eshop.revenueWithVat || 0))} Kč, AOV ${DP.fmtNumber(Math.round(eshop.averageOrderValue || 0))} Kč. ${viewMeta.accent}`;
+
+        const hero = [
+          ['Objednávky včera', DP.fmtNumber(eshop.orders || 0), `${DP.fmtNumber(eshop.problematicOrders || 0)} problematické`, 'accent'],
+          ['Obrat s DPH', `${DP.fmtNumber(Math.round(eshop.revenueWithVat || 0))} Kč`, `${DP.fmtNumber(Math.round(eshop.averageOrderValue || 0))} Kč / objednávka`, ''],
+          ['Nejčastější doprava', eshop.deliveryMethods?.[0]?.name || '–', `${DP.fmtNumber(eshop.deliveryMethods?.[0]?.count || 0)} objednávek`, '']
+        ];
+        document.getElementById('eshop-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
+          <div class="ux-hero-metric ${klass}">
+            <div class="label">${label}</div>
+            <div class="value">${value}</div>
+            <div class="sub">${sub}</div>
+          </div>
+        `).join('');
+
+        document.getElementById('eshop-focus').innerHTML = [
+          [`Včerejší výkon: ${DP.fmtNumber(eshop.orders || 0)} objednávek`, `Obrat ${DP.fmtNumber(Math.round(eshop.revenueWithVat || 0))} Kč, AOV ${DP.fmtNumber(Math.round(eshop.averageOrderValue || 0))} Kč.`],
+          [`Storna a problémy`, `${DP.fmtNumber(eshop.cancelledOrders || 0)} stornovaných a ${DP.fmtNumber(eshop.problematicOrders || 0)} problematických objednávek.`],
+          [eshop.topProductsByUnits?.[0] ? `Nejprodávanější kusově: ${eshop.topProductsByUnits[0].label}` : 'Nejprodávanější produkt zatím není', eshop.topProductsByUnits?.[0] ? `${eshop.topProductsByUnits[0].formatted || eshop.topProductsByUnits[0].value}` : 'Bez dat.']
+        ].map(([title, text], index) => `
+          <div class="ux-item">
+            <span class="ux-dot ${index === 1 ? '' : index === 2 ? 'gold' : 'blue'}"></span>
+            <div>
+              <strong>${title}</strong>
+              <span>${text}</span>
+            </div>
+          </div>
+        `).join('');
+
+        document.getElementById('eshop-stat-list').innerHTML = [
+          ['Období', formatDateRange(report.window)],
+          ['Pohled', viewMeta.label],
+          ['Objednávky', DP.fmtNumber(eshop.orders || 0)],
+          ['Obrat', `${DP.fmtNumber(Math.round(eshop.revenueWithVat || 0))} Kč`],
+          ['AOV', `${DP.fmtNumber(Math.round(eshop.averageOrderValue || 0))} Kč`],
+          ['Nejčastější platba', eshop.paymentMethods?.[0]?.name || '–'],
+        ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+        document.getElementById('wpj-kpis').innerHTML = [
+          ['Objednávky včera', DP.fmtNumber(eshop.orders || 0), `${DP.fmtNumber(eshop.problematicOrders || 0)} problematické`, 'green'],
+          ['Obrat s DPH', `${DP.fmtNumber(Math.round(eshop.revenueWithVat || 0))} Kč`, `${DP.fmtNumber(Math.round(eshop.averageOrderValue || 0))} Kč / objednávka`, 'blue'],
+          ['Nejčastější platba', eshop.paymentMethods?.[0]?.name || '–', `${DP.fmtNumber(eshop.paymentMethods?.[0]?.count || 0)} objednávek`, 'gold'],
+          ['Nejčastější doprava', eshop.deliveryMethods?.[0]?.name || '–', `${DP.fmtNumber(eshop.deliveryMethods?.[0]?.count || 0)} objednávek`, 'red']
+        ].map(([label, value, sub, klass]) => `
+          <div class="card kpi-card ${klass}">
+            <div class="kpi-label">${label}</div>
+            <div class="kpi-value">${value}</div>
+            <div class="kpi-sub">${sub}</div>
+          </div>
+        `).join('');
+
+        renderRows('payments-table', (eshop.paymentMethods || []).slice(0, 8), row => DP.fmtNumber(row.count));
+        renderRows('deliveries-table', (eshop.deliveryMethods || []).slice(0, 8), row => DP.fmtNumber(row.count));
+        renderRows('units-table', eshop.topProductsByUnits || [], row => row.formatted || DP.fmtNumber(row.value));
+        renderRows('revenue-table', eshop.topProductsByRevenue || [], row => row.formatted || `${DP.fmtNumber(row.value)} Kč`);
+      }
 
       document.getElementById('wpj-state').textContent = summary.wpJ.ready ? 'WPJ připojeno' : 'WPJ není připojeno';
       document.getElementById('wpj-message').textContent = summary.wpJ.message;
-
-      const hero = [
-        ['Objednávky včera', DP.fmtNumber(eshop.orders), `${eshop.problematicOrders} problematické`, 'accent'],
-        ['Obrat s DPH', `${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč`, `${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč / objednávka`, ''],
-        ['Nejčastější doprava', eshop.deliveryMethods[0]?.name || '–', `${DP.fmtNumber(eshop.deliveryMethods[0]?.count || 0)} objednávek`, '']
-      ];
-      document.getElementById('eshop-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
-        <div class="ux-hero-metric ${klass}">
-          <div class="label">${label}</div>
-          <div class="value">${value}</div>
-          <div class="sub">${sub}</div>
-        </div>
-      `).join('');
-
-      document.getElementById('eshop-focus').innerHTML = [
-        [`Včerejší výkon: ${DP.fmtNumber(eshop.orders)} objednávek`, `Obrat ${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč, AOV ${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč.`],
-        [`Storna a problémy`, `${eshop.cancelledOrders} stornovaných a ${eshop.problematicOrders} problematických objednávek.`],
-        [eshop.topProductsByUnits[0] ? `Nejprodávanější kusově: ${eshop.topProductsByUnits[0].label}` : 'Nejprodávanější produkt zatím není', eshop.topProductsByUnits[0] ? `${eshop.topProductsByUnits[0].formatted || eshop.topProductsByUnits[0].value}` : 'Bez dat.']
-      ].map(([title, text], index) => `
-        <div class="ux-item">
-          <span class="ux-dot ${index === 1 ? '' : index === 2 ? 'gold' : 'blue'}"></span>
-          <div>
-            <strong>${title}</strong>
-            <span>${text}</span>
-          </div>
-        </div>
-      `).join('');
-
-      document.getElementById('eshop-stat-list').innerHTML = [
-        ['Období', formatDateRange(report.window)],
-        ['Objednávky', DP.fmtNumber(eshop.orders)],
-        ['Obrat', `${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč`],
-        ['AOV', `${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč`],
-        ['Nejčastější platba', eshop.paymentMethods[0]?.name || '–'],
-      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
-
-      document.getElementById('wpj-kpis').innerHTML = [
-        ['Objednávky včera', DP.fmtNumber(eshop.orders), `${eshop.problematicOrders} problematické`, 'green'],
-        ['Obrat s DPH', `${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč`, `${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč / objednávka`, 'blue'],
-        ['Nejčastější platba', eshop.paymentMethods[0]?.name || '–', `${DP.fmtNumber(eshop.paymentMethods[0]?.count || 0)} objednávek`, 'gold'],
-        ['Nejčastější doprava', eshop.deliveryMethods[0]?.name || '–', `${DP.fmtNumber(eshop.deliveryMethods[0]?.count || 0)} objednávek`, 'red']
-      ].map(([label, value, sub, klass]) => `
-        <div class="card kpi-card ${klass}">
-          <div class="kpi-label">${label}</div>
-          <div class="kpi-value">${value}</div>
-          <div class="kpi-sub">${sub}</div>
-        </div>
-      `).join('');
-
-      renderRows('payments-table', eshop.paymentMethods.slice(0, 8), row => DP.fmtNumber(row.count));
-      renderRows('deliveries-table', eshop.deliveryMethods.slice(0, 8), row => DP.fmtNumber(row.count));
-      renderRows('units-table', eshop.topProductsByUnits, row => row.formatted || DP.fmtNumber(row.value));
-      renderRows('revenue-table', eshop.topProductsByRevenue, row => row.formatted || `${DP.fmtNumber(row.value)} Kč`);
       document.getElementById('report-preview').textContent = text;
+
+      viewButtons.forEach(button => button.addEventListener('click', () => renderView(button.dataset.view)));
+      renderView(activeView);
     })().catch(err => {
       document.getElementById('wpj-message').textContent = `Nepodařilo se načíst WPJ report: ${err.message}`;
     });
