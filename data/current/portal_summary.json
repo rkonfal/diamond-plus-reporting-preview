@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T11:43:06.175913+02:00",
+  "generatedAt": "2026-04-17T12:24:04.168847+02:00",
   "config": {
     "warehouseCode": "CZPRGA",
     "outboundMaxPages": 20,
@@ -14,8 +14,8 @@
       "label": "CZ",
       "inventory": {
         "items": 768,
-        "availableStockTotal": 307409,
-        "pendingStockTotal": 3022,
+        "availableStockTotal": 307204,
+        "pendingStockTotal": 1751,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -23,8 +23,8 @@
         "items": 500,
         "scannedPages": 5,
         "topLogisticsProduct": "F1401",
-        "oldestTimestamp": "2026-04-15T21:30:05+02:00",
-        "newestTimestamp": "2026-04-17T11:40:05+02:00"
+        "oldestTimestamp": "2026-04-15T21:55:03+02:00",
+        "newestTimestamp": "2026-04-17T12:20:01+02:00"
       }
     },
     "sk": {
@@ -32,7 +32,7 @@
       "inventory": {
         "items": 621,
         "availableStockTotal": 70732,
-        "pendingStockTotal": 365,
+        "pendingStockTotal": 137,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -85,44 +85,34 @@
   },
   "finance": {
     "ready": true,
-    "mode": "mixed_live_legacy",
-    "message": "Závazky z přijatých faktur jsou tahány živě z ABRA API. Měsíční P&L zatím zůstává na legacy snapshotu.",
+    "mode": "live_report",
+    "message": "Měsíční finance se tahají přímo z ABRA reportu Výkaz hospodaření za měsíc za všechna střediska. Cash a závazky jsou také live z ABRA API.",
     "currentMonth": {
-      "label": "3/2026",
-      "revenue": 16130000,
-      "cogsAndFees": 11566057.87,
-      "logistics": 100848.43,
-      "marketing": 245438.02,
-      "opex": 1019389.35,
+      "label": "4/2026",
+      "revenue": 7846669.47,
+      "cogsAndFees": 5678333.59,
+      "logistics": 37815.04,
+      "marketing": 257841.46,
+      "opex": 229570.59,
       "depreciation": 385502.0,
-      "other": -1175388.08,
-      "grossMargin": 4563942.13,
-      "afterLogistics": 4463093.7,
-      "afterMarketing": 4217655.68,
-      "operatingMargin": 3198266.33,
-      "ebit": 2812764.33,
-      "profit": 1637376.25,
-      "grossMarginPct": 28.3,
-      "marketingPct": 1.5,
-      "logisticsPct": 0.6,
-      "operatingMarginPct": 19.8,
-      "profitPct": 10.2
+      "other": -5329.83,
+      "grossMargin": 2168335.88,
+      "afterLogistics": 2130520.84,
+      "afterMarketing": 1872679.38,
+      "operatingMargin": 1643108.79,
+      "ebit": 1257606.79,
+      "profit": 1252276.96,
+      "grossMarginPct": 27.6,
+      "marketingPct": 3.3,
+      "logisticsPct": 0.5,
+      "operatingMarginPct": 20.9,
+      "profitPct": 16.0
     },
     "cash": {
-      "cashOnAccounts": 10255308.0,
-      "unpaidInvoices": 6123421.87,
-      "netCashPosition": 8675748.0,
-      "overdueInvoicesCount": 1,
-      "overdueInvoicesAmount": 3242928.73,
+      "unpaidInvoices": 2880493.14,
+      "overdueInvoicesCount": 0,
+      "overdueInvoicesAmount": 0.0,
       "largestPayables": [
-        {
-          "code": "PF0349/2026",
-          "vendor": "\"ASTI GROUP\" SIA",
-          "dueDate": "20.03.2026",
-          "amountTotal": 3242928.73,
-          "amountDue": 3242928.73,
-          "status": "28 dní PO SPLATNOSTI"
-        },
         {
           "code": "PF0461/2026",
           "vendor": "ISTA CORPORATION s.r.o.",
@@ -178,25 +168,34 @@
           "amountTotal": 27981.25,
           "amountDue": 27981.25,
           "status": "13 dní do splatnosti"
+        },
+        {
+          "code": "PF0459/2026",
+          "vendor": "ISTA CORPORATION s.r.o.",
+          "dueDate": "20.04.2026",
+          "amountTotal": 23539.38,
+          "amountDue": 23539.38,
+          "status": "3 dní do splatnosti"
         }
       ]
+    },
+    "reportExport": {
+      "status": "live",
+      "message": "Report Výkaz hospodaření za měsíc se tahá přímo z ABRA report endpointu."
     }
   },
   "marketing": {
     "ready": true,
-    "mode": "legacy_snapshot",
-    "message": "Zatím čerpáno z posledního dostupného ABRA Flexi výřezu v původním dashboardu, ne z živého API.",
+    "mode": "live_report",
+    "message": "Marketing se skládá z live ABRA reportu a aktuálních položek z účetního deníku.",
     "currentMonth": {
-      "label": "3/2026",
-      "performanceSpend": 7438.02,
-      "brandSpend": 238000.0,
-      "totalSpend": 245438.02,
-      "revenue": 16130000,
-      "spendShareOfRevenuePct": 1.5
+      "label": "4/2026",
+      "performanceSpend": 6957.68,
+      "brandSpend": 250883.78,
+      "totalSpend": 257841.46,
+      "revenue": 7846669.47,
+      "spendShareOfRevenuePct": 3.3
     },
-    "topSupplier": {
-      "name": "Selfcareacademy s.r.o.",
-      "amount": 155355.37
-    }
+    "topSupplier": null
   }
 }

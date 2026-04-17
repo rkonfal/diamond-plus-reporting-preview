@@ -1,158 +1,126 @@
 {
-  "generatedAt": "2026-04-17T11:43:06.175913+02:00",
+  "generatedAt": "2026-04-17T12:24:04.168847+02:00",
   "source": {
-    "status": "mixed_live_legacy",
-    "message": "Závazky z přijatých faktur jsou tahány živě z ABRA API. Měsíční P&L zatím zůstává na legacy snapshotu."
+    "status": "live_report",
+    "message": "Měsíční finance se tahají přímo z ABRA reportu Výkaz hospodaření za měsíc za všechna střediska. Cash a závazky jsou také live z ABRA API."
   },
   "months": [
-    "∅ 2025",
-    "1/2026",
     "2/2026",
-    "3/2026"
+    "3/2026",
+    "4/2026"
   ],
   "monthly": [
     {
-      "label": "∅ 2025",
-      "revenue": 15628499.3,
-      "cogsAndFees": 11121922.1,
-      "logistics": 1336665.09,
-      "marketing": 606327.81,
-      "opex": 1958953.03,
-      "depreciation": 474462.93,
-      "other": 240670.0,
-      "grossMargin": 4506577.2,
-      "afterLogistics": 3169912.11,
-      "afterMarketing": 2563584.3,
-      "operatingMargin": 604631.27,
-      "ebit": 130168.34,
-      "profit": 370838.34,
-      "grossMarginPct": 28.8,
-      "marketingPct": 3.9,
-      "logisticsPct": 8.6,
-      "operatingMarginPct": 3.9,
-      "profitPct": 2.4
-    },
-    {
-      "label": "1/2026",
-      "revenue": 14498634,
-      "cogsAndFees": 9626190,
-      "logistics": 1144479,
-      "marketing": 682556,
-      "opex": 2158096.55,
-      "depreciation": 383046,
-      "other": 113851,
-      "grossMargin": 4872444,
-      "afterLogistics": 3727965,
-      "afterMarketing": 3045409,
-      "operatingMargin": 887312.45,
-      "ebit": 504266.45,
-      "profit": 618117.45,
-      "grossMarginPct": 33.6,
-      "marketingPct": 4.7,
-      "logisticsPct": 7.9,
-      "operatingMarginPct": 6.1,
-      "profitPct": 4.3
-    },
-    {
       "label": "2/2026",
-      "revenue": 13602558,
-      "cogsAndFees": 9398910,
-      "logistics": 1102853,
-      "marketing": 911050,
-      "opex": 2102171.8,
-      "depreciation": 385502,
-      "other": 220487,
-      "grossMargin": 4203648,
-      "afterLogistics": 3100795,
-      "afterMarketing": 2189745,
-      "operatingMargin": 87573.2,
-      "ebit": -297928.8,
-      "profit": -77441.8,
-      "grossMarginPct": 30.9,
-      "marketingPct": 6.7,
-      "logisticsPct": 8.1,
-      "operatingMarginPct": 0.6,
-      "profitPct": -0.6
+      "revenue": 13766684.32,
+      "cogsAndFees": 9709097.69,
+      "logistics": 1102853.08,
+      "marketing": 911050.12,
+      "opex": 1949741.77,
+      "depreciation": 385502.0,
+      "other": 56476.2,
+      "grossMargin": 4057586.63,
+      "afterLogistics": 2954733.55,
+      "afterMarketing": 2043683.43,
+      "operatingMargin": 93941.66,
+      "ebit": -291560.34,
+      "profit": -235084.14,
+      "grossMarginPct": 29.5,
+      "marketingPct": 6.6,
+      "logisticsPct": 8.0,
+      "operatingMarginPct": 0.7,
+      "profitPct": -1.7
     },
     {
       "label": "3/2026",
-      "revenue": 16130000,
-      "cogsAndFees": 11566057.87,
-      "logistics": 100848.43,
-      "marketing": 245438.02,
-      "opex": 1019389.35,
+      "revenue": 16313034.11,
+      "cogsAndFees": 11047833.53,
+      "logistics": 1255165.15,
+      "marketing": 724066.69,
+      "opex": 2145142.56,
       "depreciation": 385502.0,
-      "other": -1175388.08,
-      "grossMargin": 4563942.13,
-      "afterLogistics": 4463093.7,
-      "afterMarketing": 4217655.68,
-      "operatingMargin": 3198266.33,
-      "ebit": 2812764.33,
-      "profit": 1637376.25,
-      "grossMarginPct": 28.3,
-      "marketingPct": 1.5,
-      "logisticsPct": 0.6,
-      "operatingMarginPct": 19.8,
-      "profitPct": 10.2
+      "other": -104856.64,
+      "grossMargin": 5265200.58,
+      "afterLogistics": 4010035.43,
+      "afterMarketing": 3285968.74,
+      "operatingMargin": 1140826.18,
+      "ebit": 755324.18,
+      "profit": 650467.54,
+      "grossMarginPct": 32.3,
+      "marketingPct": 4.4,
+      "logisticsPct": 7.7,
+      "operatingMarginPct": 7.0,
+      "profitPct": 4.0
+    },
+    {
+      "label": "4/2026",
+      "revenue": 7846669.47,
+      "cogsAndFees": 5678333.59,
+      "logistics": 37815.04,
+      "marketing": 257841.46,
+      "opex": 229570.59,
+      "depreciation": 385502.0,
+      "other": -5329.83,
+      "grossMargin": 2168335.88,
+      "afterLogistics": 2130520.84,
+      "afterMarketing": 1872679.38,
+      "operatingMargin": 1643108.79,
+      "ebit": 1257606.79,
+      "profit": 1252276.96,
+      "grossMarginPct": 27.6,
+      "marketingPct": 3.3,
+      "logisticsPct": 0.5,
+      "operatingMarginPct": 20.9,
+      "profitPct": 16.0
     }
   ],
   "currentMonth": {
-    "label": "3/2026",
-    "revenue": 16130000,
-    "cogsAndFees": 11566057.87,
-    "logistics": 100848.43,
-    "marketing": 245438.02,
-    "opex": 1019389.35,
+    "label": "4/2026",
+    "revenue": 7846669.47,
+    "cogsAndFees": 5678333.59,
+    "logistics": 37815.04,
+    "marketing": 257841.46,
+    "opex": 229570.59,
     "depreciation": 385502.0,
-    "other": -1175388.08,
-    "grossMargin": 4563942.13,
-    "afterLogistics": 4463093.7,
-    "afterMarketing": 4217655.68,
-    "operatingMargin": 3198266.33,
-    "ebit": 2812764.33,
-    "profit": 1637376.25,
-    "grossMarginPct": 28.3,
-    "marketingPct": 1.5,
-    "logisticsPct": 0.6,
-    "operatingMarginPct": 19.8,
-    "profitPct": 10.2
+    "other": -5329.83,
+    "grossMargin": 2168335.88,
+    "afterLogistics": 2130520.84,
+    "afterMarketing": 1872679.38,
+    "operatingMargin": 1643108.79,
+    "ebit": 1257606.79,
+    "profit": 1252276.96,
+    "grossMarginPct": 27.6,
+    "marketingPct": 3.3,
+    "logisticsPct": 0.5,
+    "operatingMarginPct": 20.9,
+    "profitPct": 16.0
   },
   "previousMonth": {
-    "label": "2/2026",
-    "revenue": 13602558,
-    "cogsAndFees": 9398910,
-    "logistics": 1102853,
-    "marketing": 911050,
-    "opex": 2102171.8,
-    "depreciation": 385502,
-    "other": 220487,
-    "grossMargin": 4203648,
-    "afterLogistics": 3100795,
-    "afterMarketing": 2189745,
-    "operatingMargin": 87573.2,
-    "ebit": -297928.8,
-    "profit": -77441.8,
-    "grossMarginPct": 30.9,
-    "marketingPct": 6.7,
-    "logisticsPct": 8.1,
-    "operatingMarginPct": 0.6,
-    "profitPct": -0.6
+    "label": "3/2026",
+    "revenue": 16313034.11,
+    "cogsAndFees": 11047833.53,
+    "logistics": 1255165.15,
+    "marketing": 724066.69,
+    "opex": 2145142.56,
+    "depreciation": 385502.0,
+    "other": -104856.64,
+    "grossMargin": 5265200.58,
+    "afterLogistics": 4010035.43,
+    "afterMarketing": 3285968.74,
+    "operatingMargin": 1140826.18,
+    "ebit": 755324.18,
+    "profit": 650467.54,
+    "grossMarginPct": 32.3,
+    "marketingPct": 4.4,
+    "logisticsPct": 7.7,
+    "operatingMarginPct": 7.0,
+    "profitPct": 4.0
   },
   "cash": {
-    "cashOnAccounts": 10255308.0,
-    "unpaidInvoices": 6123421.87,
-    "netCashPosition": 8675748.0,
-    "overdueInvoicesCount": 1,
-    "overdueInvoicesAmount": 3242928.73,
+    "unpaidInvoices": 2880493.14,
+    "overdueInvoicesCount": 0,
+    "overdueInvoicesAmount": 0.0,
     "largestPayables": [
-      {
-        "code": "PF0349/2026",
-        "vendor": "\"ASTI GROUP\" SIA",
-        "dueDate": "20.03.2026",
-        "amountTotal": 3242928.73,
-        "amountDue": 3242928.73,
-        "status": "28 dní PO SPLATNOSTI"
-      },
       {
         "code": "PF0461/2026",
         "vendor": "ISTA CORPORATION s.r.o.",
@@ -208,6 +176,14 @@
         "amountTotal": 27981.25,
         "amountDue": 27981.25,
         "status": "13 dní do splatnosti"
+      },
+      {
+        "code": "PF0459/2026",
+        "vendor": "ISTA CORPORATION s.r.o.",
+        "dueDate": "20.04.2026",
+        "amountTotal": 23539.38,
+        "amountDue": 23539.38,
+        "status": "3 dní do splatnosti"
       }
     ]
   },
@@ -398,7 +374,8 @@
             "counterLabel": "Závazky z obchodních vztahů",
             "description": "vozidlo oprava",
             "vendor": "NC AUTO, s.r.o.",
-            "module": "Faktury přijaté"
+            "module": "Faktury přijaté",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -413,7 +390,8 @@
             "counterLabel": "Ostatní pohledávky",
             "description": "výše pojistného plnění - (doplatit  DPH)",
             "vendor": "Generali Česká pojišťovna a.s.",
-            "module": "Pohledávky"
+            "module": "Pohledávky",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -428,7 +406,8 @@
             "counterLabel": "Závazky z obchodních vztahů",
             "description": "RZ sáček LDPE 80 x 120 mm (100 ks/",
             "vendor": "OBALY.CZ, s.r.o.",
-            "module": "Faktury přijaté"
+            "module": "Faktury přijaté",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -443,7 +422,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Merry Lynch",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -458,7 +438,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Iva Janečková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -473,7 +454,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Langerová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "TERAPIE: Terapie"
           },
           {
             "month": "2/2026",
@@ -488,7 +470,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Renata Buštová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -503,7 +486,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marie Prokopová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -518,7 +502,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lucie Pukačová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -533,7 +518,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Zora Kabaštová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -548,7 +534,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Netoličková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -563,7 +550,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Alena Neumannová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -578,7 +566,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jitka Zbudilová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -593,7 +582,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Majcherová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "TERAPIE: Terapie"
           },
           {
             "month": "2/2026",
@@ -608,7 +598,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Miluše Ponikelská",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -623,7 +614,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Věra Brojarová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -638,7 +630,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Marková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -653,7 +646,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Eva Houdková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -668,7 +662,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Veronika Sedláková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -683,7 +678,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Diana Lichnovská",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -698,7 +694,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marie Kučerová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -713,7 +710,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Iveta Vyskotová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -728,7 +726,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Iveta Chalupová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -743,7 +742,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marková Ladislava",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -758,7 +758,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Vyoralová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -773,7 +774,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Zdeňka Šmídová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -788,7 +790,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Olga Kalová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -803,7 +806,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marcela Kovářová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -818,7 +822,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Stanislava Fialová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -833,7 +838,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Maloobchodní prodej",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "TERAPIE: Terapie"
           },
           {
             "month": "2/2026",
@@ -848,7 +854,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marie Kašparová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -863,7 +870,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Pavel Zeman",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -878,7 +886,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Renata Mačková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -893,7 +902,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ivana Chytilová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -908,7 +918,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "NIKOLA MIKESKOVÁ",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -923,7 +934,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Dana Tryznová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -938,7 +950,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Nikola Nováková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -953,7 +966,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Gabriela Lillingova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -968,7 +982,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Ingrid Juricová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -983,7 +998,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Vendula Zpěváková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -998,7 +1014,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Dvořáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1013,7 +1030,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Lišková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1028,7 +1046,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Pavlína Richterová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1043,7 +1062,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Monika Dolečková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1058,7 +1078,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jitka Boháčová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1073,7 +1094,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Alena Červinková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1088,7 +1110,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Pavla Plášilová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1103,7 +1126,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ivana Kahankova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1118,7 +1142,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kateřina Petránková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1133,7 +1158,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Petra Demková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1148,7 +1174,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Markéta Šurovská",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1163,7 +1190,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Helena Urbánková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1178,7 +1206,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Miroslava Kostková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1193,7 +1222,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lada Hajzlerová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1208,7 +1238,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "SK Polar",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1223,7 +1254,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Eva Žůrková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1238,7 +1270,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Adela Blazkova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1253,7 +1286,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kamila Hodacova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1268,7 +1302,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Erika Semančíková Prekopová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1283,7 +1318,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Veronika Holanová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1298,7 +1334,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Barbora Malíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1313,7 +1350,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ladislava Vaňková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1328,7 +1366,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Lucia Kováčová - Kozmetika Lucia",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1343,7 +1382,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jiřina Šarmanová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1358,7 +1398,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Žaneta Škrabánková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1373,7 +1414,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Maloobchodní prodej",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "TERAPIE: Terapie"
           },
           {
             "month": "2/2026",
@@ -1388,7 +1430,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Romana Digrínová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1403,7 +1446,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Miroslava Zahálková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1418,7 +1462,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ilona Chládková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1433,7 +1478,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Čtvrtečková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1448,7 +1494,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Eva Šedivá",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1463,7 +1510,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kateřina Čtvrtková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1478,7 +1526,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Weisová Valéria",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1493,7 +1542,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Magda Kolouchová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1508,7 +1558,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ludmila Svobodová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1523,7 +1574,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lucie Chalupová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1538,7 +1590,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Naděžda Palová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1553,7 +1606,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Michaela Neumanová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1568,7 +1622,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jitka Martinková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1583,7 +1638,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Daniela Vajdáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1598,7 +1654,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Romana Slezáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1613,7 +1670,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Alžbeta Kuiková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1628,7 +1686,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Hajná",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1643,7 +1702,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Martina Koksová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1658,7 +1718,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Michaela Neumanová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1673,7 +1734,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marcela Dvořáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1688,7 +1750,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Richardová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1703,7 +1766,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Formáčková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1718,7 +1782,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Arazimová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1733,7 +1798,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Eva Klenková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1748,7 +1814,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Prokopová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1763,7 +1830,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lednická Lenka",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1778,7 +1846,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jaroslava Zieglerová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1793,7 +1862,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jaroslava Siváková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1808,7 +1878,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marcela Lebedová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1823,7 +1894,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Kristína Cimbáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1838,7 +1910,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Škodová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1853,7 +1926,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Renata Maříková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1868,7 +1942,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Helena Hučíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1883,7 +1958,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Michaela Kubátová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1898,7 +1974,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kateřina Vokurková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1913,7 +1990,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Iveta Blažková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1928,7 +2006,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Alice Heľová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1943,7 +2022,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lea Jelínková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1958,7 +2038,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Majcherová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "TERAPIE: Terapie"
           },
           {
             "month": "2/2026",
@@ -1973,7 +2054,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Polanská",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -1988,7 +2070,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Lukrécia Hatoková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -2003,7 +2086,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Michaela Gazdová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -2018,7 +2102,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Prsova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "TERAPIE: Terapie"
           },
           {
             "month": "2/2026",
@@ -2033,7 +2118,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Langerová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "TERAPIE: Terapie"
           },
           {
             "month": "2/2026",
@@ -2048,7 +2134,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Maloobchodní prodej",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "TERAPIE: Terapie"
           },
           {
             "month": "2/2026",
@@ -2063,7 +2150,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Maloobchodní prodej",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "TERAPIE: Terapie"
           },
           {
             "month": "2/2026",
@@ -2078,7 +2166,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jitka Dvořáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -2093,7 +2182,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Alena Kadavá",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -2108,7 +2198,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Vladimíra Veselá",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -2123,7 +2214,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marcela Lebedová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -2138,7 +2230,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Alena Ohnhäuserová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -2153,7 +2246,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Wandlová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -2168,7 +2262,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Zdeňka Perknerová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "2/2026",
@@ -2183,7 +2278,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Valentová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           }
         ]
       },
@@ -2368,7 +2464,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Nikola Schwormová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2383,7 +2480,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Caldeira a  Marques, Lda",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2398,7 +2496,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Romana Studená",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2413,7 +2512,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Milena Jirkalová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2428,7 +2528,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Anna Sušinová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2443,7 +2544,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marcela Šperlová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2458,7 +2560,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Eva Fendrichová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2473,7 +2576,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Iveta Čákovská",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2488,7 +2592,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marcela Šperlová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2503,7 +2608,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Dáša Turicikova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2518,7 +2624,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Miloslava Mrštná",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2533,7 +2640,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Martina Helmichová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2548,7 +2656,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kamila Kschwendová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2563,7 +2672,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Alena Kratochvílová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2578,7 +2688,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Zdeňka Krejčová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2593,7 +2704,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kamila Škardová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2608,7 +2720,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Cvrčková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2623,7 +2736,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ivana Poláčková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2638,7 +2752,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Vendula Svobodová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2653,7 +2768,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Anna Guľašova Nemethová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2668,7 +2784,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Pažoutová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2683,7 +2800,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Lopatová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2698,7 +2816,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Monika Orosova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2713,7 +2832,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Čtvrtečková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2728,7 +2848,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Jarolímová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2743,7 +2864,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kateřina Máchalová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2758,7 +2880,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Jandová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2773,7 +2896,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Karolína Musilová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2788,7 +2912,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Zuzana Orságová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2803,7 +2928,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Zdena Kaščáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2818,7 +2944,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Alice Stránská",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2833,7 +2960,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Michaela Kozlovská",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2848,7 +2976,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Veronika Langrová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2863,7 +2992,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kateřina Galiová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2878,7 +3008,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Iveta Dvořáčková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2893,7 +3024,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Romana Podsedková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2908,7 +3040,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jarmila Dvořáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2923,7 +3056,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lucie Novotná",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2938,7 +3072,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Nikola Hofmanová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2953,7 +3088,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Šárka Frenclová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2968,7 +3104,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jaroslava Pipotova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2983,7 +3120,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Šubrová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -2998,7 +3136,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Romana Fialová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3013,7 +3152,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Češková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3028,7 +3168,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jitka Pelantová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3043,7 +3184,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jaroslava Boudná",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3058,7 +3200,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ivana Řehořová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3073,7 +3216,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jitka Prokipčáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3088,7 +3232,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Michaela Kasardová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3103,7 +3248,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Šárka Frenclová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3118,7 +3264,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ivona Kovářová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3133,7 +3280,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Jarolímová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3148,7 +3296,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Luběna Svobodová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3163,7 +3312,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kateřina Urbanová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3178,7 +3328,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Barbora Kmentová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3193,7 +3344,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Veronika Sladká",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3208,7 +3360,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Dagmar Krajčírová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3223,7 +3376,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Jandová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3238,7 +3392,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Helena Kozáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3253,7 +3408,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Pavla Nábělková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3268,7 +3424,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Romana Trachtova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3283,7 +3440,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Helena SOBOTKOVÁ",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3298,7 +3456,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Anežka Parajková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3313,7 +3472,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Beata Vilhanová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3328,7 +3488,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Františka Kaiserová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3343,7 +3504,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Slávka Pavlová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3358,7 +3520,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lucie Hurtová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3373,7 +3536,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Martina Sedláková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3388,7 +3552,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Markéta Tupcová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3403,7 +3568,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Míla KLUSÁKOVÁ",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3418,7 +3584,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Martina Šimková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3433,7 +3600,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Nikol Tůmová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3448,7 +3616,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Luběna Svobodová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3463,7 +3632,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Jankovska",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3478,7 +3648,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Vitkovičová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3493,7 +3664,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Leona Čermáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3508,7 +3680,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marcela Mucková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3523,7 +3696,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Martina Čejpová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3538,7 +3712,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Martina Kališová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3553,7 +3728,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Šubrová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3568,7 +3744,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Cahynová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3583,7 +3760,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Gabriela Havlíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3598,7 +3776,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Radka Bělohradská",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3613,7 +3792,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Štěpánka Mašková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3628,7 +3808,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Zuzana Králová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3643,7 +3824,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Gabriela Zelinková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3658,7 +3840,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Naďa Ubrankovičová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3673,7 +3856,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jiřina Okénková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3688,7 +3872,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Nikol Mecová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3703,7 +3888,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Vlčková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3718,7 +3904,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Adéla Stehlíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3733,7 +3920,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Miroslava Čapková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3748,7 +3936,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Houšťková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3763,7 +3952,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Markéta Bejdáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3778,7 +3968,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Michaela Vejnarová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3793,7 +3984,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Klára Jarošová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3808,7 +4000,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Husárová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3823,7 +4016,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "tomas cibulka",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3838,7 +4032,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lucie Andrlíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3853,7 +4048,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Iveta Dvořáčková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3868,7 +4064,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Květa Páralová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3883,7 +4080,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržba za prodané zboží v režimu OSS",
             "vendor": "Mária Galovičová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3898,7 +4096,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Gabriela Šenková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3913,7 +4112,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Zuzana Orságová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3928,7 +4128,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Grimová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3943,7 +4144,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Martina Šťastná",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3958,7 +4160,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jaroslava Pipotova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3973,7 +4176,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Miloslava Mrštná",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -3988,7 +4192,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Romana Studená",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -4003,7 +4208,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Milena Jirkalová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -4018,7 +4224,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Dáša Turicikova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -4033,7 +4240,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Martina Helmichová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -4048,7 +4256,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ivana Popová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -4063,7 +4272,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Monika Orosova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -4078,7 +4288,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Vlčková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -4093,7 +4304,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Radka Plochová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -4108,7 +4320,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marie Vybíralová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -4123,7 +4336,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Věra Šindelářová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -4138,7 +4352,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Miloslava Koťátková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "3/2026",
@@ -4153,7 +4368,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Hanzlíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           }
         ]
       },
@@ -4338,7 +4554,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Plisková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4353,7 +4570,8 @@
             "counterLabel": "Ostatní závazky",
             "description": "pojistné",
             "vendor": "BMW Financial Services Czech Republic s.r.o.",
-            "module": "Závazky"
+            "module": "Závazky",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4368,7 +4586,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "OC KVARTET s.r.o.",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4383,7 +4602,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Veronika Haviarová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4398,7 +4618,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Radka Staňková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4413,7 +4634,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Onaková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4428,7 +4650,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Markéta Šulová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4443,7 +4666,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Šárka Lumerdingová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4458,7 +4682,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lucie Malíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4473,7 +4698,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Martina Prchalová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4488,7 +4714,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Renata Karvánková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4503,7 +4730,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Hajná",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4518,7 +4746,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Vendula Zpěváková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4533,7 +4762,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ilona Dohnalová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4548,7 +4778,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Gabriela Smolakova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4563,7 +4794,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Zajíčková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4578,7 +4810,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Veronika Kučerová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4593,7 +4826,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Monika Černá",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4608,7 +4842,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Zbončáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4623,7 +4858,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Brosche",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4638,7 +4874,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marcela Jeriová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4653,7 +4890,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Radmila Frýdová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4668,7 +4906,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Vanda Bystřická",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4683,7 +4922,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Kratochvílová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4698,7 +4938,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lucie Sedmíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4713,7 +4954,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Bláhová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4728,7 +4970,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Alena Hellerová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4743,7 +4986,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Šmídová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4758,7 +5002,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kateřina Daňková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4773,7 +5018,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Pavla Brašničková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4788,7 +5034,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Marková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4803,7 +5050,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ing. Ivana",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4818,7 +5066,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Goubejová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4833,7 +5082,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hedvika Stolínová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4848,7 +5098,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Klára Hanáková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4863,7 +5114,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Simona Schebestiková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4878,7 +5130,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Nikola Jonákova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4893,7 +5146,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Pavla Humeňuková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4908,7 +5162,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jitka Komanová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4923,7 +5178,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Lukášková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4938,7 +5194,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Radka Čiklová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4953,7 +5210,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Veronika Kmochová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4968,7 +5226,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Miloslava Hroncová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4983,7 +5242,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Muchová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -4998,7 +5258,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Bohmová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5013,7 +5274,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Eva Sikorová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5028,7 +5290,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Bohuslava Škvárová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5043,7 +5306,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Prachařová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5058,7 +5322,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kateřina Sládková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5073,7 +5338,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Alena Kratochvílová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5088,7 +5354,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Simona Zajíčková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5103,7 +5370,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Tulachová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5118,7 +5386,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Renáta Poskierová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5133,7 +5402,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ivana Řehořová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5148,7 +5418,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Simona Zajíčková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5163,7 +5434,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Renata Vydržalová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5178,7 +5450,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lucie Váňová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5193,7 +5466,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Darina Jančálková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5208,7 +5482,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ilona Šnáblová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5223,7 +5498,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Tulachová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5238,7 +5514,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Květoslava Ševčíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5253,7 +5530,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "LUCIE JÍROVCOVÁ",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5268,7 +5546,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Bohumila Tichá",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5283,7 +5562,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Zuzana Buxbaum",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5298,7 +5578,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ivana Kůstová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5313,7 +5594,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Andrea Lafantová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5328,7 +5610,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Pavlína Macháčková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5343,7 +5626,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Vendula Novotná",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5358,7 +5642,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Pavla Krišandová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5373,7 +5658,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kateřina Brunclíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5388,7 +5674,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Malasková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5403,7 +5690,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Pavla Krišandová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5418,7 +5706,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Magdaléna Šamunová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5433,7 +5722,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Králová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5448,7 +5738,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Věra Čiháková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5463,7 +5754,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Němcová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5478,7 +5770,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Králová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5493,7 +5786,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Nataša Bumbálková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5508,7 +5802,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Renata Jančová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5523,7 +5818,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Edita Bohmanová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5538,7 +5834,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Alena Holečková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5553,7 +5850,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "ČSOB a.s.",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5568,7 +5866,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Taťána Krejčířová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5583,7 +5882,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Miluše Schubertová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5598,7 +5898,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Petra Malasková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5613,7 +5914,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Květoslava Ševčíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5628,7 +5930,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Ivana Kůstová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5643,7 +5946,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Romana Raisová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5658,7 +5962,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Zuzana Drhlíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5673,7 +5978,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kateřina Brunclíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5688,7 +5994,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "LUCIE JÍROVCOVÁ",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5703,7 +6010,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Černá",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5718,7 +6026,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Monika Opatová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5733,7 +6042,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Milena Holzerová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5748,7 +6058,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Tibor Kuczka",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5763,7 +6074,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Zdeňka Srbová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5778,7 +6090,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Zdenka Převorová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5793,7 +6106,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Pitelková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5808,7 +6122,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Vendula Zpěváková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5823,7 +6138,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "IDA TICHÁČKOVÁ",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5838,7 +6154,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Marie Moravčíková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5853,7 +6170,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Veronika Křížová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5868,7 +6186,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Kateřina Salačová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5883,7 +6202,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Eva Šachlová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5898,7 +6218,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Nora Dolezalova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5913,7 +6234,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Fišerová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5928,7 +6250,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Robert ŘÍHA",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5943,7 +6266,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Alena Kratochvílová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5958,7 +6282,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Renata Novotná",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5973,7 +6298,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Michala Galnorová",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -5988,7 +6314,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Jana Kolaříková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -6003,7 +6330,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Lenka Lichnovská",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -6018,7 +6346,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Hana Pitelková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -6033,7 +6362,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Monika Černá",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -6048,7 +6378,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Radka Nosková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -6063,7 +6394,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "MONIKA HRUBÁ",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -6078,7 +6410,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Gabriela Smolakova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -6093,7 +6426,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Tržby z prodeje zboží  2",
             "vendor": "Veronika Fousková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -6108,7 +6442,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Dobírkou - DPD doručení na adresu",
             "vendor": "Nora Dolezalova",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           },
           {
             "month": "4/2026",
@@ -6123,7 +6458,8 @@
             "counterLabel": "Pohledávky z obchodních vztahů",
             "description": "Dobírkou - Zásilkovna",
             "vendor": "Simona Zajíčková",
-            "module": "Faktury vydané"
+            "module": "Faktury vydané",
+            "costCenter": "C: Centrála"
           }
         ]
       }
@@ -6309,7 +6645,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Petra Plisková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6324,7 +6661,8 @@
           "counterLabel": "Ostatní závazky",
           "description": "pojistné",
           "vendor": "BMW Financial Services Czech Republic s.r.o.",
-          "module": "Závazky"
+          "module": "Závazky",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6339,7 +6677,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "OC KVARTET s.r.o.",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6354,7 +6693,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Veronika Haviarová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6369,7 +6709,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Radka Staňková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6384,7 +6725,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Hana Onaková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6399,7 +6741,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Markéta Šulová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6414,7 +6757,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Šárka Lumerdingová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6429,7 +6773,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Lucie Malíková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6444,7 +6789,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Martina Prchalová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6459,7 +6805,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Renata Karvánková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6474,7 +6821,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Jana Hajná",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6489,7 +6837,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Vendula Zpěváková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6504,7 +6853,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Ilona Dohnalová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6519,7 +6869,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Gabriela Smolakova",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6534,7 +6885,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Jana Zajíčková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6549,7 +6901,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Veronika Kučerová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6564,7 +6917,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Monika Černá",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6579,7 +6933,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Hana Zbončáková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6594,7 +6949,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Hana Brosche",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6609,7 +6965,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Marcela Jeriová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6624,7 +6981,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Radmila Frýdová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6639,7 +6997,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Vanda Bystřická",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6654,7 +7013,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Jana Kratochvílová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6669,7 +7029,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Lucie Sedmíková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6684,7 +7045,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Petra Bláhová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6699,7 +7061,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Alena Hellerová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6714,7 +7077,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Jana Šmídová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6729,7 +7093,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Kateřina Daňková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6744,7 +7109,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Pavla Brašničková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6759,7 +7125,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Lenka Marková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6774,7 +7141,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Ing. Ivana",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6789,7 +7157,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Hana Goubejová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6804,7 +7173,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Hedvika Stolínová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6819,7 +7189,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Klára Hanáková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6834,7 +7205,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Simona Schebestiková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6849,7 +7221,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Nikola Jonákova",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6864,7 +7237,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Pavla Humeňuková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6879,7 +7253,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Jitka Komanová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6894,7 +7269,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Lenka Lukášková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6909,7 +7285,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Radka Čiklová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6924,7 +7301,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Veronika Kmochová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6939,7 +7317,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Miloslava Hroncová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6954,7 +7333,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Jana Muchová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6969,7 +7349,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Lenka Bohmová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6984,7 +7365,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Eva Sikorová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -6999,7 +7381,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Bohuslava Škvárová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7014,7 +7397,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Jana Prachařová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7029,7 +7413,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Kateřina Sládková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7044,7 +7429,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Alena Kratochvílová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7059,7 +7445,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Simona Zajíčková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7074,7 +7461,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Petra Tulachová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7089,7 +7477,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Renáta Poskierová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7104,7 +7493,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Ivana Řehořová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7119,7 +7509,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Simona Zajíčková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7134,7 +7525,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Renata Vydržalová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7149,7 +7541,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Lucie Váňová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7164,7 +7557,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Darina Jančálková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7179,7 +7573,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Ilona Šnáblová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7194,7 +7589,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Petra Tulachová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7209,7 +7605,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Květoslava Ševčíková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7224,7 +7621,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "LUCIE JÍROVCOVÁ",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7239,7 +7637,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Bohumila Tichá",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7254,7 +7653,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Zuzana Buxbaum",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7269,7 +7669,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Ivana Kůstová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7284,7 +7685,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Andrea Lafantová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7299,7 +7701,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Pavlína Macháčková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7314,7 +7717,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Vendula Novotná",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7329,7 +7733,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Pavla Krišandová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7344,7 +7749,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Kateřina Brunclíková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7359,7 +7765,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Petra Malasková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7374,7 +7781,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Pavla Krišandová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7389,7 +7797,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Magdaléna Šamunová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7404,7 +7813,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Hana Králová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7419,7 +7829,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Věra Čiháková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7434,7 +7845,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Petra Němcová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7449,7 +7861,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Hana Králová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7464,7 +7877,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Nataša Bumbálková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7479,7 +7893,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Renata Jančová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7494,7 +7909,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Edita Bohmanová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7509,7 +7925,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Alena Holečková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7524,7 +7941,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "ČSOB a.s.",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7539,7 +7957,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Taťána Krejčířová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7554,7 +7973,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Miluše Schubertová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7569,7 +7989,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Petra Malasková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7584,7 +8005,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Květoslava Ševčíková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7599,7 +8021,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Ivana Kůstová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7614,7 +8037,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Romana Raisová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7629,7 +8053,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Zuzana Drhlíková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7644,7 +8069,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Kateřina Brunclíková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7659,7 +8085,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "LUCIE JÍROVCOVÁ",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7674,7 +8101,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Lenka Černá",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7689,7 +8117,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Monika Opatová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7704,7 +8133,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Milena Holzerová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7719,7 +8149,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Tibor Kuczka",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7734,7 +8165,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Zdeňka Srbová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7749,7 +8181,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Zdenka Převorová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7764,7 +8197,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Hana Pitelková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7779,7 +8213,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Vendula Zpěváková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7794,7 +8229,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "IDA TICHÁČKOVÁ",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7809,7 +8245,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Marie Moravčíková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7824,7 +8261,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Veronika Křížová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7839,7 +8277,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Kateřina Salačová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7854,7 +8293,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Eva Šachlová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7869,7 +8309,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Nora Dolezalova",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7884,7 +8325,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Lenka Fišerová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7899,7 +8341,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Robert ŘÍHA",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7914,7 +8357,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Alena Kratochvílová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7929,7 +8373,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Renata Novotná",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7944,7 +8389,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Michala Galnorová",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7959,7 +8405,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Jana Kolaříková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7974,7 +8421,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Lenka Lichnovská",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -7989,7 +8437,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Hana Pitelková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -8004,7 +8453,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Monika Černá",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -8019,7 +8469,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Radka Nosková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -8034,7 +8485,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "MONIKA HRUBÁ",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -8049,7 +8501,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Gabriela Smolakova",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -8064,7 +8517,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Tržby z prodeje zboží  2",
           "vendor": "Veronika Fousková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -8079,7 +8533,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Dobírkou - DPD doručení na adresu",
           "vendor": "Nora Dolezalova",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         },
         {
           "month": "4/2026",
@@ -8094,7 +8549,8 @@
           "counterLabel": "Pohledávky z obchodních vztahů",
           "description": "Dobírkou - Zásilkovna",
           "vendor": "Simona Zajíčková",
-          "module": "Faktury vydané"
+          "module": "Faktury vydané",
+          "costCenter": "C: Centrála"
         }
       ]
     }

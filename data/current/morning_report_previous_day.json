@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T11:49:19.351163+02:00",
+  "generatedAt": "2026-04-17T12:29:53.488028+02:00",
   "reportDate": "2026-04-16",
   "detailUrl": "https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html",
   "window": {
@@ -38,15 +38,15 @@
       },
       {
         "name": "expedováno",
-        "count": 100
+        "count": 88
       },
       {
         "name": "připraveno k vyzvednutí",
-        "count": 54
+        "count": 63
       },
       {
         "name": "doručeno",
-        "count": 17
+        "count": 20
       },
       {
         "name": "nová",
@@ -825,82 +825,82 @@
     ],
     "largestMovesSinceLastSnapshot": [
       {
-        "code": "40203",
-        "title": "Peeling Broskvový",
-        "currentStock": 2054.0,
-        "previousStock": 2067.0,
-        "delta": -13.0
+        "code": "63601",
+        "title": "Denní vložka Energie života",
+        "currentStock": 12357.0,
+        "previousStock": 12387.0,
+        "delta": -30.0
       },
       {
-        "code": "UA132",
-        "title": "Peeling Broskovový 1+1",
-        "currentStock": 2044.0,
-        "previousStock": 2057.0,
-        "delta": -13.0
+        "code": "67007",
+        "title": "Slipové vložky se stříbrem. super tenké",
+        "currentStock": 1206.0,
+        "previousStock": 1222.0,
+        "delta": -16.0
       },
       {
-        "code": "61902",
-        "title": "Denní menstruační vložky s fytomembránou „Energie bylin“",
-        "currentStock": 932.0,
-        "previousStock": 942.0,
+        "code": "61913",
+        "title": "Dámské bylinné menstruační vložky Nefritová svěžest. noční super",
+        "currentStock": 586.0,
+        "previousStock": 596.0,
         "delta": -10.0
-      },
-      {
-        "code": "000075",
-        "title": "Brožura Fytogely",
-        "currentStock": 3396.0,
-        "previousStock": 3405.0,
-        "delta": -9.0
-      },
-      {
-        "code": "64404-2",
-        "title": "Jemný intimní gel",
-        "currentStock": 2224.0,
-        "previousStock": 2231.0,
-        "delta": -7.0
-      },
-      {
-        "code": "61915",
-        "title": "Dámské bylinné slipové vložky s anionty Nefritová svěžest",
-        "currentStock": 705.0,
-        "previousStock": 710.0,
-        "delta": -5.0
-      },
-      {
-        "code": "44402-2",
-        "title": "Fytogel Slaviton",
-        "currentStock": 2587.0,
-        "previousStock": 2592.0,
-        "delta": -5.0
-      },
-      {
-        "code": "61911",
-        "title": "Denní vložky s extraktem aloe Nefritová svěžest",
-        "currentStock": 972.0,
-        "previousStock": 976.0,
-        "delta": -4.0
       },
       {
         "code": "61921",
         "title": "Dámské bylinné slipové vložky Nefritová svěžest - super tenké",
-        "currentStock": 661.0,
-        "previousStock": 665.0,
-        "delta": -4.0
+        "currentStock": 651.0,
+        "previousStock": 661.0,
+        "delta": -10.0
       },
       {
-        "code": "90148",
-        "title": "Zubní kartáček ProDental",
-        "currentStock": 1320.0,
-        "previousStock": 1324.0,
-        "delta": -4.0
+        "code": "61903",
+        "title": "Noční menstruační vložky s fytomembránou „Energie bylin“",
+        "currentStock": 285.0,
+        "previousStock": 294.0,
+        "delta": -9.0
+      },
+      {
+        "code": "RX843",
+        "title": "Podpora ženského zdraví s Energií bylin",
+        "currentStock": 254.0,
+        "previousStock": 263.0,
+        "delta": -9.0
+      },
+      {
+        "code": "HU988",
+        "title": "Balíček Energie bylin",
+        "currentStock": 243.0,
+        "previousStock": 252.0,
+        "delta": -9.0
+      },
+      {
+        "code": "TV731",
+        "title": "Balíček Jemná péče – každodenní intimní komfort",
+        "currentStock": 243.0,
+        "previousStock": 252.0,
+        "delta": -9.0
+      },
+      {
+        "code": "FE820",
+        "title": "Jemná péče – balíček pro každodenní intimní komfort",
+        "currentStock": 243.0,
+        "previousStock": 252.0,
+        "delta": -9.0
+      },
+      {
+        "code": "UG134",
+        "title": "Balíček Plánujeme miminko",
+        "currentStock": 243.0,
+        "previousStock": 252.0,
+        "delta": -9.0
       }
     ]
   },
   "inventory": {
-    "availableStockTotal": 378141.0,
+    "availableStockTotal": 377936.0,
     "itemsTotal": 1389,
     "byAccount": {
-      "CZ": 307409.0,
+      "CZ": 307204.0,
       "SK": 70732.0
     },
     "itemsByAccount": {
@@ -952,12 +952,12 @@
     ],
     "statusCounts": [
       {
-        "name": "P",
-        "count": 222
+        "name": "C",
+        "count": 345
       },
       {
-        "name": "C",
-        "count": 183
+        "name": "P",
+        "count": 60
       },
       {
         "name": "S",
@@ -971,10 +971,10 @@
         "sku": "40203",
         "dateExpiry": "2026-05-08",
         "daysToExpiry": 21,
-        "datedStock": 2277.0,
-        "stockAtNearestExpiry": 2277.0,
+        "datedStock": 2159.0,
+        "stockAtNearestExpiry": 2159.0,
         "batchCount": 14,
-        "riskScore": 40.95,
+        "riskScore": 38.82,
         "title": "Peeling Broskvový",
         "label": "40203 · Peeling Broskvový (CZ)"
       },
@@ -983,10 +983,10 @@
         "sku": "52902/03",
         "dateExpiry": "2026-05-07",
         "daysToExpiry": 20,
-        "datedStock": 346.0,
-        "stockAtNearestExpiry": 346.0,
+        "datedStock": 338.0,
+        "stockAtNearestExpiry": 338.0,
         "batchCount": 3,
-        "riskScore": 6.61,
+        "riskScore": 6.46,
         "title": "Revitalizační maska na obličej a krk Lingzhi - 3ks",
         "label": "52902/03 · Revitalizační maska na obličej a krk Lingzhi - 3ks (CZ)"
       },
@@ -995,8 +995,8 @@
         "sku": "PROMO74",
         "dateExpiry": "2027-02-09",
         "daysToExpiry": 298,
-        "datedStock": 9473.0,
-        "stockAtNearestExpiry": 2353.0,
+        "datedStock": 9469.0,
+        "stockAtNearestExpiry": 2349.0,
         "batchCount": 18,
         "riskScore": 5.73,
         "title": "Královská bylinná směs zdravá žena ",
@@ -1007,10 +1007,10 @@
         "sku": "63601/01",
         "dateExpiry": "2026-12-31",
         "daysToExpiry": 258,
-        "datedStock": 7544.0,
-        "stockAtNearestExpiry": 7544.0,
+        "datedStock": 7532.0,
+        "stockAtNearestExpiry": 7532.0,
         "batchCount": 14,
-        "riskScore": 5.5,
+        "riskScore": 5.49,
         "title": "Denní vložka Energie života",
         "label": "63601/01 · Denní vložka Energie života (CZ)"
       },

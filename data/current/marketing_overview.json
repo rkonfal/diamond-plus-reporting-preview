@@ -1,98 +1,43 @@
 {
-  "generatedAt": "2026-04-17T11:43:06.175913+02:00",
+  "generatedAt": "2026-04-17T12:24:04.168847+02:00",
   "source": {
-    "status": "legacy_snapshot",
-    "message": "Zatím čerpáno z posledního dostupného ABRA Flexi výřezu v původním dashboardu, ne z živého API.",
-    "file": "/Users/rudolfkonfal/.openclaw/workspace/portals/diamond-plus-report/index.html"
+    "status": "live_report",
+    "message": "Marketing se skládá z live ABRA reportu a aktuálních položek z účetního deníku."
   },
   "monthly": [
-    {
-      "label": "1/2026",
-      "performanceSpend": 370781.73,
-      "brandSpend": 311773.56,
-      "totalSpend": 682555.29,
-      "revenue": 14498634,
-      "spendShareOfRevenuePct": 4.7
-    },
     {
       "label": "2/2026",
       "performanceSpend": 362050.86,
       "brandSpend": 548999.26,
       "totalSpend": 911050.12,
-      "revenue": 13602558,
-      "spendShareOfRevenuePct": 6.7
+      "revenue": 13766684.32,
+      "spendShareOfRevenuePct": 6.6
     },
     {
       "label": "3/2026",
-      "performanceSpend": 7438.02,
-      "brandSpend": 238000.0,
-      "totalSpend": 245438.02,
-      "revenue": 16130000,
-      "spendShareOfRevenuePct": 1.5
+      "performanceSpend": 367429.91,
+      "brandSpend": 356636.78,
+      "totalSpend": 724066.69,
+      "revenue": 16313034.11,
+      "spendShareOfRevenuePct": 4.4
+    },
+    {
+      "label": "4/2026",
+      "performanceSpend": 6957.68,
+      "brandSpend": 250883.78,
+      "totalSpend": 257841.46,
+      "revenue": 7846669.47,
+      "spendShareOfRevenuePct": 3.3
     }
   ],
   "currentMonth": {
-    "label": "3/2026",
-    "performanceSpend": 7438.02,
-    "brandSpend": 238000.0,
-    "totalSpend": 245438.02,
-    "revenue": 16130000,
-    "spendShareOfRevenuePct": 1.5
+    "label": "4/2026",
+    "performanceSpend": 6957.68,
+    "brandSpend": 250883.78,
+    "totalSpend": 257841.46,
+    "revenue": 7846669.47,
+    "spendShareOfRevenuePct": 3.3
   },
-  "topSuppliersCurrentMonth": [
-    {
-      "name": "Selfcareacademy s.r.o.",
-      "amount": 155355.37
-    },
-    {
-      "name": "ProfiSMS s.r.o.",
-      "amount": 82644.63
-    },
-    {
-      "name": "Google Ireland Limited",
-      "amount": 4958.68
-    },
-    {
-      "name": "Seznam.cz, a.s.",
-      "amount": 2479.34
-    }
-  ],
-  "entriesCurrentMonth": [
-    {
-      "date": "15.03.2026",
-      "supplier": "Selfcareacademy s.r.o.",
-      "description": "Únor 2026 programátorské a marketingové služby",
-      "amount": 155355.37,
-      "module": "FAP",
-      "account": "518901",
-      "costCenter": "C"
-    },
-    {
-      "date": "03.03.2026",
-      "supplier": "ProfiSMS s.r.o.",
-      "description": "Prodej kreditů-SMS",
-      "amount": 82644.63,
-      "module": "FAP",
-      "account": "518901",
-      "costCenter": "C"
-    },
-    {
-      "date": "20.03.2026",
-      "supplier": "Google Ireland Limited",
-      "description": "Google Ads 3/2026",
-      "amount": 4958.68,
-      "module": "FAP",
-      "account": "518900",
-      "costCenter": "C"
-    },
-    {
-      "date": "05.03.2026",
-      "supplier": "Seznam.cz, a.s.",
-      "description": "Peněženka - Externí navýšení",
-      "amount": 2479.34,
-      "module": "FAP",
-      "account": "518900",
-      "costCenter": "C"
-    }
-  ]
+  "topSuppliersCurrentMonth": [],
+  "entriesCurrentMonth": []
 }
