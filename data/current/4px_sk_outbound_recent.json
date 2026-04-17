@@ -1,6 +1,127 @@
 {
-  "generatedAt": "2026-04-17T13:39:03.280885+02:00",
+  "generatedAt": "2026-04-17T14:23:36.112403+02:00",
   "items": [
+    {
+      "consignment_no": "OC149400622604170029",
+      "customer_code": "14940062",
+      "4px_tracking_no": "601111406076",
+      "ref_no": "261270450",
+      "from_warehouse_code": "CZPRGA",
+      "status": "S",
+      "sub_status": "",
+      "consignment_type": "S",
+      "logistics_product_code": "F1403",
+      "return_service": "N",
+      "signature_service": "N",
+      "shipping_no": "601111406076",
+      "total_weight": 601.0,
+      "billing_weight": 601.0,
+      "shipping_weight": 0.0,
+      "total_volume": 1211.5,
+      "billing_amount": 0.0,
+      "currency": "",
+      "is_oda": "O",
+      "sales_platform": "",
+      "seller_id": "",
+      "sales_no": "|34.25 EUR",
+      "insure_services": "",
+      "insure_value": 0.0,
+      "audit_user": "",
+      "audit_time": 1776427214000,
+      "create_time": 1776427214000,
+      "create_user": "14940062",
+      "update_time": 1776427216000,
+      "update_user": "diamond.plus.sk@4px.com",
+      "remark": "kralovstvi-tiande.sk|",
+      "country": "SK",
+      "state": "",
+      "city": "Rimavská Sobota",
+      "district": "",
+      "post_code": "97901",
+      "street": "Malohontská 1545/10",
+      "house_number": "",
+      "company": "",
+      "last_name": "Veleková",
+      "first_name": "Jana",
+      "phone": "+421915800253",
+      "email": "janulavelekova@gmail.com",
+      "id_card": "",
+      "outboundlist_sku": [
+        {
+          "consignment_no": "OC149400622604170029",
+          "sku_code": "12106",
+          "product_code": "6925466294166",
+          "qty": 1,
+          "stock_quality": "G",
+          "sku_id": "922001037110",
+          "sku_name": "Intenzivní komplex na pokožku kolem očí",
+          "batch_no": ""
+        },
+        {
+          "consignment_no": "OC149400622604170029",
+          "sku_code": "12117",
+          "product_code": "6922782626268",
+          "qty": 1,
+          "stock_quality": "G",
+          "sku_id": "922001037819",
+          "sku_name": "Pleťové sérum s kordycepsem",
+          "batch_no": ""
+        },
+        {
+          "consignment_no": "OC149400622604170029",
+          "sku_code": "12115",
+          "product_code": "6922782616504",
+          "qty": 1,
+          "stock_quality": "G",
+          "sku_id": "922001037112",
+          "sku_name": "Vyživující krém na obličej na vrásky",
+          "batch_no": ""
+        }
+      ],
+      "extend_fields": {
+        "consignmentNo": "OC149400622604170029",
+        "referenceNo": "",
+        "payNo": "",
+        "payCompany": "",
+        "payCompanyNo": "",
+        "freight": 0.0,
+        "isValuation": 0,
+        "valuationValue": 0.0,
+        "valuationFee": 0.0,
+        "orderTime": 1776427214000,
+        "taxAmount": 0.0,
+        "discount": 0.0,
+        "deductionAmount": 0.0,
+        "actualAmount": 0.0,
+        "orderType": 1,
+        "interBillNo": "",
+        "buyerRegNo": "",
+        "orderName": "",
+        "orderPhone": "",
+        "orderCardNo": "",
+        "poNumber": "",
+        "pickupVendor": "",
+        "expectArriveDate": "",
+        "totalSkuQty": 0,
+        "planPalletQty": 0,
+        "actualPalletQty": 0,
+        "returnMailLabelNo": "",
+        "updateTime": 1776427214000,
+        "updateUser": "updater",
+        "expectedReceiptDate": "",
+        "customerType": "",
+        "isPii": "N",
+        "piiUrl": ""
+      },
+      "outboundlist_serial_no": [],
+      "carrier_code": "",
+      "return_flag": "N",
+      "error_message_origin": "",
+      "address_type": "",
+      "estimated_number_of_pallets": 0,
+      "actual_number_of_pallets": 0,
+      "carrier_brand_name": ""
+    },
     {
       "consignment_no": "OC149400622604170028",
       "customer_code": "14940062",
@@ -22265,166 +22386,17 @@
       "estimated_number_of_pallets": 0,
       "actual_number_of_pallets": 0,
       "carrier_brand_name": ""
-    },
-    {
-      "consignment_no": "OC149400622604150051",
-      "customer_code": "14940062",
-      "4px_tracking_no": "601111239562",
-      "ref_no": "261268581",
-      "from_warehouse_code": "CZPRGA",
-      "status": "C",
-      "sub_status": "",
-      "consignment_type": "S",
-      "logistics_product_code": "F1402",
-      "return_service": "N",
-      "signature_service": "N",
-      "shipping_no": "601111239562",
-      "total_weight": 84.0,
-      "billing_weight": 84.0,
-      "shipping_weight": 84.0,
-      "total_volume": 389.35,
-      "billing_amount": 0.0,
-      "currency": "",
-      "is_oda": "O",
-      "sales_platform": "",
-      "seller_id": "",
-      "sales_no": "|1413 CZK",
-      "insure_services": "",
-      "insure_value": 0.0,
-      "audit_user": "",
-      "audit_time": 1776239530000,
-      "create_time": 1776239529000,
-      "create_user": "14940062",
-      "update_time": 1776249326000,
-      "update_user": "diamond.plus.sk@4px.com",
-      "complete_time": 1776249308000,
-      "remark": "kralovstvi-tiande.sk|CZ35636",
-      "country": "CZ",
-      "state": "",
-      "city": "Přeštice",
-      "district": "",
-      "post_code": "33401",
-      "street": "Komenského 79",
-      "house_number": "",
-      "company": "Spokojená mamča",
-      "last_name": "Vovsova",
-      "first_name": "Eva",
-      "phone": "+420774566159",
-      "email": "vovsovi@seznam.cz",
-      "id_card": "",
-      "outboundlist_sku": [
-        {
-          "consignment_no": "OC149400622604150051",
-          "sku_code": "41328/01",
-          "product_code": "6970757000353",
-          "qty": 1,
-          "stock_quality": "G",
-          "sku_id": "922001333575",
-          "sku_name": "Levandulová náplast na nohy",
-          "batch_no": ""
-        },
-        {
-          "consignment_no": "OC149400622604150051",
-          "sku_code": "40203",
-          "product_code": "6921570933328",
-          "qty": 1,
-          "stock_quality": "G",
-          "sku_id": "922001037871",
-          "sku_name": "Peeling Broskvový",
-          "batch_no": ""
-        },
-        {
-          "consignment_no": "OC149400622604150051",
-          "sku_code": "135415-1",
-          "product_code": "4603679007408",
-          "qty": 1,
-          "stock_quality": "G",
-          "sku_id": "922001038150",
-          "sku_name": "Zlatý amarantový olej",
-          "batch_no": ""
-        }
-      ],
-      "extend_fields": {
-        "consignmentNo": "OC149400622604150051",
-        "referenceNo": "",
-        "payNo": "",
-        "payCompany": "",
-        "payCompanyNo": "",
-        "freight": 0.0,
-        "isValuation": 0,
-        "valuationValue": 0.0,
-        "valuationFee": 0.0,
-        "orderTime": 1776239529000,
-        "taxAmount": 0.0,
-        "discount": 0.0,
-        "deductionAmount": 0.0,
-        "actualAmount": 0.0,
-        "orderType": 1,
-        "interBillNo": "",
-        "buyerRegNo": "",
-        "orderName": "",
-        "orderPhone": "",
-        "orderCardNo": "",
-        "poNumber": "",
-        "pickupVendor": "",
-        "expectArriveDate": "",
-        "totalSkuQty": 0,
-        "planPalletQty": 0,
-        "actualPalletQty": 0,
-        "returnMailLabelNo": "",
-        "updateTime": 1776239530000,
-        "updateUser": "updater",
-        "expectedReceiptDate": "",
-        "customerType": "",
-        "isPii": "N",
-        "piiUrl": ""
-      },
-      "outboundlist_serial_no": [],
-      "carrier_code": "",
-      "return_flag": "N",
-      "error_message_origin": "",
-      "consignment_packages": [
-        {
-          "consignment_no": "OC149400622604150051",
-          "length": 17.5,
-          "width": 7.302,
-          "height": 4.717,
-          "package_type": "C",
-          "package_weight": 0.084,
-          "shipped_weight": 0.084,
-          "parcel_no": "PAOC149400622604150051-001",
-          "subor_no": "",
-          "skus": [
-            {
-              "sku_code": "41328/01",
-              "sku_id": "922001333575"
-            },
-            {
-              "sku_code": "40203",
-              "sku_id": "922001037871"
-            },
-            {
-              "sku_code": "135415-1",
-              "sku_id": "922001038150"
-            }
-          ]
-        }
-      ],
-      "address_type": "",
-      "estimated_number_of_pallets": 0,
-      "actual_number_of_pallets": 0,
-      "carrier_brand_name": ""
     }
   ],
   "scannedPages": 1,
   "hitMaxPages": false,
   "crossedStopBoundary": true,
-  "newestTimestamp": "2026-04-17T13:25:10+02:00",
-  "oldestTimestamp": "2026-04-15T09:52:09+02:00",
+  "newestTimestamp": "2026-04-17T14:00:14+02:00",
+  "oldestTimestamp": "2026-04-15T10:02:43+02:00",
   "topLogisticsProducts": [
     [
       "F1403",
-      48
+      49
     ],
     [
       "F1406",
@@ -22432,7 +22404,7 @@
     ],
     [
       "F1402",
-      18
+      17
     ],
     [
       "F1401",
@@ -22442,11 +22414,11 @@
   "topCountries": [
     [
       "SK",
-      95
+      96
     ],
     [
       "CZ",
-      5
+      4
     ]
   ]
 }

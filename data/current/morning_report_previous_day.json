@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T13:50:40.478448+02:00",
+  "generatedAt": "2026-04-17T14:29:42.304177+02:00",
   "reportDate": "2026-04-16",
   "detailUrl": "https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html",
   "window": {
@@ -38,15 +38,15 @@
       },
       {
         "name": "připraveno k vyzvednutí",
-        "count": 70
+        "count": 75
       },
       {
         "name": "expedováno",
-        "count": 67
+        "count": 51
       },
       {
         "name": "doručeno",
-        "count": 34
+        "count": 45
       },
       {
         "name": "nová",
@@ -825,83 +825,83 @@
     ],
     "largestMovesSinceLastSnapshot": [
       {
-        "code": "44402-2",
-        "title": "Fytogel Slaviton",
-        "currentStock": 2575.0,
-        "previousStock": 2583.0,
+        "code": "40203",
+        "title": "Peeling Broskvový",
+        "currentStock": 2020.0,
+        "previousStock": 2028.0,
         "delta": -8.0
       },
       {
         "code": "UA132",
         "title": "Peeling Broskovový 1+1",
-        "currentStock": 2022.0,
-        "previousStock": 2027.0,
-        "delta": -5.0
+        "currentStock": 2010.0,
+        "previousStock": 2018.0,
+        "delta": -8.0
+      },
+      {
+        "code": "61914",
+        "title": "Dámské bylinné slipové vložky Nefritová svěžest",
+        "currentStock": 636.0,
+        "previousStock": 642.0,
+        "delta": -6.0
+      },
+      {
+        "code": "RI073",
+        "title": "Intimní péče – balíček od Království tianDe",
+        "currentStock": 533.0,
+        "previousStock": 539.0,
+        "delta": -6.0
+      },
+      {
+        "code": "GR738",
+        "title": "Intimní péče – balíček od Království tianDe",
+        "currentStock": 533.0,
+        "previousStock": 539.0,
+        "delta": -6.0
+      },
+      {
+        "code": "DJ334",
+        "title": "Balíček Zdravá žena",
+        "currentStock": 533.0,
+        "previousStock": 539.0,
+        "delta": -6.0
+      },
+      {
+        "code": "QD702",
+        "title": "Podpora každodenní intimní péče",
+        "currentStock": 533.0,
+        "previousStock": 539.0,
+        "delta": -6.0
+      },
+      {
+        "code": "HN370",
+        "title": "Balíček Podpora každodenní intimní péče",
+        "currentStock": 533.0,
+        "previousStock": 539.0,
+        "delta": -6.0
+      },
+      {
+        "code": "GG167",
+        "title": "Balíček komfort",
+        "currentStock": 533.0,
+        "previousStock": 539.0,
+        "delta": -6.0
       },
       {
         "code": "000075",
         "title": "Brožura Fytogely",
-        "currentStock": 3382.0,
-        "previousStock": 3386.0,
-        "delta": -4.0
-      },
-      {
-        "code": "40203",
-        "title": "Peeling Broskvový",
-        "currentStock": 2032.0,
-        "previousStock": 2036.0,
-        "delta": -4.0
-      },
-      {
-        "code": "BC836",
-        "title": "Revitalizační balíček Lingzhi pro mladistvou pleť",
-        "currentStock": 58.0,
-        "previousStock": 62.0,
-        "delta": -4.0
-      },
-      {
-        "code": "12116",
-        "title": "Vysoce účinný hydratační krém na obličej",
-        "currentStock": 538.0,
-        "previousStock": 541.0,
-        "delta": -3.0
-      },
-      {
-        "code": "41328",
-        "title": "Levandulová náplast na nohy",
-        "currentStock": 2247.0,
-        "previousStock": 2250.0,
-        "delta": -3.0
-      },
-      {
-        "code": "DK720",
-        "title": "Šetrné čištění pleti",
-        "currentStock": 98.0,
-        "previousStock": 101.0,
-        "delta": -3.0
-      },
-      {
-        "code": "YZ776",
-        "title": "Základní menstruační balíček - Nefritový start",
-        "currentStock": 487.0,
-        "previousStock": 490.0,
-        "delta": -3.0
-      },
-      {
-        "code": "CJ659",
-        "title": "Balíček Menstruace s lehkostí",
-        "currentStock": 487.0,
-        "previousStock": 490.0,
+        "currentStock": 3377.0,
+        "previousStock": 3380.0,
         "delta": -3.0
       }
     ]
   },
   "inventory": {
-    "availableStockTotal": 377781.0,
+    "availableStockTotal": 377679.0,
     "itemsTotal": 1389,
     "byAccount": {
-      "CZ": 307069.0,
-      "SK": 70712.0
+      "CZ": 306970.0,
+      "SK": 70709.0
     },
     "itemsByAccount": {
       "CZ": 768,
@@ -953,15 +953,15 @@
     "statusCounts": [
       {
         "name": "C",
-        "count": 364
+        "count": 388
       },
       {
         "name": "P",
-        "count": 41
+        "count": 19
       },
       {
         "name": "S",
-        "count": 3
+        "count": 1
       }
     ],
     "coverageWarnings": [],
@@ -971,10 +971,10 @@
         "sku": "40203",
         "dateExpiry": "2026-05-08",
         "daysToExpiry": 21,
-        "datedStock": 2145.0,
-        "stockAtNearestExpiry": 2145.0,
+        "datedStock": 2109.0,
+        "stockAtNearestExpiry": 2109.0,
         "batchCount": 14,
-        "riskScore": 38.57,
+        "riskScore": 37.93,
         "title": "Peeling Broskvový",
         "label": "40203 · Peeling Broskvový (CZ)"
       },
@@ -983,10 +983,10 @@
         "sku": "52902/03",
         "dateExpiry": "2026-05-07",
         "daysToExpiry": 20,
-        "datedStock": 334.0,
-        "stockAtNearestExpiry": 334.0,
+        "datedStock": 328.0,
+        "stockAtNearestExpiry": 328.0,
         "batchCount": 3,
-        "riskScore": 6.38,
+        "riskScore": 6.27,
         "title": "Revitalizační maska na obličej a krk Lingzhi - 3ks",
         "label": "52902/03 · Revitalizační maska na obličej a krk Lingzhi - 3ks (CZ)"
       },
@@ -995,10 +995,10 @@
         "sku": "PROMO74",
         "dateExpiry": "2027-02-09",
         "daysToExpiry": 298,
-        "datedStock": 9469.0,
-        "stockAtNearestExpiry": 2349.0,
+        "datedStock": 9465.0,
+        "stockAtNearestExpiry": 2345.0,
         "batchCount": 18,
-        "riskScore": 5.73,
+        "riskScore": 5.72,
         "title": "Královská bylinná směs zdravá žena ",
         "label": "PROMO74 · Královská bylinná směs zdravá žena  (CZ)"
       },
@@ -1007,8 +1007,8 @@
         "sku": "63601/01",
         "dateExpiry": "2026-12-31",
         "daysToExpiry": 258,
-        "datedStock": 7530.0,
-        "stockAtNearestExpiry": 7530.0,
+        "datedStock": 7526.0,
+        "stockAtNearestExpiry": 7526.0,
         "batchCount": 14,
         "riskScore": 5.49,
         "title": "Denní vložka Energie života",
@@ -1019,8 +1019,8 @@
         "sku": "30111",
         "dateExpiry": "2026-12-10",
         "daysToExpiry": 237,
-        "datedStock": 6396.0,
-        "stockAtNearestExpiry": 6396.0,
+        "datedStock": 6394.0,
+        "stockAtNearestExpiry": 6394.0,
         "batchCount": 18,
         "riskScore": 5.2,
         "title": "Kosmetická tělová fytonáplast Yaoshen Forte",

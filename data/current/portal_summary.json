@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T13:39:03.280885+02:00",
+  "generatedAt": "2026-04-17T14:23:36.112403+02:00",
   "config": {
     "warehouseCode": "CZPRGA",
     "outboundMaxPages": 20,
@@ -14,8 +14,8 @@
       "label": "CZ",
       "inventory": {
         "items": 768,
-        "availableStockTotal": 307069,
-        "pendingStockTotal": 1678,
+        "availableStockTotal": 306970,
+        "pendingStockTotal": 1266,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -23,16 +23,16 @@
         "items": 500,
         "scannedPages": 5,
         "topLogisticsProduct": "F1401",
-        "oldestTimestamp": "2026-04-15T22:20:06+02:00",
-        "newestTimestamp": "2026-04-17T13:30:03+02:00"
+        "oldestTimestamp": "2026-04-15T23:05:02+02:00",
+        "newestTimestamp": "2026-04-17T14:10:03+02:00"
       }
     },
     "sk": {
       "label": "SK",
       "inventory": {
         "items": 621,
-        "availableStockTotal": 70712,
-        "pendingStockTotal": 32,
+        "availableStockTotal": 70709,
+        "pendingStockTotal": 35,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -40,8 +40,8 @@
         "items": 100,
         "scannedPages": 1,
         "topLogisticsProduct": "F1403",
-        "oldestTimestamp": "2026-04-15T09:52:09+02:00",
-        "newestTimestamp": "2026-04-17T13:25:10+02:00"
+        "oldestTimestamp": "2026-04-15T10:02:43+02:00",
+        "newestTimestamp": "2026-04-17T14:00:14+02:00"
       }
     }
   },
@@ -78,7 +78,7 @@
     "pairedProducts": 390,
     "onlyInWpj": 1435,
     "onlyIn4px": 1,
-    "stockMismatch": 668,
+    "stockMismatch": 669,
     "lowAfterSales": 3,
     "manualMapped4pxAliases": 0,
     "autoMapped4pxAliases": 73
@@ -89,24 +89,24 @@
     "message": "Měsíční finance se tahají přímo z ABRA reportu Výkaz hospodaření za měsíc za všechna střediska. Cash a závazky jsou také live z ABRA API.",
     "currentMonth": {
       "label": "4/2026",
-      "revenue": 7879320.35,
-      "cogsAndFees": 5700417.12,
+      "revenue": 7907751.83,
+      "cogsAndFees": 5718004.71,
       "logistics": 37815.04,
       "marketing": 257841.46,
-      "opex": 237253.68,
+      "opex": 251053.68,
       "depreciation": 385502.0,
       "other": -5460.68,
-      "grossMargin": 2178903.23,
-      "afterLogistics": 2141088.19,
-      "afterMarketing": 1883246.73,
-      "operatingMargin": 1645993.05,
-      "ebit": 1260491.05,
-      "profit": 1255030.37,
+      "grossMargin": 2189747.12,
+      "afterLogistics": 2151932.08,
+      "afterMarketing": 1894090.62,
+      "operatingMargin": 1643036.94,
+      "ebit": 1257534.94,
+      "profit": 1252074.26,
       "grossMarginPct": 27.7,
       "marketingPct": 3.3,
       "logisticsPct": 0.5,
-      "operatingMarginPct": 20.9,
-      "profitPct": 15.9
+      "operatingMarginPct": 20.8,
+      "profitPct": 15.8
     },
     "cash": {
       "unpaidInvoices": 3038318.85,
@@ -193,7 +193,7 @@
       "performanceSpend": 6957.68,
       "brandSpend": 250883.78,
       "totalSpend": 257841.46,
-      "revenue": 7879320.35,
+      "revenue": 7907751.83,
       "spendShareOfRevenuePct": 3.3
     },
     "topSupplier": null
