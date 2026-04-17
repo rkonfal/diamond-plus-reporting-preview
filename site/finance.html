@@ -73,18 +73,18 @@
     </section>
 
     <section class="card">
-      <h2 class="section-title">Měsíční přehled</h2>
-      <div class="section-subtitle">Poslední měsíce v jedné tabulce.</div>
+      <h2 class="section-title">Rok po měsících</h2>
+      <div class="section-subtitle">Výnosy a zisk za celý rok v jedné tabulce.</div>
       <div class="ux-table-wrap" style="margin-top:16px;">
         <table class="table mobile-stack">
           <thead>
             <tr>
               <th>Měsíc</th>
               <th class="num">Výnosy</th>
+              <th class="num">Zisk</th>
+              <th class="num">Provozní marže</th>
               <th class="num">Marketing</th>
               <th class="num">Logistika</th>
-              <th class="num">Provozní marže</th>
-              <th class="num">Zisk</th>
             </tr>
           </thead>
           <tbody id="monthly-table"></tbody>
@@ -266,10 +266,10 @@
         <tr>
           <td data-label="Měsíc">${row.label}</td>
           <td class="num" data-label="Výnosy">${money(row.revenue)}</td>
+          <td class="num" data-label="Zisk">${money(row.profit)}</td>
+          <td class="num" data-label="Provozní marže">${money(row.operatingMargin)}</td>
           <td class="num" data-label="Marketing">${money(row.marketing)}</td>
           <td class="num" data-label="Logistika">${money(row.logistics)}</td>
-          <td class="num" data-label="Provozní marže">${money(row.operatingMargin)}</td>
-          <td class="num" data-label="Zisk">${money(row.profit)}</td>
         </tr>
       `).join('');
 
