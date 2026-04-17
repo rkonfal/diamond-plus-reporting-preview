@@ -19,7 +19,7 @@
       <a class="active" href="expiry.html">⏳ Expirace / promo</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">Tahle stránka má rychle ukázat, co se má odprodávat přes bundle, co přes dárek a kde už promo nesmí rozbít ekonomiku akce.</div>
+    <div class="sidebar-footer">Tahle stránka má rychle ukázat, co se má prodávat v balíčku, co dát zdarma a kde už by akce byla moc drahá.</div>
   </aside>
 
   <main class="main page-stack">
@@ -28,7 +28,7 @@
         <div class="ux-intro">
           <div class="ux-kicker">Expirace a promo akce • odprodej bez ničení marže</div>
           <h1 class="ux-title">Expirace, které mají jasný plán a obchodní logiku</h1>
-          <p class="ux-subtitle">První vrstva má ukázat, které SKU tlačit hned, jakou mechanikou je podpořit a kdy je dárek ještě bezpečný. Nejde jen o datum expirace, ale o to, jak odčerpat sklad bez zbytečného rozdávání hodnoty.</p>
+          <p class="ux-subtitle">Tady má být hned vidět, co pustit do akce, co dát zdarma a co už by bylo moc drahé. Cíl je jednoduchý, odprodat procházející zboží a přitom nerozbít marži.</p>
           <div class="ux-actions">
             <a class="ux-button primary" href="../data/current/4px_expiry_overview.json" target="_blank" rel="noopener">Otevřít expirační data</a>
             <a class="ux-button secondary" href="logistics.html">Na logistiku</a>
@@ -49,7 +49,7 @@
       </div>
       <div class="card leadership-note director">
         <div class="leadership-note-label">Komentář obchodního ředitele</div>
-        <p><strong>Tady neřešíme jen expiraci, ale rychlost odprodeje bez zničení ekonomiky akce.</strong> Smysl mají mechaniky, které pohnou skladem a zároveň udrží cenu hlavních tahounů. Nejprve se díváme na urgentní batch, až potom na kreativitu promo formátu.</p>
+        <p><strong>Tady neřešíme jen expiraci, ale rychlý odprodej bez zničení ekonomiky akce.</strong> Smysl mají jednoduché akce, které pohnou skladem a zároveň udrží cenu hlavních tahounů. Nejdřív řešíme to, co hoří, až potom vymýšlíme hezčí formát akce.</p>
       </div>
       <div class="card leadership-note board">
         <div class="leadership-note-label">Komentář pro board</div>
@@ -62,7 +62,7 @@
         <div class="ux-section-head">
           <div>
             <h2 class="ux-section-title">Co řešit hned</h2>
-            <p class="ux-section-subtitle">Krátká fronta SKU a mechanik, které mají dnes nejvyšší prioritu.</p>
+            <p class="ux-section-subtitle">Krátký seznam toho, co má dnes nejvyšší prioritu.</p>
           </div>
           <span class="badge warn" id="expiry-attention-badge">Načítám priority…</span>
         </div>
@@ -76,8 +76,8 @@
           <div class="ux-stat-list" id="gift-limit-list"></div>
         </div>
         <div class="ux-panel-card">
-          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Doporučené mechaniky</h3>
-          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Kdy jít do 2+1, kdy do hidden giftu a kdy mechaniku radši zastavit.</p>
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Jak to prodat</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Bez složitostí. Jasně, co dát do akce samo a co spojit s bestsellerem.</p>
           <div class="ux-side-list" id="mechanics-list"></div>
         </div>
       </div>
@@ -87,13 +87,13 @@
 
     <section class="grid two-col">
       <div class="card">
-        <h2 class="section-title">Doporučené bundle návrhy</h2>
+        <h2 class="section-title">Hotové návrhy akcí</h2>
         <div class="section-subtitle">Rychlé akce, které dávají smysl na webu, v CRM i v checkoutu.</div>
         <div class="block-list" id="bundle-list" style="margin-top:16px;"></div>
       </div>
       <div class="card">
-        <h2 class="section-title">Komunikační guardrails</h2>
-        <div class="section-subtitle">Jak expirační akce komunikovat, aby fungovaly obchodně a nevytvářely compliance problém.</div>
+        <h2 class="section-title">Jak to komunikovat</h2>
+        <div class="section-subtitle">Krátká pravidla, aby akce byla srozumitelná a zbytečně nešla do riskantních claimů.</div>
         <div class="block-list" id="guardrails-list" style="margin-top:16px;"></div>
       </div>
     </section>
@@ -113,8 +113,8 @@
               <th class="num">Expirace</th>
               <th class="num">Expirující sklad</th>
               <th>30 dní / pokrytí</th>
-              <th>Doporučená akce</th>
-              <th>Gift-check</th>
+                <th>Jasný návrh akce</th>
+                <th>Dárek do 18 %?</th>
             </tr>
           </thead>
           <tbody id="expiry-action-table"></tbody>
@@ -141,8 +141,8 @@
         </div>
       </div>
       <div class="card">
-        <h2 class="section-title">Tahouni pro promo nosič</h2>
-        <div class="section-subtitle">Bestsellery, které dávají smysl použít jako nosič akce nebo checkout bonusu.</div>
+        <h2 class="section-title">Co použít jako hlavní produkt akce</h2>
+        <div class="section-subtitle">Bestsellery, které mají sílu utáhnout dárek nebo balíček.</div>
         <div class="ux-table-wrap" style="margin-top:16px;">
           <table class="table mobile-stack">
             <thead>
@@ -177,88 +177,88 @@
     const ruleMap = {
       '40203': {
         priority: 'urgent',
-        mechanic: '2+1 na stejné SKU',
-        carrier: '44402-2 · Fytogel Slaviton',
-        giftCheck: 'Radši multi-buy než dárek',
+        mechanic: '2x 40203 + 1x 40203 zdarma',
+        carrier: 'Přímo na stejné SKU',
+        giftCheck: 'NE, radši 2+1',
         giftTone: 'danger',
         urgency: 'Nasadit hned, do 3 týdnů končí batch.',
-        note: 'Peeling je potřeba rychle rozhýbat bez zbytečného tlaku na bestsellerovou cenu.'
+        note: 'Nejjednodušší varianta je pustit ho rovnou jako 2+1.'
       },
       '52902/03': {
         priority: 'urgent',
-        mechanic: '2+1, případně anti-age gift bundle',
-        carrier: '10117 + 10118',
-        giftCheck: 'Jen po value checku < 18 %',
+        mechanic: '1x 10117 + 1x 10118 + 1x 52902/03 zdarma',
+        carrier: 'Krém 10117 + sérum 10118',
+        giftCheck: 'ZKONTROLOVAT',
         giftTone: 'warning',
         urgency: 'Samo od sebe se do expirace neodprodá.',
-        note: 'Maska funguje lépe jako součást anti-age setu než samostatně.'
+        note: 'Když to nevyjde do 18 %, pustit radši 2+1 přímo na masku.'
       },
       'PROMO74': {
         priority: 'stock',
-        mechanic: 'Hidden gift / bonus v balíčku',
+        mechanic: '2x 61911 nebo 61912 + 1x PROMO74 zdarma',
         carrier: '61911 / 61912 / 61914',
-        giftCheck: 'Bezpečný hidden gift',
+        giftCheck: 'ANO',
         giftTone: 'success',
         urgency: 'Není akutní datumově, ale zásoba je extrémní.',
-        note: 'Nedává smysl tlačit jako hero produkt, spíš jako bonus do ženské péče.'
+        note: 'Použít jako jednoduchý bonus, ne jako hlavní produkt akce.'
       },
       '63601/01': {
         priority: 'stock',
-        mechanic: 'Gift v hygienickém balíčku',
+        mechanic: '2x 61911 / 61912 / 61914 + 1x 63601 zdarma',
         carrier: '61911 / 61912 / 61914',
-        giftCheck: 'Pravděpodobně bezpečné pod 18 %',
+        giftCheck: 'ANO',
         giftTone: 'success',
         urgency: 'Silný produkt s velkou batch zásobou.',
-        note: 'Vhodný nosič do mix & match 3+1 napříč ženskou hygienou.'
+        note: 'Nejjednodušší je dát ho zdarma k ženské hygieně.'
       },
       '63601': {
         priority: 'stock',
-        mechanic: 'Gift v hygienickém balíčku',
+        mechanic: '2x 61911 / 61912 / 61914 + 1x 63601 zdarma',
         carrier: '61911 / 61912 / 61914',
-        giftCheck: 'Pravděpodobně bezpečné pod 18 %',
+        giftCheck: 'ANO',
         giftTone: 'success',
         urgency: 'Silný produkt s velkou zásobou.',
-        note: 'Vhodný nosič do mix & match 3+1 napříč ženskou hygienou.'
+        note: 'Nejjednodušší je dát ho zdarma k ženské hygieně.'
       },
       '30111': {
         priority: 'stock',
-        mechanic: 'Patch bundle / 2+1 v řadě',
+        mechanic: '2x 30117 nebo 30118 + 1x 30111 zdarma',
         carrier: '30117 / 30118',
-        giftCheck: 'Jen po value checku, jinak bundle',
+        giftCheck: 'ZKONTROLOVAT',
         giftTone: 'warning',
         urgency: 'Produkt se hýbe, ale zásoba je vysoká.',
-        note: 'Nejlepší využití je přes patch trio, ne jako plošný dárek.'
+        note: 'Když to nevyjde do 18 %, udělat 2+1 v patch řadě.'
       }
     };
 
     const bundleIdeas = [
       {
-        name: 'Peelingový boost',
+        name: 'Peeling Broskvový 2+1',
         mechanic: '2+1',
-        lead: '40203 · Peeling Broskvový',
-        gift: 'žádný, multi-buy na stejné SKU',
-        note: 'Nejrychlejší odpis kritické expirace bez rizika, že dárek přestřelí 18 %.'
+        lead: '2x 40203 · Peeling Broskvový',
+        gift: '1x 40203 zdarma',
+        note: 'Nejrychlejší a nejčistší varianta.'
       },
       {
-        name: 'Anti-age set s maskou',
-        mechanic: 'gift bundle',
-        lead: '10117 + 10118',
-        gift: '52902/03 · Lingzhi maska',
-        note: 'Pouze pokud hodnota masky zůstane pod 18 %, jinak převést na 2+1 na masku samotnou.'
+        name: 'Krém + sérum + maska zdarma',
+        mechanic: 'dárek zdarma',
+        lead: '1x 10117 + 1x 10118',
+        gift: '1x 52902/03 zdarma',
+        note: 'Jen když dárek vyjde do 18 %. Jinak masku pustit samostatně jako 2+1.'
       },
       {
-        name: 'Patch trio s bonusem',
-        mechanic: 'bundle / 2+1',
-        lead: '30117 + 30118',
-        gift: '30111 nebo bonus v patch řadě',
-        note: 'Patch bestsellery mají dost síly nést promo bez slevy na hlavní položce.'
+        name: 'Fytonáplasti + Yaoshen zdarma',
+        mechanic: 'dárek zdarma / 2+1',
+        lead: '2x 30117 nebo 30118',
+        gift: '1x 30111 zdarma',
+        note: 'Když to nevychází do 18 %, změnit na 2+1 v patch řadě.'
       },
       {
-        name: 'Ženská péče 3+1',
-        mechanic: 'mix & match 3+1',
-        lead: '61911 / 61912 / 61914',
-        gift: '63601 nebo PROMO74',
-        note: 'Nejčistší mechanika pro odčerpání vysoké zásoby a zároveň dobrá relevance dárku.'
+        name: 'Ženská péče + dárek zdarma',
+        mechanic: 'dárek zdarma',
+        lead: '2x 61911 / 61912 / 61914',
+        gift: '1x 63601 nebo 1x PROMO74 zdarma',
+        note: 'Jednoduchá akce, která dává smysl i obchodně.'
       }
     ];
 
@@ -294,9 +294,9 @@
         const product = productMap[row.sku] || productMap[row.sku?.split('/')[0]] || {};
         const rule = ruleMap[row.sku] || ruleMap[row.sku?.split('/')[0]] || {
           priority: row.daysToExpiry <= 30 ? 'urgent' : 'watch',
-          mechanic: row.daysToExpiry <= 30 ? '2+1 nebo přímý promo tlak' : 'watchlist / bundle',
+          mechanic: row.daysToExpiry <= 30 ? '2+1 na stejné SKU' : 'balíček nebo dárek po kontrole',
           carrier: 'dle relevance kategorie',
-          giftCheck: row.daysToExpiry <= 30 ? 'Radši multi-buy než dárek' : 'Jen po value checku < 18 %',
+          giftCheck: row.daysToExpiry <= 30 ? 'NE, radši 2+1' : 'ZKONTROLOVAT',
           giftTone: row.daysToExpiry <= 30 ? 'danger' : 'warning',
           urgency: row.daysToExpiry <= 30 ? 'Krátké okno do expirace.' : 'Sledovat zásobu a prodejní tempo.',
           note: 'Bez detailní kurátorské poznámky.'
@@ -316,8 +316,8 @@
       const hero = [
         ['SKU s expirací', fmt(expiryOverview.summary?.datedSkuCount || 0), `CZ ${fmt(expiryOverview.summary?.czSkuCount || 0)} · SK ${fmt(expiryOverview.summary?.skSkuCount || 0)}`, 'accent'],
         ['Kritické do 30 dní', fmt(urgentRows.length), `${fmtUnits(urgentStock)} v nejbližším tlaku`, 'red'],
-        ['Bezpečné gift mechaniky', fmt(safeGiftRows.length), 'dárky s nejvyšší šancí vejít se do 18 %', 'green'],
-        ['Bundle návrhy', fmt(bundleIdeas.length), '2+1, mix & match, hidden gift', 'blue']
+        ['Jde dát zdarma', fmt(safeGiftRows.length), 'položky s nejvyšší šancí vejít se do 18 %', 'green'],
+        ['Hotové akce', fmt(bundleIdeas.length), 'jednoduché akce připravené k nasazení', 'blue']
       ];
       document.getElementById('expiry-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
         <div class="ux-hero-metric ${klass}">
@@ -332,7 +332,7 @@
         const sales30d = row.analytics.units30d != null ? `${fmt(row.analytics.units30d)} ks / 30 dní` : '30denní prodej zatím bez mapování';
         return {
           title: `${meta.label}: ${row.sku} · ${row.title}`,
-          text: `${row.rule.urgency} Doporučení: ${row.rule.mechanic}. Nosič: ${row.rule.carrier}. ${sales30d}.`,
+          text: `${row.rule.urgency} Návrh: ${row.rule.mechanic}. Hlavní produkt: ${row.rule.carrier}. ${sales30d}.`,
           dot: meta.dot
         };
       });
@@ -349,9 +349,9 @@
 
       document.getElementById('gift-limit-list').innerHTML = [
         ['Max. hodnota dárku', '18 % z hodnoty akce'],
-        ['Co to znamená', 'Dražší expirační kusy radši přes 2+1 než jako dárek'],
-        ['Bezpečnější dárky', 'PROMO74, 63601'],
-        ['Nutný value check', '52902/03, 30111']
+        ['Co to znamená', 'Dražší věci radši přes 2+1 než zdarma'],
+        ['Co jde dát zdarma', 'PROMO74, 63601'],
+        ['Co nejdřív zkontrolovat', '52902/03, 30111']
       ].map(([label, value]) => `
         <div class="ux-stat-row">
           <span>${label}</span>
@@ -360,10 +360,10 @@
       `).join('');
 
       document.getElementById('mechanics-list').innerHTML = [
-        ['2+1 na stejné SKU', 'Použít tam, kde je expirace krátká a dárek by přestřelil ekonomiku akce.', 'gold'],
-        ['Gift k bestselleru', 'Jen u levnějšího nebo hidden itemu, který pravděpodobně zůstane pod 18 %.', 'green'],
-        ['Mix & match 3+1', 'Nejlépe funguje v ženské hygieně, kde je silná relevance produktů.', 'blue'],
-        ['Hidden gift', 'Vhodné hlavně pro PROMO74, kde nechceme z produktu dělat hero nabídku.', 'gold']
+        ['2+1 na stejné SKU', 'Použít tam, kde je expirace blízko a dárek by byl moc drahý.', 'gold'],
+        ['Dárek k bestselleru', 'Použít tam, kde se dárek vejde do 18 %.', 'green'],
+        ['2 kusy + 1 dárek zdarma', 'Dobře funguje hlavně v ženské hygieně a patch řadě.', 'blue'],
+        ['Skrytý dárek', 'Vhodné hlavně pro PROMO74, když ho nechceme prodávat samostatně.', 'gold']
       ].map(([title, text, dot]) => `
         <div class="ux-side-item">
           <span class="ux-dot ${dot}"></span>
@@ -377,7 +377,7 @@
       document.getElementById('expiry-kpis').innerHTML = [
         ['Kritický batch stock', fmtUnits(urgentStock), 'SKU s expirací do 30 dní', 'red'],
         ['Top urgentní SKU', expiringRows[0] ? `${expiringRows[0].sku}` : '–', expiringRows[0] ? expiringRows[0].title : 'Bez dat', 'gold'],
-        ['Silný promo nosič', '44402-2 / 619xx', 'Bestsellery bez tlaku na plošnou slevu', 'blue'],
+        ['Hlavní produkt akce', '44402-2 / 619xx', 'bestsellery, které utáhnou dárek nebo balíček', 'blue'],
         ['Gift-safe položky', fmt(safeGiftRows.length), 'nejvyšší šance vejít se do pravidla 18 %', 'green']
       ].map(([label, value, sub, klass]) => `
         <div class="card kpi-card ${klass}">
@@ -389,17 +389,17 @@
 
       document.getElementById('bundle-list').innerHTML = bundleIdeas.map(row => `
         <div class="block-item">
-          <h4>${row.name} <span style="float:right;">${DP.statusPill(row.mechanic, row.mechanic.includes('gift') ? 'warning' : 'info')}</span></h4>
-          <p><strong>Hlavní nosič:</strong> ${row.lead}</p>
-          <p><strong>Dárek / bonus:</strong> ${row.gift}</p>
+          <h4>${row.name} <span style="float:right;">${DP.statusPill(row.mechanic, row.mechanic.includes('dárek') ? 'warning' : 'info')}</span></h4>
+          <p><strong>Hlavní produkt:</strong> ${row.lead}</p>
+          <p><strong>Co k tomu zdarma:</strong> ${row.gift}</p>
           <p>${row.note}</p>
         </div>
       `).join('');
 
       document.getElementById('guardrails-list').innerHTML = [
-        ['Komunikace přes rutinu a hodnotu', 'Mluvit o výhodném setu, doplnění péče a časově omezené akci, ne o léčebném účinku.'],
-        ['Nezlevňovat zbytečně tahouny', 'Bestsellery mají nést akci, ale jejich cenu je lepší chránit a použít expirační kus jako bonus.'],
-        ['Dárek vždy proti limitu', 'Jakmile dárek nevychází do 18 %, mechaniku převést na multi-buy nebo bundle bez „zdarma“.']
+        ['Mluv jednoduše', 'Výhodný set, dárek zdarma, časově omezená akce. Ne zdravotní sliby.'],
+        ['Neničit cenu bestselleru', 'Když to jde, nech cenu hlavního produktu a pracuj s dárkem nebo 2+1.'],
+        ['Hlídaj 18 %', 'Když je dárek moc drahý, změň akci na 2+1 nebo balíček bez „zdarma“.']
       ].map(row => `
         <div class="block-item">
           <h4>${row[0]}</h4>
@@ -417,8 +417,8 @@
             <td class="num" data-label="Expirace">${fmtShortDate(row.dateExpiry)} (${fmtDays(row.daysToExpiry)})</td>
             <td class="num" data-label="Expirující sklad">${fmtUnits(row.datedStock)}</td>
             <td data-label="30 dní / pokrytí">${sales30d}<br /><span style="color:var(--text-muted);">Pokrytí ${cover}</span></td>
-            <td data-label="Doporučená akce"><strong>${row.rule.mechanic}</strong><br /><span style="color:var(--text-muted);">Nosič: ${row.rule.carrier}</span></td>
-            <td data-label="Gift-check">${gift}</td>
+            <td data-label="Jasný návrh akce"><strong>${row.rule.mechanic}</strong><br /><span style="color:var(--text-muted);">Hlavní produkt: ${row.rule.carrier}</span></td>
+            <td data-label="Dárek do 18 %?">${gift}</td>
           </tr>
         `;
       }).join('');
@@ -438,12 +438,12 @@
       const carrierRows = carrierCodes.map(code => analyticsLookup(analyticsMap, code)).filter(Boolean);
       document.getElementById('carrier-table').innerHTML = carrierRows.map(row => {
         const use = code => {
-          if (['61911', '61912', '61914'].includes(code)) return 'nosič ženské péče';
-          if (['30117', '30118'].includes(code)) return 'patch bundle';
-          if (code === '44402-2') return 'body-care nosič';
-          if (code === '64404-2') return 'checkout gift';
-          if (['10117', '10118'].includes(code)) return 'anti-age gift bundle';
-          return 'promo nosič';
+          if (['61911', '61912', '61914'].includes(code)) return 'hlavní produkt pro ženskou péči';
+          if (['30117', '30118'].includes(code)) return 'hlavní produkt pro patch akci';
+          if (code === '44402-2') return 'hlavní produkt pro body-care akci';
+          if (code === '64404-2') return 'hlavní produkt pro bonus v košíku';
+          if (['10117', '10118'].includes(code)) return 'hlavní produkt pro pleťový set';
+          return 'hlavní produkt akce';
         };
         return `
           <tr>
