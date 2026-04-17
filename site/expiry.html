@@ -8,10 +8,10 @@
 </head>
 <body>
   <aside class="sidebar">
-    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>Expirace a promo akce v rozhodovacím dashboardu</span></div>
+    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>Expirace a promo akce v přehledné stránce</span></div>
     <div class="sidebar-section-label">Přehled</div>
     <nav class="sidebar-nav">
-      <a href="index.html">🏠 Portal</a>
+      <a href="index.html">🏠 Přehled</a>
       <a href="finance.html">💰 Finance / ABRA</a>
       <a href="marketing.html">📣 Marketing</a>
       <a href="inventory.html">📦 Sklad</a>
@@ -19,7 +19,7 @@
       <a class="active" href="expiry.html">⏳ Expirace / promo</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">Tahle stránka má rychle ukázat, co se má prodávat v balíčku, co dát zdarma a kde už by akce byla moc drahá.</div>
+    <div class="sidebar-footer">Tahle stránka rychle ukáže, co dát do akce, co zdarma a kde už by promo bylo moc drahé.</div>
   </aside>
 
   <main class="main page-stack">
@@ -38,22 +38,22 @@
         <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
       </div>
       <section class="ux-hero-metrics" id="expiry-hero"></section>
-      <div class="ux-date-note"><strong>Jak číst datumy:</strong> expirace a expirační sklad jsou <strong>aktuální stav posledního 4PX refreshi</strong>, prodejní kontext vychází hlavně z <strong>30denního a 365denního výkonu</strong> a promo doporučení počítají s pravidlem, že <strong>hodnota dárku nesmí přesáhnout 18 % hodnoty celé akce</strong>.</div>
+      <div class="ux-date-note"><strong>Jak číst datumy:</strong> expirace a expirační sklad jsou <strong>aktuální stav posledního 4PX refreshi</strong>, prodejní kontext vychází hlavně z <strong>30denního a 365denního výkonu</strong> a dárek nesmí přesáhnout <strong>18 % hodnoty celé akce</strong>.</div>
     </header>
 
     <section class="grid leadership-note-grid">
       <div class="leadership-notes-head">
         <div class="leadership-notes-kicker">Pohled vedení</div>
-        <h2>Jak tenhle dashboard číst</h2>
-        <p>Dva krátké pohledy, které drží expirace v obchodní rovině. První říká, co má udělat odpovědný ředitel, druhý co z těch samých dat potřebuje číst board.</p>
+        <h2>Jak tu stránku číst</h2>
+        <p>Dva krátké bloky. První řekne, co pustit do akce hned, druhý kde si pohlídat marži.</p>
       </div>
       <div class="card leadership-note director">
-        <div class="leadership-note-label">Komentář obchodního ředitele</div>
-        <p><strong>Tady neřešíme jen expiraci, ale rychlý odprodej bez zničení ekonomiky akce.</strong> Smysl mají jednoduché akce, které pohnou skladem a zároveň udrží cenu hlavních tahounů. Nejdřív řešíme to, co hoří, až potom vymýšlíme hezčí formát akce.</p>
+        <div class="leadership-note-label">Co pustit do akce</div>
+        <p><strong>Začni tím, co expiruje brzy a má reálnou šanci na odprodej.</strong> Akce má být jednoduchá a nesmí rozbít ekonomiku.</p>
       </div>
       <div class="card leadership-note board">
-        <div class="leadership-note-label">Komentář pro board</div>
-        <p><strong>Pro board je to pohled na skrytou ztrátu v zásobě a disciplínu promo akcí.</strong> Díváme se, kde expirace ohrožuje hodnotu skladu a zda navržené akce zůstávají v obchodním limitu 18 %, místo aby problém řešily příliš drahým dárkem.</p>
+        <div class="leadership-note-label">Co to znamená</div>
+        <p><strong>Tahle stránka hlídá dvě věci, ztrátu v zásobě a příliš drahé promo.</strong> Pokud dárek přesahuje limit 18 %, akce už spíš maskuje problém, než ho řeší.</p>
       </div>
     </section>
 
@@ -62,7 +62,7 @@
         <div class="ux-section-head">
           <div>
             <h2 class="ux-section-title">Co řešit hned</h2>
-            <p class="ux-section-subtitle">Krátký seznam toho, co má dnes nejvyšší prioritu.</p>
+            <p class="ux-section-subtitle">Krátký seznam dnešních priorit.</p>
           </div>
           <span class="badge warn" id="expiry-attention-badge">Načítám priority…</span>
         </div>
@@ -72,12 +72,12 @@
       <div class="ux-side-stack">
         <div class="ux-panel-card">
           <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Limit dárku</h3>
-          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Nejdřív chránit ekonomiku akce, teprve potom rozdávat dárek.</p>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Nejdřív uhlídat ekonomiku akce.</p>
           <div class="ux-stat-list" id="gift-limit-list"></div>
         </div>
         <div class="ux-panel-card">
           <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Jak to prodat</h3>
-          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Bez složitostí. Jasně, co dát do akce samo a co spojit s bestsellerem.</p>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Jednoduše. Co dát do akce samo a co spojit s bestsellerem.</p>
           <div class="ux-side-list" id="mechanics-list"></div>
         </div>
       </div>
@@ -88,12 +88,12 @@
     <section class="grid two-col">
       <div class="card">
         <h2 class="section-title">Hotové návrhy akcí</h2>
-        <div class="section-subtitle">Rychlé akce, které dávají smysl na webu, v CRM i v checkoutu.</div>
+        <div class="section-subtitle">Rychlé akce pro web, CRM i checkout.</div>
         <div class="block-list" id="bundle-list" style="margin-top:16px;"></div>
       </div>
       <div class="card">
         <h2 class="section-title">Jak to komunikovat</h2>
-        <div class="section-subtitle">Krátká pravidla, aby akce byla srozumitelná a zbytečně nešla do riskantních claimů.</div>
+        <div class="section-subtitle">Krátká pravidla, aby akce byla srozumitelná a bezpečná.</div>
         <div class="block-list" id="guardrails-list" style="margin-top:16px;"></div>
       </div>
     </section>
@@ -102,7 +102,7 @@
       <div class="ux-section-head" style="margin-bottom:0;">
         <div>
           <h2 class="ux-section-title">Expirační shortlist s akcemi</h2>
-          <p class="ux-section-subtitle">Spojení expirace, zásoby, prodejního kontextu a doporučené mechaniky v jedné tabulce.</p>
+          <p class="ux-section-subtitle">Expirace, zásoba a návrh akce v jedné tabulce.</p>
         </div>
       </div>
       <div class="ux-table-wrap" style="margin-top:16px;">
@@ -125,7 +125,7 @@
     <section class="grid two-col">
       <div class="card">
         <h2 class="section-title">Nejbližší expirace</h2>
-        <div class="section-subtitle">Aktuální top rizika podle kombinace data a velikosti batch zásoby.</div>
+        <div class="section-subtitle">Nejvyšší rizika podle data a velikosti zásoby.</div>
         <div class="ux-table-wrap" style="margin-top:16px;">
           <table class="table mobile-stack">
             <thead>
@@ -181,7 +181,7 @@
         carrier: 'Přímo na stejné SKU',
         giftCheck: 'NE, radši 2+1',
         giftTone: 'danger',
-        urgency: 'Nasadit hned, do 3 týdnů končí batch.',
+        urgency: 'Nasadit hned, do 3 týdnů končí zásoba s expirací.',
         note: 'Nejjednodušší varianta je pustit ho rovnou jako 2+1.'
       },
       '52902/03': {
@@ -208,7 +208,7 @@
         carrier: '61911 / 61912 / 61914',
         giftCheck: 'ANO',
         giftTone: 'success',
-        urgency: 'Silný produkt s velkou batch zásobou.',
+        urgency: 'Silný produkt s velkou expirační zásobou.',
         note: 'Nejjednodušší je dát ho zdarma k ženské hygieně.'
       },
       '63601': {
@@ -348,10 +348,10 @@
       `).join('');
 
       document.getElementById('gift-limit-list').innerHTML = [
-        ['Max. hodnota dárku', '18 % z hodnoty akce'],
-        ['Co to znamená', 'Dražší věci radši přes 2+1 než zdarma'],
-        ['Co jde dát zdarma', 'PROMO74, 63601'],
-        ['Co nejdřív zkontrolovat', '52902/03, 30111']
+        ['Limit dárku', '18 % z hodnoty akce'],
+        ['Co z toho plyne', 'Dražší věci radši přes 2+1 než zdarma'],
+        ['Co může jít zdarma', 'PROMO74, 63601'],
+        ['Co zkontrolovat hned', '52902/03, 30111']
       ].map(([label, value]) => `
         <div class="ux-stat-row">
           <span>${label}</span>
@@ -375,10 +375,10 @@
       `).join('');
 
       document.getElementById('expiry-kpis').innerHTML = [
-        ['Kritický batch stock', fmtUnits(urgentStock), 'SKU s expirací do 30 dní', 'red'],
-        ['Top urgentní SKU', expiringRows[0] ? `${expiringRows[0].sku}` : '–', expiringRows[0] ? expiringRows[0].title : 'Bez dat', 'gold'],
+        ['Kritická expirační zásoba', fmtUnits(urgentStock), 'SKU s expirací do 30 dní', 'red'],
+        ['Nejurgentnější SKU', expiringRows[0] ? `${expiringRows[0].sku}` : '–', expiringRows[0] ? expiringRows[0].title : 'Bez dat', 'gold'],
         ['Hlavní produkt akce', '44402-2 / 619xx', 'bestsellery, které utáhnou dárek nebo balíček', 'blue'],
-        ['Gift-safe položky', fmt(safeGiftRows.length), 'nejvyšší šance vejít se do pravidla 18 %', 'green']
+        ['Položky vhodné jako dárek', fmt(safeGiftRows.length), 'nejvyšší šance vejít se do pravidla 18 %', 'green']
       ].map(([label, value, sub, klass]) => `
         <div class="card kpi-card ${klass}">
           <div class="kpi-label">${label}</div>
@@ -398,8 +398,8 @@
 
       document.getElementById('guardrails-list').innerHTML = [
         ['Mluv jednoduše', 'Výhodný set, dárek zdarma, časově omezená akce. Ne zdravotní sliby.'],
-        ['Neničit cenu bestselleru', 'Když to jde, nech cenu hlavního produktu a pracuj s dárkem nebo 2+1.'],
-        ['Hlídaj 18 %', 'Když je dárek moc drahý, změň akci na 2+1 nebo balíček bez „zdarma“.']
+        ['Nenič cenu bestselleru', 'Když to jde, nech cenu hlavního produktu a pracuj s dárkem nebo 2+1.'],
+        ['Hlídej 18 %', 'Když je dárek moc drahý, změň akci na 2+1 nebo balíček bez „zdarma“.']
       ].map(row => `
         <div class="block-item">
           <h4>${row[0]}</h4>

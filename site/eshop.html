@@ -8,10 +8,10 @@
 </head>
 <body>
   <aside class="sidebar">
-    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>WPJ výkon v přehlednějším dashboardu</span></div>
+    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>WPJ výkon v přehlednější stránce</span></div>
     <div class="sidebar-section-label">Přehled</div>
     <nav class="sidebar-nav">
-      <a href="index.html">🏠 Portal</a>
+      <a href="index.html">🏠 Přehled</a>
       <a href="finance.html">💰 Finance / ABRA</a>
       <a href="marketing.html">📣 Marketing</a>
       <a href="inventory.html">📦 Sklad</a>
@@ -19,7 +19,7 @@
       <a href="expiry.html">⏳ Expirace / promo</a>
       <a class="active" href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">E-shop stránka nově vede od výkonu dne a problémových objednávek k top produktům a až potom k detailním breakdownům.</div>
+    <div class="sidebar-footer">E-shop začíná výkonem a problémy, detail je až potom.</div>
   </aside>
 
   <main class="main page-stack">
@@ -28,32 +28,32 @@
         <div class="ux-intro">
           <div class="ux-kicker">E-shop / WPJ • výkon bez přetížení</div>
           <h1 class="ux-title">E-shop výkon, který řekne co se stalo a co s tím</h1>
-          <p class="ux-subtitle">Přednost dostávají objednávky, obrat, AOV a problémové případy. Teprve potom přichází breakdown podle plateb, dopravy a produktů. Čísla jsou braná jako kompletní výsledek celého WPJShopu www.kralovstvi-tiande.</p>
+          <p class="ux-subtitle">Přednost dostávají objednávky, obrat, AOV a problémové případy. Teprve potom přichází rozpad podle plateb, dopravy a produktů. Čísla bereme jako kompletní výsledek celého WPJShopu www.kralovstvi-tiande.</p>
           <div class="ux-actions">
             <a class="ux-button primary" href="../data/current/morning_report_previous_day.txt" target="_blank" rel="noopener">Otevřít ranní report</a>
             <a class="ux-button secondary" href="inventory.html">Na sklad</a>
-            <a class="ux-button secondary" href="index.html">Na portal</a>
+            <a class="ux-button secondary" href="index.html">Na přehled</a>
           </div>
         </div>
         <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
       </div>
       <section class="ux-hero-metrics" id="eshop-hero"></section>
-      <div class="ux-date-note"><strong>Jak číst datumy:</strong> objednávky, obrat i breakdowny níž jsou za <strong>včerejšek</strong>, tedy za stejné reportové okno jako ranní report. Jde o <strong>kompletní výsledek celého WPJShopu</strong>, ne jen dílčí část dneška.</div>
+      <div class="ux-date-note"><strong>Jak číst datumy:</strong> objednávky, obrat i rozpad níž jsou za <strong>včerejšek</strong>. Jde o <strong>kompletní výsledek celého WPJShopu</strong>, ne jen část dneška.</div>
     </header>
 
     <section class="grid leadership-note-grid">
       <div class="leadership-notes-head">
         <div class="leadership-notes-kicker">Pohled vedení</div>
-        <h2>Jak tenhle dashboard číst</h2>
-        <p>Dva krátké pohledy, které drží e-shop jako obchodní rozhodování, ne jen tabulku čísel. První je optika e-commerce vedení, druhý pohled pro board.</p>
+        <h2>Jak tu stránku číst</h2>
+        <p>Dva krátké bloky. První řekne, co zkontrolovat hned, druhý kdy už je v datech skutečný problém.</p>
       </div>
       <div class="card leadership-note director">
-        <div class="leadership-note-label">Komentář e-commerce ředitele</div>
-        <p><strong>Tady sledujeme, co se včera skutečně prodalo a kde se výkon láme do problému.</strong> První pohled patří objednávkám, obratu, AOV a kvalitě objednávek. Teprve pak má smysl jít do struktury plateb, doprav a top produktů.</p>
+        <div class="leadership-note-label">Co zkontrolovat hned</div>
+        <p><strong>Začni objednávkami, obratem, AOV a problémovými objednávkami.</strong> Když tady něco nesedí, teprve potom má smysl jít do plateb, doprav a nejprodávanějších produktů.</p>
       </div>
       <div class="card leadership-note board">
-        <div class="leadership-note-label">Komentář pro board</div>
-        <p><strong>Pro board je to hlavní obchodní pulse check.</strong> Díváme se na trend objednávek, obrat, AOV a problémové případy, abychom rychle poznali, jestli je růst zdravý, nebo stojí na křehkém mixu a provozních kompromisech.</p>
+        <div class="leadership-note-label">Co to znamená</div>
+        <p><strong>Tahle stránka rychle ukáže, jestli e-shop roste zdravě.</strong> Sleduj trend objednávek, obrat a AOV, a pak ověř, jestli výkon nekazí moc problémových nebo stornovaných objednávek.</p>
       </div>
     </section>
 
@@ -61,8 +61,8 @@
       <div class="ux-focus-card">
         <div class="ux-section-head">
           <div>
-            <h2 class="ux-section-title">Co e-shop říká dnes</h2>
-            <p class="ux-section-subtitle">První obrazovka má ukázat výkon, rizika a hned navrhnout směr další kontroly.</p>
+            <h2 class="ux-section-title">Co je dnes důležité</h2>
+            <p class="ux-section-subtitle">Rychlý pohled na výkon a rizika.</p>
           </div>
           <span class="badge live" id="wpj-state">Načítám WPJ…</span>
         </div>
@@ -71,13 +71,13 @@
 
       <div class="ux-side-stack">
         <div class="ux-panel-card">
-          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Včerejší snapshot</h3>
-          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Základní přehled bez potřeby číst celý ranní report.</p>
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Včerejší přehled</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Základ bez čtení celého ranního reportu.</p>
           <div class="ux-stat-list" id="eshop-stat-list"></div>
         </div>
         <div class="ux-panel-card">
           <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Náhled ranního reportu</h3>
-          <p id="wpj-message" style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Načítám vygenerovaný text reportu…</p>
+          <p id="wpj-message" style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Načítám krátký text reportu…</p>
           <pre id="report-preview" style="white-space:pre-wrap; font:inherit; margin:16px 0 0; max-height:340px; overflow:auto;"></pre>
         </div>
       </div>
@@ -108,7 +108,7 @@
 
     <section class="grid two-col">
       <div class="card">
-        <h2 class="section-title">Top produkty podle kusů</h2>
+        <h2 class="section-title">Nejprodávanější produkty podle kusů</h2>
         <div class="ux-table-wrap" style="margin-top:16px;">
           <table class="table">
             <thead><tr><th>Produkt</th><th class="num">Kusy</th></tr></thead>
@@ -117,7 +117,7 @@
         </div>
       </div>
       <div class="card">
-        <h2 class="section-title">Top produkty podle obratu</h2>
+        <h2 class="section-title">Nejprodávanější produkty podle obratu</h2>
         <div class="ux-table-wrap" style="margin-top:16px;">
           <table class="table">
             <thead><tr><th>Produkt</th><th class="num">Obrat</th></tr></thead>
@@ -159,7 +159,7 @@
       const hero = [
         ['Objednávky včera', DP.fmtNumber(eshop.orders), `${eshop.problematicOrders} problematické`, 'accent'],
         ['Obrat s DPH', `${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč`, `${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč / objednávka`, ''],
-        ['Top doprava', eshop.deliveryMethods[0]?.name || '–', `${DP.fmtNumber(eshop.deliveryMethods[0]?.count || 0)} objednávek`, '']
+        ['Nejčastější doprava', eshop.deliveryMethods[0]?.name || '–', `${DP.fmtNumber(eshop.deliveryMethods[0]?.count || 0)} objednávek`, '']
       ];
       document.getElementById('eshop-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
         <div class="ux-hero-metric ${klass}">
@@ -170,9 +170,9 @@
       `).join('');
 
       document.getElementById('eshop-focus').innerHTML = [
-        [`Výkon dne: ${DP.fmtNumber(eshop.orders)} objednávek`, `Obrat ${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč, AOV ${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč.`],
-        [`Problematické / stornované`, `${eshop.cancelledOrders} stornované a ${eshop.problematicOrders} problematické objednávky.`],
-        [eshop.topProductsByUnits[0] ? `Top produkt podle kusů: ${eshop.topProductsByUnits[0].label}` : 'Top produkt zatím není', eshop.topProductsByUnits[0] ? `${eshop.topProductsByUnits[0].formatted || eshop.topProductsByUnits[0].value}` : 'Bez dat.']
+        [`Včerejší výkon: ${DP.fmtNumber(eshop.orders)} objednávek`, `Obrat ${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč, AOV ${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč.`],
+        [`Storna a problémy`, `${eshop.cancelledOrders} stornovaných a ${eshop.problematicOrders} problematických objednávek.`],
+        [eshop.topProductsByUnits[0] ? `Nejprodávanější kusově: ${eshop.topProductsByUnits[0].label}` : 'Nejprodávanější produkt zatím není', eshop.topProductsByUnits[0] ? `${eshop.topProductsByUnits[0].formatted || eshop.topProductsByUnits[0].value}` : 'Bez dat.']
       ].map(([title, text], index) => `
         <div class="ux-item">
           <span class="ux-dot ${index === 1 ? '' : index === 2 ? 'gold' : 'blue'}"></span>
@@ -188,14 +188,14 @@
         ['Objednávky', DP.fmtNumber(eshop.orders)],
         ['Obrat', `${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč`],
         ['AOV', `${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč`],
-        ['Top platba', eshop.paymentMethods[0]?.name || '–'],
+        ['Nejčastější platba', eshop.paymentMethods[0]?.name || '–'],
       ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
 
       document.getElementById('wpj-kpis').innerHTML = [
         ['Objednávky včera', DP.fmtNumber(eshop.orders), `${eshop.problematicOrders} problematické`, 'green'],
         ['Obrat s DPH', `${DP.fmtNumber(Math.round(eshop.revenueWithVat))} Kč`, `${DP.fmtNumber(Math.round(eshop.averageOrderValue))} Kč / objednávka`, 'blue'],
-        ['Top platba', eshop.paymentMethods[0]?.name || '–', `${DP.fmtNumber(eshop.paymentMethods[0]?.count || 0)} objednávek`, 'gold'],
-        ['Top doprava', eshop.deliveryMethods[0]?.name || '–', `${DP.fmtNumber(eshop.deliveryMethods[0]?.count || 0)} objednávek`, 'red']
+        ['Nejčastější platba', eshop.paymentMethods[0]?.name || '–', `${DP.fmtNumber(eshop.paymentMethods[0]?.count || 0)} objednávek`, 'gold'],
+        ['Nejčastější doprava', eshop.deliveryMethods[0]?.name || '–', `${DP.fmtNumber(eshop.deliveryMethods[0]?.count || 0)} objednávek`, 'red']
       ].map(([label, value, sub, klass]) => `
         <div class="card kpi-card ${klass}">
           <div class="kpi-label">${label}</div>

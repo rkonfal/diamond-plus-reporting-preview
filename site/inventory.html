@@ -8,10 +8,10 @@
 </head>
 <body>
   <aside class="sidebar">
-    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>Sklad v přehlednějším, operativně vedeném dashboardu</span></div>
+    <div class="sidebar-logo"><h2>Diamond Plus</h2><span>Sklad v přehlednější operativní stránce</span></div>
     <div class="sidebar-section-label">Přehled</div>
 <nav class="sidebar-nav">
-      <a href="index.html">🏠 Portal</a>
+      <a href="index.html">🏠 Přehled</a>
       <a href="finance.html">💰 Finance / ABRA</a>
       <a href="marketing.html">📣 Marketing</a>
       <a class="active" href="inventory.html">📦 Sklad</a>
@@ -19,7 +19,7 @@
       <a href="expiry.html">⏳ Expirace / promo</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">Skladová stránka nově začíná tím, co je potřeba řešit, a teprve potom ukazuje explorer, mismatchy a analytiku.</div>
+    <div class="sidebar-footer">Sklad začíná tím, co řešit hned. Explorer a analytika až potom.</div>
   </aside>
 
   <main class="main page-stack">
@@ -32,28 +32,28 @@
           <div class="ux-actions">
             <a class="ux-button primary" href="../data/current/morning_report_previous_day.txt" target="_blank" rel="noopener">Otevřít ranní report</a>
             <a class="ux-button secondary" href="logistics.html">Na logistiku</a>
-            <a class="ux-button secondary" href="index.html">Na portal</a>
+            <a class="ux-button secondary" href="index.html">Na přehled</a>
           </div>
         </div>
         <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
       </div>
       <section class="ux-hero-metrics" id="inventory-hero"></section>
-      <div class="ux-date-note"><strong>Jak číst datumy:</strong> explorer a mismatchy ukazují <strong>aktuální stav po posledním refreshi</strong>, položky „prodané včera“ vycházejí z <strong>včerejšího report window</strong> a pohyby jsou změna <strong>oproti minulému snapshotu</strong>.</div>
+      <div class="ux-date-note"><strong>Jak číst datumy:</strong> explorer a mismatchy ukazují <strong>aktuální stav po posledním refreshi</strong>, položky „prodané včera“ vycházejí z <strong>včerejšího reportu</strong> a pohyby jsou změna <strong>oproti minulému snapshotu</strong>.</div>
     </header>
 
     <section class="grid leadership-note-grid">
       <div class="leadership-notes-head">
         <div class="leadership-notes-kicker">Pohled vedení</div>
-        <h2>Jak tenhle dashboard číst</h2>
-        <p>Dva krátké pohledy, které mají udržet sklad v rovině rozhodnutí. První ukazuje provozní optiku, druhý co z těch samých dat potřebuje vidět board.</p>
+        <h2>Jak tu stránku číst</h2>
+        <p>Dva krátké bloky. První řekne, co dnes může zablokovat provoz, druhý co ten stav znamená pro firmu.</p>
       </div>
       <div class="card leadership-note director">
-        <div class="leadership-note-label">Komentář provozního ředitele</div>
-        <p><strong>Tady se díváme na to, co může dnes zablokovat expedici nebo zbytečně držet cash ve skladu.</strong> Priorita jsou kritické položky, mismatchy, nízké pokrytí a ležáky. Celkový objem zásob je až druhotná informace.</p>
+        <div class="leadership-note-label">Co hlídat dnes</div>
+        <p><strong>Hlídej kritické položky, mismatchy, nízké pokrytí a ležáky.</strong> Celkový objem zásob je až druhý krok.</p>
       </div>
       <div class="card leadership-note board">
-        <div class="leadership-note-label">Komentář pro board</div>
-        <p><strong>Pro board je to obraz zdraví zásoby.</strong> Sledujeme, jestli sklad podporuje prodej, nebo naopak váže peníze v přebytcích a chybách párování. Důležité jsou hlavně nedostupnosti na tahounech a systémové provozní slabiny.</p>
+        <div class="leadership-note-label">Co to znamená</div>
+        <p><strong>Tahle stránka ukáže, jestli sklad podporuje prodej, nebo váže peníze v přebytcích a chybách párování.</strong> Nejvíc bolí nedostupnosti na tahounech a systémové slabiny v párování.</p>
       </div>
     </section>
 
@@ -64,7 +64,7 @@
         <div class="ux-section-head">
           <div>
             <h2 class="ux-section-title">Na co se podívat jako první</h2>
-            <p class="ux-section-subtitle">Krátká operativní fronta pro sklad bez potřeby hned otevírat explorer.</p>
+            <p class="ux-section-subtitle">Krátký seznam pro první kontrolu.</p>
           </div>
           <span class="badge warn" id="inventory-attention-badge">Načítám priority…</span>
         </div>
@@ -73,13 +73,13 @@
 
       <div class="ux-side-stack">
         <div class="ux-panel-card">
-          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Rychlý snapshot</h3>
-          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Základní přehled skladu a párování bez čtení dlouhých tabulek.</p>
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Rychlý přehled</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Základní stav skladu bez dlouhých tabulek.</p>
           <div class="ux-stat-list" id="inventory-stat-list"></div>
         </div>
         <div class="ux-panel-card">
           <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Jak stránku používat</h3>
-          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Explorer zůstává silný, ale hlavní práce má jít rychle i bez něj.</p>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Nejdřív rychlá kontrola, detail až potom.</p>
           <div class="ux-side-list" id="inventory-usage-list"></div>
         </div>
       </div>
@@ -89,7 +89,7 @@
       <div class="toolbar">
         <div>
           <h2 class="section-title">Aktivní skladový explorer</h2>
-          <div class="section-subtitle">Vyhledávání a filtry nad celým spárovaným skladem, včetně aliasů mezi WPJ a 4PX.</div>
+      <div class="section-subtitle">Hledání a filtry nad celým spárovaným skladem včetně aliasů mezi WPJ a 4PX.</div>
         </div>
         <div class="toolbar-controls">
           <label class="control-group">
@@ -103,7 +103,7 @@
               <option value="mismatch">Jen mismatchy</option>
               <option value="only4px">Jen pouze v 4PX</option>
               <option value="lowAfterSales">Jen nízký sklad po prodeji</option>
-              <option value="manualAlias">Jen ruční override</option>
+              <option value="manualAlias">Jen ruční mapování</option>
               <option value="autoAlias">Jen auto alias</option>
               <option value="visible">Jen viditelné produkty</option>
               <option value="soldYesterday">Jen prodané včera</option>
@@ -111,7 +111,7 @@
               <option value="negativeDelta">Jen negativní delta</option>
               <option value="zero4px">Jen bez 4PX skladu</option>
               <option value="fastLowCover">Jen nízké pokrytí</option>
-              <option value="deadStock">Jen dead stock</option>
+              <option value="deadStock">Jen mrtvý sklad</option>
               <option value="slowMover">Jen ležáky</option>
               <option value="inStock">Jen s 4PX skladem &gt; 0</option>
             </select>
@@ -149,17 +149,17 @@
         <button class="quick-filter" type="button" data-filter="negativeDelta">Negativní delta</button>
         <button class="quick-filter" type="button" data-filter="only4px">Pouze v 4PX</button>
         <button class="quick-filter" type="button" data-filter="zero4px">Bez 4PX skladu</button>
-        <button class="quick-filter" type="button" data-filter="manualAlias">Ruční override</button>
+        <button class="quick-filter" type="button" data-filter="manualAlias">Ruční mapování</button>
         <button class="quick-filter" type="button" data-filter="autoAlias">Auto alias</button>
         <button class="quick-filter" type="button" data-filter="fastLowCover">Nízké pokrytí</button>
-        <button class="quick-filter" type="button" data-filter="deadStock">Dead stock</button>
+        <button class="quick-filter" type="button" data-filter="deadStock">Mrtvý sklad</button>
       </div>
 
       <div class="quick-filters" id="inventory-presets">
-        <button class="quick-filter" type="button" data-preset="operativa">Preset: Operativa</button>
-        <button class="quick-filter" type="button" data-preset="mismatch">Preset: Mismatchy</button>
-        <button class="quick-filter" type="button" data-preset="mapping">Preset: Mapování</button>
-        <button class="quick-filter" type="button" data-preset="deadstock">Preset: Dead stock</button>
+        <button class="quick-filter" type="button" data-preset="operativa">Pohled: Operativa</button>
+        <button class="quick-filter" type="button" data-preset="mismatch">Pohled: Mismatchy</button>
+        <button class="quick-filter" type="button" data-preset="mapping">Pohled: Mapování</button>
+        <button class="quick-filter" type="button" data-preset="deadstock">Pohled: Mrtvý sklad</button>
         <button class="quick-filter" type="button" data-preset="reset">Reset pohledu</button>
       </div>
 
@@ -182,7 +182,7 @@
 
     <section class="card" style="margin-top:20px;">
       <h2 class="section-title">Prioritní mismatch shortlist</h2>
-      <div class="section-subtitle">Ne dump, ale pořadník toho, co má největší dopad na provoz a co dává smysl řešit jako první.</div>
+      <div class="section-subtitle">Pořadník věcí s největším dopadem na provoz.</div>
       <table class="table">
         <thead>
           <tr>
@@ -199,8 +199,8 @@
 
     <section class="grid two-col" style="margin-top:20px;">
       <div class="card">
-        <h2 class="section-title">Obrátkovost, top produkty za 365 dní</h2>
-        <div class="section-subtitle">Pohled na nejtočivější produkty za poslední rok a orientační dobu pokrytí zásob.</div>
+        <h2 class="section-title">Obrátkovost, nejprodávanější produkty za 365 dní</h2>
+      <div class="section-subtitle">Nejtočivější produkty za poslední rok a orientační pokrytí zásob.</div>
         <table class="table">
           <thead>
             <tr>
@@ -216,7 +216,7 @@
 
       <div class="card">
         <h2 class="section-title">Riziko nízkého pokrytí</h2>
-        <div class="section-subtitle">Rychle se točí a na skladu toho není moc, tohle je operativní watchlist.</div>
+      <div class="section-subtitle">Rychle se prodávají a zásoba je nízko.</div>
         <table class="table">
           <thead>
             <tr>
@@ -234,7 +234,7 @@
     <section class="grid two-col" style="margin-top:20px;">
       <div class="card">
         <h2 class="section-title">Ležáky</h2>
-        <div class="section-subtitle">Zásoba leží dlouho bez prodeje nebo má extrémně dlouhé pokrytí.</div>
+      <div class="section-subtitle">Zásoba leží dlouho bez pohybu nebo má extrémně dlouhé pokrytí.</div>
         <table class="table">
           <thead>
             <tr>
@@ -249,7 +249,7 @@
       </div>
 
       <div class="card">
-        <h2 class="section-title">Dead stock</h2>
+      <h2 class="section-title">Mrtvý sklad</h2>
         <div class="section-subtitle">Zboží na skladu bez prodeje za posledních 365 dní.</div>
         <table class="table">
           <thead>
@@ -299,12 +299,12 @@
     </section>
 
     <section class="card" style="margin-top:20px;">
-      <h2 class="section-title">Mapovací návrhy pro orphan SKU</h2>
-      <div class="section-subtitle">Zobrazuje jak auto mapování přes suffix typu <code>/01</code>, tak i případné ruční override vazby z konfigurační mapy.</div>
+      <h2 class="section-title">Mapovací návrhy pro nepárované SKU</h2>
+      <div class="section-subtitle">Ukazuje auto mapování přes suffix typu <code>/01</code> i ruční vazby z konfigurační mapy.</div>
       <table class="table">
         <thead>
           <tr>
-            <th>4PX orphan SKU</th>
+            <th>4PX nepárované SKU</th>
             <th>Navržený WPJ produkt</th>
             <th class="num">Expedováno včera</th>
             <th class="num">4PX sklad</th>
@@ -316,8 +316,8 @@
     </section>
 
     <section class="card" style="margin-top:20px;">
-      <h2 class="section-title">Top stock mismatchy</h2>
-      <div class="section-subtitle">Porovnání WPJ 4PX store stavu proti reálnému 4PX inventory pullu.</div>
+      <h2 class="section-title">Největší rozdíly skladu</h2>
+      <div class="section-subtitle">Porovnání stavu ve WPJ a reálného 4PX skladu.</div>
       <table class="table">
         <thead>
           <tr>
@@ -527,7 +527,7 @@
         ['Spárované produkty', fmt(overview.counts.pairedProducts), 'WPJ + 4PX mají vazbu', 'green'],
         ['Stock mismatchy', fmt(overview.counts.stockMismatch), 'potřebují shortlist a kontrolu', 'red'],
         ['Pouze v 4PX', fmt(overview.counts.onlyIn4px), 'chybí nebo nejsou svázané ve WPJ', 'gold'],
-        ['Ruční override', fmt(overview.counts.manualMapped4pxAliases || 0), 'výjimky řízené přes konfigurační mapu', 'blue']
+        ['Ruční mapování', fmt(overview.counts.manualMapped4pxAliases || 0), 'výjimky řízené přes konfigurační mapu', 'blue']
       ].map(([label, value, sub, klass]) => `
         <div class="card kpi-card ${klass}">
           <div class="kpi-label">${label}</div>
@@ -544,7 +544,7 @@
       document.getElementById('inventory-attention-list').innerHTML = [
         lowStockRows[0] ? [`Nízký sklad po včerejším prodeji`, `${lowStockRows[0].code} · ${lowStockRows[0].title} má teď ${fmt(lowStockRows[0].fourpx?.availableTotal)} ks.`] : null,
         priorityRows[0] ? [`Prioritní mismatch`, `${priorityRows[0].code} · ${priorityRows[0].title} patří mezi nejdůležitější ke kontrole.`] : null,
-        only4pxRows[0] ? [`Položky pouze v 4PX`, `${fmt(only4pxRows.length)} orphan SKU je potřeba dopárovat nebo vědomě ignorovat.`] : null,
+        only4pxRows[0] ? [`Položky pouze v 4PX`, `${fmt(only4pxRows.length)} nepárované SKU je potřeba dopárovat nebo vědomě ignorovat.`] : null,
       ].filter(Boolean).map(([title, text], index) => `
         <div class="ux-item">
           <span class="ux-dot ${index === 1 ? 'gold' : 'blue'}"></span>
@@ -556,7 +556,7 @@
       `).join('');
 
       document.getElementById('inventory-stat-list').innerHTML = [
-        ['Okno reportu', new Date(overview.window.from).toLocaleDateString('cs-CZ')],
+        ['Datum reportu', new Date(overview.window.from).toLocaleDateString('cs-CZ')],
         ['Spárované produkty', fmt(overview.counts.pairedProducts)],
         ['Mismatchy', fmt(overview.counts.stockMismatch)],
         ['Nízký sklad po prodeji', fmt(overview.counts.lowAfterSales || 0)],
@@ -564,8 +564,8 @@
       ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
 
       document.getElementById('inventory-usage-list').innerHTML = [
-        ['Quick filtry', 'Na první kontrolu používej mismatch, nízký sklad po prodeji a prodané včera.'],
-        ['Presety pohledu', 'Operativa a mismatch preset zrychlí běžnou ranní práci.'],
+        ['Rychlé filtry', 'Začni mismatchy, nízkým skladem po prodeji a prodaným včera.'],
+        ['Presety pohledu', 'Operativa a mismatch zrychlí běžnou ranní práci.'],
         ['Export CSV', 'Když potřebuješ něco sdílet dál, exportuje celý aktuálně filtrovaný výběr.']
       ].map(([title, text], index) => `
         <div class="ux-side-item">
@@ -623,7 +623,7 @@
         const rows = getExplorerRows();
 
         const visible = rows.slice(0, limit);
-        explorerSummary.textContent = `Zobrazeno ${fmt(visible.length)} z ${fmt(rows.length)} výsledků, celkem ${fmt(explorerRows.length)} produktových řádků v kombinovaném skladu. Filtr: ${filterSelect.options[filterSelect.selectedIndex].text}. Řazení: ${sortSelect.options[sortSelect.selectedIndex].text}. Export CSV bere celý aktuálně filtrovaný výběr.`;
+        explorerSummary.textContent = `Zobrazeno ${fmt(visible.length)} z ${fmt(rows.length)} výsledků. Celkem ${fmt(explorerRows.length)} produktových řádků. Filtr: ${filterSelect.options[filterSelect.selectedIndex].text}. Řazení: ${sortSelect.options[sortSelect.selectedIndex].text}. Export CSV bere celý filtrovaný výběr.`;
         persistExplorerState();
 
         explorerTable.innerHTML = visible.map(({ row, metric }) => `
@@ -761,7 +761,7 @@
           <td class="num">${fmt(row.units365d)}</td>
           <td class="num">${row.stockValueSelling ? `${fmt(row.stockValueSelling)} Kč` : '–'}</td>
         </tr>
-      `).join('') || '<tr><td colspan="4">Aktuálně bez dead stocku.</td></tr>';
+      `).join('') || '<tr><td colspan="4">Aktuálně bez mrtvého skladu.</td></tr>';
 
       document.getElementById('low-stock-table').innerHTML = (overview.lowAfterSales || []).map(row => `
         <tr>
@@ -778,7 +778,7 @@
           <td class="num">${fmt(row.fourpx.availableTotal)}</td>
           <td class="num">${fmt(row.yesterdayOutbound.czUnits + row.yesterdayOutbound.skUnits)}</td>
         </tr>
-      `).join('') || '<tr><td colspan="3">Aktuálně bez orphan 4PX SKU.</td></tr>';
+      `).join('') || '<tr><td colspan="3">Aktuálně bez nepárované 4PX SKU.</td></tr>';
 
       document.getElementById('mapping-suggestions-table').innerHTML = (overview.mappingSuggestions || []).map(row => `
         <tr>

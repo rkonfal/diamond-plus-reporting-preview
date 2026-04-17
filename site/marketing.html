@@ -10,11 +10,11 @@
   <aside class="sidebar">
     <div class="sidebar-logo">
       <h2>Diamond Plus</h2>
-      <span>Marketing v čistším, rozhodovacím dashboardu</span>
+      <span>Marketing v přehledné stránce</span>
     </div>
     <div class="sidebar-section-label">Přehled</div>
     <nav class="sidebar-nav">
-      <a href="index.html">🏠 Portal</a>
+      <a href="index.html">🏠 Přehled</a>
       <a href="finance.html">💰 Finance / ABRA</a>
       <a class="active" href="marketing.html">📣 Marketing</a>
       <a href="inventory.html">📦 Sklad</a>
@@ -22,7 +22,7 @@
       <a href="expiry.html">⏳ Expirace / promo</a>
       <a href="eshop.html">🛒 E-shop / WPJ</a>
     </nav>
-    <div class="sidebar-footer">Marketing stránka nově mluví jazykem rozhodnutí: kolik utrácíme, kde je koncentrace spendu a co z toho plyne.</div>
+    <div class="sidebar-footer">Marketing rychle ukáže, kolik utrácíme, kde je koncentrace a co z toho plyne.</div>
   </aside>
 
   <main class="main page-stack">
@@ -31,32 +31,32 @@
         <div class="ux-intro">
           <div class="ux-kicker">Marketing • méně účetního šumu, víc kontextu</div>
           <h1 class="ux-title">Marketingové náklady, které jdou rychle přečíst</h1>
-          <p class="ux-subtitle">První vrstva má ukázat celkový spend, výkonové versus ostatní náklady a koncentraci u dodavatelů. Detailní položky zůstávají níž pro hlubší kontrolu.</p>
+          <p class="ux-subtitle">Nejdřív celkové náklady, poměr výkonu a ostatních nákladů a koncentrace u dodavatelů. Detailní položky jsou až níž.</p>
           <div class="ux-actions">
             <a class="ux-button primary" href="../data/current/marketing_overview.json" target="_blank" rel="noopener">Otevřít marketing data</a>
             <a class="ux-button secondary" href="finance.html">Na finance</a>
-            <a class="ux-button secondary" href="index.html">Na portal</a>
+            <a class="ux-button secondary" href="index.html">Na přehled</a>
           </div>
         </div>
         <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
       </div>
       <section class="ux-hero-metrics" id="marketing-hero"></section>
-      <div class="ux-date-note"><strong>Jak číst datumy:</strong> marketingové spendy a top dodavatelé se vztahují k <strong>poslednímu dostupnému měsíci</strong>, ne k dnešku. Ranní text vpravo je jen <strong>rychlý včerejší kontext</strong>.</div>
+      <div class="ux-date-note"><strong>Jak číst datumy:</strong> marketingové náklady a největší dodavatelé se vztahují k <strong>poslednímu dostupnému měsíci</strong>, ne k dnešku. Ranní text vpravo je jen <strong>rychlý včerejší kontext</strong>.</div>
     </header>
 
     <section class="grid leadership-note-grid">
       <div class="leadership-notes-head">
         <div class="leadership-notes-kicker">Pohled vedení</div>
-        <h2>Jak tenhle dashboard číst</h2>
-        <p>Dva krátké pohledy, které drží marketing jako disciplínu růstu, ne jako výpis nákladů. První je optika CMO, druhý pohled pro board.</p>
+        <h2>Jak tu stránku číst</h2>
+        <p>Dva krátké bloky. První řekne, co kontrolovat hned, druhý kdy už jsou náklady rizikové.</p>
       </div>
       <div class="card leadership-note director">
-        <div class="leadership-note-label">Komentář CMO</div>
-        <p><strong>Tady sledujeme, kolik peněz jde do akvizice a jak zdravě je spend rozložený.</strong> Důležité je vidět, jestli marketing drží rozumný poměr k výnosům, jestli nejsme přehnaně závislí na jednom dodavateli a kde má další investice smysl.</p>
+        <div class="leadership-note-label">Co kontrolovat hned</div>
+        <p><strong>Sleduj celkové náklady, podíl výkonu versus ostatních nákladů a závislost na největších dodavatelích.</strong> To stačí pro první orientaci.</p>
       </div>
       <div class="card leadership-note board">
-        <div class="leadership-note-label">Komentář pro board</div>
-        <p><strong>Pro board je to kontrola disciplíny růstu.</strong> Neřešíme každou položku, ale to, zda marketing utrácí udržitelně, bez zbytečné koncentrace rizika a s logikou vůči celkovým výnosům firmy.</p>
+        <div class="leadership-note-label">Co to znamená</div>
+        <p><strong>Když náklady rostou rychleji než výnosy nebo se moc koncentrují u jednoho dodavatele, je čas brzdit.</strong> Pak dává smysl jít do detailu a rozpadnout problém po položkách.</p>
       </div>
     </section>
 
@@ -66,8 +66,8 @@
       <div class="ux-focus-card">
         <div class="ux-section-head">
           <div>
-            <h2 class="ux-section-title">Co marketing říká teď</h2>
-            <p class="ux-section-subtitle">Stručný kontext, který pomůže číst spend bez účetního výpisu.</p>
+            <h2 class="ux-section-title">Co je v marketingu důležité</h2>
+            <p class="ux-section-subtitle">Rychlý kontext k nákladům bez účetního výpisu.</p>
           </div>
           <span class="badge warn" id="source-mode">Načítám zdroj…</span>
         </div>
@@ -81,7 +81,7 @@
           <div class="ux-stat-list" id="marketing-current"></div>
         </div>
         <div class="ux-panel-card">
-          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Top dodavatelé</h3>
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Největší dodavatelé</h3>
           <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Kdo teď táhne největší podíl marketingových nákladů.</p>
           <div class="ux-side-list" id="suppliers-list"></div>
         </div>
@@ -92,8 +92,8 @@
 
     <section class="grid two-col">
       <div class="card">
-        <h2 class="section-title">Měsíční spend</h2>
-        <div class="section-subtitle">Rozseknuté na PPC a ostatní marketing z dostupného ABRA výřezu.</div>
+        <h2 class="section-title">Měsíční náklady</h2>
+      <div class="section-subtitle">PPC a ostatní marketing po měsících.</div>
         <div class="ux-table-wrap" style="margin-top:16px;">
           <table class="table">
             <thead>
@@ -110,7 +110,7 @@
         </div>
       </div>
       <div class="card">
-        <h2 class="section-title">Top dodavatelé, aktuální měsíc</h2>
+        <h2 class="section-title">Největší dodavatelé, aktuální měsíc</h2>
         <div class="ux-table-wrap" style="margin-top:16px;">
           <table class="table">
             <thead>
@@ -127,7 +127,7 @@
 
     <section class="card">
       <h2 class="section-title">Aktuální marketingové položky</h2>
-      <div class="section-subtitle">Operativní rozpad podle účetních položek, než se dopojí Meta, Google a další kanály napřímo.</div>
+      <div class="section-subtitle">Rozpad podle účetních položek, než dopojíme Meta, Google a další kanály napřímo.</div>
       <div class="ux-table-wrap" style="margin-top:16px;">
         <table class="table">
           <thead>
@@ -153,7 +153,7 @@
     const money = value => `${DP.fmtNumber(Math.round(value || 0))} Kč`;
     const pct = value => value == null ? '–' : `${Number(value).toFixed(1)} %`;
     const sourceMeta = status => ({
-      legacy_snapshot: { label: 'legacy snapshot', tone: 'warn' },
+      legacy_snapshot: { label: 'starší uložený přehled', tone: 'warn' },
       missing: { label: 'bez zdroje', tone: 'danger' },
     }[status] || { label: status || 'marketing ready', tone: 'info' });
 
@@ -167,8 +167,8 @@
       const current = data.currentMonth || {};
       const topSupplier = (data.topSuppliersCurrentMonth || [])[0];
       const hero = [
-        ['Marketing spend', money(current.totalSpend), `${pct(current.spendShareOfRevenuePct)} z výnosů`, 'accent'],
-        ['PPC spend', money(current.performanceSpend), 'výkonové kanály', ''],
+        ['Marketingové náklady', money(current.totalSpend), `${pct(current.spendShareOfRevenuePct)} z výnosů`, 'accent'],
+        ['PPC', money(current.performanceSpend), 'výkonové kanály', ''],
         ['Ostatní marketing', money(current.brandSpend), 'produkce, SMS, služby', '']
       ];
       document.getElementById('marketing-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
@@ -180,8 +180,8 @@
       `).join('');
 
       document.getElementById('marketing-focus').innerHTML = [
-        [`Aktuální měsíc: ${current.label || '–'}`, `Celkový spend je ${money(current.totalSpend)}, což dělá ${pct(current.spendShareOfRevenuePct)} z výnosů.`],
-        [`Výkonové kanály vs ostatní`, `PPC ${money(current.performanceSpend)} oproti ostatnímu marketingu ${money(current.brandSpend)}.`],
+        [`Aktuální měsíc: ${current.label || '–'}`, `Celkem ${money(current.totalSpend)}, tedy ${pct(current.spendShareOfRevenuePct)} z výnosů.`],
+        [`PPC vs ostatní marketing`, `PPC ${money(current.performanceSpend)} oproti ostatnímu marketingu ${money(current.brandSpend)}.`],
         topSupplier ? [`Největší dodavatel: ${topSupplier.name}`, `Aktuálně ${money(topSupplier.amount)} v tomto měsíci.`] : null,
       ].filter(Boolean).map(([title, text], index) => `
         <div class="ux-item">
@@ -194,7 +194,7 @@
       `).join('');
 
       document.getElementById('marketing-current').innerHTML = [
-        ['PPC spend', money(current.performanceSpend)],
+        ['PPC', money(current.performanceSpend)],
         ['Ostatní marketing', money(current.brandSpend)],
         ['Celkem', money(current.totalSpend)],
         ['Podíl z výnosů', pct(current.spendShareOfRevenuePct)],
@@ -211,10 +211,10 @@
       `).join('') || `<div class="ux-side-item"><span class="ux-dot green"></span><div><strong>Bez dat</strong><span>Aktuálně není co zobrazit.</span></div></div>`;
 
       const kpis = [
-        ['Marketing spend', money(current.totalSpend), `${pct(current.spendShareOfRevenuePct)} z výnosů`, 'gold'],
-        ['PPC spend', money(current.performanceSpend), 'výkonové kanály', 'blue'],
+        ['Marketingové náklady', money(current.totalSpend), `${pct(current.spendShareOfRevenuePct)} z výnosů`, 'gold'],
+        ['PPC', money(current.performanceSpend), 'výkonové kanály', 'blue'],
         ['Ostatní marketing', money(current.brandSpend), 'produkce, SMS, služby', 'green'],
-        ['Top dodavatel', topSupplier ? money(topSupplier.amount) : '0 Kč', topSupplier ? topSupplier.name : 'bez dat', 'red']
+        ['Největší dodavatel', topSupplier ? money(topSupplier.amount) : '0 Kč', topSupplier ? topSupplier.name : 'bez dat', 'red']
       ];
       document.getElementById('top-kpis').innerHTML = kpis.map(([label, value, sub, klass]) => `
         <div class="card kpi-card ${klass}">
