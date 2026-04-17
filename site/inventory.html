@@ -85,6 +85,38 @@
       </div>
     </section>
 
+    <section class="grid two-col" style="margin-top:20px;">
+      <div class="card">
+        <h2 class="section-title">Sklad LTM</h2>
+        <div class="section-subtitle">Největší zásoba podle WPJ / ABRA store stavu.</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Produkt</th>
+              <th class="num">LTM</th>
+              <th class="num">Prodej 365d</th>
+            </tr>
+          </thead>
+          <tbody id="ltm-store-table"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Sklad Měčín</h2>
+        <div class="section-subtitle">Největší zásoba podle WPJ / ABRA store stavu.</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Produkt</th>
+              <th class="num">Měčín</th>
+              <th class="num">Prodej 365d</th>
+            </tr>
+          </thead>
+          <tbody id="mecin-store-table"></tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="card" style="margin-top:20px;">
       <div class="toolbar">
         <div>
@@ -170,6 +202,8 @@
           <tr>
             <th>Produkt</th>
             <th>Stav</th>
+            <th class="num">LTM</th>
+            <th class="num">Měčín</th>
             <th class="num">4PX sklad</th>
             <th class="num">Delta</th>
             <th>365d / pokrytí</th>
@@ -474,6 +508,22 @@
         metric: analyticsByCode.get(row.code) || {}
       }));
 
+      const normalizeStoreName = (value) => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+      const warehouseQty = (row, matcher) => (row.wpj?.stores || [])
+        .filter(store => matcher(normalizeStoreName(store.storeName)))
+        .reduce((sum, store) => sum + Number(store.inStore || 0), 0);
+      const ltmQty = (row) => warehouseQty(row, name => name.includes('ltm'));
+      const mecinQty = (row) => warehouseQty(row, name => name.includes('mecin'));
+
+      const ltmRows = explorerRows
+        .map(({ row, metric }) => ({ row, metric, qty: ltmQty(row) }))
+        .filter(item => item.qty > 0)
+        .sort((a, b) => b.qty - a.qty || Number(b.metric.units365d || 0) - Number(a.metric.units365d || 0));
+      const mecinRows = explorerRows
+        .map(({ row, metric }) => ({ row, metric, qty: mecinQty(row) }))
+        .filter(item => item.qty > 0)
+        .sort((a, b) => b.qty - a.qty || Number(b.metric.units365d || 0) - Number(a.metric.units365d || 0));
+
       const searchInput = document.getElementById('inventory-search');
       const filterSelect = document.getElementById('inventory-filter');
       const sortSelect = document.getElementById('inventory-sort');
@@ -558,10 +608,27 @@
       document.getElementById('inventory-stat-list').innerHTML = [
         ['Datum reportu', new Date(overview.window.from).toLocaleDateString('cs-CZ')],
         ['Spárované produkty', fmt(overview.counts.pairedProducts)],
+        ['LTM celkem', `${fmt(ltmRows.reduce((sum, item) => sum + item.qty, 0))} ks`],
+        ['Měčín celkem', `${fmt(mecinRows.reduce((sum, item) => sum + item.qty, 0))} ks`],
         ['Mismatchy', fmt(overview.counts.stockMismatch)],
         ['Nízký sklad po prodeji', fmt(overview.counts.lowAfterSales || 0)],
-        ['Pouze v 4PX', fmt(overview.counts.onlyIn4px || 0)],
       ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+      document.getElementById('ltm-store-table').innerHTML = ltmRows.slice(0, 15).map(({ row, metric, qty }) => `
+        <tr>
+          <td>${productLabel(row)}</td>
+          <td class="num">${fmt(qty)}</td>
+          <td class="num">${fmt(metric.units365d || 0)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="3">Ve skladu LTM teď nic nevidíme.</td></tr>';
+
+      document.getElementById('mecin-store-table').innerHTML = mecinRows.slice(0, 15).map(({ row, metric, qty }) => `
+        <tr>
+          <td>${productLabel(row)}</td>
+          <td class="num">${fmt(qty)}</td>
+          <td class="num">${fmt(metric.units365d || 0)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="3">Ve skladu Měčín teď nic nevidíme.</td></tr>';
 
       document.getElementById('inventory-usage-list').innerHTML = [
         ['Rychlé filtry', 'Začni mismatchy, nízkým skladem po prodeji a prodaným včera.'],
@@ -633,6 +700,8 @@
               <div class="muted small" style="margin-top:6px;">WPJ 4PX: ${fmt(row.wpj?.fourpxStoreTotal)} ks</div>
             </td>
             <td>${inventoryBadges(row, metric)}</td>
+            <td class="num">${fmt(ltmQty(row))}</td>
+            <td class="num">${fmt(mecinQty(row))}</td>
             <td class="num">${fmt(row.fourpx?.availableTotal)}</td>
             <td class="num">${fmt(row.stockDelta)}</td>
             <td>
@@ -641,7 +710,7 @@
             </td>
             <td>${explorerSourceCodes(row)}</td>
           </tr>
-        `).join('') || '<tr><td colspan="6">Nic neodpovídá filtru nebo hledání.</td></tr>';
+        `).join('') || '<tr><td colspan="8">Nic neodpovídá filtru nebo hledání.</td></tr>';
       }
 
       searchInput.addEventListener('input', renderExplorer);
@@ -655,6 +724,8 @@
           'title',
           'visible',
           'flags',
+          'ltm_stock',
+          'mecin_stock',
           'fourpx_available',
           'wpj_4px_stock',
           'stock_delta',
@@ -673,6 +744,8 @@
             row.title,
             row.visible ? '1' : '0',
             list(row.flags).join(','),
+            ltmQty(row),
+            mecinQty(row),
             row.fourpx?.availableTotal ?? '',
             row.wpj?.fourpxStoreTotal ?? '',
             row.stockDelta ?? '',
