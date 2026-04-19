@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-19T15:00:00.903998+02:00",
+  "generatedAt": "2026-04-19T15:06:06.305973+02:00",
   "window": {
     "from": "2026-04-18T00:00:01+02:00",
     "to": "2026-04-19T00:00:00+02:00"
@@ -194,9 +194,9 @@
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 2214.0,
+      "wpj4pxStock": 2211.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 2214.0,
+      "stockDelta": 2211.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -234,9 +234,9 @@
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 2214.0,
+      "wpj4pxStock": 2211.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 2214.0,
+      "stockDelta": 2211.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -348,15 +348,15 @@
       "code": "UA132",
       "title": "Peeling Broskovový 1+1",
       "priority": "high",
-      "score": 54.72,
+      "score": 54.7,
       "reasons": [
         "WPJ ukazuje 4PX kontext, ale 4PX inventory nesedí",
         "4PX available je nula"
       ],
       "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
-      "wpj4pxStock": 1736.0,
+      "wpj4pxStock": 1735.0,
       "fourpxAvailable": 0.0,
-      "stockDelta": 1736.0,
+      "stockDelta": 1735.0,
       "yesterdaySalesUnits": 0.0,
       "yesterdayOutboundUnits": 0.0,
       "flags": [
@@ -1913,14 +1913,14 @@
       "url": "https://www.kralovstvi-tiande.cz/hydratacni-pletova-pga-maska-s-pivonkou-a-pupecnikem-asijskym_z8149/",
       "visible": false,
       "wpj": {
-        "inStore": 1920.0,
-        "fourpxStoreTotal": 2214.0,
+        "inStore": 1917.0,
+        "fourpxStoreTotal": 2211.0,
         "priceWithVat": 61.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1920.0
+            "inStore": 1917.0
           },
           {
             "storeId": 7,
@@ -2009,7 +2009,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 2214.0,
+      "stockDelta": 2211.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -2022,14 +2022,14 @@
       "url": "https://www.kralovstvi-tiande.cz/dvojita-hydratacni-sila-pga-masek-pro-dokonalou-plet-1-1_z8129/",
       "visible": false,
       "wpj": {
-        "inStore": 1920.0,
-        "fourpxStoreTotal": 2214.0,
+        "inStore": 1917.0,
+        "fourpxStoreTotal": 2211.0,
         "priceWithVat": 88.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1920.0
+            "inStore": 1917.0
           },
           {
             "storeId": 7,
@@ -2118,7 +2118,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 2214.0,
+      "stockDelta": 2211.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -2577,14 +2577,14 @@
       "url": "https://www.kralovstvi-tiande.cz/peeling-broskovovy-1-1_z7427/",
       "visible": false,
       "wpj": {
-        "inStore": 1736.0,
-        "fourpxStoreTotal": 1736.0,
+        "inStore": 1735.0,
+        "fourpxStoreTotal": 1735.0,
         "priceWithVat": 42.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1736.0
+            "inStore": 1735.0
           },
           {
             "storeId": 7,
@@ -2683,7 +2683,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": 1736.0,
+      "stockDelta": 1735.0,
       "flags": [
         "only_in_wpj_4px_context",
         "stock_mismatch"
@@ -3601,14 +3601,14 @@
       "url": "https://www.kralovstvi-tiande.cz/peeling-broskvovy_z5809/",
       "visible": true,
       "wpj": {
-        "inStore": 1643.0,
-        "fourpxStoreTotal": 1745.0,
+        "inStore": 1640.0,
+        "fourpxStoreTotal": 1744.0,
         "priceWithVat": 45.0,
         "stores": [
           {
             "storeId": 6,
             "storeName": "4PX CZ",
-            "inStore": 1741.0
+            "inStore": 1740.0
           },
           {
             "storeId": 7,
@@ -3641,8 +3641,8 @@
             "922001041534"
           ],
           "batchNos": [],
-          "availableStock": 1743.0,
-          "pendingStock": 160.0,
+          "availableStock": 1741.0,
+          "pendingStock": 162.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3664,7 +3664,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1747.0,
+        "availableTotal": 1745.0,
         "sourceCodes": [
           "40203"
         ],
@@ -3717,7 +3717,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -2.0,
+      "stockDelta": -1.0,
       "flags": []
     },
     {
@@ -3767,8 +3767,8 @@
             "922001041431"
           ],
           "batchNos": [],
-          "availableStock": 3263.0,
-          "pendingStock": 84.0,
+          "availableStock": 3262.0,
+          "pendingStock": 85.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3790,7 +3790,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 3263.0,
+        "availableTotal": 3262.0,
         "sourceCodes": [
           "000075"
         ],
@@ -3841,7 +3841,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -1.0,
+      "stockDelta": 0.0,
       "flags": []
     },
     {
@@ -3851,7 +3851,7 @@
       "url": "https://www.kralovstvi-tiande.cz/kosmeticka-fytonaplast-wutong_z3160/",
       "visible": true,
       "wpj": {
-        "inStore": 1700.0,
+        "inStore": 1699.0,
         "fourpxStoreTotal": 3135.0,
         "priceWithVat": 184.0,
         "stores": [
@@ -4037,7 +4037,7 @@
       "url": "https://www.kralovstvi-tiande.cz/fytogel-slaviton_z8039/",
       "visible": true,
       "wpj": {
-        "inStore": 2038.0,
+        "inStore": 2037.0,
         "fourpxStoreTotal": 2484.0,
         "priceWithVat": 434.0,
         "stores": [
@@ -4546,7 +4546,7 @@
       "url": "https://www.kralovstvi-tiande.cz/damske-bylinne-slipove-vlozky-s-anionty-nefritova-svezest_z2110/",
       "visible": true,
       "wpj": {
-        "inStore": 485.0,
+        "inStore": 483.0,
         "fourpxStoreTotal": 603.0,
         "priceWithVat": 176.0,
         "stores": [
@@ -4727,8 +4727,8 @@
             "922001733501"
           ],
           "batchNos": [],
-          "availableStock": 1822.0,
-          "pendingStock": 41.0,
+          "availableStock": 1821.0,
+          "pendingStock": 42.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4750,7 +4750,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2143.0,
+        "availableTotal": 2142.0,
         "sourceCodes": [
           "64404-2"
         ],
@@ -4803,7 +4803,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -1.0,
+      "stockDelta": 0.0,
       "flags": []
     },
     {
@@ -4999,8 +4999,8 @@
             "922001844334"
           ],
           "batchNos": [],
-          "availableStock": 8575.0,
-          "pendingStock": 29.0,
+          "availableStock": 8574.0,
+          "pendingStock": 30.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -5042,7 +5042,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 12305.0,
+        "availableTotal": 12304.0,
         "sourceCodes": [
           "63601",
           "63601/01",
@@ -5123,7 +5123,7 @@
           "63601/10"
         ]
       },
-      "stockDelta": -1.0,
+      "stockDelta": 0.0,
       "flags": [
         "auto_mapped_4px_alias"
       ]
@@ -5448,8 +5448,8 @@
             "922001331745"
           ],
           "batchNos": [],
-          "availableStock": 4577.0,
-          "pendingStock": 5.0,
+          "availableStock": 4576.0,
+          "pendingStock": 6.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -5487,7 +5487,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 5373.0,
+        "availableTotal": 5372.0,
         "sourceCodes": [
           "41314",
           "41314/01",
@@ -5565,7 +5565,7 @@
           "41314/10"
         ]
       },
-      "stockDelta": -1.0,
+      "stockDelta": 0.0,
       "flags": [
         "auto_mapped_4px_alias"
       ]
@@ -5943,8 +5943,8 @@
             "922001041129"
           ],
           "batchNos": [],
-          "availableStock": 297.0,
-          "pendingStock": 43.0,
+          "availableStock": 296.0,
+          "pendingStock": 44.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -5966,7 +5966,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 551.0,
+        "availableTotal": 550.0,
         "sourceCodes": [
           "61912"
         ],
@@ -6019,7 +6019,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -1.0,
+      "stockDelta": 0.0,
       "flags": []
     },
     {
