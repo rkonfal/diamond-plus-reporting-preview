@@ -166,6 +166,8 @@
 
       const current = data.currentMonth || {};
       const topSupplier = (data.topSuppliersCurrentMonth || [])[0];
+      const sklik = data.directSources?.sklik || {};
+      const sklikCurrent = sklik.currentMonth?.total || {};
       const hero = [
         ['Marketingové náklady', money(current.totalSpend), `${pct(current.spendShareOfRevenuePct)} z výnosů`, 'accent'],
         ['PPC', money(current.performanceSpend), 'výkonové kanály', ''],
@@ -182,6 +184,7 @@
       document.getElementById('marketing-focus').innerHTML = [
         [`Aktuální měsíc: ${current.label || '–'}`, `Celkem ${money(current.totalSpend)}, tedy ${pct(current.spendShareOfRevenuePct)} z výnosů.`],
         [`PPC vs ostatní marketing`, `PPC ${money(current.performanceSpend)} oproti ostatnímu marketingu ${money(current.brandSpend)}.`],
+        sklik.ready ? [`Sklik live`, `${money(sklikCurrent.priceCzk)} spend, ${DP.fmtNumber(Math.round(sklikCurrent.clicks || 0))} kliků a ${DP.fmtNumber(Math.round(sklikCurrent.conversions || 0))} konverzí.`] : null,
         topSupplier ? [`Největší dodavatel: ${topSupplier.name}`, `Aktuálně ${money(topSupplier.amount)} v tomto měsíci.`] : null,
       ].filter(Boolean).map(([title, text], index) => `
         <div class="ux-item">
@@ -198,7 +201,8 @@
         ['Ostatní marketing', money(current.brandSpend)],
         ['Celkem', money(current.totalSpend)],
         ['Podíl z výnosů', pct(current.spendShareOfRevenuePct)],
-      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+        sklik.ready ? ['Sklik live', money(sklikCurrent.priceCzk)] : null,
+      ].filter(Boolean).map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
 
       document.getElementById('suppliers-list').innerHTML = (data.topSuppliersCurrentMonth || []).slice(0, 4).map((row, index) => `
         <div class="ux-side-item">
@@ -214,8 +218,9 @@
         ['Marketingové náklady', money(current.totalSpend), `${pct(current.spendShareOfRevenuePct)} z výnosů`, 'gold'],
         ['PPC', money(current.performanceSpend), 'výkonové kanály', 'blue'],
         ['Ostatní marketing', money(current.brandSpend), 'produkce, SMS, služby', 'green'],
+        sklik.ready ? ['Sklik live', money(sklikCurrent.priceCzk), `${DP.fmtNumber(Math.round(sklikCurrent.clicks || 0))} kliků, ${DP.fmtNumber(Math.round(sklikCurrent.conversions || 0))} konverzí`, 'blue'] : null,
         ['Největší dodavatel', topSupplier ? money(topSupplier.amount) : '0 Kč', topSupplier ? topSupplier.name : 'bez dat', 'red']
-      ];
+      ].filter(Boolean);
       document.getElementById('top-kpis').innerHTML = kpis.map(([label, value, sub, klass]) => `
         <div class="card kpi-card ${klass}">
           <div class="kpi-label">${label}</div>
