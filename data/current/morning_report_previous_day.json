@@ -1,14 +1,12 @@
 {
-  "generatedAt": "2026-04-19T14:05:59.277230+02:00",
+  "generatedAt": "2026-04-19T15:06:18.405056+02:00",
   "reportDate": "2026-04-18",
   "detailUrl": "https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html",
   "window": {
     "from": "2026-04-18T00:00:01+02:00",
     "to": "2026-04-18T23:59:59+02:00"
   },
-  "warnings": [
-    "Meta Ads denní refresh selhal, marketing používá poslední dostupný snapshot."
-  ],
+  "warnings": [],
   "quickSummary": {
     "orders": {
       "value": 165,
@@ -1700,14 +1698,85 @@
         "inStore": -70.0
       }
     ],
-    "largestMovesSinceLastSnapshot": []
+    "largestMovesSinceLastSnapshot": [
+      {
+        "code": "30106",
+        "title": "Kosmetická tělová fytonáplast Zhui Feng Forte",
+        "currentStock": 868.0,
+        "previousStock": 878.0,
+        "delta": -10.0
+      },
+      {
+        "code": "QX039",
+        "title": "Přírodní úleva od bolesti",
+        "currentStock": 860.0,
+        "previousStock": 870.0,
+        "delta": -10.0
+      },
+      {
+        "code": "AX000",
+        "title": "Podpora pohodlí svalů a kloubů",
+        "currentStock": 860.0,
+        "previousStock": 870.0,
+        "delta": -10.0
+      },
+      {
+        "code": "50109",
+        "title": "Hydratační krémová maska na obličej Aloe",
+        "currentStock": 1442.0,
+        "previousStock": 1450.0,
+        "delta": -8.0
+      },
+      {
+        "code": "FA718",
+        "title": "Hydratační rukavice + krémová maska aloe vera",
+        "currentStock": 1334.0,
+        "previousStock": 1342.0,
+        "delta": -8.0
+      },
+      {
+        "code": "KR044",
+        "title": "Hydratační krémová maska na obličej Aloe 1+1",
+        "currentStock": 1440.0,
+        "previousStock": 1448.0,
+        "delta": -8.0
+      },
+      {
+        "code": "40203",
+        "title": "Peeling Broskvový",
+        "currentStock": 1745.0,
+        "previousStock": 1751.0,
+        "delta": -6.0
+      },
+      {
+        "code": "UA132",
+        "title": "Peeling Broskovový 1+1",
+        "currentStock": 1736.0,
+        "previousStock": 1742.0,
+        "delta": -6.0
+      },
+      {
+        "code": "000075",
+        "title": "Brožura Fytogely",
+        "currentStock": 3262.0,
+        "previousStock": 3266.0,
+        "delta": -4.0
+      },
+      {
+        "code": "41105",
+        "title": "Regenerační krém na nohy s hadím olejem",
+        "currentStock": 3574.0,
+        "previousStock": 3577.0,
+        "delta": -3.0
+      }
+    ]
   },
   "inventory": {
-    "availableStockTotal": 374358.0,
+    "availableStockTotal": 374278.0,
     "itemsTotal": 1389,
     "byAccount": {
-      "CZ": 303989.0,
-      "SK": 70369.0
+      "CZ": 303924.0,
+      "SK": 70354.0
     },
     "itemsByAccount": {
       "CZ": 768,

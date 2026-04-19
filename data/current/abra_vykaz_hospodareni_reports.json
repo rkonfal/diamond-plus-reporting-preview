@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-19T14:00:00.955660+02:00",
+  "generatedAt": "2026-04-19T15:00:00.903998+02:00",
   "source": {
     "status": "live",
     "message": "Report Výkaz hospodaření za měsíc se tahá přímo z ABRA report endpointu."
@@ -87,21 +87,21 @@
       "contentType": "application/ms-excel",
       "url": "https://tiande-fb.arit.cz:5505/c/diamond_plus_s_r_o_/vykaz-hospodareni.xls?auth=http&report-name=vykazHospodareni&ucetniObdobi=2026&mesicRok=04%2F2026&mena=code%3ACZK",
       "parsed": {
-        "revenue": 8284387.58,
-        "cogsAndFees": 5955365.58,
+        "revenue": 8291592.53,
+        "cogsAndFees": 5960419.97,
         "marketing": 257841.46,
         "logistics": 37815.04,
         "opex": 251053.68,
         "depreciation": 385502.0,
         "other": -5460.68,
-        "grossMargin": 2329022.0,
-        "afterLogistics": 2291206.96,
-        "afterMarketing": 2033365.5,
-        "operatingMargin": 1782311.82,
-        "ebit": 1396809.82,
-        "profit": 1391349.14,
-        "expenseTotal": 6893502.41,
-        "incomeTotal": 8284851.55,
+        "grossMargin": 2331172.56,
+        "afterLogistics": 2293357.52,
+        "afterMarketing": 2035516.06,
+        "operatingMargin": 1784462.38,
+        "ebit": 1398960.38,
+        "profit": 1393499.7,
+        "expenseTotal": 6898556.8,
+        "incomeTotal": 8292056.5,
         "bankFees": 33396.91
       }
     }
