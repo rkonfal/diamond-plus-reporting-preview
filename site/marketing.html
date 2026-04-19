@@ -8,6 +8,12 @@
   <style>
     .mobile-only { display: none; }
     .sparkline { width: 100%; height: 42px; margin-top: 12px; }
+    .roas-good { color: #1d9a52; font-weight: 700; }
+    .roas-mid { color: #c9a84c; font-weight: 700; }
+    .roas-bad { color: #d14b4b; font-weight: 700; }
+    .tone-good { border-color: rgba(29,154,82,.35) !important; }
+    .tone-mid { border-color: rgba(201,168,76,.35) !important; }
+    .tone-bad { border-color: rgba(209,75,75,.35) !important; }
     @media (max-width: 768px) {
       .desktop-only { display: none !important; }
       .mobile-only { display: block; }
@@ -246,6 +252,8 @@
         }).join(' ');
         return `<svg class="sparkline" viewBox="0 0 100 42" preserveAspectRatio="none"><polyline fill="none" stroke="currentColor" stroke-width="3" points="${points}" /></svg>`;
       };
+      const roasTone = value => value == null ? 'roas-mid' : value >= 20 ? 'roas-good' : value >= 10 ? 'roas-mid' : 'roas-bad';
+      const cardTone = value => value == null ? 'tone-mid' : value >= 20 ? 'tone-good' : value >= 10 ? 'tone-mid' : 'tone-bad';
       const sourceConfigs = [
         {
           key: 'meta',
@@ -457,10 +465,10 @@
       `).join('');
 
       document.getElementById('source-kpis').innerHTML = sourceConfigs.map(source => `
-        <div class="card kpi-card ${source.key === 'meta' ? 'blue' : source.key === 'google' ? 'green' : 'gold'}">
+        <div class="card kpi-card ${source.key === 'meta' ? 'blue' : source.key === 'google' ? 'green' : 'gold'} ${cardTone(source.roas)}">
           <div class="kpi-label">${source.label}</div>
           <div class="kpi-value">${money(source.amount)}</div>
-          <div class="kpi-sub">${DP.fmtNumber(Math.round(source.clicks || 0))} kliků, ${Number(source.conversions || 0).toFixed(2)} konverzí, ROAS ${source.roas == null ? '–' : Number(source.roas).toFixed(2)}</div>
+          <div class="kpi-sub">${DP.fmtNumber(Math.round(source.clicks || 0))} kliků, ${Number(source.conversions || 0).toFixed(2)} konverzí, ROAS <span class="${roasTone(source.roas)}">${source.roas == null ? '–' : Number(source.roas).toFixed(2)}</span></div>
           ${sparkline((source.daily || []).map(row => row.spend))}
         </div>
       `).join('');
@@ -475,17 +483,17 @@
           <td class="num">${DP.fmtNumber(Math.round(row.clicks || 0))}</td>
           <td class="num">${Number(row.conversions || 0).toFixed(2)}</td>
           <td class="num">${money(row.value)}</td>
-          <td class="num">${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</td>
+          <td class="num ${roasTone(row.roas)}">${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</td>
         </tr>
       `).join('');
 
       document.getElementById('daily-trend-source-kpis').innerHTML = sourceConfigs.map(source => {
         const bestDay = [...(source.daily || [])].sort((a, b) => (b.spend || 0) - (a.spend || 0))[0];
         return `
-          <div class="card kpi-card ${source.key === 'meta' ? 'blue' : source.key === 'google' ? 'green' : 'gold'}">
+          <div class="card kpi-card ${source.key === 'meta' ? 'blue' : source.key === 'google' ? 'green' : 'gold'} ${cardTone(bestDay && bestDay.spend ? (bestDay.value || 0) / bestDay.spend : null)}">
             <div class="kpi-label">${source.label}, nejlepší spend den</div>
             <div class="kpi-value">${bestDay ? bestDay.date : '–'}</div>
-            <div class="kpi-sub">${bestDay ? `${money(bestDay.spend)}, ${DP.fmtNumber(Math.round(bestDay.clicks || 0))} kliků, ROAS ${bestDay.spend ? Number((bestDay.value || 0) / bestDay.spend).toFixed(2) : '–'}` : 'Bez denních dat'}</div>
+            <div class="kpi-sub">${bestDay ? `${money(bestDay.spend)}, ${DP.fmtNumber(Math.round(bestDay.clicks || 0))} kliků, ROAS <span class="${roasTone(bestDay.spend ? (bestDay.value || 0) / bestDay.spend : null)}">${bestDay.spend ? Number((bestDay.value || 0) / bestDay.spend).toFixed(2) : '–'}</span>` : 'Bez denních dat'}</div>
             ${sparkline((source.daily || []).map(row => row.spend))}
           </div>
         `;
@@ -525,7 +533,7 @@
                       <td class="num">${DP.fmtNumber(Math.round(row.clicks || 0))}</td>
                       <td class="num">${Number(row.conversions || 0).toFixed(2)}</td>
                       <td class="num">${money(row.value)}</td>
-                      <td class="num">${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</td>
+                      <td class="num ${roasTone(row.roas)}">${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</td>
                     </tr>
                   `;
                 }).join('') : `<tr><td colspan="8">Bez aktivních kampaní.</td></tr>`}
@@ -543,7 +551,7 @@
                       <div><span>Kliky</span><br>${DP.fmtNumber(Math.round(row.clicks || 0))}</div>
                       <div><span>Konverze</span><br>${Number(row.conversions || 0).toFixed(2)}</div>
                       <div><span>Hodnota</span><br>${money(row.value)}</div>
-                      <div><span>ROAS</span><br>${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</div>
+                      <div><span>ROAS</span><br><span class="${roasTone(row.roas)}">${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</span></div>
                     </div>
                   </div>
                 `;
@@ -566,7 +574,7 @@
                 <div><span>Kliky</span><br>${DP.fmtNumber(Math.round(row.clicks || 0))}</div>
                 <div><span>Konverze</span><br>${Number(row.conversions || 0).toFixed(2)}</div>
                 <div><span>Hodnota</span><br>${money(row.value)}</div>
-                <div><span>ROAS</span><br>${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</div>
+                <div><span>ROAS</span><br><span class="${roasTone(row.roas)}">${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</span></div>
               </div>
             </div>
           `).join('')}
