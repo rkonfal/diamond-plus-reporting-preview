@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-19T13:49:36.383320+02:00",
+  "generatedAt": "2026-04-19T14:00:00.955660+02:00",
   "window": {
     "from": "2026-04-18T00:00:01+02:00",
     "to": "2026-04-19T00:00:00+02:00"
@@ -9,7 +9,7 @@
     "pairedProducts": 390,
     "onlyInWpj": 1437,
     "onlyIn4px": 1,
-    "stockMismatch": 673,
+    "stockMismatch": 670,
     "lowAfterSales": 4,
     "manualMapped4pxAliases": 0,
     "autoMapped4pxAliases": 73
@@ -468,113 +468,67 @@
       ]
     },
     {
-      "code": "40203",
-      "title": "Peeling Broskvový",
+      "code": "VB091",
+      "title": "Instantní nápoj s čekankou",
       "priority": "high",
-      "score": 52.18,
+      "score": 51.72,
       "reasons": [
-        "včera se prodalo 9 ks",
-        "včera se expedovalo 117 ks"
+        "WPJ ukazuje 4PX kontext, ale 4PX inventory nesedí",
+        "4PX available je nula"
       ],
-      "recommendedAction": "Prověřit rozdíl mezi WPJ store stavem a 4PX inventory pull em.",
-      "wpj4pxStock": 1751.0,
-      "fourpxAvailable": 1760.0,
-      "stockDelta": -9.0,
-      "yesterdaySalesUnits": 9.0,
-      "yesterdayOutboundUnits": 117.0,
+      "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
+      "wpj4pxStock": 1586.0,
+      "fourpxAvailable": 0.0,
+      "stockDelta": 1586.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 0.0,
       "flags": [
+        "only_in_wpj_4px_context",
         "stock_mismatch"
       ]
     },
     {
-      "code": "41328",
-      "title": "Levandulová náplast na nohy",
+      "code": "XR589",
+      "title": "Štíhlá linie s čekankou",
       "priority": "high",
-      "score": 52.1,
+      "score": 51.72,
       "reasons": [
-        "včera se prodalo 13 ks",
-        "včera se expedovalo 18 ks"
+        "WPJ ukazuje 4PX kontext, ale 4PX inventory nesedí",
+        "4PX available je nula"
       ],
-      "recommendedAction": "Prověřit rozdíl mezi WPJ store stavem a 4PX inventory pull em.",
-      "wpj4pxStock": 2191.0,
-      "fourpxAvailable": 2196.0,
-      "stockDelta": -5.0,
-      "yesterdaySalesUnits": 13.0,
-      "yesterdayOutboundUnits": 18.0,
+      "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
+      "wpj4pxStock": 1586.0,
+      "fourpxAvailable": 0.0,
+      "stockDelta": 1586.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 0.0,
       "flags": [
-        "stock_mismatch",
-        "auto_mapped_4px_alias"
+        "only_in_wpj_4px_context",
+        "stock_mismatch"
       ]
     },
     {
-      "code": "61912",
-      "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
+      "code": "ZH518",
+      "title": "Křišťálová kolagenová maska 2=3",
       "priority": "high",
-      "score": 52.1,
+      "score": 51.02,
       "reasons": [
-        "včera se prodalo 21 ks",
-        "včera se expedovalo 23 ks"
+        "WPJ ukazuje 4PX kontext, ale 4PX inventory nesedí",
+        "4PX available je nula"
       ],
-      "recommendedAction": "Prověřit rozdíl mezi WPJ store stavem a 4PX inventory pull em.",
-      "wpj4pxStock": 553.0,
-      "fourpxAvailable": 558.0,
-      "stockDelta": -5.0,
-      "yesterdaySalesUnits": 21.0,
-      "yesterdayOutboundUnits": 23.0,
+      "recommendedAction": "Zkontrolovat, jestli WPJ 4PX store stav není historický nebo špatně mapovaný.",
+      "wpj4pxStock": 1551.0,
+      "fourpxAvailable": 0.0,
+      "stockDelta": 1551.0,
+      "yesterdaySalesUnits": 0.0,
+      "yesterdayOutboundUnits": 0.0,
       "flags": [
+        "only_in_wpj_4px_context",
         "stock_mismatch"
       ]
     }
   ],
   "mappingSuggestions": [
-    {
-      "orphanCode": "41328/01",
-      "orphanTitle": "Levandulová náplast na nohy",
-      "suggestedWpjCode": "41328",
-      "suggestedWpjTitle": "Levandulová náplast na nohy",
-      "confidence": "high",
-      "rule": "strip_/variant_suffix",
-      "applied": true,
-      "fourpxAvailable": 2196.0,
-      "yesterdaySalesUnits": 13.0,
-      "yesterdayOutboundUnits": 18.0
-    },
-    {
-      "orphanCode": "41328/05",
-      "orphanTitle": "Levandulová náplast na nohy",
-      "suggestedWpjCode": "41328",
-      "suggestedWpjTitle": "Levandulová náplast na nohy",
-      "confidence": "high",
-      "rule": "strip_/variant_suffix",
-      "applied": true,
-      "fourpxAvailable": 2196.0,
-      "yesterdaySalesUnits": 13.0,
-      "yesterdayOutboundUnits": 18.0
-    },
-    {
-      "orphanCode": "41328/07",
-      "orphanTitle": "Levandulová náplast na nohy",
-      "suggestedWpjCode": "41328",
-      "suggestedWpjTitle": "Levandulová náplast na nohy",
-      "confidence": "high",
-      "rule": "strip_/variant_suffix",
-      "applied": true,
-      "fourpxAvailable": 2196.0,
-      "yesterdaySalesUnits": 13.0,
-      "yesterdayOutboundUnits": 18.0
-    },
-    {
-      "orphanCode": "41328/10",
-      "orphanTitle": "Levandulová náplast na nohy",
-      "suggestedWpjCode": "41328",
-      "suggestedWpjTitle": "Levandulová náplast na nohy",
-      "confidence": "high",
-      "rule": "strip_/variant_suffix",
-      "applied": true,
-      "fourpxAvailable": 2196.0,
-      "yesterdaySalesUnits": 13.0,
-      "yesterdayOutboundUnits": 18.0
-    },
     {
       "orphanCode": "52901/03",
       "orphanTitle": "Intenzivní hydratační maska na obličej a krk Hyaluronová kyselina",
@@ -3687,8 +3641,8 @@
             "922001041534"
           ],
           "batchNos": [],
-          "availableStock": 1756.0,
-          "pendingStock": 147.0,
+          "availableStock": 1747.0,
+          "pendingStock": 156.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3710,7 +3664,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1760.0,
+        "availableTotal": 1751.0,
         "sourceCodes": [
           "40203"
         ],
@@ -3763,10 +3717,8 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -9.0,
-      "flags": [
-        "stock_mismatch"
-      ]
+      "stockDelta": 0.0,
+      "flags": []
     },
     {
       "code": "000075",
@@ -3815,8 +3767,8 @@
             "922001041431"
           ],
           "batchNos": [],
-          "availableStock": 3269.0,
-          "pendingStock": 78.0,
+          "availableStock": 3266.0,
+          "pendingStock": 81.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3838,7 +3790,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 3269.0,
+        "availableTotal": 3266.0,
         "sourceCodes": [
           "000075"
         ],
@@ -3889,7 +3841,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -3.0,
+      "stockDelta": 0.0,
       "flags": []
     },
     {
@@ -3960,8 +3912,8 @@
             "922001433035"
           ],
           "batchNos": [],
-          "availableStock": 2110.0,
-          "pendingStock": 21.0,
+          "availableStock": 2106.0,
+          "pendingStock": 25.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -3999,7 +3951,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 3139.0,
+        "availableTotal": 3135.0,
         "sourceCodes": [
           "30118",
           "30118/01",
@@ -4073,7 +4025,7 @@
           "30118/03"
         ]
       },
-      "stockDelta": -4.0,
+      "stockDelta": 0.0,
       "flags": [
         "auto_mapped_4px_alias"
       ]
@@ -4125,8 +4077,8 @@
             "922002239194"
           ],
           "batchNos": [],
-          "availableStock": 2080.0,
-          "pendingStock": 54.0,
+          "availableStock": 2079.0,
+          "pendingStock": 55.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4148,7 +4100,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2487.0,
+        "availableTotal": 2486.0,
         "sourceCodes": [
           "44402-2"
         ],
@@ -4201,7 +4153,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -1.0,
+      "stockDelta": 0.0,
       "flags": []
     },
     {
@@ -4256,8 +4208,8 @@
             "922001040885"
           ],
           "batchNos": [],
-          "availableStock": 723.0,
-          "pendingStock": 42.0,
+          "availableStock": 722.0,
+          "pendingStock": 43.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4279,7 +4231,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 898.0,
+        "availableTotal": 897.0,
         "sourceCodes": [
           "61911"
         ],
@@ -4332,7 +4284,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -1.0,
+      "stockDelta": 0.0,
       "flags": []
     },
     {
@@ -4382,8 +4334,8 @@
             "922001041131"
           ],
           "batchNos": [],
-          "availableStock": 435.0,
-          "pendingStock": 28.0,
+          "availableStock": 433.0,
+          "pendingStock": 30.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4405,7 +4357,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 570.0,
+        "availableTotal": 568.0,
         "sourceCodes": [
           "61914"
         ],
@@ -4458,7 +4410,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -2.0,
+      "stockDelta": 0.0,
       "flags": []
     },
     {
@@ -4639,8 +4591,8 @@
             "922001041143"
           ],
           "batchNos": [],
-          "availableStock": 536.0,
-          "pendingStock": 39.0,
+          "availableStock": 533.0,
+          "pendingStock": 42.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4662,7 +4614,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 609.0,
+        "availableTotal": 606.0,
         "sourceCodes": [
           "61915"
         ],
@@ -4715,7 +4667,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -3.0,
+      "stockDelta": 0.0,
       "flags": []
     },
     {
@@ -4775,8 +4727,8 @@
             "922001733501"
           ],
           "batchNos": [],
-          "availableStock": 1825.0,
-          "pendingStock": 38.0,
+          "availableStock": 1824.0,
+          "pendingStock": 39.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -4798,7 +4750,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 2146.0,
+        "availableTotal": 2145.0,
         "sourceCodes": [
           "64404-2"
         ],
@@ -4851,7 +4803,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -1.0,
+      "stockDelta": 0.0,
       "flags": []
     },
     {
@@ -5047,8 +4999,8 @@
             "922001844334"
           ],
           "batchNos": [],
-          "availableStock": 8577.0,
-          "pendingStock": 27.0,
+          "availableStock": 8575.0,
+          "pendingStock": 29.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -5090,7 +5042,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 12307.0,
+        "availableTotal": 12305.0,
         "sourceCodes": [
           "63601",
           "63601/01",
@@ -5171,7 +5123,7 @@
           "63601/10"
         ]
       },
-      "stockDelta": -2.0,
+      "stockDelta": 0.0,
       "flags": [
         "auto_mapped_4px_alias"
       ]
@@ -5817,8 +5769,8 @@
             "922001433029"
           ],
           "batchNos": [],
-          "availableStock": 2437.0,
-          "pendingStock": 35.0,
+          "availableStock": 2436.0,
+          "pendingStock": 36.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -5856,7 +5808,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 3694.0,
+        "availableTotal": 3693.0,
         "sourceCodes": [
           "30117",
           "30117/01",
@@ -5934,7 +5886,7 @@
           "30117/05"
         ]
       },
-      "stockDelta": -1.0,
+      "stockDelta": 0.0,
       "flags": [
         "auto_mapped_4px_alias"
       ]
@@ -5991,8 +5943,8 @@
             "922001041129"
           ],
           "batchNos": [],
-          "availableStock": 304.0,
-          "pendingStock": 36.0,
+          "availableStock": 299.0,
+          "pendingStock": 41.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -6014,7 +5966,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 558.0,
+        "availableTotal": 553.0,
         "sourceCodes": [
           "61912"
         ],
@@ -6067,10 +6019,8 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -5.0,
-      "flags": [
-        "stock_mismatch"
-      ]
+      "stockDelta": 0.0,
+      "flags": []
     },
     {
       "code": "56007",
@@ -6255,8 +6205,8 @@
             "922001041145"
           ],
           "batchNos": [],
-          "availableStock": 412.0,
-          "pendingStock": 18.0,
+          "availableStock": 410.0,
+          "pendingStock": 20.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -6278,7 +6228,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 539.0,
+        "availableTotal": 537.0,
         "sourceCodes": [
           "61913"
         ],
@@ -6331,7 +6281,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -2.0,
+      "stockDelta": 0.0,
       "flags": []
     },
     {
@@ -6386,8 +6336,8 @@
             "922001040855"
           ],
           "batchNos": [],
-          "availableStock": 1037.0,
-          "pendingStock": 17.0,
+          "availableStock": 1036.0,
+          "pendingStock": 18.0,
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
@@ -6409,7 +6359,7 @@
           "freezeStock": 0.0,
           "onwayStock": 0.0
         },
-        "availableTotal": 1343.0,
+        "availableTotal": 1342.0,
         "sourceCodes": [
           "23403"
         ],
@@ -6462,7 +6412,7 @@
         "manualMappedSourceCodes": [],
         "autoMappedSourceCodes": []
       },
-      "stockDelta": -1.0,
+      "stockDelta": 0.0,
       "flags": []
     }
   ]

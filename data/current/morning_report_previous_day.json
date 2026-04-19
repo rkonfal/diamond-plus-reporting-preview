@@ -1,12 +1,14 @@
 {
-  "generatedAt": "2026-04-19T13:56:27.306261+02:00",
+  "generatedAt": "2026-04-19T14:05:59.277230+02:00",
   "reportDate": "2026-04-18",
   "detailUrl": "https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html",
   "window": {
     "from": "2026-04-18T00:00:01+02:00",
     "to": "2026-04-18T23:59:59+02:00"
   },
-  "warnings": [],
+  "warnings": [
+    "Meta Ads denní refresh selhal, marketing používá poslední dostupný snapshot."
+  ],
   "quickSummary": {
     "orders": {
       "value": 165,
@@ -1698,84 +1700,13 @@
         "inStore": -70.0
       }
     ],
-    "largestMovesSinceLastSnapshot": [
-      {
-        "code": "UA132",
-        "title": "Peeling Broskovový 1+1",
-        "currentStock": 1742.0,
-        "previousStock": 1769.0,
-        "delta": -27.0
-      },
-      {
-        "code": "40203",
-        "title": "Peeling Broskvový",
-        "currentStock": 1751.0,
-        "previousStock": 1777.0,
-        "delta": -26.0
-      },
-      {
-        "code": "63601",
-        "title": "Denní vložka Energie života",
-        "currentStock": 12305.0,
-        "previousStock": 12317.0,
-        "delta": -12.0
-      },
-      {
-        "code": "61915",
-        "title": "Dámské bylinné slipové vložky s anionty Nefritová svěžest",
-        "currentStock": 606.0,
-        "previousStock": 615.0,
-        "delta": -9.0
-      },
-      {
-        "code": "IU299",
-        "title": "Peeling Broskvový 3+3",
-        "currentStock": 580.0,
-        "previousStock": 589.0,
-        "delta": -9.0
-      },
-      {
-        "code": "TB775",
-        "title": "Balíček broskvových peelingů pro hebkou a rozzářenou pokožku",
-        "currentStock": 580.0,
-        "previousStock": 589.0,
-        "delta": -9.0
-      },
-      {
-        "code": "41320",
-        "title": "Solná koupel na nohy Čajovníkový strom",
-        "currentStock": 5036.0,
-        "previousStock": 5042.0,
-        "delta": -6.0
-      },
-      {
-        "code": "61912",
-        "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
-        "currentStock": 553.0,
-        "previousStock": 559.0,
-        "delta": -6.0
-      },
-      {
-        "code": "61914",
-        "title": "Dámské bylinné slipové vložky Nefritová svěžest",
-        "currentStock": 568.0,
-        "previousStock": 574.0,
-        "delta": -6.0
-      },
-      {
-        "code": "41328",
-        "title": "Levandulová náplast na nohy",
-        "currentStock": 2191.0,
-        "previousStock": 2197.0,
-        "delta": -6.0
-      }
-    ]
+    "largestMovesSinceLastSnapshot": []
   },
   "inventory": {
-    "availableStockTotal": 374450.0,
+    "availableStockTotal": 374358.0,
     "itemsTotal": 1389,
     "byAccount": {
-      "CZ": 304081.0,
+      "CZ": 303989.0,
       "SK": 70369.0
     },
     "itemsByAccount": {

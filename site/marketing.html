@@ -90,6 +90,47 @@
 
     <section class="grid kpi-grid" id="top-kpis"></section>
 
+    <section class="card">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">Přímé reklamní source, aktivní kampaně</h2>
+          <div class="section-subtitle">Kompletní pohled po source. U každého kanálu jsou všechny aktivní kampaně s aktuálním výkonem za tento měsíc.</div>
+        </div>
+      </div>
+      <div class="grid kpi-grid" id="ppc-total-kpis" style="margin-top:20px;"></div>
+      <div class="grid kpi-grid" id="source-kpis" style="margin-top:20px;"></div>
+    </section>
+
+    <section class="card">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">Trend po dnech, všechny PPC source</h2>
+          <div class="section-subtitle">Denní souhrn spendu, kliků, konverzí, hodnoty a ROAS přes Meta Ads, Google Ads a Sklik.</div>
+        </div>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Den</th>
+              <th class="num">Meta spend</th>
+              <th class="num">Google spend</th>
+              <th class="num">Sklik spend</th>
+              <th class="num">Celkem spend</th>
+              <th class="num">Kliky</th>
+              <th class="num">Konverze</th>
+              <th class="num">Hodnota</th>
+              <th class="num">ROAS</th>
+            </tr>
+          </thead>
+          <tbody id="daily-trend-table"></tbody>
+        </table>
+      </div>
+      <div class="grid kpi-grid" id="daily-trend-source-kpis" style="margin-top:20px;"></div>
+    </section>
+
+    <section class="grid" style="gap:20px;" id="source-campaign-sections"></section>
+
     <section class="grid two-col">
       <div class="card">
         <h2 class="section-title">Měsíční náklady</h2>
@@ -127,7 +168,7 @@
 
     <section class="card">
       <h2 class="section-title">Aktuální marketingové položky</h2>
-      <div class="section-subtitle">Rozpad podle účetních položek, než dopojíme Meta, Google a další kanály napřímo.</div>
+      <div class="section-subtitle">Rozpad podle účetních položek. Live Meta Ads a Sklik jsou nahoře, další kanály dopojíme postupně.</div>
       <div class="ux-table-wrap" style="margin-top:16px;">
         <table class="table">
           <thead>
@@ -170,6 +211,138 @@
       const sklikCurrent = sklik.currentMonth?.total || {};
       const meta = data.directSources?.meta || {};
       const metaCurrent = meta.currentMonth || {};
+      const google = data.directSources?.google || {};
+      const googleCurrent = google.currentMonth || {};
+      const activeBySource = data.activeCampaignsBySource || {};
+      const normalizeDate = value => {
+        if (!value) return '–';
+        if (typeof value === 'string' && /^\d{8}/.test(value)) return `${value.slice(0,4)}-${value.slice(4,6)}-${value.slice(6,8)}`;
+        return String(value).slice(0, 10);
+      };
+      const sourceConfigs = [
+        {
+          key: 'meta',
+          ready: meta.ready,
+          label: 'Meta Ads',
+          amount: Number(metaCurrent.spendCzk || 0),
+          clicks: Number(metaCurrent.clicks || 0),
+          conversions: Number(metaCurrent.purchaseConversions || 0),
+          value: Number(metaCurrent.purchaseValueCzk || 0),
+          roas: metaCurrent.roas,
+          rows: activeBySource.meta || [],
+          daily: (meta.dailySummary || []).map(row => ({
+            date: normalizeDate(row.date),
+            spend: Number(row.spendCzk || 0),
+            clicks: Number(row.clicks || 0),
+            conversions: Number(row.purchaseConversions || 0),
+            value: Number(row.purchaseValueCzk || 0),
+          })),
+          columns: row => ({
+            account: row.accountName || '–',
+            name: row.campaignName || '–',
+            status: row.effectiveStatus || row.status || '–',
+            spend: Number(row.spendCzk || 0),
+            clicks: Number(row.clicks || 0),
+            conversions: Number(row.purchaseConversions || 0),
+            value: Number(row.purchaseValueCzk || 0),
+            roas: row.roas,
+          }),
+        },
+        {
+          key: 'google',
+          ready: google.ready,
+          label: 'Google Ads',
+          amount: Number(googleCurrent.spendCzk || 0),
+          clicks: Number(googleCurrent.clicks || 0),
+          conversions: Number(googleCurrent.conversions || 0),
+          value: Number(googleCurrent.conversionValueCzk || 0),
+          roas: googleCurrent.roas,
+          rows: activeBySource.google || [],
+          daily: (google.dailySummary || []).map(row => ({
+            date: normalizeDate(row.date),
+            spend: Number(row.spendCzk || 0),
+            clicks: Number(row.clicks || 0),
+            conversions: Number(row.conversions || 0),
+            value: Number(row.conversionValueCzk || 0),
+          })),
+          columns: row => ({
+            account: row.accountName || '–',
+            name: row.campaignName || '–',
+            status: row.status || '–',
+            spend: Number(row.spendCzk || 0),
+            clicks: Number(row.clicks || 0),
+            conversions: Number(row.conversions || 0),
+            value: Number(row.conversionValueCzk || 0),
+            roas: row.roas,
+          }),
+        },
+        {
+          key: 'sklik',
+          ready: sklik.ready,
+          label: 'Sklik',
+          amount: Number(sklikCurrent.priceCzk || 0),
+          clicks: Number(sklikCurrent.clicks || 0),
+          conversions: Number(sklikCurrent.conversions || 0),
+          value: Number(sklikCurrent.conversionValueCzk || 0),
+          roas: sklikCurrent.priceCzk ? Number(sklikCurrent.conversionValueCzk || 0) / Number(sklikCurrent.priceCzk || 1) : null,
+          rows: activeBySource.sklik || [],
+          daily: ((sklik.currentMonth || {}).daily || []).map(row => ({
+            date: normalizeDate(row.date),
+            spend: Number(row.priceCzk || 0),
+            clicks: Number(row.clicks || 0),
+            conversions: Number(row.conversions || 0),
+            value: Number(row.conversionValueCzk || 0),
+          })),
+          columns: row => ({
+            account: 'Sklik účet',
+            name: row.name || '–',
+            status: row.status || '–',
+            spend: Number(row.priceCzk || 0),
+            clicks: Number(row.clicks || 0),
+            conversions: Number(row.conversions || 0),
+            value: Number(row.conversionValueCzk || 0),
+            roas: row.priceCzk ? Number(row.conversionValueCzk || 0) / Number(row.priceCzk || 1) : null,
+          }),
+        },
+      ].filter(source => source.ready);
+      const ppcTotal = sourceConfigs.reduce((acc, source) => {
+        acc.amount += source.amount || 0;
+        acc.clicks += source.clicks || 0;
+        acc.conversions += source.conversions || 0;
+        acc.value += source.value || 0;
+        return acc;
+      }, { amount: 0, clicks: 0, conversions: 0, value: 0 });
+      ppcTotal.roas = ppcTotal.amount ? ppcTotal.value / ppcTotal.amount : null;
+
+      const dailyMap = {};
+      for (const source of sourceConfigs) {
+        for (const row of source.daily || []) {
+          const day = row.date;
+          dailyMap[day] ||= {
+            date: day,
+            metaSpend: 0,
+            googleSpend: 0,
+            sklikSpend: 0,
+            clicks: 0,
+            conversions: 0,
+            value: 0,
+          };
+          const bucket = dailyMap[day];
+          if (source.key === 'meta') bucket.metaSpend += row.spend;
+          if (source.key === 'google') bucket.googleSpend += row.spend;
+          if (source.key === 'sklik') bucket.sklikSpend += row.spend;
+          bucket.clicks += row.clicks || 0;
+          bucket.conversions += row.conversions || 0;
+          bucket.value += row.value || 0;
+        }
+      }
+      const dailyRows = Object.values(dailyMap)
+        .sort((a, b) => a.date.localeCompare(b.date))
+        .map(row => ({
+          ...row,
+          totalSpend: row.metaSpend + row.googleSpend + row.sklikSpend,
+          roas: (row.metaSpend + row.googleSpend + row.sklikSpend) ? row.value / (row.metaSpend + row.googleSpend + row.sklikSpend) : null,
+        }));
       const hero = [
         ['Marketingové náklady', money(current.totalSpend), `${pct(current.spendShareOfRevenuePct)} z výnosů`, 'accent'],
         ['PPC', money(current.performanceSpend), 'výkonové kanály', ''],
@@ -187,6 +360,7 @@
         [`Aktuální měsíc: ${current.label || '–'}`, `Celkem ${money(current.totalSpend)}, tedy ${pct(current.spendShareOfRevenuePct)} z výnosů.`],
         [`PPC vs ostatní marketing`, `PPC ${money(current.performanceSpend)} oproti ostatnímu marketingu ${money(current.brandSpend)}.`],
         meta.ready ? [`Meta Ads live`, `${money(metaCurrent.spendCzk)} spend, ${DP.fmtNumber(Math.round(metaCurrent.clicks || 0))} kliků, ROAS ${metaCurrent.roas ?? '–'}.`] : null,
+        google.ready ? [`Google Ads live`, `${money(googleCurrent.spendCzk)} spend, ${DP.fmtNumber(Math.round(googleCurrent.clicks || 0))} kliků, ROAS ${googleCurrent.roas ?? '–'}.`] : null,
         sklik.ready ? [`Sklik live`, `${money(sklikCurrent.priceCzk)} spend, ${DP.fmtNumber(Math.round(sklikCurrent.clicks || 0))} kliků a ${DP.fmtNumber(Math.round(sklikCurrent.conversions || 0))} konverzí.`] : null,
         topSupplier ? [`Největší dodavatel: ${topSupplier.name}`, `Aktuálně ${money(topSupplier.amount)} v tomto měsíci.`] : null,
       ].filter(Boolean).map(([title, text], index) => `
@@ -205,6 +379,7 @@
         ['Celkem', money(current.totalSpend)],
         ['Podíl z výnosů', pct(current.spendShareOfRevenuePct)],
         meta.ready ? ['Meta Ads live', money(metaCurrent.spendCzk)] : null,
+        google.ready ? ['Google Ads live', money(googleCurrent.spendCzk)] : null,
         sklik.ready ? ['Sklik live', money(sklikCurrent.priceCzk)] : null,
       ].filter(Boolean).map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
 
@@ -223,6 +398,7 @@
         ['PPC', money(current.performanceSpend), 'výkonové kanály', 'blue'],
         ['Ostatní marketing', money(current.brandSpend), 'produkce, SMS, služby', 'green'],
         meta.ready ? ['Meta Ads live', money(metaCurrent.spendCzk), `${DP.fmtNumber(Math.round(metaCurrent.clicks || 0))} kliků, ROAS ${metaCurrent.roas ?? '–'}`, 'blue'] : null,
+        google.ready ? ['Google Ads live', money(googleCurrent.spendCzk), `${DP.fmtNumber(Math.round(googleCurrent.clicks || 0))} kliků, ROAS ${googleCurrent.roas ?? '–'}`, 'green'] : null,
         sklik.ready ? ['Sklik live', money(sklikCurrent.priceCzk), `${DP.fmtNumber(Math.round(sklikCurrent.clicks || 0))} kliků, ${DP.fmtNumber(Math.round(sklikCurrent.conversions || 0))} konverzí`, 'blue'] : null,
         ['Největší dodavatel', topSupplier ? money(topSupplier.amount) : '0 Kč', topSupplier ? topSupplier.name : 'bez dat', 'red']
       ].filter(Boolean);
@@ -232,6 +408,96 @@
           <div class="kpi-value">${value}</div>
           <div class="kpi-sub">${sub}</div>
         </div>
+      `).join('');
+
+      document.getElementById('ppc-total-kpis').innerHTML = [
+        ['PPC celkem', money(ppcTotal.amount), `${sourceConfigs.length} source aktivně zapojené`, 'gold'],
+        ['Kliky celkem', DP.fmtNumber(Math.round(ppcTotal.clicks || 0)), 'součet Meta + Google + Sklik', 'blue'],
+        ['Konverze celkem', Number(ppcTotal.conversions || 0).toFixed(2), 'součet napříč source', 'green'],
+        ['Hodnota celkem', money(ppcTotal.value), `ROAS ${ppcTotal.roas == null ? '–' : Number(ppcTotal.roas).toFixed(2)}`, 'red'],
+      ].map(([label, value, sub, klass]) => `
+        <div class="card kpi-card ${klass}">
+          <div class="kpi-label">${label}</div>
+          <div class="kpi-value">${value}</div>
+          <div class="kpi-sub">${sub}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('source-kpis').innerHTML = sourceConfigs.map(source => `
+        <div class="card kpi-card ${source.key === 'meta' ? 'blue' : source.key === 'google' ? 'green' : 'gold'}">
+          <div class="kpi-label">${source.label}</div>
+          <div class="kpi-value">${money(source.amount)}</div>
+          <div class="kpi-sub">${DP.fmtNumber(Math.round(source.clicks || 0))} kliků, ${Number(source.conversions || 0).toFixed(2)} konverzí, ROAS ${source.roas == null ? '–' : Number(source.roas).toFixed(2)}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('daily-trend-table').innerHTML = dailyRows.map(row => `
+        <tr>
+          <td>${row.date}</td>
+          <td class="num">${money(row.metaSpend)}</td>
+          <td class="num">${money(row.googleSpend)}</td>
+          <td class="num">${money(row.sklikSpend)}</td>
+          <td class="num">${money(row.totalSpend)}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.clicks || 0))}</td>
+          <td class="num">${Number(row.conversions || 0).toFixed(2)}</td>
+          <td class="num">${money(row.value)}</td>
+          <td class="num">${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('daily-trend-source-kpis').innerHTML = sourceConfigs.map(source => {
+        const bestDay = [...(source.daily || [])].sort((a, b) => (b.spend || 0) - (a.spend || 0))[0];
+        return `
+          <div class="card kpi-card ${source.key === 'meta' ? 'blue' : source.key === 'google' ? 'green' : 'gold'}">
+            <div class="kpi-label">${source.label}, nejlepší spend den</div>
+            <div class="kpi-value">${bestDay ? bestDay.date : '–'}</div>
+            <div class="kpi-sub">${bestDay ? `${money(bestDay.spend)}, ${DP.fmtNumber(Math.round(bestDay.clicks || 0))} kliků, ROAS ${bestDay.spend ? Number((bestDay.value || 0) / bestDay.spend).toFixed(2) : '–'}` : 'Bez denních dat'}</div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('source-campaign-sections').innerHTML = sourceConfigs.map(source => `
+        <section class="card">
+          <div class="ux-section-head">
+            <div>
+              <h2 class="section-title">${source.label}, aktivní kampaně</h2>
+              <div class="section-subtitle">${source.rows.length} aktivních kampaní, spend ${money(source.amount)}, hodnota konverzí ${money(source.value)}</div>
+            </div>
+          </div>
+          <div class="ux-table-wrap" style="margin-top:16px;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Účet</th>
+                  <th>Kampaň</th>
+                  <th>Status</th>
+                  <th class="num">Spend</th>
+                  <th class="num">Kliky</th>
+                  <th class="num">Konverze</th>
+                  <th class="num">Hodnota</th>
+                  <th class="num">ROAS</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${source.rows.length ? source.rows.map(raw => {
+                  const row = source.columns(raw);
+                  return `
+                    <tr>
+                      <td>${row.account}</td>
+                      <td>${row.name}</td>
+                      <td>${row.status}</td>
+                      <td class="num">${money(row.spend)}</td>
+                      <td class="num">${DP.fmtNumber(Math.round(row.clicks || 0))}</td>
+                      <td class="num">${Number(row.conversions || 0).toFixed(2)}</td>
+                      <td class="num">${money(row.value)}</td>
+                      <td class="num">${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</td>
+                    </tr>
+                  `;
+                }).join('') : `<tr><td colspan="8">Bez aktivních kampaní.</td></tr>`}
+              </tbody>
+            </table>
+          </div>
+        </section>
       `).join('');
 
       document.getElementById('monthly-table').innerHTML = (data.monthly || []).map(row => `
