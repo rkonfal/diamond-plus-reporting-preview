@@ -196,6 +196,9 @@
                 <th>Flow</th>
                 <th>Kanál</th>
                 <th>Status</th>
+                <th class="num">Open rate</th>
+                <th class="num">CTR</th>
+                <th class="num">Conv. rate</th>
                 <th class="num">Objednávky</th>
                 <th class="num">Obrat</th>
               </tr>
@@ -221,6 +224,7 @@
     DP.initThemeToggle();
     const money = value => `${DP.fmtNumber(Math.round(value || 0))} Kč`;
     const pct = value => value == null ? '–' : `${Number(value).toFixed(1)} %`;
+    const pctFromRate = value => value == null ? '–' : `${(Number(value) * 100).toFixed(1)} %`;
     const sourceMeta = status => ({
       legacy_snapshot: { label: 'starší uložený přehled', tone: 'warn' },
       missing: { label: 'bez zdroje', tone: 'danger' },
@@ -500,7 +504,7 @@
         </tr>
       `).join('');
 
-      document.getElementById('daily-trend-source-kpis').innerHTML = sourceConfigs.map(source => {
+      const dailyTrendCards = sourceConfigs.map(source => {
         const bestDay = [...(source.daily || [])].sort((a, b) => (b.spend || 0) - (a.spend || 0))[0];
         return `
           <div class="card kpi-card ${source.key === 'meta' ? 'blue' : source.key === 'google' ? 'green' : 'gold'} ${cardTone(bestDay && bestDay.spend ? (bestDay.value || 0) / bestDay.spend : null)}">
@@ -510,7 +514,19 @@
             ${sparkline((source.daily || []).map(row => row.spend))}
           </div>
         `;
-      }).join('');
+      });
+      if (klaviyo.ready) {
+        const bestRevenueDay = [...(klaviyo.dailySummary || [])].sort((a, b) => Number(b.totalAttributedRevenueCzk || 0) - Number(a.totalAttributedRevenueCzk || 0))[0];
+        dailyTrendCards.push(`
+          <div class="card kpi-card green">
+            <div class="kpi-label">Klaviyo, nejsilnější den</div>
+            <div class="kpi-value">${bestRevenueDay ? bestRevenueDay.date : '–'}</div>
+            <div class="kpi-sub">${bestRevenueDay ? `${money(bestRevenueDay.totalAttributedRevenueCzk)} atribuovaný obrat, ${Number(bestRevenueDay.totalAttributedOrders || 0).toFixed(2)} objednávek, CTR ${pctFromRate(bestRevenueDay.clickRate)}` : 'Bez denních dat'}</div>
+            ${sparkline((klaviyo.dailySummary || []).map(row => Number(row.totalAttributedRevenueCzk || 0)))}
+          </div>
+        `);
+      }
+      document.getElementById('daily-trend-source-kpis').innerHTML = dailyTrendCards.join('');
 
       document.getElementById('source-campaign-sections').innerHTML = sourceConfigs.map(source => `
         <section class="card">
@@ -602,7 +618,7 @@
           ['Atribuovaný obrat', money(klaviyoCurrent.totalAttributedRevenueCzk), `email ${money(klaviyoCurrent.emailAttributedRevenueCzk)} • sms ${money(klaviyoCurrent.smsAttributedRevenueCzk)}`, 'green'],
           ['Atribuované objednávky', Number(klaviyoCurrent.totalAttributedOrders || 0).toFixed(2), `email ${Number(klaviyoCurrent.emailAttributedOrders || 0).toFixed(2)} • sms ${Number(klaviyoCurrent.smsAttributedOrders || 0).toFixed(2)}`, 'blue'],
           ['Příjemci', DP.fmtNumber(Math.round(klaviyoCurrent.totalRecipients || 0)), `email ${DP.fmtNumber(Math.round(klaviyoCurrent.emailRecipients || 0))} • sms ${DP.fmtNumber(Math.round(klaviyoCurrent.smsRecipients || 0))}`, 'gold'],
-          ['Kliky / CTR', DP.fmtNumber(Math.round(klaviyoCurrent.totalClicks || 0)), klaviyoCurrent.clickRate == null ? 'CTR –' : `CTR ${(Number(klaviyoCurrent.clickRate) * 100).toFixed(1)} %`, 'red'],
+          ['Kliky / CTR', DP.fmtNumber(Math.round(klaviyoCurrent.totalClicks || 0)), `CTR ${pctFromRate(klaviyoCurrent.clickRate)}`, 'red'],
         ].map(([label, value, sub, klass]) => `
           <div class="card kpi-card ${klass}">
             <div class="kpi-label">${label}</div>
@@ -616,16 +632,22 @@
             <td>${row.flowName || '–'}</td>
             <td>${row.channel || '–'}</td>
             <td>${row.status || '–'}</td>
+            <td class="num">${pctFromRate(row.openRate)}</td>
+            <td class="num">${pctFromRate(row.clickRate)}</td>
+            <td class="num">${pctFromRate(row.conversionRate)}</td>
             <td class="num">${Number(row.attributedOrders || 0).toFixed(2)}</td>
             <td class="num">${money(row.attributedRevenueCzk)}</td>
           </tr>
-        `).join('') : `<tr><td colspan="5">Bez flow atribuce za tento měsíc.</td></tr>`;
+        `).join('') : `<tr><td colspan="8">Bez flow atribuce za tento měsíc.</td></tr>`;
 
         document.getElementById('klaviyo-flow-mobile').innerHTML = klaviyoFlows.length ? klaviyoFlows.map(row => `
           <div class="mobile-campaign-card">
             <strong>${row.flowName || '–'}</strong>
             <div style="margin-bottom:8px; color:var(--text-muted); font-size:13px;">${row.channel || '–'} • ${row.status || '–'}</div>
             <div class="mobile-metric-grid">
+              <div><span>Open rate</span><br>${pctFromRate(row.openRate)}</div>
+              <div><span>CTR</span><br>${pctFromRate(row.clickRate)}</div>
+              <div><span>Conv. rate</span><br>${pctFromRate(row.conversionRate)}</div>
               <div><span>Objednávky</span><br>${Number(row.attributedOrders || 0).toFixed(2)}</div>
               <div><span>Obrat</span><br>${money(row.attributedRevenueCzk)}</div>
             </div>
@@ -638,6 +660,7 @@
             <div>
               <strong>${row.name || 'Kampaň'}</strong>
               <span>${row.channel || '–'} • ${row.status || '–'} • ${normalizeDate(row.sendDatetime || row.scheduledAt || row.updatedAt)}</span>
+              <span>${DP.fmtNumber(Math.round(row.recipients || 0))} příjemců • open ${pctFromRate(row.openRate)} • CTR ${pctFromRate(row.clickRate)} • conv ${pctFromRate(row.conversionRate)} • ${Number(row.attributedOrders || 0).toFixed(2)} obj. • ${money(row.attributedRevenueCzk)}</span>
             </div>
           </div>
         `).join('') : `<div class="ux-item"><span class="ux-dot gold"></span><div><strong>Bez kampaní</strong><span>V Klaviyo teď není co vykreslit.</span></div></div>`;
