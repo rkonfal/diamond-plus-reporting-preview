@@ -17,6 +17,20 @@
     @media (max-width: 768px) {
       .desktop-only { display: none !important; }
       .mobile-only { display: block; }
+      .ux-hero-metric .value, .kpi-value {
+        font-size: 32px !important;
+        line-height: 1.05;
+        word-break: break-word;
+      }
+      .kpi-sub, .ux-hero-metric .sub {
+        white-space: normal;
+      }
+      .ux-grid, .grid, .kpi-grid, .two-col {
+        gap: 14px !important;
+      }
+      .ux-table-wrap.desktop-only {
+        display: none !important;
+      }
       .mobile-campaign-list, .mobile-trend-list {
         display: grid;
         gap: 12px;
@@ -145,7 +159,7 @@
           <div class="section-subtitle">Denní souhrn spendu, kliků, konverzí, hodnoty a ROAS přes Meta Ads, Google Ads a Sklik.</div>
         </div>
       </div>
-      <div class="ux-table-wrap" style="margin-top:16px;">
+      <div class="ux-table-wrap desktop-only" style="margin-top:16px;">
         <table class="table">
           <thead>
             <tr>
