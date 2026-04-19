@@ -1,0 +1,612 @@
+{
+  "source": {
+    "status": "live_api",
+    "platform": "klaviyo",
+    "message": "Klaviyo email/SMS attribution fetched directly from Klaviyo APIs."
+  },
+  "window": {
+    "dateFrom": "2026-04-01",
+    "dateTo": "2026-04-18"
+  },
+  "account": {
+    "id": "U9rq9t",
+    "organizationName": "Diamond Plus s.r.o.",
+    "senderName": "Království tianDe",
+    "senderEmail": "info@kralovstvi-tiande.cz",
+    "websiteUrl": "http://www.kralovstvi-tiande.cz",
+    "timezone": "Europe/Prague",
+    "preferredCurrency": "CZK",
+    "publicApiKey": "U9rq9t"
+  },
+  "metrics": {
+    "placed_order": {
+      "id": "Y7vfdc",
+      "name": "Placed Order"
+    },
+    "received_email": {
+      "id": "TEf87t",
+      "name": "Received Email"
+    },
+    "clicked_email": {
+      "id": "Xf6T8r",
+      "name": "Clicked Email"
+    },
+    "received_sms": {
+      "id": "SWAP9s",
+      "name": "Received SMS"
+    },
+    "clicked_sms": {
+      "id": "UK2GDV",
+      "name": "Clicked SMS"
+    }
+  },
+  "currentMonth": {
+    "dateFrom": "2026-04-01",
+    "dateTo": "2026-04-18",
+    "emailAttributedRevenueCzk": 2882239.25,
+    "smsAttributedRevenueCzk": 0.0,
+    "emailAttributedOrders": 1896.0,
+    "smsAttributedOrders": 0.0,
+    "emailRecipients": 445803.0,
+    "smsRecipients": 0.0,
+    "emailClicks": 22548.0,
+    "smsClicks": 0.0,
+    "totalAttributedRevenueCzk": 2882239.25,
+    "totalAttributedOrders": 1896.0,
+    "totalRecipients": 445803.0,
+    "totalClicks": 22548.0,
+    "clickRate": 0.0506
+  },
+  "dailySummary": [
+    {
+      "date": "2026-03-31",
+      "emailAttributedRevenueCzk": 122529.3,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 122529.3,
+      "emailAttributedOrders": 106.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 106.0,
+      "emailRecipients": 52140.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 52140.0,
+      "emailClicks": 2077.0,
+      "smsClicks": 0.0,
+      "totalClicks": 2077.0,
+      "clickRate": 0.0398
+    },
+    {
+      "date": "2026-04-01",
+      "emailAttributedRevenueCzk": 156687.95,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 156687.95,
+      "emailAttributedOrders": 93.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 93.0,
+      "emailRecipients": 29106.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 29106.0,
+      "emailClicks": 1084.0,
+      "smsClicks": 0.0,
+      "totalClicks": 1084.0,
+      "clickRate": 0.0372
+    },
+    {
+      "date": "2026-04-02",
+      "emailAttributedRevenueCzk": 76304.3,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 76304.3,
+      "emailAttributedOrders": 54.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 54.0,
+      "emailRecipients": 26140.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 26140.0,
+      "emailClicks": 877.0,
+      "smsClicks": 0.0,
+      "totalClicks": 877.0,
+      "clickRate": 0.0336
+    },
+    {
+      "date": "2026-04-03",
+      "emailAttributedRevenueCzk": 85824.55,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 85824.55,
+      "emailAttributedOrders": 63.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 63.0,
+      "emailRecipients": 23342.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 23342.0,
+      "emailClicks": 556.0,
+      "smsClicks": 0.0,
+      "totalClicks": 556.0,
+      "clickRate": 0.0238
+    },
+    {
+      "date": "2026-04-04",
+      "emailAttributedRevenueCzk": 101801.7,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 101801.7,
+      "emailAttributedOrders": 76.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 76.0,
+      "emailRecipients": 21259.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 21259.0,
+      "emailClicks": 665.0,
+      "smsClicks": 0.0,
+      "totalClicks": 665.0,
+      "clickRate": 0.0313
+    },
+    {
+      "date": "2026-04-05",
+      "emailAttributedRevenueCzk": 228482.55,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 228482.55,
+      "emailAttributedOrders": 158.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 158.0,
+      "emailRecipients": 46221.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 46221.0,
+      "emailClicks": 1178.0,
+      "smsClicks": 0.0,
+      "totalClicks": 1178.0,
+      "clickRate": 0.0255
+    },
+    {
+      "date": "2026-04-06",
+      "emailAttributedRevenueCzk": 253221.65,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 253221.65,
+      "emailAttributedOrders": 185.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 185.0,
+      "emailRecipients": 30800.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 30800.0,
+      "emailClicks": 2208.0,
+      "smsClicks": 0.0,
+      "totalClicks": 2208.0,
+      "clickRate": 0.0717
+    },
+    {
+      "date": "2026-04-07",
+      "emailAttributedRevenueCzk": 100646.8,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 100646.8,
+      "emailAttributedOrders": 60.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 60.0,
+      "emailRecipients": 28492.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 28492.0,
+      "emailClicks": 2203.0,
+      "smsClicks": 0.0,
+      "totalClicks": 2203.0,
+      "clickRate": 0.0773
+    },
+    {
+      "date": "2026-04-08",
+      "emailAttributedRevenueCzk": 198392.05,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 198392.05,
+      "emailAttributedOrders": 116.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 116.0,
+      "emailRecipients": 28833.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 28833.0,
+      "emailClicks": 1603.0,
+      "smsClicks": 0.0,
+      "totalClicks": 1603.0,
+      "clickRate": 0.0556
+    },
+    {
+      "date": "2026-04-09",
+      "emailAttributedRevenueCzk": 130806.0,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 130806.0,
+      "emailAttributedOrders": 74.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 74.0,
+      "emailRecipients": 576.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 576.0,
+      "emailClicks": 666.0,
+      "smsClicks": 0.0,
+      "totalClicks": 666.0,
+      "clickRate": 1.1562
+    },
+    {
+      "date": "2026-04-10",
+      "emailAttributedRevenueCzk": 59110.05,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 59110.05,
+      "emailAttributedOrders": 41.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 41.0,
+      "emailRecipients": 501.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 501.0,
+      "emailClicks": 279.0,
+      "smsClicks": 0.0,
+      "totalClicks": 279.0,
+      "clickRate": 0.5569
+    },
+    {
+      "date": "2026-04-11",
+      "emailAttributedRevenueCzk": 109867.5,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 109867.5,
+      "emailAttributedOrders": 72.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 72.0,
+      "emailRecipients": 21116.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 21116.0,
+      "emailClicks": 563.0,
+      "smsClicks": 0.0,
+      "totalClicks": 563.0,
+      "clickRate": 0.0267
+    },
+    {
+      "date": "2026-04-12",
+      "emailAttributedRevenueCzk": 292374.0,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 292374.0,
+      "emailAttributedOrders": 165.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 165.0,
+      "emailRecipients": 24967.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 24967.0,
+      "emailClicks": 1600.0,
+      "smsClicks": 0.0,
+      "totalClicks": 1600.0,
+      "clickRate": 0.0641
+    },
+    {
+      "date": "2026-04-13",
+      "emailAttributedRevenueCzk": 513080.25,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 513080.25,
+      "emailAttributedOrders": 306.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 306.0,
+      "emailRecipients": 51173.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 51173.0,
+      "emailClicks": 3157.0,
+      "smsClicks": 0.0,
+      "totalClicks": 3157.0,
+      "clickRate": 0.0617
+    },
+    {
+      "date": "2026-04-14",
+      "emailAttributedRevenueCzk": 174127.1,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 174127.1,
+      "emailAttributedOrders": 128.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 128.0,
+      "emailRecipients": 30628.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 30628.0,
+      "emailClicks": 2363.0,
+      "smsClicks": 0.0,
+      "totalClicks": 2363.0,
+      "clickRate": 0.0772
+    },
+    {
+      "date": "2026-04-15",
+      "emailAttributedRevenueCzk": 142194.85,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 142194.85,
+      "emailAttributedOrders": 98.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 98.0,
+      "emailRecipients": 3509.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 3509.0,
+      "emailClicks": 675.0,
+      "smsClicks": 0.0,
+      "totalClicks": 675.0,
+      "clickRate": 0.1924
+    },
+    {
+      "date": "2026-04-16",
+      "emailAttributedRevenueCzk": 80829.4,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 80829.4,
+      "emailAttributedOrders": 60.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 60.0,
+      "emailRecipients": 26606.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 26606.0,
+      "emailClicks": 481.0,
+      "smsClicks": 0.0,
+      "totalClicks": 481.0,
+      "clickRate": 0.0181
+    },
+    {
+      "date": "2026-04-17",
+      "emailAttributedRevenueCzk": 55959.25,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 55959.25,
+      "emailAttributedOrders": 41.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 41.0,
+      "emailRecipients": 379.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 379.0,
+      "emailClicks": 313.0,
+      "smsClicks": 0.0,
+      "totalClicks": 313.0,
+      "clickRate": 0.8259
+    },
+    {
+      "date": "2026-04-18",
+      "emailAttributedRevenueCzk": 0.0,
+      "smsAttributedRevenueCzk": 0.0,
+      "totalAttributedRevenueCzk": 0.0,
+      "emailAttributedOrders": 0.0,
+      "smsAttributedOrders": 0.0,
+      "totalAttributedOrders": 0.0,
+      "emailRecipients": 15.0,
+      "smsRecipients": 0.0,
+      "totalRecipients": 15.0,
+      "emailClicks": 0.0,
+      "smsClicks": 0.0,
+      "totalClicks": 0.0,
+      "clickRate": 0.0
+    }
+  ],
+  "flowsCurrentMonth": [
+    {
+      "flowId": "SXtWxm",
+      "flowName": "Opuštěný košík - Standard",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 99.0,
+      "attributedRevenueCzk": 138741.95
+    },
+    {
+      "flowId": "VTgVba",
+      "flowName": "Happy Birthday - Standard",
+      "status": "live",
+      "triggerType": "Date Based",
+      "channel": "email",
+      "attributedOrders": 27.0,
+      "attributedRevenueCzk": 45342.75
+    },
+    {
+      "flowId": "R5fKfn",
+      "flowName": "Přihláška - potvrzení , kurs tělo jako kompas",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 32.0,
+      "attributedRevenueCzk": 45268.45
+    },
+    {
+      "flowId": "TFpngU",
+      "flowName": "Kvíz Detox",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 18.0,
+      "attributedRevenueCzk": 39042.0
+    },
+    {
+      "flowId": "VqgfET",
+      "flowName": "Bonusové body - připsání",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 34.0,
+      "attributedRevenueCzk": 38347.85
+    },
+    {
+      "flowId": "SxBynF",
+      "flowName": "Webinář - potvrzení registrace",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 14.0,
+      "attributedRevenueCzk": 30472.0
+    },
+    {
+      "flowId": "UTrftt",
+      "flowName": "Přihláška Sebeláska - potvrzení",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 1.0,
+      "attributedRevenueCzk": 2807.0
+    },
+    {
+      "flowId": "XXhjck",
+      "flowName": "Registrae Kurz hubnutí 2",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 2.0,
+      "attributedRevenueCzk": 2694.0
+    },
+    {
+      "flowId": "SLW4ei",
+      "flowName": "tianDe - upozornění na dárky",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 4.0,
+      "attributedRevenueCzk": 1960.8
+    },
+    {
+      "flowId": "WMS3b5",
+      "flowName": "welcome - brožury - bez bolesti",
+      "status": "live",
+      "triggerType": "Added to List",
+      "channel": "email",
+      "attributedOrders": 1.0,
+      "attributedRevenueCzk": 1040.0
+    }
+  ],
+  "topFlowsCurrentMonth": [
+    {
+      "flowId": "SXtWxm",
+      "flowName": "Opuštěný košík - Standard",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 99.0,
+      "attributedRevenueCzk": 138741.95
+    },
+    {
+      "flowId": "VTgVba",
+      "flowName": "Happy Birthday - Standard",
+      "status": "live",
+      "triggerType": "Date Based",
+      "channel": "email",
+      "attributedOrders": 27.0,
+      "attributedRevenueCzk": 45342.75
+    },
+    {
+      "flowId": "R5fKfn",
+      "flowName": "Přihláška - potvrzení , kurs tělo jako kompas",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 32.0,
+      "attributedRevenueCzk": 45268.45
+    },
+    {
+      "flowId": "TFpngU",
+      "flowName": "Kvíz Detox",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 18.0,
+      "attributedRevenueCzk": 39042.0
+    },
+    {
+      "flowId": "VqgfET",
+      "flowName": "Bonusové body - připsání",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 34.0,
+      "attributedRevenueCzk": 38347.85
+    },
+    {
+      "flowId": "SxBynF",
+      "flowName": "Webinář - potvrzení registrace",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 14.0,
+      "attributedRevenueCzk": 30472.0
+    },
+    {
+      "flowId": "UTrftt",
+      "flowName": "Přihláška Sebeláska - potvrzení",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 1.0,
+      "attributedRevenueCzk": 2807.0
+    },
+    {
+      "flowId": "XXhjck",
+      "flowName": "Registrae Kurz hubnutí 2",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 2.0,
+      "attributedRevenueCzk": 2694.0
+    },
+    {
+      "flowId": "SLW4ei",
+      "flowName": "tianDe - upozornění na dárky",
+      "status": "live",
+      "triggerType": "Metric",
+      "channel": "email",
+      "attributedOrders": 4.0,
+      "attributedRevenueCzk": 1960.8
+    },
+    {
+      "flowId": "WMS3b5",
+      "flowName": "welcome - brožury - bez bolesti",
+      "status": "live",
+      "triggerType": "Added to List",
+      "channel": "email",
+      "attributedOrders": 1.0,
+      "attributedRevenueCzk": 1040.0
+    }
+  ],
+  "recentCampaigns": [
+    {
+      "id": "01KP5XM5QJ2RD0QZXCHV04NYMX",
+      "name": "CZ -  Jičín - pozvánka",
+      "channel": "email",
+      "status": "Sent",
+      "createdAt": "2026-04-14T11:56:58.996831+00:00",
+      "updatedAt": "2026-04-19T13:01:10.069394+00:00",
+      "scheduledAt": "2026-04-19T12:27:18.503562+00:00",
+      "sendDatetime": "2026-04-19T13:00:00+00:00"
+    },
+    {
+      "id": "01KPD6GVA04NY510S51WSPDZAC",
+      "name": "SK - Bio Rehab deexpert",
+      "channel": "email",
+      "status": "Sent",
+      "createdAt": "2026-04-17T07:47:08.227859+00:00",
+      "updatedAt": "2026-04-17T16:01:09.137753+00:00",
+      "scheduledAt": "2026-04-17T07:54:41.501086+00:00",
+      "sendDatetime": "2026-04-17T16:00:00+00:00"
+    },
+    {
+      "id": "01KP835CAXHXB50CP5CZ40QNTB",
+      "name": "CZ - Bio Rehab deexpert",
+      "channel": "email",
+      "status": "Sent",
+      "createdAt": "2026-04-15T08:12:14.560184+00:00",
+      "updatedAt": "2026-04-17T16:01:02.006695+00:00",
+      "scheduledAt": "2026-04-17T07:54:16.597935+00:00",
+      "sendDatetime": "2026-04-17T16:00:00+00:00"
+    },
+    {
+      "id": "01KPDS4CVJ7TNM7HPVPZQPDZTJ",
+      "name": "CZ Webinář Zuby",
+      "channel": "email",
+      "status": "Draft",
+      "createdAt": "2026-04-17T13:12:23.158067+00:00",
+      "updatedAt": "2026-04-17T13:12:23.158093+00:00",
+      "scheduledAt": null,
+      "sendDatetime": "2026-04-17T13:12:14+00:00"
+    },
+    {
+      "id": "01KPDGE61QDEW3W37Z36X7R3VB",
+      "name": "CZ Night Shopping",
+      "channel": "email",
+      "status": "Draft",
+      "createdAt": "2026-04-17T10:40:26.682199+00:00",
+      "updatedAt": "2026-04-17T10:40:26.682220+00:00",
+      "scheduledAt": null,
+      "sendDatetime": "2026-04-17T10:40:18+00:00"
+    },
+    {
+      "id": "01KPDF0GD0GGNA9FW26BBFZSTQ",
+      "name": "CZ -  Měčín - ženské zdraví - už zítra",
+      "channel": "email",
+      "status": "Draft",
+      "createdAt": "2026-04-17T10:15:29.956439+00:00",
+      "updatedAt": "2026-04-17T10:15:29.956461+00:00",
+      "scheduledAt": null,
+      "sendDatetime": "2026-04-17T08:30:00+00:00"
+    }
+  ]
+}

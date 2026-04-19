@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-19T15:06:06.305973+02:00",
+  "generatedAt": "2026-04-19T16:34:17.950432+02:00",
   "config": {
     "warehouseCode": "CZPRGA",
     "outboundMaxPages": 20,
@@ -14,8 +14,8 @@
       "label": "CZ",
       "inventory": {
         "items": 768,
-        "availableStockTotal": 303901,
-        "pendingStockTotal": 1820,
+        "availableStockTotal": 303624,
+        "pendingStockTotal": 2097,
         "freezeStockTotal": 0,
         "lowStockItems": 100
       },
@@ -23,8 +23,8 @@
         "items": 300,
         "scannedPages": 3,
         "topLogisticsProduct": "F1401",
-        "oldestTimestamp": "2026-04-17T14:50:02+02:00",
-        "newestTimestamp": "2026-04-19T15:00:06+02:00"
+        "oldestTimestamp": "2026-04-17T17:50:04+02:00",
+        "newestTimestamp": "2026-04-19T16:30:05+02:00"
       }
     },
     "sk": {
@@ -76,7 +76,7 @@
     "pairedProducts": 390,
     "onlyInWpj": 1437,
     "onlyIn4px": 1,
-    "stockMismatch": 670,
+    "stockMismatch": 671,
     "lowAfterSales": 4,
     "manualMapped4pxAliases": 0,
     "autoMapped4pxAliases": 73
@@ -87,24 +87,24 @@
     "message": "Měsíční finance se tahají přímo z ABRA reportu Výkaz hospodaření za měsíc za všechna střediska. Závazky jsou live z ABRA API, cash na účtech a čistá cash pozice zatím zůstávají z posledního ABRA snapshotu.",
     "currentMonth": {
       "label": "4/2026",
-      "revenue": 8294755.45,
-      "cogsAndFees": 5962604.82,
+      "revenue": 8337420.98,
+      "cogsAndFees": 5988783.0,
       "logistics": 37815.04,
       "marketing": 257841.46,
       "opex": 251053.68,
       "depreciation": 385502.0,
       "other": -5460.68,
-      "grossMargin": 2332150.63,
-      "afterLogistics": 2294335.59,
-      "afterMarketing": 2036494.13,
-      "operatingMargin": 1785440.45,
-      "ebit": 1399938.45,
-      "profit": 1394477.77,
-      "grossMarginPct": 28.1,
+      "grossMargin": 2348637.98,
+      "afterLogistics": 2310822.94,
+      "afterMarketing": 2052981.48,
+      "operatingMargin": 1801927.8,
+      "ebit": 1416425.8,
+      "profit": 1410965.12,
+      "grossMarginPct": 28.2,
       "marketingPct": 3.1,
       "logisticsPct": 0.5,
-      "operatingMarginPct": 21.5,
-      "profitPct": 16.8
+      "operatingMarginPct": 21.6,
+      "profitPct": 16.9
     },
     "cash": {
       "cashOnAccounts": 10255308.0,
@@ -187,13 +187,13 @@
   "marketing": {
     "ready": true,
     "mode": "live_report",
-    "message": "Marketing se skládá z live ABRA reportu a aktuálních položek z účetního deníku. Přímé platformy přes API: Sklik, Meta Ads, Google Ads.",
+    "message": "Marketing se skládá z live ABRA reportu a aktuálních položek z účetního deníku. Přímé platformy přes API: Sklik, Meta Ads, Google Ads, Klaviyo.",
     "currentMonth": {
       "label": "4/2026",
       "performanceSpend": 6957.68,
       "brandSpend": 250883.78,
       "totalSpend": 257841.46,
-      "revenue": 8294755.45,
+      "revenue": 8337420.98,
       "spendShareOfRevenuePct": 3.1
     },
     "topSupplier": null
