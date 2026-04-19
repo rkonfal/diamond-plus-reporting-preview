@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-19T07:05:58.449591+02:00",
+  "generatedAt": "2026-04-19T12:06:18.027289+02:00",
   "reportDate": "2026-04-18",
   "detailUrl": "https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html",
   "window": {
@@ -34,11 +34,11 @@
     "statuses": [
       {
         "name": "přijatá",
-        "count": 147
+        "count": 148
       },
       {
         "name": "nová",
-        "count": 14
+        "count": 13
       },
       {
         "name": "doručeno",
@@ -422,11 +422,11 @@
         "statuses": [
           {
             "name": "přijatá",
-            "count": 147
+            "count": 148
           },
           {
             "name": "nová",
-            "count": 14
+            "count": 13
           },
           {
             "name": "doručeno",
@@ -810,11 +810,11 @@
         "statuses": [
           {
             "name": "přijatá",
-            "count": 126
+            "count": 127
           },
           {
             "name": "nová",
-            "count": 11
+            "count": 10
           },
           {
             "name": "doručeno",
@@ -1700,83 +1700,83 @@
     ],
     "largestMovesSinceLastSnapshot": [
       {
-        "code": "35412-02",
-        "title": "Povzbuzující krém pro dokonalá stehna",
-        "currentStock": 97.0,
-        "previousStock": 101.0,
+        "code": "40203",
+        "title": "Peeling Broskvový",
+        "currentStock": 1788.0,
+        "previousStock": 1798.0,
+        "delta": -10.0
+      },
+      {
+        "code": "UA132",
+        "title": "Peeling Broskovový 1+1",
+        "currentStock": 1778.0,
+        "previousStock": 1788.0,
+        "delta": -10.0
+      },
+      {
+        "code": "000075",
+        "title": "Brožura Fytogely",
+        "currentStock": 3277.0,
+        "previousStock": 3283.0,
+        "delta": -6.0
+      },
+      {
+        "code": "44402-2",
+        "title": "Fytogel Slaviton",
+        "currentStock": 2493.0,
+        "previousStock": 2499.0,
+        "delta": -6.0
+      },
+      {
+        "code": "61911",
+        "title": "Denní vložky s extraktem aloe Nefritová svěžest",
+        "currentStock": 902.0,
+        "previousStock": 906.0,
         "delta": -4.0
       },
       {
-        "code": "GS645",
-        "title": "Komplexní péče pro krásnou postavu",
-        "currentStock": 82.0,
-        "previousStock": 86.0,
+        "code": "30106",
+        "title": "Kosmetická tělová fytonáplast Zhui Feng Forte",
+        "currentStock": 878.0,
+        "previousStock": 882.0,
         "delta": -4.0
       },
       {
-        "code": "ME825",
-        "title": "Tvarující tělová kúra pro dokonalé křivky",
-        "currentStock": 82.0,
-        "previousStock": 86.0,
+        "code": "113011",
+        "title": "Funkční komplex s vlašským ořechem se sladidlem",
+        "currentStock": 380.0,
+        "previousStock": 384.0,
         "delta": -4.0
       },
       {
-        "code": "VU823",
-        "title": "Harmonizační balíček pro zdravé hubnutí",
-        "currentStock": 82.0,
-        "previousStock": 86.0,
+        "code": "980168",
+        "title": "Vatové tyčinky z bambusu",
+        "currentStock": 170.0,
+        "previousStock": 174.0,
         "delta": -4.0
       },
       {
-        "code": "IC931",
-        "title": "Rozproudění lymfy",
-        "currentStock": 82.0,
-        "previousStock": 86.0,
+        "code": "HV727",
+        "title": "Doplňky stravy + cestovní láhev",
+        "currentStock": 335.0,
+        "previousStock": 339.0,
         "delta": -4.0
       },
       {
-        "code": "NQ771",
-        "title": "Proměna postavy - intenzivní program pro vaše tělo",
-        "currentStock": 82.0,
-        "previousStock": 86.0,
+        "code": "CG170",
+        "title": "Kompletní menstruační péče - Nefritová harmonie",
+        "currentStock": 356.0,
+        "previousStock": 360.0,
         "delta": -4.0
-      },
-      {
-        "code": "PX373",
-        "title": "Základní balíček k hubnutí TOP produkty",
-        "currentStock": 82.0,
-        "previousStock": 86.0,
-        "delta": -4.0
-      },
-      {
-        "code": "JP928",
-        "title": "Povzbuzující péče o stehna ve dvojitém balení",
-        "currentStock": 82.0,
-        "previousStock": 86.0,
-        "delta": -4.0
-      },
-      {
-        "code": "23401",
-        "title": "Šampon - aktivátor růstu vlasů",
-        "currentStock": 940.0,
-        "previousStock": 942.0,
-        "delta": -2.0
-      },
-      {
-        "code": "23402",
-        "title": "BIO REHAB Maska-aktivátor růstu vlasů",
-        "currentStock": 1299.0,
-        "previousStock": 1301.0,
-        "delta": -2.0
       }
     ]
   },
   "inventory": {
-    "availableStockTotal": 375252.0,
+    "availableStockTotal": 374754.0,
     "itemsTotal": 1389,
     "byAccount": {
-      "CZ": 304833.0,
-      "SK": 70419.0
+      "CZ": 304354.0,
+      "SK": 70400.0
     },
     "itemsByAccount": {
       "CZ": 768,
@@ -1827,12 +1827,16 @@
     ],
     "statusCounts": [
       {
+        "name": "C",
+        "count": 99
+      },
+      {
         "name": "P",
-        "count": 93
+        "count": 41
       },
       {
         "name": "S",
-        "count": 61
+        "count": 14
       }
     ],
     "coverageWarnings": [],
@@ -1842,10 +1846,10 @@
         "sku": "40203",
         "dateExpiry": "2026-05-08",
         "daysToExpiry": 19,
-        "datedStock": 2041.0,
-        "stockAtNearestExpiry": 2041.0,
+        "datedStock": 1903.0,
+        "stockAtNearestExpiry": 1903.0,
         "batchCount": 15,
-        "riskScore": 41.54,
+        "riskScore": 38.73,
         "title": "Peeling Broskvový",
         "label": "40203 · Peeling Broskvový (CZ)"
       },
@@ -1854,10 +1858,10 @@
         "sku": "52902/03",
         "dateExpiry": "2026-05-07",
         "daysToExpiry": 18,
-        "datedStock": 323.0,
-        "stockAtNearestExpiry": 323.0,
+        "datedStock": 310.0,
+        "stockAtNearestExpiry": 310.0,
         "batchCount": 3,
-        "riskScore": 7.03,
+        "riskScore": 6.75,
         "title": "Revitalizační maska na obličej a krk Lingzhi - 3ks",
         "label": "52902/03 · Revitalizační maska na obličej a krk Lingzhi - 3ks (CZ)"
       },
@@ -1866,8 +1870,8 @@
         "sku": "PROMO74",
         "dateExpiry": "2027-02-09",
         "daysToExpiry": 296,
-        "datedStock": 9460.0,
-        "stockAtNearestExpiry": 2340.0,
+        "datedStock": 9454.0,
+        "stockAtNearestExpiry": 2334.0,
         "batchCount": 18,
         "riskScore": 5.77,
         "title": "Královská bylinná směs zdravá žena ",
@@ -1878,10 +1882,10 @@
         "sku": "63601/01",
         "dateExpiry": "2026-12-31",
         "daysToExpiry": 256,
-        "datedStock": 7496.0,
-        "stockAtNearestExpiry": 7496.0,
+        "datedStock": 7481.0,
+        "stockAtNearestExpiry": 7481.0,
         "batchCount": 15,
-        "riskScore": 5.52,
+        "riskScore": 5.51,
         "title": "Denní vložka Energie života",
         "label": "63601/01 · Denní vložka Energie života (CZ)"
       },
@@ -1890,8 +1894,8 @@
         "sku": "30111",
         "dateExpiry": "2026-12-10",
         "daysToExpiry": 235,
-        "datedStock": 6394.0,
-        "stockAtNearestExpiry": 6394.0,
+        "datedStock": 6388.0,
+        "stockAtNearestExpiry": 6388.0,
         "batchCount": 18,
         "riskScore": 5.26,
         "title": "Kosmetická tělová fytonáplast Yaoshen Forte",

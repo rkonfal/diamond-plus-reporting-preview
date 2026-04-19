@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-19T07:00:04.667548+02:00",
+  "generatedAt": "2026-04-19T12:00:01.200849+02:00",
   "window": {
     "from": "2026-04-18T00:00:01+02:00",
     "to": "2026-04-19T00:00:00+02:00"
@@ -8470,10 +8470,10 @@
       "code": "261270652",
       "dateCreated": "2026-04-18T19:31:35+02:00",
       "cancelled": false,
-      "isPaid": false,
+      "isPaid": true,
       "status": {
-        "id": 0,
-        "name": "nová"
+        "id": 1,
+        "name": "přijatá"
       },
       "totalPrice": {
         "withVat": 2476,
@@ -8504,6 +8504,30 @@
         {
           "adminId": null,
           "comment": "[FlexiBee] Objednávka byla nahrána do FlexiBee; ID: 659379"
+        },
+        {
+          "adminId": null,
+          "comment": "Modul FioBank - příchozí platba č. 27591460088. Komentář plátce: MICHAELA MOLÁČKOVÁ."
+        },
+        {
+          "adminId": null,
+          "comment": "<p>Dobré zprávy: Úhrada vaší objednávky 261270652 právě dorazila. Než dočtete tento e-mail, pustíme se do práce na expedici vaší objednávky tak, aby vám dorazila co nejdříve.</p><p>Těšíte se? 😍</p><div></div>"
+        },
+        {
+          "adminId": null,
+          "comment": "[4PX] Objednávka byla vytvořena; ID: OC149400632604190073 tracking: 601111441646 účet: CZ"
+        },
+        {
+          "adminId": null,
+          "comment": null
+        },
+        {
+          "adminId": null,
+          "comment": "[FlexiBee] Objednávka byla ve FlexiBee zaktualizována"
+        },
+        {
+          "adminId": null,
+          "comment": "[Flexi] Objednávka byla realizována ve Flexi;"
         }
       ],
       "deliveryType": {
@@ -29190,11 +29214,11 @@
     "statuses": [
       {
         "name": "přijatá",
-        "count": 147
+        "count": 148
       },
       {
         "name": "nová",
-        "count": 14
+        "count": 13
       },
       {
         "name": "doručeno",
@@ -29578,11 +29602,11 @@
         "statuses": [
           {
             "name": "přijatá",
-            "count": 147
+            "count": 148
           },
           {
             "name": "nová",
-            "count": 14
+            "count": 13
           },
           {
             "name": "doručeno",
@@ -29966,11 +29990,11 @@
         "statuses": [
           {
             "name": "přijatá",
-            "count": 126
+            "count": 127
           },
           {
             "name": "nová",
-            "count": 11
+            "count": 10
           },
           {
             "name": "doručeno",
