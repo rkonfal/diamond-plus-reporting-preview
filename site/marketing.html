@@ -182,45 +182,6 @@
 
     <section class="grid" style="gap:20px;" id="source-campaign-sections"></section>
 
-    <section class="card">
-      <h2 class="section-title">Měsíční náklady</h2>
-      <div class="section-subtitle">PPC a ostatní marketing po měsících.</div>
-      <div class="ux-table-wrap" style="margin-top:16px;">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Měsíc</th>
-              <th class="num">PPC</th>
-              <th class="num">Marketing</th>
-              <th class="num">Celkem</th>
-              <th class="num">% z výnosů</th>
-            </tr>
-          </thead>
-          <tbody id="monthly-table"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2 class="section-title">Aktuální marketingové položky</h2>
-      <div class="section-subtitle">Rozpad podle účetních položek. Live Meta Ads a Sklik jsou nahoře, další kanály dopojíme postupně.</div>
-      <div class="ux-table-wrap" style="margin-top:16px;">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Datum</th>
-              <th>Dodavatel</th>
-              <th>Popis</th>
-              <th>Modul</th>
-              <th>Účet</th>
-              <th>Středisko</th>
-              <th class="num">Částka</th>
-            </tr>
-          </thead>
-          <tbody id="entries-table"></tbody>
-        </table>
-      </div>
-    </section>
   </main>
 
   <script src="assets/app.js"></script>
@@ -595,27 +556,6 @@
         </div>
       `);
 
-      document.getElementById('monthly-table').innerHTML = (data.monthly || []).map(row => `
-        <tr>
-          <td>${row.label}</td>
-          <td class="num">${money(row.performanceSpend)}</td>
-          <td class="num">${money(row.brandSpend)}</td>
-          <td class="num">${money(row.totalSpend)}</td>
-          <td class="num">${pct(row.spendShareOfRevenuePct)}</td>
-        </tr>
-      `).join('');
-
-      document.getElementById('entries-table').innerHTML = (data.entriesCurrentMonth || []).map(row => `
-        <tr>
-          <td>${row.date || '–'}</td>
-          <td>${row.supplier || '–'}</td>
-          <td>${row.description || '–'}</td>
-          <td>${row.module || '–'}</td>
-          <td>${row.account || '–'}</td>
-          <td>${row.costCenter || '–'}</td>
-          <td class="num">${money(row.amount)}</td>
-        </tr>
-      `).join('');
     })().catch(err => {
       document.getElementById('source-alert').innerHTML = `<div class="alert danger">Nepodařilo se načíst marketing data: ${err.message}</div>`;
     });
