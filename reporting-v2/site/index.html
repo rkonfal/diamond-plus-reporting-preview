@@ -166,9 +166,10 @@
     };
 
     (async () => {
-      const [summary, report] = await Promise.all([
+      const [summary, report, ga4] = await Promise.all([
         DP.loadJson('../data/current/portal_summary.json'),
-        DP.loadJson('../data/current/morning_report_previous_day.json')
+        DP.loadJson('../data/current/morning_report_previous_day.json'),
+        DP.loadJson('../data/current/ga4_overview.json').catch(() => ({}))
       ]);
       const total4pxStock = (summary.accounts.cz.inventory.availableStockTotal || 0) + (summary.accounts.sk.inventory.availableStockTotal || 0);
       const total4pxRows = (summary.accounts.cz.inventory.items || 0) + (summary.accounts.sk.inventory.items || 0);
@@ -187,7 +188,12 @@
           sub: `${pctText(report.quickSummary?.revenueWithVat?.deltaPct)} · celý WPJShop www.kralovstvi-tiande`,
           klass: ''
         },
-        {
+        ga4.last7days ? {
+          label: 'GA4 sessions 7d',
+          value: DP.fmtNumber(ga4.last7days.sessions || 0),
+          sub: `${DP.fmtNumber(Math.round(ga4.last7days.ecommercePurchases || 0))} nákupů · CR ${ga4.last7days.purchaseRatePct == null ? '–' : `${Number(ga4.last7days.purchaseRatePct).toFixed(2)} %`}`,
+          klass: ''
+        } : {
           label: 'CZ + SK dohromady',
           value: DP.fmtNumber(Math.round(total4pxStock || 0)),
           sub: `4PX sklad celkem · CZ ${DP.fmtNumber(summary.accounts.cz.inventory.availableStockTotal || 0)} · SK ${DP.fmtNumber(summary.accounts.sk.inventory.availableStockTotal || 0)}`,
@@ -232,11 +238,11 @@
           tone: Number(summary.finance?.cash?.overdueInvoicesCount || 0) ? 'warn' : '',
         },
         {
-          eyebrow: 'Datová důvěryhodnost',
-          value: summary.wpJ.ready ? 'Live + snapshot mix' : 'Částečná data',
-          sub: summary.finance?.message || 'Bez poznámky ke zdroji.',
-          meta: `Refresh ${DP.fmtDateTime(summary.generatedAt)}`,
-          tone: summary.warnings.length ? 'danger' : '',
+          eyebrow: 'GA4 akvizice',
+          value: ga4.last7days ? `${DP.fmtNumber(ga4.last7days.sessions || 0)} sessions` : (summary.wpJ.ready ? 'Live + snapshot mix' : 'Částečná data'),
+          sub: ga4.last7days ? `${DP.fmtNumber(Math.round(ga4.last7days.ecommercePurchases || 0))} nákupů za 7 dní, top channel ${(ga4.channelPerformance7d || [])[0]?.channel || '–'}.` : (summary.finance?.message || 'Bez poznámky ke zdroji.'),
+          meta: ga4.last7days ? `CR ${ga4.last7days.purchaseRatePct == null ? '–' : `${Number(ga4.last7days.purchaseRatePct).toFixed(2)} %`} · top landing ${(ga4.landingPages7d || [])[0]?.landingPage || '–'}` : `Refresh ${DP.fmtDateTime(summary.generatedAt)}`,
+          tone: ga4.last7days ? '' : (summary.warnings.length ? 'danger' : ''),
         }
       ];
       document.getElementById('overview-decision-grid').innerHTML = decisionCards.map(card => `
@@ -285,6 +291,8 @@
       `).join('');
 
       const byView = report.eshop.byView || {};
+      const ga4Mode = summary.ga4?.property?.mode === 'combined' ? 'GA4 CZ+SK bundle' : 'GA4';
+      const ga4SkCountry = (summary.ga4?.countries7d || []).find(row => row.country === 'Slovakia');
       document.getElementById('eshop-source-split').innerHTML = [
         ['CZ e-shop', `${DP.fmtNumber(byView.cz?.orders || 0)} / ${fmtMoney(byView.cz?.revenueWithVat || 0)}`],
         ['SK e-shop', `${DP.fmtNumber(byView.sk?.orders || 0)} / ${fmtMoney(byView.sk?.revenueWithVat || 0)}`],
@@ -300,7 +308,8 @@
       const statusRows = [
         ['WPJ a objednávky', summary.wpJ.ready ? 'Připojeno, bereme kompletní výsledek e-shopu.' : summary.wpJ.message],
         ['4PX sklady a logistika', 'CZ i SK běží živě.'],
-        ['Finance a marketing', summary.finance?.message || 'Zatím bez finanční zprávy.']
+        ['Finance a marketing', summary.finance?.message || 'Zatím bez finanční zprávy.'],
+        ['GA4 a akvizice', summary.ga4?.ready ? `${ga4Mode}: ${DP.fmtNumber(summary.ga4.last7days?.sessions || 0)} sessions, ${DP.fmtNumber(Math.round(summary.ga4.last7days?.ecommercePurchases || 0))} nákupů, top channel ${summary.ga4.topChannel7d?.channel || '–'}${ga4SkCountry ? `, Slovakia ${DP.fmtNumber(Math.round(ga4SkCountry.activeUsers || 0))} AU` : ''}.` : (summary.ga4?.message || 'GA4 zatím není napojené.')] 
       ];
       document.getElementById('status-list').innerHTML = statusRows.map(([title, text], index) => `
         <div class="ux-side-item">
@@ -349,7 +358,9 @@
           body: [
             ['Spend', fmtMoney(summary.marketing?.currentMonth?.totalSpend || 0)],
             ['Podíl na výnosech', `${(summary.marketing?.currentMonth?.spendShareOfRevenuePct ?? 0).toFixed(1)} %`],
-            ['Top dodavatel', summary.marketing?.topSupplier?.name || '–'],
+            [`${ga4Mode} sessions 7d`, summary.ga4?.ready ? DP.fmtNumber(summary.ga4.last7days?.sessions || 0) : '–'],
+            ['Top channel 7d', summary.ga4?.ready ? (summary.ga4.topChannel7d?.channel || '–') : (summary.marketing?.topSupplier?.name || '–')],
+            ['Slovakia AU 7d', ga4SkCountry ? DP.fmtNumber(Math.round(ga4SkCountry.activeUsers || 0)) : '–'],
             ['Další krok', 'Otevřít marketing'],
           ],
         }
@@ -372,8 +383,9 @@
         ['4PX sklad CZ + SK', DP.fmtNumber(Math.round(total4pxStock)), `CZ ${DP.fmtNumber(summary.accounts.cz.inventory.availableStockTotal)} · SK ${DP.fmtNumber(summary.accounts.sk.inventory.availableStockTotal)}`, 'green'],
         ['4PX skladové řádky', DP.fmtNumber(total4pxRows), `${DP.fmtNumber(totalLowStockRows)} nízkých skladových řádků napříč CZ+SK`, 'blue'],
         ['Finance, čistá cash pozice', DP.fmtNumber(Math.round(summary.finance?.cash?.netCashPosition || 0)), summary.finance?.mode === 'mixed_live_legacy' ? 'živé závazky + starší P&L' : summary.finance?.mode === 'legacy_with_live_error' ? 'starší data + chyba API' : summary.finance?.mode === 'legacy_snapshot' ? 'starší ABRA snapshot' : 'finanční zdroj', 'gold'],
-        ['Marketing, poslední měsíc', DP.fmtNumber(Math.round(summary.marketing?.currentMonth?.totalSpend || 0)), `${(summary.marketing?.currentMonth?.spendShareOfRevenuePct ?? 0).toFixed(1)} % z výnosů`, 'red']
-      ];
+        ['Marketing, poslední měsíc', DP.fmtNumber(Math.round(summary.marketing?.currentMonth?.totalSpend || 0)), `${(summary.marketing?.currentMonth?.spendShareOfRevenuePct ?? 0).toFixed(1)} % z výnosů`, 'red'],
+        ga4.last7days ? ['GA4 purchases 7d', DP.fmtNumber(Math.round(ga4.last7days.ecommercePurchases || 0)), `CR ${ga4.last7days.purchaseRatePct == null ? '–' : `${Number(ga4.last7days.purchaseRatePct).toFixed(2)} %`}`, 'green'] : null
+      ].filter(Boolean);
       document.getElementById('top-kpis').innerHTML = kpis.map(([label, value, sub, klass]) => `
         <div class="card kpi-card ${klass}">
           <div class="kpi-label">${label}</div>

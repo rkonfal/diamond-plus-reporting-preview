@@ -172,6 +172,49 @@
       <div class="grid kpi-grid" id="source-kpis" style="margin-top:20px;"></div>
     </section>
 
+    <section class="card" id="ga4-acquisition-section" style="display:none; margin-top:20px;">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">GA4 akvizice a landing pages</h2>
+          <div class="section-subtitle">Webový kontext přímo v marketingu, aby bylo vidět, odkud chodí návštěvnost a co skutečně nakupuje.</div>
+        </div>
+      </div>
+      <div class="grid kpi-grid" id="ga4-kpis" style="margin-top:20px;"></div>
+      <div class="grid two-col" style="gap:20px; margin-top:20px;">
+        <div class="ux-table-wrap">
+          <table class="table desktop-only">
+            <thead>
+              <tr>
+                <th>Kanál</th>
+                <th class="num">Sessions</th>
+                <th class="num">Nákupy</th>
+                <th class="num">Revenue</th>
+                <th class="num">CR</th>
+                <th class="num">Revenue / session</th>
+              </tr>
+            </thead>
+            <tbody id="ga4-channel-table"></tbody>
+          </table>
+          <div class="mobile-only mobile-campaign-list" id="ga4-channel-mobile"></div>
+        </div>
+        <div class="ux-table-wrap">
+          <table class="table desktop-only">
+            <thead>
+              <tr>
+                <th>Landing page</th>
+                <th class="num">Sessions</th>
+                <th class="num">Nákupy</th>
+                <th class="num">Revenue</th>
+                <th class="num">CR</th>
+              </tr>
+            </thead>
+            <tbody id="ga4-landing-table"></tbody>
+          </table>
+          <div class="mobile-only mobile-campaign-list" id="ga4-landing-mobile"></div>
+        </div>
+      </div>
+    </section>
+
     <details class="secondary-details">
       <summary>Detail layer, rozšířený marketingový detail</summary>
 
@@ -266,6 +309,12 @@
       const meta = data.directSources?.meta || {};
       const google = data.directSources?.google || {};
       const klaviyo = data.directSources?.klaviyo || {};
+      const ga4 = data.analytics || {};
+      const ga4Mode = ga4.property?.mode === 'combined' ? 'GA4 CZ+SK bundle' : 'GA4';
+      const ga4Country = name => (ga4.countries7d || []).find(row => row.country === name) || null;
+      const ga4SkCountry = ga4Country('Slovakia');
+      const ga4TopChannelCurrent = (ga4.channelPerformanceCurrentMonth || [])[0] || null;
+      const ga4TopLanding7d = (ga4.landingPages7d || [])[0] || null;
       const activeBySource = data.activeCampaignsBySource || {};
       const anyLiveSource = [sklik, meta, google, klaviyo].some(source => source?.ready);
       const source = (!data.source?.status || data.source?.status === 'missing') && anyLiveSource
@@ -361,6 +410,8 @@
               name: row.campaignName || '–',
               status: row.effectiveStatus || row.status || '–',
               spend: Number(row.spendCzk || 0),
+              reach: Number(row.reach || 0),
+              frequency: row.frequency == null ? null : Number(row.frequency),
               clicks: Number(row.clicks || 0),
               conversions: Number(row.purchaseConversions || 0),
               value: Number(row.purchaseValueCzk || 0),
@@ -541,6 +592,7 @@
           meta.ready ? [`Meta Ads`, `${money(month.metaMonth.spendCzk)} útrata, ${DP.fmtNumber(Math.round(month.metaMonth.clicks || 0))} kliků, ROAS ${month.metaMonth.roas ?? '–'}.`] : null,
           google.ready ? [`Google Ads`, `${money(month.googleMonth.spendCzk)} útrata, ${DP.fmtNumber(Math.round(month.googleMonth.clicks || 0))} kliků, ROAS ${month.googleMonth.roas ?? '–'}.`] : null,
           sklik.ready ? [`Sklik`, `${money(month.sklikTotal.priceCzk)} útrata, ${DP.fmtNumber(Math.round(month.sklikTotal.clicks || 0))} kliků a ${DP.fmtNumber(Math.round(month.sklikTotal.conversions || 0))} konverzí.`] : null,
+          ga4.ready ? [`${ga4Mode} akvizice`, `${DP.fmtNumber(ga4.currentMonth?.sessions || 0)} sessions, ${DP.fmtNumber(Math.round(ga4.currentMonth?.ecommercePurchases || 0))} nákupů, revenue ${money(ga4.currentMonth?.purchaseRevenue || 0)}${ga4SkCountry ? `, Slovensko ${DP.fmtNumber(Math.round(ga4SkCountry.activeUsers || 0))} AU za 7 dní` : ''}.`] : null,
           klaviyo.ready ? [`Klaviyo`, `${money(klaviyoMonth.totalAttributedRevenueCzk)} atribuovaný obrat, ${Number(klaviyoMonth.totalAttributedOrders || 0).toFixed(2)} objednávek, ${DP.fmtNumber(Math.round(klaviyoMonth.totalRecipients || 0))} příjemců.`] : null,
         ].filter(Boolean).map(([title, text], index) => `
           <div class="ux-item">
@@ -554,6 +606,10 @@
 
         document.getElementById('marketing-current').innerHTML = [
           ['Podíl z výnosů', pct(month.spendShareOfRevenuePct)],
+          ga4.ready ? [`${ga4Mode} sessions`, DP.fmtNumber(ga4.currentMonth?.sessions || 0)] : null,
+          ga4.ready ? [`${ga4Mode} purchases`, DP.fmtNumber(Math.round(ga4.currentMonth?.ecommercePurchases || 0))] : null,
+          ga4.ready ? [`${ga4Mode} purchase rate`, ga4.currentMonth?.purchaseRatePct == null ? '–' : `${Number(ga4.currentMonth.purchaseRatePct).toFixed(2)} %`] : null,
+          ga4SkCountry ? ['GA4 Slovakia AU 7d', DP.fmtNumber(Math.round(ga4SkCountry.activeUsers || 0))] : null,
           meta.ready ? ['Meta Ads spend', money(month.metaMonth.spendCzk)] : null,
           google.ready ? ['Google Ads spend', money(month.googleMonth.spendCzk)] : null,
           sklik.ready ? ['Sklik spend', money(month.sklikTotal.priceCzk)] : null,
@@ -576,6 +632,7 @@
           [`PPC celkem`, `Do PPC šlo ${money(ppcTotal.amount)} a celkový PPC ROAS vychází na ${ppcTotal.roas == null ? '–' : Number(ppcTotal.roas).toFixed(2)}.`],
           strongestSource ? [`Nejsilnější kanál`, `${strongestSource.label} má nejvyšší útratu ${money(strongestSource.amount)}.`] : null,
           bestRoasSource ? [`Nejlepší efektivita`, `${bestRoasSource.label} má nejvyšší ROAS ${Number(bestRoasSource.roas).toFixed(2)}.`] : null,
+          ga4.ready ? [`${ga4Mode} top channel`, `${ga4.channelPerformanceCurrentMonth?.[0]?.channel || '–'} přivedl ${DP.fmtNumber(ga4.channelPerformanceCurrentMonth?.[0]?.sessions || 0)} sessions a ${money(ga4.channelPerformanceCurrentMonth?.[0]?.purchaseRevenue || 0)} revenue.`] : null,
           klaviyo.ready ? [`Klaviyo dopad`, `Email + SMS připisují ${money(klaviyoMonth.totalAttributedRevenueCzk)} a ${Number(klaviyoMonth.totalAttributedOrders || 0).toFixed(2)} objednávek.`] : null,
           [`Čtení trendu`, `Denní trend níž ukáže, jestli některý kanál v ${sectionMonthLabel(mode)} rostl v útratě bez růstu hodnoty.`],
         ].filter(Boolean).map(([title, text], index) => `
@@ -592,6 +649,7 @@
           ['Marketingové náklady', money(month.totalÚtrata), `${pct(month.spendShareOfRevenuePct)} z výnosů`, 'gold'],
           ['PPC', money(month.performanceÚtrata), 'výkonové kanály', 'blue'],
           ['Ostatní marketing', money(month.brandÚtrata), 'produkce, SMS, služby', 'green'],
+          ga4.ready ? ['GA4 revenue', money(ga4.currentMonth?.purchaseRevenue || 0), `${DP.fmtNumber(Math.round(ga4.currentMonth?.ecommercePurchases || 0))} nákupů, CR ${ga4.currentMonth?.purchaseRatePct == null ? '–' : `${Number(ga4.currentMonth.purchaseRatePct).toFixed(2)} %`}`, 'gold'] : null,
           meta.ready ? ['Meta Ads', money(month.metaMonth.spendCzk), `${DP.fmtNumber(Math.round(month.metaMonth.clicks || 0))} kliků, ROAS ${month.metaMonth.roas ?? '–'}`, 'blue'] : null,
           google.ready ? ['Google Ads', money(month.googleMonth.spendCzk), `${DP.fmtNumber(Math.round(month.googleMonth.clicks || 0))} kliků, ROAS ${month.googleMonth.roas ?? '–'}`, 'green'] : null,
           sklik.ready ? ['Sklik', money(month.sklikTotal.priceCzk), `${DP.fmtNumber(Math.round(month.sklikTotal.clicks || 0))} kliků, ${DP.fmtNumber(Math.round(month.sklikTotal.conversions || 0))} konverzí`, 'blue'] : null,
@@ -635,6 +693,17 @@
               ['Příjemci', DP.fmtNumber(Math.round(klaviyoMonth.totalRecipients || 0))],
               ['CTR', klaviyoMonth.clickRate == null ? '–' : `${(Number(klaviyoMonth.clickRate) * 100).toFixed(1)} %`],
             ]
+          },
+          {
+            title: `${ga4Mode} výkon webu`,
+            text: 'Kontrolní vrstva mezi reklamou a reálným chováním webu, sloučená přes CZ a SK.',
+            body: [
+              ['Sessions', ga4.ready ? DP.fmtNumber(ga4.currentMonth?.sessions || 0) : '–'],
+              ['Purchases', ga4.ready ? DP.fmtNumber(Math.round(ga4.currentMonth?.ecommercePurchases || 0)) : '–'],
+              ['Top channel', ga4.channelPerformanceCurrentMonth?.[0]?.channel || '–'],
+              ['Top landing', ga4.landingPages7d?.[0]?.landingPage || '–'],
+              ['Slovakia AU 7d', ga4SkCountry ? DP.fmtNumber(Math.round(ga4SkCountry.activeUsers || 0)) : '–'],
+            ]
           }
         ].map(card => `
           <article class="summary-card">
@@ -677,6 +746,68 @@
           </div>
         `).join('');
 
+        if (ga4.ready) {
+          document.getElementById('ga4-acquisition-section').style.display = '';
+          document.getElementById('ga4-kpis').innerHTML = [
+            [`${ga4Mode} sessions`, DP.fmtNumber(ga4.currentMonth?.sessions || 0), `${ga4.currentMonth?.engagementRatePct == null ? '–' : `${Number(ga4.currentMonth.engagementRatePct).toFixed(1)} %`} engagement`, 'blue'],
+            ['GA4 purchases', DP.fmtNumber(Math.round(ga4.currentMonth?.ecommercePurchases || 0)), `CR ${ga4.currentMonth?.purchaseRatePct == null ? '–' : `${Number(ga4.currentMonth.purchaseRatePct).toFixed(2)} %`}`, 'green'],
+            ['GA4 revenue', money(ga4.currentMonth?.purchaseRevenue || 0), `${ga4.currentMonth?.revenuePerSession == null ? '–' : `${Number(ga4.currentMonth.revenuePerSession).toFixed(2)} Kč / session`}`, 'gold'],
+            ['Top channel', ga4TopChannelCurrent?.channel || '–', ga4TopChannelCurrent ? `${DP.fmtNumber(Math.round(ga4TopChannelCurrent.sessions || 0))} sessions • ${money(ga4TopChannelCurrent.purchaseRevenue || 0)}` : 'Bez kanálu', 'red'],
+            ['Top landing 7d', ga4TopLanding7d?.landingPage || '–', ga4TopLanding7d ? `${DP.fmtNumber(Math.round(ga4TopLanding7d.sessions || 0))} sessions • CR ${ga4TopLanding7d.purchaseRatePct == null ? '–' : `${Number(ga4TopLanding7d.purchaseRatePct).toFixed(2)} %`}` : 'Bez landing page', 'blue'],
+          ].map(([label, value, sub, klass]) => `
+            <div class="card kpi-card ${klass}">
+              <div class="kpi-label">${label}</div>
+              <div class="kpi-value">${value}</div>
+              <div class="kpi-sub">${sub}</div>
+            </div>
+          `).join('');
+
+          document.getElementById('ga4-channel-table').innerHTML = (ga4.channelPerformanceCurrentMonth || []).map(row => `
+            <tr>
+              <td>${row.channel || '–'}</td>
+              <td class="num">${DP.fmtNumber(Math.round(row.sessions || 0))}</td>
+              <td class="num">${DP.fmtNumber(Math.round(row.ecommercePurchases || 0))}</td>
+              <td class="num">${money(row.purchaseRevenue || 0)}</td>
+              <td class="num">${row.purchaseRatePct == null ? '–' : `${Number(row.purchaseRatePct).toFixed(2)} %`}</td>
+              <td class="num">${row.revenuePerSession == null ? '–' : `${Number(row.revenuePerSession).toFixed(2)} Kč`}</td>
+            </tr>
+          `).join('') || '<tr><td colspan="6">GA4 kanály zatím nejsou k dispozici.</td></tr>';
+
+          document.getElementById('ga4-channel-mobile').innerHTML = (ga4.channelPerformanceCurrentMonth || []).map(row => `
+            <div class="mobile-campaign-card">
+              <strong>${row.channel || '–'}</strong>
+              <div class="mobile-metric-grid">
+                <div><span>Sessions</span><br>${DP.fmtNumber(Math.round(row.sessions || 0))}</div>
+                <div><span>Nákupy</span><br>${DP.fmtNumber(Math.round(row.ecommercePurchases || 0))}</div>
+                <div><span>Revenue</span><br>${money(row.purchaseRevenue || 0)}</div>
+                <div><span>CR</span><br>${row.purchaseRatePct == null ? '–' : `${Number(row.purchaseRatePct).toFixed(2)} %`}</div>
+              </div>
+            </div>
+          `).join('') || '<div class="mobile-campaign-card"><strong>Bez GA4 kanálů</strong></div>';
+
+          document.getElementById('ga4-landing-table').innerHTML = (ga4.landingPages7d || []).map(row => `
+            <tr>
+              <td>${row.landingPage || '–'}</td>
+              <td class="num">${DP.fmtNumber(Math.round(row.sessions || 0))}</td>
+              <td class="num">${DP.fmtNumber(Math.round(row.ecommercePurchases || 0))}</td>
+              <td class="num">${money(row.purchaseRevenue || 0)}</td>
+              <td class="num">${row.purchaseRatePct == null ? '–' : `${Number(row.purchaseRatePct).toFixed(2)} %`}</td>
+            </tr>
+          `).join('') || '<tr><td colspan="5">GA4 landing pages zatím nejsou k dispozici.</td></tr>';
+
+          document.getElementById('ga4-landing-mobile').innerHTML = (ga4.landingPages7d || []).map(row => `
+            <div class="mobile-campaign-card">
+              <strong>${row.landingPage || '–'}</strong>
+              <div class="mobile-metric-grid">
+                <div><span>Sessions</span><br>${DP.fmtNumber(Math.round(row.sessions || 0))}</div>
+                <div><span>Nákupy</span><br>${DP.fmtNumber(Math.round(row.ecommercePurchases || 0))}</div>
+                <div><span>Revenue</span><br>${money(row.purchaseRevenue || 0)}</div>
+                <div><span>CR</span><br>${row.purchaseRatePct == null ? '–' : `${Number(row.purchaseRatePct).toFixed(2)} %`}</div>
+              </div>
+            </div>
+          `).join('') || '<div class="mobile-campaign-card"><strong>Bez GA4 landing pages</strong></div>';
+        }
+
         document.getElementById('daily-trend-table').innerHTML = dailyRows.map(row => `
           <tr>
             <td>${row.date}</td>
@@ -715,7 +846,78 @@
         }
         document.getElementById('daily-trend-source-kpis').innerHTML = dailyTrendCards.join('');
 
-        document.getElementById('source-campaign-sections').innerHTML = sourceConfigs.map(source => `
+        const metaSource = sourceConfigs.find(source => source.key === 'meta');
+        const metaRemarketingRows = (metaSource?.rows || [])
+          .map(raw => metaSource.columns(raw))
+          .filter(row => /(^|[^a-z])(rem|remark|retarget)/i.test(row.name || ''))
+          .sort((a, b) => (b.frequency || 0) - (a.frequency || 0));
+        const hotRemarketingRows = metaRemarketingRows.filter(row => Number(row.frequency || 0) >= 6);
+        const worstRemarketing = hotRemarketingRows[0] || metaRemarketingRows[0] || null;
+        const remarketingWarningSection = metaSource && metaRemarketingRows.length ? `
+          <section class="card ${worstRemarketing && Number(worstRemarketing.frequency || 0) >= 10 ? 'danger' : Number(worstRemarketing?.frequency || 0) >= 6 ? 'warn' : ''}">
+            <div class="ux-section-head">
+              <div>
+                <h2 class="section-title">Meta remarketing, hlídání frekvence</h2>
+                <div class="section-subtitle">${metaRemarketingRows.length} remarketing kampaně${hotRemarketingRows.length ? `, ${hotRemarketingRows.length} nad prahem 6` : ', zatím bez přepálené frekvence'}.</div>
+              </div>
+            </div>
+            <div class="grid kpi-grid" style="margin-top:16px;">
+              ${[
+                ['Nejvyšší frekvence', worstRemarketing ? Number(worstRemarketing.frequency || 0).toFixed(2) : '–', worstRemarketing ? worstRemarketing.name : 'Bez remarketingu', Number(worstRemarketing?.frequency || 0) >= 10 ? 'red' : Number(worstRemarketing?.frequency || 0) >= 6 ? 'gold' : 'green'],
+                ['Největší reach', metaRemarketingRows[0] ? DP.fmtNumber(Math.max(...metaRemarketingRows.map(row => Math.round(row.reach || 0)))) : '–', 'unika za celé období', 'blue'],
+                ['Přepálené kampaně', hotRemarketingRows.length ? String(hotRemarketingRows.length) : '0', hotRemarketingRows.length ? 'frekvence 6+' : 'žádná nad 6', hotRemarketingRows.length ? 'red' : 'green'],
+              ].map(([label, value, sub, klass]) => `
+                <div class="card kpi-card ${klass}">
+                  <div class="kpi-label">${label}</div>
+                  <div class="kpi-value">${value}</div>
+                  <div class="kpi-sub">${sub}</div>
+                </div>
+              `).join('')}
+            </div>
+            <div class="ux-table-wrap" style="margin-top:16px;">
+              <table class="table desktop-only">
+                <thead>
+                  <tr>
+                    <th>Účet</th>
+                    <th>Kampaň</th>
+                    <th class="num">Reach</th>
+                    <th class="num">Frekvence</th>
+                    <th class="num">Útrata</th>
+                    <th class="num">ROAS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${metaRemarketingRows.map(row => `
+                    <tr>
+                      <td>${row.account}</td>
+                      <td>${row.name}</td>
+                      <td class="num">${DP.fmtNumber(Math.round(row.reach || 0))}</td>
+                      <td class="num ${Number(row.frequency || 0) >= 10 ? 'bad' : Number(row.frequency || 0) >= 6 ? 'warn' : 'good'}">${row.frequency == null ? '–' : Number(row.frequency).toFixed(2)}</td>
+                      <td class="num">${money(row.spend)}</td>
+                      <td class="num ${roasTone(row.roas)}">${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+              <div class="mobile-only mobile-campaign-list">
+                ${metaRemarketingRows.map(row => `
+                  <div class="mobile-campaign-card">
+                    <strong>${row.name}</strong>
+                    <div style="margin-bottom:8px; color:var(--text-muted); font-size:13px;">${row.account}</div>
+                    <div class="mobile-metric-grid">
+                      <div><span>Reach</span><br>${DP.fmtNumber(Math.round(row.reach || 0))}</div>
+                      <div><span>Frekvence</span><br><span class="${Number(row.frequency || 0) >= 10 ? 'bad' : Number(row.frequency || 0) >= 6 ? 'warn' : 'good'}">${row.frequency == null ? '–' : Number(row.frequency).toFixed(2)}</span></div>
+                      <div><span>Útrata</span><br>${money(row.spend)}</div>
+                      <div><span>ROAS</span><br><span class="${roasTone(row.roas)}">${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</span></div>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </section>
+        ` : '';
+
+        document.getElementById('source-campaign-sections').innerHTML = remarketingWarningSection + sourceConfigs.map(source => `
           <section class="card">
             <div class="ux-section-head">
               <div>
@@ -731,6 +933,7 @@
                     <th>Kampaň</th>
                     <th>Status</th>
                     <th class="num">Útrata</th>
+                    ${source.key === 'meta' ? '<th class="num">Reach</th><th class="num">Frekvence</th>' : ''}
                     <th class="num">Kliky</th>
                     <th class="num">Konverze</th>
                     <th class="num">Hodnota objednávek</th>
@@ -746,13 +949,14 @@
                         <td>${row.name}</td>
                         <td>${row.status}</td>
                         <td class="num">${money(row.spend)}</td>
+                        ${source.key === 'meta' ? `<td class="num">${DP.fmtNumber(Math.round(row.reach || 0))}</td><td class="num">${row.frequency == null ? '–' : Number(row.frequency).toFixed(2)}</td>` : ''}
                         <td class="num">${DP.fmtNumber(Math.round(row.clicks || 0))}</td>
                         <td class="num">${Number(row.conversions || 0).toFixed(2)}</td>
                         <td class="num">${money(row.value)}</td>
                         <td class="num ${roasTone(row.roas)}">${row.roas == null ? '–' : Number(row.roas).toFixed(2)}</td>
                       </tr>
                     `;
-                  }).join('') : `<tr><td colspan="8">Bez kampaní pro ${sectionMonthLabel(mode)}.</td></tr>`}
+                  }).join('') : `<tr><td colspan="${source.key === 'meta' ? '10' : '8'}">Bez kampaní pro ${sectionMonthLabel(mode)}.</td></tr>`}
                 </tbody>
               </table>
               <div class="mobile-only mobile-campaign-list">
@@ -764,6 +968,7 @@
                       <div style="margin-bottom:8px; color:var(--text-muted); font-size:13px;">${row.account} • ${row.status}</div>
                       <div class="mobile-metric-grid">
                         <div><span>Útrata</span><br>${money(row.spend)}</div>
+                        ${source.key === 'meta' ? `<div><span>Reach</span><br>${DP.fmtNumber(Math.round(row.reach || 0))}</div><div><span>Frekvence</span><br>${row.frequency == null ? '–' : Number(row.frequency).toFixed(2)}</div>` : ''}
                         <div><span>Kliky</span><br>${DP.fmtNumber(Math.round(row.clicks || 0))}</div>
                         <div><span>Konverze</span><br>${Number(row.conversions || 0).toFixed(2)}</div>
                         <div><span>Hodnota objednávek</span><br>${money(row.value)}</div>
