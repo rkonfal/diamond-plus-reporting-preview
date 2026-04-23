@@ -158,6 +158,381 @@
       color: var(--text-muted);
     }
 
+    .main.page-stack {
+      gap: 22px;
+    }
+
+    .header {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.78));
+      box-shadow: var(--shadow-soft);
+    }
+
+    [data-theme="dark"] .header {
+      background: linear-gradient(180deg, rgba(20,24,31,.96), rgba(20,24,31,.82));
+    }
+
+    .ux-topbar {
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .ux-actions {
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .ux-button,
+    .quick-filter,
+    .select,
+    .input {
+      border-radius: 14px;
+    }
+
+    .toolbar-inline-summary,
+    .layer-shell,
+    .card,
+    .secondary-details {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.74);
+      box-shadow: var(--shadow-soft);
+    }
+
+    [data-theme="dark"] .toolbar-inline-summary,
+    [data-theme="dark"] .layer-shell,
+    [data-theme="dark"] .card,
+    [data-theme="dark"] .secondary-details {
+      background: rgba(20,24,31,.78);
+    }
+
+    .toolbar-inline-summary {
+      padding: 12px 14px;
+    }
+
+    .layer-shell,
+    .card,
+    .secondary-details {
+      padding: 18px;
+    }
+
+    .layer-head,
+    .toolbar,
+    .ux-section-head {
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .table th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: rgba(248,249,251,.96);
+      backdrop-filter: blur(8px);
+    }
+
+    [data-theme="dark"] .table th {
+      background: rgba(26, 31, 39, .96);
+    }
+
+    .table tbody tr:hover td {
+      background: rgba(20, 184, 166, .05);
+    }
+
+    .table td {
+      vertical-align: top;
+    }
+
+    .table th,
+    .table td.num {
+      white-space: nowrap;
+    }
+
+    table[data-sortable-table="planning"] {
+      min-width: 1880px;
+    }
+
+    table[data-sortable-table="explorer"] {
+      min-width: 1540px;
+    }
+
+    .ordering-row-title {
+      display: block;
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .ordering-row-title strong {
+      font-size: 15px;
+    }
+
+    .ordering-row-meta,
+    .ordering-row-submeta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      margin-top: 6px;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .ordering-row-submeta {
+      margin-top: 4px;
+    }
+
+    .ordering-meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, .06);
+    }
+
+    [data-theme="dark"] .ordering-meta-chip {
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .ordering-badge-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      min-width: 240px;
+    }
+
+    .ordering-cell-stack {
+      display: grid;
+      gap: 6px;
+    }
+
+    .ordering-cell-stack strong {
+      line-height: 1.35;
+    }
+
+    .ordering-reason-text {
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .ordering-note-input {
+      min-width: 180px;
+    }
+
+    .ordering-qty-input {
+      width: 92px !important;
+      text-align: right;
+    }
+
+    .ordering-executive,
+    .ux-focus-card,
+    .ux-panel-card {
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .ux-panel-card,
+    .ux-focus-card {
+      border: 1px solid var(--line);
+    }
+
+    .secondary-details > summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text-strong);
+    }
+
+    .ordering-actions-section {
+      margin-top: 18px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.68));
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    [data-theme="dark"] .ordering-actions-section {
+      background: linear-gradient(180deg, rgba(20,24,31,.92), rgba(20,24,31,.76));
+    }
+
+    .ordering-actions-toggle {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      padding: 20px 22px;
+      text-align: left;
+    }
+
+    .ordering-actions-toggle::after {
+      content: '▾';
+      float: right;
+      font-size: 20px;
+      line-height: 1;
+      transition: transform .18s ease;
+    }
+
+    .ordering-actions-toggle[aria-expanded="false"]::after {
+      transform: rotate(-90deg);
+    }
+
+    .ordering-actions-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      padding-right: 24px;
+    }
+
+    .ordering-actions-body {
+      padding: 0 22px 22px;
+    }
+
+    .ordering-actions-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .ordering-action-card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 14px;
+      background: rgba(255, 255, 255, .84);
+      box-shadow: var(--shadow-soft);
+    }
+
+    [data-theme="dark"] .ordering-action-card {
+      background: rgba(20, 24, 31, .8);
+    }
+
+    .ordering-action-card h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .ordering-action-card p {
+      margin: 8px 0 0;
+    }
+
+    .ordering-action-banner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255, 246, 222, .9);
+      border: 1px solid rgba(214, 186, 113, .45);
+    }
+
+    [data-theme="dark"] .ordering-action-banner {
+      background: rgba(85, 68, 26, .28);
+      border-color: rgba(214, 186, 113, .28);
+    }
+
+    .ordering-action-potential {
+      min-width: 170px;
+      text-align: right;
+    }
+
+    .ordering-action-potential strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .ordering-action-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .ordering-action-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    .ordering-action-table th {
+      text-align: left;
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0 10px 10px;
+    }
+
+    .ordering-action-table td {
+      padding: 14px 10px;
+      border-top: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    .ordering-action-stat {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, .6);
+    }
+
+    [data-theme="dark"] .ordering-action-stat {
+      background: rgba(255, 255, 255, .04);
+    }
+
+    .ordering-action-stat span {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .ordering-action-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .ordering-action-row-main {
+      min-width: 0;
+    }
+
+    .ordering-action-row-code {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .ordering-action-row-note {
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .ordering-action-row-stock {
+      text-align: right;
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
     @media (max-width: 1024px) {
       .ordering-executive-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -235,7 +610,7 @@
       <div class="ux-date-note" id="ordering-window">Načítám analytiku objednávání…</div>
       <div class="toolbar-inline-summary" id="ordering-market-switch" style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
         <strong>Trh:</strong>
-        <button class="quick-filter active" type="button" data-ordering-market="complete">DOPORUČENÁ OBJEDNÁVKA / CELÝ KATALOG</button>
+        <button class="quick-filter active" type="button" data-ordering-market="complete">Vše</button>
         <button class="quick-filter" type="button" data-ordering-market="cz">CZ</button>
         <button class="quick-filter" type="button" data-ordering-market="sk">SK</button>
       </div>
@@ -244,6 +619,22 @@
           <div class="layer-label">Executive summary</div>
           <h2 class="ordering-executive-title">Shrnutí dnešní objednávky</h2>
           <p class="ordering-executive-text">Načítám hlavní závěr, rizika a doporučený postup…</p>
+        </div>
+      </section>
+
+      <section class="ordering-actions-section">
+        <button id="ordering-actions-toggle" class="ordering-actions-toggle" type="button" aria-expanded="false" aria-controls="ordering-actions-body">
+          <div class="ordering-actions-head">
+            <div>
+              <div class="layer-label">Promo layer</div>
+              <h2 class="ordering-executive-title" style="margin:4px 0 0; font-size:28px;">AKCE</h2>
+              <p class="ordering-executive-text">Samostatná podsekce pro květnové a červnové akce. Hned vidíš, kolikrát je umíme pokrýt aktuálním skladem.</p>
+            </div>
+            <div class="section-subtitle" id="ordering-actions-summary">Načítám akční přehled…</div>
+          </div>
+        </button>
+        <div id="ordering-actions-body" class="ordering-actions-body">
+          <div id="ordering-actions-list" class="ordering-actions-grid"></div>
         </div>
       </section>
     </header>
@@ -427,7 +818,22 @@
           <h2 class="section-title">Krok 2: shortlist pro nákup</h2>
           <div class="section-subtitle">Hlavní pracovní tabulka. Vyber, co opravdu patří do objednávky.</div>
         </div>
-        <div class="toolbar-controls">
+        <div class="toolbar-controls" style="align-items:flex-end; gap:12px; flex-wrap:wrap;">
+          <div class="control-group" style="min-width:220px;">
+            <span class="control-label">Trh</span>
+            <div class="quick-filters" style="margin:0;">
+              <button class="quick-filter active" type="button" data-ordering-market="complete">Vše</button>
+              <button class="quick-filter" type="button" data-ordering-market="cz">CZ</button>
+              <button class="quick-filter" type="button" data-ordering-market="sk">SK</button>
+            </div>
+          </div>
+          <div class="control-group" style="min-width:320px;">
+            <span class="control-label">Režim shortlistu</span>
+            <div class="quick-filters" style="margin:0;">
+              <button class="quick-filter active" type="button" data-planning-scope="recommended">Doporučená objednávka</button>
+              <button class="quick-filter" type="button" data-planning-scope="catalog">Celý katalog zboží</button>
+            </div>
+          </div>
           <label class="control-group">
             <span class="control-label">Typ doporučení</span>
             <select id="planning-type-filter" class="select">
@@ -451,13 +857,11 @@
             <th><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="priority">Priorita <span class="table-sort-arrow">↕</span></button></th>
             <th><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="source">Zdroj / důvod <span class="table-sort-arrow">↕</span></button></th>
             <th class="num"><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="forecast90">Forecast 30 / 60 / 90 <span class="table-sort-arrow">↕</span></button></th>
-            <th class="num"><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="safety">Safety <span class="table-sort-arrow">↕</span></button></th>
-            <th class="num"><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="minimum">Minimum <span class="table-sort-arrow">↕</span></button></th>
-            <th class="num"><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="ideal">Ideál <span class="table-sort-arrow">↕</span></button></th>
+            <th class="num"><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="minimum">A / minimum <span class="table-sort-arrow">↕</span></button></th>
+            <th class="num"><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="ideal">B / ideál <span class="table-sort-arrow">↕</span></button></th>
             <th class="num"><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="step">Objednat po <span class="table-sort-arrow">↕</span></button></th>
-            <th class="num"><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="finalOrder">Finální objednávka <span class="table-sort-arrow">↕</span></button></th>
-            <th class="num"><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="exportQty">Export ks <span class="table-sort-arrow">↕</span></button></th>
-            <th><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="rounding">Typ zaokrouhlení <span class="table-sort-arrow">↕</span></button></th>
+            <th class="num"><button type="button" class="table-sort" data-sort-table="planning" data-sort-key="exportQty">Moje hodnota <span class="table-sort-arrow">↕</span></button></th>
+            <th>Poznámka</th>
           </tr>
         </thead>
         <tbody id="planning-table"></tbody>
@@ -739,11 +1143,18 @@
       const planningExportSummary = document.getElementById('planning-export-summary');
       const exportPlanningCsvButton = document.getElementById('export-planning-csv');
       const exportPlanningXlsxButton = document.getElementById('export-planning-xlsx');
+      const orderingActionsSummary = document.getElementById('ordering-actions-summary');
+      const orderingActionsList = document.getElementById('ordering-actions-list');
+      const orderingActionsToggle = document.getElementById('ordering-actions-toggle');
+      const orderingActionsBody = document.getElementById('ordering-actions-body');
 
       let analytics = { items: [], summary: {} };
       let ordering = { summary: {}, alerts: [] };
       let orderingReference = { summary: {}, items: [] };
+      let orderingActions = { markets: {} };
+      let orderingActionsExpanded = false;
       let currentMarket = 'complete';
+      let currentPlanningScope = 'recommended';
       let payloadsByMarket = {
         complete: { analytics: null, ordering: null, reference: null },
         cz: { analytics: null, ordering: null, reference: null },
@@ -944,7 +1355,7 @@
       }
 
       function exportPlanningRows(rows) {
-        const exported = filterPlanningRows(rows).map(row => {
+        const exported = getPlanningExportSelection(filterPlanningRows(rows)).map(row => {
           const urgency = recommendationUrgency(row);
           return [
             row.code,
@@ -962,12 +1373,13 @@
             row.idealUnits ?? row.optimumUnits ?? 0,
             row.orderStepUnits || 1,
             row.finalOrderUnits ?? row.roundedOptimumUnits ?? row.optimumUnits ?? 0,
+            row.exportNote || '',
             row.roundingMode || '',
             row.packagingRaw || '',
           ];
         });
         downloadCsv(`ordering_recommendations_${new Date().toISOString().slice(0, 10)}.csv`, [
-          ['code', 'title', 'priority', 'source', 'reason', 'stock_units', 'cover_90d_days', 'forecast_30', 'forecast_60', 'forecast_90', 'safety_units', 'minimum_units', 'ideal_units', 'order_step_units', 'final_order_units', 'rounding_mode', 'packaging'],
+          ['code', 'title', 'priority', 'source', 'reason', 'stock_units', 'cover_90d_days', 'forecast_30', 'forecast_60', 'forecast_90', 'safety_units', 'minimum_units', 'ideal_units', 'order_step_units', 'final_order_units', 'note', 'rounding_mode', 'packaging'],
           ...exported,
         ]);
       }
@@ -981,6 +1393,7 @@
             planningExportState.set(row.code, {
               selected: fallbackQty > 0,
               quantity: fallbackQty,
+              note: '',
             });
             return;
           }
@@ -993,11 +1406,12 @@
       function getPlanningExportSelection(rows) {
         ensurePlanningExportState(rows);
         return (rows || []).map(row => {
-          const state = planningExportState.get(row.code) || { selected: false, quantity: 0 };
+          const state = planningExportState.get(row.code) || { selected: false, quantity: 0, note: '' };
           return {
             ...row,
             exportSelected: Boolean(state.selected),
             exportQuantity: Math.max(0, Math.round(Number(state.quantity || 0))),
+            exportNote: String(state.note || '').trim(),
           };
         });
       }
@@ -1005,7 +1419,8 @@
       function renderPlanningExportSummary(rows) {
         const selectedRows = getPlanningExportSelection(rows).filter(row => row.exportSelected && row.exportQuantity > 0);
         const units = selectedRows.reduce((sum, row) => sum + (row.exportQuantity || 0), 0);
-        planningExportSummary.innerHTML = `<strong>XLSX export:</strong> vybráno ${fmt(selectedRows.length)} položek, celkem ${fmt(units)} ks. Kolegyně může libovolně odškrtnout položky a upravit exportované množství.`;
+        const notedRows = selectedRows.filter(row => row.exportNote).length;
+        planningExportSummary.innerHTML = `<strong>XLSX export:</strong> vybráno ${fmt(selectedRows.length)} položek, celkem ${fmt(units)} ks, poznámka u ${fmt(notedRows)} položek. Kolegyně může libovolně odškrtnout položky, upravit exportované množství a dopsat interní poznámku.`;
       }
 
       function exportPlanningXlsx(rows) {
@@ -1039,6 +1454,7 @@
             'Finální doporučení ks': Number((row.finalOrderUnits ?? row.roundedOptimumUnits ?? row.optimumUnits) || 0),
             'Export ks': Number(row.exportQuantity || 0),
             'Krok objednání ks': Number(row.orderStepUnits || 1),
+            'Poznámka': row.exportNote || '',
             'Typ zaokrouhlení': row.roundingMode || '',
             'Balení': row.packagingRaw || '',
           };
@@ -1063,12 +1479,14 @@
         planningExportSummary.innerHTML = `<strong>XLSX export:</strong> hotovo, exportoval jsem ${fmt(selectedRows.length)} položek a ${fmt(selectedRows.reduce((sum, row) => sum + (row.exportQuantity || 0), 0))} ks.`;
       }
 
-      function buildRecommendationRows() {
+      function buildRecommendationRows(includeAll = false) {
         const orderDate = parseDateInput(planningOrderDate.value) || new Date();
         const arrivalDate = parseDateInput(planningArrivalDate.value) || orderDate;
         const leadDays = Math.max(1, daysBetween(orderDate, arrivalDate));
         const usePraha = planningPraha.value === 'on';
         const rows = (analytics.items || []).filter(row => {
+          if (!row.orderable) return false;
+          if (includeAll) return true;
           if (!(row.recommendedOrderUnits > 0 || row.recommendedMinUnits > 0)) return false;
           if (row.reorderRisk === 'critical' || row.reorderRisk === 'soon' || row.reorderRisk === 'watch') return true;
           if (row.turnoverZone === 'green' && (row.daysOfCover90d || 999) <= 120 && (row.units365d || 0) > 0) return true;
@@ -1235,20 +1653,24 @@
         const scenarioRowsByKey = {
           A: buildScenarioRows('conservative', planning.recommendationRows || [], profile),
           B: buildScenarioRows('balanced', planning.recommendationRows || [], profile),
-          C: buildScenarioRows('full', planning.recommendationRows || [], profile),
         };
         const sortedRows = sortRowsWithConfig(filteredRows, getPlanningSortConfig());
         currentPlanningRows = sortedRows;
         ensurePlanningExportState(sortedRows);
         planningSummary.innerHTML = `<strong>Simulace:</strong> lead time ${fmt(leadDays)} dní, kapacita ${profile.label}, pražská výpomoc ${usePraha ? 'zapnutá' : 'vypnutá'}. Varianty jsou spočítané z aktuálního odhadu prodeje a orientační hodnoty zásoby.`;
 
-        planningVariants.innerHTML = scenarios.map(variant => {
+        const scenarioMeta = {
+          A: { title: 'Varianta A, minimum', subtitle: 'Nejnutnější doplnění, spodní bezpečný rámec.', tone: '' },
+          B: { title: 'Varianta B, ideál', subtitle: 'Doporučený cílový stav pro standardní objednávku.', tone: 'accent' },
+        };
+        planningVariants.innerHTML = scenarios.filter(variant => variant.key === 'A' || variant.key === 'B').map(variant => {
+          const meta = scenarioMeta[variant.key] || { title: variant.title, subtitle: variant.subtitle, tone: '' };
           const capacityLoad = computeCapacityLoad(scenarioRowsByKey[variant.key] || [], profile);
           return `
-          <article class="metric-card ${variant.key === 'B' ? 'accent' : variant.key === 'C' ? 'warn' : ''}">
-            <div class="metric-label">${variant.key} · ${variant.title}</div>
+          <article class="metric-card ${meta.tone}">
+            <div class="metric-label">${variant.key} · ${meta.title}</div>
             <div class="metric-value">${fmt(variant.plannedUnits || 0)} ks</div>
-            <div class="metric-sub">${variant.subtitle}</div>
+            <div class="metric-sub">${meta.subtitle}</div>
             <div class="muted small" style="margin-top:10px; line-height:1.6;">
               Hodnota proxy ${money(variant.proxyValue)}<br>
               Využití kapacity ${formatCapacityUsage(capacityLoad.usagePct)}<br>
@@ -1263,7 +1685,7 @@
         planningTableSummary.textContent = `Zobrazeno ${fmt(sortedRows.length)} položek z celkem ${fmt((planning.recommendationRows || []).length)} doporučených. Rozlišení: nutné objednat vs doporučené doplnění.`;
         planningTable.innerHTML = sortedRows.map(row => {
           const urgency = recommendationUrgency(row);
-          const exportState = planningExportState.get(row.code) || { selected: true, quantity: Math.max(0, Number(row.finalOrderUnits ?? row.roundedOptimumUnits ?? row.optimumUnits ?? 0)) };
+          const exportState = planningExportState.get(row.code) || { selected: true, quantity: Math.max(0, Number(row.finalOrderUnits ?? row.roundedOptimumUnits ?? row.optimumUnits ?? 0)), note: '' };
           return `
           <tr>
             <td>
@@ -1272,28 +1694,37 @@
               </label>
             </td>
             <td>
-              <div><strong>${row.code} · ${row.title}</strong></div>
-              <div class="muted small" style="margin-top:6px;">Sklad ${fmt(row.effectiveStock)} ks · pokrytí ${cover(row.daysOfCover90d)} · trend ${pct(row.trend90v365Pct)}</div>
-              <div class="muted small" style="margin-top:6px;">Balení ${row.packagingRaw || 'bez mapy'} · role ${row.orderingRole === 'top_sku' ? 'top SKU' : row.orderingRole === 'fill_up' ? 'fill-up' : 'standard'}</div>
+              <div class="ordering-row-title"><strong>${row.code} · ${row.title}</strong></div>
+              <div class="ordering-row-meta">
+                <span class="ordering-meta-chip">Sklad ${fmt(row.effectiveStock)} ks</span>
+                <span class="ordering-meta-chip">Pokrytí ${cover(row.daysOfCover90d)}</span>
+                <span class="ordering-meta-chip">Trend ${pct(row.trend90v365Pct)}</span>
+              </div>
+              <div class="ordering-row-submeta">
+                <span>Balení ${row.packagingRaw || 'bez mapy'}</span>
+                <span>Role ${row.orderingRole === 'top_sku' ? 'top SKU' : row.orderingRole === 'fill_up' ? 'fill-up' : 'standard'}</span>
+              </div>
             </td>
             <td>
-              <div><strong>${urgency.label}</strong></div>
-              <div class="muted small" style="margin-top:6px;">${urgency.hint}</div>
+              <div class="ordering-cell-stack">
+                <strong>${urgency.label}</strong>
+                <div class="ordering-reason-text" title="${escapeHtml(urgency.hint)}">${escapeHtml(urgency.hint)}</div>
+              </div>
             </td>
             <td>
-              <div><strong>${row.source}</strong></div>
-              <div class="muted small" style="margin-top:6px;">${row.reason}</div>
+              <div class="ordering-cell-stack">
+                <strong>${row.source}</strong>
+                <div class="ordering-reason-text" title="${escapeHtml(row.reason)}">${escapeHtml(row.reason)}</div>
+              </div>
             </td>
             <td class="num">${fmt(row.forecast30)} / ${fmt(row.forecast60)} / ${fmt(row.forecast90)}</td>
-            <td class="num">${fmt(row.safetyStockUnits)} ks</td>
             <td class="num">${fmt((row.roundedMinUnits ?? row.recommendedMinUnits) || 0)} ks</td>
             <td class="num">${fmt((row.idealUnits ?? row.optimumUnits) || 0)} ks</td>
             <td class="num">${fmt(row.orderStepUnits || 1)} ks</td>
-            <td class="num">${fmt((row.finalOrderUnits ?? row.roundedOptimumUnits ?? row.optimumUnits) || 0)} ks</td>
-            <td class="num"><input class="input" type="number" min="0" step="1" inputmode="numeric" data-planning-export-qty="${row.code}" value="${Math.max(0, Number(exportState.quantity || 0))}" style="width:110px; text-align:right;" /></td>
-            <td>${row.roundingMode || 'bez omezení'}</td>
+            <td class="num"><input class="input ordering-qty-input" type="number" min="0" step="1" inputmode="numeric" data-planning-export-qty="${row.code}" value="${Math.max(0, Number(exportState.quantity || 0))}" /></td>
+            <td><input class="input ordering-note-input" type="text" data-planning-export-note="${row.code}" value="${escapeHtml(exportState.note || '')}" placeholder="Interní poznámka do exportu" /></td>
           </tr>`;
-        }).join('') || '<tr><td colspan="12">Zatím bez doporučených položek.</td></tr>';
+        }).join('') || '<tr><td colspan="10">Zatím bez doporučených položek.</td></tr>';
         renderPlanningExportSummary(sortedRows);
         updateSortableTableHead('planning');
       }
@@ -1301,9 +1732,11 @@
       function renderPlanning() {
         const profile = capacityProfiles[planningCapacity.value] || capacityProfiles.half;
         const defaults = ordering.planning?.defaults || {};
+        const includeAllCatalog = currentPlanningScope === 'catalog';
         const selectedLeadDays = Math.max(1, daysBetween(parseDateInput(planningOrderDate.value) || new Date(), parseDateInput(planningArrivalDate.value) || new Date()));
         const selectedUsePraha = planningPraha.value === 'on';
         const useBackendPlanning = ordering.planning
+          && !includeAllCatalog
           && selectedLeadDays === (defaults.leadDays || 21)
           && planningCapacity.value === (defaults.capacity || 'half')
           && selectedUsePraha === Boolean(defaults.prahaFallback);
@@ -1313,18 +1746,16 @@
           return;
         }
 
-        const { rows, leadDays, usePraha } = buildRecommendationRows();
+        const { rows, leadDays, usePraha } = buildRecommendationRows(includeAllCatalog);
         const conservative = buildScenarioRows('conservative', rows, profile);
         const balanced = buildScenarioRows('balanced', rows, profile);
-        const full = buildScenarioRows('full', rows, profile);
 
         const variants = [
-          { key: 'A', title: 'Varianta A, opatrná', tone: '', rows: conservative, subtitle: 'Jen nejnutnější doplnění, minimální riziko přebytku.' },
-          { key: 'B', title: 'Varianta B, vyvážená', tone: 'accent', rows: balanced, subtitle: 'Standardní doporučení a rozumný kompromis mezi hotovostí a zásobou.' },
-          { key: 'C', title: 'Varianta C, větší doplnění', tone: 'warn', rows: full, subtitle: 'Víc doplnění i doplňků do objednávky se zdravou obrátkou.' },
+          { key: 'A', title: 'Varianta A, minimum', tone: '', rows: conservative, subtitle: 'Nejnutnější doplnění, spodní bezpečný rámec.' },
+          { key: 'B', title: 'Varianta B, ideál', tone: 'accent', rows: balanced, subtitle: 'Doporučený cílový stav pro standardní objednávku.' },
         ];
 
-        planningSummary.innerHTML = `<strong>Simulace:</strong> lead time ${fmt(leadDays)} dní, kapacita ${profile.label}, pražská výpomoc ${usePraha ? 'zapnutá' : 'vypnutá'}. Varianty zatím počítají s odhadem prodeje a orientační hodnotou zásoby.`;
+        planningSummary.innerHTML = `<strong>Simulace:</strong> lead time ${fmt(leadDays)} dní, kapacita ${profile.label}, pražská výpomoc ${usePraha ? 'zapnutá' : 'vypnutá'}. ${includeAllCatalog ? 'Pracovní tabulka je přepnutá na celý katalog zboží.' : 'Pracovní tabulka je přepnutá na doporučenou objednávku.'}`;
 
         planningVariants.innerHTML = variants.map(variant => {
           const units = variant.rows.reduce((sum, row) => sum + (row.plannedUnits || 0), 0);
@@ -1353,10 +1784,12 @@
         const sortedRows = sortRowsWithConfig(visibleRows, getPlanningSortConfig());
         currentPlanningRows = sortedRows;
         ensurePlanningExportState(sortedRows);
-        planningTableSummary.textContent = `Zobrazeno ${fmt(sortedRows.length)} položek z celkem ${fmt(Math.min(rows.length, 120))} doporučených. Odhad vychází z tempa posledních 90 dní, delší historie a aktuálního trendu.`;
+        planningTableSummary.textContent = includeAllCatalog
+          ? `Zobrazeno ${fmt(sortedRows.length)} položek z celkem ${fmt(Math.min(rows.length, 120))} orderable SKU v katalogu. Tabulka je teď pracovní katalog, ne jen doporučený shortlist.`
+          : `Zobrazeno ${fmt(sortedRows.length)} položek z celkem ${fmt(Math.min(rows.length, 120))} doporučených. Odhad vychází z tempa posledních 90 dní, delší historie a aktuálního trendu.`;
         planningTable.innerHTML = sortedRows.map(row => {
           const urgency = recommendationUrgency(row);
-          const exportState = planningExportState.get(row.code) || { selected: true, quantity: Math.max(0, Number(row.finalOrderUnits ?? row.roundedOptimumUnits ?? row.optimumUnits ?? 0)) };
+          const exportState = planningExportState.get(row.code) || { selected: true, quantity: Math.max(0, Number(row.finalOrderUnits ?? row.roundedOptimumUnits ?? row.optimumUnits ?? 0)), note: '' };
           return `
           <tr>
             <td>
@@ -1365,28 +1798,37 @@
               </label>
             </td>
             <td>
-              <div><strong>${row.code} · ${row.title}</strong></div>
-              <div class="muted small" style="margin-top:6px;">Sklad ${fmt(row.effectiveStock)} ks · pokrytí ${cover(row.daysOfCover90d)} · trend ${pct(row.trend90v365Pct)}</div>
-              <div class="muted small" style="margin-top:6px;">Balení ${row.packagingRaw || 'bez mapy'} · role ${row.orderingRole === 'top_sku' ? 'top SKU' : row.orderingRole === 'fill_up' ? 'doplněk do objednávky' : 'běžná položka'}</div>
+              <div class="ordering-row-title"><strong>${row.code} · ${row.title}</strong></div>
+              <div class="ordering-row-meta">
+                <span class="ordering-meta-chip">Sklad ${fmt(row.effectiveStock)} ks</span>
+                <span class="ordering-meta-chip">Pokrytí ${cover(row.daysOfCover90d)}</span>
+                <span class="ordering-meta-chip">Trend ${pct(row.trend90v365Pct)}</span>
+              </div>
+              <div class="ordering-row-submeta">
+                <span>Balení ${row.packagingRaw || 'bez mapy'}</span>
+                <span>Role ${row.orderingRole === 'top_sku' ? 'top SKU' : row.orderingRole === 'fill_up' ? 'doplněk do objednávky' : 'běžná položka'}</span>
+              </div>
             </td>
             <td>
-              <div><strong>${urgency.label}</strong></div>
-              <div class="muted small" style="margin-top:6px;">${urgency.hint}</div>
+              <div class="ordering-cell-stack">
+                <strong>${urgency.label}</strong>
+                <div class="ordering-reason-text" title="${escapeHtml(urgency.hint)}">${escapeHtml(urgency.hint)}</div>
+              </div>
             </td>
             <td>
-              <div><strong>${row.source}</strong></div>
-              <div class="muted small" style="margin-top:6px;">${row.reason}</div>
+              <div class="ordering-cell-stack">
+                <strong>${row.source}</strong>
+                <div class="ordering-reason-text" title="${escapeHtml(row.reason)}">${escapeHtml(row.reason)}</div>
+              </div>
             </td>
             <td class="num">${fmt(row.forecast30)} / ${fmt(row.forecast60)} / ${fmt(row.forecast90)}</td>
-            <td class="num">${fmt(row.safetyStockUnits)} ks</td>
             <td class="num">${fmt((row.roundedMinUnits ?? row.recommendedMinUnits) || 0)} ks</td>
             <td class="num">${fmt((row.idealUnits ?? row.optimumUnits) || 0)} ks</td>
             <td class="num">${fmt(row.orderStepUnits || 1)} ks</td>
-            <td class="num">${fmt((row.finalOrderUnits ?? row.roundedOptimumUnits ?? row.optimumUnits) || 0)} ks</td>
-            <td class="num"><input class="input" type="number" min="0" step="1" inputmode="numeric" data-planning-export-qty="${row.code}" value="${Math.max(0, Number(exportState.quantity || 0))}" style="width:110px; text-align:right;" /></td>
-            <td>${row.roundingMode || 'bez omezení'}</td>
+            <td class="num"><input class="input ordering-qty-input" type="number" min="0" step="1" inputmode="numeric" data-planning-export-qty="${row.code}" value="${Math.max(0, Number(exportState.quantity || 0))}" /></td>
+            <td><input class="input ordering-note-input" type="text" data-planning-export-note="${row.code}" value="${escapeHtml(exportState.note || '')}" placeholder="Interní poznámka do exportu" /></td>
           </tr>`;
-        }).join('') || '<tr><td colspan="12">Zatím bez doporučených položek.</td></tr>';
+        }).join('') || '<tr><td colspan="10">Zatím bez doporučených položek.</td></tr>';
         renderPlanningExportSummary(sortedRows);
         updateSortableTableHead('planning');
       }
@@ -1786,12 +2228,15 @@
         explorerTable.innerHTML = pageRows.map(row => `
           <tr class="ordering-explorer-row${row.code === selectedExplorerCode ? ' is-active' : ''}" data-ordering-row="${escapeHtml(row.code || '')}">
             <td>
-              <div><strong>${row.code} · ${row.title}</strong></div>
-              <div class="muted small" style="margin-top:6px;">YoY ${pct(row.seasonalityYoYPct)} · poslední prodej ${row.daysSinceLastSale == null ? '–' : `${fmt(row.daysSinceLastSale)} dnů zpět`}</div>
-              <div class="muted small" style="margin-top:6px;">${row.excludeFromOrderingReason || 'Položka je pro nákup povolená a bez blokace.'}</div>
-              <div class="muted small" style="margin-top:6px;">Balení ${row.packagingRaw || 'bez mapy'} · stav párování ${row.packagingMatchStatus || 'chybí'}</div>
+              <div class="ordering-row-title"><strong>${row.code} · ${row.title}</strong></div>
+              <div class="ordering-row-meta">
+                <span class="ordering-meta-chip">YoY ${pct(row.seasonalityYoYPct)}</span>
+                <span class="ordering-meta-chip">Poslední prodej ${row.daysSinceLastSale == null ? '–' : `${fmt(row.daysSinceLastSale)} dní`}</span>
+                <span class="ordering-meta-chip">Balení ${row.packagingRaw || 'bez mapy'}</span>
+              </div>
+              <div class="ordering-reason-text" title="${escapeHtml(row.excludeFromOrderingReason || 'Položka je pro nákup povolená a bez blokace.')}">${escapeHtml(row.excludeFromOrderingReason || 'Položka je pro nákup povolená a bez blokace.')}</div>
             </td>
-            <td>${orderableBadge(row)} ${typeBadge(row)} ${roleBadge(row)} ${sourceChannelBadge(row)} ${packagingBadge(row)} ${riskBadge(row)} ${zoneBadge(row)} ${trendBadge(row)}</td>
+            <td><div class="ordering-badge-wrap">${orderableBadge(row)} ${typeBadge(row)} ${roleBadge(row)} ${sourceChannelBadge(row)} ${packagingBadge(row)} ${riskBadge(row)} ${zoneBadge(row)} ${trendBadge(row)}</div></td>
             <td class="num">${fmt(row.effectiveStock)}</td>
             <td class="num">${fmt(row.unitsWindow ?? row.units730d)}</td>
             <td class="num">${fmt(row.units90d)}</td>
@@ -1908,7 +2353,77 @@
       function marketTitle(key) {
         if (key === 'cz') return 'CZ';
         if (key === 'sk') return 'SK';
-        return 'DOPORUČENÁ OBJEDNÁVKA / CELÝ KATALOG';
+        return 'Vše';
+      }
+
+      function syncPlanningScopeButtons() {
+        document.querySelectorAll('[data-planning-scope]').forEach(button => {
+          button.classList.toggle('active', button.dataset.planningScope === currentPlanningScope);
+        });
+      }
+
+      function syncOrderingActionsToggle() {
+        if (!orderingActionsToggle || !orderingActionsBody) return;
+        orderingActionsToggle.setAttribute('aria-expanded', orderingActionsExpanded ? 'true' : 'false');
+        orderingActionsBody.hidden = !orderingActionsExpanded;
+      }
+
+      function renderOrderingActions() {
+        const marketPayload = orderingActions?.markets?.[currentMarket] || orderingActions?.markets?.complete;
+        if (!marketPayload || !orderingActionsList) {
+          if (orderingActionsSummary) orderingActionsSummary.textContent = 'Akční přehled zatím není k dispozici.';
+          if (orderingActionsList) orderingActionsList.innerHTML = '<div class="ux-empty-state">Chybí data pro akční přehled.</div>';
+          return;
+        }
+
+        const summary = marketPayload.summary || {};
+        orderingActionsSummary.textContent = `${fmt(summary.actionCount || 0)} akcí, potenciálně pokryto ${fmt(summary.totalPotentialActions || 0)} promo spuštění, nulová zásoba u ${fmt(summary.zeroStockActions || 0)} akcí.`;
+        orderingActionsList.innerHTML = (marketPayload.actions || []).map(action => `
+          <article class="ordering-action-card">
+            <div class="ordering-action-banner">
+              <div>
+                <span class="ordering-action-row-code">${escapeHtml(action.label || '')}</span>
+                <h3>${escapeHtml(action.title || '')}</h3>
+                <p class="ordering-executive-text">${fmt((action.items || []).length)} produktů ve skupině${action.bottleneckLabel ? `, bottleneck: ${escapeHtml(action.bottleneckLabel)}` : ''}.</p>
+              </div>
+              <div class="ordering-action-potential">
+                <span class="ordering-action-row-code">Pokrytí akce</span>
+                <strong>${fmt(action.availableActions || 0)}×</strong>
+                <span class="ordering-action-row-note">limit ${fmt(action.bottleneckActions || 0)}×</span>
+              </div>
+            </div>
+            <table class="ordering-action-table">
+              <thead>
+                <tr>
+                  <th>Produkt</th>
+                  <th>Zásoba</th>
+                  <th>Pokrytí 90d</th>
+                  <th>Poznámka</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${(action.items || []).map(item => {
+                  const qualifier = item.qualifier ? `<span class="badge">${escapeHtml(item.qualifier)}</span>` : '';
+                  const risk = item.reorderRisk === 'critical' ? '<span class="badge danger">kritické</span>' : item.reorderRisk === 'soon' ? '<span class="badge warn">brzy řešit</span>' : '<span class="badge success">OK</span>';
+                  return `
+                    <tr>
+                      <td>
+                        <div class="ordering-action-row-main">
+                          <span class="ordering-action-row-code">${escapeHtml(item.code || '')}</span>
+                          <strong>${escapeHtml(item.name || '')}</strong>
+                          <span class="ordering-action-row-note">${item.packaging ? `Balení ${escapeHtml(item.packaging)}` : 'Bez doplňující poznámky'}</span>
+                        </div>
+                      </td>
+                      <td class="ordering-action-row-stock">${fmt(item.stock || 0)} ks</td>
+                      <td>${item.daysOfCover90d != null ? cover(item.daysOfCover90d) : 'n/a'}</td>
+                      <td><div style="display:flex; gap:6px; flex-wrap:wrap;">${qualifier}${risk}</div></td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </article>
+        `).join('');
       }
 
       function applyMarketPayload(marketKey, { preservePlanningSetup = true } = {}) {
@@ -1922,7 +2437,7 @@
         currentExplorerPage = 1;
         selectedExplorerCode = '';
 
-        marketSwitch.querySelectorAll('[data-ordering-market]').forEach(button => {
+        document.querySelectorAll('[data-ordering-market]').forEach(button => {
           button.classList.toggle('active', button.dataset.orderingMarket === marketKey);
         });
 
@@ -1944,9 +2459,17 @@
         renderAlerts();
         renderSidebars();
         renderQuickTables();
+        syncPlanningScopeButtons();
         renderPlanning();
         renderExplorer();
+        renderOrderingActions();
       }
+
+      orderingActionsToggle?.addEventListener('click', () => {
+        orderingActionsExpanded = !orderingActionsExpanded;
+        syncOrderingActionsToggle();
+      });
+      syncOrderingActionsToggle();
 
       Promise.all([
         DP.loadJson('../data/current/inventory_analytics_730d.json'),
@@ -1958,6 +2481,7 @@
         DP.loadJson('../data/current/inventory_analytics_730d_sk.json'),
         DP.loadJson('../data/current/ordering_core_sk.json'),
         DP.loadJson('../data/current/ordering_reference_data_sk.json'),
+        DP.loadJson('../data/current/ordering_actions.json'),
       ]).then(([
         analyticsPayload,
         orderingPayload,
@@ -1968,12 +2492,14 @@
         analyticsPayloadSk,
         orderingPayloadSk,
         orderingReferencePayloadSk,
+        orderingActionsPayload,
       ]) => {
         payloadsByMarket = {
           complete: { analytics: analyticsPayload || analytics, ordering: orderingPayload || ordering, reference: orderingReferencePayload || orderingReference },
           cz: { analytics: analyticsPayloadCz || analyticsPayload || analytics, ordering: orderingPayloadCz || orderingPayload || ordering, reference: orderingReferencePayloadCz || orderingReferencePayload || orderingReference },
           sk: { analytics: analyticsPayloadSk || analyticsPayload || analytics, ordering: orderingPayloadSk || orderingPayload || ordering, reference: orderingReferencePayloadSk || orderingReferencePayload || orderingReference },
         };
+        orderingActions = orderingActionsPayload || orderingActions;
 
         restoreExplorerState();
         syncExplorerSortStateFromSelect();
@@ -1997,6 +2523,14 @@
         const marketButton = event.target.closest('[data-ordering-market]');
         if (marketButton) {
           applyMarketPayload(marketButton.dataset.orderingMarket || 'complete');
+          return;
+        }
+
+        const scopeButton = event.target.closest('[data-planning-scope]');
+        if (scopeButton) {
+          currentPlanningScope = scopeButton.dataset.planningScope || 'recommended';
+          syncPlanningScopeButtons();
+          renderPlanning();
           return;
         }
 
@@ -2095,17 +2629,26 @@
       planningTypeFilter.addEventListener('change', renderPlanning);
       planningTable.addEventListener('input', event => {
         const qtyCode = event.target?.dataset?.planningExportQty;
-        if (!qtyCode) return;
-        const current = planningExportState.get(qtyCode) || { selected: true, quantity: 0 };
-        current.quantity = Math.max(0, Math.round(Number(event.target.value || 0)));
-        if (current.quantity > 0) current.selected = true;
-        planningExportState.set(qtyCode, current);
+        if (qtyCode) {
+          const current = planningExportState.get(qtyCode) || { selected: true, quantity: 0, note: '' };
+          current.quantity = Math.max(0, Math.round(Number(event.target.value || 0)));
+          if (current.quantity > 0) current.selected = true;
+          planningExportState.set(qtyCode, current);
+          renderPlanningExportSummary(currentPlanningRows);
+          return;
+        }
+
+        const noteCode = event.target?.dataset?.planningExportNote;
+        if (!noteCode) return;
+        const current = planningExportState.get(noteCode) || { selected: false, quantity: 0, note: '' };
+        current.note = String(event.target.value || '');
+        planningExportState.set(noteCode, current);
         renderPlanningExportSummary(currentPlanningRows);
       });
       planningTable.addEventListener('change', event => {
         const selectCode = event.target?.dataset?.planningExportSelect;
         if (!selectCode) return;
-        const current = planningExportState.get(selectCode) || { selected: false, quantity: 0 };
+        const current = planningExportState.get(selectCode) || { selected: false, quantity: 0, note: '' };
         current.selected = Boolean(event.target.checked);
         planningExportState.set(selectCode, current);
         renderPlanningExportSummary(currentPlanningRows);
@@ -2115,6 +2658,7 @@
         const selectedLeadDays = Math.max(1, daysBetween(parseDateInput(planningOrderDate.value) || new Date(), parseDateInput(planningArrivalDate.value) || new Date()));
         const selectedUsePraha = planningPraha.value === 'on';
         const useBackendPlanning = ordering.planning
+          && currentPlanningScope !== 'catalog'
           && selectedLeadDays === (defaults.leadDays || 21)
           && planningCapacity.value === (defaults.capacity || 'half')
           && selectedUsePraha === Boolean(defaults.prahaFallback);
@@ -2123,7 +2667,7 @@
           exportPlanningRows(ordering.planning?.recommendationRows || []);
           return;
         }
-        exportPlanningRows(buildRecommendationRows().rows.slice(0, 120));
+        exportPlanningRows(buildRecommendationRows(currentPlanningScope === 'catalog').rows.slice(0, 120));
       });
       exportPlanningXlsxButton.addEventListener('click', () => exportPlanningXlsx(currentPlanningRows));
       exportCurrentViewButton.addEventListener('click', () => exportExplorerRows(currentExplorerRows));
