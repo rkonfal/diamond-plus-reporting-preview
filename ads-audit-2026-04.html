@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit reklamních účtů, duben 2026</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --panel-2: #172142;
+      --text: #eef2ff;
+      --muted: #a8b0d3;
+      --good: #34d399;
+      --warn: #f59e0b;
+      --bad: #f87171;
+      --line: #2a3566;
+      --accent: #7c9cff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #0a0f1d 0%, #0e1530 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+    h1, h2, h3 { line-height: 1.15; margin: 0 0 14px; }
+    h1 { font-size: 40px; }
+    h2 { font-size: 28px; margin-top: 40px; }
+    h3 { font-size: 20px; margin-top: 22px; }
+    p { margin: 0 0 14px; color: var(--muted); }
+    .hero, .card {
+      background: rgba(18, 25, 51, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    }
+    .hero { padding: 28px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .metric {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .metric .label { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    .metric .value { font-size: 28px; font-weight: 700; }
+    .metric .sub { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .good { color: var(--good); }
+    .warn { color: var(--warn); }
+    .bad { color: var(--bad); }
+    .section { margin-top: 22px; }
+    .card { padding: 24px; margin-top: 18px; }
+    ul { margin: 10px 0 0 18px; color: var(--text); }
+    li { margin: 8px 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 14px;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th { color: #cfd6f7; font-weight: 700; }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .pill.good { background: rgba(52,211,153,0.12); }
+    .pill.warn { background: rgba(245,158,11,0.12); }
+    .pill.bad { background: rgba(248,113,113,0.12); }
+    .small { font-size: 13px; color: var(--muted); }
+    .footer { margin-top: 36px; font-size: 13px; color: var(--muted); }
+    a { color: #a9beff; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="pill bad">Přísný audit</div>
+      <h1>Audit reklamních účtů, duben 2026</h1>
+      <p>Vyhodnocení přes živá API data z Meta Ads, Google Ads, Skliku a GA4. Tento audit je schválně přísný, zaměřený na výkon, důvěryhodnost měření a největší provozní slabiny.</p>
+      <div class="grid">
+        <div class="metric">
+          <div class="label">Celkový verdikt</div>
+          <div class="value warn">Funguje, ale není pod tvrdou kontrolou</div>
+          <div class="sub">Největší slabina je atribuce a kvalita měření.</div>
+        </div>
+        <div class="metric">
+          <div class="label">Nejzdravější platforma</div>
+          <div class="value good">Google Ads</div>
+          <div class="sub">Nejsilnější výkon a nejvěrohodnější obraz reality.</div>
+        </div>
+        <div class="metric">
+          <div class="label">Největší varování</div>
+          <div class="value bad">Meta vs. GA4</div>
+          <div class="sub">Paid Social v GA4 je výrazně slabší než čísla z Meta Ads.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Souhrn známek</h2>
+      <div class="grid">
+        <div class="metric"><div class="label">Meta Ads</div><div class="value warn">6,5 / 10</div><div class="sub">Velký objem, ale prudké zhoršení a pochyby o atribuční pravdě.</div></div>
+        <div class="metric"><div class="label">Google Ads</div><div class="value good">8,5 / 10</div><div class="sub">Nejlepší účet, ale i tady výkon meziměsíčně slábne.</div></div>
+        <div class="metric"><div class="label">Sklik</div><div class="value warn">5,5 / 10</div><div class="sub">Malý spend, nejasná role, nízká důvěra v reporting.</div></div>
+        <div class="metric"><div class="label">GA4</div><div class="value warn">7 / 10</div><div class="sub">Dobrý kompas, ale channel hygiene chce úklid.</div></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Meta Ads</h2>
+      <table>
+        <tr><th>Metoda</th><th>Duben</th><th>Březen</th><th>Změna</th></tr>
+        <tr><td>Spend</td><td>279 222 Kč</td><td>271 579 Kč</td><td class="warn">+2,8 %</td></tr>
+        <tr><td>Purchase value</td><td>6 245 139 Kč</td><td>10 008 714 Kč</td><td class="bad">-37,6 %</td></tr>
+        <tr><td>ROAS</td><td>22,37</td><td>36,85</td><td class="bad">-39,3 %</td></tr>
+        <tr><td>CTR</td><td>4,20 %</td><td>4,72 %</td><td class="bad">pokles</td></tr>
+      </table>
+      <h3>Co je špatně</h3>
+      <ul>
+        <li>Při skoro stejném spendu spadl reported obrat skoro o 38 %. To je velké zhoršení, ne šum.</li>
+        <li>Prospecting bere největší část rozpočtu, takže účet je citlivý na únavu kreativ i pokles kvality publika.</li>
+        <li>Lead kampaně typu <strong>Stažení brožury</strong> a slabší <strong>Kvíz</strong> nevypadají businessově přesvědčivě.</li>
+        <li>SK výkon zaostává za CZ výrazně, bez milosti bych oddělil vyhodnocení i strategii.</li>
+      </ul>
+      <h3>Nejslabší místa</h3>
+      <ul>
+        <li><strong>Eff_Prosp_Leads_StaženíBrožury (CZ)</strong>, spend 5 804 Kč, ROAS 2,69</li>
+        <li><strong>Eff_Prosp_Leads_Kviz (SK)</strong>, spend 14 567 Kč, ROAS 3,71</li>
+        <li><strong>Eff_Prosp_Leads_Kviz (CZ)</strong>, spend 14 398 Kč, ROAS 9,19</li>
+      </ul>
+      <h3>Tvrdý závěr</h3>
+      <p>Meta stále vydělává, ale čísla působí optimističtěji než realita v GA4. Bez kontroly atribuční logiky bych reported ROAS nebral jako finální pravdu.</p>
+    </section>
+
+    <section class="card">
+      <h2>Google Ads</h2>
+      <table>
+        <tr><th>Metoda</th><th>Duben</th><th>Březen</th><th>Změna</th></tr>
+        <tr><td>Spend</td><td>65 970 Kč</td><td>64 604 Kč</td><td class="warn">+2,1 %</td></tr>
+        <tr><td>Conversion value</td><td>3 591 481 Kč</td><td>4 415 731 Kč</td><td class="warn">-18,7 %</td></tr>
+        <tr><td>ROAS</td><td>54,44</td><td>68,35</td><td class="warn">-20,3 %</td></tr>
+        <tr><td>CTR</td><td>7,78 %</td><td>7,14 %</td><td class="good">růst</td></tr>
+      </table>
+      <h3>Co je dobře</h3>
+      <ul>
+        <li>Brand drží výkon účtu. <strong>CZ-SEA-Brand-kralovstvi-tiande</strong> táhne celý kanál.</li>
+        <li>CZ PMax funguje dobře a působí výkonově stabilně.</li>
+        <li>GA4 Google zhruba potvrzuje, takže tomuhle kanálu se dá věřit nejvíc.</li>
+      </ul>
+      <h3>Co je špatně</h3>
+      <ul>
+        <li>I tady výkon slábne. Vysoký ROAS nesmí zakrýt meziměsíční zhoršení.</li>
+        <li>SK kampaně jsou podstatně slabší než CZ, hlavně brand i competitors.</li>
+        <li>Competitors kampaně jsou spíš taktický doplněk, ne něco, co má dostat volnou ruku.</li>
+      </ul>
+      <h3>Tvrdý závěr</h3>
+      <p>Google Ads je nejsilnější a nejlépe řízená platforma v sestavě. Přesto už je vidět ochlazení výkonu a zaslouží si důslednější rozbor příčin.</p>
+    </section>
+
+    <section class="card">
+      <h2>Sklik</h2>
+      <table>
+        <tr><th>Metoda</th><th>Duben</th><th>Březen</th><th>Změna</th></tr>
+        <tr><td>Spend</td><td>5 521 Kč</td><td>6 005 Kč</td><td class="warn">-8,1 %</td></tr>
+        <tr><td>Conversion value</td><td>1 708 750 Kč</td><td>2 028 666 Kč</td><td class="warn">-15,8 %</td></tr>
+        <tr><td>Konverze</td><td>1 274</td><td>1 515</td><td class="warn">-15,9 %</td></tr>
+        <tr><td>Odvozený ROAS</td><td>309,5</td><td>337,8</td><td class="warn">pokles</td></tr>
+      </table>
+      <h3>Co je špatně</h3>
+      <ul>
+        <li>Čísla jsou až podezřele dobrá vzhledem k velmi malému spendu. Bez validace bych jim nevěřil.</li>
+        <li>Aktivních je jen 5 z 51 kampaní, účet spíš přežívá než že by byl řízen jako důležitý růstový kanál.</li>
+        <li><strong>Zboží.cz</strong> vypadá extrémně slabě a může být buď špatně nastavené, nebo zbytečné.</li>
+      </ul>
+      <h3>Tvrdý závěr</h3>
+      <p>Sklik není rozpočtová katastrofa, ale jeho reporting i strategická role jsou nejasné. Potřebuje validaci, ne další slepou důvěru.</p>
+    </section>
+
+    <section class="card">
+      <h2>GA4</h2>
+      <table>
+        <tr><th>Metoda</th><th>Duben</th><th>Trend</th></tr>
+        <tr><td>Sessions</td><td>168 068</td><td class="warn">-12,35 % vs. březen</td></tr>
+        <tr><td>Purchase revenue</td><td>12 049 404 Kč</td><td class="warn">-13,17 % vs. březen</td></tr>
+        <tr><td>Purchase rate</td><td>5,85 %</td><td class="warn">pokles</td></tr>
+        <tr><td>Revenue per session</td><td>71,69 Kč</td><td class="warn">mírný pokles</td></tr>
+      </table>
+      <h3>Co je důležité</h3>
+      <ul>
+        <li><strong>Paid Search</strong> vypadá silně a zdravě, purchase rate 10,21 %.</li>
+        <li><strong>Paid Social</strong> vypadá proti Meta reportům slabě, purchase rate jen 1,52 %.</li>
+        <li><strong>Unassigned</strong> je moc velký, což ukazuje na chyby v channel mapování nebo UTM disciplíně.</li>
+        <li>Mezi top landing pages jsou i <strong>/kosik/</strong> a <strong>/ucet/</strong>, což je varovný signál pro trackingový pořádek.</li>
+      </ul>
+      <h3>Tvrdý závěr</h3>
+      <p>GA4 je v téhle sestavě nejlepší brzda proti sebeklamu reklamních dashboardů. Ukazuje celkový pokles výkonu a rozpad v channel hygiene.</p>
+    </section>
+
+    <section class="card">
+      <h2>Největší problémy napříč platformami</h2>
+      <ul>
+        <li><strong>Kritické:</strong> Meta a GA4 si výrazně odporují v obrazu Paid Social.</li>
+        <li><strong>Kritické:</strong> Sklik reporting je třeba ověřit proti backendu a GA4.</li>
+        <li><strong>Kritické:</strong> Duben je slabší než březen téměř všude.</li>
+        <li><strong>Střední:</strong> SK je slabší než CZ na Meta i Google.</li>
+        <li><strong>Střední:</strong> Unassigned a Paid Other v GA4 jsou příliš velké nebo nekvalitní.</li>
+        <li><strong>Střední:</strong> Některé Meta lead kampaně nevypadají jako dobré použití rozpočtu.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Co opravit hned</h2>
+      <ol>
+        <li>Udělát srovnání backend objednávek vs. Meta vs. Google vs. Sklik vs. GA4.</li>
+        <li>Na Meta ořezat slabé lead kampaně a prověřit atribuční logiku purchase eventů.</li>
+        <li>V Google Ads projít SK brand, competitors a search terms audit.</li>
+        <li>V GA4 vyčistit Unassigned, Paid Other, UTM disciplínu a landing page nepořádek.</li>
+      </ol>
+    </section>
+
+    <p class="footer">Vygenerováno 30. 4. 2026 na základě živých API dat. Stránka je statický report určený pro rychlé sdílení a management review.</p>
+  </div>
+</body>
+</html>
