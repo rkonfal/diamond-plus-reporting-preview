@@ -1,0 +1,994 @@
+{
+  "source_status": "owned_direct_query",
+  "source": {
+    "events_db": "main_db.personalization_events",
+    "orders_db": "eshop_analytics.orders",
+    "transport": "ssh + docker exec postgres-main psql",
+    "host": "root@70.34.246.98"
+  },
+  "window_hours": 48,
+  "generated_at_utc": "2026-05-19T04:33:33.889912+00:00",
+  "generated_at_local": "19.05.2026 06:33:33",
+  "window_start_local": "17.05. 06:33",
+  "window_end_local": "19.05. 06:33",
+  "sk_fx_rate": 27.27,
+  "metrics": {
+    "order_count": 702,
+    "revenue_czk": 1165643.01,
+    "bump_accepted": 104,
+    "bump_dismissed": 38,
+    "bump_net": 66,
+    "bump_net_value_czk": 12603.75,
+    "related_added": 139,
+    "related_added_value_czk": 31717.39,
+    "addon_value_czk": 44321.14,
+    "addon_share_pct": 3.8
+  },
+  "market_breakdown": [
+    {
+      "market": "CZ",
+      "orders_count": 627,
+      "revenue_czk": 1017830.0,
+      "bump_accepted": 87,
+      "bump_dismissed": 31,
+      "bump_net": 56,
+      "bump_net_value_czk": 11006.0,
+      "related_added": 129,
+      "related_added_value_czk": 29244.0
+    },
+    {
+      "market": "SK",
+      "orders_count": 75,
+      "revenue_czk": 147813.01,
+      "bump_accepted": 17,
+      "bump_dismissed": 7,
+      "bump_net": 10,
+      "bump_net_value_czk": 1597.75,
+      "related_added": 10,
+      "related_added_value_czk": 2473.39
+    }
+  ],
+  "tables": {
+    "bump_by_count": [
+      [
+        "CZ",
+        "64404-2",
+        "Jemný intimní gel",
+        "15",
+        "1",
+        "14",
+        "3 500 Kč"
+      ],
+      [
+        "CZ",
+        "61911",
+        "Denní vložky s extraktem aloe Nefritová svěžest",
+        "9",
+        "4",
+        "5",
+        "632 Kč"
+      ],
+      [
+        "CZ",
+        "144313",
+        "Mycí prostředek na nádobí na bázi plodů Mýdelníku",
+        "5",
+        "0",
+        "5",
+        "1 925 Kč"
+      ],
+      [
+        "CZ",
+        "10306",
+        "Krém na oční okolí z ovčí placenty",
+        "4",
+        "0",
+        "4",
+        "584 Kč"
+      ],
+      [
+        "CZ",
+        "44402-2",
+        "Fytogel Slaviton",
+        "4",
+        "0",
+        "4",
+        "1 280 Kč"
+      ],
+      [
+        "CZ",
+        "30118",
+        "Kosmetická fytonáplast Wutong",
+        "6",
+        "3",
+        "3",
+        "424 Kč"
+      ],
+      [
+        "CZ",
+        "61912",
+        "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
+        "3",
+        "0",
+        "3",
+        "474 Kč"
+      ],
+      [
+        "CZ",
+        "30117",
+        "Kosmetická fytonáplast Jian Kang",
+        "4",
+        "1",
+        "3",
+        "360 Kč"
+      ],
+      [
+        "CZ",
+        "60152-2",
+        "Kamencový deodorant s prebiotiky, svěží vůně",
+        "4",
+        "1",
+        "3",
+        "402 Kč"
+      ],
+      [
+        "SK",
+        "63601",
+        "Denní vložka Energie života",
+        "3",
+        "0",
+        "3",
+        "149 Kč"
+      ],
+      [
+        "CZ",
+        "12711",
+        "Korigující maska na obličej Intenzivní lifting",
+        "2",
+        "0",
+        "2",
+        "132 Kč"
+      ],
+      [
+        "CZ",
+        "23401",
+        "Šampon - aktivátor růstu vlasů",
+        "2",
+        "0",
+        "2",
+        "500 Kč"
+      ]
+    ],
+    "bump_by_value": [
+      [
+        "CZ",
+        "64404-2",
+        "Jemný intimní gel",
+        "15",
+        "1",
+        "14",
+        "3 500 Kč"
+      ],
+      [
+        "CZ",
+        "144313",
+        "Mycí prostředek na nádobí na bázi plodů Mýdelníku",
+        "5",
+        "0",
+        "5",
+        "1 925 Kč"
+      ],
+      [
+        "CZ",
+        "44402-2",
+        "Fytogel Slaviton",
+        "4",
+        "0",
+        "4",
+        "1 280 Kč"
+      ],
+      [
+        "CZ",
+        "61911",
+        "Denní vložky s extraktem aloe Nefritová svěžest",
+        "9",
+        "4",
+        "5",
+        "632 Kč"
+      ],
+      [
+        "CZ",
+        "10117",
+        "Krém pro hloubkovou obnovu pleti Ženšen a orchidej",
+        "1",
+        "0",
+        "1",
+        "595 Kč"
+      ],
+      [
+        "CZ",
+        "10306",
+        "Krém na oční okolí z ovčí placenty",
+        "4",
+        "0",
+        "4",
+        "584 Kč"
+      ],
+      [
+        "CZ",
+        "23401",
+        "Šampon - aktivátor růstu vlasů",
+        "2",
+        "0",
+        "2",
+        "500 Kč"
+      ],
+      [
+        "CZ",
+        "10111",
+        "Polypeptidový pleťový krém s kolagenem na vrásky",
+        "1",
+        "0",
+        "1",
+        "484 Kč"
+      ],
+      [
+        "CZ",
+        "10116",
+        "Obnovující pleťové tonikum Ženšen a pivoňka",
+        "1",
+        "0",
+        "1",
+        "476 Kč"
+      ],
+      [
+        "CZ",
+        "61912",
+        "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
+        "3",
+        "0",
+        "3",
+        "474 Kč"
+      ],
+      [
+        "CZ",
+        "30118",
+        "Kosmetická fytonáplast Wutong",
+        "6",
+        "3",
+        "3",
+        "424 Kč"
+      ],
+      [
+        "CZ",
+        "20144",
+        "Stylingový sprej na vlasy s aloe „Objem a pružnost“",
+        "2",
+        "0",
+        "2",
+        "422 Kč"
+      ]
+    ],
+    "related_by_count": [
+      [
+        "CZ",
+        "61915",
+        "Dámské bylinné slipové vložky s anionty Nefritová svěžest",
+        "14",
+        "1 658 Kč"
+      ],
+      [
+        "CZ",
+        "34401-2",
+        "Masážní gel Orthophyt",
+        "8",
+        "2 408 Kč"
+      ],
+      [
+        "CZ",
+        "30117",
+        "Kosmetická fytonáplast Jian Kang",
+        "7",
+        "1 096 Kč"
+      ],
+      [
+        "CZ",
+        "65301-2",
+        "Volupta + pro ženy",
+        "6",
+        "1 405 Kč"
+      ],
+      [
+        "CZ",
+        "60149-2",
+        "Jemný ženský intimní bylinný extraktový gel",
+        "5",
+        "1 385 Kč"
+      ],
+      [
+        "CZ",
+        "44402-2",
+        "Fytogel Slaviton",
+        "5",
+        "1 562 Kč"
+      ],
+      [
+        "CZ",
+        "30118",
+        "Kosmetická fytonáplast Wutong",
+        "5",
+        "728 Kč"
+      ],
+      [
+        "CZ",
+        "61913",
+        "Dámské bylinné menstruační vložky Nefritová svěžest. noční super",
+        "5",
+        "670 Kč"
+      ],
+      [
+        "CZ",
+        "60152-2",
+        "Kamencový deodorant s prebiotiky, svěží vůně",
+        "4",
+        "680 Kč"
+      ],
+      [
+        "CZ",
+        "30115",
+        "Tělový deodorant-spray „Přírodní alunit a šalvěj\"",
+        "4",
+        "1 366 Kč"
+      ],
+      [
+        "CZ",
+        "41101",
+        "Krém na nohy s hadím tukem",
+        "4",
+        "558 Kč"
+      ],
+      [
+        "CZ",
+        "61911",
+        "Denní vložky s extraktem aloe Nefritová svěžest",
+        "4",
+        "456 Kč"
+      ]
+    ],
+    "related_by_value": [
+      [
+        "CZ",
+        "34401-2",
+        "Masážní gel Orthophyt",
+        "8",
+        "2 408 Kč"
+      ],
+      [
+        "CZ",
+        "30126",
+        "Pás s bodovou turmalínovou vrstvou",
+        "1",
+        "2 055 Kč"
+      ],
+      [
+        "CZ",
+        "61915",
+        "Dámské bylinné slipové vložky s anionty Nefritová svěžest",
+        "14",
+        "1 658 Kč"
+      ],
+      [
+        "CZ",
+        "44402-2",
+        "Fytogel Slaviton",
+        "5",
+        "1 562 Kč"
+      ],
+      [
+        "CZ",
+        "12712",
+        "Collagen active -  jemné hydratační tonikum z kolagenu",
+        "3",
+        "1 512 Kč"
+      ],
+      [
+        "CZ",
+        "65301-2",
+        "Volupta + pro ženy",
+        "6",
+        "1 405 Kč"
+      ],
+      [
+        "CZ",
+        "60149-2",
+        "Jemný ženský intimní bylinný extraktový gel",
+        "5",
+        "1 385 Kč"
+      ],
+      [
+        "CZ",
+        "30115",
+        "Tělový deodorant-spray „Přírodní alunit a šalvěj\"",
+        "4",
+        "1 366 Kč"
+      ],
+      [
+        "CZ",
+        "34413-2",
+        "Tělový krém Tekutá náplast",
+        "4",
+        "1 128 Kč"
+      ],
+      [
+        "CZ",
+        "30117",
+        "Kosmetická fytonáplast Jian Kang",
+        "7",
+        "1 096 Kč"
+      ],
+      [
+        "CZ",
+        "12707",
+        "Modelující gel na tvar obličeje",
+        "2",
+        "881 Kč"
+      ],
+      [
+        "CZ",
+        "144313",
+        "Mycí prostředek na nádobí na bázi plodů Mýdelníku",
+        "2",
+        "770 Kč"
+      ]
+    ],
+    "hourly": [
+      {
+        "hour_start_utc": "2026-05-19T04:00:00+00:00",
+        "hour_label_local": "19.05. 06:00",
+        "orders_count": 2,
+        "orders_value_czk": 2132.0,
+        "bump_net_count": 3,
+        "bump_net_value_czk": 542.0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-19T03:00:00+00:00",
+        "hour_label_local": "19.05. 05:00",
+        "orders_count": 3,
+        "orders_value_czk": 5655.0,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-19T02:00:00+00:00",
+        "hour_label_local": "19.05. 04:00",
+        "orders_count": 1,
+        "orders_value_czk": 1603.0,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-19T01:00:00+00:00",
+        "hour_label_local": "19.05. 03:00",
+        "orders_count": 0,
+        "orders_value_czk": 0,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-19T00:00:00+00:00",
+        "hour_label_local": "19.05. 02:00",
+        "orders_count": 0,
+        "orders_value_czk": 0,
+        "bump_net_count": 1,
+        "bump_net_value_czk": 120.0,
+        "related_added_count": 1,
+        "related_added_value_czk": 282.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T23:00:00+00:00",
+        "hour_label_local": "19.05. 01:00",
+        "orders_count": 0,
+        "orders_value_czk": 0,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-18T22:00:00+00:00",
+        "hour_label_local": "19.05. 00:00",
+        "orders_count": 1,
+        "orders_value_czk": 1786.19,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-18T21:00:00+00:00",
+        "hour_label_local": "18.05. 23:00",
+        "orders_count": 12,
+        "orders_value_czk": 23146.58,
+        "bump_net_count": 2,
+        "bump_net_value_czk": 248.0,
+        "related_added_count": 1,
+        "related_added_value_czk": 385.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T20:00:00+00:00",
+        "hour_label_local": "18.05. 22:00",
+        "orders_count": 22,
+        "orders_value_czk": 39988.39,
+        "bump_net_count": 4,
+        "bump_net_value_czk": 937.0,
+        "related_added_count": 4,
+        "related_added_value_czk": 839.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T19:00:00+00:00",
+        "hour_label_local": "18.05. 21:00",
+        "orders_count": 32,
+        "orders_value_czk": 49850.46,
+        "bump_net_count": 1,
+        "bump_net_value_czk": 438.01,
+        "related_added_count": 5,
+        "related_added_value_czk": 967.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T18:00:00+00:00",
+        "hour_label_local": "18.05. 20:00",
+        "orders_count": 31,
+        "orders_value_czk": 47535.99,
+        "bump_net_count": 6,
+        "bump_net_value_czk": 1564.35,
+        "related_added_count": 10,
+        "related_added_value_czk": 1905.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T17:00:00+00:00",
+        "hour_label_local": "18.05. 19:00",
+        "orders_count": 26,
+        "orders_value_czk": 36351.82,
+        "bump_net_count": 1,
+        "bump_net_value_czk": -171.78,
+        "related_added_count": 11,
+        "related_added_value_czk": 2307.84
+      },
+      {
+        "hour_start_utc": "2026-05-18T16:00:00+00:00",
+        "hour_label_local": "18.05. 18:00",
+        "orders_count": 20,
+        "orders_value_czk": 37065.62,
+        "bump_net_count": -1,
+        "bump_net_value_czk": -114.0,
+        "related_added_count": 7,
+        "related_added_value_czk": 2626.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T15:00:00+00:00",
+        "hour_label_local": "18.05. 17:00",
+        "orders_count": 15,
+        "orders_value_czk": 28659.07,
+        "bump_net_count": 1,
+        "bump_net_value_czk": 348.0,
+        "related_added_count": 8,
+        "related_added_value_czk": 3273.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T14:00:00+00:00",
+        "hour_label_local": "18.05. 16:00",
+        "orders_count": 10,
+        "orders_value_czk": 13635.23,
+        "bump_net_count": 1,
+        "bump_net_value_czk": 282.0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-18T13:00:00+00:00",
+        "hour_label_local": "18.05. 15:00",
+        "orders_count": 12,
+        "orders_value_czk": 19854.0,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-18T12:00:00+00:00",
+        "hour_label_local": "18.05. 14:00",
+        "orders_count": 15,
+        "orders_value_czk": 26153.92,
+        "bump_net_count": 1,
+        "bump_net_value_czk": 385.0,
+        "related_added_count": 3,
+        "related_added_value_czk": 574.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T11:00:00+00:00",
+        "hour_label_local": "18.05. 13:00",
+        "orders_count": 20,
+        "orders_value_czk": 30610.74,
+        "bump_net_count": 5,
+        "bump_net_value_czk": 886.61,
+        "related_added_count": 4,
+        "related_added_value_czk": 1372.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T10:00:00+00:00",
+        "hour_label_local": "18.05. 12:00",
+        "orders_count": 16,
+        "orders_value_czk": 27485.76,
+        "bump_net_count": 1,
+        "bump_net_value_czk": 250.0,
+        "related_added_count": 2,
+        "related_added_value_czk": 201.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T09:00:00+00:00",
+        "hour_label_local": "18.05. 11:00",
+        "orders_count": 19,
+        "orders_value_czk": 24966.26,
+        "bump_net_count": 2,
+        "bump_net_value_czk": 505.0,
+        "related_added_count": 3,
+        "related_added_value_czk": 698.7
+      },
+      {
+        "hour_start_utc": "2026-05-18T08:00:00+00:00",
+        "hour_label_local": "18.05. 10:00",
+        "orders_count": 22,
+        "orders_value_czk": 33912.78,
+        "bump_net_count": 2,
+        "bump_net_value_czk": 364.0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-18T07:00:00+00:00",
+        "hour_label_local": "18.05. 09:00",
+        "orders_count": 26,
+        "orders_value_czk": 41883.8,
+        "bump_net_count": 2,
+        "bump_net_value_czk": 434.0,
+        "related_added_count": 2,
+        "related_added_value_czk": 331.26
+      },
+      {
+        "hour_start_utc": "2026-05-18T06:00:00+00:00",
+        "hour_label_local": "18.05. 08:00",
+        "orders_count": 22,
+        "orders_value_czk": 38491.68,
+        "bump_net_count": 3,
+        "bump_net_value_czk": 576.99,
+        "related_added_count": 3,
+        "related_added_value_czk": 362.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T05:00:00+00:00",
+        "hour_label_local": "18.05. 07:00",
+        "orders_count": 11,
+        "orders_value_czk": 16915.5,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 1,
+        "related_added_value_czk": 434.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T04:00:00+00:00",
+        "hour_label_local": "18.05. 06:00",
+        "orders_count": 5,
+        "orders_value_czk": 9568.0,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 1,
+        "related_added_value_czk": 134.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T03:00:00+00:00",
+        "hour_label_local": "18.05. 05:00",
+        "orders_count": 2,
+        "orders_value_czk": 2562.0,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 3,
+        "related_added_value_czk": 465.0
+      },
+      {
+        "hour_start_utc": "2026-05-18T02:00:00+00:00",
+        "hour_label_local": "18.05. 04:00",
+        "orders_count": 1,
+        "orders_value_czk": 4045.0,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-18T01:00:00+00:00",
+        "hour_label_local": "18.05. 03:00",
+        "orders_count": 1,
+        "orders_value_czk": 1537.0,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-18T00:00:00+00:00",
+        "hour_label_local": "18.05. 02:00",
+        "orders_count": 0,
+        "orders_value_czk": 0,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-17T23:00:00+00:00",
+        "hour_label_local": "18.05. 01:00",
+        "orders_count": 0,
+        "orders_value_czk": 0,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 0,
+        "related_added_count": 0,
+        "related_added_value_czk": 0
+      },
+      {
+        "hour_start_utc": "2026-05-17T22:00:00+00:00",
+        "hour_label_local": "18.05. 00:00",
+        "orders_count": 4,
+        "orders_value_czk": 7137.61,
+        "bump_net_count": 1,
+        "bump_net_value_czk": 253.0,
+        "related_added_count": 3,
+        "related_added_value_czk": 685.0
+      },
+      {
+        "hour_start_utc": "2026-05-17T21:00:00+00:00",
+        "hour_label_local": "17.05. 23:00",
+        "orders_count": 17,
+        "orders_value_czk": 23306.37,
+        "bump_net_count": 3,
+        "bump_net_value_czk": 465.0,
+        "related_added_count": 4,
+        "related_added_value_czk": 516.0
+      },
+      {
+        "hour_start_utc": "2026-05-17T20:00:00+00:00",
+        "hour_label_local": "17.05. 22:00",
+        "orders_count": 31,
+        "orders_value_czk": 48337.61,
+        "bump_net_count": 6,
+        "bump_net_value_czk": 1028.52,
+        "related_added_count": 6,
+        "related_added_value_czk": 1188.17
+      },
+      {
+        "hour_start_utc": "2026-05-17T19:00:00+00:00",
+        "hour_label_local": "17.05. 21:00",
+        "orders_count": 44,
+        "orders_value_czk": 74371.68,
+        "bump_net_count": 4,
+        "bump_net_value_czk": 999.52,
+        "related_added_count": 3,
+        "related_added_value_czk": 859.0
+      },
+      {
+        "hour_start_utc": "2026-05-17T18:00:00+00:00",
+        "hour_label_local": "17.05. 20:00",
+        "orders_count": 33,
+        "orders_value_czk": 56104.27,
+        "bump_net_count": -1,
+        "bump_net_value_czk": -120.0,
+        "related_added_count": 8,
+        "related_added_value_czk": 1460.0
+      },
+      {
+        "hour_start_utc": "2026-05-17T17:00:00+00:00",
+        "hour_label_local": "17.05. 19:00",
+        "orders_count": 25,
+        "orders_value_czk": 40841.82,
+        "bump_net_count": 4,
+        "bump_net_value_czk": 623.99,
+        "related_added_count": 4,
+        "related_added_value_czk": 1146.0
+      },
+      {
+        "hour_start_utc": "2026-05-17T16:00:00+00:00",
+        "hour_label_local": "17.05. 18:00",
+        "orders_count": 24,
+        "orders_value_czk": 35989.86,
+        "bump_net_count": 2,
+        "bump_net_value_czk": 426.0,
+        "related_added_count": 8,
+        "related_added_value_czk": 1580.0
+      },
+      {
+        "hour_start_utc": "2026-05-17T15:00:00+00:00",
+        "hour_label_local": "17.05. 17:00",
+        "orders_count": 24,
+        "orders_value_czk": 39422.26,
+        "bump_net_count": 4,
+        "bump_net_value_czk": 779.0,
+        "related_added_count": 3,
+        "related_added_value_czk": 509.7
+      },
+      {
+        "hour_start_utc": "2026-05-17T14:00:00+00:00",
+        "hour_label_local": "17.05. 16:00",
+        "orders_count": 14,
+        "orders_value_czk": 21446.78,
+        "bump_net_count": 3,
+        "bump_net_value_czk": 771.17,
+        "related_added_count": 1,
+        "related_added_value_czk": 215.0
+      },
+      {
+        "hour_start_utc": "2026-05-17T13:00:00+00:00",
+        "hour_label_local": "17.05. 15:00",
+        "orders_count": 19,
+        "orders_value_czk": 37202.46,
+        "bump_net_count": 2,
+        "bump_net_value_czk": 615.17,
+        "related_added_count": 4,
+        "related_added_value_czk": 762.33
+      },
+      {
+        "hour_start_utc": "2026-05-17T12:00:00+00:00",
+        "hour_label_local": "17.05. 14:00",
+        "orders_count": 15,
+        "orders_value_czk": 23406.0,
+        "bump_net_count": 0,
+        "bump_net_value_czk": 119.0,
+        "related_added_count": 6,
+        "related_added_value_czk": 673.0
+      },
+      {
+        "hour_start_utc": "2026-05-17T11:00:00+00:00",
+        "hour_label_local": "17.05. 13:00",
+        "orders_count": 15,
+        "orders_value_czk": 26184.79,
+        "bump_net_count": -9,
+        "bump_net_value_czk": -3409.13,
+        "related_added_count": 6,
+        "related_added_value_czk": 1195.32
+      },
+      {
+        "hour_start_utc": "2026-05-17T10:00:00+00:00",
+        "hour_label_local": "17.05. 12:00",
+        "orders_count": 14,
+        "orders_value_czk": 31301.45,
+        "bump_net_count": 2,
+        "bump_net_value_czk": 201.0,
+        "related_added_count": 1,
+        "related_added_value_czk": 123.0
+      },
+      {
+        "hour_start_utc": "2026-05-17T09:00:00+00:00",
+        "hour_label_local": "17.05. 11:00",
+        "orders_count": 19,
+        "orders_value_czk": 38312.46,
+        "bump_net_count": 4,
+        "bump_net_value_czk": 836.0,
+        "related_added_count": 2,
+        "related_added_value_czk": 415.08
+      },
+      {
+        "hour_start_utc": "2026-05-17T08:00:00+00:00",
+        "hour_label_local": "17.05. 10:00",
+        "orders_count": 14,
+        "orders_value_czk": 26699.32,
+        "bump_net_count": 1,
+        "bump_net_value_czk": 250.0,
+        "related_added_count": 2,
+        "related_added_value_czk": 298.0
+      },
+      {
+        "hour_start_utc": "2026-05-17T07:00:00+00:00",
+        "hour_label_local": "17.05. 09:00",
+        "orders_count": 19,
+        "orders_value_czk": 32127.63,
+        "bump_net_count": 0,
+        "bump_net_value_czk": -213.0,
+        "related_added_count": 2,
+        "related_added_value_czk": 760.0
+      },
+      {
+        "hour_start_utc": "2026-05-17T06:00:00+00:00",
+        "hour_label_local": "17.05. 08:00",
+        "orders_count": 14,
+        "orders_value_czk": 21204.0,
+        "bump_net_count": 2,
+        "bump_net_value_czk": 250.0,
+        "related_added_count": 2,
+        "related_added_value_czk": 684.0
+      },
+      {
+        "hour_start_utc": "2026-05-17T05:00:00+00:00",
+        "hour_label_local": "17.05. 07:00",
+        "orders_count": 8,
+        "orders_value_czk": 15237.85,
+        "bump_net_count": 3,
+        "bump_net_value_czk": 1133.33,
+        "related_added_count": 3,
+        "related_added_value_czk": 871.0
+      }
+    ]
+  },
+  "chart_hours_utc": [
+    "2026-05-17T05:00:00+00:00",
+    "2026-05-17T06:00:00+00:00",
+    "2026-05-17T07:00:00+00:00",
+    "2026-05-17T08:00:00+00:00",
+    "2026-05-17T09:00:00+00:00",
+    "2026-05-17T10:00:00+00:00",
+    "2026-05-17T11:00:00+00:00",
+    "2026-05-17T12:00:00+00:00",
+    "2026-05-17T13:00:00+00:00",
+    "2026-05-17T14:00:00+00:00",
+    "2026-05-17T15:00:00+00:00",
+    "2026-05-17T16:00:00+00:00",
+    "2026-05-17T17:00:00+00:00",
+    "2026-05-17T18:00:00+00:00",
+    "2026-05-17T19:00:00+00:00",
+    "2026-05-17T20:00:00+00:00",
+    "2026-05-17T21:00:00+00:00",
+    "2026-05-17T22:00:00+00:00",
+    "2026-05-17T23:00:00+00:00",
+    "2026-05-18T00:00:00+00:00",
+    "2026-05-18T01:00:00+00:00",
+    "2026-05-18T02:00:00+00:00",
+    "2026-05-18T03:00:00+00:00",
+    "2026-05-18T04:00:00+00:00",
+    "2026-05-18T05:00:00+00:00",
+    "2026-05-18T06:00:00+00:00",
+    "2026-05-18T07:00:00+00:00",
+    "2026-05-18T08:00:00+00:00",
+    "2026-05-18T09:00:00+00:00",
+    "2026-05-18T10:00:00+00:00",
+    "2026-05-18T11:00:00+00:00",
+    "2026-05-18T12:00:00+00:00",
+    "2026-05-18T13:00:00+00:00",
+    "2026-05-18T14:00:00+00:00",
+    "2026-05-18T15:00:00+00:00",
+    "2026-05-18T16:00:00+00:00",
+    "2026-05-18T17:00:00+00:00",
+    "2026-05-18T18:00:00+00:00",
+    "2026-05-18T19:00:00+00:00",
+    "2026-05-18T20:00:00+00:00",
+    "2026-05-18T21:00:00+00:00",
+    "2026-05-18T22:00:00+00:00",
+    "2026-05-18T23:00:00+00:00",
+    "2026-05-19T00:00:00+00:00",
+    "2026-05-19T01:00:00+00:00",
+    "2026-05-19T02:00:00+00:00",
+    "2026-05-19T03:00:00+00:00",
+    "2026-05-19T04:00:00+00:00"
+  ],
+  "rendered": {
+    "kpi_order_count": "702",
+    "kpi_revenue_czk": "1 165 643 Kč",
+    "kpi_bump_net": "66",
+    "kpi_bump_sub": "104 přidáno - 38 odebráno · 12 604 Kč",
+    "kpi_related_added": "139",
+    "kpi_related_value": "31 717 Kč",
+    "kpi_addon_value": "44 321 Kč",
+    "kpi_addon_share": "3,8 %",
+    "market_table": "<div class=\"ux-table-wrap order-bump-table-wrap\"><table class=\"table mobile-stack\"><thead><tr><th>Trh</th><th>Objednávky</th><th>Obrat</th><th>Bump +</th><th>Bump -</th><th>Bump netto</th><th>Bump netto Kč</th><th>Doplňkové +</th><th>Doplňkové Kč</th></tr></thead><tbody><tr><td data-label=\"Trh\">CZ</td><td class=\"num\" data-label=\"Objednávky\">627</td><td class=\"num\" data-label=\"Obrat\">1 017 830 Kč</td><td class=\"num\" data-label=\"Bump +\">87</td><td class=\"num\" data-label=\"Bump -\">31</td><td class=\"num\" data-label=\"Bump netto\">56</td><td class=\"num\" data-label=\"Bump netto Kč\">11 006 Kč</td><td class=\"num\" data-label=\"Doplňkové +\">129</td><td class=\"num\" data-label=\"Doplňkové Kč\">29 244 Kč</td></tr><tr><td data-label=\"Trh\">SK</td><td class=\"num\" data-label=\"Objednávky\">75</td><td class=\"num\" data-label=\"Obrat\">147 813 Kč</td><td class=\"num\" data-label=\"Bump +\">17</td><td class=\"num\" data-label=\"Bump -\">7</td><td class=\"num\" data-label=\"Bump netto\">10</td><td class=\"num\" data-label=\"Bump netto Kč\">1 598 Kč</td><td class=\"num\" data-label=\"Doplňkové +\">10</td><td class=\"num\" data-label=\"Doplňkové Kč\">2 473 Kč</td></tr></tbody></table></div>",
+    "bump_count_table": "<div class=\"ux-table-wrap order-bump-table-wrap\"><table class=\"table mobile-stack\"><thead><tr><th>Trh</th><th>Kód</th><th>Produkt</th><th>Přidáno</th><th>Odebráno</th><th>Netto</th><th>Netto Kč</th></tr></thead><tbody><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">64404-2</td><td data-label=\"Produkt\">Jemný intimní gel</td><td class=\"num\" data-label=\"Přidáno\">15</td><td class=\"num\" data-label=\"Odebráno\">1</td><td class=\"num\" data-label=\"Netto\">14</td><td class=\"num\" data-label=\"Netto Kč\">3 500 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">61911</td><td data-label=\"Produkt\">Denní vložky s extraktem aloe Nefritová svěžest</td><td class=\"num\" data-label=\"Přidáno\">9</td><td class=\"num\" data-label=\"Odebráno\">4</td><td class=\"num\" data-label=\"Netto\">5</td><td class=\"num\" data-label=\"Netto Kč\">632 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">144313</td><td data-label=\"Produkt\">Mycí prostředek na nádobí na bázi plodů Mýdelníku</td><td class=\"num\" data-label=\"Přidáno\">5</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">5</td><td class=\"num\" data-label=\"Netto Kč\">1 925 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">10306</td><td data-label=\"Produkt\">Krém na oční okolí z ovčí placenty</td><td class=\"num\" data-label=\"Přidáno\">4</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">4</td><td class=\"num\" data-label=\"Netto Kč\">584 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">44402-2</td><td data-label=\"Produkt\">Fytogel Slaviton</td><td class=\"num\" data-label=\"Přidáno\">4</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">4</td><td class=\"num\" data-label=\"Netto Kč\">1 280 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">30118</td><td data-label=\"Produkt\">Kosmetická fytonáplast Wutong</td><td class=\"num\" data-label=\"Přidáno\">6</td><td class=\"num\" data-label=\"Odebráno\">3</td><td class=\"num\" data-label=\"Netto\">3</td><td class=\"num\" data-label=\"Netto Kč\">424 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">61912</td><td data-label=\"Produkt\">Dámské bylinné menstruační vložky Nefritová svěžest. denní super</td><td class=\"num\" data-label=\"Přidáno\">3</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">3</td><td class=\"num\" data-label=\"Netto Kč\">474 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">30117</td><td data-label=\"Produkt\">Kosmetická fytonáplast Jian Kang</td><td class=\"num\" data-label=\"Přidáno\">4</td><td class=\"num\" data-label=\"Odebráno\">1</td><td class=\"num\" data-label=\"Netto\">3</td><td class=\"num\" data-label=\"Netto Kč\">360 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">60152-2</td><td data-label=\"Produkt\">Kamencový deodorant s prebiotiky, svěží vůně</td><td class=\"num\" data-label=\"Přidáno\">4</td><td class=\"num\" data-label=\"Odebráno\">1</td><td class=\"num\" data-label=\"Netto\">3</td><td class=\"num\" data-label=\"Netto Kč\">402 Kč</td></tr><tr><td data-label=\"Trh\">SK</td><td data-label=\"Kód\">63601</td><td data-label=\"Produkt\">Denní vložka Energie života</td><td class=\"num\" data-label=\"Přidáno\">3</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">3</td><td class=\"num\" data-label=\"Netto Kč\">149 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">12711</td><td data-label=\"Produkt\">Korigující maska na obličej Intenzivní lifting</td><td class=\"num\" data-label=\"Přidáno\">2</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">2</td><td class=\"num\" data-label=\"Netto Kč\">132 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">23401</td><td data-label=\"Produkt\">Šampon - aktivátor růstu vlasů</td><td class=\"num\" data-label=\"Přidáno\">2</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">2</td><td class=\"num\" data-label=\"Netto Kč\">500 Kč</td></tr></tbody></table></div>",
+    "bump_value_table": "<div class=\"ux-table-wrap order-bump-table-wrap\"><table class=\"table mobile-stack\"><thead><tr><th>Trh</th><th>Kód</th><th>Produkt</th><th>Přidáno</th><th>Odebráno</th><th>Netto</th><th>Netto Kč</th></tr></thead><tbody><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">64404-2</td><td data-label=\"Produkt\">Jemný intimní gel</td><td class=\"num\" data-label=\"Přidáno\">15</td><td class=\"num\" data-label=\"Odebráno\">1</td><td class=\"num\" data-label=\"Netto\">14</td><td class=\"num\" data-label=\"Netto Kč\">3 500 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">144313</td><td data-label=\"Produkt\">Mycí prostředek na nádobí na bázi plodů Mýdelníku</td><td class=\"num\" data-label=\"Přidáno\">5</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">5</td><td class=\"num\" data-label=\"Netto Kč\">1 925 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">44402-2</td><td data-label=\"Produkt\">Fytogel Slaviton</td><td class=\"num\" data-label=\"Přidáno\">4</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">4</td><td class=\"num\" data-label=\"Netto Kč\">1 280 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">61911</td><td data-label=\"Produkt\">Denní vložky s extraktem aloe Nefritová svěžest</td><td class=\"num\" data-label=\"Přidáno\">9</td><td class=\"num\" data-label=\"Odebráno\">4</td><td class=\"num\" data-label=\"Netto\">5</td><td class=\"num\" data-label=\"Netto Kč\">632 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">10117</td><td data-label=\"Produkt\">Krém pro hloubkovou obnovu pleti Ženšen a orchidej</td><td class=\"num\" data-label=\"Přidáno\">1</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">1</td><td class=\"num\" data-label=\"Netto Kč\">595 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">10306</td><td data-label=\"Produkt\">Krém na oční okolí z ovčí placenty</td><td class=\"num\" data-label=\"Přidáno\">4</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">4</td><td class=\"num\" data-label=\"Netto Kč\">584 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">23401</td><td data-label=\"Produkt\">Šampon - aktivátor růstu vlasů</td><td class=\"num\" data-label=\"Přidáno\">2</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">2</td><td class=\"num\" data-label=\"Netto Kč\">500 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">10111</td><td data-label=\"Produkt\">Polypeptidový pleťový krém s kolagenem na vrásky</td><td class=\"num\" data-label=\"Přidáno\">1</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">1</td><td class=\"num\" data-label=\"Netto Kč\">484 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">10116</td><td data-label=\"Produkt\">Obnovující pleťové tonikum Ženšen a pivoňka</td><td class=\"num\" data-label=\"Přidáno\">1</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">1</td><td class=\"num\" data-label=\"Netto Kč\">476 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">61912</td><td data-label=\"Produkt\">Dámské bylinné menstruační vložky Nefritová svěžest. denní super</td><td class=\"num\" data-label=\"Přidáno\">3</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">3</td><td class=\"num\" data-label=\"Netto Kč\">474 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">30118</td><td data-label=\"Produkt\">Kosmetická fytonáplast Wutong</td><td class=\"num\" data-label=\"Přidáno\">6</td><td class=\"num\" data-label=\"Odebráno\">3</td><td class=\"num\" data-label=\"Netto\">3</td><td class=\"num\" data-label=\"Netto Kč\">424 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">20144</td><td data-label=\"Produkt\">Stylingový sprej na vlasy s aloe „Objem a pružnost“</td><td class=\"num\" data-label=\"Přidáno\">2</td><td class=\"num\" data-label=\"Odebráno\">0</td><td class=\"num\" data-label=\"Netto\">2</td><td class=\"num\" data-label=\"Netto Kč\">422 Kč</td></tr></tbody></table></div>",
+    "related_count_table": "<div class=\"ux-table-wrap order-bump-table-wrap\"><table class=\"table mobile-stack\"><thead><tr><th>Trh</th><th>Kód</th><th>Produkt</th><th>Přidáno</th><th>Částka</th></tr></thead><tbody><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">61915</td><td data-label=\"Produkt\">Dámské bylinné slipové vložky s anionty Nefritová svěžest</td><td class=\"num\" data-label=\"Přidáno\">14</td><td class=\"num\" data-label=\"Částka\">1 658 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">34401-2</td><td data-label=\"Produkt\">Masážní gel Orthophyt</td><td class=\"num\" data-label=\"Přidáno\">8</td><td class=\"num\" data-label=\"Částka\">2 408 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">30117</td><td data-label=\"Produkt\">Kosmetická fytonáplast Jian Kang</td><td class=\"num\" data-label=\"Přidáno\">7</td><td class=\"num\" data-label=\"Částka\">1 096 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">65301-2</td><td data-label=\"Produkt\">Volupta + pro ženy</td><td class=\"num\" data-label=\"Přidáno\">6</td><td class=\"num\" data-label=\"Částka\">1 405 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">60149-2</td><td data-label=\"Produkt\">Jemný ženský intimní bylinný extraktový gel</td><td class=\"num\" data-label=\"Přidáno\">5</td><td class=\"num\" data-label=\"Částka\">1 385 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">44402-2</td><td data-label=\"Produkt\">Fytogel Slaviton</td><td class=\"num\" data-label=\"Přidáno\">5</td><td class=\"num\" data-label=\"Částka\">1 562 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">30118</td><td data-label=\"Produkt\">Kosmetická fytonáplast Wutong</td><td class=\"num\" data-label=\"Přidáno\">5</td><td class=\"num\" data-label=\"Částka\">728 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">61913</td><td data-label=\"Produkt\">Dámské bylinné menstruační vložky Nefritová svěžest. noční super</td><td class=\"num\" data-label=\"Přidáno\">5</td><td class=\"num\" data-label=\"Částka\">670 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">60152-2</td><td data-label=\"Produkt\">Kamencový deodorant s prebiotiky, svěží vůně</td><td class=\"num\" data-label=\"Přidáno\">4</td><td class=\"num\" data-label=\"Částka\">680 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">30115</td><td data-label=\"Produkt\">Tělový deodorant-spray „Přírodní alunit a šalvěj&quot;</td><td class=\"num\" data-label=\"Přidáno\">4</td><td class=\"num\" data-label=\"Částka\">1 366 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">41101</td><td data-label=\"Produkt\">Krém na nohy s hadím tukem</td><td class=\"num\" data-label=\"Přidáno\">4</td><td class=\"num\" data-label=\"Částka\">558 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">61911</td><td data-label=\"Produkt\">Denní vložky s extraktem aloe Nefritová svěžest</td><td class=\"num\" data-label=\"Přidáno\">4</td><td class=\"num\" data-label=\"Částka\">456 Kč</td></tr></tbody></table></div>",
+    "related_value_table": "<div class=\"ux-table-wrap order-bump-table-wrap\"><table class=\"table mobile-stack\"><thead><tr><th>Trh</th><th>Kód</th><th>Produkt</th><th>Přidáno</th><th>Částka</th></tr></thead><tbody><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">34401-2</td><td data-label=\"Produkt\">Masážní gel Orthophyt</td><td class=\"num\" data-label=\"Přidáno\">8</td><td class=\"num\" data-label=\"Částka\">2 408 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">30126</td><td data-label=\"Produkt\">Pás s bodovou turmalínovou vrstvou</td><td class=\"num\" data-label=\"Přidáno\">1</td><td class=\"num\" data-label=\"Částka\">2 055 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">61915</td><td data-label=\"Produkt\">Dámské bylinné slipové vložky s anionty Nefritová svěžest</td><td class=\"num\" data-label=\"Přidáno\">14</td><td class=\"num\" data-label=\"Částka\">1 658 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">44402-2</td><td data-label=\"Produkt\">Fytogel Slaviton</td><td class=\"num\" data-label=\"Přidáno\">5</td><td class=\"num\" data-label=\"Částka\">1 562 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">12712</td><td data-label=\"Produkt\">Collagen active -  jemné hydratační tonikum z kolagenu</td><td class=\"num\" data-label=\"Přidáno\">3</td><td class=\"num\" data-label=\"Částka\">1 512 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">65301-2</td><td data-label=\"Produkt\">Volupta + pro ženy</td><td class=\"num\" data-label=\"Přidáno\">6</td><td class=\"num\" data-label=\"Částka\">1 405 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">60149-2</td><td data-label=\"Produkt\">Jemný ženský intimní bylinný extraktový gel</td><td class=\"num\" data-label=\"Přidáno\">5</td><td class=\"num\" data-label=\"Částka\">1 385 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">30115</td><td data-label=\"Produkt\">Tělový deodorant-spray „Přírodní alunit a šalvěj&quot;</td><td class=\"num\" data-label=\"Přidáno\">4</td><td class=\"num\" data-label=\"Částka\">1 366 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">34413-2</td><td data-label=\"Produkt\">Tělový krém Tekutá náplast</td><td class=\"num\" data-label=\"Přidáno\">4</td><td class=\"num\" data-label=\"Částka\">1 128 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">30117</td><td data-label=\"Produkt\">Kosmetická fytonáplast Jian Kang</td><td class=\"num\" data-label=\"Přidáno\">7</td><td class=\"num\" data-label=\"Částka\">1 096 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">12707</td><td data-label=\"Produkt\">Modelující gel na tvar obličeje</td><td class=\"num\" data-label=\"Přidáno\">2</td><td class=\"num\" data-label=\"Částka\">881 Kč</td></tr><tr><td data-label=\"Trh\">CZ</td><td data-label=\"Kód\">144313</td><td data-label=\"Produkt\">Mycí prostředek na nádobí na bázi plodů Mýdelníku</td><td class=\"num\" data-label=\"Přidáno\">2</td><td class=\"num\" data-label=\"Částka\">770 Kč</td></tr></tbody></table></div>",
+    "hourly_table": "<div class=\"ux-table-wrap order-bump-table-wrap\"><table class=\"table mobile-stack\"><thead><tr><th>Hodina</th><th>Objednávky</th><th>Obrat</th><th>Bump netto ks</th><th>Bump netto Kč</th><th>Doplňkové ks</th><th>Doplňkové Kč</th></tr></thead><tbody><tr><td data-label=\"Hodina\">19.05. 06:00</td><td class=\"num\" data-label=\"Objednávky\">2</td><td class=\"num\" data-label=\"Obrat\">2 132 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">3</td><td class=\"num\" data-label=\"Bump netto Kč\">542 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">19.05. 05:00</td><td class=\"num\" data-label=\"Objednávky\">3</td><td class=\"num\" data-label=\"Obrat\">5 655 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">19.05. 04:00</td><td class=\"num\" data-label=\"Objednávky\">1</td><td class=\"num\" data-label=\"Obrat\">1 603 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">19.05. 03:00</td><td class=\"num\" data-label=\"Objednávky\">0</td><td class=\"num\" data-label=\"Obrat\">0 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">19.05. 02:00</td><td class=\"num\" data-label=\"Objednávky\">0</td><td class=\"num\" data-label=\"Obrat\">0 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">1</td><td class=\"num\" data-label=\"Bump netto Kč\">120 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">1</td><td class=\"num\" data-label=\"Doplňkové Kč\">282 Kč</td></tr><tr><td data-label=\"Hodina\">19.05. 01:00</td><td class=\"num\" data-label=\"Objednávky\">0</td><td class=\"num\" data-label=\"Obrat\">0 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">19.05. 00:00</td><td class=\"num\" data-label=\"Objednávky\">1</td><td class=\"num\" data-label=\"Obrat\">1 786 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 23:00</td><td class=\"num\" data-label=\"Objednávky\">12</td><td class=\"num\" data-label=\"Obrat\">23 147 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">2</td><td class=\"num\" data-label=\"Bump netto Kč\">248 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">1</td><td class=\"num\" data-label=\"Doplňkové Kč\">385 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 22:00</td><td class=\"num\" data-label=\"Objednávky\">22</td><td class=\"num\" data-label=\"Obrat\">39 988 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">4</td><td class=\"num\" data-label=\"Bump netto Kč\">937 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">4</td><td class=\"num\" data-label=\"Doplňkové Kč\">839 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 21:00</td><td class=\"num\" data-label=\"Objednávky\">32</td><td class=\"num\" data-label=\"Obrat\">49 850 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">1</td><td class=\"num\" data-label=\"Bump netto Kč\">438 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">5</td><td class=\"num\" data-label=\"Doplňkové Kč\">967 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 20:00</td><td class=\"num\" data-label=\"Objednávky\">31</td><td class=\"num\" data-label=\"Obrat\">47 536 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">6</td><td class=\"num\" data-label=\"Bump netto Kč\">1 564 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">10</td><td class=\"num\" data-label=\"Doplňkové Kč\">1 905 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 19:00</td><td class=\"num\" data-label=\"Objednávky\">26</td><td class=\"num\" data-label=\"Obrat\">36 352 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">1</td><td class=\"num\" data-label=\"Bump netto Kč\">-172 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">11</td><td class=\"num\" data-label=\"Doplňkové Kč\">2 308 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 18:00</td><td class=\"num\" data-label=\"Objednávky\">20</td><td class=\"num\" data-label=\"Obrat\">37 066 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">-1</td><td class=\"num\" data-label=\"Bump netto Kč\">-114 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">7</td><td class=\"num\" data-label=\"Doplňkové Kč\">2 626 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 17:00</td><td class=\"num\" data-label=\"Objednávky\">15</td><td class=\"num\" data-label=\"Obrat\">28 659 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">1</td><td class=\"num\" data-label=\"Bump netto Kč\">348 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">8</td><td class=\"num\" data-label=\"Doplňkové Kč\">3 273 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 16:00</td><td class=\"num\" data-label=\"Objednávky\">10</td><td class=\"num\" data-label=\"Obrat\">13 635 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">1</td><td class=\"num\" data-label=\"Bump netto Kč\">282 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 15:00</td><td class=\"num\" data-label=\"Objednávky\">12</td><td class=\"num\" data-label=\"Obrat\">19 854 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 14:00</td><td class=\"num\" data-label=\"Objednávky\">15</td><td class=\"num\" data-label=\"Obrat\">26 154 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">1</td><td class=\"num\" data-label=\"Bump netto Kč\">385 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">3</td><td class=\"num\" data-label=\"Doplňkové Kč\">574 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 13:00</td><td class=\"num\" data-label=\"Objednávky\">20</td><td class=\"num\" data-label=\"Obrat\">30 611 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">5</td><td class=\"num\" data-label=\"Bump netto Kč\">887 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">4</td><td class=\"num\" data-label=\"Doplňkové Kč\">1 372 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 12:00</td><td class=\"num\" data-label=\"Objednávky\">16</td><td class=\"num\" data-label=\"Obrat\">27 486 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">1</td><td class=\"num\" data-label=\"Bump netto Kč\">250 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">2</td><td class=\"num\" data-label=\"Doplňkové Kč\">201 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 11:00</td><td class=\"num\" data-label=\"Objednávky\">19</td><td class=\"num\" data-label=\"Obrat\">24 966 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">2</td><td class=\"num\" data-label=\"Bump netto Kč\">505 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">3</td><td class=\"num\" data-label=\"Doplňkové Kč\">699 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 10:00</td><td class=\"num\" data-label=\"Objednávky\">22</td><td class=\"num\" data-label=\"Obrat\">33 913 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">2</td><td class=\"num\" data-label=\"Bump netto Kč\">364 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 09:00</td><td class=\"num\" data-label=\"Objednávky\">26</td><td class=\"num\" data-label=\"Obrat\">41 884 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">2</td><td class=\"num\" data-label=\"Bump netto Kč\">434 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">2</td><td class=\"num\" data-label=\"Doplňkové Kč\">331 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 08:00</td><td class=\"num\" data-label=\"Objednávky\">22</td><td class=\"num\" data-label=\"Obrat\">38 492 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">3</td><td class=\"num\" data-label=\"Bump netto Kč\">577 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">3</td><td class=\"num\" data-label=\"Doplňkové Kč\">362 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 07:00</td><td class=\"num\" data-label=\"Objednávky\">11</td><td class=\"num\" data-label=\"Obrat\">16 916 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">1</td><td class=\"num\" data-label=\"Doplňkové Kč\">434 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 06:00</td><td class=\"num\" data-label=\"Objednávky\">5</td><td class=\"num\" data-label=\"Obrat\">9 568 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">1</td><td class=\"num\" data-label=\"Doplňkové Kč\">134 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 05:00</td><td class=\"num\" data-label=\"Objednávky\">2</td><td class=\"num\" data-label=\"Obrat\">2 562 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">3</td><td class=\"num\" data-label=\"Doplňkové Kč\">465 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 04:00</td><td class=\"num\" data-label=\"Objednávky\">1</td><td class=\"num\" data-label=\"Obrat\">4 045 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 03:00</td><td class=\"num\" data-label=\"Objednávky\">1</td><td class=\"num\" data-label=\"Obrat\">1 537 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 02:00</td><td class=\"num\" data-label=\"Objednávky\">0</td><td class=\"num\" data-label=\"Obrat\">0 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 01:00</td><td class=\"num\" data-label=\"Objednávky\">0</td><td class=\"num\" data-label=\"Obrat\">0 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">0 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">0</td><td class=\"num\" data-label=\"Doplňkové Kč\">0 Kč</td></tr><tr><td data-label=\"Hodina\">18.05. 00:00</td><td class=\"num\" data-label=\"Objednávky\">4</td><td class=\"num\" data-label=\"Obrat\">7 138 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">1</td><td class=\"num\" data-label=\"Bump netto Kč\">253 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">3</td><td class=\"num\" data-label=\"Doplňkové Kč\">685 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 23:00</td><td class=\"num\" data-label=\"Objednávky\">17</td><td class=\"num\" data-label=\"Obrat\">23 306 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">3</td><td class=\"num\" data-label=\"Bump netto Kč\">465 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">4</td><td class=\"num\" data-label=\"Doplňkové Kč\">516 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 22:00</td><td class=\"num\" data-label=\"Objednávky\">31</td><td class=\"num\" data-label=\"Obrat\">48 338 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">6</td><td class=\"num\" data-label=\"Bump netto Kč\">1 029 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">6</td><td class=\"num\" data-label=\"Doplňkové Kč\">1 188 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 21:00</td><td class=\"num\" data-label=\"Objednávky\">44</td><td class=\"num\" data-label=\"Obrat\">74 372 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">4</td><td class=\"num\" data-label=\"Bump netto Kč\">1 000 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">3</td><td class=\"num\" data-label=\"Doplňkové Kč\">859 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 20:00</td><td class=\"num\" data-label=\"Objednávky\">33</td><td class=\"num\" data-label=\"Obrat\">56 104 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">-1</td><td class=\"num\" data-label=\"Bump netto Kč\">-120 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">8</td><td class=\"num\" data-label=\"Doplňkové Kč\">1 460 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 19:00</td><td class=\"num\" data-label=\"Objednávky\">25</td><td class=\"num\" data-label=\"Obrat\">40 842 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">4</td><td class=\"num\" data-label=\"Bump netto Kč\">624 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">4</td><td class=\"num\" data-label=\"Doplňkové Kč\">1 146 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 18:00</td><td class=\"num\" data-label=\"Objednávky\">24</td><td class=\"num\" data-label=\"Obrat\">35 990 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">2</td><td class=\"num\" data-label=\"Bump netto Kč\">426 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">8</td><td class=\"num\" data-label=\"Doplňkové Kč\">1 580 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 17:00</td><td class=\"num\" data-label=\"Objednávky\">24</td><td class=\"num\" data-label=\"Obrat\">39 422 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">4</td><td class=\"num\" data-label=\"Bump netto Kč\">779 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">3</td><td class=\"num\" data-label=\"Doplňkové Kč\">510 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 16:00</td><td class=\"num\" data-label=\"Objednávky\">14</td><td class=\"num\" data-label=\"Obrat\">21 447 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">3</td><td class=\"num\" data-label=\"Bump netto Kč\">771 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">1</td><td class=\"num\" data-label=\"Doplňkové Kč\">215 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 15:00</td><td class=\"num\" data-label=\"Objednávky\">19</td><td class=\"num\" data-label=\"Obrat\">37 202 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">2</td><td class=\"num\" data-label=\"Bump netto Kč\">615 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">4</td><td class=\"num\" data-label=\"Doplňkové Kč\">762 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 14:00</td><td class=\"num\" data-label=\"Objednávky\">15</td><td class=\"num\" data-label=\"Obrat\">23 406 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">119 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">6</td><td class=\"num\" data-label=\"Doplňkové Kč\">673 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 13:00</td><td class=\"num\" data-label=\"Objednávky\">15</td><td class=\"num\" data-label=\"Obrat\">26 185 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">-9</td><td class=\"num\" data-label=\"Bump netto Kč\">-3 409 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">6</td><td class=\"num\" data-label=\"Doplňkové Kč\">1 195 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 12:00</td><td class=\"num\" data-label=\"Objednávky\">14</td><td class=\"num\" data-label=\"Obrat\">31 301 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">2</td><td class=\"num\" data-label=\"Bump netto Kč\">201 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">1</td><td class=\"num\" data-label=\"Doplňkové Kč\">123 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 11:00</td><td class=\"num\" data-label=\"Objednávky\">19</td><td class=\"num\" data-label=\"Obrat\">38 312 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">4</td><td class=\"num\" data-label=\"Bump netto Kč\">836 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">2</td><td class=\"num\" data-label=\"Doplňkové Kč\">415 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 10:00</td><td class=\"num\" data-label=\"Objednávky\">14</td><td class=\"num\" data-label=\"Obrat\">26 699 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">1</td><td class=\"num\" data-label=\"Bump netto Kč\">250 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">2</td><td class=\"num\" data-label=\"Doplňkové Kč\">298 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 09:00</td><td class=\"num\" data-label=\"Objednávky\">19</td><td class=\"num\" data-label=\"Obrat\">32 128 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">0</td><td class=\"num\" data-label=\"Bump netto Kč\">-213 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">2</td><td class=\"num\" data-label=\"Doplňkové Kč\">760 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 08:00</td><td class=\"num\" data-label=\"Objednávky\">14</td><td class=\"num\" data-label=\"Obrat\">21 204 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">2</td><td class=\"num\" data-label=\"Bump netto Kč\">250 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">2</td><td class=\"num\" data-label=\"Doplňkové Kč\">684 Kč</td></tr><tr><td data-label=\"Hodina\">17.05. 07:00</td><td class=\"num\" data-label=\"Objednávky\">8</td><td class=\"num\" data-label=\"Obrat\">15 238 Kč</td><td class=\"num\" data-label=\"Bump netto ks\">3</td><td class=\"num\" data-label=\"Bump netto Kč\">1 133 Kč</td><td class=\"num\" data-label=\"Doplňkové ks\">3</td><td class=\"num\" data-label=\"Doplňkové Kč\">871 Kč</td></tr></tbody></table></div>",
+    "chart_html": "<svg viewBox=\"0 0 1120 382\" class=\"chartsvg\" role=\"img\" aria-label=\"Hodinový graf v korunách\">\n<rect x=\"0\" y=\"0\" width=\"1120\" height=\"382\" fill=\"#ffffff\" rx=\"14\"/>\n<line x1=\"72\" y1=\"18.0\" x2=\"1102\" y2=\"18.0\" stroke=\"#dbe6f1\" stroke-width=\"1\"/>\n<text x=\"8\" y=\"22.0\" fill=\"#64748b\" font-size=\"11\">76 230 Kč</text>\n<line x1=\"72\" y1=\"94.5\" x2=\"1102\" y2=\"94.5\" stroke=\"#dbe6f1\" stroke-width=\"1\"/>\n<text x=\"8\" y=\"98.5\" fill=\"#64748b\" font-size=\"11\">57 173 Kč</text>\n<line x1=\"72\" y1=\"171.0\" x2=\"1102\" y2=\"171.0\" stroke=\"#dbe6f1\" stroke-width=\"1\"/>\n<text x=\"8\" y=\"175.0\" fill=\"#64748b\" font-size=\"11\">38 115 Kč</text>\n<line x1=\"72\" y1=\"247.5\" x2=\"1102\" y2=\"247.5\" stroke=\"#dbe6f1\" stroke-width=\"1\"/>\n<text x=\"8\" y=\"251.5\" fill=\"#64748b\" font-size=\"11\">19 058 Kč</text>\n<line x1=\"72\" y1=\"324.0\" x2=\"1102\" y2=\"324.0\" stroke=\"#dbe6f1\" stroke-width=\"1\"/>\n<text x=\"8\" y=\"328.0\" fill=\"#64748b\" font-size=\"11\">0 Kč</text>\n<rect x=\"75.5\" y=\"262.8\" width=\"14.5\" height=\"61.2\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 07:00 · Objednávky: 15 238 Kč · součet: 15 238 Kč</title></rect>\n<rect x=\"75.5\" y=\"258.3\" width=\"14.5\" height=\"4.5\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 07:00 · Bump netto: 1 133 Kč · součet: 16 371 Kč</title></rect>\n<rect x=\"75.5\" y=\"254.8\" width=\"14.5\" height=\"3.5\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 07:00 · Doplňkové přidáno: 871 Kč · součet: 17 242 Kč</title></rect>\n<text x=\"82.7\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">07</text>\n<text x=\"82.7\" y=\"372\" text-anchor=\"middle\" fill=\"#334155\" font-size=\"10\" font-weight=\"700\">17.05.</text>\n<rect x=\"97.0\" y=\"238.9\" width=\"14.5\" height=\"85.1\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 08:00 · Objednávky: 21 204 Kč · součet: 21 204 Kč</title></rect>\n<rect x=\"97.0\" y=\"237.9\" width=\"14.5\" height=\"1.0\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 08:00 · Bump netto: 250 Kč · součet: 21 454 Kč</title></rect>\n<rect x=\"97.0\" y=\"235.1\" width=\"14.5\" height=\"2.7\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 08:00 · Doplňkové přidáno: 684 Kč · součet: 22 138 Kč</title></rect>\n<rect x=\"118.4\" y=\"195.0\" width=\"14.5\" height=\"129.0\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 09:00 · Objednávky: 32 128 Kč · součet: 32 128 Kč</title></rect>\n<rect x=\"118.4\" y=\"192.0\" width=\"14.5\" height=\"3.1\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 09:00 · Doplňkové přidáno: 760 Kč · součet: 32 888 Kč</title></rect>\n<rect x=\"139.9\" y=\"216.8\" width=\"14.5\" height=\"107.2\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 10:00 · Objednávky: 26 699 Kč · součet: 26 699 Kč</title></rect>\n<rect x=\"139.9\" y=\"215.8\" width=\"14.5\" height=\"1.0\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 10:00 · Bump netto: 250 Kč · součet: 26 949 Kč</title></rect>\n<rect x=\"139.9\" y=\"214.6\" width=\"14.5\" height=\"1.2\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 10:00 · Doplňkové přidáno: 298 Kč · součet: 27 247 Kč</title></rect>\n<rect x=\"161.3\" y=\"170.2\" width=\"14.5\" height=\"153.8\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 11:00 · Objednávky: 38 312 Kč · součet: 38 312 Kč</title></rect>\n<rect x=\"161.3\" y=\"166.9\" width=\"14.5\" height=\"3.4\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 11:00 · Bump netto: 836 Kč · součet: 39 148 Kč</title></rect>\n<rect x=\"161.3\" y=\"165.2\" width=\"14.5\" height=\"1.7\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 11:00 · Doplňkové přidáno: 415 Kč · součet: 39 564 Kč</title></rect>\n<text x=\"168.6\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">11</text>\n<rect x=\"182.8\" y=\"198.4\" width=\"14.5\" height=\"125.6\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 12:00 · Objednávky: 31 301 Kč · součet: 31 301 Kč</title></rect>\n<rect x=\"182.8\" y=\"197.5\" width=\"14.5\" height=\"0.8\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 12:00 · Bump netto: 201 Kč · součet: 31 502 Kč</title></rect>\n<rect x=\"182.8\" y=\"197.1\" width=\"14.5\" height=\"0.5\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 12:00 · Doplňkové přidáno: 123 Kč · součet: 31 625 Kč</title></rect>\n<rect x=\"204.2\" y=\"218.9\" width=\"14.5\" height=\"105.1\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 13:00 · Objednávky: 26 185 Kč · součet: 26 185 Kč</title></rect>\n<rect x=\"204.2\" y=\"214.1\" width=\"14.5\" height=\"4.8\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 13:00 · Doplňkové přidáno: 1 195 Kč · součet: 27 380 Kč</title></rect>\n<rect x=\"225.7\" y=\"230.0\" width=\"14.5\" height=\"94.0\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 14:00 · Objednávky: 23 406 Kč · součet: 23 406 Kč</title></rect>\n<rect x=\"225.7\" y=\"229.6\" width=\"14.5\" height=\"0.5\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 14:00 · Bump netto: 119 Kč · součet: 23 525 Kč</title></rect>\n<rect x=\"225.7\" y=\"226.9\" width=\"14.5\" height=\"2.7\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 14:00 · Doplňkové přidáno: 673 Kč · součet: 24 198 Kč</title></rect>\n<rect x=\"247.2\" y=\"174.7\" width=\"14.5\" height=\"149.3\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 15:00 · Objednávky: 37 202 Kč · součet: 37 202 Kč</title></rect>\n<rect x=\"247.2\" y=\"172.2\" width=\"14.5\" height=\"2.5\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 15:00 · Bump netto: 615 Kč · součet: 37 818 Kč</title></rect>\n<rect x=\"247.2\" y=\"169.1\" width=\"14.5\" height=\"3.1\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 15:00 · Doplňkové přidáno: 762 Kč · součet: 38 580 Kč</title></rect>\n<text x=\"254.4\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">15</text>\n<rect x=\"268.6\" y=\"237.9\" width=\"14.5\" height=\"86.1\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 16:00 · Objednávky: 21 447 Kč · součet: 21 447 Kč</title></rect>\n<rect x=\"268.6\" y=\"234.8\" width=\"14.5\" height=\"3.1\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 16:00 · Bump netto: 771 Kč · součet: 22 218 Kč</title></rect>\n<rect x=\"268.6\" y=\"234.0\" width=\"14.5\" height=\"0.9\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 16:00 · Doplňkové přidáno: 215 Kč · součet: 22 433 Kč</title></rect>\n<rect x=\"290.1\" y=\"165.8\" width=\"14.5\" height=\"158.2\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 17:00 · Objednávky: 39 422 Kč · součet: 39 422 Kč</title></rect>\n<rect x=\"290.1\" y=\"162.6\" width=\"14.5\" height=\"3.1\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 17:00 · Bump netto: 779 Kč · součet: 40 201 Kč</title></rect>\n<rect x=\"290.1\" y=\"160.6\" width=\"14.5\" height=\"2.0\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 17:00 · Doplňkové přidáno: 510 Kč · součet: 40 711 Kč</title></rect>\n<rect x=\"311.5\" y=\"179.5\" width=\"14.5\" height=\"144.5\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 18:00 · Objednávky: 35 990 Kč · součet: 35 990 Kč</title></rect>\n<rect x=\"311.5\" y=\"177.8\" width=\"14.5\" height=\"1.7\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 18:00 · Bump netto: 426 Kč · součet: 36 416 Kč</title></rect>\n<rect x=\"311.5\" y=\"171.5\" width=\"14.5\" height=\"6.3\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 18:00 · Doplňkové přidáno: 1 580 Kč · součet: 37 996 Kč</title></rect>\n<rect x=\"333.0\" y=\"160.1\" width=\"14.5\" height=\"163.9\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 19:00 · Objednávky: 40 842 Kč · součet: 40 842 Kč</title></rect>\n<rect x=\"333.0\" y=\"157.5\" width=\"14.5\" height=\"2.5\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 19:00 · Bump netto: 624 Kč · součet: 41 466 Kč</title></rect>\n<rect x=\"333.0\" y=\"152.9\" width=\"14.5\" height=\"4.6\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 19:00 · Doplňkové přidáno: 1 146 Kč · součet: 42 612 Kč</title></rect>\n<text x=\"340.2\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">19</text>\n<rect x=\"354.5\" y=\"98.8\" width=\"14.5\" height=\"225.2\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 20:00 · Objednávky: 56 104 Kč · součet: 56 104 Kč</title></rect>\n<rect x=\"354.5\" y=\"92.9\" width=\"14.5\" height=\"5.9\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 20:00 · Doplňkové přidáno: 1 460 Kč · součet: 57 564 Kč</title></rect>\n<rect x=\"375.9\" y=\"25.5\" width=\"14.5\" height=\"298.5\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 21:00 · Objednávky: 74 372 Kč · součet: 74 372 Kč</title></rect>\n<rect x=\"375.9\" y=\"21.4\" width=\"14.5\" height=\"4.0\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 21:00 · Bump netto: 1 000 Kč · součet: 75 371 Kč</title></rect>\n<rect x=\"375.9\" y=\"18.0\" width=\"14.5\" height=\"3.4\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 21:00 · Doplňkové přidáno: 859 Kč · součet: 76 230 Kč</title></rect>\n<rect x=\"397.4\" y=\"130.0\" width=\"14.5\" height=\"194.0\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 22:00 · Objednávky: 48 338 Kč · součet: 48 338 Kč</title></rect>\n<rect x=\"397.4\" y=\"125.8\" width=\"14.5\" height=\"4.1\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 22:00 · Bump netto: 1 029 Kč · součet: 49 366 Kč</title></rect>\n<rect x=\"397.4\" y=\"121.1\" width=\"14.5\" height=\"4.8\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 22:00 · Doplňkové přidáno: 1 188 Kč · součet: 50 554 Kč</title></rect>\n<rect x=\"418.8\" y=\"230.4\" width=\"14.5\" height=\"93.6\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>17.05. 23:00 · Objednávky: 23 306 Kč · součet: 23 306 Kč</title></rect>\n<rect x=\"418.8\" y=\"228.6\" width=\"14.5\" height=\"1.9\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>17.05. 23:00 · Bump netto: 465 Kč · součet: 23 771 Kč</title></rect>\n<rect x=\"418.8\" y=\"226.5\" width=\"14.5\" height=\"2.1\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>17.05. 23:00 · Doplňkové přidáno: 516 Kč · součet: 24 287 Kč</title></rect>\n<text x=\"426.1\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">23</text>\n<rect x=\"440.3\" y=\"295.3\" width=\"14.5\" height=\"28.7\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 00:00 · Objednávky: 7 138 Kč · součet: 7 138 Kč</title></rect>\n<rect x=\"440.3\" y=\"294.3\" width=\"14.5\" height=\"1.0\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 00:00 · Bump netto: 253 Kč · součet: 7 391 Kč</title></rect>\n<rect x=\"440.3\" y=\"291.6\" width=\"14.5\" height=\"2.7\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 00:00 · Doplňkové přidáno: 685 Kč · součet: 8 076 Kč</title></rect>\n<text x=\"447.5\" y=\"372\" text-anchor=\"middle\" fill=\"#334155\" font-size=\"10\" font-weight=\"700\">18.05.</text>\n<rect x=\"504.7\" y=\"317.8\" width=\"14.5\" height=\"6.2\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 03:00 · Objednávky: 1 537 Kč · součet: 1 537 Kč</title></rect>\n<text x=\"511.9\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">03</text>\n<rect x=\"526.1\" y=\"307.8\" width=\"14.5\" height=\"16.2\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 04:00 · Objednávky: 4 045 Kč · součet: 4 045 Kč</title></rect>\n<rect x=\"547.6\" y=\"313.7\" width=\"14.5\" height=\"10.3\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 05:00 · Objednávky: 2 562 Kč · součet: 2 562 Kč</title></rect>\n<rect x=\"547.6\" y=\"311.8\" width=\"14.5\" height=\"1.9\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 05:00 · Doplňkové přidáno: 465 Kč · součet: 3 027 Kč</title></rect>\n<rect x=\"569.0\" y=\"285.6\" width=\"14.5\" height=\"38.4\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 06:00 · Objednávky: 9 568 Kč · součet: 9 568 Kč</title></rect>\n<rect x=\"569.0\" y=\"285.1\" width=\"14.5\" height=\"0.5\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 06:00 · Doplňkové přidáno: 134 Kč · součet: 9 702 Kč</title></rect>\n<rect x=\"590.5\" y=\"256.1\" width=\"14.5\" height=\"67.9\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 07:00 · Objednávky: 16 916 Kč · součet: 16 916 Kč</title></rect>\n<rect x=\"590.5\" y=\"254.4\" width=\"14.5\" height=\"1.7\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 07:00 · Doplňkové přidáno: 434 Kč · součet: 17 350 Kč</title></rect>\n<text x=\"597.7\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">07</text>\n<rect x=\"612.0\" y=\"169.5\" width=\"14.5\" height=\"154.5\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 08:00 · Objednávky: 38 492 Kč · součet: 38 492 Kč</title></rect>\n<rect x=\"612.0\" y=\"167.2\" width=\"14.5\" height=\"2.3\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 08:00 · Bump netto: 577 Kč · součet: 39 069 Kč</title></rect>\n<rect x=\"612.0\" y=\"165.7\" width=\"14.5\" height=\"1.5\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 08:00 · Doplňkové přidáno: 362 Kč · součet: 39 431 Kč</title></rect>\n<rect x=\"633.4\" y=\"155.9\" width=\"14.5\" height=\"168.1\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 09:00 · Objednávky: 41 884 Kč · součet: 41 884 Kč</title></rect>\n<rect x=\"633.4\" y=\"154.1\" width=\"14.5\" height=\"1.7\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 09:00 · Bump netto: 434 Kč · součet: 42 318 Kč</title></rect>\n<rect x=\"633.4\" y=\"152.8\" width=\"14.5\" height=\"1.3\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 09:00 · Doplňkové přidáno: 331 Kč · součet: 42 649 Kč</title></rect>\n<rect x=\"654.9\" y=\"187.9\" width=\"14.5\" height=\"136.1\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 10:00 · Objednávky: 33 913 Kč · součet: 33 913 Kč</title></rect>\n<rect x=\"654.9\" y=\"186.4\" width=\"14.5\" height=\"1.5\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 10:00 · Bump netto: 364 Kč · součet: 34 277 Kč</title></rect>\n<rect x=\"676.3\" y=\"223.8\" width=\"14.5\" height=\"100.2\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 11:00 · Objednávky: 24 966 Kč · součet: 24 966 Kč</title></rect>\n<rect x=\"676.3\" y=\"221.8\" width=\"14.5\" height=\"2.0\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 11:00 · Bump netto: 505 Kč · součet: 25 471 Kč</title></rect>\n<rect x=\"676.3\" y=\"218.9\" width=\"14.5\" height=\"2.8\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 11:00 · Doplňkové přidáno: 699 Kč · součet: 26 170 Kč</title></rect>\n<text x=\"683.6\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">11</text>\n<rect x=\"697.8\" y=\"213.7\" width=\"14.5\" height=\"110.3\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 12:00 · Objednávky: 27 486 Kč · součet: 27 486 Kč</title></rect>\n<rect x=\"697.8\" y=\"212.7\" width=\"14.5\" height=\"1.0\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 12:00 · Bump netto: 250 Kč · součet: 27 736 Kč</title></rect>\n<rect x=\"697.8\" y=\"211.9\" width=\"14.5\" height=\"0.8\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 12:00 · Doplňkové přidáno: 201 Kč · součet: 27 937 Kč</title></rect>\n<rect x=\"719.2\" y=\"201.1\" width=\"14.5\" height=\"122.9\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 13:00 · Objednávky: 30 611 Kč · součet: 30 611 Kč</title></rect>\n<rect x=\"719.2\" y=\"197.6\" width=\"14.5\" height=\"3.6\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 13:00 · Bump netto: 887 Kč · součet: 31 497 Kč</title></rect>\n<rect x=\"719.2\" y=\"192.1\" width=\"14.5\" height=\"5.5\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 13:00 · Doplňkové přidáno: 1 372 Kč · součet: 32 869 Kč</title></rect>\n<rect x=\"740.7\" y=\"219.0\" width=\"14.5\" height=\"105.0\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 14:00 · Objednávky: 26 154 Kč · součet: 26 154 Kč</title></rect>\n<rect x=\"740.7\" y=\"217.5\" width=\"14.5\" height=\"1.5\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 14:00 · Bump netto: 385 Kč · součet: 26 539 Kč</title></rect>\n<rect x=\"740.7\" y=\"215.2\" width=\"14.5\" height=\"2.3\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 14:00 · Doplňkové přidáno: 574 Kč · součet: 27 113 Kč</title></rect>\n<rect x=\"762.2\" y=\"244.3\" width=\"14.5\" height=\"79.7\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 15:00 · Objednávky: 19 854 Kč · součet: 19 854 Kč</title></rect>\n<text x=\"769.4\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">15</text>\n<rect x=\"783.6\" y=\"269.3\" width=\"14.5\" height=\"54.7\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 16:00 · Objednávky: 13 635 Kč · součet: 13 635 Kč</title></rect>\n<rect x=\"783.6\" y=\"268.1\" width=\"14.5\" height=\"1.1\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 16:00 · Bump netto: 282 Kč · součet: 13 917 Kč</title></rect>\n<rect x=\"805.1\" y=\"209.0\" width=\"14.5\" height=\"115.0\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 17:00 · Objednávky: 28 659 Kč · součet: 28 659 Kč</title></rect>\n<rect x=\"805.1\" y=\"207.6\" width=\"14.5\" height=\"1.4\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 17:00 · Bump netto: 348 Kč · součet: 29 007 Kč</title></rect>\n<rect x=\"805.1\" y=\"194.4\" width=\"14.5\" height=\"13.1\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 17:00 · Doplňkové přidáno: 3 273 Kč · součet: 32 280 Kč</title></rect>\n<rect x=\"826.5\" y=\"175.2\" width=\"14.5\" height=\"148.8\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 18:00 · Objednávky: 37 066 Kč · součet: 37 066 Kč</title></rect>\n<rect x=\"826.5\" y=\"164.7\" width=\"14.5\" height=\"10.5\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 18:00 · Doplňkové přidáno: 2 626 Kč · součet: 39 692 Kč</title></rect>\n<rect x=\"848.0\" y=\"178.1\" width=\"14.5\" height=\"145.9\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 19:00 · Objednávky: 36 352 Kč · součet: 36 352 Kč</title></rect>\n<rect x=\"848.0\" y=\"168.8\" width=\"14.5\" height=\"9.3\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 19:00 · Doplňkové přidáno: 2 308 Kč · součet: 38 660 Kč</title></rect>\n<text x=\"855.2\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">19</text>\n<rect x=\"869.5\" y=\"133.2\" width=\"14.5\" height=\"190.8\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 20:00 · Objednávky: 47 536 Kč · součet: 47 536 Kč</title></rect>\n<rect x=\"869.5\" y=\"126.9\" width=\"14.5\" height=\"6.3\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 20:00 · Bump netto: 1 564 Kč · součet: 49 100 Kč</title></rect>\n<rect x=\"869.5\" y=\"119.3\" width=\"14.5\" height=\"7.6\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 20:00 · Doplňkové přidáno: 1 905 Kč · součet: 51 005 Kč</title></rect>\n<rect x=\"890.9\" y=\"123.9\" width=\"14.5\" height=\"200.1\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 21:00 · Objednávky: 49 850 Kč · součet: 49 850 Kč</title></rect>\n<rect x=\"890.9\" y=\"122.1\" width=\"14.5\" height=\"1.8\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 21:00 · Bump netto: 438 Kč · součet: 50 288 Kč</title></rect>\n<rect x=\"890.9\" y=\"118.3\" width=\"14.5\" height=\"3.9\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 21:00 · Doplňkové přidáno: 967 Kč · součet: 51 255 Kč</title></rect>\n<rect x=\"912.4\" y=\"163.5\" width=\"14.5\" height=\"160.5\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 22:00 · Objednávky: 39 988 Kč · součet: 39 988 Kč</title></rect>\n<rect x=\"912.4\" y=\"159.7\" width=\"14.5\" height=\"3.8\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 22:00 · Bump netto: 937 Kč · součet: 40 925 Kč</title></rect>\n<rect x=\"912.4\" y=\"156.4\" width=\"14.5\" height=\"3.4\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 22:00 · Doplňkové přidáno: 839 Kč · součet: 41 764 Kč</title></rect>\n<rect x=\"933.8\" y=\"231.1\" width=\"14.5\" height=\"92.9\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>18.05. 23:00 · Objednávky: 23 147 Kč · součet: 23 147 Kč</title></rect>\n<rect x=\"933.8\" y=\"230.1\" width=\"14.5\" height=\"1.0\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>18.05. 23:00 · Bump netto: 248 Kč · součet: 23 395 Kč</title></rect>\n<rect x=\"933.8\" y=\"228.5\" width=\"14.5\" height=\"1.5\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>18.05. 23:00 · Doplňkové přidáno: 385 Kč · součet: 23 780 Kč</title></rect>\n<text x=\"941.1\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">23</text>\n<rect x=\"955.3\" y=\"316.8\" width=\"14.5\" height=\"7.2\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>19.05. 00:00 · Objednávky: 1 786 Kč · součet: 1 786 Kč</title></rect>\n<text x=\"962.5\" y=\"372\" text-anchor=\"middle\" fill=\"#334155\" font-size=\"10\" font-weight=\"700\">19.05.</text>\n<rect x=\"998.2\" y=\"323.5\" width=\"14.5\" height=\"0.5\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>19.05. 02:00 · Bump netto: 120 Kč · součet: 120 Kč</title></rect>\n<rect x=\"998.2\" y=\"322.4\" width=\"14.5\" height=\"1.1\" rx=\"2\" fill=\"#db2777\" opacity=\"0.92\"><title>19.05. 02:00 · Doplňkové přidáno: 282 Kč · součet: 402 Kč</title></rect>\n<text x=\"1026.9\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">03</text>\n<rect x=\"1041.1\" y=\"317.6\" width=\"14.5\" height=\"6.4\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>19.05. 04:00 · Objednávky: 1 603 Kč · součet: 1 603 Kč</title></rect>\n<rect x=\"1062.6\" y=\"301.3\" width=\"14.5\" height=\"22.7\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>19.05. 05:00 · Objednávky: 5 655 Kč · součet: 5 655 Kč</title></rect>\n<rect x=\"1084.0\" y=\"315.4\" width=\"14.5\" height=\"8.6\" rx=\"2\" fill=\"#1d4ed8\" opacity=\"0.92\"><title>19.05. 06:00 · Objednávky: 2 132 Kč · součet: 2 132 Kč</title></rect>\n<rect x=\"1084.0\" y=\"313.3\" width=\"14.5\" height=\"2.2\" rx=\"2\" fill=\"#16a34a\" opacity=\"0.92\"><title>19.05. 06:00 · Bump netto: 542 Kč · součet: 2 674 Kč</title></rect>\n<text x=\"1091.3\" y=\"354\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"10\">06</text>\n<text x=\"72\" y=\"372\" fill=\"#64748b\" font-size=\"10\">částky po hodinách v Kč, složené sloupce, bump je netto</text>\n</svg>"
+  }
+}
