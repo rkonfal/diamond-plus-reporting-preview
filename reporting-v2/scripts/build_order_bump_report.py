@@ -18,7 +18,7 @@ CURRENT_DIR = ROOT / 'data' / 'current'
 TARGET_HTML = SITE_DIR / 'order-bump.html'
 TARGET_JSON = CURRENT_DIR / 'order_bump_report.json'
 DEFAULT_HOST = os.environ.get('ORDER_BUMP_SSH_HOST', 'root@70.34.246.98')
-DEFAULT_HOURS = int(os.environ.get('ORDER_BUMP_REPORT_HOURS', '48'))
+DEFAULT_HOURS = int(os.environ.get('ORDER_BUMP_REPORT_HOURS', '720'))
 SSH_KEY = os.environ.get('ORDER_BUMP_SSH_KEY', str(Path.home() / '.ssh' / 'rudolf_tiande_key'))
 MAIN_DB = 'main_db'
 WAREHOUSE_DB = 'eshop_analytics'
@@ -50,6 +50,14 @@ def parse_timestamp(value: str) -> datetime:
     normalized = (value or '').strip()
     if normalized.endswith('+00'):
         normalized = normalized[:-3] + '+00:00'
+    if '.' in normalized:
+        main, fractional = normalized.split('.', 1)
+        tz_sep = max(fractional.rfind('+'), fractional.rfind('-'))
+        if tz_sep > 0:
+            micros = fractional[:tz_sep]
+            tz = fractional[tz_sep:]
+            if micros.isdigit() and 1 <= len(micros) <= 6:
+                normalized = f"{main}.{micros.ljust(6, '0')}{tz}"
     parsed = datetime.fromisoformat(normalized)
     return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
 
@@ -174,8 +182,57 @@ def local_label(value: datetime) -> str:
     return local_dt(value).strftime('%d.%m. %H:%M')
 
 
+def local_day_label(value: datetime) -> str:
+    return local_dt(value).strftime('%d.%m.')
+
+
 def short_hour(value: datetime) -> str:
     return local_dt(value).strftime('%H')
+
+
+def granularity_for_window(hours_back: int) -> str:
+    return 'day' if hours_back > 168 else 'hour'
+
+
+def bucket_key(value: datetime, granularity: str) -> datetime:
+    if granularity == 'day':
+        local = local_dt(value)
+        local_start = local.replace(hour=0, minute=0, second=0, microsecond=0)
+        return local_start.astimezone(timezone.utc)
+    return hour_key(value)
+
+
+def bucket_label(value: datetime, granularity: str) -> str:
+    return local_day_label(value) if granularity == 'day' else local_label(value)
+
+
+def bucket_short_label(value: datetime, granularity: str) -> str:
+    return local_dt(value).strftime('%d.%m.') if granularity == 'day' else short_hour(value)
+
+
+def build_bucket_range(cutoff: datetime, now: datetime, granularity: str) -> list[datetime]:
+    if granularity == 'day':
+        cursor_local = local_dt(cutoff).replace(hour=0, minute=0, second=0, microsecond=0)
+        last_local = local_dt(now).replace(hour=0, minute=0, second=0, microsecond=0)
+        cursor = cursor_local.astimezone(timezone.utc)
+        last = last_local.astimezone(timezone.utc)
+        step = timedelta(days=1)
+    else:
+        cursor = hour_key(cutoff)
+        last = hour_key(now)
+        step = timedelta(hours=1)
+    buckets: list[datetime] = []
+    while cursor <= last:
+        buckets.append(cursor)
+        cursor += step
+    return buckets
+
+
+def window_label(hours_back: int) -> str:
+    if hours_back % 24 == 0 and hours_back >= 24:
+        days = hours_back // 24
+        return f'posledních {days} dní'
+    return f'posledních {hours_back} hodin'
 
 
 def event_value_czk(event: EventRow, sk_fx_rate: float) -> float:
@@ -203,7 +260,7 @@ def table_html(headers: list[str], rows: list[list[Any]], numeric_indexes: set[i
     return f'<div class="ux-table-wrap order-bump-table-wrap"><table class="table mobile-stack"><thead><tr>{thead}</tr></thead><tbody>{"".join(body_rows)}</tbody></table></div>'
 
 
-def svg_value_chart(hours: list[datetime], hourly: dict[datetime, Counter[str]]) -> str:
+def svg_value_chart(buckets: list[datetime], series_data: dict[datetime, Counter[str]], *, granularity: str) -> str:
     width = 1120
     height = 382
     left = 72
@@ -213,12 +270,12 @@ def svg_value_chart(hours: list[datetime], hourly: dict[datetime, Counter[str]])
     plot_w = width - left - right
     plot_h = height - top - bottom
     gap = 7
-    bar_w = max(5.0, (plot_w / max(len(hours), 1)) - gap)
+    bar_w = max(5.0, (plot_w / max(len(buckets), 1)) - gap)
     max_value = max([
-        max(hourly[hour]['orders_value_czk'], 0)
-        + max(hourly[hour]['bump_net_value_czk'], 0)
-        + max(hourly[hour]['related_added_value_czk'], 0)
-        for hour in hours
+        max(series_data[bucket]['orders_value_czk'], 0)
+        + max(series_data[bucket]['bump_net_value_czk'], 0)
+        + max(series_data[bucket]['related_added_value_czk'], 0)
+        for bucket in buckets
     ] or [1])
     grid_max = max(max_value, 1)
     series = (
@@ -227,7 +284,7 @@ def svg_value_chart(hours: list[datetime], hourly: dict[datetime, Counter[str]])
         ('related_added_value_czk', '#db2777', 'Doplňkové přidáno'),
     )
     parts = [
-        '<svg viewBox="0 0 1120 382" class="chartsvg" role="img" aria-label="Hodinový graf v korunách">',
+        f'<svg viewBox="0 0 1120 382" class="chartsvg" role="img" aria-label="{"Denní" if granularity == "day" else "Hodinový"} graf v korunách">',
         '<rect x="0" y="0" width="1120" height="382" fill="#ffffff" rx="14"/>',
     ]
     for index in range(5):
@@ -235,29 +292,31 @@ def svg_value_chart(hours: list[datetime], hourly: dict[datetime, Counter[str]])
         y = top + plot_h * index / 4
         parts.append(f'<line x1="{left}" y1="{y:.1f}" x2="{width - right}" y2="{y:.1f}" stroke="#dbe6f1" stroke-width="1"/>')
         parts.append(f'<text x="8" y="{y + 4:.1f}" fill="#64748b" font-size="11">{format_money(value)}</text>')
-    group_w = plot_w / max(len(hours), 1)
-    for index, hour in enumerate(hours):
+    group_w = plot_w / max(len(buckets), 1)
+    label_stride = 3 if granularity == 'day' else 4
+    for index, bucket in enumerate(buckets):
         base_x = left + index * group_w + max((group_w - bar_w) / 2, 0)
         stack_y = top + plot_h
         total_value = 0.0
         for key, color, label in series:
-            value = max(hourly[hour][key], 0)
+            value = max(series_data[bucket][key], 0)
             if value <= 0:
                 continue
             bar_h = plot_h * value / grid_max
             y = stack_y - bar_h
             total_value += value
-            title = f'{local_label(hour)} · {label}: {format_money(value)} · součet: {format_money(total_value)}'
+            title = f'{bucket_label(bucket, granularity)} · {label}: {format_money(value)} · součet: {format_money(total_value)}'
             parts.append(
                 f'<rect x="{base_x:.1f}" y="{y:.1f}" width="{bar_w:.1f}" height="{bar_h:.1f}" rx="2" fill="{color}" opacity="0.92">'
                 f'<title>{html.escape(title)}</title></rect>'
             )
             stack_y = y
-        if index % 4 == 0 or index == len(hours) - 1:
-            parts.append(f'<text x="{base_x + bar_w / 2:.1f}" y="354" text-anchor="middle" fill="#64748b" font-size="10">{short_hour(hour)}</text>')
-        if index == 0 or local_dt(hour).hour == 0:
-            parts.append(f'<text x="{base_x + bar_w / 2:.1f}" y="372" text-anchor="middle" fill="#334155" font-size="10" font-weight="700">{local_dt(hour).strftime("%d.%m.")}</text>')
-    parts.append('<text x="72" y="372" fill="#64748b" font-size="10">částky po hodinách v Kč, složené sloupce, bump je netto</text>')
+        if index % label_stride == 0 or index == len(buckets) - 1:
+            parts.append(f'<text x="{base_x + bar_w / 2:.1f}" y="354" text-anchor="middle" fill="#64748b" font-size="10">{bucket_short_label(bucket, granularity)}</text>')
+        if granularity == 'hour' and (index == 0 or local_dt(bucket).hour == 0):
+            parts.append(f'<text x="{base_x + bar_w / 2:.1f}" y="372" text-anchor="middle" fill="#334155" font-size="10" font-weight="700">{local_dt(bucket).strftime("%d.%m.")}</text>')
+    footer_note = 'částky po dnech v Kč, složené sloupce, bump je netto' if granularity == 'day' else 'částky po hodinách v Kč, složené sloupce, bump je netto'
+    parts.append(f'<text x="72" y="372" fill="#64748b" font-size="10">{footer_note}</text>')
     parts.append('</svg>')
     return '\n'.join(parts)
 
@@ -292,24 +351,77 @@ def build_related_rows(stats: dict[tuple[int, str, str, str], Counter[str]], *, 
     return rows
 
 
+def build_bump_take_rate_rows(stats: dict[tuple[int, str, str, str], Counter[str]], *, limit: int = 12, min_decisions: int = 10) -> list[list[str]]:
+    ranked: list[tuple[tuple[int, str, str, str], Counter[str], float, int]] = []
+    for key, values in stats.items():
+        accepted = int(values['accepted_count'])
+        dismissed = int(values['dismissed_count'])
+        decisions = accepted + dismissed
+        if decisions < min_decisions:
+            continue
+        take_rate = accepted / decisions if decisions else 0.0
+        ranked.append((key, values, take_rate, decisions))
+    ranked.sort(key=lambda item: (item[2], item[3], item[1]['net_value_czk']), reverse=True)
+    rows: list[list[str]] = []
+    for (_product_id, product_code, product_name, market), values, take_rate, decisions in ranked[:limit]:
+        rows.append([
+            market,
+            product_code,
+            product_name[:90],
+            format_int(int(values['accepted_count'])),
+            format_int(int(values['dismissed_count'])),
+            format_int(decisions),
+            format_pct(values['accepted_count'], decisions),
+            format_money(values['net_value_czk']),
+        ])
+    return rows
+
+
+def build_bump_weak_rows(stats: dict[tuple[int, str, str, str], Counter[str]], *, limit: int = 12, min_decisions: int = 10) -> list[list[str]]:
+    ranked: list[tuple[tuple[int, str, str, str], Counter[str], float, int]] = []
+    for key, values in stats.items():
+        accepted = int(values['accepted_count'])
+        dismissed = int(values['dismissed_count'])
+        decisions = accepted + dismissed
+        if decisions < min_decisions:
+            continue
+        take_rate = accepted / decisions if decisions else 0.0
+        ranked.append((key, values, take_rate, decisions))
+    ranked.sort(key=lambda item: (item[2], item[1]['net_value_czk'], -item[3]))
+    rows: list[list[str]] = []
+    for (_product_id, product_code, product_name, market), values, take_rate, decisions in ranked[:limit]:
+        rows.append([
+            market,
+            product_code,
+            product_name[:90],
+            format_int(int(values['accepted_count'])),
+            format_int(int(values['dismissed_count'])),
+            format_int(decisions),
+            format_pct(values['accepted_count'], decisions),
+            format_money(values['net_value_czk']),
+        ])
+    return rows
+
+
 def build_report(hours_back: int = DEFAULT_HOURS) -> dict[str, Any]:
     now = datetime.now(timezone.utc)
     cutoff = now - timedelta(hours=hours_back)
+    granularity = granularity_for_window(hours_back)
     events = fetch_events(cutoff=cutoff)
     orders = fetch_orders(cutoff=cutoff)
 
     sk_rates = [order.fx_rate_used for order in orders if order.market == 'SK' and order.fx_rate_used > 1]
     sk_fx_rate = sum(sk_rates) / len(sk_rates) if sk_rates else 25.0
 
-    hourly: dict[datetime, Counter[str]] = defaultdict(Counter)
+    series_data: dict[datetime, Counter[str]] = defaultdict(Counter)
     orders_by_market = Counter()
     revenue_czk = 0.0
     for order in orders:
         revenue_czk += order.order_total_czk
         orders_by_market[order.market] += 1
-        hk = hour_key(order.created_at)
-        hourly[hk]['orders_count'] += 1
-        hourly[hk]['orders_value_czk'] += order.order_total_czk
+        bucket = bucket_key(order.created_at, granularity)
+        series_data[bucket]['orders_count'] += 1
+        series_data[bucket]['orders_value_czk'] += order.order_total_czk
 
     bump_stats: dict[tuple[int, str, str, str], Counter[str]] = defaultdict(Counter)
     related_stats: dict[tuple[int, str, str, str], Counter[str]] = defaultdict(Counter)
@@ -319,7 +431,7 @@ def build_report(hours_back: int = DEFAULT_HOURS) -> dict[str, Any]:
     for event in events:
         value_czk = event_value_czk(event, sk_fx_rate)
         key = product_key(event)
-        hk = hour_key(event.created_at)
+        bucket = bucket_key(event.created_at, granularity)
         event_counts[(event.event_type, event.market)] += 1
         event_values[(event.event_type, event.market)] += value_czk
         if event.event_type == 'order_bump_accepted':
@@ -327,20 +439,20 @@ def build_report(hours_back: int = DEFAULT_HOURS) -> dict[str, Any]:
             bump_stats[key]['net_count'] += 1
             bump_stats[key]['accepted_value_czk'] += value_czk
             bump_stats[key]['net_value_czk'] += value_czk
-            hourly[hk]['bump_net_count'] += 1
-            hourly[hk]['bump_net_value_czk'] += value_czk
+            series_data[bucket]['bump_net_count'] += 1
+            series_data[bucket]['bump_net_value_czk'] += value_czk
         elif event.event_type == 'order_bump_dismissed':
             bump_stats[key]['dismissed_count'] += 1
             bump_stats[key]['net_count'] -= 1
             bump_stats[key]['dismissed_value_czk'] += value_czk
             bump_stats[key]['net_value_czk'] -= value_czk
-            hourly[hk]['bump_net_count'] -= 1
-            hourly[hk]['bump_net_value_czk'] -= value_czk
+            series_data[bucket]['bump_net_count'] -= 1
+            series_data[bucket]['bump_net_value_czk'] -= value_czk
         elif event.event_type == 'cart_related_added':
             related_stats[key]['added_count'] += 1
             related_stats[key]['added_value_czk'] += value_czk
-            hourly[hk]['related_added_count'] += 1
-            hourly[hk]['related_added_value_czk'] += value_czk
+            series_data[bucket]['related_added_count'] += 1
+            series_data[bucket]['related_added_value_czk'] += value_czk
 
     bump_accepted = sum(event_counts[('order_bump_accepted', market)] for market in ('CZ', 'SK'))
     bump_dismissed = sum(event_counts[('order_bump_dismissed', market)] for market in ('CZ', 'SK'))
@@ -349,12 +461,7 @@ def build_report(hours_back: int = DEFAULT_HOURS) -> dict[str, Any]:
     related_added = sum(event_counts[('cart_related_added', market)] for market in ('CZ', 'SK'))
     related_added_value = sum(event_values[('cart_related_added', market)] for market in ('CZ', 'SK'))
 
-    hours = []
-    cursor = hour_key(cutoff)
-    last_hour = hour_key(now)
-    while cursor <= last_hour:
-        hours.append(cursor)
-        cursor += timedelta(hours=1)
+    buckets = build_bucket_range(cutoff, now, granularity)
 
     market_rows: list[list[str]] = []
     market_rows_raw: list[dict[str, Any]] = []
@@ -390,12 +497,12 @@ def build_report(hours_back: int = DEFAULT_HOURS) -> dict[str, Any]:
             'related_added_value_czk': round(related_value, 2),
         })
 
-    hourly_rows: list[list[str]] = []
-    hourly_rows_raw: list[dict[str, Any]] = []
-    for hour in reversed(hours[-48:]):
-        counts = hourly[hour]
-        hourly_rows.append([
-            local_label(hour),
+    detail_rows: list[list[str]] = []
+    detail_rows_raw: list[dict[str, Any]] = []
+    for bucket in reversed(buckets):
+        counts = series_data[bucket]
+        detail_rows.append([
+            bucket_label(bucket, granularity),
             format_int(int(counts['orders_count'])),
             format_money(counts['orders_value_czk']),
             format_int(int(counts['bump_net_count'])),
@@ -403,9 +510,9 @@ def build_report(hours_back: int = DEFAULT_HOURS) -> dict[str, Any]:
             format_int(int(counts['related_added_count'])),
             format_money(counts['related_added_value_czk']),
         ])
-        hourly_rows_raw.append({
-            'hour_start_utc': hour.isoformat(),
-            'hour_label_local': local_label(hour),
+        detail_rows_raw.append({
+            'bucket_start_utc': bucket.isoformat(),
+            'bucket_label_local': bucket_label(bucket, granularity),
             'orders_count': int(counts['orders_count']),
             'orders_value_czk': round(counts['orders_value_czk'], 2),
             'bump_net_count': int(counts['bump_net_count']),
@@ -440,18 +547,22 @@ def build_report(hours_back: int = DEFAULT_HOURS) -> dict[str, Any]:
             'addon_value_czk': round(bump_net_value + related_added_value, 2),
             'addon_share_pct': round(((bump_net_value + related_added_value) / revenue_czk * 100) if revenue_czk else 0.0, 2),
         },
+        'granularity': granularity,
+        'window_label': window_label(hours_back),
         'market_breakdown': market_rows_raw,
         'tables': {
             'bump_by_count': build_product_rows(bump_stats, sort_key='net_count'),
             'bump_by_value': build_product_rows(bump_stats, sort_key='net_value_czk'),
+            'bump_take_rate': build_bump_take_rate_rows(bump_stats),
+            'bump_weak': build_bump_weak_rows(bump_stats),
             'related_by_count': build_related_rows(related_stats, sort_key='added_count'),
             'related_by_value': build_related_rows(related_stats, sort_key='added_value_czk'),
-            'hourly': hourly_rows_raw,
+            'detail': detail_rows_raw,
         },
-        'chart_hours_utc': [hour.isoformat() for hour in hours[-48:]],
+        'chart_buckets_utc': [bucket.isoformat() for bucket in buckets],
     }
 
-    chart_html = svg_value_chart(hours[-48:], hourly)
+    chart_html = svg_value_chart(buckets, series_data, granularity=granularity)
     data['rendered'] = {
         'kpi_order_count': format_int(len(orders)),
         'kpi_revenue_czk': format_money(revenue_czk),
@@ -464,17 +575,182 @@ def build_report(hours_back: int = DEFAULT_HOURS) -> dict[str, Any]:
         'market_table': table_html(['Trh', 'Objednávky', 'Obrat', 'Bump +', 'Bump -', 'Bump netto', 'Bump netto Kč', 'Doplňkové +', 'Doplňkové Kč'], market_rows, {1, 2, 3, 4, 5, 6, 7, 8}),
         'bump_count_table': table_html(['Trh', 'Kód', 'Produkt', 'Přidáno', 'Odebráno', 'Netto', 'Netto Kč'], data['tables']['bump_by_count'], {3, 4, 5, 6}),
         'bump_value_table': table_html(['Trh', 'Kód', 'Produkt', 'Přidáno', 'Odebráno', 'Netto', 'Netto Kč'], data['tables']['bump_by_value'], {3, 4, 5, 6}),
+        'bump_take_rate_table': table_html(['Trh', 'Kód', 'Produkt', 'Přidáno', 'Odebráno', 'Rozhodnutí', 'Take rate proxy', 'Netto Kč'], data['tables']['bump_take_rate'], {3, 4, 5, 6, 7}),
+        'bump_weak_table': table_html(['Trh', 'Kód', 'Produkt', 'Přidáno', 'Odebráno', 'Rozhodnutí', 'Take rate proxy', 'Netto Kč'], data['tables']['bump_weak'], {3, 4, 5, 6, 7}),
         'related_count_table': table_html(['Trh', 'Kód', 'Produkt', 'Přidáno', 'Částka'], data['tables']['related_by_count'], {3, 4}),
         'related_value_table': table_html(['Trh', 'Kód', 'Produkt', 'Přidáno', 'Částka'], data['tables']['related_by_value'], {3, 4}),
-        'hourly_table': table_html(['Hodina', 'Objednávky', 'Obrat', 'Bump netto ks', 'Bump netto Kč', 'Doplňkové ks', 'Doplňkové Kč'], hourly_rows, {1, 2, 3, 4, 5, 6}),
+        'chart_title': 'Denní průběh' if granularity == 'day' else 'Hodinový průběh',
+        'chart_subtitle': 'Objednávky, bump a doplňky po dnech.' if granularity == 'day' else 'Objednávky, bump a doplňky v jednom grafu.',
+        'detail_title': 'Denní data' if granularity == 'day' else 'Hodinová data',
+        'detail_label': 'Den' if granularity == 'day' else 'Hodina',
+        'detail_table': table_html(['Den' if granularity == 'day' else 'Hodina', 'Objednávky', 'Obrat', 'Bump netto ks', 'Bump netto Kč', 'Doplňkové ks', 'Doplňkové Kč'], detail_rows, {1, 2, 3, 4, 5, 6}),
         'chart_html': chart_html,
     }
     return data
 
 
-def render_page(report: dict[str, Any]) -> str:
-    metrics = report['metrics']
+def render_window_block(report: dict[str, Any], *, window_key: str, active: bool, include_30d_summary: bool = False) -> str:
     rendered = report['rendered']
+    hidden_attr = '' if active else ' hidden'
+    summary_block = ''
+    if include_30d_summary:
+        summary_block = f'''
+    <section class="layer-shell order-bump-top30-section">
+      <div class="layer-head compact">
+        <div>
+          <div class="layer-label">Top 30 dní</div>
+          <h2 class="layer-title">Nejsilnější bump produkty</h2>
+          <p class="layer-subtitle">Jedno pořadí podle Kč, druhé podle take rate proxy z přijetí vs. odebrání.</p>
+        </div>
+      </div>
+      <section class="grid order-bump-grid order-bump-top30-grid order-bump-top30-grid-3">
+        <article class="card">
+          <h2 class="ux-section-title">Top podle netto Kč</h2>
+          {rendered['bump_value_table']}
+        </article>
+        <article class="card">
+          <h2 class="ux-section-title">Top podle take rate proxy</h2>
+          {rendered['bump_take_rate_table']}
+        </article>
+        <article class="card">
+          <h2 class="ux-section-title">Nejslabší za 30 dní</h2>
+          {rendered['bump_weak_table']}
+        </article>
+      </section>
+    </section>'''
+    return f'''
+    <section class="order-bump-window-block" data-window-block="{window_key}"{hidden_attr}>
+      <header class="header order-bump-hero">
+        <div class="order-bump-hero-head">
+          <div>
+            <div class="ux-kicker">E-shop • order bump</div>
+            <h1 class="ux-title">Order bump a doplňky</h1>
+            <p class="ux-subtitle">Jednoduchý přehled toho, kolik přidávají bump nabídky a doplňkové produkty za {html.escape(report['window_label'])}.</p>
+          </div>
+          <div class="order-bump-controls">
+            <div class="order-bump-window-switch" role="tablist" aria-label="Výběr okna">
+              <button class="order-bump-window-btn{' is-active' if window_key == '7d' else ''}" data-window-target="7d" aria-pressed="{'true' if window_key == '7d' else 'false'}">7 dní</button>
+              <button class="order-bump-window-btn{' is-active' if window_key == '30d' else ''}" data-window-target="30d" aria-pressed="{'true' if window_key == '30d' else 'false'}">30 dní</button>
+            </div>
+            <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+          </div>
+        </div>
+
+        <div class="order-bump-meta-card">
+          <div><strong>Aktualizováno:</strong> {html.escape(report['generated_at_local'])} (CEST)</div>
+          <div><strong>Okno:</strong> {html.escape(report['window_start_local'])} až {html.escape(report['window_end_local'])}</div>
+        </div>
+
+        <section class="order-bump-kpis">
+          <article class="kpi">
+            <div class="lbl">Skutečné objednávky</div>
+            <div class="val">{rendered['kpi_order_count']}</div>
+            <div class="sub2">Obrat {rendered['kpi_revenue_czk']}</div>
+          </article>
+          <article class="kpi">
+            <div class="lbl">Bump netto</div>
+            <div class="val">{rendered['kpi_bump_net']}</div>
+            <div class="sub2">{rendered['kpi_bump_sub']}</div>
+          </article>
+          <article class="kpi">
+            <div class="lbl">Doplňkové přidáno</div>
+            <div class="val">{rendered['kpi_related_added']}</div>
+            <div class="sub2">Hodnota {rendered['kpi_related_value']}</div>
+          </article>
+          <article class="kpi kpi-accent">
+            <div class="lbl">Celkový přínos</div>
+            <div class="val">{rendered['kpi_addon_value']}</div>
+            <div class="sub2">{rendered['kpi_addon_share']} proti obratu objednávek</div>
+          </article>
+        </section>
+      </header>
+
+      <section class="layer-shell order-bump-summary-section">
+        <div class="layer-head compact">
+          <div>
+            <div class="layer-label">Shrnutí</div>
+            <h2 class="layer-title">Co je důležité</h2>
+          </div>
+        </div>
+        <div class="order-bump-note">Report bere jen skutečně započtené objednávky. Bump netto je rozdíl mezi přidanými a odebranými nabídkami. Doplňky jsou samostatně přidané související produkty. SK hodnoty přepočítáváme kurzem <strong>{report['sk_fx_rate']:.2f} Kč/EUR</strong>.</div>
+      </section>
+
+      {summary_block}
+
+      <section class="layer-shell order-bump-trend-section">
+        <div class="layer-head compact">
+          <div>
+            <div class="layer-label">Trend</div>
+            <h2 class="layer-title">{rendered['chart_title']}</h2>
+            <p class="layer-subtitle">{rendered['chart_subtitle']}</p>
+          </div>
+        </div>
+        <div class="card order-bump-chart-card"><div class="legend"><span><i class="dot" style="background:#1d4ed8"></i>Objednávky</span><span><i class="dot" style="background:#16a34a"></i>Bump netto</span><span><i class="dot" style="background:#db2777"></i>Doplňkové přidáno</span></div>{rendered['chart_html']}</div>
+      </section>
+
+      <section class="layer-shell order-bump-market-section">
+        <div class="layer-head compact">
+          <div>
+            <div class="layer-label">Trhy</div>
+            <h2 class="layer-title">CZ vs. SK</h2>
+          </div>
+        </div>
+        <section class="card">{rendered['market_table']}</section>
+      </section>
+
+      <section class="layer-shell order-bump-products-section">
+        <div class="layer-head compact">
+          <div>
+            <div class="layer-label">Bump produkty</div>
+            <h2 class="layer-title">Které bumpy fungují</h2>
+          </div>
+        </div>
+        <section class="grid two-col order-bump-grid">
+          <article class="card">
+            <h2 class="ux-section-title">Nejčastější podle počtu</h2>
+            {rendered['bump_count_table']}
+          </article>
+          <article class="card">
+            <h2 class="ux-section-title">Nejsilnější podle částky</h2>
+            {rendered['bump_value_table']}
+          </article>
+        </section>
+      </section>
+
+      <section class="layer-shell order-bump-related-section">
+        <div class="layer-head compact">
+          <div>
+            <div class="layer-label">Doplňky</div>
+            <h2 class="layer-title">Které doplňky fungují</h2>
+          </div>
+        </div>
+        <section class="grid two-col order-bump-grid">
+          <article class="card">
+            <h2 class="ux-section-title">Nejčastější podle počtu</h2>
+            {rendered['related_count_table']}
+          </article>
+          <article class="card">
+            <h2 class="ux-section-title">Nejsilnější podle částky</h2>
+            {rendered['related_value_table']}
+          </article>
+        </section>
+      </section>
+
+      <section class="layer-shell order-bump-detail-section">
+        <div class="layer-head compact">
+          <div>
+            <div class="layer-label">Detail</div>
+            <h2 class="layer-title">{rendered['detail_title']}</h2>
+          </div>
+        </div>
+        <section class="card">{rendered['detail_table']}</section>
+      </section>
+    </section>'''
+
+
+def render_page(reports: dict[str, dict[str, Any]]) -> str:
+    report_7d = reports['7d']
+    report_30d = reports['30d']
     return f'''<!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -483,128 +759,35 @@ def render_page(report: dict[str, Any]) -> str:
   <title>Order bump, Reporting V2</title>
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
-<body class="page-stack">
-  <aside class="sidebar" data-sidebar-page="order-bump.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Order bump a doplňkové produkty" data-sidebar-section="E-shop" data-sidebar-footer="Plně vlastní report z order bump eventů a skutečných objednávek, bez závislosti na cloud HTML."></aside>
+<body class="page-stack page-order-bump" data-disable-section-nav="1">
+  <aside class="sidebar" data-sidebar-page="order-bump.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Order bump a doplňkové produkty" data-sidebar-section="E-shop" data-sidebar-footer="Přehled výkonu order bumpu a doplňkových produktů."></aside>
 
   <main class="main page-stack">
-    <header class="header">
-      <div class="ux-topbar">
-        <div class="ux-intro">
-          <div class="ux-kicker">E-shop • order bump performance</div>
-          <h1 class="ux-title">Order bump report v našem standardu</h1>
-          <p class="ux-subtitle">Vlastní report z <code>main_db.personalization_events</code> a <code>eshop_analytics.orders</code>. Aktuální okno, vlastní metodika, bez závislosti na cizím HTML.</p>
-          <div class="ux-actions">
-            <a class="ux-button secondary" href="eshop.html">E-shop</a>
-            <a class="ux-button secondary" href="index.html">Přehled</a>
-          </div>
-        </div>
-        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
-      </div>
-      <section class="order-bump-kpis">
-        <article class="kpi"><div class="lbl">Skutečné objednávky</div><div class="val">{rendered['kpi_order_count']}</div><div class="sub2">orders.is_counted=true · {rendered['kpi_revenue_czk']}</div></article>
-        <article class="kpi"><div class="lbl">Bump netto</div><div class="val">{rendered['kpi_bump_net']}</div><div class="sub2">{rendered['kpi_bump_sub']}</div></article>
-        <article class="kpi"><div class="lbl">Doplňkové přidáno</div><div class="val">{rendered['kpi_related_added']}</div><div class="sub2">cart_related_added · {rendered['kpi_related_value']}</div></article>
-        <article class="kpi"><div class="lbl">Add-on hodnota</div><div class="val">{rendered['kpi_addon_value']}</div><div class="sub2">{rendered['kpi_addon_share']} proti obratu objednávek</div></article>
-      </section>
-      <div class="status-strip" id="order-bump-status-strip"></div>
-      <div class="ux-date-note"><strong>Aktualizováno:</strong> {html.escape(report['generated_at_local'])} (CEST) · <strong>Zdroj:</strong> přímé read-only dotazy do <code>main_db.personalization_events</code> a <code>eshop_analytics.orders</code> přes server <code>{html.escape(report['source']['host'])}</code>.</div>
-    </header>
-
-    <section class="layer-shell">
-      <div class="layer-head">
-        <div>
-          <div class="layer-label">Decision layer</div>
-          <h2 class="layer-title">Co ten report říká</h2>
-          <p class="layer-subtitle">Rychlé shrnutí metodiky a aktuálního okna.</p>
-        </div>
-      </div>
-      <div class="order-bump-note">Okno reportu je <strong>{html.escape(report['window_start_local'])}</strong> až <strong>{html.escape(report['window_end_local'])}</strong>. Objednávky bereme z <strong>eshop_analytics.orders</strong> s podmínkou <strong>is_counted = true</strong>. Bump je <strong>accepted minus dismissed</strong>, doplňky jsou <strong>cart_related_added</strong>. SK hodnoty přepočítáváme kurzem <strong>{report['sk_fx_rate']:.2f} Kč/EUR</strong>.</div>
-    </section>
-
-    <section class="layer-shell">
-      <div class="layer-head">
-        <div>
-          <div class="layer-label">Trend layer</div>
-          <h2 class="layer-title">Hodinový průběh v Kč</h2>
-          <p class="layer-subtitle">Společný hodinový průběh objednávek, bumpu a doplňků za posledních {report['window_hours']} hodin.</p>
-        </div>
-      </div>
-      <div class="card order-bump-chart-card"><div class="legend"><span><i class="dot" style="background:#1d4ed8"></i>Objednávky</span><span><i class="dot" style="background:#16a34a"></i>Bump netto</span><span><i class="dot" style="background:#db2777"></i>Doplňkové přidáno</span></div>{rendered['chart_html']}</div>
-    </section>
-
-    <section class="layer-shell">
-      <div class="layer-head">
-        <div>
-          <div class="layer-label">Market layer</div>
-          <h2 class="layer-title">Rozpad podle trhu</h2>
-          <p class="layer-subtitle">Srovnání CZ a SK v jednom pohledu.</p>
-        </div>
-      </div>
-      <section class="card">{rendered['market_table']}</section>
-    </section>
-
-    <section class="layer-shell">
-      <div class="layer-head">
-        <div>
-          <div class="layer-label">Work layer</div>
-          <h2 class="layer-title">Bump produkty</h2>
-          <p class="layer-subtitle">Top bump produkty podle počtu a podle hodnoty.</p>
-        </div>
-      </div>
-      <section class="grid two-col order-bump-grid">
-        <article class="card">
-          <h2 class="ux-section-title">Nejčastější podle počtu</h2>
-          {rendered['bump_count_table']}
-        </article>
-        <article class="card">
-          <h2 class="ux-section-title">Nejsilnější podle částky</h2>
-          {rendered['bump_value_table']}
-        </article>
-      </section>
-    </section>
-
-    <section class="layer-shell">
-      <div class="layer-head">
-        <div>
-          <div class="layer-label">Add-on layer</div>
-          <h2 class="layer-title">Doplňkové produkty</h2>
-          <p class="layer-subtitle">Top doplňkové produkty podle počtu a podle hodnoty.</p>
-        </div>
-      </div>
-      <section class="grid two-col order-bump-grid">
-        <article class="card">
-          <h2 class="ux-section-title">Nejčastější podle počtu</h2>
-          {rendered['related_count_table']}
-        </article>
-        <article class="card">
-          <h2 class="ux-section-title">Nejsilnější podle částky</h2>
-          {rendered['related_value_table']}
-        </article>
-      </section>
-    </section>
-
-    <section class="layer-shell">
-      <div class="layer-head">
-        <div>
-          <div class="layer-label">Detail layer</div>
-          <h2 class="layer-title">Hodinová detailní data</h2>
-          <p class="layer-subtitle">Hodinový detail pro dohledání špiček a propadů.</p>
-        </div>
-      </div>
-      <section class="card">{rendered['hourly_table']}</section>
-    </section>
+    {render_window_block(report_7d, window_key='7d', active=False)}
+    {render_window_block(report_30d, window_key='30d', active=True, include_30d_summary=True)}
   </main>
 
   <script src="assets/app.js"></script>
   <script>
     DP.initThemeToggle();
-    DP.renderStatusStrip('order-bump-status-strip', [
-      {{ label: 'Stav', value: 'Plně vlastní build', tone: 'success' }},
-      {{ label: 'Zdroj objednávek', value: 'eshop_analytics.orders', tone: 'info' }},
-      {{ label: 'Zdroj eventů', value: 'main_db.personalization_events', tone: 'info' }},
-      {{ label: 'Transport', value: 'SSH + read-only SQL', tone: 'info' }},
-      {{ label: 'Okno', value: 'Rolling {report['window_hours']} hodin', tone: 'info' }}
-    ]);
+    (() => {{
+      const blocks = [...document.querySelectorAll('[data-window-block]')];
+      const buttons = [...document.querySelectorAll('[data-window-target]')];
+      function activate(windowKey) {{
+        blocks.forEach((block) => {{
+          block.hidden = block.dataset.windowBlock !== windowKey;
+        }});
+        buttons.forEach((button) => {{
+          const active = button.dataset.windowTarget === windowKey;
+          button.classList.toggle('is-active', active);
+          button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        }});
+      }}
+      buttons.forEach((button) => {{
+        button.addEventListener('click', () => activate(button.dataset.windowTarget));
+      }});
+      activate('30d');
+    }})();
   </script>
 </body>
 </html>
@@ -612,11 +795,14 @@ def render_page(report: dict[str, Any]) -> str:
 
 
 def main() -> None:
-    report = build_report(DEFAULT_HOURS)
+    reports = {
+        '7d': build_report(168),
+        '30d': build_report(720),
+    }
     CURRENT_DIR.mkdir(parents=True, exist_ok=True)
     SITE_DIR.mkdir(parents=True, exist_ok=True)
-    TARGET_JSON.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
-    TARGET_HTML.write_text(render_page(report), encoding='utf-8')
+    TARGET_JSON.write_text(json.dumps(reports, ensure_ascii=False, indent=2), encoding='utf-8')
+    TARGET_HTML.write_text(render_page(reports), encoding='utf-8')
     print(f'Wrote {TARGET_JSON}')
     print(f'Wrote {TARGET_HTML}')
 
