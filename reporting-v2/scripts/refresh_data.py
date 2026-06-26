@@ -1,21 +1,26 @@
 #!/usr/bin/env python3
-import base64
 import hashlib
 import html
 import json
 import math
 import os
 import re
+import shutil
 import subprocess
 import sys
-import time
 import unicodedata
 from collections import Counter, defaultdict
-from datetime import datetime, timedelta, timezone
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from dataclasses import dataclass, field, replace
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
-from urllib.parse import quote, urlencode
-from urllib.request import Request, urlopen
+from typing import Any
 from zoneinfo import ZoneInfo
+
+from adapters.abra import AbraAdapter
+from adapters.fourpx import FourPxAdapter
+from adapters.marketing_sources import MarketingSourcesAdapter
+from adapters.wpj import WpjAdapter
 
 ROOT = Path(__file__).resolve().parents[1]
 VENDOR_PY_DIR = ROOT / 'vendor_py'
@@ -30,6 +35,7 @@ except ImportError:
     xlrd = None
 
 ENV_FILE = ROOT / '.env.local'
+REMOTE_STORAGE_ENV_FILE = ROOT / '.env.remote-storage'
 CONFIG_DIR = ROOT / 'config'
 SKU_MAPPING_OVERRIDE_FILE = CONFIG_DIR / 'sku_mapping_overrides.json'
 POS_ADMIN_VIEW_OVERRIDE_FILE = CONFIG_DIR / 'pos_admin_view_overrides.json'
@@ -45,117 +51,276 @@ LIVE_FINANCE_MARKETING_ACCOUNTS = ('518900', '518901')
 LIVE_FINANCE_LOGISTICS_ACCOUNTS = ('518201', '518400')
 LIVE_FINANCE_BANKFEE_ACCOUNTS = ('568001', '568100')
 SK_EUR_TO_CZK_RATE = 27.27
+LIVE_CASH_ACCOUNT_PREFIXES = ('221', '211')
 
-WPJ_ORDER_CLASSIFICATION_FIELDS = '''
-      source { name }
-      deliveryAddress {
-        city
-        country { name code }
-      }
-      invoiceAddress {
-        city
-      }
-      history {
-        adminId
-        comment
-      }
-'''
+class Settings:
+    FALSE_VALUES = {'0', 'false', 'no'}
 
-WPJ_ORDERS_HISTORY_QUERY = f'''
-query ($offset:Int,$limit:Int,$sort:OrderSortInput,$filter:OrderFilterInput){{
-  orders(offset:$offset, limit:$limit, sort:$sort, filter:$filter) {{
-    items {{
-      id
-      code
-      dateCreated
-      cancelled
-      isPaid
-      status {{ id name }}
-      totalPrice {{ withVat withoutVat }}
-{WPJ_ORDER_CLASSIFICATION_FIELDS}
-    }}
-    hasNextPage
-    hasPreviousPage
-  }}
-}}
-'''
+    def __init__(self, env: dict[str, str] | None = None):
+        self.env = env if env is not None else os.environ
+        self.reload()
 
-WPJ_ORDERS_DETAIL_QUERY = f'''
-query ($offset:Int,$limit:Int,$sort:OrderSortInput,$filter:OrderFilterInput){{
-  orders(offset:$offset, limit:$limit, sort:$sort, filter:$filter) {{
-    items {{
-      id
-      code
-      dateCreated
-      cancelled
-      isPaid
-      status {{ id name }}
-      totalPrice {{ withVat withoutVat }}
-{WPJ_ORDER_CLASSIFICATION_FIELDS}
-      deliveryType {{
-        id
-        delivery {{ id name }}
-        payment {{ id name type }}
-        price {{ withVat }}
-      }}
-      items {{
-        type
-        productId
-        code
-        name
-        ean
-        pieces
-        totalPrice {{ withVat withoutVat }}
-      }}
-    }}
-    hasNextPage
-    hasPreviousPage
-  }}
-}}
-'''
+    def reload(self):
+        self.reporting_remote_storage_mode = self.get_stripped('REPORTING_REMOTE_STORAGE_MODE', 'off').lower()
+        self.reporting_remote_storage_root = self.get_stripped('REPORTING_REMOTE_STORAGE_ROOT')
+        self.reporting_remote_storage_ssh_target = self.get_stripped('REPORTING_REMOTE_STORAGE_SSH_TARGET')
+        self.reporting_remote_storage_ssh_key = self.get_stripped('REPORTING_REMOTE_STORAGE_SSH_KEY')
+        self.reporting_remote_storage_ssh_identities_only = self.is_enabled('REPORTING_REMOTE_STORAGE_SSH_IDENTITIES_ONLY', True)
 
-WPJ_ORDERS_YEAR_METRICS_QUERY = f'''
-query ($offset:Int,$limit:Int,$sort:OrderSortInput,$filter:OrderFilterInput){{
-  orders(offset:$offset, limit:$limit, sort:$sort, filter:$filter) {{
-    items {{
-      id
-      dateCreated
-{WPJ_ORDER_CLASSIFICATION_FIELDS}
-      items {{
-        type
-        code
-        name
-        pieces
-      }}
-    }}
-    hasNextPage
-    hasPreviousPage
-  }}
-}}
-'''
+        self.wpj_graphql_url = self.get_stripped('WPJ_GRAPHQL_URL')
+        self.wpj_proxy_url = self.get_stripped('WPJ_PROXY_URL')
+        self.wpj_access_token = self.get_stripped('WPJ_ACCESS_TOKEN')
 
-WPJ_PRODUCTS_QUERY = '''
-query ($offset:Int,$limit:Int,$sort:ProductSortInput){
-  products(offset:$offset, limit:$limit, sort:$sort) {
-    items {
-      id
-      code
-      ean
-      title
-      url
-      visible
-      inStore
-      price { withVat withoutVat }
-      stores {
-        inStore
-        store { id name }
-      }
-    }
-    hasNextPage
-    hasPreviousPage
-  }
-}
-'''
+        self.affiliate_admin_key = self.get_stripped('AFFILIATE_ADMIN_KEY', 'admin123') or 'admin123'
+        self.morning_report_detail_url = (
+            self.get_stripped(
+                'MORNING_REPORT_DETAIL_URL',
+                'https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html',
+            )
+            or 'https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html'
+        )
+
+        self.abra_api_url = self.first('ABRA_API_URL', 'FLEXI_API_URL') or ''
+        self.abra_company = self.first('ABRA_COMPANY', 'FLEXI_COMPANY') or ''
+        self.abra_username = self.first('ABRA_USERNAME', 'FLEXI_USERNAME') or ''
+        self.abra_password = self.first('ABRA_PASSWORD', 'FLEXI_PASSWORD') or ''
+
+        self.sklik_api_token = self.get_stripped('SKLIK_API_TOKEN')
+        self.meta_access_token = self.get_stripped('META_ACCESS_TOKEN')
+        self.meta_ad_account_ids = self.get_stripped('META_AD_ACCOUNT_IDS')
+
+        self.google_ads_developer_token = self.get_stripped('GOOGLE_ADS_DEVELOPER_TOKEN')
+        self.google_ads_login_customer_id = self.get_stripped('GOOGLE_ADS_LOGIN_CUSTOMER_ID')
+        self.google_ads_oauth_client_id = self.get_stripped('GOOGLE_ADS_OAUTH_CLIENT_ID')
+        self.google_ads_oauth_client_secret = self.get_stripped('GOOGLE_ADS_OAUTH_CLIENT_SECRET')
+        self.google_ads_refresh_token = self.get_stripped('GOOGLE_ADS_REFRESH_TOKEN')
+
+        self.ga4_property_id = self.get_stripped('GA4_PROPERTY_ID', '220403487') or '220403487'
+        self.ga4_service_account_file = self.first('GA4_SERVICE_ACCOUNT_FILE', 'GOOGLE_APPLICATION_CREDENTIALS') or ''
+        self.ga4_oauth_client_id = self.first('GA4_OAUTH_CLIENT_ID', 'GOOGLE_ADS_OAUTH_CLIENT_ID') or ''
+        self.ga4_oauth_client_secret = self.first('GA4_OAUTH_CLIENT_SECRET', 'GOOGLE_ADS_OAUTH_CLIENT_SECRET') or ''
+        self.ga4_refresh_token = self.get_stripped('GA4_REFRESH_TOKEN')
+
+        self.klaviyo_private_api_key = self.get_stripped('KLAVIYO_PRIVATE_API_KEY')
+        self.fourpx_warehouse_code = self.get_stripped('FOURPX_WAREHOUSE_CODE', 'CZPRGA') or 'CZPRGA'
+        self.fourpx_outbound_max_pages = self.get_int('FOURPX_OUTBOUND_MAX_PAGES', 20)
+
+        self.reporting_heavy_payloads = self.csv('REPORTING_HEAVY_PAYLOADS')
+        self.reporting_skip_heavy_snapshot_writes = self.is_enabled('REPORTING_SKIP_HEAVY_SNAPSHOT_WRITES', True)
+        self.reporting_snapshot_keep = self.get_stripped('REPORTING_SNAPSHOT_KEEP', '3') or '3'
+
+    def get(self, key: str, default: str | None = None):
+        return self.env.get(key, default)
+
+    def get_stripped(self, key: str, default: str = '') -> str:
+        value = self.get(key, default)
+        if value is None:
+            return ''
+        return str(value).strip()
+
+    def get_int(self, key: str, default: int) -> int:
+        raw = self.get_stripped(key, str(default))
+        try:
+            return int(raw)
+        except ValueError:
+            return default
+
+    def first(self, *keys: str):
+        for key in keys:
+            value = self.get(key)
+            if value:
+                return str(value).strip()
+        return None
+
+    def csv(self, key: str) -> list[str]:
+        raw = self.get(key, '')
+        return [item.strip() for item in str(raw).split(',') if item.strip()]
+
+    def is_enabled(self, key: str, default: bool) -> bool:
+        fallback = '1' if default else '0'
+        return self.get_stripped(key, fallback).lower() not in self.FALSE_VALUES
+
+    def setdefault(self, key: str, value: str):
+        self.env.setdefault(key, value)
+
+    def require(self, key: str) -> str:
+        return self.env[key]
+
+    def missing(self, *keys: str) -> list[str]:
+        return [key for key in keys if not self.get(key)]
+
+    def fourpx_credentials(self, market: str) -> tuple[str, str]:
+        prefix = market.upper()
+        return (
+            self.require(f'FOURPX_{prefix}_APP_KEY'),
+            self.require(f'FOURPX_{prefix}_APP_SECRET'),
+        )
+
+    def wpj_endpoint(self) -> str:
+        return self.wpj_graphql_url or self.wpj_proxy_url
+
+    def abra_config(self):
+        return {
+            'baseUrl': self.abra_api_url.rstrip('/'),
+            'company': self.abra_company,
+            'username': self.abra_username,
+            'password': self.abra_password,
+            'enabled': all([self.abra_api_url, self.abra_company, self.abra_username, self.abra_password]),
+        }
+
+
+SETTINGS = Settings()
+WPJ_ADAPTER = WpjAdapter()
+ABRA_ADAPTER = AbraAdapter()
+MARKETING_SOURCES = MarketingSourcesAdapter(
+    root=ROOT,
+    current_dir=CURRENT_DIR,
+    prague_tz=PRAGUE_TZ,
+    settings=SETTINGS,
+)
+
+
+@dataclass
+class CombinedProductsBuildContext:
+    wpj_products: list[dict[str, Any]]
+    yesterday_orders: list[dict[str, Any]]
+    cz_inventory: dict[str, Any]
+    sk_inventory: dict[str, Any]
+    cz_outbound: dict[str, Any]
+    sk_outbound: dict[str, Any]
+    start_dt: datetime
+    end_dt: datetime
+    generated_at: str
+    manual_overrides: dict[str, Any] | None = None
+    pos_admin_views: dict[str, Any] | None = None
+
+
+@dataclass
+class InventoryAnalyticsBuildContext:
+    combined_index: dict[str, Any]
+    orders: list[dict[str, Any]]
+    start_dt: datetime
+    end_dt: datetime
+    generated_at: str
+    window_days: int = 365
+    wpj_by_code: dict[str, Any] | None = None
+    manual_overrides: dict[str, Any] | None = None
+    pos_admin_views: dict[str, Any] | None = None
+    ordering_reference_overrides: dict[str, Any] | None = None
+    ordering_packaging_map: dict[str, Any] | None = None
+
+
+@dataclass
+class OrderingSalesHistoryBuildContext:
+    orders: list[dict[str, Any]]
+    start_dt: datetime
+    end_dt: datetime
+    generated_at: str
+    wpj_by_code: dict[str, Any] | None = None
+    manual_overrides: dict[str, Any] | None = None
+    pos_admin_views: dict[str, Any] | None = None
+
+
+@dataclass
+class MorningReportBuildContext:
+    report_date: date
+    wpj_summary: dict[str, Any]
+    baseline_orders: float | int | None
+    baseline_revenue: float | int | None
+    stock_summary: dict[str, Any]
+    inventory_summary: dict[str, Any]
+    logistics_summary: dict[str, Any]
+    alerts: list[str]
+    priorities: list[str]
+    warnings: list[str]
+    mtd_summary: dict[str, Any] | None = None
+    inventory_health: dict[str, Any] | None = None
+
+
+@dataclass
+class RefreshRuntimeContext:
+    manual_overrides: dict[str, Any]
+    pos_admin_views: dict[int, str]
+    pos_view_filters: dict[str, list[int]]
+    ordering_reference_overrides: dict[str, Any]
+    ordering_packaging_map: dict[str, Any]
+    warehouse_code: str
+    max_pages: int
+    now_local: datetime
+    stamp: str
+    generated_at: str
+    report_start: datetime
+    report_end: datetime
+    report_date: date
+    cz_app_key: str
+    cz_app_secret: str
+    sk_app_key: str
+    sk_app_secret: str
+    previous_wpj_products: list[dict[str, Any]] | None
+
+
+@dataclass
+class RefreshFetchResult:
+    cz_inventory: dict[str, Any]
+    sk_inventory: dict[str, Any]
+    cz_inventory_detail: dict[str, Any]
+    sk_inventory_detail: dict[str, Any]
+    cz_expiry_summary: list[dict[str, Any]]
+    sk_expiry_summary: list[dict[str, Any]]
+    cz_outbound: dict[str, Any]
+    sk_outbound: dict[str, Any]
+    wpj_ready: bool
+    legacy_abra_payload: Any
+    live_abra_payload: Any
+    abra_vykaz_hospodareni_reports: dict[str, Any]
+    sklik_status: dict[str, Any]
+    meta_status: dict[str, Any]
+    google_status: dict[str, Any]
+    ga4_status: dict[str, Any]
+    klaviyo_status: dict[str, Any]
+    finance_snapshot: dict[str, Any]
+    affiliate_overview: dict[str, Any]
+    marketing_snapshot: dict[str, Any]
+
+
+@dataclass
+class RefreshBuildResult:
+    warnings: list[str]
+    wpj_summary: dict[str, Any]
+    wpj_orders_payload: dict[str, Any]
+    wpj_products_payload: dict[str, Any]
+    wpj_history_payload: dict[str, Any]
+    eshop_ytd_payload: dict[str, Any]
+    customer_fact_payload: dict[str, Any]
+    order_fact_payload: dict[str, Any]
+    inventory_analytics_payload: dict[str, Any]
+    inventory_analytics_730_payload: dict[str, Any]
+    inventory_analytics_730_cz_payload: dict[str, Any]
+    inventory_analytics_730_sk_payload: dict[str, Any]
+    ordering_core_payload: dict[str, Any]
+    ordering_core_cz_payload: dict[str, Any]
+    ordering_core_sk_payload: dict[str, Any]
+    ordering_reference_payload: dict[str, Any]
+    ordering_reference_cz_payload: dict[str, Any]
+    ordering_reference_sk_payload: dict[str, Any]
+    ordering_sales_history_payload: dict[str, Any]
+    expiry_overview_payload: dict[str, Any]
+    combined_index_payload: dict[str, Any]
+    combined_overview_payload: dict[str, Any]
+    baseline_orders: float | int | None
+    baseline_revenue: float | int | None
+    stock_summary: dict[str, Any]
+    inventory_summary: dict[str, Any]
+    logistics_summary: dict[str, Any]
+    inventory_health_summary: dict[str, Any]
+    alerts: list[str]
+    priorities: list[str]
+    report_json: dict[str, Any]
+    report_text: str
+    report_telegram_text: str
+    heavy_payloads: set[str]
+    skip_snapshot_for_heavy: bool
+    report_manifest: dict[str, Any]
 
 
 def load_env_file(path: Path):
@@ -166,7 +331,8 @@ def load_env_file(path: Path):
         if not line or line.startswith('#') or '=' not in line:
             continue
         key, value = line.split('=', 1)
-        os.environ.setdefault(key.strip(), value.strip())
+        SETTINGS.setdefault(key.strip(), value.strip())
+    SETTINGS.reload()
 
 
 def load_manual_sku_overrides(path: Path):
@@ -202,17 +368,37 @@ def load_pos_admin_view_overrides(path: Path):
     try:
         payload = json.loads(path.read_text(encoding='utf-8'))
     except Exception as exc:
-        raise RuntimeError(f'Neplatný JSON v override mapě POS adminů: {path}') from exc
+        raise RuntimeError(f'Neplatný JSON v override mapě prodejen: {path}') from exc
 
-    for view, admin_ids in (payload or {}).items():
+    for view, pos_ids in (payload or {}).items():
         if view not in {'ltm', 'mecin'}:
             continue
-        for admin_id in admin_ids or []:
+        for pos_id in pos_ids or []:
             try:
-                overrides[int(admin_id)] = view
+                overrides[int(pos_id)] = view
             except (TypeError, ValueError):
                 continue
     return overrides
+
+
+def load_pos_view_filter_ids(path: Path):
+    filters = {'ltm': [], 'mecin': []}
+    if not path.exists():
+        return filters
+    try:
+        payload = json.loads(path.read_text(encoding='utf-8'))
+    except Exception as exc:
+        raise RuntimeError(f'Neplatný JSON v override mapě POS adminů: {path}') from exc
+
+    for view, pos_ids in (payload or {}).items():
+        if view not in filters:
+            continue
+        for pos_id in pos_ids or []:
+            try:
+                filters[view].append(int(pos_id))
+            except (TypeError, ValueError):
+                continue
+    return filters
 
 
 def load_ordering_reference_overrides(path: Path):
@@ -389,19 +575,125 @@ def build_sign(params, body_json, app_secret):
     return hashlib.md5((ordered + body_json + app_secret).encode('utf-8')).hexdigest()
 
 
-def write_json(path: Path, data):
+def atomic_write_text(path: Path, text: str, encoding: str = 'utf-8'):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8')
+    tmp_path = path.with_suffix(path.suffix + '.tmp')
+    tmp_path.write_text(text, encoding=encoding)
+    tmp_path.replace(path)
+
+
+def atomic_write_bytes(path: Path, data: bytes):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = path.with_suffix(path.suffix + '.tmp')
+    tmp_path.write_bytes(data)
+    tmp_path.replace(path)
+
+
+def write_json(path: Path, data):
+    atomic_write_text(path, json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8')
 
 
 def write_text(path: Path, text: str):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text, encoding='utf-8')
+    atomic_write_text(path, text, encoding='utf-8')
 
 
 def write_bytes(path: Path, data: bytes):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_bytes(data)
+    atomic_write_bytes(path, data)
+
+
+def parse_csv_env(name: str) -> list[str]:
+    return SETTINGS.csv(name)
+
+
+def sync_remote_heavy_payloads(files: list[str]):
+    mode = SETTINGS.reporting_remote_storage_mode
+    if mode == 'off' or not files:
+        return {'mode': mode, 'synced': [], 'skipped': files, 'status': 'disabled'}
+
+    current_dir = CURRENT_DIR
+    synced = []
+    if mode == 'filesystem':
+        remote_root_raw = SETTINGS.reporting_remote_storage_root
+        if not remote_root_raw:
+            return {'mode': mode, 'synced': [], 'skipped': files, 'status': 'missing_root'}
+        remote_root = Path(remote_root_raw).expanduser()
+        remote_current = remote_root / 'current'
+        remote_current.mkdir(parents=True, exist_ok=True)
+        manifest = []
+        for name in files:
+            src = current_dir / name
+            if not src.exists():
+                continue
+            dest = remote_current / name
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            atomic_write_bytes(dest, src.read_bytes())
+            synced.append(name)
+            manifest.append({'name': name, 'bytes': src.stat().st_size})
+        write_json(remote_root / 'current_manifest.json', {
+            'generatedAt': current_local_time().isoformat(),
+            'files': manifest,
+        })
+        return {'mode': mode, 'synced': synced, 'skipped': [name for name in files if name not in synced], 'status': 'ok'}
+
+    if mode == 'ssh':
+        ssh_target = SETTINGS.reporting_remote_storage_ssh_target
+        remote_root = SETTINGS.reporting_remote_storage_root
+        ssh_key = SETTINGS.reporting_remote_storage_ssh_key
+        if not ssh_target or not remote_root:
+            return {'mode': mode, 'synced': [], 'skipped': files, 'status': 'missing_ssh_target_or_root'}
+        ssh_base = ['ssh']
+        scp_base = ['scp']
+        if ssh_key:
+            ssh_base.extend(['-i', ssh_key])
+            scp_base.extend(['-i', ssh_key])
+        if SETTINGS.reporting_remote_storage_ssh_identities_only:
+            ssh_base.extend(['-o', 'IdentitiesOnly=yes'])
+            scp_base.extend(['-o', 'IdentitiesOnly=yes'])
+        try:
+            subprocess.run([*ssh_base, ssh_target, f'mkdir -p {remote_root}/current'], check=True)
+            for name in files:
+                src = current_dir / name
+                if not src.exists():
+                    continue
+                subprocess.run([*scp_base, str(src), f'{ssh_target}:{remote_root}/current/{name}'], check=True)
+                synced.append(name)
+            return {'mode': mode, 'synced': synced, 'skipped': [name for name in files if name not in synced], 'status': 'ok'}
+        except Exception as exc:
+            return {'mode': mode, 'synced': synced, 'skipped': [name for name in files if name not in synced], 'status': 'error', 'error': str(exc)}
+
+    return {'mode': mode, 'synced': [], 'skipped': files, 'status': 'unsupported'}
+
+
+def write_finance_payloads(base_dir: Path, finance_snapshot):
+    payload = json.loads(json.dumps(finance_snapshot, ensure_ascii=False))
+    journal = payload.get('journal') or {}
+    monthly = journal.get('monthly') or []
+    slim_monthly = []
+
+    for month in monthly:
+        label = month.get('label') or ''
+        detail_name = f"finance_journal_{label.replace('/', '-')}.json"
+        write_json(base_dir / detail_name, month)
+        slim_month = {key: value for key, value in month.items() if key != 'recentEntries'}
+        slim_month['entryCount'] = len(month.get('recentEntries') or [])
+        slim_month['detailFile'] = detail_name
+        slim_monthly.append(slim_month)
+
+    current_label = (journal.get('currentMonth') or {}).get('label')
+    slim_current = next((row for row in slim_monthly if row.get('label') == current_label), None) or {
+        'label': current_label or '',
+        'topExpenseAccounts': [],
+        'topExpenseClasses': [],
+        'topVendors': [],
+        'entryCount': 0,
+        'detailFile': '',
+    }
+    payload['journal'] = {
+        'source': journal.get('source') or {},
+        'monthly': slim_monthly,
+        'currentMonth': slim_current,
+    }
+    write_json(base_dir / 'finance_overview.json', payload)
 
 
 def normalize_date_string(value):
@@ -479,59 +771,21 @@ def current_local_time():
     return datetime.now(timezone.utc).astimezone(PRAGUE_TZ)
 
 
+FOURPX_ADAPTER = FourPxAdapter(
+    base_url=BASE_URL,
+    compact_json=compact_json,
+    build_sign=build_sign,
+    outbound_timestamp=lambda item: outbound_timestamp(item),
+    prague_tz=PRAGUE_TZ,
+)
+
+
 def call_4px(method, body, app_key, app_secret, language='en'):
-    body_json = compact_json(body)
-    params = {
-        'app_key': app_key,
-        'format': 'json',
-        'method': method,
-        'timestamp': str(int(time.time() * 1000)),
-        'v': '1.0',
-    }
-    params['sign'] = build_sign(params, body_json, app_secret)
-    if language:
-        params['language'] = language
-    req = Request(
-        f'{BASE_URL}?{urlencode(params)}',
-        data=body_json.encode('utf-8'),
-        headers={'Content-Type': 'application/json', 'User-Agent': 'reporting-v2/1.0'},
-    )
-    with urlopen(req, timeout=40) as resp:
-        payload = json.loads(resp.read().decode('utf-8', 'ignore'))
-    if str(payload.get('result')) != '1':
-        raise RuntimeError(f'4PX {method} failed: {payload.get("msg") or payload}')
-    return payload.get('data')
+    return FOURPX_ADAPTER.call(method, body, app_key, app_secret, language=language)
 
 
 def fetch_inventory(app_key, app_secret, warehouse_code):
-    page = 1
-    page_size = 100
-    items = []
-    total = None
-    while True:
-        payload = call_4px(
-            'fu.wms.inventory.get',
-            {'warehouse_code': warehouse_code, 'page_no': page, 'page_size': page_size},
-            app_key,
-            app_secret,
-        )
-        page_items = payload.get('data') or []
-        items.extend(page_items)
-        total = int(payload.get('total') or len(items))
-        if not page_items or len(items) >= total:
-            break
-        page += 1
-        if page > 30:
-            break
-    low_stock = [x for x in items if float(x.get('available_stock') or 0) <= 10]
-    return {
-        'items': items,
-        'lowStock': sorted(low_stock, key=lambda x: float(x.get('available_stock') or 0))[:100],
-        'total': total or len(items),
-        'availableStockTotal': sum(float(x.get('available_stock') or 0) for x in items),
-        'pendingStockTotal': sum(float(x.get('pending_stock') or 0) for x in items),
-        'freezeStockTotal': sum(float(x.get('freeze_stock') or 0) for x in items),
-    }
+    return FOURPX_ADAPTER.fetch_inventory(app_key, app_secret, warehouse_code)
 
 
 def chunked(values, size):
@@ -540,33 +794,11 @@ def chunked(values, size):
 
 
 def fetch_inventory_details(app_key, app_secret, warehouse_code, inventory_items, batch_size=100):
-    unique_skus = []
-    seen = set()
-    for row in inventory_items:
-        sku = str(row.get('sku_code') or '').strip()
-        if not sku or sku in seen:
-            continue
-        seen.add(sku)
-        unique_skus.append(sku)
-
-    details = []
-    for sku_batch in chunked(unique_skus, batch_size):
-        payload = call_4px(
-            'fu.wms.inventory.getdetail',
-            {'warehouse_code': warehouse_code, 'lstsku': sku_batch},
-            app_key,
-            app_secret,
-        )
-        details.extend(payload.get('inventorydetaillist') or [])
-    return {
-        'items': details,
-        'uniqueSkuCount': len(unique_skus),
-        'detailRows': len(details),
-    }
+    return FOURPX_ADAPTER.fetch_inventory_details(app_key, app_secret, warehouse_code, inventory_items, batch_size=batch_size)
 
 
 def summarize_expiry_details(label, detail_rows):
-    per_sku = {}
+    per_sku_expiry = {}
     for row in detail_rows:
         expiry_dt = parse_dt(row.get('expiry_date'))
         stock = num(row.get('warehouse_stock'))
@@ -575,38 +807,34 @@ def summarize_expiry_details(label, detail_rows):
         sku = row.get('sku_code') or '–'
         if str(sku).upper().startswith('TEST'):
             continue
-        item = per_sku.setdefault(sku, {
+        expiry_key = expiry_dt.date().isoformat()
+        item = per_sku_expiry.setdefault((sku, expiry_key), {
             'account': label,
             'sku': sku,
+            'dateExpiry': expiry_key,
             'batchCount': 0,
             'datedStock': 0.0,
-            'nearestExpiry': None,
-            'nearestExpiryStock': 0.0,
         })
         item['batchCount'] += 1
         item['datedStock'] += stock
-        if item['nearestExpiry'] is None or expiry_dt < item['nearestExpiry']:
-            item['nearestExpiry'] = expiry_dt
-            item['nearestExpiryStock'] = stock
-        elif expiry_dt == item['nearestExpiry']:
-            item['nearestExpiryStock'] += stock
 
     results = []
     now_local = current_local_time()
-    for sku, row in per_sku.items():
-        days_to_expiry = (row['nearestExpiry'].date() - now_local.date()).days
+    for (_, _), row in per_sku_expiry.items():
+        expiry_date = date.fromisoformat(row['dateExpiry'])
+        days_to_expiry = (expiry_date - now_local.date()).days
         results.append({
             'account': row['account'],
-            'sku': sku,
-            'dateExpiry': row['nearestExpiry'].date().isoformat(),
+            'sku': row['sku'],
+            'dateExpiry': row['dateExpiry'],
             'daysToExpiry': days_to_expiry,
             'datedStock': round(row['datedStock'], 2),
-            'stockAtNearestExpiry': round(row['nearestExpiryStock'], 2),
+            'stockAtNearestExpiry': round(row['datedStock'], 2),
             'batchCount': row['batchCount'],
             'riskScore': round(row['datedStock'] / (max(days_to_expiry + 1, 1) ** 1.3), 2),
         })
 
-    results.sort(key=lambda item: (-item['riskScore'], item['daysToExpiry'], -item['datedStock'], item['sku']))
+    results.sort(key=lambda item: (-item['riskScore'], item['daysToExpiry'], -item['datedStock'], item['sku'], item['dateExpiry']))
     return results
 
 
@@ -615,144 +843,87 @@ def outbound_timestamp(item):
 
 
 def fetch_recent_outbound(app_key, app_secret, warehouse_code, max_pages=20, stop_before=None):
-    page = 1
-    page_size = 100
-    items = []
-    crossed_stop_boundary = False
-    while page <= max_pages:
-        payload = call_4px(
-            'fu.wms.outbound.getlist',
-            {'from_warehouse_code': warehouse_code, 'page_no': page, 'page_size': page_size},
-            app_key,
-            app_secret,
-        )
-        page_items = payload.get('data') or []
-        if not page_items:
-            break
-        items.extend(page_items)
-        if stop_before:
-            if any((outbound_timestamp(item) or datetime.max.replace(tzinfo=PRAGUE_TZ)) < stop_before for item in page_items):
-                crossed_stop_boundary = True
-                break
-        if len(page_items) < page_size:
-            break
-        page += 1
-    timestamps = [outbound_timestamp(item) for item in items]
-    timestamps = [ts for ts in timestamps if ts]
-    return {
-        'items': items,
-        'scannedPages': min(page, max_pages),
-        'hitMaxPages': page >= max_pages,
-        'crossedStopBoundary': crossed_stop_boundary,
-        'newestTimestamp': max(timestamps).isoformat() if timestamps else None,
-        'oldestTimestamp': min(timestamps).isoformat() if timestamps else None,
-        'topLogisticsProducts': Counter(x.get('logistics_product_code') or '–' for x in items).most_common(10),
-        'topCountries': Counter(x.get('country') or '–' for x in items).most_common(10),
-    }
+    return FOURPX_ADAPTER.fetch_recent_outbound(app_key, app_secret, warehouse_code, max_pages=max_pages, stop_before=stop_before)
 
 
 def wpj_endpoint():
-    return os.environ.get('WPJ_GRAPHQL_URL') or os.environ.get('WPJ_PROXY_URL')
+    return SETTINGS.wpj_endpoint()
 
 
 ORDERING_ANALYTICS_DAYS = 548
 
 
 def call_wpj(query, variables, url, access_token):
-    payload = {'query': query, 'variables': variables or {}}
-    req = Request(
+    return WPJ_ADAPTER.call(query, variables, url, access_token)
+
+
+def fetch_wpj_orders(url, access_token, start_dt, end_dt, *, limit=1000, detailed=False, pos_id=None, classified_view=None):
+    return WPJ_ADAPTER.fetch_orders(
         url,
-        data=json.dumps(payload).encode('utf-8'),
-        headers={
-            'Content-Type': 'application/json',
-            'X-Access-Token': access_token,
-            'User-Agent': 'reporting-v2/1.0',
-        },
-        method='POST',
+        access_token,
+        start_dt,
+        end_dt,
+        limit=limit,
+        detailed=detailed,
+        pos_id=pos_id,
+        classified_view=classified_view,
     )
-    with urlopen(req, timeout=90) as resp:
-        data = json.loads(resp.read().decode('utf-8', 'ignore'))
-    if data.get('errors'):
-        raise RuntimeError(f'WPJ GraphQL failed: {data["errors"][:2]}')
-    return data['data']
-
-
-def fetch_wpj_orders(url, access_token, start_dt, end_dt, *, limit=1000, detailed=False):
-    offset = 0
-    items = []
-    query = WPJ_ORDERS_DETAIL_QUERY if detailed else WPJ_ORDERS_HISTORY_QUERY
-    while True:
-        payload = call_wpj(
-            query,
-            {
-                'offset': offset,
-                'limit': limit,
-                'sort': {'dateCreated': 'DESC'},
-                'filter': {
-                    'dateFrom': start_dt.strftime('%Y-%m-%d %H:%M:%S'),
-                    'dateTo': end_dt.strftime('%Y-%m-%d %H:%M:%S'),
-                },
-            },
-            url,
-            access_token,
-        )
-        page = payload['orders']
-        page_items = page.get('items') or []
-        items.extend(page_items)
-        if not page.get('hasNextPage') or not page_items:
-            break
-        offset += len(page_items)
-    return items
 
 
 def fetch_wpj_products(url, access_token, limit=1000):
-    offset = 0
-    items = []
-    while True:
-        payload = call_wpj(
-            WPJ_PRODUCTS_QUERY,
-            {
-                'offset': offset,
-                'limit': limit,
-                'sort': {'id': 'ASC'},
-            },
-            url,
-            access_token,
-        )
-        page = payload['products']
-        page_items = page.get('items') or []
-        items.extend(page_items)
-        if not page.get('hasNextPage') or not page_items:
-            break
-        offset += len(page_items)
-    return items
+    return WPJ_ADAPTER.fetch_products(url, access_token, limit=limit)
 
 
 def fetch_wpj_year_order_metrics(url, access_token, start_dt, end_dt, limit=1000):
-    offset = 0
-    items = []
-    while True:
-        payload = call_wpj(
-            WPJ_ORDERS_YEAR_METRICS_QUERY,
-            {
-                'offset': offset,
-                'limit': limit,
-                'sort': {'dateCreated': 'DESC'},
-                'filter': {
-                    'dateFrom': start_dt.strftime('%Y-%m-%d %H:%M:%S'),
-                    'dateTo': end_dt.strftime('%Y-%m-%d %H:%M:%S'),
-                },
-            },
-            url,
-            access_token,
-        )
-        page = payload['orders']
-        page_items = page.get('items') or []
-        items.extend(page_items)
-        if not page.get('hasNextPage') or not page_items:
-            break
-        offset += len(page_items)
-    return items
+    return WPJ_ADAPTER.fetch_year_order_metrics(url, access_token, start_dt, end_dt, limit=limit)
+
+
+def merge_orders_by_id(base_orders, override_orders):
+    merged = []
+    seen = set()
+    override_map = {str(order.get('id')): order for order in override_orders if order.get('id') is not None}
+
+    for order in base_orders:
+        key = str(order.get('id')) if order.get('id') is not None else None
+        replacement = override_map.get(key) if key is not None else None
+        merged.append(replacement or order)
+        if key is not None:
+            seen.add(key)
+
+    for order in override_orders:
+        key = str(order.get('id')) if order.get('id') is not None else None
+        if key is None or key not in seen:
+            merged.append(order)
+
+    return merged
+
+
+def apply_pos_view_overrides_to_orders(orders, url, access_token, start_dt, end_dt, *, detailed=False, pos_view_ids=None, limit=1000):
+    pos_view_ids = pos_view_ids or {}
+    result = list(orders)
+    for view, pos_ids in pos_view_ids.items():
+        if view not in {'ltm', 'mecin'}:
+            continue
+        for pos_id in pos_ids or []:
+            tagged_orders = fetch_wpj_orders(
+                url,
+                access_token,
+                start_dt,
+                end_dt,
+                limit=limit,
+                detailed=detailed,
+                pos_id=pos_id,
+                classified_view=view,
+            )
+            result = merge_orders_by_id(result, tagged_orders)
+    return result
+
+
+def order_currency(order):
+    currency = order.get('currency')
+    if isinstance(currency, dict):
+        return str(currency.get('code') or '').strip().upper()
+    return str(currency or '').strip().upper()
 
 
 def load_json_if_fresh(path: Path, *, max_age_hours):
@@ -769,6 +940,335 @@ def load_json_if_fresh(path: Path, *, max_age_hours):
     if age_hours > max_age_hours:
         return None
     return data
+
+
+def parse_affiliate_period_from_url(url):
+    if not url:
+        return {'dateFrom': None, 'dateTo': None, 'label': ''}
+    match = re.search(r'_(\d{4}-\d{2}-\d{2})_(\d{4}-\d{2}-\d{2})\.html$', url)
+    if not match:
+        return {'dateFrom': None, 'dateTo': None, 'label': ''}
+    start_date, end_date = match.groups()
+    return {
+        'dateFrom': start_date,
+        'dateTo': end_date,
+        'label': f'{start_date} až {end_date}',
+    }
+
+
+def affiliate_period_window(now_local):
+    season_year = now_local.year if now_local.month >= 10 else now_local.year - 1
+    start_date = f'{season_year}-10-01'
+    end_date = now_local.date().isoformat()
+    return {
+        'dateFrom': start_date,
+        'dateTo': end_date,
+        'label': f'{start_date} až {end_date}',
+    }
+
+
+def affiliate_month_sort_key(value):
+    match = re.match(r'^([a-z_]+)_(\d{4})$', value or '')
+    if not match:
+        return ('9999', value or '')
+    month_name, year = match.groups()
+    month_map = {
+        'leden': 1,
+        'unor': 2,
+        'brezen': 3,
+        'duben': 4,
+        'kveten': 5,
+        'cerven': 6,
+        'cervenec': 7,
+        'srpen': 8,
+        'zari': 9,
+        'rijen': 10,
+        'listopad': 11,
+        'prosinec': 12,
+    }
+    return (year, f'{month_map.get(month_name, 99):02d}')
+
+
+def affiliate_month_key(dt_value):
+    month_names = ['leden', 'unor', 'brezen', 'duben', 'kveten', 'cerven', 'cervenec', 'srpen', 'zari', 'rijen', 'listopad', 'prosinec']
+    return f'{month_names[dt_value.month - 1]}_{dt_value.year}'
+
+
+def empty_affiliate_month_bucket(month_key=''):
+    label = month_key.replace('_', ' ').title() if month_key else ''
+    return {
+        'key': month_key,
+        'label': label,
+        'contacts': 0.0,
+        'orderingContacts': 0.0,
+        'networkCustomers': 0.0,
+        'orderingCustomers': 0.0,
+        'orders': 0.0,
+        'revenueCzkEquiv': 0.0,
+    }
+
+
+def finalize_affiliate_months(monthly):
+    ordered = []
+    for month_key in sorted(monthly.keys(), key=affiliate_month_sort_key):
+        row = monthly[month_key]
+        ordered.append({
+            'key': month_key,
+            'label': row.get('label') or month_key.replace('_', ' ').title(),
+            'contacts': round(float(row.get('contacts') or 0), 2),
+            'orderingContacts': round(float(row.get('orderingContacts') or 0), 2),
+            'networkCustomers': round(float(row.get('networkCustomers') or 0), 2),
+            'orderingCustomers': round(float(row.get('orderingCustomers') or 0), 2),
+            'orders': round(float(row.get('orders') or 0), 2),
+            'revenueCzkEquiv': round(float(row.get('revenueCzkEquiv') or 0), 2),
+        })
+    return ordered
+
+
+def parse_affiliate_money(value):
+    if isinstance(value, (int, float)):
+        return float(value)
+    text = str(value or '').replace('\xa0', ' ').replace('Kč', '').replace('CZK', '').replace(' ', '').replace(',', '.')
+    match = re.search(r'-?\d+(?:\.\d+)?', text)
+    return float(match.group(0)) if match else 0.0
+
+
+def affiliate_partner_name(partner):
+    first_name = (partner.get('first_name') or '').strip()
+    surname = (partner.get('surname') or '').strip()
+    full_name = ' '.join(part for part in [first_name, surname] if part).strip()
+    if full_name:
+        return full_name
+    return partner.get('company_name') or partner.get('email') or partner.get('code') or '–'
+
+
+def fetch_affiliate_partners(admin_key):
+    return MARKETING_SOURCES.fetch_affiliate_partners(admin_key)
+
+
+def fetch_affiliate_contacts(partner_code, admin_key):
+    return MARKETING_SOURCES.fetch_affiliate_contacts(partner_code, admin_key)
+
+
+def fetch_affiliate_commissions_table(partner_code, admin_key):
+    return MARKETING_SOURCES.fetch_affiliate_commissions_table(partner_code, admin_key)
+
+
+def build_affiliate_overview(generated_at, now_local):
+    admin_key = SETTINGS.affiliate_admin_key
+    period = affiliate_period_window(now_local)
+    start_dt = datetime.fromisoformat(f"{period['dateFrom']}T00:00:00")
+    partners = fetch_affiliate_partners(admin_key)
+
+    novice_partners = [
+        partner for partner in partners
+        if parse_dt(partner.get('created_at')) and parse_dt(partner.get('created_at')).replace(tzinfo=None) >= start_dt
+    ]
+
+    def build_novice_row(partner):
+        partner_code = partner.get('code') or ''
+        contacts = fetch_affiliate_contacts(partner_code, admin_key)
+        commission_table = fetch_affiliate_commissions_table(partner_code, admin_key)
+        commissions = commission_table.get('commissions') or []
+        monthly = defaultdict(lambda: empty_affiliate_month_bucket())
+        for contact in contacts:
+            added_at = parse_dt(contact.get('dateAdded'))
+            if not added_at:
+                continue
+            month_key = affiliate_month_key(added_at)
+            bucket = monthly[month_key]
+            bucket['key'] = month_key
+            bucket['label'] = month_key.replace('_', ' ').title()
+            bucket['contacts'] += 1
+            if num(contact.get('orderCount')) > 0:
+                bucket['orderingContacts'] += 1
+        for commission in commissions:
+            raw_date = parse_dt(commission.get('raw_date'))
+            if not raw_date:
+                continue
+            month_key = affiliate_month_key(raw_date)
+            bucket = monthly[month_key]
+            bucket['key'] = month_key
+            bucket['label'] = month_key.replace('_', ' ').title()
+            bucket['orders'] += 1
+            bucket['revenueCzkEquiv'] += parse_affiliate_money(commission.get('amount'))
+        return {
+            'partner_code': partner_code,
+            'partner_name': affiliate_partner_name(partner),
+            'novice_contacts': len(contacts),
+            'ordering_contacts': sum(1 for contact in contacts if num(contact.get('orderCount')) > 0),
+            'orders': len(commissions),
+            'revenue_czk_equiv': round(sum(parse_affiliate_money(commission.get('amount')) for commission in commissions), 2),
+            'monthly': finalize_affiliate_months(monthly),
+        }
+
+    def build_network_row(partner):
+        partner_code = partner.get('code') or ''
+        commission_table = fetch_affiliate_commissions_table(partner_code, admin_key)
+        commissions = commission_table.get('commissions') or []
+        summary = commission_table.get('summary') or {}
+        customer_stats = summary.get('customer_stats') or {}
+        monthly = defaultdict(lambda: empty_affiliate_month_bucket())
+        for commission in commissions:
+            raw_date = parse_dt(commission.get('raw_date'))
+            if not raw_date:
+                continue
+            month_key = affiliate_month_key(raw_date)
+            bucket = monthly[month_key]
+            bucket['key'] = month_key
+            bucket['label'] = month_key.replace('_', ' ').title()
+            bucket['orders'] += 1
+            bucket['revenueCzkEquiv'] += parse_affiliate_money(commission.get('amount'))
+        return {
+            'partner_code': partner_code,
+            'partner_name': affiliate_partner_name(partner),
+            'partner_tiande_id': None,
+            'network_customers': round(float(customer_stats.get('mlm') or 0), 2),
+            'ordering_customers': round(float(summary.get('unique_customers') or 0), 2),
+            'orders': len(commissions),
+            'revenue_czk_equiv': round(sum(parse_affiliate_money(commission.get('amount')) for commission in commissions), 2),
+            'monthly': finalize_affiliate_months(monthly),
+        }
+
+    novice_rows = []
+    network_rows = []
+    with ThreadPoolExecutor(max_workers=12) as executor:
+        novice_futures = [executor.submit(build_novice_row, partner) for partner in novice_partners]
+        for future in as_completed(novice_futures):
+            novice_rows.append(future.result())
+    with ThreadPoolExecutor(max_workers=12) as executor:
+        network_futures = [executor.submit(build_network_row, partner) for partner in partners]
+        for future in as_completed(network_futures):
+            network_rows.append(future.result())
+
+    novice_rows = sorted(novice_rows, key=lambda row: float(row.get('revenue_czk_equiv') or 0), reverse=True)[:50]
+    network_rows = sorted(network_rows, key=lambda row: float(row.get('revenue_czk_equiv') or 0), reverse=True)[:50]
+
+    novice_monthly_buckets = defaultdict(lambda: empty_affiliate_month_bucket())
+    for row in novice_rows:
+        for month_row in row.get('monthly') or []:
+            month_key = month_row.get('key') or ''
+            if not month_key:
+                continue
+            bucket = novice_monthly_buckets[month_key]
+            bucket['key'] = month_key
+            bucket['label'] = month_row.get('label') or month_key.replace('_', ' ').title()
+            bucket['contacts'] += float(month_row.get('contacts') or 0)
+            bucket['orderingContacts'] += float(month_row.get('orderingContacts') or 0)
+            bucket['orders'] += float(month_row.get('orders') or 0)
+            bucket['revenueCzkEquiv'] += float(month_row.get('revenueCzkEquiv') or 0)
+
+    network_monthly_buckets = defaultdict(lambda: empty_affiliate_month_bucket())
+    for row in network_rows:
+        for month_row in row.get('monthly') or []:
+            month_key = month_row.get('key') or ''
+            if not month_key:
+                continue
+            bucket = network_monthly_buckets[month_key]
+            bucket['key'] = month_key
+            bucket['label'] = month_row.get('label') or month_key.replace('_', ' ').title()
+            bucket['orders'] += float(month_row.get('orders') or 0)
+            bucket['revenueCzkEquiv'] += float(month_row.get('revenueCzkEquiv') or 0)
+
+    novice_monthly = finalize_affiliate_months(novice_monthly_buckets)
+    network_monthly = finalize_affiliate_months(network_monthly_buckets)
+    novice_top = novice_rows[:20]
+    network_top = network_rows[:20]
+    novice_total_revenue = round(sum(float(row.get('revenue_czk_equiv') or 0) for row in novice_rows), 2)
+    network_total_revenue = round(sum(float(row.get('revenue_czk_equiv') or 0) for row in network_rows), 2)
+
+    return {
+        'generatedAt': generated_at,
+        'source': {
+            'status': 'live_api',
+            'message': 'Affiliate přehled se skládá přímo z živých API endpointů affiliate portálu, bez závislosti na HTML exportech.',
+            'errors': [],
+        },
+        'period': period,
+        'reports': {
+            'novice': {
+                'label': 'Získaní nováčci',
+                'url': None,
+                'available': True,
+                'error': None,
+                'partners': len(novice_rows),
+                'totals': {
+                    'contacts': round(sum(float(row.get('novice_contacts') or 0) for row in novice_rows), 2),
+                    'orderingContacts': round(sum(float(row.get('ordering_contacts') or 0) for row in novice_rows), 2),
+                    'orders': round(sum(float(row.get('orders') or 0) for row in novice_rows), 2),
+                    'revenueCzkEquiv': novice_total_revenue,
+                },
+                'monthly': novice_monthly,
+                'topPartners': [
+                    {
+                        'partnerCode': row.get('partner_code'),
+                        'partnerName': row.get('partner_name'),
+                        'contacts': round(float(row.get('novice_contacts') or 0), 2),
+                        'orderingContacts': round(float(row.get('ordering_contacts') or 0), 2),
+                        'orders': round(float(row.get('orders') or 0), 2),
+                        'revenueCzkEquiv': round(float(row.get('revenue_czk_equiv') or 0), 2),
+                    }
+                    for row in novice_top
+                ],
+            },
+            'network': {
+                'label': 'MLM síť a tržby',
+                'url': None,
+                'available': True,
+                'error': None,
+                'partners': len(network_rows),
+                'totals': {
+                    'networkCustomers': round(sum(float(row.get('network_customers') or 0) for row in network_rows), 2),
+                    'orderingCustomers': round(sum(float(row.get('ordering_customers') or 0) for row in network_rows), 2),
+                    'orders': round(sum(float(row.get('orders') or 0) for row in network_rows), 2),
+                    'revenueCzkEquiv': network_total_revenue,
+                },
+                'monthly': network_monthly,
+                'topPartners': [
+                    {
+                        'partnerCode': row.get('partner_code'),
+                        'partnerName': row.get('partner_name'),
+                        'partnerTiandeId': row.get('partner_tiande_id'),
+                        'networkCustomers': round(float(row.get('network_customers') or 0), 2),
+                        'orderingCustomers': round(float(row.get('ordering_customers') or 0), 2),
+                        'orders': round(float(row.get('orders') or 0), 2),
+                        'revenueCzkEquiv': round(float(row.get('revenue_czk_equiv') or 0), 2),
+                    }
+                    for row in network_top
+                ],
+            },
+        },
+        'summary': {
+            'noviceRevenueCzkEquiv': novice_total_revenue,
+            'networkRevenueCzkEquiv': network_total_revenue,
+            'novicePartners': len(novice_rows),
+            'networkPartners': len(network_rows),
+            'noviceOrders': round(sum(float(row.get('orders') or 0) for row in novice_rows), 2),
+            'networkOrders': round(sum(float(row.get('orders') or 0) for row in network_rows), 2),
+            'noviceOrderingContacts': round(sum(float(row.get('ordering_contacts') or 0) for row in novice_rows), 2),
+            'networkOrderingCustomers': round(sum(float(row.get('ordering_customers') or 0) for row in network_rows), 2),
+            'topNovicePartner': ({
+                'partnerCode': novice_top[0].get('partner_code'),
+                'partnerName': novice_top[0].get('partner_name'),
+                'revenueCzkEquiv': round(float(novice_top[0].get('revenue_czk_equiv') or 0), 2),
+            } if novice_top else None),
+            'topNetworkPartner': ({
+                'partnerCode': network_top[0].get('partner_code'),
+                'partnerName': network_top[0].get('partner_name'),
+                'revenueCzkEquiv': round(float(network_top[0].get('revenue_czk_equiv') or 0), 2),
+            } if network_top else None),
+        },
+    }
+
+
+def mark_payload_refreshed(payload, refreshed_at):
+    if not isinstance(payload, dict):
+        return payload
+    original_generated_at = payload.get('generatedAt')
+    if original_generated_at and not payload.get('sourceGeneratedAt'):
+        payload['sourceGeneratedAt'] = original_generated_at
+    payload['generatedAt'] = refreshed_at
+    return payload
 
 
 def product_label(item):
@@ -894,6 +1394,269 @@ def summarize_daily_history(orders, target_date, pos_admin_views=None):
     return days, baseline_orders, baseline_revenue
 
 
+def same_time_previous_year(dt):
+    try:
+        return dt.replace(year=dt.year - 1)
+    except ValueError:
+        return dt.replace(year=dt.year - 1, day=28)
+
+
+def build_eshop_ytd_payload(orders, generated_at, now_local, pos_admin_views=None):
+    current_cutoff = now_local.astimezone(PRAGUE_TZ)
+    previous_cutoff = same_time_previous_year(current_cutoff)
+    current_year = current_cutoff.year
+    previous_year = current_year - 1
+    month_names = ['Leden', 'Únor', 'Březen', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec']
+
+    monthly_orders = defaultdict(list)
+    for order in orders:
+        if order.get('cancelled'):
+            continue
+        dt = parse_dt(order.get('dateCreated'))
+        if not dt:
+            continue
+        if dt.year == current_year:
+            if dt > current_cutoff:
+                continue
+        elif dt.year == previous_year:
+            if dt > previous_cutoff:
+                continue
+        else:
+            continue
+        monthly_orders[(dt.year, dt.month)].append(order)
+
+    months = []
+    for month in range(1, current_cutoff.month + 1):
+        previous_orders = monthly_orders.get((previous_year, month), [])
+        current_orders = monthly_orders.get((current_year, month), [])
+        months.append({
+            'month': month,
+            'label': month_names[month - 1],
+            'partial': month == current_cutoff.month,
+            'previous': {
+                'year': previous_year,
+                'count': len(previous_orders),
+                'revenueWithVat': round(sum(order_total_czk(order, pos_admin_views) for order in previous_orders), 2),
+            },
+            'current': {
+                'year': current_year,
+                'count': len(current_orders),
+                'revenueWithVat': round(sum(order_total_czk(order, pos_admin_views) for order in current_orders), 2),
+            },
+        })
+
+    previous_total_count = sum(row['previous']['count'] for row in months)
+    current_total_count = sum(row['current']['count'] for row in months)
+    previous_total_revenue = round(sum(row['previous']['revenueWithVat'] for row in months), 2)
+    current_total_revenue = round(sum(row['current']['revenueWithVat'] for row in months), 2)
+
+    return {
+        'generatedAt': generated_at,
+        'currentCutoff': current_cutoff.isoformat(),
+        'previousCutoff': previous_cutoff.isoformat(),
+        'years': {'previous': previous_year, 'current': current_year},
+        'months': months,
+        'totals': {
+            'previous': {
+                'count': previous_total_count,
+                'revenueWithVat': previous_total_revenue,
+                'averageOrderValue': round(previous_total_revenue / previous_total_count, 2) if previous_total_count else 0,
+            },
+            'current': {
+                'count': current_total_count,
+                'revenueWithVat': current_total_revenue,
+                'averageOrderValue': round(current_total_revenue / current_total_count, 2) if current_total_count else 0,
+            },
+        },
+    }
+
+
+def build_mtd_revenue_snapshot(orders, report_date, pos_admin_views=None):
+    current_start = datetime(report_date.year, report_date.month, 1, 0, 0, 0, tzinfo=PRAGUE_TZ)
+    current_end = datetime(report_date.year, report_date.month, report_date.day, 23, 59, 59, tzinfo=PRAGUE_TZ)
+    previous_start = shift_month(current_start, -1)
+    previous_month_last_day = (current_start - timedelta(days=1)).day
+    previous_end_day = min(report_date.day, previous_month_last_day)
+    previous_end = datetime(previous_start.year, previous_start.month, previous_end_day, 23, 59, 59, tzinfo=PRAGUE_TZ)
+    pre_previous_start = shift_month(current_start, -2)
+    pre_previous_month_last_day = (previous_start - timedelta(days=1)).day
+    pre_previous_end_day = min(report_date.day, pre_previous_month_last_day)
+    pre_previous_end = datetime(pre_previous_start.year, pre_previous_start.month, pre_previous_end_day, 23, 59, 59, tzinfo=PRAGUE_TZ)
+
+    def in_window(order, start_dt, end_dt):
+        dt = parse_dt(order.get('dateCreated'))
+        if not dt or order.get('cancelled'):
+            return False
+        return start_dt <= dt <= end_dt
+
+    current_orders = [order for order in orders if in_window(order, current_start, current_end)]
+    previous_orders = [order for order in orders if in_window(order, previous_start, previous_end)]
+    pre_previous_orders = [order for order in orders if in_window(order, pre_previous_start, pre_previous_end)]
+    current_revenue = round(sum(order_total_czk(order, pos_admin_views) for order in current_orders), 2)
+    previous_revenue = round(sum(order_total_czk(order, pos_admin_views) for order in previous_orders), 2)
+    pre_previous_revenue = round(sum(order_total_czk(order, pos_admin_views) for order in pre_previous_orders), 2)
+
+    return {
+        'current': {
+            'label': f'{current_start.day}. {current_start.month}.–{report_date.day}. {report_date.month}.',
+            'dateFrom': current_start.isoformat(),
+            'dateTo': current_end.isoformat(),
+            'orders': len(current_orders),
+            'revenueWithVat': current_revenue,
+        },
+        'previousSamePeriod': {
+            'label': f'{previous_start.day}. {previous_start.month}.–{previous_end_day}. {previous_start.month}.',
+            'dateFrom': previous_start.isoformat(),
+            'dateTo': previous_end.isoformat(),
+            'orders': len(previous_orders),
+            'revenueWithVat': previous_revenue,
+        },
+        'prePreviousSamePeriod': {
+            'label': f'{pre_previous_start.day}. {pre_previous_start.month}.–{pre_previous_end_day}. {pre_previous_start.month}.',
+            'dateFrom': pre_previous_start.isoformat(),
+            'dateTo': pre_previous_end.isoformat(),
+            'orders': len(pre_previous_orders),
+            'revenueWithVat': pre_previous_revenue,
+        },
+        'changePct': pct_delta(current_revenue, previous_revenue) if previous_revenue else None,
+        'prePreviousChangePct': pct_delta(current_revenue, pre_previous_revenue) if pre_previous_revenue else None,
+    }
+
+
+def clean_customer_value(value):
+    return ' '.join(str(value or '').split()).strip()
+
+
+def customer_label_from_order(order):
+    inv = order.get('invoiceAddress') or {}
+    dlv = order.get('deliveryAddress') or {}
+    firm = clean_customer_value(inv.get('firm')) or clean_customer_value(dlv.get('firm'))
+    person = ' '.join(
+        x for x in [
+            clean_customer_value(inv.get('name')) or clean_customer_value(dlv.get('name')),
+            clean_customer_value(inv.get('surname')) or clean_customer_value(dlv.get('surname')),
+        ] if x
+    ).strip()
+    email = clean_customer_value(order.get('email')).lower()
+    if firm and person:
+        return f'{firm} ({person})'
+    if firm:
+        return firm
+    if person:
+        return person
+    if email:
+        return email
+    return 'Neznámý zákazník'
+
+
+def customer_key_from_order(order):
+    inv = order.get('invoiceAddress') or {}
+    firm = clean_customer_value(inv.get('firm')).lower()
+    ico = clean_customer_value(inv.get('ico'))
+    email = clean_customer_value(order.get('email')).lower()
+    if ico:
+        return f'ico:{ico}'
+    if email:
+        return f'email:{email}'
+    if firm:
+        return f'firm:{firm}'
+    return f'fallback:{customer_label_from_order(order).lower()}'
+
+
+def build_customer_fact_payload(orders, generated_at, window, pos_admin_views=None):
+    aggregated = {}
+    processed = 0
+    for order in orders:
+        if order.get('cancelled'):
+            continue
+        created = parse_dt(order.get('dateCreated'))
+        if not created:
+            continue
+        revenue = order_total_czk(order, pos_admin_views)
+        key = customer_key_from_order(order)
+        row = aggregated.setdefault(key, {
+            'customerKey': key,
+            'label': customer_label_from_order(order),
+            'email': clean_customer_value(order.get('email')).lower(),
+            'firm': clean_customer_value((order.get('invoiceAddress') or {}).get('firm')) or clean_customer_value((order.get('deliveryAddress') or {}).get('firm')),
+            'person': ' '.join(x for x in [clean_customer_value((order.get('invoiceAddress') or {}).get('name')) or clean_customer_value((order.get('deliveryAddress') or {}).get('name')), clean_customer_value((order.get('invoiceAddress') or {}).get('surname')) or clean_customer_value((order.get('deliveryAddress') or {}).get('surname'))] if x).strip(),
+            'city': clean_customer_value((order.get('invoiceAddress') or {}).get('city')) or clean_customer_value((order.get('deliveryAddress') or {}).get('city')),
+            'ico': clean_customer_value((order.get('invoiceAddress') or {}).get('ico')),
+            'countryCode': ((order.get('deliveryAddress') or {}).get('country') or {}).get('code') or 'CZ',
+            'orders': 0,
+            'revenueWithVat': 0.0,
+            'firstOrderAt': '',
+            'lastOrderAt': '',
+            'channels': set(),
+        })
+        row['orders'] += 1
+        row['revenueWithVat'] += revenue
+        iso = created.isoformat()
+        row['firstOrderAt'] = min(row['firstOrderAt'], iso) if row['firstOrderAt'] else iso
+        row['lastOrderAt'] = max(row['lastOrderAt'], iso) if row['lastOrderAt'] else iso
+        source_name = ((order.get('source') or {}).get('name') or '').strip()
+        if source_name:
+            row['channels'].add(source_name)
+        processed += 1
+    rows = sorted(aggregated.values(), key=lambda x: (-x['revenueWithVat'], -x['orders'], x['label']))
+    for idx, row in enumerate(rows, 1):
+        row['rank'] = idx
+        row['averageOrderValue'] = round(row['revenueWithVat'] / row['orders'], 2) if row['orders'] else 0.0
+        row['revenueWithVat'] = round(row['revenueWithVat'], 2)
+        row['channels'] = sorted(row['channels'])
+        row['customerType'] = 'returning' if row['orders'] > 1 else 'new'
+    return {
+        'generatedAt': generated_at,
+        'window': window,
+        'ordersProcessed': processed,
+        'customersCount': len(rows),
+        'summary': {
+            'newCustomers': sum(1 for row in rows if row['orders'] == 1),
+            'returningCustomers': sum(1 for row in rows if row['orders'] > 1),
+            'repeatRevenueWithVat': round(sum(row['revenueWithVat'] for row in rows if row['orders'] > 1), 2),
+            'newRevenueWithVat': round(sum(row['revenueWithVat'] for row in rows if row['orders'] == 1), 2),
+        },
+        'customers': rows,
+    }
+
+
+def build_order_fact_payload(orders, generated_at, window, pos_admin_views=None):
+    rows = []
+    for order in orders:
+        created = parse_dt(order.get('dateCreated'))
+        if not created:
+            continue
+        rows.append({
+            'id': order.get('id'),
+            'code': order.get('code'),
+            'dateCreated': created.isoformat(),
+            'customerKey': customer_key_from_order(order),
+            'customerLabel': customer_label_from_order(order),
+            'email': clean_customer_value(order.get('email')).lower(),
+            'countryCode': ((order.get('deliveryAddress') or {}).get('country') or {}).get('code') or 'CZ',
+            'sourceName': ((order.get('source') or {}).get('name') or '').strip(),
+            'statusName': order_status_name(order),
+            'cancelled': bool(order.get('cancelled')),
+            'problematic': is_problematic_order(order),
+            'isPaid': bool(order.get('isPaid')),
+            'revenueWithVat': order_total_czk(order, pos_admin_views),
+        })
+    rows.sort(key=lambda x: x['dateCreated'], reverse=True)
+    clean_rows = [row for row in rows if not row['cancelled']]
+    return {
+        'generatedAt': generated_at,
+        'window': window,
+        'summary': {
+            'orders': len(rows),
+            'nonCancelledOrders': len(clean_rows),
+            'problematicOrders': sum(1 for row in rows if row['problematic']),
+            'cancelledOrders': sum(1 for row in rows if row['cancelled']),
+            'revenueWithVat': round(sum(float(row['revenueWithVat'] or 0) for row in clean_rows), 2),
+        },
+        'orders': rows,
+    }
+
+
 def store_stock_breakdown(product):
     rows = []
     for row in product.get('stores') or []:
@@ -906,7 +1669,7 @@ def store_stock_breakdown(product):
     return rows
 
 
-def summarize_stock(products, sold_product_codes, previous_products=None):
+def summarize_stock(products, sold_product_codes, previous_products=None, ordering_reference_overrides=None):
     previous_by_code = {item.get('code'): item for item in (previous_products or []) if item.get('code')}
     sold_set = set(sold_product_codes or [])
     low_stock_sold = []
@@ -920,17 +1683,26 @@ def summarize_stock(products, sold_product_codes, previous_products=None):
             continue
         stores = store_stock_breakdown(product)
         fourpx_stores = [store for store in stores if (store.get('storeName') or '').startswith('4PX')]
-        effective_stock = sum(store['inStore'] for store in fourpx_stores) if fourpx_stores else num(product.get('inStore'))
+        wpj_total_stock = round(sum(store['inStore'] for store in stores), 2)
+        effective_stock = sum(store['inStore'] for store in fourpx_stores) if fourpx_stores else wpj_total_stock
         row = {
             'code': code,
             'title': product.get('title') or 'Bez názvu',
             'stock': round(effective_stock, 2),
             'reportedStock': num(product.get('inStore')),
+            'wpjTotalStock': wpj_total_stock,
             'stores': stores,
             'priceWithVat': money((product.get('price') or {}).get('withVat')),
             'visible': bool(product.get('visible')),
         }
-        if row['visible'] and effective_stock <= 10:
+        reference_meta = apply_ordering_reference_overrides(
+            infer_ordering_reference(code, row['title'], row['priceWithVat']),
+            code,
+            row['title'],
+            ordering_reference_overrides or {},
+        )
+        is_stock_alert_candidate = row['visible'] and bool(reference_meta.get('orderable', True))
+        if is_stock_alert_candidate and effective_stock <= 10:
             low_stock_global.append(row)
             if code in sold_set:
                 low_stock_sold.append(row)
@@ -946,7 +1718,8 @@ def summarize_stock(products, sold_product_codes, previous_products=None):
         if previous:
             previous_stores = store_stock_breakdown(previous)
             previous_fourpx = [store for store in previous_stores if (store.get('storeName') or '').startswith('4PX')]
-            previous_stock = sum(store['inStore'] for store in previous_fourpx) if previous_fourpx else num(previous.get('inStore'))
+            previous_total_stock = round(sum(store['inStore'] for store in previous_stores), 2)
+            previous_stock = sum(store['inStore'] for store in previous_fourpx) if previous_fourpx else previous_total_stock
             diff = round(effective_stock - previous_stock, 2)
             if diff:
                 movement_rows.append({
@@ -970,6 +1743,24 @@ def summarize_stock(products, sold_product_codes, previous_products=None):
     }
 
 
+def filter_non_orderable_stock_rows(stock_summary, ordering_reference_overrides=None):
+    summary = dict(stock_summary or {})
+
+    def is_orderable_row(row):
+        meta = apply_ordering_reference_overrides(
+            infer_ordering_reference(row.get('code'), row.get('title'), row.get('priceWithVat')),
+            row.get('code'),
+            row.get('title'),
+            ordering_reference_overrides or {},
+        )
+        return bool(meta.get('orderable', True))
+
+    for key in ('lowStockSoldYesterday', 'lowStockOverall'):
+        summary[key] = [row for row in (summary.get(key) or []) if is_orderable_row(row)]
+
+    return summary
+
+
 def normalize_city_name(value):
     text = str(value or '').strip().lower()
     return ''.join(ch for ch in unicodedata.normalize('NFD', text) if unicodedata.category(ch) != 'Mn')
@@ -977,26 +1768,32 @@ def normalize_city_name(value):
 
 def classify_order_view(order, pos_admin_views=None):
     pos_admin_views = pos_admin_views or {}
+    explicit_view = str(order.get('__classifiedView') or '').strip().lower()
+    if explicit_view in {'ltm', 'mecin', 'cz', 'sk'}:
+        return explicit_view
+
+    pos_id = order.get('__posId')
+    if pos_id is None:
+        pos_id = order.get('posId')
+    try:
+        pos_id = int(pos_id) if pos_id is not None else None
+    except (TypeError, ValueError):
+        pos_id = None
+    if pos_id is not None and pos_id in pos_admin_views:
+        return pos_admin_views[pos_id]
+
     source_name = ((order.get('source') or {}).get('name') or '').strip().lower()
     delivery_city = ((order.get('deliveryAddress') or {}).get('city') or '').strip().lower()
     invoice_city = ((order.get('invoiceAddress') or {}).get('city') or '').strip().lower()
     country = (((order.get('deliveryAddress') or {}).get('country') or {}).get('code') or '').strip().upper()
 
-    if source_name == 'pokladna':
-        for entry in order.get('history') or []:
-            if (entry.get('comment') or '').strip() == 'Vytvořeno v pokladně':
-                admin_id = entry.get('adminId')
-                if admin_id in pos_admin_views:
-                    return pos_admin_views[admin_id]
-                break
-
+    if source_name in {'pokladna', 'administrace'}:
         for city in (delivery_city, invoice_city):
             city_ascii = normalize_city_name(city)
             if 'mecin' in city_ascii:
                 return 'mecin'
             if 'litomer' in city_ascii:
                 return 'ltm'
-        return 'ltm'
     if country == 'SK':
         return 'sk'
     return 'cz'
@@ -1004,11 +1801,17 @@ def classify_order_view(order, pos_admin_views=None):
 
 def order_total_czk(order, pos_admin_views=None):
     total = money((order.get('totalPrice') or {}).get('withVat'))
+    currency = order_currency(order)
+    if currency == 'EUR':
+        return round(total * SK_EUR_TO_CZK_RATE, 2)
     return round(total * SK_EUR_TO_CZK_RATE, 2) if classify_order_view(order, pos_admin_views) == 'sk' else total
 
 
 def order_item_revenue_czk(order, item, pos_admin_views=None):
     revenue = money((item.get('totalPrice') or {}).get('withVat'))
+    currency = order_currency(order)
+    if currency == 'EUR':
+        return round(revenue * SK_EUR_TO_CZK_RATE, 2)
     return round(revenue * SK_EUR_TO_CZK_RATE, 2) if classify_order_view(order, pos_admin_views) == 'sk' else revenue
 
 
@@ -1234,6 +2037,36 @@ def reapply_ordering_packaging_to_analytics(payload, ordering_packaging_map):
     return payload, changed
 
 
+def reapply_combined_stock_to_analytics(payload, combined_index, market_key='complete'):
+    if not payload or not payload.get('items'):
+        return payload, False
+
+    combined_by_code = {item.get('code'): item for item in (combined_index or {}).get('items') or [] if item.get('code')}
+    changed = False
+    for item in payload.get('items') or []:
+        combined_item = combined_by_code.get(item.get('code')) or {}
+        if market_key == 'cz':
+            next_stock = round(num((((combined_item.get('fourpx') or {}).get('cz') or {}).get('availableStock'))), 2)
+        elif market_key == 'sk':
+            next_stock = round(num((((combined_item.get('fourpx') or {}).get('sk') or {}).get('availableStock'))), 2)
+        else:
+            next_stock = round(num(((combined_item.get('fourpx') or {}).get('availableTotal'))), 2)
+            if next_stock <= 0:
+                next_stock = round(num(item.get('effectiveStock')), 2)
+        next_wpj_total = round(num(((combined_item.get('wpj') or {}).get('fourpxStoreTotal'))), 2)
+
+        if round(num(item.get('effectiveStock')), 2) != next_stock:
+            item['effectiveStock'] = next_stock
+            changed = True
+        if round(num(item.get('fourpxAvailable')), 2) != next_stock:
+            item['fourpxAvailable'] = next_stock
+            changed = True
+        if 'wpj4pxStoreTotal' in item and round(num(item.get('wpj4pxStoreTotal')), 2) != next_wpj_total:
+            item['wpj4pxStoreTotal'] = next_wpj_total
+            changed = True
+    return payload, changed
+
+
 def resolve_4px_code_alias(code, wpj_by_code, manual_overrides=None):
     manual_overrides = manual_overrides or {'aliases': {}, 'ignore': set()}
     code = normalize_product_code(code)
@@ -1374,13 +2207,13 @@ def aggregate_4px_outbound_by_sku(outbound_payload, start_dt, end_dt, account_la
     return grouped
 
 
-def build_combined_product_views(wpj_products, yesterday_orders, cz_inventory, sk_inventory, cz_outbound, sk_outbound, start_dt, end_dt, generated_at, manual_overrides=None, pos_admin_views=None):
-    wpj_by_code = {item.get('code'): item for item in wpj_products if item.get('code')}
-    order_metrics = collect_wpj_order_product_metrics(yesterday_orders, wpj_by_code, manual_overrides, pos_admin_views)
-    cz_inventory_by_code = aggregate_4px_inventory(cz_inventory.get('items') or [], wpj_by_code, manual_overrides)
-    sk_inventory_by_code = aggregate_4px_inventory(sk_inventory.get('items') or [], wpj_by_code, manual_overrides)
-    cz_outbound_by_code = aggregate_4px_outbound_by_sku(cz_outbound, start_dt, end_dt, 'CZ', wpj_by_code, manual_overrides)
-    sk_outbound_by_code = aggregate_4px_outbound_by_sku(sk_outbound, start_dt, end_dt, 'SK', wpj_by_code, manual_overrides)
+def build_combined_product_views(ctx: CombinedProductsBuildContext):
+    wpj_by_code = {item.get('code'): item for item in ctx.wpj_products if item.get('code')}
+    order_metrics = collect_wpj_order_product_metrics(ctx.yesterday_orders, wpj_by_code, ctx.manual_overrides, ctx.pos_admin_views)
+    cz_inventory_by_code = aggregate_4px_inventory(ctx.cz_inventory.get('items') or [], wpj_by_code, ctx.manual_overrides)
+    sk_inventory_by_code = aggregate_4px_inventory(ctx.sk_inventory.get('items') or [], wpj_by_code, ctx.manual_overrides)
+    cz_outbound_by_code = aggregate_4px_outbound_by_sku(ctx.cz_outbound, ctx.start_dt, ctx.end_dt, 'CZ', wpj_by_code, ctx.manual_overrides)
+    sk_outbound_by_code = aggregate_4px_outbound_by_sku(ctx.sk_outbound, ctx.start_dt, ctx.end_dt, 'SK', wpj_by_code, ctx.manual_overrides)
 
     all_codes = set(wpj_by_code) | set(cz_inventory_by_code) | set(sk_inventory_by_code) | set(cz_outbound_by_code) | set(sk_outbound_by_code) | set(order_metrics)
     items = []
@@ -1392,6 +2225,7 @@ def build_combined_product_views(wpj_products, yesterday_orders, cz_inventory, s
         stores = store_stock_breakdown(wpj) if wpj else []
         has_wpj_4px_context = any((store.get('storeName') or '').startswith('4PX') for store in stores)
         wpj_fourpx_total = round(sum(store['inStore'] for store in stores if (store.get('storeName') or '').startswith('4PX')), 2)
+        wpj_total_store = round(sum(store['inStore'] for store in stores), 2)
         fourpx_cz = cz_inventory_by_code.get(code, {'availableStock': 0.0, 'pendingStock': 0.0, 'freezeStock': 0.0, 'onwayStock': 0.0, 'batchNos': [], 'skuIds': [], 'sourceCodes': [], 'mappedSourceCodes': [], 'mappingRules': []})
         fourpx_sk = sk_inventory_by_code.get(code, {'availableStock': 0.0, 'pendingStock': 0.0, 'freezeStock': 0.0, 'onwayStock': 0.0, 'batchNos': [], 'skuIds': [], 'sourceCodes': [], 'mappedSourceCodes': [], 'mappingRules': []})
         outbound_cz = cz_outbound_by_code.get(code, {'units': 0.0, 'shipments': [], 'logisticsProducts': [], 'carriers': [], 'name': None, 'accounts': [], 'sourceCodes': [], 'mappedSourceCodes': [], 'mappingRules': []})
@@ -1451,6 +2285,7 @@ def build_combined_product_views(wpj_products, yesterday_orders, cz_inventory, s
             'wpj': {
                 'inStore': num((wpj or {}).get('inStore')),
                 'fourpxStoreTotal': wpj_fourpx_total,
+                'totalStore': wpj_total_store,
                 'priceWithVat': money(((wpj or {}).get('price') or {}).get('withVat')),
                 'stores': stores,
             },
@@ -1576,8 +2411,8 @@ def build_combined_product_views(wpj_products, yesterday_orders, cz_inventory, s
     mapping_suggestions.sort(key=lambda item: (item['yesterdayOutboundUnits'], item['yesterdaySalesUnits'], item['fourpxAvailable']), reverse=True)
 
     combined_index = {
-        'generatedAt': generated_at,
-        'window': {'from': start_dt.isoformat(), 'to': end_dt.isoformat()},
+        'generatedAt': ctx.generated_at,
+        'window': {'from': ctx.start_dt.isoformat(), 'to': ctx.end_dt.isoformat()},
         'counts': {
             'allCodes': len(items),
             'pairedProducts': sum(1 for item in items if item['code'] in wpj_by_code and item['fourpx']['availableTotal'] > 0),
@@ -1592,8 +2427,8 @@ def build_combined_product_views(wpj_products, yesterday_orders, cz_inventory, s
     }
 
     combined_overview = {
-        'generatedAt': generated_at,
-        'window': {'from': start_dt.isoformat(), 'to': end_dt.isoformat()},
+        'generatedAt': ctx.generated_at,
+        'window': {'from': ctx.start_dt.isoformat(), 'to': ctx.end_dt.isoformat()},
         'counts': combined_index['counts'],
         'priorityShortlist': priority_shortlist[:25],
         'mappingSuggestions': mapping_suggestions[:50],
@@ -1607,25 +2442,26 @@ def build_combined_product_views(wpj_products, yesterday_orders, cz_inventory, s
     return combined_index, combined_overview
 
 
-def build_inventory_analytics_window(combined_index, orders, start_dt, end_dt, generated_at, window_days=365, wpj_by_code=None, manual_overrides=None, pos_admin_views=None, ordering_reference_overrides=None, ordering_packaging_map=None):
-    wpj_by_code = wpj_by_code or {}
+def build_inventory_analytics_window(ctx: InventoryAnalyticsBuildContext):
+    wpj_by_code = ctx.wpj_by_code or {}
+    window_days = ctx.window_days
     metrics = {}
     view_keys = ('complete', 'cz', 'sk', 'ltm', 'mecin')
-    metric_windows = tuple(dict.fromkeys((window_days, 365, 180, 90, 30, 14)))
+    metric_windows = tuple(dict.fromkeys((ctx.window_days, 365, 180, 90, 30, 14)))
 
-    for order in orders:
+    for order in ctx.orders:
         dt = parse_dt(order.get('dateCreated'))
         if not dt:
             continue
-        days_ago = (end_dt.date() - dt.date()).days
+        days_ago = (ctx.end_dt.date() - dt.date()).days
         if days_ago < 0 or days_ago > max(metric_windows) - 1:
             continue
-        view = classify_order_view(order, pos_admin_views)
+        view = classify_order_view(order, ctx.pos_admin_views)
         for item in order.get('items') or []:
             if item.get('type') != 'product':
                 continue
             raw_code = item.get('code') or item.get('name') or '–'
-            code, _mapping = resolve_4px_code_alias(raw_code, wpj_by_code, manual_overrides)
+            code, _mapping = resolve_4px_code_alias(raw_code, wpj_by_code, ctx.manual_overrides)
             row = metrics.setdefault(code, {
                 'code': code,
                 'name': (wpj_by_code.get(code) or {}).get('title') or item.get('name') or 'Bez názvu',
@@ -1646,7 +2482,7 @@ def build_inventory_analytics_window(combined_index, orders, start_dt, end_dt, g
                 row['lastSaleDate'] = dt.isoformat()
 
     items = []
-    for item in combined_index.get('items') or []:
+    for item in ctx.combined_index.get('items') or []:
         code = item['code']
         metric = metrics.get(code, {
             **{f'units{days}d': 0.0 for days in metric_windows},
@@ -1655,7 +2491,9 @@ def build_inventory_analytics_window(combined_index, orders, start_dt, end_dt, g
             'byView': {key: {f'units{days}d': 0.0 for days in metric_windows} for key in view_keys},
         })
         effective_stock = item['fourpx']['availableTotal'] if item['fourpx']['availableTotal'] > 0 else item['wpj']['fourpxStoreTotal']
-        units_window = round(metric.get(f'units{window_days}d', 0.0), 2)
+        if effective_stock <= 0:
+            effective_stock = item['wpj'].get('totalStore') or 0
+        units_window = round(metric.get(f'units{ctx.window_days}d', 0.0), 2)
         units730d = units_window
         units365d = round(metric.get('units365d', 0.0), 2)
         units180d = round(metric.get('units180d', 0.0), 2)
@@ -1673,7 +2511,7 @@ def build_inventory_analytics_window(combined_index, orders, start_dt, end_dt, g
         stock_months_on_hand = round((days_of_cover_90 or days_of_cover_365 or 0) / 30.4, 1) if (days_of_cover_90 or days_of_cover_365) else None
 
         last_sale_dt = parse_dt(metric.get('lastSaleDate'))
-        days_since_last_sale = (end_dt.date() - last_sale_dt.date()).days if last_sale_dt else None
+        days_since_last_sale = (ctx.end_dt.date() - last_sale_dt.date()).days if last_sale_dt else None
         selling_value = round(effective_stock * money(item.get('wpj', {}).get('priceWithVat')), 2) if item.get('wpj', {}).get('priceWithVat') else None
 
         trend_pct = pct_delta(daily_run_rate_90, daily_run_rate_365) if daily_run_rate_365 else None
@@ -1738,7 +2576,7 @@ def build_inventory_analytics_window(combined_index, orders, start_dt, end_dt, g
             infer_ordering_reference(code, item['title'], item.get('wpj', {}).get('priceWithVat')),
             code,
             item['title'],
-            ordering_reference_overrides or {},
+            ctx.ordering_reference_overrides or {},
         )
 
         analytics_item = {
@@ -1791,7 +2629,7 @@ def build_inventory_analytics_window(combined_index, orders, start_dt, end_dt, g
             'referenceSource': reference_meta.get('referenceSource'),
             'referenceFlags': sorted(set(reference_meta.get('referenceFlags') or [])),
         }
-        items.append(enrich_item_with_packaging(analytics_item, ordering_packaging_map))
+        items.append(enrich_item_with_packaging(analytics_item, ctx.ordering_packaging_map))
 
     turnover = sorted([item for item in items if item['units365d'] > 0 and item['effectiveStock'] > 0], key=lambda item: item['units365d'], reverse=True)
     dead_stock = sorted([item for item in items if 'dead_stock' in item['tags']], key=lambda item: item['effectiveStock'], reverse=True)
@@ -1800,8 +2638,8 @@ def build_inventory_analytics_window(combined_index, orders, start_dt, end_dt, g
     fast_low_cover = sorted([item for item in items if 'fast_mover_low_cover' in item['tags']], key=lambda item: (item['daysOfCover365d'] or 999, -item['units365d']))
 
     return {
-        'generatedAt': generated_at,
-        'window': {'from': start_dt.isoformat(), 'to': end_dt.isoformat(), 'days': window_days},
+        'generatedAt': ctx.generated_at,
+        'window': {'from': ctx.start_dt.isoformat(), 'to': ctx.end_dt.isoformat(), 'days': ctx.window_days},
         'summary': {
             'trackedItems': len(items),
             'turnoverItems': len(turnover),
@@ -1824,36 +2662,93 @@ def build_inventory_analytics_window(combined_index, orders, start_dt, end_dt, g
     }
 
 
-def build_inventory_analytics_365d(combined_index, year_orders, start_dt, end_dt, generated_at, wpj_by_code=None, manual_overrides=None, pos_admin_views=None, ordering_reference_overrides=None, ordering_packaging_map=None):
-    return build_inventory_analytics_window(
-        combined_index,
-        year_orders,
-        start_dt,
-        end_dt,
-        generated_at,
-        window_days=365,
-        wpj_by_code=wpj_by_code,
-        manual_overrides=manual_overrides,
-        pos_admin_views=pos_admin_views,
-        ordering_reference_overrides=ordering_reference_overrides,
-        ordering_packaging_map=ordering_packaging_map,
-    )
+def build_ordering_sales_history_payload(ctx: OrderingSalesHistoryBuildContext):
+    wpj_by_code = ctx.wpj_by_code or {}
+    view_keys = ('complete', 'cz', 'sk', 'ltm', 'mecin')
+    codes = {}
+    max_seen_day = None
+    summary = {
+        'trackedCodes': 0,
+        'unitsTotal': 0.0,
+        'byView': {
+            key: {'unitsTotal': 0.0, 'codesWithSales': 0, 'saleDays': 0}
+            for key in view_keys
+        },
+    }
+
+    for order in ctx.orders:
+        dt = parse_dt(order.get('dateCreated'))
+        if not dt or dt < ctx.start_dt or dt > ctx.end_dt:
+            continue
+        view = classify_order_view(order, ctx.pos_admin_views)
+        day_key = dt.date().isoformat()
+        if max_seen_day is None or day_key > max_seen_day:
+            max_seen_day = day_key
+        for item in order.get('items') or []:
+            if item.get('type') != 'product':
+                continue
+            raw_code = item.get('code') or item.get('name') or '–'
+            code, _mapping = resolve_4px_code_alias(raw_code, wpj_by_code, ctx.manual_overrides)
+            row = codes.setdefault(code, {
+                'code': code,
+                'title': (wpj_by_code.get(code) or {}).get('title') or item.get('name') or 'Bez názvu',
+                'lastSaleDate': None,
+                'dailyByView': {key: defaultdict(float) for key in view_keys},
+                'totalsByView': {key: 0.0 for key in view_keys},
+            })
+            units = num(item.get('pieces'))
+            row['dailyByView']['complete'][day_key] += units
+            row['dailyByView'][view][day_key] += units
+            row['totalsByView']['complete'] += units
+            row['totalsByView'][view] += units
+            if not row['lastSaleDate'] or dt.isoformat() > row['lastSaleDate']:
+                row['lastSaleDate'] = dt.isoformat()
+
+    for code, row in codes.items():
+        has_any_sales = False
+        for view_key in view_keys:
+            sales_map = row['dailyByView'][view_key]
+            row['dailyByView'][view_key] = [
+                [day, round(units, 2)]
+                for day, units in sorted(sales_map.items())
+                if units
+            ]
+            row['totalsByView'][view_key] = round(row['totalsByView'][view_key], 2)
+            if row['dailyByView'][view_key]:
+                summary['byView'][view_key]['saleDays'] += len(row['dailyByView'][view_key])
+                summary['byView'][view_key]['unitsTotal'] += row['totalsByView'][view_key]
+                if row['totalsByView'][view_key] > 0:
+                    summary['byView'][view_key]['codesWithSales'] += 1
+            if view_key == 'complete' and row['totalsByView'][view_key] > 0:
+                has_any_sales = True
+                summary['unitsTotal'] += row['totalsByView'][view_key]
+        if has_any_sales:
+            summary['trackedCodes'] += 1
+
+    summary['unitsTotal'] = round(summary['unitsTotal'], 2)
+    for view_key in view_keys:
+        summary['byView'][view_key]['unitsTotal'] = round(summary['byView'][view_key]['unitsTotal'], 2)
+
+    effective_end = parse_dt(max_seen_day) if max_seen_day else ctx.end_dt
+
+    return {
+        'generatedAt': ctx.generated_at,
+        'window': {
+            'from': ctx.start_dt.isoformat(),
+            'to': effective_end.isoformat(),
+            'days': max((effective_end.date() - ctx.start_dt.date()).days + 1, 0),
+        },
+        'summary': summary,
+        'codes': codes,
+    }
 
 
-def build_inventory_analytics_730d(combined_index, orders, start_dt, end_dt, generated_at, wpj_by_code=None, manual_overrides=None, pos_admin_views=None, ordering_reference_overrides=None, ordering_packaging_map=None):
-    return build_inventory_analytics_window(
-        combined_index,
-        orders,
-        start_dt,
-        end_dt,
-        generated_at,
-        window_days=ORDERING_ANALYTICS_DAYS,
-        wpj_by_code=wpj_by_code,
-        manual_overrides=manual_overrides,
-        pos_admin_views=pos_admin_views,
-        ordering_reference_overrides=ordering_reference_overrides,
-        ordering_packaging_map=ordering_packaging_map,
-    )
+def build_inventory_analytics_365d(ctx: InventoryAnalyticsBuildContext):
+    return build_inventory_analytics_window(replace(ctx, window_days=365))
+
+
+def build_inventory_analytics_730d(ctx: InventoryAnalyticsBuildContext):
+    return build_inventory_analytics_window(replace(ctx, window_days=ORDERING_ANALYTICS_DAYS))
 
 
 def enrich_inventory_analytics_prices(payload, wpj_by_code):
@@ -1887,7 +2782,9 @@ def build_inventory_analytics_market_view(base_payload, combined_index, generate
         elif market_key == 'sk':
             effective_stock = round(num((((combined_item.get('fourpx') or {}).get('sk') or {}).get('availableStock'))), 2)
         else:
-            effective_stock = round(num(base_item.get('effectiveStock')), 2)
+            effective_stock = round(num(((combined_item.get('fourpx') or {}).get('availableTotal'))), 2)
+            if effective_stock <= 0:
+                effective_stock = round(num(base_item.get('effectiveStock')), 2)
 
         market_view = ((base_item.get('byView') or {}).get(market_key) or {}) if market_key != 'complete' else ((base_item.get('byView') or {}).get('complete') or {})
         units_window = round(num(market_view.get('units730d' if window_days == ORDERING_ANALYTICS_DAYS else f'units{window_days}d')), 2)
@@ -1931,10 +2828,12 @@ def build_inventory_analytics_market_view(base_payload, combined_index, generate
             elif days_of_cover_90 <= 60:
                 reorder_risk = 'watch'
 
+        cover_metric = days_of_cover_90 if days_of_cover_90 is not None else days_of_cover_365
+
         tags = []
-        if effective_stock > 0 and units365d == 0:
+        if effective_stock > 0 and cover_metric is not None and cover_metric > 180:
             tags.append('dead_stock')
-        if effective_stock > 0 and (base_item.get('daysSinceLastSale') is not None) and int(base_item.get('daysSinceLastSale') or 0) >= 90:
+        elif effective_stock > 0 and cover_metric is not None and cover_metric > 90:
             tags.append('slow_mover')
         if effective_stock > 0 and days_of_cover_365 is not None and days_of_cover_365 >= 365:
             tags.append('overstocked')
@@ -1987,7 +2886,7 @@ def build_inventory_analytics_market_view(base_payload, combined_index, generate
 
     turnover = sorted([item for item in items if item['units365d'] > 0 and item['effectiveStock'] > 0], key=lambda item: item['units365d'], reverse=True)
     dead_stock = sorted([item for item in items if 'dead_stock' in item['tags']], key=lambda item: item['effectiveStock'], reverse=True)
-    slow_movers = sorted([item for item in items if 'slow_mover' in item['tags'] and item['effectiveStock'] > 0], key=lambda item: ((item['daysSinceLastSale'] or 0), item['effectiveStock']), reverse=True)
+    slow_movers = sorted([item for item in items if 'slow_mover' in item['tags'] and item['effectiveStock'] > 0], key=lambda item: (((item.get('daysOfCover90d') if item.get('daysOfCover90d') is not None else item.get('daysOfCover365d')) or 0), item['effectiveStock']), reverse=True)
     overstocked = sorted([item for item in items if 'overstocked' in item['tags'] and item['effectiveStock'] > 0], key=lambda item: (item['daysOfCover365d'] or 0), reverse=True)
     fast_low_cover = sorted([item for item in items if 'fast_mover_low_cover' in item['tags']], key=lambda item: (item['daysOfCover365d'] or 999, -item['units365d']))
 
@@ -2135,13 +3034,37 @@ def clamp_number(value, minimum, maximum):
 
 
 def estimate_ordering_daily_demand(item):
-    base = max(
-        float(item.get('dailyRunRate90d') or 0),
-        float(item.get('dailyRunRate365d') or 0) * 0.9,
-        float(item.get('dailyRunRate730d') or 0) * 0.85,
+    rate30 = float(item.get('units30d') or 0) / 30 if float(item.get('units30d') or 0) > 0 else 0.0
+    rate90 = float(item.get('dailyRunRate90d') or 0)
+    rate365 = float(item.get('dailyRunRate365d') or 0)
+    rate730 = float(item.get('dailyRunRate730d') or 0)
+
+    weighted = (
+        rate30 * 0.65
+        + rate90 * 0.25
+        + rate365 * 0.07
+        + rate730 * 0.03
     )
-    trend_factor = clamp_number(1 + float(item.get('trend90v365Pct') or 0) / 250, 0.6, 1.6)
-    return max(0, base * trend_factor)
+
+    trend_factor = clamp_number(1 + float(item.get('trend90v365Pct') or 0) / 600, 0.85, 1.15)
+    estimate = weighted * trend_factor
+
+    recent_cap = max(
+        rate30 * 1.25 if rate30 > 0 else 0.0,
+        rate90 * 1.10 if rate90 > 0 else 0.0,
+        rate365 * 0.35 if rate365 > 0 else 0.0,
+    )
+    if recent_cap > 0:
+        estimate = min(estimate, recent_cap)
+
+    recent_floor = max(
+        rate30 * 0.85 if rate30 > 0 else 0.0,
+        rate90 * 0.75 if rate90 > 0 else 0.0,
+    )
+    if recent_floor > 0:
+        estimate = max(estimate, recent_floor)
+
+    return max(0, estimate)
 
 
 def forecast_ordering_units(item, days):
@@ -2150,8 +3073,7 @@ def forecast_ordering_units(item, days):
 
 def safety_units_for_ordering(item, lead_days):
     base = estimate_ordering_daily_demand(item)
-    trend_bonus = max(0, float(item.get('trend90v365Pct') or 0)) / 100
-    return max(1, round(base * max(14, lead_days * 0.5) * (1 + trend_bonus * 0.2)))
+    return max(1, round(base * max(14, lead_days * 0.5)))
 
 
 def max_units_for_ordering(item, lead_days):
@@ -2513,15 +3435,18 @@ def build_expiry_overview(generated_at, combined_index, cz_expiry_rows, sk_expir
         enriched['label'] = f"{row['sku']} · {enriched['title']} ({row['account']})"
         combined_rows.append(enriched)
 
-    combined_rows.sort(key=lambda item: (-item['riskScore'], item['daysToExpiry'], -item['datedStock'], item['sku']))
+    combined_rows.sort(key=lambda item: (-item['riskScore'], item['daysToExpiry'], -item['datedStock'], item['sku'], item['dateExpiry']))
     return {
         'generatedAt': generated_at,
         'summary': {
-            'datedSkuCount': len(combined_rows),
-            'czSkuCount': len(cz_expiry_rows or []),
-            'skSkuCount': len(sk_expiry_rows or []),
+            'datedSkuCount': len({row['sku'] for row in combined_rows}),
+            'czSkuCount': len({row['sku'] for row in (cz_expiry_rows or [])}),
+            'skSkuCount': len({row['sku'] for row in (sk_expiry_rows or [])}),
+            'datedRowCount': len(combined_rows),
+            'czRowCount': len(cz_expiry_rows or []),
+            'skRowCount': len(sk_expiry_rows or []),
         },
-        'topExpiring': combined_rows[:100],
+        'topExpiring': combined_rows,
     }
 
 
@@ -2554,7 +3479,103 @@ def summarize_4px_window(label, outbound, start_dt, end_dt):
     }
 
 
-def build_alerts(wpj_summary, stock_summary, logistics_summary, warnings):
+def build_inventory_health_summary(analytics_payload, ordering_core_payload):
+    items = [row for row in (analytics_payload or {}).get('items') or [] if row.get('orderable') is not False]
+    top_sku_rows = [row for row in items if row.get('orderingRole') == 'top_sku']
+
+    def cover_days(row):
+        for key in ('daysOfCover90d', 'daysOfCover365d', 'daysOfCover730d'):
+            value = row.get(key)
+            if value is not None:
+                return float(value)
+        return None
+
+    def positive_stock_value(row):
+        return max(0.0, float(row.get('stockValueSelling') or 0))
+
+    def is_dead_stock(row):
+        cover = cover_days(row)
+        return float(row.get('effectiveStock') or 0) > 0 and cover is not None and cover > 180
+
+    def is_slow_stock(row):
+        cover = cover_days(row)
+        return float(row.get('effectiveStock') or 0) > 0 and cover is not None and 90 < cover <= 180
+
+    a_critical_rows = [
+        row for row in top_sku_rows
+        if float(row.get('effectiveStock') or 0) <= 0
+        or row.get('reorderRisk') == 'critical'
+        or ((cover_days(row) is not None) and cover_days(row) < 7)
+    ]
+    a_warning_rows = [
+        row for row in top_sku_rows
+        if row not in a_critical_rows and (
+            row.get('reorderRisk') in {'soon', 'watch'}
+            or ((cover_days(row) is not None) and cover_days(row) < 14)
+        )
+    ]
+    dead_rows = [row for row in items if is_dead_stock(row)]
+    slow_rows = [row for row in items if is_slow_stock(row)]
+    overstock_rows = [
+        row for row in items
+        if float(row.get('effectiveStock') or 0) > 0 and (
+            'overstocked' in (row.get('tags') or [])
+            or row.get('turnoverZone') == 'red'
+            or ((cover_days(row) or 0) > 90)
+        )
+    ]
+
+    total_stock_value = sum(positive_stock_value(row) for row in items)
+    dead_value = sum(positive_stock_value(row) for row in dead_rows)
+    slow_value = sum(positive_stock_value(row) for row in slow_rows)
+    slow_dead_value = dead_value + slow_value
+    overstock_value = sum(positive_stock_value(row) for row in overstock_rows)
+    daily_sales_value_90 = sum(
+        (max(0.0, float(row.get('units90d') or 0)) * max(0.0, float(row.get('unitSellingPrice') or 0))) / 90.0
+        for row in items
+    )
+    total_cover_days = round(total_stock_value / daily_sales_value_90, 1) if daily_sales_value_90 > 0 else None
+    slow_dead_share = round((slow_dead_value / total_stock_value) * 100, 1) if total_stock_value > 0 else 0.0
+    dead_share = round((dead_value / total_stock_value) * 100, 1) if total_stock_value > 0 else 0.0
+    overstock_share = round((overstock_value / total_stock_value) * 100, 1) if total_stock_value > 0 else 0.0
+
+    health_score = 100
+    health_score -= len(a_critical_rows) * 8
+    health_score -= len(a_warning_rows) * 3
+    if dead_share > 15:
+        health_score -= 20
+    elif dead_share > 8:
+        health_score -= 10
+    if slow_dead_share > 35:
+        health_score -= 15
+    elif slow_dead_share > 20:
+        health_score -= 8
+    if total_cover_days is not None and total_cover_days > 120:
+        health_score -= 15
+    elif total_cover_days is not None and total_cover_days > 90:
+        health_score -= 8
+    if overstock_share > 20:
+        health_score -= 10
+    health_score = max(0, round(health_score))
+
+    return {
+        'healthScore': health_score,
+        'aCriticalCount': len(a_critical_rows),
+        'aWarningCount': len(a_warning_rows),
+        'slowDeadValue': round(slow_dead_value, 2),
+        'slowDeadShare': slow_dead_share,
+        'deadValue': round(dead_value, 2),
+        'deadShare': dead_share,
+        'overstockValue': round(overstock_value, 2),
+        'overstockShare': overstock_share,
+        'totalCoverDays': total_cover_days,
+        'topRiskCodes': [row.get('code') for row in a_critical_rows[:3] if row.get('code')],
+        'topRiskLabels': [row.get('label') or f'{row.get("code") or "SKU"} · {row.get("title") or "Bez názvu"}' for row in a_critical_rows[:3]],
+        'blockedItems': int((ordering_core_payload or {}).get('summary', {}).get('excludedItems') or 0),
+    }
+
+
+def build_alerts(wpj_summary, stock_summary, logistics_summary, warnings, inventory_health=None):
     alerts = []
     if wpj_summary.get('problematicOrders'):
         alerts.append(f'{wpj_summary["problematicOrders"]} problematických nebo stornovaných objednávek.')
@@ -2562,6 +3583,11 @@ def build_alerts(wpj_summary, stock_summary, logistics_summary, warnings):
         alerts.append(f'{len(stock_summary["lowStockSoldYesterday"])} včera prodaných produktů je teď na nízkém skladu.')
     if stock_summary.get('negativeStoreStock'):
         alerts.append(f'{len(stock_summary["negativeStoreStock"])} skladových pozic je v mínusu.')
+    if inventory_health:
+        if inventory_health.get('aCriticalCount'):
+            alerts.append(f'{inventory_health["aCriticalCount"]} A produktů je v kritickém riziku výpadku.')
+        elif (inventory_health.get('slowDeadShare') or 0) > 20:
+            alerts.append(f'Slow/dead stock váže {inventory_health["slowDeadShare"]:.1f} % zásoby.')
     if logistics_summary.get('coverageWarnings'):
         alerts.extend(logistics_summary['coverageWarnings'])
     if any((row.get('daysToExpiry') is not None and row.get('daysToExpiry') <= 30) for row in (logistics_summary.get('expiringProducts') or [])):
@@ -2571,17 +3597,22 @@ def build_alerts(wpj_summary, stock_summary, logistics_summary, warnings):
     for alert in alerts:
         if alert not in deduped:
             deduped.append(alert)
-    return deduped[:3]
+    return deduped[:4]
 
 
-def build_priorities(wpj_summary, stock_summary, logistics_summary):
+def build_priorities(wpj_summary, stock_summary, logistics_summary, inventory_health=None):
     priorities = []
+    if inventory_health and inventory_health.get('aCriticalCount'):
+        codes = ', '.join(inventory_health.get('topRiskCodes') or []) or f'{inventory_health["aCriticalCount"]} SKU'
+        priorities.append(f'Prověřit A produkty v riziku výpadku ({inventory_health["aCriticalCount"]} SKU): {codes}.')
     for row in stock_summary.get('lowStockSoldYesterday') or []:
         priorities.append(f'Dohlédnout {row["code"]} ({row["title"]}), aktuálně {format_units(row["stock"])}.')
         if len(priorities) >= 2:
             break
     if wpj_summary.get('problematicOrders'):
         priorities.append(f'Projít {wpj_summary["problematicOrders"]} problematických nebo stornovaných objednávek z včerejška.')
+    if inventory_health and (inventory_health.get('slowDeadShare') or 0) > 20:
+        priorities.append(f'Připravit řez slow/dead stock, aktuálně {inventory_health["slowDeadShare"]:.1f} % zásoby / {format_czk(inventory_health["slowDeadValue"])}.')
     if logistics_summary.get('coverageWarnings'):
         priorities.append('Rozšířit 4PX pull, aby ranní report neřezal starší včerejší zásilky.')
     if not logistics_summary.get('expiringProducts'):
@@ -2591,39 +3622,41 @@ def build_priorities(wpj_summary, stock_summary, logistics_summary):
     return priorities[:5]
 
 
-def build_morning_report(report_date, wpj_summary, baseline_orders, baseline_revenue, stock_summary, inventory_summary, logistics_summary, alerts, priorities, warnings):
-    orders_delta = pct_delta(wpj_summary['orders'], baseline_orders) if baseline_orders is not None else None
-    revenue_delta = pct_delta(wpj_summary['revenueWithVat'], baseline_revenue) if baseline_revenue is not None else None
+def build_morning_report(ctx: MorningReportBuildContext):
+    orders_delta = pct_delta(ctx.wpj_summary['orders'], ctx.baseline_orders) if ctx.baseline_orders is not None else None
+    revenue_delta = pct_delta(ctx.wpj_summary['revenueWithVat'], ctx.baseline_revenue) if ctx.baseline_revenue is not None else None
     quick = {
         'orders': {
-            'value': wpj_summary['orders'],
-            'baseline': baseline_orders,
+            'value': ctx.wpj_summary['orders'],
+            'baseline': ctx.baseline_orders,
             'deltaPct': orders_delta,
         },
         'revenueWithVat': {
-            'value': wpj_summary['revenueWithVat'],
-            'baseline': baseline_revenue,
+            'value': ctx.wpj_summary['revenueWithVat'],
+            'baseline': ctx.baseline_revenue,
             'deltaPct': revenue_delta,
         },
-        'shipmentsTotal': logistics_summary['shipmentsTotal'],
-        'alerts': alerts,
+        'shipmentsTotal': ctx.logistics_summary['shipmentsTotal'],
+        'alerts': ctx.alerts,
     }
 
     report = {
         'generatedAt': current_local_time().isoformat(),
-        'reportDate': report_date.isoformat(),
-        'detailUrl': os.environ.get('MORNING_REPORT_DETAIL_URL', 'https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html'),
+        'reportDate': ctx.report_date.isoformat(),
+        'detailUrl': SETTINGS.morning_report_detail_url,
         'window': {
-            'from': datetime(report_date.year, report_date.month, report_date.day, 0, 0, 1, tzinfo=PRAGUE_TZ).isoformat(),
-            'to': datetime(report_date.year, report_date.month, report_date.day, 23, 59, 59, tzinfo=PRAGUE_TZ).isoformat(),
+            'from': datetime(ctx.report_date.year, ctx.report_date.month, ctx.report_date.day, 0, 0, 1, tzinfo=PRAGUE_TZ).isoformat(),
+            'to': datetime(ctx.report_date.year, ctx.report_date.month, ctx.report_date.day, 23, 59, 59, tzinfo=PRAGUE_TZ).isoformat(),
         },
-        'warnings': warnings,
+        'warnings': ctx.warnings,
         'quickSummary': quick,
-        'eshop': wpj_summary,
-        'stock': stock_summary,
-        'inventory': inventory_summary,
-        'logistics': logistics_summary,
-        'priorities': priorities,
+        'mtd': ctx.mtd_summary or {},
+        'eshop': ctx.wpj_summary,
+        'stock': ctx.stock_summary,
+        'inventory': ctx.inventory_summary,
+        'inventoryHealth': ctx.inventory_health or {},
+        'logistics': ctx.logistics_summary,
+        'priorities': ctx.priorities,
     }
     return report
 
@@ -2656,6 +3689,12 @@ def format_pct_compact(value):
     if value is None:
         return 'bez srovnání'
     return f'{value:+.1f}'.replace('.', ',') + ' % vs 7D'
+
+
+def format_pct_delta(value):
+    if value is None:
+        return 'bez srovnání'
+    return f'{value:+.1f}'.replace('.', ',') + ' %'
 
 
 def compact_alert_text(alert):
@@ -2752,13 +3791,44 @@ def compact_priority_text(priority):
     return replacements.get(text, text)
 
 
+def inventory_health_headline(health):
+    if not health:
+        return 'health metrika skladu zatím není k dispozici'
+    score = int(health.get('healthScore') or 0)
+    a_critical = int(health.get('aCriticalCount') or 0)
+    slow_dead_share = float(health.get('slowDeadShare') or 0)
+    return f'score skladu {score}/100 · A riziko {a_critical} SKU · slow/dead {str(round(slow_dead_share, 1)).replace(".", ",")} %'
+
+
+def inventory_health_cash_line(health):
+    if not health:
+        return 'bez health detailu skladu'
+    cover = health.get('totalCoverDays')
+    cover_text = '–' if cover is None else f'{str(round(float(cover), 1)).replace(".", ",")} dní'
+    return (
+        f'vázaný cash slow/dead {format_czk(health.get("slowDeadValue", 0))} '
+        f'({str(round(float(health.get("slowDeadShare", 0)), 1)).replace(".", ",")} %) '
+        f'· dead stock {str(round(float(health.get("deadShare", 0)), 1)).replace(".", ",")} % '
+        f'· cover {cover_text}'
+    )
+
+
+def abc_inventory_line():
+    return 'ABC skladu: A = klíčové rychloobrátkové SKU, B = střed, C = pomalé nebo doplňkové položky.'
+
+
 def format_morning_report_text(report):
     report_date = parse_dt(report['window']['from']).strftime('%-d. %-m. %Y')
     quick = report['quickSummary']
     eshop = report['eshop']
     stock = report['stock']
     inventory = report.get('inventory') or {}
+    inventory_health = report.get('inventoryHealth') or {}
     logistics = report['logistics']
+    mtd = report.get('mtd') or {}
+    mtd_current = mtd.get('current') or {}
+    mtd_previous = mtd.get('previousSamePeriod') or {}
+    mtd_pre_previous = mtd.get('prePreviousSamePeriod') or {}
     warnings = report.get('warnings') or []
 
     priorities = report.get('priorities') or []
@@ -2771,6 +3841,7 @@ def format_morning_report_text(report):
         '**1. Přehled dne**',
         f'• Objednávky: {eshop["orders"]} ({format_pct_compact(quick["orders"].get("deltaPct"))})',
         f'• Tržby s DPH: {format_czk(eshop["revenueWithVat"])} ({format_pct_compact(quick["revenueWithVat"].get("deltaPct"))})',
+        f'• Obrat od začátku měsíce: {format_czk(mtd_current.get("revenueWithVat"))} ({format_pct_delta(mtd.get("changePct"))} vs {mtd_previous.get("label") or "minulý měsíc"}, {format_czk(mtd_previous.get("revenueWithVat"))}; {format_pct_delta(mtd.get("prePreviousChangePct"))} vs předminulý {mtd_pre_previous.get("label") or "stejné období"}, {format_czk(mtd_pre_previous.get("revenueWithVat"))})',
         f'• Expedice: {logistics["shipmentsTotal"]} zásilek (CZ {logistics["byAccount"].get("CZ", 0)} / SK {logistics["byAccount"].get("SK", 0)})',
         f'• Sklad CZ+SK: {format_units(inventory.get("availableStockTotal", 0))}',
         '',
@@ -2792,6 +3863,9 @@ def format_morning_report_text(report):
         '**4. Sklad a logistika**',
         f'• Nízký sklad po včerejším prodeji: {low_stock_line(stock.get("lowStockSoldYesterday"))}',
         f'• Mínusové pozice: {negative_positions_line(stock.get("negativeStoreStock"))}',
+        f'• Zdraví skladu: {inventory_health_headline(inventory_health)}',
+        f'• {abc_inventory_line()}',
+        f'• Cash ve skladu: {inventory_health_cash_line(inventory_health)}',
         f'• Nejbližší expirace: {expiry_line(logistics.get("expiringProducts"))}',
     ])
     if logistics.get('coverageWarnings'):
@@ -2818,7 +3892,12 @@ def format_morning_report_telegram_text(report):
     quick = report['quickSummary']
     eshop = report['eshop']
     inventory = report.get('inventory') or {}
+    inventory_health = report.get('inventoryHealth') or {}
     logistics = report['logistics']
+    mtd = report.get('mtd') or {}
+    mtd_current = mtd.get('current') or {}
+    mtd_previous = mtd.get('previousSamePeriod') or {}
+    mtd_pre_previous = mtd.get('prePreviousSamePeriod') or {}
     warnings = report.get('warnings') or []
     priorities = report.get('priorities') or []
     alerts = [compact_alert_text(alert) for alert in quick.get('alerts') or [] if compact_alert_text(alert)]
@@ -2830,6 +3909,7 @@ def format_morning_report_telegram_text(report):
         '📌 Přehled',
         f'• Objednávky: {eshop["orders"]} ({format_pct_compact(quick["orders"].get("deltaPct"))})',
         f'• Tržby: {format_czk(eshop["revenueWithVat"])} ({format_pct_compact(quick["revenueWithVat"].get("deltaPct"))})',
+        f'• Obrat od začátku měsíce: {format_czk(mtd_current.get("revenueWithVat"))} ({format_pct_delta(mtd.get("changePct"))} vs {mtd_previous.get("label") or "minulý měsíc"}, {format_czk(mtd_previous.get("revenueWithVat"))}; {format_pct_delta(mtd.get("prePreviousChangePct"))} vs předminulý {mtd_pre_previous.get("label") or "stejné období"}, {format_czk(mtd_pre_previous.get("revenueWithVat"))})',
         f'• Expedice: {logistics["shipmentsTotal"]} (CZ {logistics["byAccount"].get("CZ", 0)} / SK {logistics["byAccount"].get("SK", 0)})',
         f'• Sklad: {format_units(inventory.get("availableStockTotal", 0))}',
         '',
@@ -2841,6 +3921,14 @@ def format_morning_report_telegram_text(report):
         '✅ Co dnes udělat',
     ])
     lines.extend(f'• {compact_priority_text(item)}' for item in (priorities[:3] or ['Bez nové priority.']))
+
+    lines.extend([
+        '',
+        '📦 Zdraví skladu',
+        f'• {inventory_health_headline(inventory_health)}',
+        f'• {abc_inventory_line()}',
+        f'• {inventory_health_cash_line(inventory_health)}',
+    ])
 
     top_units = compact_top_codes(eshop.get('topProductsByUnits'), 3)
     if top_units and top_units != 'bez dat':
@@ -2884,26 +3972,8 @@ def safe_ratio(value, baseline):
     return round((float(value or 0) / float(baseline or 0)) * 100, 1)
 
 
-def env_first(*keys):
-    for key in keys:
-        value = os.environ.get(key)
-        if value:
-            return value
-    return None
-
-
 def abra_config():
-    base_url = env_first('ABRA_API_URL', 'FLEXI_API_URL')
-    company = env_first('ABRA_COMPANY', 'FLEXI_COMPANY')
-    username = env_first('ABRA_USERNAME', 'FLEXI_USERNAME')
-    password = env_first('ABRA_PASSWORD', 'FLEXI_PASSWORD')
-    return {
-        'baseUrl': (base_url or '').rstrip('/'),
-        'company': company or '',
-        'username': username or '',
-        'password': password or '',
-        'enabled': all([base_url, company, username, password]),
-    }
+    return SETTINGS.abra_config()
 
 
 def abra_text(value):
@@ -2954,60 +4024,15 @@ def abra_pick(row, *keys):
 
 
 def abra_records(payload, evidence):
-    root = (payload or {}).get('winstrom') or {}
-    records = root.get(evidence)
-    if isinstance(records, list):
-        return records
-    if isinstance(records, dict):
-        return [records]
-    for value in root.values():
-        if isinstance(value, list):
-            return value
-    return []
+    return ABRA_ADAPTER.records(payload, evidence)
 
 
 def abra_get(config, evidence, params=None, selector=None):
-    if not config.get('enabled'):
-        raise RuntimeError('ABRA API není nakonfigurované.')
-
-    query = urlencode({'auth': 'http', **(params or {})}, doseq=True)
-    base = f"{config['baseUrl']}/c/{config['company']}/{evidence}"
-    if selector:
-        base = base + '/' + quote(selector, safe="()'/-")
-    url = f'{base}.json'
-    if query:
-        url = f'{url}?{query}'
-
-    token = base64.b64encode(f"{config['username']}:{config['password']}".encode('utf-8')).decode('ascii')
-    request = Request(url, headers={
-        'Accept': 'application/json',
-        'Authorization': f'Basic {token}',
-    })
-    with urlopen(request, timeout=60) as response:
-        charset = response.headers.get_content_charset() or 'utf-8'
-        return json.loads(response.read().decode(charset))
+    return ABRA_ADAPTER.get(config, evidence, params=params, selector=selector)
 
 
 def abra_download(config, path, params=None, accept=None):
-    if not config.get('enabled'):
-        raise RuntimeError('ABRA API není nakonfigurované.')
-
-    query = urlencode({'auth': 'http', **(params or {})}, doseq=True)
-    url = f"{config['baseUrl']}/c/{config['company']}/{path.lstrip('/')}"
-    if query:
-        url = f'{url}?{query}'
-
-    token = base64.b64encode(f"{config['username']}:{config['password']}".encode('utf-8')).decode('ascii')
-    request = Request(url, headers={
-        'Authorization': f'Basic {token}',
-        'Accept': accept or '*/*',
-    })
-    with urlopen(request, timeout=120) as response:
-        return {
-            'url': url,
-            'contentType': response.headers.get('Content-Type', ''),
-            'body': response.read(),
-        }
+    return ABRA_ADAPTER.download(config, path, params=params, accept=accept)
 
 
 def parse_abra_vykaz_hospodareni_xls(body, label, month_key):
@@ -3223,6 +4248,47 @@ def fetch_abra_journal_rows(config, start_dt, end_dt, page_size=2000, max_pages=
     return rows
 
 
+def build_live_cash_snapshot(config):
+    rows = abra_records(abra_get(config, 'obratova-predvaha', {
+        'detail': 'full',
+        'limit': 5000,
+    }), 'obratova-predvaha')
+
+    account_rows = []
+    total_cash = 0.0
+
+    for row in rows:
+        account_value = abra_text(row.get('ucet'))
+        account_code = account_value.replace('code:', '') if account_value.startswith('code:') else account_value
+        if not account_code.startswith(LIVE_CASH_ACCOUNT_PREFIXES):
+            continue
+
+        balance = abra_money(row.get('zustatek'))
+        currency = abra_text(row.get('mena@showAs')) or abra_text(row.get('mena'))
+        account_label = abra_text(row.get('ucet@showAs')) or account_code
+        is_czk_row = 'CZK' in currency
+        balance_for_cash = max(balance, 0.0) if is_czk_row else 0.0
+        total_cash += balance_for_cash
+        account_rows.append({
+            'accountCode': account_code,
+            'accountLabel': account_label,
+            'currency': currency,
+            'balance': round(balance, 2),
+            'includedBalance': round(balance_for_cash, 2),
+        })
+
+    account_rows.sort(key=lambda item: item['includedBalance'], reverse=True)
+
+    return {
+        'cashOnAccounts': round(total_cash, 2),
+        'cashAccountsSource': {
+            'status': 'live',
+            'message': 'Cash na účtech a pokladnách je počítán živě z ABRA obratové předvahy pro účty 221 a 211, ze CZK řádků a se započtením kladných zůstatků.',
+            'accounts': account_rows[:24],
+        },
+    }
+
+
 def build_live_journal_snapshot(config, now_local):
     current_start = month_floor(now_local)
     month_starts = [shift_month(current_start, offset) for offset in (-2, -1, 0)]
@@ -3309,8 +4375,8 @@ def build_live_journal_snapshot(config, now_local):
             })
 
         sorted_entries = sorted(month_entries, key=lambda row: (row['dateSort'], row['amount']), reverse=True)
-        expense_entries = [row for row in sorted_entries if row.get('side') == 'náklad'][:80]
-        revenue_entries = [row for row in sorted_entries if row.get('side') == 'výnos'][:80]
+        expense_entries = [row for row in sorted_entries if row.get('side') == 'náklad']
+        revenue_entries = [row for row in sorted_entries if row.get('side') == 'výnos']
         month_entries = sorted(expense_entries + revenue_entries, key=lambda row: (row['dateSort'], row['amount']), reverse=True)
         monthly.append({
             'label': label,
@@ -3406,22 +4472,51 @@ def fetch_abra_live_snapshot(now_local):
         })
 
     journal = {}
+    journal_error = None
     try:
         journal = build_live_journal_snapshot(config, now_local)
     except Exception as exc:
+        journal_error = str(exc)
         journal = build_journal_snapshot_fallback(now_local, str(exc))
+
+    cash_snapshot = {}
+    cash_error = None
+    try:
+        cash_snapshot = build_live_cash_snapshot(config)
+    except Exception as exc:
+        cash_error = str(exc)
+
+    cash_payload = {
+        'unpaidInvoices': round(unpaid_total, 2),
+        'overdueInvoicesCount': overdue_count,
+        'overdueInvoicesAmount': round(overdue_amount, 2),
+        'largestPayables': sorted(payable_rows, key=lambda row: row['amountDue'], reverse=True)[:8],
+    }
+    cash_payload.update(cash_snapshot)
+    if cash_payload.get('cashOnAccounts') is not None:
+        cash_payload['netCashPosition'] = round(float(cash_payload.get('cashOnAccounts') or 0) - float(cash_payload.get('unpaidInvoices') or 0), 2)
+    if cash_error:
+        cash_payload['cashAccountsSource'] = {
+            'status': 'error',
+            'message': f'Live cash z ABRA obratové předvahy se nepodařilo načíst ({cash_error}).',
+        }
+
+    live_message_bits = ['Závazky z přijatých faktur jsou tahány živě z ABRA API.']
+    if cash_snapshot.get('cashOnAccounts') is not None:
+        live_message_bits.append('Cash na účtech a pokladnách je také live z ABRA obratové předvahy.')
+    else:
+        live_message_bits.append('Cash na účtech zatím zůstává na legacy snapshotu.')
+    if journal_error:
+        live_message_bits.append(f'Účetní deník fallbacknul na poslední snapshot ({journal_error}).')
+    if cash_error:
+        live_message_bits.append(f'Live cash adapter selhal ({cash_error}).')
 
     return {
         'source': {
             'status': 'live_payables',
-            'message': 'Závazky z přijatých faktur jsou tahány živě z ABRA API. Měsíční P&L zatím zůstává na legacy snapshotu.',
+            'message': ' '.join(live_message_bits),
         },
-        'cash': {
-            'unpaidInvoices': round(unpaid_total, 2),
-            'overdueInvoicesCount': overdue_count,
-            'overdueInvoicesAmount': round(overdue_amount, 2),
-            'largestPayables': sorted(payable_rows, key=lambda row: row['amountDue'], reverse=True)[:8],
-        },
+        'cash': cash_payload,
         'journal': journal,
     }
 
@@ -3646,6 +4741,24 @@ def build_finance_snapshot(legacy_abra_payload, live_abra_payload, report_payloa
 
 
 def build_marketing_snapshot(legacy_abra_payload, report_payload, finance_snapshot, generated_at):
+    ga4_overview = load_optional_current_json('ga4_overview.json') or {}
+    affiliate_overview = load_optional_current_json('affiliate_overview.json') or {}
+    ga4_analytics = {
+        'ready': bool(ga4_overview),
+        'source': (ga4_overview.get('source') or {}),
+        'property': (ga4_overview.get('property') or {}),
+        'yesterday': ga4_overview.get('yesterday') or {},
+        'last7days': ga4_overview.get('last7days') or {},
+        'last30days': ga4_overview.get('last30days') or {},
+        'currentMonth': ga4_overview.get('currentMonth') or {},
+        'previousMonth': ga4_overview.get('previousMonth') or {},
+        'channelPerformance7d': ga4_overview.get('channelPerformance7d') or [],
+        'channelPerformanceCurrentMonth': ga4_overview.get('channelPerformanceCurrentMonth') or [],
+        'landingPages7d': ga4_overview.get('landingPages7d') or [],
+        'topPages7d': ga4_overview.get('topPages7d') or [],
+        'countries7d': ga4_overview.get('countries7d') or [],
+    }
+
     def build_channel_rows(sklik_direct, sklik_current, meta_direct, meta_summary, google_direct, google_summary, klaviyo_direct, klaviyo_current):
         channel_rows = []
         if sklik_direct['ready']:
@@ -3763,6 +4876,14 @@ def build_marketing_snapshot(legacy_abra_payload, report_payload, finance_snapsh
         'recentCampaigns': klaviyo_overview.get('recentCampaigns') or [],
         'recentCampaignsPreviousMonth': klaviyo_overview.get('recentCampaignsPreviousMonth') or [],
     }
+    affiliate_direct = {
+        'ready': bool(affiliate_overview),
+        'label': 'Affiliate',
+        'source': (affiliate_overview.get('source') or {}).get('status'),
+        'period': affiliate_overview.get('period') or {},
+        'summary': affiliate_overview.get('summary') or {},
+        'reports': affiliate_overview.get('reports') or {},
+    }
 
     active_campaigns = {
         'sklik': sorted(
@@ -3830,7 +4951,7 @@ def build_marketing_snapshot(legacy_abra_payload, report_payload, finance_snapsh
                 round(float(((finance_snapshot.get('previousMonth') or {}).get('revenue') or 0)), 2),
             ),
         }
-        direct_sources = {'sklik': sklik_direct, 'meta': meta_direct, 'google': google_direct, 'klaviyo': klaviyo_direct}
+        direct_sources = {'sklik': sklik_direct, 'meta': meta_direct, 'google': google_direct, 'klaviyo': klaviyo_direct, 'affiliate': affiliate_direct}
         channel_rows = build_channel_rows(sklik_direct, sklik_current, meta_direct, meta_summary, google_direct, google_summary, klaviyo_direct, klaviyo_current)
         source_message = 'Marketing se skládá z live ABRA reportu a aktuálních položek z účetního deníku.'
         live_labels = []
@@ -3842,11 +4963,14 @@ def build_marketing_snapshot(legacy_abra_payload, report_payload, finance_snapsh
             live_labels.append('Google Ads')
         if klaviyo_direct['ready']:
             live_labels.append('Klaviyo')
+        if affiliate_direct['ready']:
+            live_labels.append('Affiliate')
         if live_labels:
             source_message += ' Přímé platformy přes API: ' + ', '.join(live_labels) + '.'
         return {
             'generatedAt': generated_at,
             'source': {'status': 'live_report', 'message': source_message},
+            'analytics': ga4_analytics,
             'monthly': monthly,
             'currentMonth': current_month,
             'previousMonth': previous_month,
@@ -3860,7 +4984,7 @@ def build_marketing_snapshot(legacy_abra_payload, report_payload, finance_snapsh
             'activeCampaignsBySource': active_campaigns,
         }
 
-    direct_sources = {'sklik': sklik_direct, 'meta': meta_direct, 'google': google_direct, 'klaviyo': klaviyo_direct}
+    direct_sources = {'sklik': sklik_direct, 'meta': meta_direct, 'google': google_direct, 'klaviyo': klaviyo_direct, 'affiliate': affiliate_direct}
     live_labels = [source['label'] for source in direct_sources.values() if source.get('ready')]
     channel_rows = build_channel_rows(sklik_direct, sklik_current, meta_direct, meta_summary, google_direct, google_summary, klaviyo_direct, klaviyo_current)
     live_current_month = {
@@ -3888,6 +5012,7 @@ def build_marketing_snapshot(legacy_abra_payload, report_payload, finance_snapsh
         return {
             'generatedAt': generated_at,
             'source': {'status': 'live_channels', 'message': source_message},
+            'analytics': ga4_analytics,
             'monthly': [live_previous_month, live_current_month] if live_previous_month.get('label') else [live_current_month],
             'currentMonth': live_current_month,
             'previousMonth': live_previous_month,
@@ -3902,6 +5027,7 @@ def build_marketing_snapshot(legacy_abra_payload, report_payload, finance_snapsh
         return {
             'generatedAt': generated_at,
             'source': {'status': 'missing', 'message': 'Legacy marketing snapshot nebyl nalezen.'},
+            'analytics': ga4_analytics,
             'monthly': [],
             'currentMonth': {},
             'previousMonth': {},
@@ -3918,6 +5044,7 @@ def build_marketing_snapshot(legacy_abra_payload, report_payload, finance_snapsh
         return {
             'generatedAt': generated_at,
             'source': {'status': 'missing', 'message': 'Marketing skupina ve legacy ABRA modelu chybí.'},
+            'analytics': ga4_analytics,
             'monthly': [],
             'currentMonth': {},
             'previousMonth': {},
@@ -3962,6 +5089,7 @@ def build_marketing_snapshot(legacy_abra_payload, report_payload, finance_snapsh
     return {
         'generatedAt': generated_at,
         'source': legacy_abra_payload['source'],
+        'analytics': ga4_analytics,
         'monthly': monthly,
         'currentMonth': current_month,
         'previousMonth': previous_month,
@@ -4062,186 +5190,216 @@ def build_journal_snapshot_fallback(now_local, reason=None):
 
 
 def ensure_daily_sklik_snapshot(now_local):
-    token = (os.environ.get('SKLIK_API_TOKEN') or '').strip()
-    if not token:
-        return {'ready': False, 'reason': 'missing_token'}
-
-    snapshot_path = CURRENT_DIR / 'sklik_overview.json'
-    if snapshot_path.exists():
-        modified_at = datetime.fromtimestamp(snapshot_path.stat().st_mtime, PRAGUE_TZ)
-        if modified_at.date() == now_local.date():
-            return {'ready': True, 'refreshed': False, 'path': str(snapshot_path)}
-
-    script_path = ROOT / 'scripts' / 'fetch_sklik.py'
-    try:
-        result = subprocess.run(
-            [sys.executable, str(script_path)],
-            cwd=str(ROOT),
-            capture_output=True,
-            text=True,
-            timeout=180,
-            check=False,
-        )
-    except Exception as exc:
-        return {'ready': False, 'reason': 'run_error', 'message': str(exc)}
-
-    if result.returncode != 0:
-        message = (result.stderr or result.stdout or '').strip()
-        return {'ready': False, 'reason': 'fetch_failed', 'message': message[:500]}
-
-    return {'ready': True, 'refreshed': True, 'path': str(snapshot_path)}
+    return MARKETING_SOURCES.ensure_sklik_snapshot(now_local)
 
 
 def ensure_daily_meta_snapshot(now_local):
-    token = (os.environ.get('META_ACCESS_TOKEN') or '').strip()
-    account_ids = (os.environ.get('META_AD_ACCOUNT_IDS') or '').strip()
-    if not token or not account_ids:
-        return {'ready': False, 'reason': 'missing_token'}
-
-    snapshot_path = CURRENT_DIR / 'meta_ads_overview.json'
-    if snapshot_path.exists():
-        modified_at = datetime.fromtimestamp(snapshot_path.stat().st_mtime, PRAGUE_TZ)
-        if modified_at.date() == now_local.date():
-            return {'ready': True, 'refreshed': False, 'path': str(snapshot_path)}
-
-    script_path = ROOT / 'scripts' / 'fetch_meta_ads.py'
-    try:
-        result = subprocess.run(
-            [sys.executable, str(script_path)],
-            cwd=str(ROOT),
-            capture_output=True,
-            text=True,
-            timeout=180,
-            check=False,
-        )
-    except Exception as exc:
-        return {'ready': False, 'reason': 'run_error', 'message': str(exc)}
-
-    if result.returncode != 0:
-        message = (result.stderr or result.stdout or '').strip()
-        return {'ready': False, 'reason': 'fetch_failed', 'message': message[:500]}
-
-    return {'ready': True, 'refreshed': True, 'path': str(snapshot_path)}
+    return MARKETING_SOURCES.ensure_meta_snapshot(now_local)
 
 
 def ensure_daily_google_snapshot(now_local):
-    required = [
-        (os.environ.get('GOOGLE_ADS_DEVELOPER_TOKEN') or '').strip(),
-        (os.environ.get('GOOGLE_ADS_LOGIN_CUSTOMER_ID') or '').strip(),
-        (os.environ.get('GOOGLE_ADS_OAUTH_CLIENT_ID') or '').strip(),
-        (os.environ.get('GOOGLE_ADS_OAUTH_CLIENT_SECRET') or '').strip(),
-        (os.environ.get('GOOGLE_ADS_REFRESH_TOKEN') or '').strip(),
-    ]
-    if not all(required):
-        return {'ready': False, 'reason': 'missing_token'}
+    return MARKETING_SOURCES.ensure_google_snapshot(now_local)
 
-    snapshot_path = CURRENT_DIR / 'google_ads_overview.json'
-    if snapshot_path.exists():
-        modified_at = datetime.fromtimestamp(snapshot_path.stat().st_mtime, PRAGUE_TZ)
-        if modified_at.date() == now_local.date():
-            return {'ready': True, 'refreshed': False, 'path': str(snapshot_path)}
 
-    script_path = ROOT / 'scripts' / 'fetch_google_ads.py'
-    try:
-        result = subprocess.run(
-            [sys.executable, str(script_path)],
-            cwd=str(ROOT),
-            capture_output=True,
-            text=True,
-            timeout=180,
-            check=False,
-        )
-    except Exception as exc:
-        return {'ready': False, 'reason': 'run_error', 'message': str(exc)}
-
-    if result.returncode != 0:
-        message = (result.stderr or result.stdout or '').strip()
-        return {'ready': False, 'reason': 'fetch_failed', 'message': message[:500]}
-
-    return {'ready': True, 'refreshed': True, 'path': str(snapshot_path)}
+def ensure_daily_ga4_snapshot(now_local):
+    return MARKETING_SOURCES.ensure_ga4_snapshot(now_local)
 
 
 def ensure_daily_klaviyo_snapshot(now_local):
-    token = (os.environ.get('KLAVIYO_PRIVATE_API_KEY') or '').strip()
-    if not token:
-        return {'ready': False, 'reason': 'missing_token'}
+    return MARKETING_SOURCES.ensure_klaviyo_snapshot(now_local)
 
-    snapshot_path = CURRENT_DIR / 'klaviyo_overview.json'
-    if snapshot_path.exists():
-        modified_at = datetime.fromtimestamp(snapshot_path.stat().st_mtime, PRAGUE_TZ)
-        if modified_at.date() == now_local.date():
-            return {'ready': True, 'refreshed': False, 'path': str(snapshot_path)}
 
-    script_path = ROOT / 'scripts' / 'fetch_klaviyo.py'
+def run_twisto_watchdog(snapshot_path: Path, generated_at: str):
+    script_path = ROOT / 'scripts' / 'build_twisto_watchdog.py'
+    if not script_path.exists():
+        return load_optional_current_json('twisto_watchdog.json') or {
+            'generatedAt': generated_at,
+            'alert': {'status': 'missing', 'lines': ['Twisto watchdog script chybí.']},
+            'summary': {},
+            'source': {'twisto': {'status': 'missing'}},
+        }
     try:
         result = subprocess.run(
-            [sys.executable, str(script_path)],
+            ['python3', str(script_path), '--snapshot-path', str(snapshot_path), '--generated-at', generated_at],
             cwd=str(ROOT),
             capture_output=True,
             text=True,
-            timeout=180,
+            timeout=300,
             check=False,
         )
     except Exception as exc:
-        return {'ready': False, 'reason': 'run_error', 'message': str(exc)}
+        fallback = load_optional_current_json('twisto_watchdog.json') or {}
+        fallback.setdefault('alert', {'status': 'warn', 'lines': []})
+        fallback['generatedAt'] = generated_at
+        fallback['alert']['status'] = 'warn'
+        fallback['alert']['lines'] = (fallback['alert'].get('lines') or []) + [f'Twisto watchdog se nepodařilo spustit: {exc}']
+        return fallback
 
     if result.returncode != 0:
         message = (result.stderr or result.stdout or '').strip()
-        return {'ready': False, 'reason': 'fetch_failed', 'message': message[:500]}
+        fallback = load_optional_current_json('twisto_watchdog.json') or {
+            'generatedAt': generated_at,
+            'summary': {},
+            'source': {'twisto': {'status': 'warn'}},
+            'alert': {'status': 'warn', 'lines': []},
+        }
+        fallback['generatedAt'] = generated_at
+        fallback['alert']['status'] = 'warn'
+        fallback['alert']['lines'] = [f'Twisto watchdog selhal: {message[:300] or "bez detailu"}']
+        return fallback
 
-    return {'ready': True, 'refreshed': True, 'path': str(snapshot_path)}
+    payload = load_optional_current_json('twisto_watchdog.json') or {
+        'generatedAt': generated_at,
+        'summary': {},
+        'source': {'twisto': {'status': 'warn'}},
+        'alert': {'status': 'warn', 'lines': ['Twisto watchdog doběhl, ale payload chybí.']},
+    }
+    return payload
 
 
-def main():
+def build_refresh_runtime_context():
     load_env_file(ENV_FILE)
+    if REMOTE_STORAGE_ENV_FILE.exists():
+        load_env_file(REMOTE_STORAGE_ENV_FILE)
     manual_overrides = load_manual_sku_overrides(SKU_MAPPING_OVERRIDE_FILE)
     pos_admin_views = load_pos_admin_view_overrides(POS_ADMIN_VIEW_OVERRIDE_FILE)
+    pos_view_filters = load_pos_view_filter_ids(POS_ADMIN_VIEW_OVERRIDE_FILE)
     ordering_reference_overrides = load_ordering_reference_overrides(ORDERING_REFERENCE_OVERRIDE_FILE)
     ordering_packaging_map = load_ordering_packaging_map(ORDERING_PACKAGING_MATCH_FILE)
-    warehouse_code = os.environ.get('FOURPX_WAREHOUSE_CODE', 'CZPRGA')
-    max_pages = int(os.environ.get('FOURPX_OUTBOUND_MAX_PAGES', '20'))
+    warehouse_code = SETTINGS.fourpx_warehouse_code
+    max_pages = SETTINGS.fourpx_outbound_max_pages
     now_local = current_local_time()
     stamp = now_local.strftime('%Y%m%d-%H%M%S')
     generated_at = now_local.isoformat()
     report_start, report_end = previous_day_window(now_local)
     report_date = report_start.date()
 
-    required = [
+    required = (
         'FOURPX_CZ_APP_KEY', 'FOURPX_CZ_APP_SECRET',
         'FOURPX_SK_APP_KEY', 'FOURPX_SK_APP_SECRET',
-    ]
-    missing = [k for k in required if not os.environ.get(k)]
+    )
+    missing = SETTINGS.missing(*required)
     if missing:
         raise SystemExit(f'Missing required env keys: {", ".join(missing)}')
+
+    cz_app_key, cz_app_secret = SETTINGS.fourpx_credentials('CZ')
+    sk_app_key, sk_app_secret = SETTINGS.fourpx_credentials('SK')
 
     previous_wpj_products = None
     previous_snapshot = load_previous_snapshot_json('wpj_products.json')
     if previous_snapshot:
         previous_wpj_products = previous_snapshot.get('items') or []
 
-    cz_inventory = fetch_inventory(os.environ['FOURPX_CZ_APP_KEY'], os.environ['FOURPX_CZ_APP_SECRET'], warehouse_code)
-    sk_inventory = fetch_inventory(os.environ['FOURPX_SK_APP_KEY'], os.environ['FOURPX_SK_APP_SECRET'], warehouse_code)
-    cz_inventory_detail = fetch_inventory_details(os.environ['FOURPX_CZ_APP_KEY'], os.environ['FOURPX_CZ_APP_SECRET'], warehouse_code, cz_inventory['items'])
-    sk_inventory_detail = fetch_inventory_details(os.environ['FOURPX_SK_APP_KEY'], os.environ['FOURPX_SK_APP_SECRET'], warehouse_code, sk_inventory['items'])
+    return RefreshRuntimeContext(
+        manual_overrides=manual_overrides,
+        pos_admin_views=pos_admin_views,
+        pos_view_filters=pos_view_filters,
+        ordering_reference_overrides=ordering_reference_overrides,
+        ordering_packaging_map=ordering_packaging_map,
+        warehouse_code=warehouse_code,
+        max_pages=max_pages,
+        now_local=now_local,
+        stamp=stamp,
+        generated_at=generated_at,
+        report_start=report_start,
+        report_end=report_end,
+        report_date=report_date,
+        cz_app_key=cz_app_key,
+        cz_app_secret=cz_app_secret,
+        sk_app_key=sk_app_key,
+        sk_app_secret=sk_app_secret,
+        previous_wpj_products=previous_wpj_products,
+    )
+
+
+def fetch_refresh_inputs(ctx: RefreshRuntimeContext) -> RefreshFetchResult:
+    cz_inventory = fetch_inventory(ctx.cz_app_key, ctx.cz_app_secret, ctx.warehouse_code)
+    sk_inventory = fetch_inventory(ctx.sk_app_key, ctx.sk_app_secret, ctx.warehouse_code)
+    cz_inventory_detail = fetch_inventory_details(ctx.cz_app_key, ctx.cz_app_secret, ctx.warehouse_code, cz_inventory['items'])
+    sk_inventory_detail = fetch_inventory_details(ctx.sk_app_key, ctx.sk_app_secret, ctx.warehouse_code, sk_inventory['items'])
     cz_expiry_summary = summarize_expiry_details('CZ', cz_inventory_detail['items'])
     sk_expiry_summary = summarize_expiry_details('SK', sk_inventory_detail['items'])
     cz_outbound = fetch_recent_outbound(
-        os.environ['FOURPX_CZ_APP_KEY'],
-        os.environ['FOURPX_CZ_APP_SECRET'],
-        warehouse_code,
-        max_pages=max_pages,
-        stop_before=report_start,
+        ctx.cz_app_key,
+        ctx.cz_app_secret,
+        ctx.warehouse_code,
+        max_pages=ctx.max_pages,
+        stop_before=ctx.report_start,
     )
     sk_outbound = fetch_recent_outbound(
-        os.environ['FOURPX_SK_APP_KEY'],
-        os.environ['FOURPX_SK_APP_SECRET'],
-        warehouse_code,
-        max_pages=max_pages,
-        stop_before=report_start,
+        ctx.sk_app_key,
+        ctx.sk_app_secret,
+        ctx.warehouse_code,
+        max_pages=ctx.max_pages,
+        stop_before=ctx.report_start,
+    )
+    wpj_ready = bool(wpj_endpoint() and SETTINGS.wpj_access_token)
+    legacy_abra_payload = extract_legacy_abra_model(LEGACY_ABRA_HTML)
+    live_abra_payload = fetch_abra_live_snapshot(ctx.now_local)
+    abra_vykaz_hospodareni_reports = fetch_abra_vykaz_hospodareni_reports(ctx.now_local)
+    sklik_status = ensure_daily_sklik_snapshot(ctx.now_local)
+    meta_status = ensure_daily_meta_snapshot(ctx.now_local)
+    google_status = ensure_daily_google_snapshot(ctx.now_local)
+    ga4_status = ensure_daily_ga4_snapshot(ctx.now_local)
+    klaviyo_status = ensure_daily_klaviyo_snapshot(ctx.now_local)
+    finance_snapshot = build_finance_snapshot(
+        legacy_abra_payload,
+        live_abra_payload,
+        abra_vykaz_hospodareni_reports,
+        ctx.generated_at,
+    )
+    try:
+        affiliate_overview = build_affiliate_overview(ctx.generated_at, ctx.now_local)
+    except Exception as exc:
+        print(f'WARN: affiliate overview refresh failed, reusing last snapshot if available: {exc}', flush=True)
+        affiliate_overview = load_optional_current_json('affiliate_overview.json') or {
+            'generatedAt': ctx.generated_at,
+            'source': {
+                'status': 'unavailable',
+                'message': f'Affiliate přehled se nepodařilo aktualizovat: {exc}',
+            },
+            'period': {},
+            'summary': {},
+            'reports': {},
+        }
+    marketing_snapshot = build_marketing_snapshot(
+        legacy_abra_payload,
+        abra_vykaz_hospodareni_reports,
+        finance_snapshot,
+        ctx.generated_at,
+    )
+    return RefreshFetchResult(
+        cz_inventory=cz_inventory,
+        sk_inventory=sk_inventory,
+        cz_inventory_detail=cz_inventory_detail,
+        sk_inventory_detail=sk_inventory_detail,
+        cz_expiry_summary=cz_expiry_summary,
+        sk_expiry_summary=sk_expiry_summary,
+        cz_outbound=cz_outbound,
+        sk_outbound=sk_outbound,
+        wpj_ready=wpj_ready,
+        legacy_abra_payload=legacy_abra_payload,
+        live_abra_payload=live_abra_payload,
+        abra_vykaz_hospodareni_reports=abra_vykaz_hospodareni_reports,
+        sklik_status=sklik_status,
+        meta_status=meta_status,
+        google_status=google_status,
+        ga4_status=ga4_status,
+        klaviyo_status=klaviyo_status,
+        finance_snapshot=finance_snapshot,
+        affiliate_overview=affiliate_overview,
+        marketing_snapshot=marketing_snapshot,
     )
 
+
+def build_refresh_payloads(ctx: RefreshRuntimeContext, fetch_result: RefreshFetchResult) -> RefreshBuildResult:
     warnings = []
-    wpj_ready = bool(wpj_endpoint() and os.environ.get('WPJ_ACCESS_TOKEN'))
+    generated_at = ctx.generated_at
+    now_local = ctx.now_local
+    report_start = ctx.report_start
+    report_end = ctx.report_end
+    report_date = ctx.report_date
+
     wpj_summary = {
         'orders': 0,
         'revenueWithVat': 0,
@@ -4258,6 +5416,7 @@ def main():
     wpj_orders_payload = {'generatedAt': generated_at, 'items': []}
     wpj_products_payload = {'generatedAt': generated_at, 'items': []}
     wpj_history_payload = {'generatedAt': generated_at, 'days': []}
+    eshop_ytd_payload = {'generatedAt': generated_at, 'years': {}, 'months': [], 'totals': {}}
     inventory_analytics_payload = {'generatedAt': generated_at, 'summary': {}, 'topTurnover': [], 'deadStock': [], 'slowMovers': [], 'overstocked': [], 'fastLowCover': []}
     inventory_analytics_730_payload = {'generatedAt': generated_at, 'summary': {}, 'topTurnover': [], 'deadStock': [], 'slowMovers': [], 'overstocked': [], 'fastLowCover': [], 'items': []}
     inventory_analytics_730_cz_payload = {'generatedAt': generated_at, 'market': 'cz', 'summary': {}, 'topTurnover': [], 'deadStock': [], 'slowMovers': [], 'overstocked': [], 'fastLowCover': [], 'items': []}
@@ -4268,18 +5427,10 @@ def main():
     ordering_reference_payload = {'generatedAt': generated_at, 'summary': {}, 'items': [], 'excludedTop': []}
     ordering_reference_cz_payload = {'generatedAt': generated_at, 'market': 'cz', 'summary': {}, 'items': [], 'excludedTop': []}
     ordering_reference_sk_payload = {'generatedAt': generated_at, 'market': 'sk', 'summary': {}, 'items': [], 'excludedTop': []}
+    ordering_sales_history_payload = {'generatedAt': generated_at, 'window': {}, 'summary': {}, 'codes': {}}
     expiry_overview_payload = {'generatedAt': generated_at, 'summary': {}, 'topExpiring': []}
     combined_index_payload = {'generatedAt': generated_at, 'items': [], 'counts': {}}
     combined_overview_payload = {'generatedAt': generated_at, 'counts': {}}
-    legacy_abra_payload = extract_legacy_abra_model(LEGACY_ABRA_HTML)
-    live_abra_payload = fetch_abra_live_snapshot(now_local)
-    abra_vykaz_hospodareni_reports = fetch_abra_vykaz_hospodareni_reports(now_local)
-    sklik_status = ensure_daily_sklik_snapshot(now_local)
-    meta_status = ensure_daily_meta_snapshot(now_local)
-    google_status = ensure_daily_google_snapshot(now_local)
-    klaviyo_status = ensure_daily_klaviyo_snapshot(now_local)
-    finance_snapshot = build_finance_snapshot(legacy_abra_payload, live_abra_payload, abra_vykaz_hospodareni_reports, generated_at)
-    marketing_snapshot = build_marketing_snapshot(legacy_abra_payload, abra_vykaz_hospodareni_reports, finance_snapshot, generated_at)
     baseline_orders = None
     baseline_revenue = None
     stock_summary = {
@@ -4288,54 +5439,105 @@ def main():
         'negativeStoreStock': [],
         'largestMovesSinceLastSnapshot': [],
     }
+    customer_fact_payload = {'generatedAt': generated_at, 'window': {}, 'ordersProcessed': 0, 'customersCount': 0, 'summary': {}, 'customers': []}
+    order_fact_payload = {'generatedAt': generated_at, 'window': {}, 'summary': {}, 'orders': []}
 
-    if wpj_ready:
+    if fetch_result.wpj_ready:
         wpj_url = wpj_endpoint()
-        wpj_token = os.environ['WPJ_ACCESS_TOKEN']
+        wpj_token = SETTINGS.wpj_access_token
         history_start = report_start - timedelta(days=7)
+        ytd_start = datetime(now_local.year - 1, 1, 1, 0, 0, 0, tzinfo=PRAGUE_TZ)
         year_start = report_start - timedelta(days=364)
         two_year_start = report_start - timedelta(days=ORDERING_ANALYTICS_DAYS - 1)
         history_orders = fetch_wpj_orders(wpj_url, wpj_token, history_start, report_end, limit=1000, detailed=False)
+        ytd_orders = fetch_wpj_orders(wpj_url, wpj_token, ytd_start, now_local, limit=1000, detailed=False)
         yesterday_orders = fetch_wpj_orders(wpj_url, wpj_token, report_start, report_end, limit=250, detailed=True)
+        history_orders = apply_pos_view_overrides_to_orders(history_orders, wpj_url, wpj_token, history_start, report_end, detailed=False, pos_view_ids=ctx.pos_view_filters, limit=1000)
+        ytd_orders = apply_pos_view_overrides_to_orders(ytd_orders, wpj_url, wpj_token, ytd_start, now_local, detailed=False, pos_view_ids=ctx.pos_view_filters, limit=1000)
+        yesterday_orders = apply_pos_view_overrides_to_orders(yesterday_orders, wpj_url, wpj_token, report_start, report_end, detailed=True, pos_view_ids=ctx.pos_view_filters, limit=250)
         wpj_products = fetch_wpj_products(wpj_url, wpj_token)
 
-        wpj_summary = summarize_orders(yesterday_orders, pos_admin_views=pos_admin_views)
-        history_days, baseline_orders, baseline_revenue = summarize_daily_history(history_orders, report_date, pos_admin_views=pos_admin_views)
-        stock_summary = summarize_stock(wpj_products, wpj_summary['soldProductCodes'], previous_products=previous_wpj_products)
-        combined_index_payload, combined_overview_payload = build_combined_product_views(
-            wpj_products,
-            yesterday_orders,
-            cz_inventory,
-            sk_inventory,
-            cz_outbound,
-            sk_outbound,
-            report_start,
-            report_end,
+        wpj_summary = summarize_orders(yesterday_orders, pos_admin_views=ctx.pos_admin_views)
+        history_days, baseline_orders, baseline_revenue = summarize_daily_history(history_orders, report_date, pos_admin_views=ctx.pos_admin_views)
+        mtd_summary = build_mtd_revenue_snapshot(ytd_orders, report_date, pos_admin_views=ctx.pos_admin_views)
+        eshop_ytd_payload = build_eshop_ytd_payload(ytd_orders, generated_at, now_local, pos_admin_views=ctx.pos_admin_views)
+        customer_fact_payload = build_customer_fact_payload(
+            ytd_orders,
             generated_at,
-            manual_overrides,
-            pos_admin_views,
+            {'from': ytd_start.isoformat(), 'to': now_local.isoformat()},
+            pos_admin_views=ctx.pos_admin_views,
         )
-        expiry_overview_payload = build_expiry_overview(generated_at, combined_index_payload, cz_expiry_summary, sk_expiry_summary)
+        order_fact_payload = build_order_fact_payload(
+            ytd_orders,
+            generated_at,
+            {'from': ytd_start.isoformat(), 'to': now_local.isoformat()},
+            pos_admin_views=ctx.pos_admin_views,
+        )
+        stock_summary = summarize_stock(
+            wpj_products,
+            wpj_summary['soldProductCodes'],
+            previous_products=ctx.previous_wpj_products,
+            ordering_reference_overrides=ctx.ordering_reference_overrides,
+        )
+        stock_summary = filter_non_orderable_stock_rows(
+            stock_summary,
+            ordering_reference_overrides=ctx.ordering_reference_overrides,
+        )
+        combined_products_ctx = CombinedProductsBuildContext(
+            wpj_products=wpj_products,
+            yesterday_orders=yesterday_orders,
+            cz_inventory=fetch_result.cz_inventory,
+            sk_inventory=fetch_result.sk_inventory,
+            cz_outbound=fetch_result.cz_outbound,
+            sk_outbound=fetch_result.sk_outbound,
+            start_dt=report_start,
+            end_dt=report_end,
+            generated_at=generated_at,
+            manual_overrides=ctx.manual_overrides,
+            pos_admin_views=ctx.pos_admin_views,
+        )
+        combined_index_payload, combined_overview_payload = build_combined_product_views(combined_products_ctx)
+        expiry_overview_payload = build_expiry_overview(
+            generated_at,
+            combined_index_payload,
+            fetch_result.cz_expiry_summary,
+            fetch_result.sk_expiry_summary,
+        )
 
         analytics_cache_path = CURRENT_DIR / 'inventory_analytics_365d.json'
         analytics_730_cache_path = CURRENT_DIR / 'inventory_analytics_730d.json'
         ordering_core_cache_path = CURRENT_DIR / 'ordering_core.json'
+        ordering_sales_history_cache_path = CURRENT_DIR / 'ordering_sales_history.json'
         inventory_analytics_payload = load_json_if_fresh(analytics_cache_path, max_age_hours=24)
         inventory_analytics_730_payload = load_json_if_fresh(analytics_730_cache_path, max_age_hours=24)
         ordering_core_payload = load_json_if_fresh(ordering_core_cache_path, max_age_hours=24)
+        ordering_sales_history_payload = load_json_if_fresh(ordering_sales_history_cache_path, max_age_hours=24)
+
+        if inventory_analytics_payload:
+            inventory_analytics_payload = mark_payload_refreshed(inventory_analytics_payload, generated_at)
+        if inventory_analytics_730_payload:
+            inventory_analytics_730_payload = mark_payload_refreshed(inventory_analytics_730_payload, generated_at)
+        if ordering_core_payload:
+            ordering_core_payload = mark_payload_refreshed(ordering_core_payload, generated_at)
+        if ordering_sales_history_payload:
+            ordering_sales_history_payload = mark_payload_refreshed(ordering_sales_history_payload, generated_at)
         wpj_by_code = {item.get('code'): item for item in wpj_products if item.get('code')}
 
         inventory_analytics_payload, analytics_prices_changed = enrich_inventory_analytics_prices(inventory_analytics_payload, wpj_by_code)
         inventory_analytics_730_payload, analytics_730_prices_changed = enrich_inventory_analytics_prices(inventory_analytics_730_payload, wpj_by_code)
-        inventory_analytics_payload, analytics_reference_changed = reapply_ordering_reference_to_analytics(inventory_analytics_payload, ordering_reference_overrides)
-        inventory_analytics_730_payload, analytics_730_reference_changed = reapply_ordering_reference_to_analytics(inventory_analytics_730_payload, ordering_reference_overrides)
-        inventory_analytics_payload, analytics_packaging_changed = reapply_ordering_packaging_to_analytics(inventory_analytics_payload, ordering_packaging_map)
-        inventory_analytics_730_payload, analytics_730_packaging_changed = reapply_ordering_packaging_to_analytics(inventory_analytics_730_payload, ordering_packaging_map)
+        inventory_analytics_payload, analytics_reference_changed = reapply_ordering_reference_to_analytics(inventory_analytics_payload, ctx.ordering_reference_overrides)
+        inventory_analytics_730_payload, analytics_730_reference_changed = reapply_ordering_reference_to_analytics(inventory_analytics_730_payload, ctx.ordering_reference_overrides)
+        inventory_analytics_payload, analytics_packaging_changed = reapply_ordering_packaging_to_analytics(inventory_analytics_payload, ctx.ordering_packaging_map)
+        inventory_analytics_730_payload, analytics_730_packaging_changed = reapply_ordering_packaging_to_analytics(inventory_analytics_730_payload, ctx.ordering_packaging_map)
+        inventory_analytics_payload, analytics_stock_changed = reapply_combined_stock_to_analytics(inventory_analytics_payload, combined_index_payload, market_key='complete')
+        inventory_analytics_730_payload, analytics_730_stock_changed = reapply_combined_stock_to_analytics(inventory_analytics_730_payload, combined_index_payload, market_key='complete')
 
-        if (analytics_prices_changed or analytics_reference_changed or analytics_packaging_changed) and inventory_analytics_payload:
+        if (analytics_prices_changed or analytics_reference_changed or analytics_packaging_changed or analytics_stock_changed) and inventory_analytics_payload:
             write_json(analytics_cache_path, inventory_analytics_payload)
-        if (analytics_730_prices_changed or analytics_730_reference_changed or analytics_730_packaging_changed) and inventory_analytics_730_payload:
+        if (analytics_730_prices_changed or analytics_730_reference_changed or analytics_730_packaging_changed or analytics_730_stock_changed) and inventory_analytics_730_payload:
             write_json(analytics_730_cache_path, inventory_analytics_730_payload)
+
+        analytics_orders = None
 
         if (
             not inventory_analytics_payload or not inventory_analytics_payload.get('items')
@@ -4343,32 +5545,33 @@ def main():
             or not ordering_core_payload or not ordering_core_payload.get('summary')
         ):
             analytics_orders = fetch_wpj_year_order_metrics(wpj_url, wpj_token, two_year_start, report_end, limit=1000)
-            inventory_analytics_payload = build_inventory_analytics_365d(
-                combined_index_payload,
-                analytics_orders,
-                year_start,
-                report_end,
-                generated_at,
-                wpj_by_code,
-                manual_overrides,
-                pos_admin_views,
-                ordering_reference_overrides,
-                ordering_packaging_map,
-            )
-            inventory_analytics_730_payload = build_inventory_analytics_730d(
-                combined_index_payload,
-                analytics_orders,
-                two_year_start,
-                report_end,
-                generated_at,
-                wpj_by_code,
-                manual_overrides,
-                pos_admin_views,
-                ordering_reference_overrides,
-                ordering_packaging_map,
-            )
+            analytics_orders = apply_pos_view_overrides_to_orders(analytics_orders, wpj_url, wpj_token, two_year_start, report_end, detailed=False, pos_view_ids=ctx.pos_view_filters, limit=1000)
+            inventory_analytics_payload = build_inventory_analytics_365d(InventoryAnalyticsBuildContext(
+                combined_index=combined_index_payload,
+                orders=analytics_orders,
+                start_dt=year_start,
+                end_dt=report_end,
+                generated_at=generated_at,
+                wpj_by_code=wpj_by_code,
+                manual_overrides=ctx.manual_overrides,
+                pos_admin_views=ctx.pos_admin_views,
+                ordering_reference_overrides=ctx.ordering_reference_overrides,
+                ordering_packaging_map=ctx.ordering_packaging_map,
+            ))
+            inventory_analytics_730_payload = build_inventory_analytics_730d(InventoryAnalyticsBuildContext(
+                combined_index=combined_index_payload,
+                orders=analytics_orders,
+                start_dt=two_year_start,
+                end_dt=report_end,
+                generated_at=generated_at,
+                wpj_by_code=wpj_by_code,
+                manual_overrides=ctx.manual_overrides,
+                pos_admin_views=ctx.pos_admin_views,
+                ordering_reference_overrides=ctx.ordering_reference_overrides,
+                ordering_packaging_map=ctx.ordering_packaging_map,
+            ))
             ordering_core_payload = build_ordering_core(inventory_analytics_730_payload, generated_at)
-        elif analytics_730_prices_changed or analytics_730_reference_changed or analytics_730_packaging_changed:
+        elif analytics_730_prices_changed or analytics_730_reference_changed or analytics_730_packaging_changed or analytics_730_stock_changed:
             ordering_core_payload = build_ordering_core(inventory_analytics_730_payload, generated_at)
 
         ordering_reference_payload = build_ordering_reference_data(inventory_analytics_730_payload, generated_at)
@@ -4378,6 +5581,21 @@ def main():
         ordering_core_sk_payload = build_ordering_core(inventory_analytics_730_sk_payload, generated_at)
         ordering_reference_cz_payload = build_ordering_reference_data(inventory_analytics_730_cz_payload, generated_at)
         ordering_reference_sk_payload = build_ordering_reference_data(inventory_analytics_730_sk_payload, generated_at)
+
+        if not ordering_sales_history_payload or not ordering_sales_history_payload.get('codes'):
+            ordering_history_end = now_local
+            if analytics_orders is None:
+                analytics_orders = fetch_wpj_year_order_metrics(wpj_url, wpj_token, two_year_start, ordering_history_end, limit=1000)
+                analytics_orders = apply_pos_view_overrides_to_orders(analytics_orders, wpj_url, wpj_token, two_year_start, ordering_history_end, detailed=False, pos_view_ids=ctx.pos_view_filters, limit=1000)
+            ordering_sales_history_payload = build_ordering_sales_history_payload(OrderingSalesHistoryBuildContext(
+                orders=analytics_orders,
+                start_dt=two_year_start,
+                end_dt=ordering_history_end,
+                generated_at=generated_at,
+                wpj_by_code=wpj_by_code,
+                manual_overrides=ctx.manual_overrides,
+                pos_admin_views=ctx.pos_admin_views,
+            ))
 
         wpj_orders_payload = {
             'generatedAt': generated_at,
@@ -4393,35 +5611,43 @@ def main():
         }
     else:
         warnings.append('WPJ část není připojená, ranní report nebude mít e-shop výkon.')
+        mtd_summary = {}
 
-    if finance_snapshot.get('source', {}).get('status') == 'legacy_with_live_error':
+    if fetch_result.finance_snapshot.get('source', {}).get('status') == 'legacy_with_live_error':
         warnings.append('ABRA live adapter selhal, finance fallbacknuly na legacy snapshot.')
-    if abra_vykaz_hospodareni_reports.get('source', {}).get('status') == 'error':
+    if fetch_result.abra_vykaz_hospodareni_reports.get('source', {}).get('status') == 'error':
         warnings.append('ABRA report Výkaz hospodaření za měsíc se nepodařilo stáhnout.')
-    if not sklik_status.get('ready') and sklik_status.get('reason') != 'missing_token':
+    if not fetch_result.sklik_status.get('ready') and fetch_result.sklik_status.get('reason') != 'missing_token':
         warnings.append('Sklik denní refresh selhal, marketing používá poslední dostupný snapshot.')
-    if not meta_status.get('ready') and meta_status.get('reason') != 'missing_token':
+    if not fetch_result.meta_status.get('ready') and fetch_result.meta_status.get('reason') != 'missing_token':
         warnings.append('Meta Ads denní refresh selhal, marketing používá poslední dostupný snapshot.')
-    if not google_status.get('ready') and google_status.get('reason') != 'missing_token':
+    if not fetch_result.google_status.get('ready') and fetch_result.google_status.get('reason') != 'missing_token':
         warnings.append('Google Ads denní refresh selhal, marketing používá poslední dostupný snapshot.')
-    if not klaviyo_status.get('ready') and klaviyo_status.get('reason') != 'missing_token':
+    if not fetch_result.ga4_status.get('ready') and fetch_result.ga4_status.get('reason') != 'missing_token':
+        warnings.append('GA4 denní refresh selhal, akviziční kontext se bere z posledního dostupného snapshotu.')
+    if not fetch_result.klaviyo_status.get('ready') and fetch_result.klaviyo_status.get('reason') != 'missing_token':
         warnings.append('Klaviyo denní refresh selhal, marketing používá poslední dostupný snapshot.')
 
     if not expiry_overview_payload.get('topExpiring'):
-        expiry_overview_payload = build_expiry_overview(generated_at, combined_index_payload, cz_expiry_summary, sk_expiry_summary)
+        expiry_overview_payload = build_expiry_overview(
+            generated_at,
+            combined_index_payload,
+            fetch_result.cz_expiry_summary,
+            fetch_result.sk_expiry_summary,
+        )
 
-    cz_daily = summarize_4px_window('CZ', cz_outbound, report_start, report_end)
-    sk_daily = summarize_4px_window('SK', sk_outbound, report_start, report_end)
+    cz_daily = summarize_4px_window('CZ', fetch_result.cz_outbound, report_start, report_end)
+    sk_daily = summarize_4px_window('SK', fetch_result.sk_outbound, report_start, report_end)
     inventory_summary = {
-        'availableStockTotal': round(cz_inventory['availableStockTotal'] + sk_inventory['availableStockTotal'], 2),
-        'itemsTotal': len(cz_inventory['items']) + len(sk_inventory['items']),
+        'availableStockTotal': round(fetch_result.cz_inventory['availableStockTotal'] + fetch_result.sk_inventory['availableStockTotal'], 2),
+        'itemsTotal': len(fetch_result.cz_inventory['items']) + len(fetch_result.sk_inventory['items']),
         'byAccount': {
-            'CZ': round(cz_inventory['availableStockTotal'], 2),
-            'SK': round(sk_inventory['availableStockTotal'], 2),
+            'CZ': round(fetch_result.cz_inventory['availableStockTotal'], 2),
+            'SK': round(fetch_result.sk_inventory['availableStockTotal'], 2),
         },
         'itemsByAccount': {
-            'CZ': len(cz_inventory['items']),
-            'SK': len(sk_inventory['items']),
+            'CZ': len(fetch_result.cz_inventory['items']),
+            'SK': len(fetch_result.sk_inventory['items']),
         },
     }
     logistics_summary = {
@@ -4445,63 +5671,36 @@ def main():
     }
     warnings.extend(logistics_summary['coverageWarnings'])
 
-    alerts = build_alerts(wpj_summary, stock_summary, logistics_summary, warnings)
-    priorities = build_priorities(wpj_summary, stock_summary, logistics_summary)
+    inventory_health_summary = build_inventory_health_summary(inventory_analytics_730_payload, ordering_core_payload)
+    alerts = build_alerts(wpj_summary, stock_summary, logistics_summary, warnings, inventory_health_summary)
+    priorities = build_priorities(wpj_summary, stock_summary, logistics_summary, inventory_health_summary)
 
-    report_json = build_morning_report(
-        report_date,
-        wpj_summary,
-        baseline_orders,
-        baseline_revenue,
-        stock_summary,
-        inventory_summary,
-        logistics_summary,
-        alerts,
-        priorities,
-        warnings,
-    )
+    report_json = build_morning_report(MorningReportBuildContext(
+        report_date=report_date,
+        wpj_summary=wpj_summary,
+        baseline_orders=baseline_orders,
+        baseline_revenue=baseline_revenue,
+        stock_summary=stock_summary,
+        inventory_summary=inventory_summary,
+        logistics_summary=logistics_summary,
+        alerts=alerts,
+        priorities=priorities,
+        warnings=warnings,
+        mtd_summary=mtd_summary,
+        inventory_health=inventory_health_summary,
+    ))
     report_text = format_morning_report_text(report_json)
     report_telegram_text = format_morning_report_telegram_text(report_json)
 
-    CURRENT_DIR.mkdir(parents=True, exist_ok=True)
-    snapshot_path = SNAPSHOT_DIR / stamp
-    snapshot_path.mkdir(parents=True, exist_ok=True)
-
-    payloads = {
-        '4px_cz_inventory.json': {'generatedAt': generated_at, **cz_inventory},
-        '4px_sk_inventory.json': {'generatedAt': generated_at, **sk_inventory},
-        '4px_cz_inventory_detail.json': {'generatedAt': generated_at, **cz_inventory_detail},
-        '4px_sk_inventory_detail.json': {'generatedAt': generated_at, **sk_inventory_detail},
-        '4px_cz_outbound_recent.json': {'generatedAt': generated_at, **cz_outbound},
-        '4px_sk_outbound_recent.json': {'generatedAt': generated_at, **sk_outbound},
-        '4px_expiry_overview.json': expiry_overview_payload,
-        'combined_product_index.json': combined_index_payload,
-        'combined_inventory_overview.json': combined_overview_payload,
-        'inventory_analytics_365d.json': inventory_analytics_payload,
-        'inventory_analytics_730d.json': inventory_analytics_730_payload,
-        'inventory_analytics_730d_cz.json': inventory_analytics_730_cz_payload,
-        'inventory_analytics_730d_sk.json': inventory_analytics_730_sk_payload,
-        'ordering_core.json': ordering_core_payload,
-        'ordering_core_cz.json': ordering_core_cz_payload,
-        'ordering_core_sk.json': ordering_core_sk_payload,
-        'ordering_reference_data.json': ordering_reference_payload,
-        'ordering_reference_data_cz.json': ordering_reference_cz_payload,
-        'ordering_reference_data_sk.json': ordering_reference_sk_payload,
-        'finance_overview.json': finance_snapshot,
-        'marketing_overview.json': marketing_snapshot,
-        'wpj_orders_previous_day.json': wpj_orders_payload,
-        'wpj_products.json': wpj_products_payload,
-        'wpj_history_8_days.json': wpj_history_payload,
-        'morning_report_previous_day.json': report_json,
-    }
-
-    for name, payload in payloads.items():
-        write_json(CURRENT_DIR / name, payload)
-        write_json(snapshot_path / name, payload)
-
+    heavy_payloads = set(SETTINGS.reporting_heavy_payloads or [
+        'order_fact_ytd_window.json',
+        'customer_fact_ytd_window.json',
+        'ordering_sales_history.json',
+    ])
+    skip_snapshot_for_heavy = SETTINGS.reporting_skip_heavy_snapshot_writes
     report_manifest = {
         'generatedAt': generated_at,
-        'source': abra_vykaz_hospodareni_reports.get('source') or {},
+        'source': fetch_result.abra_vykaz_hospodareni_reports.get('source') or {},
         'months': [
             {
                 'label': row.get('label'),
@@ -4511,68 +5710,191 @@ def main():
                 'url': row.get('url'),
                 'parsed': (row.get('parsed') or {}).get('metrics') or {},
             }
-            for row in (abra_vykaz_hospodareni_reports.get('exports') or [])
+            for row in (fetch_result.abra_vykaz_hospodareni_reports.get('exports') or [])
         ],
     }
-    write_json(CURRENT_DIR / 'abra_vykaz_hospodareni_reports.json', report_manifest)
-    write_json(snapshot_path / 'abra_vykaz_hospodareni_reports.json', report_manifest)
-    for row in (abra_vykaz_hospodareni_reports.get('exports') or []):
+
+    return RefreshBuildResult(
+        warnings=warnings,
+        wpj_summary=wpj_summary,
+        wpj_orders_payload=wpj_orders_payload,
+        wpj_products_payload=wpj_products_payload,
+        wpj_history_payload=wpj_history_payload,
+        eshop_ytd_payload=eshop_ytd_payload,
+        customer_fact_payload=customer_fact_payload,
+        order_fact_payload=order_fact_payload,
+        inventory_analytics_payload=inventory_analytics_payload,
+        inventory_analytics_730_payload=inventory_analytics_730_payload,
+        inventory_analytics_730_cz_payload=inventory_analytics_730_cz_payload,
+        inventory_analytics_730_sk_payload=inventory_analytics_730_sk_payload,
+        ordering_core_payload=ordering_core_payload,
+        ordering_core_cz_payload=ordering_core_cz_payload,
+        ordering_core_sk_payload=ordering_core_sk_payload,
+        ordering_reference_payload=ordering_reference_payload,
+        ordering_reference_cz_payload=ordering_reference_cz_payload,
+        ordering_reference_sk_payload=ordering_reference_sk_payload,
+        ordering_sales_history_payload=ordering_sales_history_payload,
+        expiry_overview_payload=expiry_overview_payload,
+        combined_index_payload=combined_index_payload,
+        combined_overview_payload=combined_overview_payload,
+        baseline_orders=baseline_orders,
+        baseline_revenue=baseline_revenue,
+        stock_summary=stock_summary,
+        inventory_summary=inventory_summary,
+        logistics_summary=logistics_summary,
+        inventory_health_summary=inventory_health_summary,
+        alerts=alerts,
+        priorities=priorities,
+        report_json=report_json,
+        report_text=report_text,
+        report_telegram_text=report_telegram_text,
+        heavy_payloads=heavy_payloads,
+        skip_snapshot_for_heavy=skip_snapshot_for_heavy,
+        report_manifest=report_manifest,
+    )
+
+
+def persist_refresh_outputs(
+    ctx: RefreshRuntimeContext,
+    fetch_result: RefreshFetchResult,
+    build_result: RefreshBuildResult,
+):
+    CURRENT_DIR.mkdir(parents=True, exist_ok=True)
+    snapshot_path = SNAPSHOT_DIR / ctx.stamp
+    snapshot_path.mkdir(parents=True, exist_ok=True)
+
+    payloads = {
+        '4px_cz_inventory.json': {'generatedAt': ctx.generated_at, **fetch_result.cz_inventory},
+        '4px_sk_inventory.json': {'generatedAt': ctx.generated_at, **fetch_result.sk_inventory},
+        '4px_cz_inventory_detail.json': {'generatedAt': ctx.generated_at, **fetch_result.cz_inventory_detail},
+        '4px_sk_inventory_detail.json': {'generatedAt': ctx.generated_at, **fetch_result.sk_inventory_detail},
+        '4px_cz_outbound_recent.json': {'generatedAt': ctx.generated_at, **fetch_result.cz_outbound},
+        '4px_sk_outbound_recent.json': {'generatedAt': ctx.generated_at, **fetch_result.sk_outbound},
+        '4px_expiry_overview.json': build_result.expiry_overview_payload,
+        'combined_product_index.json': build_result.combined_index_payload,
+        'combined_inventory_overview.json': build_result.combined_overview_payload,
+        'inventory_analytics_365d.json': build_result.inventory_analytics_payload,
+        'inventory_analytics_730d.json': build_result.inventory_analytics_730_payload,
+        'inventory_analytics_730d_cz.json': build_result.inventory_analytics_730_cz_payload,
+        'inventory_analytics_730d_sk.json': build_result.inventory_analytics_730_sk_payload,
+        'ordering_core.json': build_result.ordering_core_payload,
+        'ordering_core_cz.json': build_result.ordering_core_cz_payload,
+        'ordering_core_sk.json': build_result.ordering_core_sk_payload,
+        'ordering_reference_data.json': build_result.ordering_reference_payload,
+        'ordering_reference_data_cz.json': build_result.ordering_reference_cz_payload,
+        'ordering_reference_data_sk.json': build_result.ordering_reference_sk_payload,
+        'ordering_sales_history.json': build_result.ordering_sales_history_payload,
+        'finance_overview.json': fetch_result.finance_snapshot,
+        'marketing_overview.json': fetch_result.marketing_snapshot,
+        'affiliate_overview.json': fetch_result.affiliate_overview,
+        'wpj_orders_previous_day.json': build_result.wpj_orders_payload,
+        'wpj_products.json': build_result.wpj_products_payload,
+        'wpj_history_8_days.json': build_result.wpj_history_payload,
+        'eshop_ytd.json': build_result.eshop_ytd_payload,
+        'customer_fact_ytd_window.json': build_result.customer_fact_payload,
+        'order_fact_ytd_window.json': build_result.order_fact_payload,
+        'morning_report_previous_day.json': build_result.report_json,
+    }
+
+    for name, payload in payloads.items():
+        if name == 'finance_overview.json':
+            write_finance_payloads(CURRENT_DIR, payload)
+            write_finance_payloads(snapshot_path, payload)
+            continue
+        write_json(CURRENT_DIR / name, payload)
+        if not (build_result.skip_snapshot_for_heavy and name in build_result.heavy_payloads):
+            write_json(snapshot_path / name, payload)
+
+    write_json(CURRENT_DIR / 'abra_vykaz_hospodareni_reports.json', build_result.report_manifest)
+    write_json(snapshot_path / 'abra_vykaz_hospodareni_reports.json', build_result.report_manifest)
+    remote_sync_result = sync_remote_heavy_payloads(sorted(build_result.heavy_payloads))
+    write_json(CURRENT_DIR / 'reporting_remote_storage_status.json', {
+        'generatedAt': ctx.generated_at,
+        'heavyPayloads': sorted(build_result.heavy_payloads),
+        **remote_sync_result,
+    })
+    for row in (fetch_result.abra_vykaz_hospodareni_reports.get('exports') or []):
         body = row.get('bytes')
         if not body:
             continue
         write_bytes(CURRENT_DIR / row['fileName'], body)
         write_bytes(snapshot_path / row['fileName'], body)
 
-    write_text(CURRENT_DIR / 'morning_report_previous_day.txt', report_text)
-    write_text(snapshot_path / 'morning_report_previous_day.txt', report_text)
-    write_text(CURRENT_DIR / 'morning_report_previous_day_telegram.txt', report_telegram_text)
-    write_text(snapshot_path / 'morning_report_previous_day_telegram.txt', report_telegram_text)
+    write_text(CURRENT_DIR / 'morning_report_previous_day.txt', build_result.report_text)
+    write_text(snapshot_path / 'morning_report_previous_day.txt', build_result.report_text)
+    write_text(CURRENT_DIR / 'morning_report_previous_day_telegram.txt', build_result.report_telegram_text)
+    write_text(snapshot_path / 'morning_report_previous_day_telegram.txt', build_result.report_telegram_text)
 
+    twisto_watchdog = run_twisto_watchdog(snapshot_path, ctx.generated_at)
     portal_summary = {
-        'generatedAt': generated_at,
+        'generatedAt': ctx.generated_at,
         'config': {
-            'warehouseCode': warehouse_code,
-            'outboundMaxPages': max_pages,
+            'warehouseCode': ctx.warehouse_code,
+            'outboundMaxPages': ctx.max_pages,
             'reportWindow': {
-                'from': report_start.isoformat(),
-                'to': report_end.isoformat(),
+                'from': ctx.report_start.isoformat(),
+                'to': ctx.report_end.isoformat(),
             },
         },
-        'warnings': warnings,
+        'warnings': build_result.warnings,
         'accounts': {
-            'cz': account_payload('CZ', cz_inventory, cz_outbound),
-            'sk': account_payload('SK', sk_inventory, sk_outbound),
+            'cz': account_payload('CZ', fetch_result.cz_inventory, fetch_result.cz_outbound),
+            'sk': account_payload('SK', fetch_result.sk_inventory, fetch_result.sk_outbound),
         },
         'wpJ': {
-            'ready': wpj_ready,
-            'message': 'WPJ připojeno a ranní report je vygenerovaný.' if wpj_ready else 'WPJ zatím není připojené. Chybí token nebo URL.',
-            'orders': wpj_summary['orders'],
-            'revenueWithVat': wpj_summary['revenueWithVat'],
-            'averageOrderValue': wpj_summary['averageOrderValue'],
-            'problematicOrders': wpj_summary['problematicOrders'],
+            'ready': fetch_result.wpj_ready,
+            'message': 'WPJ připojeno a ranní report je vygenerovaný.' if fetch_result.wpj_ready else 'WPJ zatím není připojené. Chybí token nebo URL.',
+            'orders': build_result.wpj_summary['orders'],
+            'revenueWithVat': build_result.wpj_summary['revenueWithVat'],
+            'averageOrderValue': build_result.wpj_summary['averageOrderValue'],
+            'problematicOrders': build_result.wpj_summary['problematicOrders'],
         },
         'report': {
-            'date': report_date.isoformat(),
-            'shipments': logistics_summary['shipmentsTotal'],
-            'alerts': alerts,
-            'priorities': priorities,
+            'date': ctx.report_date.isoformat(),
+            'shipments': build_result.logistics_summary['shipmentsTotal'],
+            'alerts': build_result.alerts,
+            'priorities': build_result.priorities,
         },
-        'expiries': expiry_overview_payload.get('summary') or {},
-        'pairing': combined_overview_payload.get('counts') or {},
+        'expiries': build_result.expiry_overview_payload.get('summary') or {},
+        'pairing': build_result.combined_overview_payload.get('counts') or {},
         'finance': {
-            'ready': finance_snapshot.get('source', {}).get('status') != 'missing',
-            'mode': finance_snapshot.get('source', {}).get('status'),
-            'message': finance_snapshot.get('source', {}).get('message'),
-            'currentMonth': finance_snapshot.get('currentMonth') or {},
-            'cash': finance_snapshot.get('cash') or {},
-            'reportExport': abra_vykaz_hospodareni_reports.get('source') or {},
+            'ready': fetch_result.finance_snapshot.get('source', {}).get('status') != 'missing',
+            'mode': fetch_result.finance_snapshot.get('source', {}).get('status'),
+            'message': fetch_result.finance_snapshot.get('source', {}).get('message'),
+            'currentMonth': fetch_result.finance_snapshot.get('currentMonth') or {},
+            'cash': fetch_result.finance_snapshot.get('cash') or {},
+            'reportExport': fetch_result.abra_vykaz_hospodareni_reports.get('source') or {},
         },
         'marketing': {
-            'ready': marketing_snapshot.get('source', {}).get('status') != 'missing',
-            'mode': marketing_snapshot.get('source', {}).get('status'),
-            'message': marketing_snapshot.get('source', {}).get('message'),
-            'currentMonth': marketing_snapshot.get('currentMonth') or {},
-            'topSupplier': (marketing_snapshot.get('topSuppliersCurrentMonth') or [None])[0],
+            'ready': fetch_result.marketing_snapshot.get('source', {}).get('status') != 'missing',
+            'mode': fetch_result.marketing_snapshot.get('source', {}).get('status'),
+            'message': fetch_result.marketing_snapshot.get('source', {}).get('message'),
+            'currentMonth': fetch_result.marketing_snapshot.get('currentMonth') or {},
+            'topSupplier': (fetch_result.marketing_snapshot.get('topSuppliersCurrentMonth') or [None])[0],
+        },
+        'affiliate': {
+            'ready': bool(fetch_result.affiliate_overview),
+            'mode': (fetch_result.affiliate_overview.get('source') or {}).get('status'),
+            'message': (fetch_result.affiliate_overview.get('source') or {}).get('message'),
+            'period': fetch_result.affiliate_overview.get('period') or {},
+            'summary': fetch_result.affiliate_overview.get('summary') or {},
+        },
+        'ga4': {
+            'ready': (fetch_result.marketing_snapshot.get('analytics') or {}).get('ready', False),
+            'source': ((fetch_result.marketing_snapshot.get('analytics') or {}).get('source') or {}).get('status'),
+            'message': ((fetch_result.marketing_snapshot.get('analytics') or {}).get('source') or {}).get('message'),
+            'property': (fetch_result.marketing_snapshot.get('analytics') or {}).get('property') or {},
+            'currentMonth': (fetch_result.marketing_snapshot.get('analytics') or {}).get('currentMonth') or {},
+            'last7days': (fetch_result.marketing_snapshot.get('analytics') or {}).get('last7days') or {},
+            'topChannel7d': (((fetch_result.marketing_snapshot.get('analytics') or {}).get('channelPerformance7d') or [None])[0]),
+            'countries7d': ((fetch_result.marketing_snapshot.get('analytics') or {}).get('countries7d') or [])[:5],
+        },
+        'twistoWatchdog': {
+            'ready': (twisto_watchdog.get('alert') or {}).get('status') != 'missing',
+            'status': (twisto_watchdog.get('alert') or {}).get('status'),
+            'summary': twisto_watchdog.get('summary') or {},
+            'source': twisto_watchdog.get('source') or {},
+            'message': ((twisto_watchdog.get('alert') or {}).get('lines') or [None])[0],
         },
     }
     write_json(CURRENT_DIR / 'portal_summary.json', portal_summary)
@@ -4583,11 +5905,30 @@ def main():
         latest_snapshot.unlink()
     latest_snapshot.symlink_to(snapshot_path.name)
 
-    print(f'Refreshed reporting data at {generated_at}')
-    print(f'CZ inventory rows: {len(cz_inventory["items"])} | CZ outbound rows: {len(cz_outbound["items"])}')
-    print(f'SK inventory rows: {len(sk_inventory["items"])} | SK outbound rows: {len(sk_outbound["items"])}')
-    print(f'WPJ previous-day orders: {wpj_summary["orders"]} | Revenue with VAT: {wpj_summary["revenueWithVat"]}')
+    keep_snapshots = SETTINGS.reporting_snapshot_keep
+    try:
+        keep_snapshots_int = max(int(keep_snapshots), 1)
+    except ValueError:
+        keep_snapshots_int = 3
+    snapshot_dirs = sorted([path for path in SNAPSHOT_DIR.iterdir() if path.is_dir() and path.name != 'latest'], key=lambda p: p.name)
+    for old_path in snapshot_dirs[:-keep_snapshots_int]:
+        shutil.rmtree(old_path)
+
+
+def print_refresh_summary(ctx: RefreshRuntimeContext, fetch_result: RefreshFetchResult, build_result: RefreshBuildResult):
+    print(f'Refreshed reporting data at {ctx.generated_at}')
+    print(f'CZ inventory rows: {len(fetch_result.cz_inventory["items"])} | CZ outbound rows: {len(fetch_result.cz_outbound["items"])}')
+    print(f'SK inventory rows: {len(fetch_result.sk_inventory["items"])} | SK outbound rows: {len(fetch_result.sk_outbound["items"])}')
+    print(f'WPJ previous-day orders: {build_result.wpj_summary["orders"]} | Revenue with VAT: {build_result.wpj_summary["revenueWithVat"]}')
     print(f'Morning report file: {CURRENT_DIR / "morning_report_previous_day.txt"}')
+
+
+def main():
+    ctx = build_refresh_runtime_context()
+    fetch_result = fetch_refresh_inputs(ctx)
+    build_result = build_refresh_payloads(ctx, fetch_result)
+    persist_refresh_outputs(ctx, fetch_result, build_result)
+    print_refresh_summary(ctx, fetch_result, build_result)
 
 
 if __name__ == '__main__':
