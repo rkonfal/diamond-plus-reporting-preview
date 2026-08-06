@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-shop / WPJ, Reporting V2</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="page-eshop-simplified">
+  <aside class="sidebar" data-sidebar-page="eshop.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Výkon e-shopu pro běžný provoz" data-sidebar-section="E-shop" data-sidebar-footer="Nejdřív výkon a problémy, detail až potom."></aside>
+
+  <main class="main page-stack">
+    <header class="header">
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">E-shop • výkon a konverzní signály</div>
+          <h1 class="ux-title">E-shop ve stejném rozhodovacím standardu</h1>
+          <p class="ux-subtitle">Nejdřív výkon a riziko, potom rozpad podle pohledů a až nakonec detail metod a produktů.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/morning_report_previous_day.txt" target="_blank" rel="noopener">Ranní report</a>
+            <a class="ux-button secondary" href="inventory.html">Sklad</a>
+            <a class="ux-button secondary" href="index.html">Přehled</a>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+      <section class="ux-hero-metrics" id="eshop-hero"></section>
+      <div class="status-strip" id="eshop-status-strip"></div>
+      <div class="ux-date-note"><strong>Období:</strong> kompletní výsledek WPJShopu za včerejšek.</div>
+    </header>
+
+    <section class="layer-shell" id="eshop-step-1" data-section-nav-label="Krok 1: co znamená výkon" data-section-nav-order="1">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 1</div>
+          <h2 class="layer-title">Co včerejší výkon znamená</h2>
+          <p class="layer-subtitle">Rychlé čtení, jestli je problém ve výkonu, kvalitě objednávek nebo v mixu prodejních pohledů.</p>
+        </div>
+        <div class="layer-note">Nejdřív výkon a riziko, až potom hlubší rozpad.</div>
+      </div>
+      <section class="signal-grid" id="eshop-decision-grid"></section>
+    </section>
+
+    <section class="layer-shell" id="eshop-inputs" data-section-nav-label="Hlavní vstupy" data-section-nav-order="2">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Hlavní vstupy</div>
+          <h2 class="layer-title">Kam se podívat hned po signálu</h2>
+          <p class="layer-subtitle">Krátká pracovní vrstva s výkonem, problémy a rychlým přepnutím pohledu.</p>
+        </div>
+      </div>
+      <section class="ux-grid">
+      <div class="ux-focus-card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="ux-section-title">Co je dnes důležité</h2>
+            <p class="ux-section-subtitle">Krátký pohled na výkon a rizika.</p>
+          </div>
+          <span class="badge live" id="wpj-state">Načítám e-shop…</span>
+        </div>
+        <div class="ux-list" id="eshop-focus"></div>
+      </div>
+
+      <div class="ux-side-stack">
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Hlavní vstupy</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Otevři jen pohledy, které typicky vedou další e-shop rozhodnutí.</p>
+          <div class="section-nav-links" id="eshop-route-links" style="margin-top:16px;"></div>
+        </div>
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Včerejšek stručně</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Základ bez čtení celého ranního reportu.</p>
+          <div class="ux-stat-list" id="eshop-stat-list"></div>
+        </div>
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Ranní report v kostce</h3>
+          <p id="wpj-message" style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Načítám krátký text reportu…</p>
+          <pre id="report-preview" class="panel-pre"></pre>
+        </div>
+      </div>
+    </section>
+
+    </section>
+
+    <section class="layer-shell" id="eshop-step-2" data-section-nav-label="Krok 2: pracovní vrstva" data-section-nav-order="3">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 2</div>
+          <h2 class="layer-title">Pracovní pohled na výkon e-shopu</h2>
+          <p class="layer-subtitle">Jedna vrstva pro rychlý rozpad podle pohledu, druhá pro detail produktů a metod.</p>
+        </div>
+      </div>
+      <section class="summary-grid" id="eshop-work-grid"></section>
+    </section>
+
+    <section class="layer-shell" id="eshop-secondary" data-section-nav-label="Sekundární vrstva" data-section-nav-order="4">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Sekundární vrstva</div>
+          <h2 class="layer-title">Včerejšek rovnou navázaný na YTD kontext</h2>
+          <p class="layer-subtitle">Operativní výkon nahoře, hned pod ním širší YTD pohled, aby se denní výkyv četl v kontextu.</p>
+        </div>
+      </div>
+      <section class="summary-grid" id="eshop-linked-grid"></section>
+      <section class="card" style="margin-top:18px;">
+        <div class="ux-section-head" style="margin-bottom:12px;">
+          <div>
+            <h2 class="ux-section-title">YTD srovnání 2025 vs 2026</h2>
+            <p class="ux-section-subtitle">Převzato ze standalone ESHOP reportu a přesunuto do správného reporting flow.</p>
+          </div>
+        </div>
+        <div class="grid kpi-grid" id="eshop-ytd-kpis"></div>
+        <div id="eshop-ytd-revenue-chart" style="margin-top:16px;"></div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Měsíc</th>
+                <th class="num">Obj. 2025</th>
+                <th class="num">Obj. 2026</th>
+                <th class="num">Δ obj.</th>
+                <th class="num">Tržby 2025</th>
+                <th class="num">Tržby 2026</th>
+                <th class="num">Δ tržby</th>
+              </tr>
+            </thead>
+            <tbody id="eshop-ytd-table"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section class="grid kpi-grid" id="wpj-kpis"></section>
+
+    <section class="card" id="ga4-eshop-section" style="display:none; margin-bottom:20px;">
+      <div class="ux-section-head" style="margin-bottom:12px;">
+        <div>
+          <h2 class="ux-section-title">GA4 nákupní cesta a akvizice</h2>
+          <p class="ux-section-subtitle">Chování webu přímo v e-shopu, aby bylo vidět, jestli výkon souvisí s návštěvností, zdrojem nebo landing page.</p>
+        </div>
+      </div>
+      <div class="grid kpi-grid" id="ga4-eshop-kpis"></div>
+      <div class="ux-panel-card" id="ga4-eshop-ai-layer" style="display:none; margin-top:20px;">
+        <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">AI / assistant vrstva</h3>
+        <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Rychlý pohled na tvrdě měřené AI referraly, pravděpodobné assistant vstupy a slabší proxy signál.</p>
+        <div id="ga4-eshop-ai-strip" style="margin-top:16px;"></div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead><tr><th>Bucket</th><th>Důvěra</th><th class="num">Sessions 7d</th><th class="num">Vliv trans. 30d</th><th class="num">Vliv revenue 30d</th></tr></thead>
+            <tbody id="ga4-eshop-ai-table"></tbody>
+          </table>
+        </div>
+        <div class="section-subtitle" id="ga4-eshop-ai-note" style="margin-top:12px;"></div>
+      </div>
+      <div class="grid two-col" style="margin-top:20px;">
+        <div class="card card-plain">
+          <div class="ux-table-wrap">
+            <table class="table">
+              <thead><tr><th>Kanál 7d</th><th class="num">Sessions</th><th class="num">Nákupy</th><th class="num">CR</th></tr></thead>
+              <tbody id="ga4-eshop-channel-table"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card card-plain">
+          <div class="ux-table-wrap">
+            <table class="table">
+              <thead><tr><th>Landing page 7d</th><th class="num">Sessions</th><th class="num">Revenue</th><th class="num">CR</th></tr></thead>
+              <tbody id="ga4-eshop-landing-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-bottom:20px;">
+      <div class="ux-section-head" style="margin-bottom:12px;">
+        <div>
+          <h2 class="ux-section-title">Pohled podle typu prodeje</h2>
+          <p class="ux-section-subtitle">Stejné jednoduché přepínání jako ve skladu, jen nad výkonem e-shopu.</p>
+        </div>
+      </div>
+      <div class="quick-filters" id="eshop-view-tabs">
+        <button class="quick-filter active" type="button" data-view="complete">KOMPLET</button>
+        <button class="quick-filter" type="button" data-view="cz">CZ E-SHOP</button>
+        <button class="quick-filter" type="button" data-view="sk">SK E-SHOP</button>
+        <button class="quick-filter" type="button" data-view="ltm">LITOMĚŘICE</button>
+        <button class="quick-filter" type="button" data-view="mecin">MĚČÍN</button>
+      </div>
+      <div class="section-subtitle" id="eshop-view-summary">Načítám rozdělení prodeje…</div>
+    </section>
+
+    <details class="secondary-details">
+      <summary>Detail objednávek, metod a top produktů</summary>
+
+      <section class="grid two-col" style="margin-top:18px;">
+        <div class="card">
+          <h2 class="section-title">Platební metody</h2>
+          <div class="ux-table-wrap" style="margin-top:16px;">
+            <table class="table">
+              <thead><tr><th>Metoda</th><th class="num">Objednávek</th></tr></thead>
+              <tbody id="payments-table"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h2 class="section-title">Dopravní metody</h2>
+          <div class="ux-table-wrap" style="margin-top:16px;">
+            <table class="table">
+              <thead><tr><th>Metoda</th><th class="num">Objednávek</th></tr></thead>
+              <tbody id="deliveries-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid two-col top-products-grid">
+        <div class="card">
+          <h2 class="section-title">Nejprodávanější produkty podle kusů</h2>
+          <div class="ux-table-wrap top-products-wrap" style="margin-top:16px;">
+            <table class="table table-top-products">
+              <thead><tr><th>Produkt</th><th class="num">Kusy</th></tr></thead>
+              <tbody id="units-table"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h2 class="section-title">Nejprodávanější produkty podle obratu</h2>
+          <div class="ux-table-wrap top-products-wrap" style="margin-top:16px;">
+            <table class="table table-top-products">
+              <thead><tr><th>Produkt</th><th class="num">Obrat</th></tr></thead>
+              <tbody id="revenue-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </details>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+    const aiConfidence = {
+      high: 'vysoká',
+      medium: 'střední',
+      low: 'nižší',
+    };
+
+    function formatDateRange(windowData) {
+      const from = new Date(windowData.from);
+      if (Number.isNaN(from.getTime())) return 'Neznámé období';
+      return `Včerejšek: ${new Intl.DateTimeFormat('cs-CZ', { dateStyle: 'medium' }).format(from)}`;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function renderRows(targetId, rows, formatter) {
+      document.getElementById(targetId).innerHTML = (rows || []).map(row => `
+        <tr>
+          <td>${row.label || row.name}</td>
+          <td class="num">${formatter(row)}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderProductRows(targetId, rows, formatter) {
+      document.getElementById(targetId).innerHTML = (rows || []).map((row, index) => `
+        <tr>
+          <td class="product-cell">
+            <div class="product-row-main">
+              <span class="product-rank">#${index + 1}</span>
+              <div class="product-copy">
+                <div class="product-name">${escapeHtml(row.name || row.label || 'Bez názvu')}</div>
+                <div class="product-meta">
+                  ${row.code ? `<span class="product-code">${escapeHtml(row.code)}</span>` : ''}
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="num product-value-cell"><strong>${escapeHtml(formatter(row))}</strong></td>
+        </tr>
+      `).join('');
+    }
+
+    (async () => {
+      const summary = await DP.loadJson('../data/current/portal_summary.json');
+      const report = await DP.loadJson('../data/current/morning_report_previous_day.json');
+      const history8d = await DP.loadJson('../data/current/wpj_history_8_days.json');
+      const eshopYtd = await DP.loadJson('../data/current/eshop_ytd.json').catch(() => ({}));
+      const ga4Raw = await DP.loadJson('../data/current/ga4_overview.json').catch(() => ({}));
+      const ga4 = { ready: Boolean(ga4Raw?.last7days || ga4Raw?.currentMonth || ga4Raw?.channelPerformance7d?.length), ...ga4Raw };
+      const ga4Mode = ga4.property?.mode === 'combined' ? 'GA4 CZ+SK bundle' : 'GA4';
+      const ga4SkCountry = (ga4.countries7d || []).find(row => row.country === 'Slovakia');
+      DP.renderRouteLinks('eshop-route-links', [
+        ['Přehled firmy', 'index.html', 'Vrať se na hlavní firemní signál a priority dne.'],
+        ['Objednávání', 'ordering.html', 'Navazující krok, když výkon souvisí s dostupností nebo plánem zásob.'],
+        ['Sklad', 'inventory.html', 'Prověř, jestli výkon nebo problémy nesouvisí s dostupností a nesoulady.'],
+        ['Marketing', 'marketing.html', ga4.ready ? `${ga4Mode}: ${DP.fmtNumber(ga4.last7days?.sessions || 0)} sessions a ${DP.fmtNumber(Math.round(ga4.last7days?.ecommercePurchases || 0))} nákupů.` : 'Propoj výkon e-shopu s akvizicí a spendem.'],
+        ['E-shop YTD data', '../data/current/eshop_ytd.json', 'Surový YTD vstup pro hlubší kontrolu.'],
+      ]);
+      const text = await fetch('../data/current/morning_report_previous_day.txt', { cache: 'no-store' }).then(r => r.text());
+      const complete = report.eshop;
+      const viewButtons = Array.from(document.querySelectorAll('#eshop-view-tabs [data-view]'));
+      const viewSummary = document.getElementById('eshop-view-summary');
+      let activeView = 'complete';
+
+      const viewDefs = {
+        complete: { label: 'Komplet', accent: 'Kompletní WPJShop včetně CZ, SK a obou prodejen.' },
+        cz: { label: 'CZ e-shop', accent: 'Jen objednávky klasifikované jako CZ e-shop.' },
+        sk: { label: 'SK e-shop', accent: 'Jen objednávky klasifikované jako SK e-shop.' },
+        ltm: { label: 'Prodejna Litoměřice', accent: 'Jen objednávky z pokladny Litoměřice.' },
+        mecin: { label: 'Prodejna Měčín', accent: 'Jen objednávky z pokladny Měčín.' },
+      };
+      const shortTs = value => value ? DP.fmtDateTime(value) : '–';
+
+      function renderAiTrafficLayer(aiTraffic) {
+        const shell = document.getElementById('ga4-eshop-ai-layer');
+        if (!shell || !aiTraffic?.ready) return;
+        shell.style.display = '';
+        DP.renderStatusStrip('ga4-eshop-ai-strip', [
+          { label: 'Explicit AI sessions 7d', value: DP.fmtNumber(aiTraffic.summary?.explicitAiSessions7d || 0), tone: 'success' },
+          { label: 'Assistant / Bing sessions 7d', value: DP.fmtNumber(aiTraffic.summary?.assistantLikeSessions7d || 0), tone: 'warn' },
+          { label: 'Proxy trans. 30d', value: DP.fmtNumber(aiTraffic.summary?.proxyTransactions30d || 0), tone: 'info' },
+        ], { compact: true });
+        document.getElementById('ga4-eshop-ai-note').textContent = aiTraffic.methodology?.note || '';
+        document.getElementById('ga4-eshop-ai-table').innerHTML = (aiTraffic.buckets || []).map(bucket => `
+          <tr>
+            <td><strong>${bucket.label}</strong><br><span style="color:var(--text-muted); font-size:12px;">${bucket.description}</span></td>
+            <td>${aiConfidence[bucket.confidence] || aiConfidence.low}</td>
+            <td class="num">${bucket.sessions7d ? DP.fmtNumber(Math.round(bucket.sessions7d || 0)) : '–'}</td>
+            <td class="num">${DP.fmtNumber(bucket.transactions30dInfluenced || 0)}</td>
+            <td class="num">${Math.round(bucket.revenue30dInfluenced || 0) ? `${DP.fmtNumber(Math.round(bucket.revenue30dInfluenced || 0))} Kč` : '0 Kč'}</td>
+          </tr>
+        `).join('') || '<tr><td colspan="5">AI vrstva zatím není k dispozici.</td></tr>';
+      }
+
+      function syncViewButtons() {
+        viewButtons.forEach(button => button.classList.toggle('active', button.dataset.view === activeView));
+      }
+
+      function getViewData(view) {
+        if (view === 'complete') return complete;
+        return (complete.byView || {})[view] || {
+          orders: 0,
+          revenueWithVat: 0,
+          averageOrderValue: 0,
+          cancelledOrders: 0,
+          problematicOrders: 0,
+          statuses: [],
+          paymentMethods: [],
+          deliveryMethods: [],
+          topProductsByUnits: [],
+          topProductsByRevenue: [],
+          soldProductCodes: [],
+        };
+      }
+
+      const fallbackYoyMonths = [
+        { label: 'Leden', m25: { count: 11988, rev: 15765609 }, m26: { count: 9848, rev: 14662580 } },
+        { label: 'Únor', m25: { count: 12600, rev: 16357334 }, m26: { count: 10445, rev: 14903972 } },
+        { label: 'Březen', m25: { count: 12892, rev: 16414183 }, m26: { count: 12079, rev: 17600645 } },
+        { label: 'Duben*', m25: { count: Math.round(13469 * 13 / 30), rev: Math.round(18708141 * 13 / 30) }, m26: { count: 3792, rev: 5539410 } },
+      ];
+      const yoyMonths = (eshopYtd.months || []).map(month => ({
+        label: `${month.label}${month.partial ? '*' : ''}`,
+        m25: {
+          count: Number(month.previous?.count || 0),
+          rev: Number(month.previous?.revenueWithVat || 0),
+        },
+        m26: {
+          count: Number(month.current?.count || 0),
+          rev: Number(month.current?.revenueWithVat || 0),
+        },
+      }));
+      const ytdYears = eshopYtd.years || { previous: 2025, current: 2026 };
+
+      function deltaPct(current, baseline) {
+        if (!baseline) return null;
+        return ((current - baseline) / baseline) * 100;
+      }
+
+      function fmtPct(value) {
+        if (value == null || Number.isNaN(value)) return '–';
+        const sign = value > 0 ? '+' : '';
+        return `${sign}${value.toFixed(1)} %`;
+      }
+
+      function badgeTone(value) {
+        if (value == null || Number.isNaN(value)) return '';
+        return value >= 0 ? 'success' : 'warn';
+      }
+
+      function renderRevenueYoyChart(targetId, months, years) {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        const chartMonths = Array.isArray(months) ? months : [];
+        if (!chartMonths.length) {
+          target.innerHTML = '';
+          return;
+        }
+
+        const width = 920;
+        const height = 280;
+        const padding = { top: 16, right: 16, bottom: 52, left: 78 };
+        const plotWidth = width - padding.left - padding.right;
+        const plotHeight = height - padding.top - padding.bottom;
+        const values = chartMonths.flatMap(month => [Number(month.m25.rev || 0), Number(month.m26.rev || 0)]);
+        const maxValue = Math.max(...values, 1);
+        const stepX = chartMonths.length > 1 ? plotWidth / (chartMonths.length - 1) : 0;
+
+        const xFor = index => padding.left + stepX * index;
+        const yFor = value => padding.top + plotHeight - ((Number(value || 0) / maxValue) * plotHeight);
+        const pointsFor = key => chartMonths.map((month, index) => `${xFor(index)},${yFor(month[key].rev)}`).join(' ');
+        const shortMoney = value => `${new Intl.NumberFormat('cs-CZ', { maximumFractionDigits: 1 }).format(value / 1000000)} mil. Kč`;
+        const gridValues = [0, 0.25, 0.5, 0.75, 1].map(ratio => maxValue * ratio);
+
+        target.innerHTML = `
+          <div class="chart-shell">
+            <div class="chart-shell-header">
+              <div>
+                <div class="chart-shell-kicker">Graf obratu e-shopu</div>
+                <div class="chart-shell-title">Přímé meziroční porovnání v jednom grafu</div>
+              </div>
+              <div class="chart-legend">
+                <span class="chart-legend-item"><span class="chart-legend-dot" style="background:#6b7280;"></span>${years.previous}</span>
+                <span class="chart-legend-item"><span class="chart-legend-dot" style="background:#2563eb;"></span>${years.current}</span>
+              </div>
+            </div>
+            <svg viewBox="0 0 ${width} ${height}" width="100%" role="img" aria-label="Vývoj obratu e-shopu ${years.previous} a ${years.current}">
+              ${gridValues.map(value => `
+                <g>
+                  <line x1="${padding.left}" y1="${yFor(value)}" x2="${width - padding.right}" y2="${yFor(value)}" stroke="var(--line)" stroke-dasharray="4 6" />
+                  <text x="${padding.left - 10}" y="${yFor(value) + 4}" text-anchor="end" fill="var(--text-faint)" font-size="11">${shortMoney(value)}</text>
+                </g>
+              `).join('')}
+              <polyline fill="none" stroke="#6b7280" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="${pointsFor('m25')}" />
+              <polyline fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="${pointsFor('m26')}" />
+              ${chartMonths.map((month, index) => {
+                const x = xFor(index);
+                const y25 = yFor(month.m25.rev);
+                const y26 = yFor(month.m26.rev);
+                return `
+                  <g>
+                    <line x1="${x}" y1="${padding.top}" x2="${x}" y2="${padding.top + plotHeight}" stroke="rgba(148, 163, 184, 0.16)" />
+                    <circle cx="${x}" cy="${y25}" r="4" fill="#6b7280">
+                      <title>${month.label}: ${years.previous} ${DP.fmtNumber(Math.round(month.m25.rev))} Kč</title>
+                    </circle>
+                    <circle cx="${x}" cy="${y26}" r="4" fill="#2563eb">
+                      <title>${month.label}: ${years.current} ${DP.fmtNumber(Math.round(month.m26.rev))} Kč</title>
+                    </circle>
+                    <text x="${x}" y="${height - 18}" text-anchor="middle" fill="var(--text-muted)" font-size="12">${month.label.replace('*', '')}</text>
+                  </g>
+                `;
+              }).join('')}
+            </svg>
+            <div class="chart-month-grid">
+              ${chartMonths.map(month => {
+                const delta = deltaPct(month.m26.rev, month.m25.rev);
+                return `
+                  <div class="chart-month-card">
+                    <div class="chart-month-card-label">${month.label}</div>
+                    <div class="chart-month-card-line">${years.previous}: ${DP.fmtNumber(Math.round(month.m25.rev))} Kč</div>
+                    <div class="chart-month-card-line">${years.current}: ${DP.fmtNumber(Math.round(month.m26.rev))} Kč</div>
+                    <div class="chart-month-card-delta" style="color:${delta != null && delta >= 0 ? 'var(--ok)' : 'var(--warn)'};">${fmtPct(delta)}</div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      function renderLinkedView(eshop) {
+        const days = Array.isArray(history8d.days) ? history8d.days : [];
+        const previousDays = days.slice(0, -1);
+        const avgOrders = previousDays.length ? previousDays.reduce((sum, day) => sum + Number(day.orders || 0), 0) / previousDays.length : 0;
+        const avgRevenue = previousDays.length ? previousDays.reduce((sum, day) => sum + Number(day.revenueWithVat || 0), 0) / previousDays.length : 0;
+        const avgAov = previousDays.length ? previousDays.reduce((sum, day) => sum + Number(day.averageOrderValue || 0), 0) / previousDays.length : 0;
+        const activeYoyMonths = yoyMonths.length ? yoyMonths : fallbackYoyMonths;
+        const ytd25 = activeYoyMonths.reduce((sum, month) => ({ count: sum.count + month.m25.count, rev: sum.rev + month.m25.rev }), { count: 0, rev: 0 });
+        const ytd26 = activeYoyMonths.reduce((sum, month) => ({ count: sum.count + month.m26.count, rev: sum.rev + month.m26.rev }), { count: 0, rev: 0 });
+        const avg25 = ytd25.rev / ytd25.count;
+        const avg26 = ytd26.rev / ytd26.count;
+        const orderDelta = deltaPct(Number(eshop.orders || 0), avgOrders);
+        const revenueDelta = deltaPct(Number(eshop.revenueWithVat || 0), avgRevenue);
+        const aovDelta = deltaPct(Number(eshop.averageOrderValue || 0), avgAov);
+
+        document.getElementById('eshop-linked-grid').innerHTML = [
+          {
+            title: 'Včerejšek proti 7dennímu základu',
+            text: `${DP.fmtNumber(eshop.orders || 0)} objednávek a ${DP.fmtNumber(Math.round(eshop.revenueWithVat || 0))} Kč proti průměru předchozích 7 dní.`,
+            body: [
+              ['Objednávky', `${DP.fmtNumber(eshop.orders || 0)} (${fmtPct(orderDelta)})`],
+              ['Tržby', `${DP.fmtNumber(Math.round(eshop.revenueWithVat || 0))} Kč (${fmtPct(revenueDelta)})`],
+              ['AOV', `${DP.fmtNumber(Math.round(eshop.averageOrderValue || 0))} Kč (${fmtPct(aovDelta)})`],
+              ['Problematické', DP.fmtNumber(eshop.problematicOrders || 0)],
+            ]
+          },
+          {
+            title: 'Rychlý 8denní kontext',
+            text: 'Bez přepínání do starého reportu, rovnou ve stejném flow jako zbytek reportingu.',
+            body: days.slice(-4).reverse().map(day => {
+              const date = new Intl.DateTimeFormat('cs-CZ', { day: 'numeric', month: 'numeric' }).format(new Date(day.date));
+              return [date, `${DP.fmtNumber(day.orders || 0)} obj. · ${DP.fmtNumber(Math.round(day.revenueWithVat || 0))} Kč`];
+            })
+          },
+          {
+            title: 'YTD 2026 vs 2025',
+            text: 'Živý YTD pohled napojený na WPJ data, ne statický relikt ze standalone ESHOP repa.',
+            body: [
+              [`Objednávky YTD ${ytdYears.current}`, `${DP.fmtNumber(ytd26.count)} (${fmtPct(deltaPct(ytd26.count, ytd25.count))})`],
+              [`Tržby YTD ${ytdYears.current}`, `${DP.fmtNumber(ytd26.rev)} Kč (${fmtPct(deltaPct(ytd26.rev, ytd25.rev))})`],
+              ['AOV YTD', `${DP.fmtNumber(Math.round(avg26))} Kč (${fmtPct(deltaPct(avg26, avg25))})`],
+              ['Poznámka', 'Aktuální měsíc je srovnaný jako stejné částečné období'],
+            ]
+          }
+        ].map(card => `
+          <article class="summary-card">
+            <h3>${card.title}</h3>
+            <p>${card.text}</p>
+            <div class="ux-stat-list">
+              ${card.body.map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('')}
+            </div>
+          </article>
+        `).join('');
+
+        document.getElementById('eshop-ytd-kpis').innerHTML = [
+          [`Objednávky YTD ${ytdYears.current}`, DP.fmtNumber(ytd26.count), `${ytdYears.previous}: ${DP.fmtNumber(ytd25.count)} · ${fmtPct(deltaPct(ytd26.count, ytd25.count))}`, badgeTone(deltaPct(ytd26.count, ytd25.count))],
+          [`Tržby YTD ${ytdYears.current}`, `${DP.fmtNumber(ytd26.rev)} Kč`, `${ytdYears.previous}: ${DP.fmtNumber(ytd25.rev)} Kč · ${fmtPct(deltaPct(ytd26.rev, ytd25.rev))}`, badgeTone(deltaPct(ytd26.rev, ytd25.rev))],
+          ['Průměrný košík YTD', `${DP.fmtNumber(Math.round(avg26))} Kč`, `${ytdYears.previous}: ${DP.fmtNumber(Math.round(avg25))} Kč · ${fmtPct(deltaPct(avg26, avg25))}`, badgeTone(deltaPct(avg26, avg25))],
+        ].map(([label, value, sub, klass]) => `
+          <div class="card kpi-card ${klass}">
+            <div class="kpi-label">${label}</div>
+            <div class="kpi-value">${value}</div>
+            <div class="kpi-sub">${sub}</div>
+          </div>
+        `).join('');
+
+        renderRevenueYoyChart('eshop-ytd-revenue-chart', activeYoyMonths, ytdYears);
+
+        document.getElementById('eshop-ytd-table').innerHTML = activeYoyMonths.map(month => {
+          const countDelta = deltaPct(month.m26.count, month.m25.count);
+          const revDelta = deltaPct(month.m26.rev, month.m25.rev);
+          return `
+            <tr>
+              <td>${month.label}</td>
+              <td class="num">${DP.fmtNumber(month.m25.count)}</td>
+              <td class="num">${DP.fmtNumber(month.m26.count)}</td>
+              <td class="num ${badgeTone(countDelta)}">${fmtPct(countDelta)}</td>
+              <td class="num">${DP.fmtNumber(month.m25.rev)} Kč</td>
+              <td class="num">${DP.fmtNumber(month.m26.rev)} Kč</td>
+              <td class="num ${badgeTone(revDelta)}">${fmtPct(revDelta)}</td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      function renderView(view) {
+        activeView = view;
+        syncViewButtons();
+        const eshop = getViewData(view);
+        const viewMeta = viewDefs[view] || viewDefs.complete;
+
+        viewSummary.textContent = `${viewMeta.label}: ${DP.fmtNumber(eshop.orders || 0)} objednávek, obrat ${DP.fmtNumber(Math.round(eshop.revenueWithVat || 0))} Kč, AOV ${DP.fmtNumber(Math.round(eshop.averageOrderValue || 0))} Kč. ${viewMeta.accent}`;
+
+        document.getElementById('eshop-decision-grid').innerHTML = [
+          {
+            eyebrow: 'Denní výkon',
+            value: `${DP.fmtNumber(eshop.orders || 0)} obj.`,
+            sub: `${DP.fmtNumber(Math.round(eshop.revenueWithVat || 0))} Kč obratu a AOV ${DP.fmtNumber(Math.round(eshop.averageOrderValue || 0))} Kč.`,
+            meta: view === 'complete' ? `${report.quickSummary?.orders?.deltaPct > 0 ? '+' : ''}${Number(report.quickSummary?.orders?.deltaPct || 0).toFixed(1)} % vs 7denní průměr` : viewMeta.label,
+            tone: view === 'complete' && Number(report.quickSummary?.orders?.deltaPct || 0) < 0 ? 'warn' : 'accent',
+          },
+          {
+            eyebrow: 'Kvalita objednávek',
+            value: `${DP.fmtNumber(eshop.problematicOrders || 0)} problémové`,
+            sub: `${DP.fmtNumber(eshop.cancelledOrders || 0)} stornované a ${DP.fmtNumber(eshop.problematicOrders || 0)} problematické objednávky.`,
+            meta: (eshop.problematicOrders || 0) ? 'Vyplatí se projít frontu problémových objednávek.' : 'Bez provozního zásahu na první pohled.',
+            tone: (eshop.problematicOrders || 0) ? 'warn' : '',
+          },
+          {
+            eyebrow: 'Mix objednávek',
+            value: eshop.deliveryMethods?.[0]?.name || '–',
+            sub: `${DP.fmtNumber(eshop.deliveryMethods?.[0]?.count || 0)} objednávek přes hlavní dopravu.`,
+            meta: `Platba ${eshop.paymentMethods?.[0]?.name || '–'} · ${DP.fmtNumber(eshop.paymentMethods?.[0]?.count || 0)} objednávek`,
+            tone: '',
+          },
+          {
+            eyebrow: 'Produktový signál',
+            value: eshop.topProductsByUnits?.[0]?.code || '–',
+            sub: eshop.topProductsByUnits?.[0] ? `${eshop.topProductsByUnits[0].name} · ${eshop.topProductsByUnits[0].formatted || eshop.topProductsByUnits[0].value}` : 'Bez top produktu v datech.',
+            meta: eshop.topProductsByRevenue?.[0] ? `Obratově vede ${eshop.topProductsByRevenue[0].code}` : 'Bez obrátkového lídra.',
+            tone: '',
+          },
+        ].map(card => `
+          <article class="signal-card ${card.tone || ''}">
+            <div class="eyebrow">${card.eyebrow}</div>
+            <div class="signal-value">${card.value}</div>
+            <div class="signal-sub">${card.sub}</div>
+            <div class="signal-meta">${card.meta}</div>
+          </article>
+        `).join('');
+
+        const hero = [
+          ['Objednávky včera', DP.fmtNumber(eshop.orders || 0), `${DP.fmtNumber(eshop.problematicOrders || 0)} problematické`, 'accent'],
+          ['Obrat s DPH', `${DP.fmtNumber(Math.round(eshop.revenueWithVat || 0))} Kč`, `${DP.fmtNumber(Math.round(eshop.averageOrderValue || 0))} Kč / objednávka`, ''],
+          ['Nejčastější doprava', eshop.deliveryMethods?.[0]?.name || '–', `${DP.fmtNumber(eshop.deliveryMethods?.[0]?.count || 0)} objednávek`, '']
+        ];
+        document.getElementById('eshop-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
+          <div class="ux-hero-metric ${klass}">
+            <div class="label">${label}</div>
+            <div class="value">${value}</div>
+            <div class="sub">${sub}</div>
+          </div>
+        `).join('');
+
+        DP.renderStatusStrip('eshop-status-strip', [
+          { label: 'Stav', value: (eshop.problematicOrders || 0) ? 'Pozor' : 'OK', tone: (eshop.problematicOrders || 0) ? 'warn' : 'success' },
+          { label: 'Zdroj', value: summary.wpJ.ready ? 'WPJ live, YTD live, GA4 daily' : 'WPJ omezeně', tone: summary.wpJ.ready ? 'success' : 'warn' },
+          { label: 'Delta', value: view === 'complete' ? `${report.quickSummary?.orders?.deltaPct > 0 ? '+' : ''}${Number(report.quickSummary?.orders?.deltaPct || 0).toFixed(1)} % vs 7D` : `${viewMeta.label}`, tone: 'info' },
+          { label: 'Refresh', value: shortTs(report.generatedAt || eshopYtd.generatedAt), tone: 'info' },
+        ]);
+
+        document.getElementById('eshop-focus').innerHTML = [
+          [`Včerejší výkon: ${DP.fmtNumber(eshop.orders || 0)} objednávek`, `Obrat ${DP.fmtNumber(Math.round(eshop.revenueWithVat || 0))} Kč, AOV ${DP.fmtNumber(Math.round(eshop.averageOrderValue || 0))} Kč.`],
+          [`Storna a problémy`, `${DP.fmtNumber(eshop.cancelledOrders || 0)} stornovaných a ${DP.fmtNumber(eshop.problematicOrders || 0)} problematických objednávek.`],
+          ga4.last7days ? [`${ga4Mode}, posledních 7 dní`, `${DP.fmtNumber(ga4.last7days.sessions || 0)} sessions, ${DP.fmtNumber(Math.round(ga4.last7days.ecommercePurchases || 0))} nákupů, CR ${ga4.last7days.purchaseRatePct == null ? '–' : `${Number(ga4.last7days.purchaseRatePct).toFixed(2)} %`}${ga4SkCountry ? `, Slovensko ${DP.fmtNumber(Math.round(ga4SkCountry.activeUsers || 0))} AU` : ''}.`] : null,
+          [eshop.topProductsByUnits?.[0] ? `Nejprodávanější kusově: ${eshop.topProductsByUnits[0].label}` : 'Nejprodávanější produkt zatím není', eshop.topProductsByUnits?.[0] ? `${eshop.topProductsByUnits[0].formatted || eshop.topProductsByUnits[0].value}` : 'Bez dat.']
+        ].filter(Boolean).map(([title, text], index) => `
+          <div class="ux-item">
+            <span class="ux-dot ${index === 1 ? '' : index === 2 ? 'gold' : 'blue'}"></span>
+            <div>
+              <strong>${title}</strong>
+              <span>${text}</span>
+            </div>
+          </div>
+        `).join('');
+
+        document.getElementById('eshop-stat-list').innerHTML = [
+          ['Období', formatDateRange(report.window)],
+          ['Pohled', viewMeta.label],
+          ga4.last7days ? [`${ga4Mode} sessions 7d`, DP.fmtNumber(ga4.last7days.sessions || 0)] : null,
+          ga4.last7days ? [`${ga4Mode} purchases 7d`, DP.fmtNumber(Math.round(ga4.last7days.ecommercePurchases || 0))] : null,
+          ga4SkCountry ? ['GA4 Slovakia AU 7d', DP.fmtNumber(Math.round(ga4SkCountry.activeUsers || 0))] : null,
+          ['Storna', DP.fmtNumber(eshop.cancelledOrders || 0)],
+          ['Problematické', DP.fmtNumber(eshop.problematicOrders || 0)],
+          ['Nejčastější platba', eshop.paymentMethods?.[0]?.name || '–'],
+          ['Nejčastější doprava', eshop.deliveryMethods?.[0]?.name || '–'],
+        ].filter(Boolean).map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+        document.getElementById('eshop-work-grid').innerHTML = [
+          {
+            title: 'Pohledy prodeje',
+            text: 'Stejný přepínač jako u skladu, ale nad výkonem a konverzí.',
+            body: [
+              ['Komplet', `${DP.fmtNumber(complete.orders || 0)} obj.`],
+              ['CZ', `${DP.fmtNumber(complete.byView?.cz?.orders || 0)} obj.`],
+              ['SK', `${DP.fmtNumber(complete.byView?.sk?.orders || 0)} obj.`],
+              ['Prodejny', `${DP.fmtNumber((complete.byView?.ltm?.orders || 0) + (complete.byView?.mecin?.orders || 0))} obj.`],
+            ]
+          },
+          {
+            title: 'Platební a dopravní mix',
+            text: 'Rychlý kontext, co táhne checkout a fulfillment.',
+            body: [
+              ['Top platba', eshop.paymentMethods?.[0]?.name || '–'],
+              ['Top doprava', eshop.deliveryMethods?.[0]?.name || '–'],
+              ['Platba #2', eshop.paymentMethods?.[1]?.name || '–'],
+              ['Doprava #2', eshop.deliveryMethods?.[1]?.name || '–'],
+            ]
+          },
+          {
+            title: 'Top produkty',
+            text: 'Kusový i obratový vítěz na jednom místě.',
+            body: [
+              ['Kusově', eshop.topProductsByUnits?.[0]?.code || '–'],
+              ['Kusově objem', eshop.topProductsByUnits?.[0]?.formatted || '–'],
+              ['Obratově', eshop.topProductsByRevenue?.[0]?.code || '–'],
+              ['Obratově objem', eshop.topProductsByRevenue?.[0]?.formatted || '–'],
+            ]
+          },
+          {
+            title: `${ga4Mode} akviziční kontext`,
+            text: 'Lehký webový signál, aby byl výkon e-shopu čtený i s návštěvností a nákupní cestou, sloučený přes CZ a SK.',
+            body: [
+              ['Sessions 7d', ga4.last7days ? DP.fmtNumber(ga4.last7days.sessions || 0) : '–'],
+              ['Purchases 7d', ga4.last7days ? DP.fmtNumber(Math.round(ga4.last7days.ecommercePurchases || 0)) : '–'],
+              ['Top channel', ga4.channelPerformance7d?.[0]?.channel || '–'],
+              ['Top landing', ga4.landingPages7d?.[0]?.landingPage || '–'],
+              ['Slovakia AU 7d', ga4SkCountry ? DP.fmtNumber(Math.round(ga4SkCountry.activeUsers || 0)) : '–'],
+            ]
+          }
+        ].map(card => `
+          <article class="summary-card">
+            <h3>${card.title}</h3>
+            <p>${card.text}</p>
+            <div class="ux-stat-list">
+              ${card.body.map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('')}
+            </div>
+          </article>
+        `).join('');
+
+        renderLinkedView(eshop);
+
+        document.getElementById('wpj-kpis').innerHTML = [
+          ['Objednávky včera', DP.fmtNumber(eshop.orders || 0), `${DP.fmtNumber(eshop.problematicOrders || 0)} problematické`, 'green'],
+          ['Obrat s DPH', `${DP.fmtNumber(Math.round(eshop.revenueWithVat || 0))} Kč`, `${DP.fmtNumber(Math.round(eshop.averageOrderValue || 0))} Kč / objednávka`, 'blue'],
+          ga4.last7days ? [`${ga4Mode} sessions 7d`, DP.fmtNumber(ga4.last7days.sessions || 0), `CR ${ga4.last7days.purchaseRatePct == null ? '–' : `${Number(ga4.last7days.purchaseRatePct).toFixed(2)} %`}`, 'green'] : null,
+          ['Nejčastější platba', eshop.paymentMethods?.[0]?.name || '–', `${DP.fmtNumber(eshop.paymentMethods?.[0]?.count || 0)} objednávek`, 'gold'],
+          ['Nejčastější doprava', eshop.deliveryMethods?.[0]?.name || '–', `${DP.fmtNumber(eshop.deliveryMethods?.[0]?.count || 0)} objednávek`, 'red']
+        ].filter(Boolean).map(([label, value, sub, klass]) => `
+          <div class="card kpi-card ${klass}">
+            <div class="kpi-label">${label}</div>
+            <div class="kpi-value">${value}</div>
+            <div class="kpi-sub">${sub}</div>
+          </div>
+        `).join('');
+
+        if (ga4.last7days) {
+          document.getElementById('ga4-eshop-section').style.display = '';
+          document.getElementById('ga4-eshop-kpis').innerHTML = [
+            [`${ga4Mode} sessions 7d`, DP.fmtNumber(ga4.last7days.sessions || 0), `${ga4.last7days.engagementRatePct == null ? '–' : `${Number(ga4.last7days.engagementRatePct).toFixed(1)} %`} engagement`, 'blue'],
+            ['GA4 purchases 7d', DP.fmtNumber(Math.round(ga4.last7days.ecommercePurchases || 0)), `CR ${ga4.last7days.purchaseRatePct == null ? '–' : `${Number(ga4.last7days.purchaseRatePct).toFixed(2)} %`}`, 'green'],
+            ['GA4 revenue 7d', `${DP.fmtNumber(Math.round(ga4.last7days.purchaseRevenue || 0))} Kč`, `${ga4.last7days.revenuePerSession == null ? '–' : `${Number(ga4.last7days.revenuePerSession).toFixed(2)} Kč / session`}`, 'gold'],
+            ['Top channel 7d', ga4.channelPerformance7d?.[0]?.channel || '–', ga4.channelPerformance7d?.[0] ? `${DP.fmtNumber(Math.round(ga4.channelPerformance7d[0].sessions || 0))} sessions` : 'Bez kanálu', 'red'],
+            ['Top landing 7d', ga4.landingPages7d?.[0]?.landingPage || '–', ga4.landingPages7d?.[0] ? `${DP.fmtNumber(Math.round(ga4.landingPages7d[0].sessions || 0))} sessions` : 'Bez landing page', 'blue'],
+          ].map(([label, value, sub, klass]) => `
+            <div class="card kpi-card ${klass}">
+              <div class="kpi-label">${label}</div>
+              <div class="kpi-value">${value}</div>
+              <div class="kpi-sub">${sub}</div>
+            </div>
+          `).join('');
+
+          document.getElementById('ga4-eshop-channel-table').innerHTML = (ga4.channelPerformance7d || []).map(row => `
+            <tr>
+              <td>${row.channel || '–'}</td>
+              <td class="num">${DP.fmtNumber(Math.round(row.sessions || 0))}</td>
+              <td class="num">${DP.fmtNumber(Math.round(row.ecommercePurchases || 0))}</td>
+              <td class="num">${row.purchaseRatePct == null ? '–' : `${Number(row.purchaseRatePct).toFixed(2)} %`}</td>
+            </tr>
+          `).join('') || '<tr><td colspan="4">GA4 kanály zatím nejsou k dispozici.</td></tr>';
+
+          document.getElementById('ga4-eshop-landing-table').innerHTML = (ga4.landingPages7d || []).slice(0, 8).map(row => `
+            <tr>
+              <td>${row.landingPage || '–'}</td>
+              <td class="num">${DP.fmtNumber(Math.round(row.sessions || 0))}</td>
+              <td class="num">${DP.fmtNumber(Math.round(row.purchaseRevenue || 0))} Kč</td>
+              <td class="num">${row.purchaseRatePct == null ? '–' : `${Number(row.purchaseRatePct).toFixed(2)} %`}</td>
+            </tr>
+          `).join('') || '<tr><td colspan="4">GA4 landing pages zatím nejsou k dispozici.</td></tr>';
+
+          renderAiTrafficLayer(ga4.aiTraffic);
+        }
+
+        renderRows('payments-table', (eshop.paymentMethods || []).slice(0, 8), row => DP.fmtNumber(row.count));
+        renderRows('deliveries-table', (eshop.deliveryMethods || []).slice(0, 8), row => DP.fmtNumber(row.count));
+        renderProductRows('units-table', eshop.topProductsByUnits || [], row => row.formatted || DP.fmtNumber(row.value));
+        renderProductRows('revenue-table', eshop.topProductsByRevenue || [], row => row.formatted || `${DP.fmtNumber(row.value)} Kč`);
+      }
+
+      document.getElementById('wpj-state').textContent = summary.wpJ.ready ? 'WPJ připojeno' : 'WPJ není připojeno';
+      document.getElementById('wpj-message').textContent = summary.wpJ.message;
+      document.getElementById('report-preview').textContent = text;
+
+      viewButtons.forEach(button => button.addEventListener('click', () => renderView(button.dataset.view)));
+      renderView(activeView);
+    })().catch(err => {
+      document.getElementById('wpj-message').textContent = `Nepodařilo se načíst WPJ report: ${err.message}`;
+    });
+  </script>
+</body>
+</html>

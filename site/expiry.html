@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expirace / promo akce, Reporting V2</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="page-expiry-simplified">
+  <aside class="sidebar" data-sidebar-page="expiry.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Akce a expirace pro rychlé rozhodnutí" data-sidebar-section="Akce a expirace" data-sidebar-footer="Rychle ukáže, co dát do akce, co použít jako dárek a kde by sleva už byla moc drahá."></aside>
+
+  <main class="main page-stack">
+    <header class="header">
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Akce a expirace • rychlé obchodní rozhodnutí</div>
+          <h1 class="ux-title">Expirace s jasným plánem</h1>
+          <p class="ux-subtitle">Ukáže všechny budoucí expirace v příštím půlroce a zároveň poradí, co pustit do akce, co dát jako dárek a co už by bylo moc drahé.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/4px_expiry_overview.json" target="_blank" rel="noopener">Expirační data</a>
+            <a class="ux-button secondary" href="expiry-solo.html">Solo report</a>
+            <a class="ux-button secondary" href="expiry-solo.html?wpj=mismatch">Jen nesoulady 4PX/WPJ</a>
+            <a class="ux-button secondary" href="store-expiry.html">Prodejny expirace</a>
+            <a class="ux-button secondary" href="logistics.html">Logistika</a>
+            <a class="ux-button secondary" href="inventory.html">Sklad</a>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+      <section class="ux-hero-metrics" id="expiry-hero"></section>
+      <div class="status-strip" id="expiry-status-strip"></div>
+      <div class="ux-date-note"><strong>Období:</strong> tabulky níž ukazují všechny budoucí expirace do 6 měsíců, expirační sklad je aktuální stav a prodejní kontext vychází hlavně z 30denního a 365denního výkonu.</div>
+    </header>
+
+    <section class="layer-shell" id="expiry-step-1" data-section-nav-label="Krok 1: co znamenají expirace" data-section-nav-order="1">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 1</div>
+          <h2 class="layer-title">Co je v expiracích obchodně důležité</h2>
+          <p class="layer-subtitle">Nejdřív rozsah půlročního okna, kritické SKU a ekonomika dárků. Detail tabulek až potom.</p>
+        </div>
+      </div>
+      <section class="signal-grid" id="expiry-kpis"></section>
+    </section>
+
+    <section class="layer-shell" id="expiry-inputs" data-section-nav-label="Hlavní vstupy" data-section-nav-order="2">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Hlavní vstupy</div>
+          <h2 class="layer-title">Kam se podívat hned po signálu</h2>
+          <p class="layer-subtitle">Krátká pracovní vrstva pro rozhodnutí, co pustit do akce, co použít jako dárek a kam skočit do detailu.</p>
+        </div>
+      </div>
+      <section class="ux-grid">
+      <div class="ux-focus-card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="ux-section-title">Co řešit hned</h2>
+            <p class="ux-section-subtitle">Krátký seznam toho, co je dnes potřeba rozhodnout.</p>
+          </div>
+          <span class="badge warn" id="expiry-attention-badge">Načítám důležité body…</span>
+        </div>
+        <div class="ux-list" id="expiry-attention-list"></div>
+      </div>
+
+      <div class="ux-side-stack">
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Hlavní vstupy</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Přeskoč rovnou na půlroční seznamy, akční shortlist nebo nosné bestsellery.</p>
+          <div class="section-nav-links" id="expiry-route-links" style="margin-top:16px;"></div>
+        </div>
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Kolik může stát dárek</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Nejdřív uhlídat ekonomiku akce.</p>
+          <div class="ux-stat-list" id="gift-limit-list"></div>
+        </div>
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Jak to odkomunikovat</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Jednoduše. Co dát do akce samo a co spojit s bestsellerem.</p>
+          <div class="ux-side-list" id="mechanics-list"></div>
+        </div>
+      </div>
+    </section>
+    </section>
+
+    <section class="layer-shell" id="expiry-step-2" data-section-nav-label="Krok 2: pracovní vrstva" data-section-nav-order="3">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 2</div>
+          <h2 class="layer-title">Pracovní pohled na expirace podle trhu</h2>
+          <p class="layer-subtitle">Kompletní operativní seznamy pro CZ a SK, aby bylo hned jasné kde je datumový tlak a kde jen zásobový tlak.</p>
+        </div>
+      </div>
+      <section class="grid two-col">
+      <div class="card">
+        <div class="ux-section-head" style="margin-bottom:0;">
+          <div>
+            <h2 class="ux-section-title">Všechny SKU do 6 měsíců, CZ</h2>
+            <p class="ux-section-subtitle">Kompletní operativní seznam budoucích expirací pro CZ v příštím půlroce.</p>
+          </div>
+        </div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table mobile-stack">
+            <thead>
+              <tr>
+                <th>SKU / produkt</th>
+                <th class="num">Expirace</th>
+                <th class="num">Dní do expirace</th>
+              <th class="num">Expirační sklad</th>
+              <th class="num">Batchů</th>
+              <th class="num">Prodej 30d</th>
+              <th class="num">Pokrytí</th>
+              <th>4PX vs WPJ</th>
+              <th>Návrh akce</th>
+            </tr>
+          </thead>
+            <tbody id="expiry-summary-table-cz"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ux-section-head" style="margin-bottom:0;">
+          <div>
+            <h2 class="ux-section-title">Všechny SKU do 6 měsíců, SK</h2>
+            <p class="ux-section-subtitle">Kompletní operativní seznam budoucích expirací pro SK v příštím půlroce.</p>
+          </div>
+        </div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table mobile-stack">
+            <thead>
+              <tr>
+                <th>SKU / produkt</th>
+                <th class="num">Expirace</th>
+                <th class="num">Dní do expirace</th>
+              <th class="num">Expirační sklad</th>
+              <th class="num">Batchů</th>
+              <th class="num">Prodej 30d</th>
+              <th class="num">Pokrytí</th>
+              <th>4PX vs WPJ</th>
+              <th>Návrh akce</th>
+            </tr>
+          </thead>
+            <tbody id="expiry-summary-table-sk"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <div class="ux-date-note" style="margin-top:12px;"><strong>Zdroj skladu:</strong> expirační sklad je součet 4PX batchů s dohledaným `expiry_date` a jejich `warehouse_stock`. Prodej 30d a pokrytí se berou odděleně pro CZ a SK.</div>
+    </section>
+
+    <details class="secondary-details" id="expiry-secondary" data-section-nav-label="Sekundární vrstva" data-section-nav-order="4" open>
+      <summary>Sekundární vrstva: mechaniky, shortlist a komunikační detail</summary>
+
+      <section class="grid two-col" style="margin-top:18px;">
+        <div class="card">
+          <h2 class="section-title">Hotové návrhy pro akci</h2>
+          <div class="section-subtitle">Rychlé návrhy pro web, CRM i checkout.</div>
+          <div class="block-list" id="bundle-list" style="margin-top:16px;"></div>
+        </div>
+        <div class="card">
+          <h2 class="section-title">Jak to říct zákazníkovi</h2>
+          <div class="section-subtitle">Krátká pravidla, aby akce byla srozumitelná a bezpečná.</div>
+          <div class="block-list" id="guardrails-list" style="margin-top:16px;"></div>
+        </div>
+      </section>
+
+    <section class="card" id="expiry-action-shortlist">
+      <div class="ux-section-head" style="margin-bottom:0;">
+        <div>
+          <h2 class="ux-section-title">Krátký seznam expirací s návrhem akce</h2>
+          <p class="ux-section-subtitle">Datum expirace, zásoba i návrh akce pro celé půlroční okno v jedné tabulce.</p>
+        </div>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table mobile-stack">
+          <thead>
+            <tr>
+              <th>SKU / produkt</th>
+              <th class="num">Expirace</th>
+              <th class="num">Expirující sklad</th>
+              <th>30 dní / pokrytí</th>
+              <th>4PX vs WPJ</th>
+              <th>Jasný návrh akce</th>
+              <th>Dárek do 18 %?</th>
+            </tr>
+          </thead>
+          <tbody id="expiry-action-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid two-col">
+      <div class="card" id="expiry-nearest">
+        <h2 class="section-title">Nejbližší expirace v příštím půlroce</h2>
+        <div class="section-subtitle">Kompletní výpis půlročního okna seřazený podle data a velikosti zásoby.</div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table mobile-stack">
+            <thead>
+              <tr>
+                <th>SKU / produkt</th>
+                <th class="num">Dní do expirace</th>
+                <th class="num">Expirující sklad</th>
+                <th>4PX vs WPJ</th>
+                <th>Priority</th>
+              </tr>
+            </thead>
+            <tbody id="nearest-expiry-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card" id="expiry-carriers">
+        <h2 class="section-title">Co použít jako tahák akce</h2>
+        <div class="section-subtitle">Bestsellery, které mají sílu utáhnout dárek nebo balíček.</div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table mobile-stack">
+            <thead>
+              <tr>
+                <th>Produkt</th>
+                <th class="num">30 dní</th>
+                <th class="num">Pokrytí</th>
+                <th>Využití</th>
+              </tr>
+            </thead>
+            <tbody id="carrier-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    </details>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+    DP.renderRouteLinks('expiry-route-links', [
+      ['Prodejny expirace', 'store-expiry.html', 'Rucni sarze na prodejnach a FIFO odpocty z pokladen'],
+      ['CZ seznam', '#expiry-step-2', 'Kompletní půlroční přehled pro CZ a SK'],
+      ['Akční shortlist', '#expiry-action-shortlist', 'Návrhy mechanik a shortlist SKU do akce'],
+      ['Nejbližší expirace', '#expiry-nearest', 'Rychlý detail nejbližších batchů'],
+      ['Taháky akce', '#expiry-carriers', 'Bestsellery vhodné jako nosič akce'],
+    ]);
+
+    const HALF_YEAR_DAYS = 183;
+    const fmt = value => DP.fmtNumber(Math.round(Number(value || 0)));
+    const fmtUnits = value => `${fmt(value)} ks`;
+    const fmtDays = value => value == null ? '–' : `${fmt(value)} dní`;
+    const fmtShortDate = value => {
+      if (!value) return '–';
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      return new Intl.DateTimeFormat('cs-CZ', { day: 'numeric', month: 'numeric' }).format(date);
+    };
+    const wpjFourpxStoreTotal = product => {
+      const stores = Array.isArray(product?.stores) ? product.stores : [];
+      return stores
+        .filter(store => String(store?.store?.name || '').startsWith('4PX'))
+        .reduce((sum, store) => sum + Number(store?.inStore || 0), 0);
+    };
+    const deriveWpjSync = (row, exactProduct = null, fallbackProduct = null) => {
+      if (row.wpjSyncStatus && row.wpjSyncLabel) return row;
+      const exactStoreTotal = wpjFourpxStoreTotal(exactProduct);
+      if (exactProduct?.code && exactStoreTotal > 0) {
+        return {
+          ...row,
+          wpjSyncStatus: 'aligned',
+          wpjSyncLabel: '4PX ano / WPJ ano',
+          wpjSyncTone: 'success',
+          wpjSyncNote: `WPJ hlásí 4PX sklad ${fmt(exactStoreTotal)} ks pro přesnou variantu ${exactProduct.code}.`
+        };
+      }
+      if (exactProduct?.code) {
+        return {
+          ...row,
+          wpjSyncStatus: 'missing_wpj_4px_stock',
+          wpjSyncLabel: '4PX ano / WPJ ne',
+          wpjSyncTone: 'warning',
+          wpjSyncNote: `WPJ má přesnou variantu ${exactProduct.code}, ale 4PX sklad 0 ks, visible ${exactProduct.visible ? 'ano' : 'ne'}.`
+        };
+      }
+      if (fallbackProduct?.code) {
+        const fallbackStoreTotal = wpjFourpxStoreTotal(fallbackProduct);
+        return {
+          ...row,
+          wpjSyncStatus: 'missing_wpj_variant',
+          wpjSyncLabel: '4PX ano / WPJ jen základ',
+          wpjSyncTone: 'warning',
+          wpjSyncNote: `Ve WPJ chybí přesná varianta ${row.sku}; existuje jen ${fallbackProduct.code} s 4PX skladem ${fmt(fallbackStoreTotal)} ks, visible ${fallbackProduct.visible ? 'ano' : 'ne'}.`
+        };
+      }
+      return {
+        ...row,
+        wpjSyncStatus: 'no_wpj_product',
+        wpjSyncLabel: '4PX ano / WPJ produkt chybí',
+        wpjSyncTone: 'danger',
+        wpjSyncNote: 'SKU v direct 4PX datech existuje, ale ve WPJ není produkt.'
+      };
+    };
+    const renderWpjSync = row => {
+      const pill = DP.statusPill(row.wpjSyncLabel || 'Bez dat', row.wpjSyncTone || 'info');
+      const note = row.wpjSyncNote ? `<br /><span style="color:var(--text-muted);">${row.wpjSyncNote}</span>` : '';
+      return `${pill}${note}`;
+    };
+
+    const ruleMap = {
+      '40203': {
+        priority: 'urgent',
+        mechanic: '2x 40203 + 1x 40203 zdarma',
+        carrier: 'Přímo na stejné SKU',
+        giftCheck: 'NE, radši 2+1',
+        giftTone: 'danger',
+        urgency: 'Nasadit hned, do 3 týdnů končí zásoba s expirací.',
+        note: 'Nejjednodušší varianta je pustit ho rovnou jako 2+1.'
+      },
+      '52902/03': {
+        priority: 'urgent',
+        mechanic: '1x 10117 + 1x 10118 + 1x 52902/03 zdarma',
+        carrier: 'Krém 10117 + sérum 10118',
+        giftCheck: 'ZKONTROLOVAT',
+        giftTone: 'warning',
+        urgency: 'Samo od sebe se do expirace neodprodá.',
+        note: 'Když to nevyjde do 18 %, pustit radši 2+1 přímo na masku.'
+      },
+      'PROMO74': {
+        priority: 'stock',
+        mechanic: '2x 61911 nebo 61912 + 1x PROMO74 zdarma',
+        carrier: '61911 / 61912 / 61914',
+        giftCheck: 'ANO',
+        giftTone: 'success',
+        urgency: 'Není akutní datumově, ale zásoba je extrémní.',
+        note: 'Použít jako jednoduchý bonus, ne jako hlavní produkt akce.'
+      },
+      '63601/01': {
+        priority: 'stock',
+        mechanic: '2x 61911 / 61912 / 61914 + 1x 63601 zdarma',
+        carrier: '61911 / 61912 / 61914',
+        giftCheck: 'ANO',
+        giftTone: 'success',
+        urgency: 'Silný produkt s velkou expirační zásobou.',
+        note: 'Nejjednodušší je dát ho zdarma k ženské hygieně.'
+      },
+      '63601': {
+        priority: 'stock',
+        mechanic: '2x 61911 / 61912 / 61914 + 1x 63601 zdarma',
+        carrier: '61911 / 61912 / 61914',
+        giftCheck: 'ANO',
+        giftTone: 'success',
+        urgency: 'Silný produkt s velkou zásobou.',
+        note: 'Nejjednodušší je dát ho zdarma k ženské hygieně.'
+      },
+      '30111': {
+        priority: 'stock',
+        mechanic: '2x 30117 nebo 30118 + 1x 30111 zdarma',
+        carrier: '30117 / 30118',
+        giftCheck: 'ZKONTROLOVAT',
+        giftTone: 'warning',
+        urgency: 'Produkt se hýbe, ale zásoba je vysoká.',
+        note: 'Když to nevyjde do 18 %, udělat 2+1 v patch řadě.'
+      }
+    };
+
+    const bundleIdeas = [
+      {
+        name: 'Peeling Broskvový 2+1',
+        mechanic: '2+1',
+        lead: '2x 40203 · Peeling Broskvový',
+        gift: '1x 40203 zdarma',
+        note: 'Nejrychlejší a nejčistší varianta.'
+      },
+      {
+        name: 'Krém + sérum + maska zdarma',
+        mechanic: 'dárek zdarma',
+        lead: '1x 10117 + 1x 10118',
+        gift: '1x 52902/03 zdarma',
+        note: 'Jen když dárek vyjde do 18 %. Jinak masku pustit samostatně jako 2+1.'
+      },
+      {
+        name: 'Fytonáplasti + Yaoshen zdarma',
+        mechanic: 'dárek zdarma / 2+1',
+        lead: '2x 30117 nebo 30118',
+        gift: '1x 30111 zdarma',
+        note: 'Když to nevychází do 18 %, změnit na 2+1 v patch řadě.'
+      },
+      {
+        name: 'Ženská péče + dárek zdarma',
+        mechanic: 'dárek zdarma',
+        lead: '2x 61911 / 61912 / 61914',
+        gift: '1x 63601 nebo 1x PROMO74 zdarma',
+        note: 'Jednoduchá akce, která dává smysl i obchodně.'
+      }
+    ];
+
+    const carrierCodes = ['44402-2', '61912', '61911', '61914', '64404-2', '30117', '30118', '10117', '10118'];
+
+    function analyticsLookup(map, code) {
+      if (map[code]) return map[code];
+      const plain = code?.split('/')[0];
+      if (plain && map[plain]) return map[plain];
+      return null;
+    }
+
+    function expiryAnalytics(row) {
+      const exact = row.exactAnalytics || {};
+      const fallback = row.analytics || {};
+      return {
+        units30d: exact.units30d != null ? exact.units30d : fallback.units30d,
+        units90d: exact.units90d != null ? exact.units90d : fallback.units90d,
+        units14d: exact.units14d != null ? exact.units14d : fallback.units14d,
+        daysOfCover30d: exact.daysOfCover30d != null ? exact.daysOfCover30d : null,
+        daysOfCover90d: exact.daysOfCover90d != null ? exact.daysOfCover90d : fallback.daysOfCover90d,
+        daysOfCover365d: fallback.daysOfCover365d,
+        daysOfCover730d: fallback.daysOfCover730d,
+        availableStock: exact.availableStock != null ? exact.availableStock : fallback.fourpxAvailable,
+        lastSaleDate: exact.lastSaleDate || fallback.lastSaleDate || null
+      };
+    }
+
+    function normalizeText(value) {
+      return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+    }
+
+    function inferCarrier(title) {
+      const normalized = normalizeText(title);
+      if (!normalized) return 'nejprodávanější SKU ve stejné kategorii';
+      if (normalized.includes('naplast') || normalized.includes('patch')) return '30117 / 30118';
+      if (normalized.includes('maska') || normalized.includes('serum') || normalized.includes('oblicej') || normalized.includes('plet')) return '10117 / 10118';
+      if (normalized.includes('intim') || normalized.includes('hygien') || normalized.includes('vlozk') || normalized.includes('slipov')) return '61911 / 61912 / 61914';
+      if (normalized.includes('peeling') || normalized.includes('telo') || normalized.includes('sprch') || normalized.includes('body')) return '44402-2';
+      return 'nejprodávanější SKU ve stejné kategorii';
+    }
+
+    function buildFallbackRule(row, analytics, product) {
+      const title = product?.title || row.title || row.sku || '';
+      const sales30d = Number(analytics?.units30d || 0);
+      const cover = analytics?.daysOfCover730d ?? analytics?.daysOfCover365d ?? null;
+      const carrier = inferCarrier(title);
+      const urgent = row.daysToExpiry != null && row.daysToExpiry <= 30;
+      const noSales = sales30d <= 0;
+      const coverMissesExpiry = cover != null && row.daysToExpiry != null && cover > row.daysToExpiry;
+      const heavyStock = Number(row.datedStock || 0) >= Math.max(sales30d * 2, 80);
+      const carrierIsGeneric = carrier === 'nejprodávanější SKU ve stejné kategorii';
+
+      if (urgent || noSales || coverMissesExpiry) {
+        return {
+          priority: 'urgent',
+          mechanic: `2+1 na ${row.sku}`,
+          carrier: 'Přímo na stejné SKU',
+          giftCheck: 'NE, radši 2+1',
+          giftTone: 'danger',
+          urgency: noSales
+            ? 'Za posledních 30 dní není vidět prodej, samotné odprodání do expirace je slabé.'
+            : 'Pokrytí je delší než okno do expirace, samotné tempo nestačí.',
+          note: 'Nejrychlejší varianta je slevová nebo 2+1 mechanika na stejné SKU.'
+        };
+      }
+
+      if (heavyStock) {
+        return {
+          priority: 'stock',
+          mechanic: carrierIsGeneric ? `balíček s ${row.sku}` : `${row.sku} jako dárek k ${carrier}`,
+          carrier,
+          giftCheck: carrierIsGeneric ? 'ZKONTROLOVAT' : 'SPÍŠ ANO',
+          giftTone: carrierIsGeneric ? 'warning' : 'success',
+          urgency: 'Prodej běží, ale expirační zásoba je proti tempu pořád vysoká.',
+          note: 'Smysl dává navázat ho na nejsilnější produkt stejné kategorie.'
+        };
+      }
+
+      return {
+        priority: 'watch',
+        mechanic: carrierIsGeneric ? `hlídat ${row.sku}, připravit balíček` : `${row.sku} přibalit k ${carrier}`,
+        carrier,
+        giftCheck: 'ZKONTROLOVAT',
+        giftTone: 'warning',
+        urgency: 'Zatím není kritický tlak, ale akci je dobré mít připravenou.',
+        note: 'Při zpomalení prodeje přepnout na dárek nebo 2+1.'
+      };
+    }
+
+    function priorityMeta(priority) {
+      return {
+        urgent: { label: 'Řešit hned', dot: 'red', pill: 'danger' },
+        stock: { label: 'Tlak zásoby', dot: 'gold', pill: 'warning' },
+        watch: { label: 'Watchlist', dot: 'blue', pill: 'info' }
+      }[priority] || { label: 'Watchlist', dot: 'blue', pill: 'info' };
+    }
+
+    function isWithinHalfYear(row) {
+      return row.daysToExpiry != null && row.daysToExpiry >= 0 && row.daysToExpiry <= HALF_YEAR_DAYS;
+    }
+
+    function emptyRow(colspan, text) {
+      return `<tr><td colspan="${colspan}">${text}</td></tr>`;
+    }
+
+    (async () => {
+      const [expiryOverview, report, analyticsPayload, analyticsPayloadCz, analyticsPayloadSk, productsPayload] = await Promise.all([
+        DP.loadJson('../data/current/4px_expiry_overview.json'),
+        DP.loadJson('../data/current/morning_report_previous_day.json'),
+        DP.loadJson('../data/current/inventory_analytics_730d.json'),
+        DP.loadJson('../data/current/inventory_analytics_730d_cz.json'),
+        DP.loadJson('../data/current/inventory_analytics_730d_sk.json'),
+        DP.loadJson('../data/current/wpj_products.json')
+      ]);
+
+      const analyticsMap = Object.fromEntries((analyticsPayload.items || []).map(row => [row.code, row]));
+      const marketAnalyticsMaps = {
+        CZ: Object.fromEntries((analyticsPayloadCz.items || []).map(row => [row.code, row])),
+        SK: Object.fromEntries((analyticsPayloadSk.items || []).map(row => [row.code, row]))
+      };
+      const productMap = Object.fromEntries((productsPayload.items || []).map(row => [row.code, row]));
+      const expiringRows = (expiryOverview.topExpiring || []).map(row => {
+        const marketAnalytics = analyticsLookup(marketAnalyticsMaps[row.account] || {}, row.sku);
+        const analytics = marketAnalytics || analyticsLookup(analyticsMap, row.sku) || {};
+        const decisionAnalytics = expiryAnalytics({ ...row, analytics });
+        const plainSku = row.sku?.split('/')[0];
+        const exactProduct = productMap[row.sku] || null;
+        const fallbackProduct = plainSku && plainSku !== row.sku ? (productMap[plainSku] || null) : null;
+        const product = exactProduct || fallbackProduct || {};
+        const rule = ruleMap[row.sku] || ruleMap[plainSku] || buildFallbackRule(row, decisionAnalytics, product);
+        const sync = deriveWpjSync(row, exactProduct, fallbackProduct);
+        return {
+          ...sync,
+          analytics,
+          product,
+          rule
+        };
+      });
+      const sortedExpiringRows = [...expiringRows]
+        .sort((a, b) => (a.daysToExpiry ?? 999999) - (b.daysToExpiry ?? 999999) || (b.datedStock || 0) - (a.datedStock || 0) || String(a.sku || '').localeCompare(String(b.sku || '')));
+      const halfYearRows = sortedExpiringRows.filter(isWithinHalfYear);
+      const listedExpiringRows = halfYearRows;
+      const listedExpiringRowsCz = halfYearRows.filter(row => row.account === 'CZ');
+      const listedExpiringRowsSk = halfYearRows.filter(row => row.account === 'SK');
+
+      const urgentRows = halfYearRows.filter(row => row.daysToExpiry <= 30);
+      const urgentStock = urgentRows.reduce((sum, row) => sum + Number(row.datedStock || 0), 0);
+      const safeGiftRows = halfYearRows.filter(row => row.rule.giftTone === 'success');
+      const wpjMismatchRows = halfYearRows.filter(row => row.wpjSyncStatus && row.wpjSyncStatus !== 'aligned');
+      const halfYearSkuCount = expiryOverview.summary?.halfYearSkuCount || new Set(halfYearRows.map(row => row.sku)).size;
+      const halfYearCzRowCount = expiryOverview.summary?.halfYearCzRowCount || listedExpiringRowsCz.length;
+      const halfYearSkRowCount = expiryOverview.summary?.halfYearSkRowCount || listedExpiringRowsSk.length;
+
+      const hero = [
+        ['SKU do 6 měsíců', fmt(halfYearSkuCount), `řádků ${fmt(listedExpiringRows.length)} · CZ ${fmt(halfYearCzRowCount)} · SK ${fmt(halfYearSkRowCount)}`, 'accent'],
+        ['Kritické do 30 dní', fmt(urgentRows.length), `${fmtUnits(urgentStock)} v nejbližším tlaku`, 'red'],
+        ['Jde dát zdarma', fmt(safeGiftRows.length), 'položky s nejvyšší šancí vejít se do 18 %', 'green'],
+        ['Okno reportu', `${HALF_YEAR_DAYS} dní`, 'všechny budoucí expirace v příštím půlroce', 'blue']
+      ];
+      document.getElementById('expiry-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
+        <div class="ux-hero-metric ${klass}">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          <div class="sub">${sub}</div>
+        </div>
+      `).join('');
+
+      DP.renderStatusStrip('expiry-status-strip', [
+        { label: 'Stav', value: urgentRows.length ? 'Pozor' : 'OK', tone: urgentRows.length ? 'warn' : 'success' },
+        { label: 'Data', value: 'Aktuální 4PX expirace do 6 měsíců', tone: 'info' },
+        { label: '4PX vs WPJ', value: wpjMismatchRows.length ? `${fmt(wpjMismatchRows.length)} nesoulad` : 'Sladěno', tone: wpjMismatchRows.length ? 'warn' : 'success' },
+        { label: 'Priorita', value: urgentRows[0]?.sku ? `Nasadit akci pro ${urgentRows[0].sku}` : 'Bez akutní expirace', tone: urgentRows.length ? 'warn' : 'success' },
+        { label: 'Akce', value: listedExpiringRows.length ? `Projít ${fmt(listedExpiringRows.length)} řádků v půlročním okně` : 'Bez půlročních expirací', tone: 'info' },
+      ]);
+
+      const focusRows = halfYearRows.slice(0, 4).map(row => {
+        const meta = priorityMeta(row.rule.priority);
+        const analytics = expiryAnalytics(row);
+        const sales30d = analytics.units30d != null ? `${fmt(analytics.units30d)} ks / 30 dní` : '30denní prodej zatím bez mapování';
+        return {
+          title: `${meta.label}: ${row.sku} · ${row.title}`,
+          text: `${row.rule.urgency} Návrh: ${row.rule.mechanic}. Hlavní produkt: ${row.rule.carrier}. ${sales30d}.`,
+          dot: meta.dot
+        };
+      });
+      document.getElementById('expiry-attention-badge').textContent = `${focusRows.length} akcí k rozhodnutí`;
+      document.getElementById('expiry-attention-list').innerHTML = focusRows.map(row => `
+        <div class="ux-item">
+          <span class="ux-dot ${row.dot === 'red' ? '' : row.dot}"></span>
+          <div>
+            <strong>${row.title}</strong>
+            <span>${row.text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('gift-limit-list').innerHTML = [
+        ['Kolik může stát dárek', '18 % z hodnoty akce'],
+        ['Co z toho plyne', 'Dražší věci radši přes 2+1 než zdarma'],
+        ['Co může jít zdarma', 'PROMO74, 63601'],
+        ['Co zkontrolovat hned', '52902/03, 30111']
+      ].map(([label, value]) => `
+        <div class="ux-stat-row">
+          <span>${label}</span>
+          <strong>${value}</strong>
+        </div>
+      `).join('');
+
+      document.getElementById('mechanics-list').innerHTML = [
+        ['2+1 na stejné SKU', 'Použít tam, kde je expirace blízko a dárek by byl moc drahý.', 'gold'],
+        ['Dárek k bestselleru', 'Použít tam, kde se dárek vejde do 18 %.', 'green'],
+        ['2 kusy + 1 dárek zdarma', 'Dobře funguje hlavně v ženské hygieně a patch řadě.', 'blue'],
+        ['Skrytý dárek', 'Vhodné hlavně pro PROMO74, když ho nechceme prodávat samostatně.', 'gold']
+      ].map(([title, text, dot]) => `
+        <div class="ux-side-item">
+          <span class="ux-dot ${dot}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      const topExpiryRow = listedExpiringRows[0] || null;
+      document.getElementById('expiry-kpis').innerHTML = [
+        {
+          eyebrow: 'Kritická expirační zásoba',
+          value: fmtUnits(urgentStock),
+          sub: `${fmt(urgentRows.length)} SKU s expirací do 30 dní napříč celým půlročním oknem.`,
+          meta: urgentRows.length ? 'Tohle je první shortlist, který má jít do akce nebo do dárkové mechaniky.' : 'Zatím není otevřený kritický tlak do 30 dní.',
+          tone: urgentStock > 0 ? 'danger' : 'accent',
+        },
+        {
+          eyebrow: 'Nejurgentnější SKU',
+          value: topExpiryRow ? `${topExpiryRow.sku}` : 'Bez priority',
+          sub: topExpiryRow ? `${topExpiryRow.title} • expirace ${fmtShortDate(topExpiryRow.dateExpiry)} • ${fmtUnits(topExpiryRow.expiringStock)}` : 'Jakmile se objeví první rizikový batch, uvidíš ho tady nahoře.',
+          meta: topExpiryRow ? `Návrh akce: ${topExpiryRow.actionTitle}` : 'Bez dat pro prioritní položku.',
+          tone: topExpiryRow ? 'warn' : '',
+        },
+        {
+          eyebrow: 'Tahák akce',
+          value: '44402-2 / 619xx',
+          sub: 'Bestsellery, které mají sílu utáhnout dárek, bundle nebo jemnější promo mechaniku.',
+          meta: 'Použij je jako nosič akce tam, kde by samostatná sleva ničila cenu nebo marži.',
+          tone: 'accent',
+        },
+        {
+          eyebrow: 'Položky vhodné jako dárek',
+          value: fmt(safeGiftRows.length),
+          sub: 'Nejvyšší šance vejít se do pravidla 18 % při dárku v půlročním okně.',
+          meta: safeGiftRows.length ? 'Dražší položky radši řeš přes 2+1 nebo bundle bez „zdarma“.' : 'V tomhle okně teď není nic, co by vycházelo čistě jako bezpečný dárek.',
+          tone: safeGiftRows.length ? 'info' : '',
+        }
+      ].map(card => `
+        <article class="signal-card ${card.tone || ''}">
+          <div class="eyebrow">${card.eyebrow}</div>
+          <div class="signal-value">${card.value}</div>
+          <div class="signal-sub">${card.sub}</div>
+          <div class="signal-meta">${card.meta}</div>
+        </article>
+      `).join('');
+
+      document.getElementById('bundle-list').innerHTML = bundleIdeas.map(row => `
+        <div class="block-item">
+          <h4>${row.name} <span style="float:right;">${DP.statusPill(row.mechanic, row.mechanic.includes('dárek') ? 'warning' : 'info')}</span></h4>
+          <p><strong>Hlavní produkt:</strong> ${row.lead}</p>
+          <p><strong>Co k tomu zdarma:</strong> ${row.gift}</p>
+          <p>${row.note}</p>
+        </div>
+      `).join('');
+
+      document.getElementById('guardrails-list').innerHTML = [
+        ['Mluv jednoduše', 'Výhodný set, dárek zdarma, časově omezená akce. Ne zdravotní sliby.'],
+        ['Nenič cenu bestselleru', 'Když to jde, nech cenu hlavního produktu a pracuj s dárkem nebo 2+1.'],
+        ['Hlídej 18 %', 'Když je dárek moc drahý, změň akci na 2+1 nebo balíček bez „zdarma“.']
+      ].map(row => `
+        <div class="block-item">
+          <h4>${row[0]}</h4>
+          <p>${row[1]}</p>
+        </div>
+      `).join('');
+
+      document.getElementById('expiry-action-table').innerHTML = listedExpiringRows.length ? listedExpiringRows.map(row => {
+        const analytics = expiryAnalytics(row);
+        const sales30d = analytics.units30d != null ? `${fmt(analytics.units30d)} ks` : '–';
+        const coverValue = analytics.daysOfCover30d ?? analytics.daysOfCover90d ?? analytics.daysOfCover730d ?? analytics.daysOfCover365d;
+        const cover = coverValue != null ? `${Number(coverValue).toFixed(1)} dní` : '–';
+        const gift = DP.statusPill(row.rule.giftCheck, row.rule.giftTone);
+        return `
+          <tr>
+            <td data-label="SKU / produkt">${row.sku} · ${row.title}</td>
+            <td class="num" data-label="Expirace">${fmtShortDate(row.dateExpiry)} (${fmtDays(row.daysToExpiry)})</td>
+            <td class="num" data-label="Expirující sklad">${fmtUnits(row.datedStock)}</td>
+            <td data-label="30 dní / pokrytí">${sales30d}<br /><span style="color:var(--text-muted);">Pokrytí expirační zásoby ${cover}</span></td>
+            <td data-label="4PX vs WPJ">${renderWpjSync(row)}</td>
+            <td data-label="Jasný návrh akce"><strong>${row.rule.mechanic}</strong><br /><span style="color:var(--text-muted);">Hlavní produkt: ${row.rule.carrier}<br />${row.rule.note}</span></td>
+            <td data-label="Dárek do 18 %?">${gift}</td>
+          </tr>
+        `;
+      }).join('') : emptyRow(7, 'V příštím půlroce teď není žádná budoucí expirace.');
+
+      document.getElementById('nearest-expiry-table').innerHTML = listedExpiringRows.length ? listedExpiringRows.map(row => {
+        const meta = priorityMeta(row.rule.priority);
+        return `
+          <tr>
+            <td data-label="SKU / produkt">${row.sku} · ${row.title}</td>
+            <td class="num" data-label="Dní do expirace">${fmtDays(row.daysToExpiry)}</td>
+            <td class="num" data-label="Expirující sklad">${fmtUnits(row.datedStock)}</td>
+            <td data-label="4PX vs WPJ">${renderWpjSync(row)}</td>
+            <td data-label="Priority">${DP.statusPill(meta.label, meta.pill)}</td>
+          </tr>
+        `;
+      }).join('') : emptyRow(5, 'V příštím půlroce teď není žádná budoucí expirace.');
+
+      const renderExpirySummaryRows = rows => rows.length ? rows.map(row => {
+        const analytics = expiryAnalytics(row);
+        const sales30d = analytics.units30d != null ? `${fmt(analytics.units30d)} ks` : '–';
+        const coverValue = analytics.daysOfCover30d ?? analytics.daysOfCover90d ?? analytics.daysOfCover730d ?? analytics.daysOfCover365d;
+        const cover = coverValue != null ? `${Number(coverValue).toFixed(1)} dní` : '–';
+        const action = `${row.rule.mechanic}`;
+        const carrier = row.rule.carrier || '–';
+        return `
+          <tr>
+            <td data-label="SKU / produkt">${row.sku} · ${row.title}</td>
+            <td class="num" data-label="Expirace">${fmtShortDate(row.dateExpiry)}</td>
+            <td class="num" data-label="Dní do expirace">${fmtDays(row.daysToExpiry)}</td>
+            <td class="num" data-label="Expirační sklad">${fmtUnits(row.datedStock)}</td>
+            <td class="num" data-label="Batchů">${fmt(row.batchCount || 0)}</td>
+            <td class="num" data-label="Prodej 30d">${sales30d}</td>
+            <td class="num" data-label="Pokrytí">${cover}</td>
+            <td data-label="4PX vs WPJ">${renderWpjSync(row)}</td>
+            <td data-label="Návrh akce"><strong>${action}</strong><br /><span style="color:var(--text-muted);">Tahák: ${carrier}</span></td>
+          </tr>
+        `;
+      }).join('') : emptyRow(9, 'V příštím půlroce teď není žádná budoucí expirace.');
+
+      document.getElementById('expiry-summary-table-cz').innerHTML = renderExpirySummaryRows(listedExpiringRowsCz);
+      document.getElementById('expiry-summary-table-sk').innerHTML = renderExpirySummaryRows(listedExpiringRowsSk);
+
+      const carrierRows = carrierCodes.map(code => analyticsLookup(analyticsMap, code)).filter(Boolean);
+      document.getElementById('carrier-table').innerHTML = carrierRows.map(row => {
+        const use = code => {
+          if (['61911', '61912', '61914'].includes(code)) return 'hlavní produkt pro ženskou péči';
+          if (['30117', '30118'].includes(code)) return 'hlavní produkt pro patch akci';
+          if (code === '44402-2') return 'hlavní produkt pro body-care akci';
+          if (code === '64404-2') return 'hlavní produkt pro bonus v košíku';
+          if (['10117', '10118'].includes(code)) return 'hlavní produkt pro pleťový set';
+          return 'hlavní produkt akce';
+        };
+        return `
+          <tr>
+            <td data-label="Produkt">${row.code} · ${row.title}</td>
+            <td class="num" data-label="30 dní">${fmtUnits(row.units30d)}</td>
+            <td class="num" data-label="Pokrytí">${row.daysOfCover730d != null ? Number(row.daysOfCover730d).toFixed(1) + ' dní' : row.daysOfCover365d != null ? Number(row.daysOfCover365d).toFixed(1) + ' dní' : '–'}</td>
+            <td data-label="Využití">${use(row.code)}</td>
+          </tr>
+        `;
+      }).join('');
+    })();
+  </script>
+</body>
+</html>

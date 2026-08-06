@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kompletní audit reklamních účtů, duben 2026</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --panel: #ffffff;
+      --panel-2: #f1f5ff;
+      --text: #15213b;
+      --muted: #5f6b85;
+      --good: #138a5b;
+      --warn: #b56a00;
+      --bad: #c03636;
+      --line: #dbe4f3;
+      --shadow: 0 10px 30px rgba(24, 39, 75, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 40px 20px 80px; }
+    h1, h2, h3 { line-height: 1.15; margin: 0 0 14px; color: var(--text); }
+    h1 { font-size: 40px; }
+    h2 { font-size: 28px; margin-top: 40px; }
+    h3 { font-size: 20px; margin-top: 22px; }
+    p { margin: 0 0 14px; color: var(--muted); }
+    .hero, .card { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); }
+    .hero { padding: 28px; }
+    .card { padding: 24px; margin-top: 18px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 22px; }
+    .metric { background: var(--panel-2); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+    .metric .label { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    .metric .value { font-size: 28px; font-weight: 700; }
+    .metric .sub { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .good { color: var(--good); }
+    .warn { color: var(--warn); }
+    .bad { color: var(--bad); }
+    .pill { display: inline-block; padding: 6px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; }
+    .pill.good { background: #e8f7f0; color: var(--good); }
+    .pill.warn { background: #fff4df; color: var(--warn); }
+    .pill.bad { background: #fdeaea; color: var(--bad); }
+    ul, ol { margin: 10px 0 0 18px; color: var(--text); }
+    li { margin: 8px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 14px; }
+    th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--text); font-weight: 700; background: #f8fbff; }
+    .small { font-size: 13px; color: var(--muted); }
+    strong { color: var(--text); }
+  </style>
+</head>
+<body class="page-ads-audit">
+  <aside class="sidebar" data-sidebar-page="ads-audit-2026-04.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Historický audit reklamních účtů" data-sidebar-section="Marketing" data-sidebar-footer="Statický audit duben 2026 převedený do stejného čtecího toku jako zbytek reportingu."></aside>
+  <main class="main page-stack">
+  <div class="wrap">
+    <section class="hero" id="ads-audit-step-1" data-section-nav-label="Krok 1: celkový verdikt" data-section-nav-order="1">
+      <div class="pill bad">Kompletní audit + akční plán</div>
+      <h1>Kompletní audit reklamních účtů, duben 2026</h1>
+      <p>Tento audit kombinuje živá data z Meta Ads, Google Ads, Skliku a GA4 s interním analytickým podkladem. Cíl je vyhodnotit reálný stav účtů, pojmenovat hlavní metodické i výkonové slabiny a převést zjištění do konkrétního zadání pro agenturu při zachování rozpočtu.</p>
+      <div class="grid">
+        <div class="metric">
+          <div class="label">Celkový verdikt</div>
+          <div class="value bad">Účty nejsou řízené dost přísně</div>
+          <div class="sub">Největší slabina je metodická čistota akvizice, měření a práce s publiky.</div>
+        </div>
+        <div class="metric">
+          <div class="label">Nejzdravější kanál</div>
+          <div class="value good">Google Ads</div>
+          <div class="sub">Výkonově nejsilnější, ale stále metodicky ne dost čistý.</div>
+        </div>
+        <div class="metric">
+          <div class="label">Největší varování</div>
+          <div class="value bad">Meta vs. GA4</div>
+          <div class="sub">Platformní čísla vypadají výrazně lépe než realita v GA4.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="ads-audit-inputs" data-section-nav-label="Hlavní vstupy" data-section-nav-order="2">
+      <h2>Executive summary</h2>
+      <p class="small">Nejdřív si přečti tahle klíčová zjištění. Teprve potom jdi do platformového auditu, reakce na agenturu a akčního plánu.</p>
+      <ul>
+        <li>Hlavní problém není jen optimalizace kampaní, ale <strong>míchání akvizice, remarketingu, retence a brandu</strong>.</li>
+        <li>Google Ads je nejsilnější platforma, ale je velmi silně navázaná na <strong>brandovou poptávku</strong>.</li>
+        <li>Meta Ads pravděpodobně <strong>nadhodnocuje akviziční přínos</strong>, protože publika a exclusions nejsou dost čisté.</li>
+        <li>GA4 potvrzuje, že placený social je výrazně slabší, než ukazuje Meta reporting.</li>
+        <li>Tracking a značení kampaní nejsou dost konzistentní na poctivé řízení výkonu.</li>
+        <li>Účty generují objednávky, ale nejsou řízené s dostatečnou metodickou disciplínou.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="ads-audit-step-2" data-section-nav-label="Krok 2: audit po platformách" data-section-nav-order="3">
+      <h2>Klíčová zjištění</h2>
+      <h3>Google Ads</h3>
+      <ul>
+        <li><strong>CZ:</strong> brandové search terms stály cca <strong>25 730 Kč</strong>, non-brand jen cca <strong>61 Kč</strong>.</li>
+        <li><strong>SK:</strong> brandové search terms stály cca <strong>7 006 Kč</strong>, non-brand jen cca <strong>51 Kč</strong>.</li>
+        <li>Velká část kampaní nemá tracking template nebo final URL suffix, <strong>CZ 95 z 103</strong>, <strong>SK 9 z 13</strong>.</li>
+        <li>Účet je výkonově silný, ale velmi pravděpodobně sklízí existující poptávku víc, než jak se prezentuje.</li>
+      </ul>
+      <h3>Meta Ads</h3>
+      <ul>
+        <li>Top prospecting ad sety mají často jen slabé exclusions typu <strong>Purchase | 30 days</strong>.</li>
+        <li>Na Slovensku jsou některé prospecting ad sety se spendem bez smysluplných exclusions.</li>
+        <li>Část reklam nemá <strong>url_tags</strong>, CZ 121 reklam bez, SK 29 reklam bez.</li>
+        <li>Na SK je u více kreativ vidět <strong>asset_feed_spec / shops_bundle</strong>, tedy produktové doplňky i u větví, kde to může rozbíjet message.</li>
+      </ul>
+      <h3>GA4</h3>
+      <ul>
+        <li><strong>Paid Social:</strong> 38 004 sessions, 577 nákupů, 681 664 Kč revenue.</li>
+        <li><strong>Meta platformně reportuje</strong> za stejné období cca 6,25 mil. Kč purchase value.</li>
+        <li><strong>Unassigned</strong> v GA4 nese cca 1,94 mil. Kč, což je příliš vysoké.</li>
+        <li>Campaign naming u placeného socialu je částečně nečitelné a zhoršuje auditovatelnost.</li>
+      </ul>
+    </section>
+
+    <details class="secondary-details" id="ads-audit-secondary" data-section-nav-label="Sekundární vrstva" data-section-nav-order="4" open>
+      <summary>Sekundární vrstva: reakce na agenturu, detailní audit a akční plán</summary>
+
+    <section class="card" style="margin-top:18px;">
+      <h2>Audit po platformách</h2>
+      <h3>Google Ads</h3>
+      <p><strong>Výkonový verdikt:</strong> nejsilnější placený kanál. <strong>Metodický verdikt:</strong> ne dost čistý.</p>
+      <ul>
+        <li>Účet je velmi silně navázaný na brandovou poptávku.</li>
+        <li>PMax pravděpodobně sklízí existující demand víc, než jak se tváří v reportingu.</li>
+        <li>Tracking je nedostatečný a omezuje auditovatelnost.</li>
+        <li>SK je slabší než CZ a zaslouží si přísnější správu.</li>
+      </ul>
+      <p><strong>Známka:</strong> 8/10 výkonově, 6,5/10 metodicky</p>
+
+      <h3>Meta Ads</h3>
+      <p><strong>Výkonový verdikt:</strong> generuje objem. <strong>Metodický verdikt:</strong> nedůvěryhodná jako zdroj pravdy o akvizici.</p>
+      <ul>
+        <li>Meta vs. GA4 je zásadně rozhozená.</li>
+        <li>Prospecting není dost čistý, hlavně na SK.</li>
+        <li>Lead kampaně nejsou dost obhájené výsledkem.</li>
+        <li>Exclusions jsou často slabé nebo krátké.</li>
+        <li>Část kreativ nemá čisté url_tags a část používá produktové doplňky, které mohou rozbíjet message.</li>
+      </ul>
+      <p><strong>Známka:</strong> 6/10 výkonově, 4,5/10 metodicky</p>
+
+      <h3>GA4</h3>
+      <p><strong>Verdikt:</strong> nejlepší kontrolní vrstva proti reklamnímu optimismu.</p>
+      <ul>
+        <li>Paid Search vypadá věrohodně silně.</li>
+        <li>Paid Social je výrazně slabší, než ukazuje Meta reporting.</li>
+        <li>Unassigned a Paid Other ukazují trackingový nepořádek.</li>
+      </ul>
+      <p><strong>Známka:</strong> 7/10</p>
+
+      <h3>Sklik</h3>
+      <p><strong>Verdikt:</strong> malý kanál s nejasnou rolí a nutností validace proti backendu a GA4.</p>
+      <p><strong>Známka:</strong> 5,5/10</p>
+    </section>
+
+    <section class="card">
+      <h2>Nejtvrdší společný závěr</h2>
+      <ul>
+        <li><strong>Hlavní problém č. 1:</strong> akvizice, remarketing, retence a brand nejsou oddělené dost čistě.</li>
+        <li><strong>Hlavní problém č. 2:</strong> výkon je prezentovaný způsobem, který je hezký pro dashboard, ale slabší pro skutečné řízení růstu.</li>
+        <li><strong>Hlavní problém č. 3:</strong> tracking není dost disciplinovaný na to, aby šlo bezpečně říct, která kampaň opravdu přivádí nový zisk.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Reakce na stanovisko agentury</h2>
+      <p>Níže je zapracované stanovisko k odpovědi agentury tak, aby tento dashboard mohl sloužit i jako přímá reakce a zadání dalších kroků.</p>
+
+      <h3>Co bereme na vědomí</h3>
+      <ul>
+        <li>Agentura uznává problém s promícháním akvizice a stávajících zákazníků, zejména na Meta Ads.</li>
+        <li>Agentura navrhuje spustit čistější akviziční linku v Google Ads a oddělit remarketing od PMax.</li>
+        <li>Na Slovensku bylo doplněno chybějící vyloučení u kampaně na stažení brožury.</li>
+      </ul>
+
+      <h3>Co považujeme za nedostatečné</h3>
+      <ul>
+        <li>Na více místech je odpovědnost vracená zpět na klienta místo toho, aby agentura dodala své doporučené finální řešení.</li>
+        <li>Pokud statické prodejní kampaně záměrně cílí i na recent buyers, nelze je dále vyhodnocovat jako čistou akvizici.</li>
+        <li>Obecné tvrzení, že UTM nebo automatické tagování „nějak funguje“, nestačí. Potřebujeme auditovatelný a jednotný systém značení.</li>
+        <li>Argument, že katalogové rozšíření funguje u jiných klientů, není dostatečný důvod pro zachování stejného přístupu zde bez account-specific vyhodnocení.</li>
+      </ul>
+
+      <h3>Naše stanovisko k jednotlivým bodům</h3>
+      <ol>
+        <li><strong>Akvizice vs. retence:</strong> souhlasíme s oddělením čisté akvizice od remarketingu a retence. Smíšené kampaně nesmí být dál prezentované jako čistá akvizice.</li>
+        <li><strong>Meta statické prodejní kampaně:</strong> pokud mají oslovovat i stávající zákazníky kvůli novinkám, akcím a opakovaným nákupům, je to legitimní retenční nebo smíšená prodejní vrstva, ale ne čistá akvizice.</li>
+        <li><strong>Exclusions:</strong> od agentury očekáváme doporučené nastavení exclusions po typech kampaní, včetně variant 7, 30, 90 a 180 dní, s krátkým zdůvodněním a očekávaným dopadem.</li>
+        <li><strong>Google Ads:</strong> souhlasíme se spuštěním čistě akviziční kampaně bez brandových výrazů TianDe a s oddělením remarketingového PMax od stávající struktury.</li>
+        <li><strong>UTM a měření:</strong> nestačí obecné vysvětlení. Požadujeme finální podobu značení a přesný popis, jak se data propisují do GA4.</li>
+        <li><strong>Katalog u statik na SK:</strong> doporučujeme vypnout a následně samostatně vyhodnotit dopad. Pokud má být ponechán, musí to být obhájené daty z tohoto konkrétního účtu.</li>
+      </ol>
+
+      <h3>Co požadujeme od agentury dodat</h3>
+      <ol>
+        <li>Novou cílovou strukturu kampaní pro Meta a Google Ads.</li>
+        <li>Rozdělení kampaní na akvizici, remarketing, retenci, brand a competitors.</li>
+        <li>Mapu publik a exclusions.</li>
+        <li>Rozpočtový návrh při zachování celkového spendu.</li>
+        <li>Termíny implementace jednotlivých změn.</li>
+        <li>Metodiku vyhodnocování, podle které bude možné rozlišit nový zákazník vs. návratový zákazník.</li>
+      </ol>
+
+      <h3>Důležitá interpretační poznámka</h3>
+      <p>Pokud kampaň záměrně cílí i na stávající zákazníky, recent buyers, návštěvníky webu nebo jiná zahřátá publika, nesmí být v management reportingu interpretovaná jako čistě akviziční. To je základní metodické pravidlo, na kterém musí být další práce postavená.</p>
+    </section>
+
+    <section class="card">
+      <h2>Akční plán pro agenturu, bez navýšení rozpočtu</h2>
+      <h3>Do 5 pracovních dnů dodat</h3>
+      <ol>
+        <li>Mapu všech kampaní rozdělenou na akvizici, remarketing, retenci, brand, competitors, feed/PMax a lead gen.</li>
+        <li>Mapu všech publik a exclusions, včetně buyers, site visitors, engagers, CRM listů a excluded buyers.</li>
+        <li>Validaci čísel: platforma reported revenue vs. GA4 revenue vs. backend objednávky.</li>
+        <li>Vysvětlení propadu duben vs. březen po platformách, ne obecné fráze.</li>
+      </ol>
+
+      <h3>Meta Ads, co udělat</h3>
+      <ol>
+        <li>Oddělit čistý prospecting, remarketing a retenci. Žádné smíšené „akviziční“ kampaně.</li>
+        <li>U prospectingu zavést tvrdší exclusions minimálně pro buyers, CRM zákazníky a hlavní warm audiences.</li>
+        <li>Na SK okamžitě vyčistit top spendující ad sety, které jedou bez smysluplných exclusions.</li>
+        <li>Omezit nebo vypnout slabé lead kampaně, které nevykazují přesvědčivý business přínos.</li>
+        <li>Zrevidovat katalogové a produktové doplňky u statik, hlavně na SK.</li>
+        <li>Sjednotit url_tags a campaign naming.</li>
+      </ol>
+
+      <h3>Google Ads, co udělat</h3>
+      <ol>
+        <li>Doložit, jak je řízen brand vs. PMax vs. incrementality.</li>
+        <li>Udělát search term audit, včetně toho, co bylo vyloučeno a proč.</li>
+        <li>Vyřešit tracking template nebo final URL suffix u kampaní.</li>
+        <li>Prověřit, co PMax skutečně přináší navíc a co jen sklízí.</li>
+        <li>Přitvrdit správu SK kampaní.</li>
+      </ol>
+
+      <h3>GA4 a měření, co udělat</h3>
+      <ol>
+        <li>Vyčistit Unassigned a Paid Other.</li>
+        <li>Sjednotit UTM standard napříč platformami.</li>
+        <li>Vyřešit nečitelné campaign naming u Paid Social.</li>
+        <li>Objasnit, proč se jako landing pages objevují košík, účet a další anomálie.</li>
+      </ol>
+
+      <h3>Jak agenturu měřit dál</h3>
+      <ul>
+        <li>Ne podle hezkého dashboardu, ale podle toho, zda jsou čísla obhajitelná napříč systémy.</li>
+        <li>Ne podle celkového ROAS bez kontextu, ale podle čistoty rozdělení nový zákazník vs. návratový zákazník.</li>
+        <li>Ne podle počtu spuštěných testů, ale podle toho, co bylo vypnuto, proč a kam se rozpočet přesunul.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Finální věta pro agenturu</h2>
+      <p>Současný stav účtů není obhajitelný jako dostatečně kvalitně řízená výkonnostní reklama. Účty sice generují objednávky, ale chybí jim metodická čistota v oddělení akvizice od remarketingu, důsledná práce s exclusions a dostatečně spolehlivé měření. Bez toho nelze důvěryhodně tvrdit, že současný reporting odpovídá reálnému přínosu kampaní pro růst.</p>
+    </section>
+
+    <p class="small">Vygenerováno 30. 4. 2026 na základě kombinace živých reklamních dat a interních analytických podkladů. Tohle je sdílitelná verze určená pro interní rozhodnutí i předání agentuře.</p>
+    </details>
+  </div>
+  </main>
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+  </script>
+</body>
+</html>

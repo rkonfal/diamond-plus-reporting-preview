@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-08-06T15:48:37.259702+02:00",
+  "source": {
+    "status": "warn",
+    "mode": "google_sheet",
+    "label": "Google Sheet CSV",
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1BDWsyXfJaa_As7wI2lxmGJg9wvALqW11W3QitxlCQrk/export?format=csv&gid=0",
+    "localPath": "/Users/rudolfkonfal/.openclaw/workspace/reporting-v2/config/store_expiry_batches.json"
+  },
+  "summary": {
+    "inputRows": 0,
+    "activeRows": 0,
+    "trackedGroups": 0,
+    "visibleRows": 0,
+    "totalRemainingUnits": 0,
+    "expiredRows": 0,
+    "criticalRows": 0,
+    "soonRows": 0,
+    "watchRows": 0,
+    "storesTracked": [],
+    "salesOrdersProcessed": 0,
+    "sourceWarnings": 2
+  },
+  "alerts": [
+    "Store expiry vstup zatim nema zadne aktivni radky."
+  ],
+  "warnings": [
+    "Workbook z https://docs.google.com/spreadsheets/d/1BDWsyXfJaa_As7wI2lxmGJg9wvALqW11W3QitxlCQrk/export?format=xlsx nevratil zadne platne radky.",
+    "CSV z https://docs.google.com/spreadsheets/d/1BDWsyXfJaa_As7wI2lxmGJg9wvALqW11W3QitxlCQrk/export?format=csv&gid=0 nevratilo zadne platne radky."
+  ],
+  "groups": [],
+  "items": [],
+  "allItems": []
+}

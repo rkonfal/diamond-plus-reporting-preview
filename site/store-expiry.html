@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prodejny / expirace, Reporting V2</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .store-expiry-toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1.3fr) repeat(2, minmax(160px, .7fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .store-expiry-toolbar input,
+    .store-expiry-toolbar select {
+      width: 100%;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      background: var(--surface-raised);
+      color: var(--text);
+      padding: 10px 12px;
+      font: inherit;
+      box-sizing: border-box;
+    }
+    .store-expiry-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .store-expiry-chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+    .store-expiry-chip.danger { color: #ffb4b4; border-color: rgba(255,97,97,.35); background: rgba(255,97,97,.12); }
+    .store-expiry-chip.warn { color: #ffd88d; border-color: rgba(255,184,77,.35); background: rgba(255,184,77,.12); }
+    .store-expiry-chip.info { color: #a8d1ff; border-color: rgba(91,160,255,.35); background: rgba(91,160,255,.12); }
+    .muted-note { color: var(--text-muted); font-size: 13px; }
+    .store-expiry-panel-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .store-expiry-panel-grid.two-col {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .store-expiry-mini-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 15px;
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(247,243,237,.94));
+      box-shadow: var(--shadow-soft);
+    }
+    .store-expiry-mini-card .eyebrow {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--text-faint);
+      font-weight: 800;
+    }
+    .store-expiry-mini-card strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 22px;
+      line-height: 1.08;
+      letter-spacing: -.03em;
+    }
+    .store-expiry-mini-card span {
+      display: block;
+      margin-top: 6px;
+      color: var(--text-muted);
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+    .store-expiry-discipline {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .store-expiry-discipline-item {
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.72);
+    }
+    .store-expiry-discipline-item strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .store-expiry-discipline-item span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+    .store-expiry-empty {
+      padding: 14px 8px;
+      text-align: left;
+    }
+    .store-expiry-empty strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    .store-expiry-empty span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    @media (max-width: 980px) {
+      .store-expiry-toolbar { grid-template-columns: 1fr; }
+      .store-expiry-panel-grid.two-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="page-store-expiry-simplified">
+  <aside class="sidebar" data-sidebar-page="store-expiry.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="FIFO watchdog pro prodejny" data-sidebar-section="Prodejny expirace" data-sidebar-footer="Ručně zadané šarže, automatické prodeje z pokladen a jen skutečný zůstatek k řešení."></aside>
+
+  <main class="main page-stack">
+    <header class="header">
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Litoměřice + Měčín • expirace podle skutečného zůstatku</div>
+          <h1 class="ux-title">Prodejnové expirace s FIFO odpočtem</h1>
+          <p class="ux-subtitle">Prodejny zapisují šarže ručně, reporting dopočítá pokladní prodeje a ukáže jen to, co na prodejně opravdu ještě zbývá.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/store_expiry_watchdog.json" target="_blank" rel="noopener">Store expiry data</a>
+            <a class="ux-button secondary" href="logistics.html">Logistika</a>
+            <a class="ux-button secondary" href="inventory.html">Sklad</a>
+            <a class="ux-button secondary" href="expiry.html">4PX expirace</a>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+      <section class="ux-hero-metrics" id="store-expiry-hero"></section>
+      <div class="status-strip" id="store-expiry-status-strip"></div>
+      <div class="ux-date-note" id="store-expiry-date-note"></div>
+    </header>
+
+    <section class="layer-shell" id="store-expiry-step-1" data-section-nav-label="Krok 1: co řešit dnes" data-section-nav-order="1">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 1</div>
+          <h2 class="layer-title">Co je dnes na prodejnách skutečně otevřené</h2>
+          <p class="layer-subtitle">Ne alert na existenci šarže, ale jen batch, kde po FIFO odpočtu ještě zbývají kusy.</p>
+        </div>
+        <div class="layer-note">Nejdřív signál a pořadí zásahu, detail tabulky až potom.</div>
+      </div>
+      <section class="signal-grid" id="store-expiry-decision-grid"></section>
+    </section>
+
+    <section class="layer-shell" id="store-expiry-inputs" data-section-nav-label="Hlavní vstupy" data-section-nav-order="2">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Hlavní vstupy</div>
+          <h2 class="layer-title">Kam se podívat hned po signálu</h2>
+          <p class="layer-subtitle">Nejdřív otevřené batchy, pak skupiny po SKU a nakonec zdrojové poznámky a warningy.</p>
+        </div>
+      </div>
+      <section class="ux-grid">
+        <div class="ux-focus-card">
+          <div class="ux-section-head">
+            <div>
+              <h2 class="ux-section-title">První průchod</h2>
+              <p class="ux-section-subtitle">Nejdřív otevřené batchy, pak teprve skupiny po SKU a zdrojové poznámky.</p>
+            </div>
+            <span class="badge warn" id="store-expiry-badge">Načítám…</span>
+          </div>
+          <div class="ux-list" id="store-expiry-focus-list"></div>
+        </div>
+          <div class="ux-side-stack">
+            <div class="ux-panel-card">
+              <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Hlavní vstupy</h3>
+              <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Skoč rovnou na otevřené batchy, skupiny po SKU nebo zdroj vstupu.</p>
+              <div class="section-nav-links" id="store-expiry-route-links" style="margin-top:16px;"></div>
+          </div>
+          <div class="ux-panel-card">
+            <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Zdroj vstupu</h3>
+            <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Krátké čtení kvality vstupu a co přesně ještě chybí, než z toho bude plný watchdog.</p>
+            <div class="store-expiry-panel-grid two-col" id="store-expiry-source-grid"></div>
+            <div class="store-expiry-discipline" id="store-expiry-discipline-list"></div>
+          </div>
+        </div>
+      </section>
+      <div class="layer-head" style="margin-top:22px;">
+        <div>
+          <div class="layer-label">Filtr batchů</div>
+          <h2 class="layer-title">Pracovní filtr otevřených batchů</h2>
+          <p class="layer-subtitle">Filtrovat má smysl až nad skutečným zůstatkem po prodejích, ne nad původním naskladněním.</p>
+        </div>
+      </div>
+      <div class="store-expiry-toolbar">
+        <input id="search" type="search" placeholder="Hledat podle SKU, názvu nebo šarže" />
+        <select id="store-filter">
+          <option value="all">Všechny prodejny</option>
+          <option value="ltm">Litoměřice</option>
+          <option value="mecin">Měčín</option>
+        </select>
+        <select id="severity-filter">
+          <option value="all">Všechny stavy</option>
+          <option value="expired">Po expiraci</option>
+          <option value="critical">Do 14 dní</option>
+          <option value="soon">Do 30 dní</option>
+          <option value="watch">Do 60 dní</option>
+          <option value="ok">Později</option>
+        </select>
+      </div>
+      <div class="store-expiry-chip-row" id="store-expiry-chip-row"></div>
+    </section>
+
+    <section class="layer-shell" id="store-expiry-step-2" data-section-nav-label="Krok 2: pracovní vrstva" data-section-nav-order="3">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 2</div>
+          <h2 class="layer-title">Otevřené batchy po FIFO odpočtu</h2>
+          <p class="layer-subtitle">Tabulka ukazuje jen řádky se zůstatkem větším než nula. To je hlavní pracovní vrstva.</p>
+        </div>
+      </div>
+      <section class="card">
+        <div class="ux-section-head" style="margin-bottom:0;">
+          <div>
+            <h2 class="ux-section-title">Batch detail</h2>
+            <p class="ux-section-subtitle" id="store-expiry-table-subtitle">Načítám…</p>
+          </div>
+        </div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table mobile-stack">
+            <thead>
+              <tr>
+                <th>Prodejna / SKU</th>
+                <th>Šarže</th>
+                <th class="num">Expirace</th>
+                <th class="num">Dní do expirace</th>
+                <th class="num">Naskladněno</th>
+                <th class="num">Prodáno FIFO</th>
+                <th class="num">Vyřazeno + přesun</th>
+                <th class="num">Zbývá</th>
+                <th>Poznámka</th>
+              </tr>
+            </thead>
+            <tbody id="store-expiry-table-body"></tbody>
+          </table>
+        </div>
+        <p class="muted-note" style="margin-top:14px;">Prodané kusy se tahají z pokladen podle `posId`. Protože v prodeji není šarže, kusy se odečítají FIFO od nejstaršího sledovaného batchu.</p>
+      </section>
+    </section>
+
+    <details class="secondary-details" id="store-expiry-secondary" data-section-nav-label="Sekundární vrstva" data-section-nav-order="4" open>
+      <summary>Sekundární vrstva: skupiny po SKU a datové poznámky</summary>
+      <section class="grid two-col" style="margin-top:18px;">
+        <div class="card" id="store-expiry-groups">
+          <div class="ux-section-head" style="margin-bottom:0;">
+            <div>
+              <h2 class="ux-section-title">Skupiny po SKU</h2>
+              <p class="ux-section-subtitle">Agregace po prodejně a SKU včetně přebytku prodejů nad sledované batchy.</p>
+            </div>
+          </div>
+          <div class="ux-table-wrap" style="margin-top:16px;">
+            <table class="table mobile-stack">
+              <thead>
+                <tr>
+                  <th>Prodejna / SKU</th>
+                  <th class="num">Naskladněno</th>
+                  <th class="num">Prodáno</th>
+                  <th class="num">Zbývá</th>
+                  <th class="num">Přesah prodejů</th>
+                </tr>
+              </thead>
+              <tbody id="store-expiry-group-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card" id="store-expiry-notes">
+          <div class="ux-section-head" style="margin-bottom:0;">
+            <div>
+              <h2 class="ux-section-title">Datové poznámky</h2>
+              <p class="ux-section-subtitle">Co zlobí ve vstupu, co chybí v mapování nebo kde prodeje nesedí na sledované batchy.</p>
+            </div>
+          </div>
+          <div class="block-list" id="store-expiry-warning-list" style="margin-top:16px;"></div>
+        </div>
+      </section>
+    </details>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    function esc(value) {
+      return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+    function fmt(value) { return DP.fmtNumber(Math.round(Number(value || 0))); }
+    function fmtUnits(value) {
+      const num = Number(value || 0);
+      if (Math.abs(num - Math.round(num)) < 0.01) return `${fmt(num)} ks`;
+      return `${num.toFixed(1).replace('.', ',')} ks`;
+    }
+    function fmtDate(value) {
+      if (!value) return '–';
+      const date = new Date(`${value}T00:00:00`);
+      if (Number.isNaN(date.getTime())) return value;
+      return new Intl.DateTimeFormat('cs-CZ').format(date);
+    }
+    function severityLabel(value) {
+      switch (value) {
+        case 'expired': return 'Po expiraci';
+        case 'critical': return 'Do 14 dní';
+        case 'soon': return 'Do 30 dní';
+        case 'watch': return 'Do 60 dní';
+        default: return 'Později';
+      }
+    }
+    function toneForSeverity(value) {
+      switch (value) {
+        case 'expired': return 'danger';
+        case 'critical': return 'danger';
+        case 'soon': return 'warning';
+        case 'watch': return 'info';
+        default: return 'success';
+      }
+    }
+    function storeLabel(value) {
+      return value === 'ltm' ? 'Litoměřice' : value === 'mecin' ? 'Měčín' : (value || '–');
+    }
+
+    DP.initThemeToggle();
+    DP.renderRouteLinks('store-expiry-route-links', [
+      ['Filtr batchů', '#store-expiry-inputs', 'Rychlý filtr nad otevřenými batchy podle SKU, prodejny a stavu'],
+      ['Batch detail', '#store-expiry-step-2', 'Hlavní pracovní tabulka otevřených batchů'],
+      ['Skupiny po SKU', '#store-expiry-groups', 'Agregace po prodejně a SKU'],
+      ['Datové poznámky', '#store-expiry-notes', 'Nesoulady a chybějící vstupy'],
+      ['4PX expirace', 'expiry.html', 'Navazující skladová expirační vrstva mimo prodejny'],
+      ['Logistika', 'logistics.html', 'Navazující operativní vrstva pro expedici a 4PX'],
+    ]);
+
+    const searchInput = document.getElementById('search');
+    const storeFilter = document.getElementById('store-filter');
+    const severityFilter = document.getElementById('severity-filter');
+
+    (async () => {
+      const data = await DP.loadJson('../data/current/store_expiry_watchdog.json');
+      const summary = data.summary || {};
+      let rows = Array.isArray(data.items) ? data.items.slice() : [];
+      const groups = Array.isArray(data.groups) ? data.groups.slice() : [];
+      const warnings = Array.isArray(data.warnings) ? data.warnings : [];
+      const alerts = Array.isArray(data.alerts) ? data.alerts : [];
+      const firstCritical = rows.find(row => ['expired', 'critical', 'soon'].includes(row.severity)) || rows[0] || null;
+
+      const sourceTone =
+        (data.source || {}).status === 'ok' ? 'accent'
+        : warnings.length ? 'warn'
+        : 'danger';
+
+      document.getElementById('store-expiry-decision-grid').innerHTML = [
+        {
+          tone: summary.expiredRows ? 'danger' : summary.criticalRows ? 'warn' : 'accent',
+          eyebrow: 'Co je opravdu otevřené',
+          value: fmtUnits(summary.totalRemainingUnits || 0),
+          sub: `${fmt(summary.visibleRows || 0)} otevřených batchů po FIFO odpočtu napříč prodejnami.`,
+          meta: summary.expiredRows
+            ? `${fmt(summary.expiredRows)} batchů je po expiraci a stále drží kusy.`
+            : summary.criticalRows
+              ? `${fmt(summary.criticalRows)} batchů je do 14 dní.`
+              : 'Zatím není otevřený kritický problém.',
+        },
+        {
+          tone: firstCritical?.severity === 'expired' ? 'danger' : firstCritical?.severity === 'critical' ? 'warn' : '',
+          eyebrow: 'Kde začít',
+          value: firstCritical
+            ? `${storeLabel(firstCritical.storeView)} · ${firstCritical.sku}`
+            : 'Bez prioritní položky',
+          sub: firstCritical
+            ? `${severityLabel(firstCritical.severity)} • expirace ${fmtDate(firstCritical.expiryDate)} • zbývá ${fmtUnits(firstCritical.remainingUnits || 0)}`
+            : 'Jakmile přibydou první řádky, nahoře se ukáže první zásah podle expirace a zůstatku.',
+          meta: firstCritical?.note
+            ? `Poznámka: ${firstCritical.note}`
+            : 'Pořadí zásahu se řídí kombinací blízkosti expirace a zůstatku.',
+        },
+        {
+          tone: sourceTone,
+          eyebrow: 'Jak spolehlivý je vstup',
+          value: (data.source || {}).label || 'Bez zdroje',
+          sub: `${fmt(summary.inputRows || 0)} vstupních řádků • ${(summary.storesTracked || []).map(storeLabel).join(' · ') || 'bez prodejen'}`,
+          meta: warnings.length
+            ? `${fmt(warnings.length)} warningů ve vstupu nebo napojení.`
+            : 'Bez datových warningů, watchdog může jet standardně.',
+        },
+      ].map(card => `
+        <article class="signal-card ${card.tone || ''}">
+          <div class="eyebrow">${esc(card.eyebrow)}</div>
+          <div class="signal-value">${esc(card.value)}</div>
+          <div class="signal-sub">${esc(card.sub)}</div>
+          <div class="signal-meta">${esc(card.meta)}</div>
+        </article>
+      `).join('');
+
+      document.getElementById('store-expiry-badge').textContent =
+        summary.criticalRows ? `${fmt(summary.criticalRows)} kritických batchů` :
+        summary.expiredRows ? `${fmt(summary.expiredRows)} po expiraci` :
+        `${fmt(summary.visibleRows || 0)} otevřených batchů`;
+
+      document.getElementById('store-expiry-date-note').innerHTML =
+        `<strong>Zdroj:</strong> ${esc((data.source || {}).label || '–')} • <strong>Vstupních řádků:</strong> ${fmt(summary.inputRows || 0)} • <strong>Pokladních objednávek:</strong> ${fmt(summary.salesOrdersProcessed || 0)}`;
+
+      DP.renderStatusStrip('store-expiry-status-strip', [
+        { label: 'Zdroj vstupu', value: (data.source || {}).mode || 'none', tone: (data.source || {}).status === 'ok' ? 'success' : 'warn' },
+        { label: 'Otevřené batchy', value: `${fmt(summary.visibleRows || 0)} řádků`, tone: summary.visibleRows ? 'warn' : 'success' },
+        { label: 'Kritické do 14 dní', value: fmt(summary.criticalRows || 0), tone: summary.criticalRows ? 'danger' : 'success' },
+        { label: 'Zbývající kusy', value: fmtUnits(summary.totalRemainingUnits || 0), tone: (summary.totalRemainingUnits || 0) > 0 ? 'info' : 'success' },
+      ]);
+
+      document.getElementById('store-expiry-hero').innerHTML = [
+        ['Otevřené batchy', fmt(summary.visibleRows || 0), `${fmt(summary.activeRows || 0)} aktivních vstupních řádků`],
+        ['Kritické kusy', fmtUnits(summary.totalRemainingUnits || 0), `${fmt(summary.criticalRows || 0)} batchů do 14 dní`],
+        ['Po expiraci', fmt(summary.expiredRows || 0), 'Jen batchy se zůstatkem > 0'],
+        ['Skupiny SKU', fmt(summary.trackedGroups || 0), `${(summary.storesTracked || []).map(storeLabel).join(' · ') || 'bez prodejen'}`],
+      ].map(([label, value, note]) => `
+        <article class="summary-card">
+          <div class="summary-label">${esc(label)}</div>
+          <div class="summary-value">${esc(value)}</div>
+          <div class="summary-note">${esc(note)}</div>
+        </article>
+      `).join('');
+
+      const sourceStatus = (data.source || {}).status || 'missing';
+      const storesText = ((summary.storesTracked || []).map(storeLabel).join(' · ') || 'Žádná prodejna');
+      document.getElementById('store-expiry-source-grid').innerHTML = [
+        {
+          eyebrow: 'Režim',
+          value: (data.source || {}).mode || 'none',
+          note: (data.source || {}).label || 'Bez zdroje',
+        },
+        {
+          eyebrow: 'Vstupní řádky',
+          value: fmt(summary.inputRows || 0),
+          note: summary.inputRows ? `${fmt(summary.activeRows || 0)} aktivních po validaci` : 'Zatím bez jediného batch řádku',
+        },
+        {
+          eyebrow: 'Prodejny',
+          value: fmt((summary.storesTracked || []).length),
+          note: storesText,
+        },
+        {
+          eyebrow: 'Pokladní prodeje',
+          value: fmt(summary.salesOrdersProcessed || 0),
+          note: sourceStatus === 'ok' ? 'Použité pro FIFO odpočet' : 'Čeká na použitelné vstupy',
+        },
+      ].map(card => `
+        <div class="store-expiry-mini-card">
+          <span class="eyebrow">${esc(card.eyebrow)}</span>
+          <strong>${esc(card.value)}</strong>
+          <span>${esc(card.note)}</span>
+        </div>
+      `).join('');
+
+      const disciplineItems = summary.inputRows
+        ? [
+            {
+              title: warnings.length ? 'Vstup chce ještě dorovnat' : 'Vstup je čitelný',
+              text: warnings.length
+                ? `${fmt(warnings.length)} warningů ve vstupu nebo napojení. Otevři datové poznámky níž a dorovnej řádky, které chybí.`
+                : 'Základní vstup je v pořádku. Další přesnost přidá hlavně pečlivé datum naskladnění.',
+            },
+            {
+              title: 'Pravidlo pro zápis',
+              text: 'Nové naskladnění stejného SKU přidávej jako nový řádek. Jen opravu původního záznamu přepisuj na stejném řádku.',
+            },
+          ]
+        : [
+            {
+              title: 'Doplň první batch řádky',
+              text: 'Sheet už má správné hlavičky, ale bez řádků od řádku 2 watchdog nemá co spočítat ani ukázat.',
+            },
+            {
+              title: 'Minimum pro start',
+              text: 'Stačí SKU, POČET, EXPIRACE. Datum naskladnění je nepovinné, ale zpřesní odhad od kdy se mohly kusy opravdu prodávat.',
+            },
+          ];
+      document.getElementById('store-expiry-discipline-list').innerHTML = disciplineItems.map(item => `
+        <div class="store-expiry-discipline-item">
+          <strong>${esc(item.title)}</strong>
+          <span>${esc(item.text)}</span>
+        </div>
+      `).join('');
+
+      document.getElementById('store-expiry-focus-list').innerHTML = alerts.map((text, index) => `
+        <div class="ux-item">
+          <span class="ux-dot ${index === 0 ? 'gold' : index === 1 ? 'blue' : 'green'}"></span>
+          <div>
+            <strong>${index === 0 ? 'Hlavní signál' : index === 1 ? 'Další krok' : 'Poznámka'}</strong>
+            <span>${esc(text)}</span>
+          </div>
+        </div>
+      `).join('') || `
+        <div class="ux-item">
+          <span class="ux-dot green"></span>
+          <div>
+            <strong>Bez otevřeného problému</strong>
+            <span>Store expiry watchdog zatím nevrací žádné batchy se zůstatkem.</span>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('store-expiry-group-body').innerHTML = groups.map(group => `
+        <tr>
+          <td data-label="Prodejna / SKU"><strong>${esc(storeLabel(group.storeView))}</strong><br><span class="muted">${esc(group.sku)} · ${esc(group.title || group.sku)}</span></td>
+          <td class="num" data-label="Naskladněno">${esc(fmtUnits(group.receivedUnits || 0))}</td>
+          <td class="num" data-label="Prodáno">${esc(fmtUnits(group.soldUnits || 0))}</td>
+          <td class="num" data-label="Zbývá">${esc(fmtUnits(group.remainingUnits || 0))}</td>
+          <td class="num" data-label="Přesah prodejů">${esc(fmtUnits(group.unmatchedSalesUnits || 0))}</td>
+        </tr>
+      `).join('') || `
+        <tr>
+          <td colspan="5">
+            <div class="store-expiry-empty">
+              <strong>Zatím nejsou žádné skupiny po SKU</strong>
+              <span>Jakmile přibydou řádky ve Sheetu, tady se ukáže součet po prodejně a SKU včetně toho, co už prodal FIFO odpočet.</span>
+            </div>
+          </td>
+        </tr>`;
+
+      document.getElementById('store-expiry-warning-list').innerHTML = warnings.length
+        ? warnings.map(text => `<div class="block-item"><strong>Pozor</strong><span>${esc(text)}</span></div>`).join('')
+        : '<div class="block-item"><strong>OK</strong><span>Bez datových varování. Pokud chceš přesnější FIFO, drž u všech řádků datum naskladnění.</span></div>';
+
+      function renderTable() {
+        const query = (searchInput.value || '').trim().toLowerCase();
+        const store = storeFilter.value;
+        const severity = severityFilter.value;
+        const filtered = rows.filter(row => {
+          if (store !== 'all' && row.storeView !== store) return false;
+          if (severity !== 'all' && row.severity !== severity) return false;
+          if (!query) return true;
+          const haystack = [row.storeLabel, row.sku, row.title, row.batch, row.note].join(' ').toLowerCase();
+          return haystack.includes(query);
+        });
+
+        document.getElementById('store-expiry-table-subtitle').textContent =
+          `${filtered.length} řádků po filtru z ${rows.length} otevřených batchů.`;
+
+        document.getElementById('store-expiry-chip-row').innerHTML = [
+          { label: `${fmt(summary.expiredRows || 0)} po expiraci`, cls: (summary.expiredRows || 0) ? 'danger' : 'info' },
+          { label: `${fmt(summary.criticalRows || 0)} do 14 dní`, cls: (summary.criticalRows || 0) ? 'danger' : 'info' },
+          { label: `${fmt(summary.soonRows || 0)} do 30 dní`, cls: (summary.soonRows || 0) ? 'warn' : 'info' },
+          { label: `${fmtUnits(summary.totalRemainingUnits || 0)} k řešení`, cls: 'info' },
+        ].map(chip => `<span class="store-expiry-chip ${chip.cls}">${esc(chip.label)}</span>`).join('');
+
+        document.getElementById('store-expiry-table-body').innerHTML = filtered.map(row => `
+          <tr>
+            <td data-label="Prodejna / SKU">
+              <strong>${esc(storeLabel(row.storeView))}</strong><br>
+              <span class="muted">${esc(row.sku)} · ${esc(row.title || row.sku)}</span><br>
+              ${DP.statusPill(severityLabel(row.severity), toneForSeverity(row.severity))}
+            </td>
+            <td data-label="Šarže">${esc(row.batch || '–')}</td>
+            <td class="num" data-label="Expirace">${esc(fmtDate(row.expiryDate))}</td>
+            <td class="num" data-label="Dní do expirace">${esc(row.daysToExpiry == null ? '–' : String(row.daysToExpiry))}</td>
+            <td class="num" data-label="Naskladněno">${esc(fmtUnits(row.receivedUnits || 0))}</td>
+            <td class="num" data-label="Prodáno FIFO">${esc(fmtUnits(row.soldUnitsFifo || 0))}</td>
+            <td class="num" data-label="Vyřazeno + přesun">${esc(fmtUnits((row.discardedUnits || 0) + (row.transferredUnits || 0)))}</td>
+            <td class="num" data-label="Zbývá">${esc(fmtUnits(row.remainingUnits || 0))}</td>
+            <td data-label="Poznámka">${esc(row.note || '–')}</td>
+          </tr>
+        `).join('') || `
+          <tr>
+            <td colspan="9">
+              <div class="store-expiry-empty">
+                <strong>Po zvoleném filtru tu nic nezůstalo</strong>
+                <span>${rows.length ? 'Zkus jinou prodejnu, stav nebo hledaný výraz.' : 'Nejdřív je potřeba dostat do Sheetu první reálné batch řádky, teprve pak se tu objeví otevřené položky.'}</span>
+              </div>
+            </td>
+          </tr>`;
+      }
+
+      [searchInput, storeFilter, severityFilter].forEach(node => node.addEventListener('input', renderTable));
+      [storeFilter, severityFilter].forEach(node => node.addEventListener('change', renderTable));
+      renderTable();
+    })().catch(err => {
+      document.getElementById('store-expiry-badge').textContent = 'Chyba načtení';
+      document.getElementById('store-expiry-focus-list').innerHTML = `
+        <div class="ux-item">
+          <span class="ux-dot gold"></span>
+          <div>
+            <strong>Store expiry watchdog se nenačetl</strong>
+            <span>${esc(err.message || err)}</span>
+          </div>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>

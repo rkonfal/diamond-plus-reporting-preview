@@ -1,0 +1,39 @@
+[
+  {
+    "id": "porada-eshopu-2026-04-21",
+    "title": "Porada e-shopu",
+    "date": "2026-04-21",
+    "type": "Týdenní operativa",
+    "participants": ["Ruda", "Denisa", "Vladimír", "Nikola", "Jiřina"],
+    "tags": ["e-shop", "kampaně", "CRM", "emailing", "doporučování"],
+    "status": "active",
+    "sourceUrl": "https://app.notta.ai/share/99e2550f-894a-4359-9fb4-36b2c93cc6f1?lang=cs-CZ&t=9d01b6d73e570a2795f08195941790ef",
+    "summary": "Košíkové doporučování je připravené na testy a možné rychlé nasazení před Night Shopping. Paralelně se řeší květnové kampaně, e-mailová automatizace, webináře, landing pages pro lídry a příprava obsahu pro online kurz.",
+    "decisions": [
+      "Košíkové doporučení se nebude přepočítávat po každé změně, ruční reset zůstane.",
+      "Pokud testy dopadnou dobře, doporučování se nasadí ještě před Night Shopping.",
+      "Kolo štěstí poběží 1. až 15. 5. a má cílit hlavně na nové zákazníky.",
+      "Online kurz se bude dávkovat postupně, ideálně týden po týdnu.",
+      "V květnu se pilotně zkusí základní segmentace e-mailingu."
+    ],
+    "tasks": [
+      {"owner":"Denisa","task":"Poslat podklady nebo odkaz ke košíku pro testy a schválení nasazení.","priority":"high","due":"2026-04-21","status":"open"},
+      {"owner":"Vladimír","task":"Otestovat košík na PC i mobilu.","priority":"high","due":"2026-04-21","status":"open"},
+      {"owner":"Vladimír","task":"Doplnit desktopové potvrzení přidání do košíku.","priority":"high","due":"2026-04-21","status":"open"},
+      {"owner":"Vladimír","task":"Poslat report konverzí z poslední e-mailové kampaně.","priority":"high","due":"2026-04-21","status":"open"},
+      {"owner":"Nikola","task":"Nastavit lištu, vizuály, SMS a e-maily pro Night Shopping.","priority":"high","due":"2026-04-22","status":"open"},
+      {"owner":"Denisa","task":"Oznámit Slevové zemětřesení na zítřejším webináři.","priority":"medium","due":"2026-04-22","status":"open"},
+      {"owner":"Denisa","task":"Rozhodnout režim dárku Extra White pasty a komunikovat rozhodnutí.","priority":"medium","due":"2026-04-21","status":"open"},
+      {"owner":"Vladimír","task":"Přidat Extra White pastu do souvisejících produktů.","priority":"medium","due":"2026-04-24","status":"open"},
+      {"owner":"Nikola","task":"Připravit e-maily na tento i příští týden před dovolenou.","priority":"high","due":"2026-04-24","status":"open"},
+      {"owner":"Nikola + Vladimír","task":"Připravit první přednákupní automatizaci a základní segmentaci na květen.","priority":"high","due":"2026-04-30","status":"open"},
+      {"owner":"Vladimír","task":"Domluvit konzultaci s dodavatelem k doporučovacím modulům a dynamickým produktům.","priority":"medium","due":"2026-04-24","status":"open"},
+      {"owner":"Ruda + Vladimír","task":"Sjednotit nastavení serverů.","priority":"medium","due":"2026-04-25","status":"open"},
+      {"owner":"Denisa","task":"Dodat parametry pro Kolo štěstí.","priority":"high","due":"2026-04-24","status":"open"},
+      {"owner":"Denisa","task":"Dodat podklady k webinářům a landing pages pro lídry.","priority":"medium","due":"2026-04-25","status":"open"},
+      {"owner":"Vladimír","task":"Připravit škálovatelnou šablonu landing page pro lídry a sběr leadů.","priority":"medium","due":"2026-05-08","status":"open"},
+      {"owner":"Vladimír","task":"Integrovat personalizovaná doporučení do košíku, detailu produktu a homepage.","priority":"high","due":"2026-05-15","status":"open"},
+      {"owner":"Vladimír + Jiřina","task":"Domluvit finální podobu videí pro online kurz a připravit drip-feed publikování.","priority":"medium","due":"2026-05-15","status":"open"}
+    ]
+  }
+]

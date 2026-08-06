@@ -1,0 +1,1643 @@
+{
+  "generatedAt": "2026-08-06",
+  "source": {
+    "status": "live_api",
+    "message": "GA4 data tečou přes Google Analytics Data API jako sloučený bundle přes více properties."
+  },
+  "property": {
+    "propertyId": "220403487",
+    "propertyIds": [
+      "220403487",
+      "413639126"
+    ],
+    "mode": "combined"
+  },
+  "yesterday": {
+    "label": "2026-08-05",
+    "dateFrom": "2026-08-05",
+    "dateTo": "2026-08-05",
+    "activeUsers": 1845,
+    "sessions": 4942,
+    "engagedSessions": 3147,
+    "screenPageViews": 14643,
+    "ecommercePurchases": 231.0,
+    "purchaseRevenue": 281064.98,
+    "averageSessionDuration": 158.85,
+    "bounceRatePct": 0.37,
+    "engagementRatePct": 63.68,
+    "purchaseRatePct": 4.67,
+    "revenuePerSession": 56.87
+  },
+  "last7days": {
+    "label": "last7days",
+    "dateFrom": "2026-07-30",
+    "dateTo": "2026-08-05",
+    "activeUsers": 10788,
+    "sessions": 24844,
+    "engagedSessions": 16905,
+    "screenPageViews": 137951,
+    "ecommercePurchases": 2066.0,
+    "purchaseRevenue": 2391204.75,
+    "averageSessionDuration": 284.47,
+    "bounceRatePct": 0.32,
+    "engagementRatePct": 68.04,
+    "purchaseRatePct": 8.32,
+    "revenuePerSession": 96.25
+  },
+  "last30days": {
+    "label": "last30days",
+    "dateFrom": "2026-07-07",
+    "dateTo": "2026-08-05",
+    "activeUsers": 34131,
+    "sessions": 98941,
+    "engagedSessions": 71444,
+    "screenPageViews": 617536,
+    "ecommercePurchases": 8782.0,
+    "purchaseRevenue": 10547885.57,
+    "averageSessionDuration": 312.47,
+    "bounceRatePct": 0.28,
+    "engagementRatePct": 72.21,
+    "purchaseRatePct": 8.88,
+    "revenuePerSession": 106.61
+  },
+  "currentMonth": {
+    "label": "8/2026",
+    "dateFrom": "2026-08-01",
+    "dateTo": "2026-08-05",
+    "activeUsers": 8193,
+    "sessions": 18335,
+    "engagedSessions": 12507,
+    "screenPageViews": 97488,
+    "ecommercePurchases": 1358.0,
+    "purchaseRevenue": 1567779.45,
+    "averageSessionDuration": 272.57,
+    "bounceRatePct": 0.32,
+    "engagementRatePct": 68.21,
+    "purchaseRatePct": 7.41,
+    "revenuePerSession": 85.51
+  },
+  "previousMonth": {
+    "label": "7/2026",
+    "dateFrom": "2026-07-01",
+    "dateTo": "2026-07-31",
+    "activeUsers": 34865,
+    "sessions": 102054,
+    "engagedSessions": 72759,
+    "screenPageViews": 650974,
+    "ecommercePurchases": 9037.0,
+    "purchaseRevenue": 10806016.33,
+    "averageSessionDuration": 324.68,
+    "bounceRatePct": 0.28,
+    "engagementRatePct": 71.29,
+    "purchaseRatePct": 8.86,
+    "revenuePerSession": 105.89
+  },
+  "channelPerformance7d": [
+    {
+      "sessions": 7206.0,
+      "activeUsers": 3128.0,
+      "engagedSessions": 5417.0,
+      "ecommercePurchases": 803.0,
+      "purchaseRevenue": 941699.74,
+      "channel": "Paid Search",
+      "purchaseRatePct": 11.14,
+      "revenuePerSession": 130.68
+    },
+    {
+      "sessions": 5632.0,
+      "activeUsers": 2756.0,
+      "engagedSessions": 3715.0,
+      "ecommercePurchases": 486.0,
+      "purchaseRevenue": 566143.78,
+      "channel": "Direct",
+      "purchaseRatePct": 8.63,
+      "revenuePerSession": 100.52
+    },
+    {
+      "sessions": 2851.0,
+      "activeUsers": 1544.0,
+      "engagedSessions": 2186.0,
+      "ecommercePurchases": 223.0,
+      "purchaseRevenue": 252486.87,
+      "channel": "Organic Search",
+      "purchaseRatePct": 7.82,
+      "revenuePerSession": 88.56
+    },
+    {
+      "sessions": 1816.0,
+      "activeUsers": 898.0,
+      "engagedSessions": 957.0,
+      "ecommercePurchases": 191.0,
+      "purchaseRevenue": 228062.69,
+      "channel": "Unassigned",
+      "purchaseRatePct": 10.52,
+      "revenuePerSession": 125.59
+    },
+    {
+      "sessions": 3035.0,
+      "activeUsers": 1578.0,
+      "engagedSessions": 1795.0,
+      "ecommercePurchases": 93.0,
+      "purchaseRevenue": 122906.53,
+      "channel": "Paid Social",
+      "purchaseRatePct": 3.06,
+      "revenuePerSession": 40.5
+    },
+    {
+      "sessions": 1689.0,
+      "activeUsers": 970.0,
+      "engagedSessions": 1177.0,
+      "ecommercePurchases": 112.0,
+      "purchaseRevenue": 101383.12,
+      "channel": "Cross-network",
+      "purchaseRatePct": 6.63,
+      "revenuePerSession": 60.03
+    },
+    {
+      "sessions": 832.0,
+      "activeUsers": 378.0,
+      "engagedSessions": 552.0,
+      "ecommercePurchases": 49.0,
+      "purchaseRevenue": 56838.24,
+      "channel": "Email",
+      "purchaseRatePct": 5.89,
+      "revenuePerSession": 68.32
+    },
+    {
+      "sessions": 739.0,
+      "activeUsers": 300.0,
+      "engagedSessions": 562.0,
+      "ecommercePurchases": 54.0,
+      "purchaseRevenue": 43900.34,
+      "channel": "Referral",
+      "purchaseRatePct": 7.31,
+      "revenuePerSession": 59.41
+    },
+    {
+      "sessions": 1198.0,
+      "activeUsers": 656.0,
+      "engagedSessions": 831.0,
+      "ecommercePurchases": 37.0,
+      "purchaseRevenue": 42588.46,
+      "channel": "Organic Social",
+      "purchaseRatePct": 3.09,
+      "revenuePerSession": 35.55
+    },
+    {
+      "sessions": 9.0,
+      "activeUsers": 3.0,
+      "engagedSessions": 7.0,
+      "ecommercePurchases": 7.0,
+      "purchaseRevenue": 14061.0,
+      "channel": "AI Assistant",
+      "purchaseRatePct": 77.78,
+      "revenuePerSession": 1562.33
+    },
+    {
+      "sessions": 40.0,
+      "activeUsers": 14.0,
+      "engagedSessions": 27.0,
+      "ecommercePurchases": 5.0,
+      "purchaseRevenue": 11914.0,
+      "channel": "Organic Shopping",
+      "purchaseRatePct": 12.5,
+      "revenuePerSession": 297.85
+    },
+    {
+      "sessions": 44.0,
+      "activeUsers": 25.0,
+      "engagedSessions": 30.0,
+      "ecommercePurchases": 6.0,
+      "purchaseRevenue": 9219.98,
+      "channel": "Paid Shopping",
+      "purchaseRatePct": 13.64,
+      "revenuePerSession": 209.54
+    }
+  ],
+  "channelPerformanceCurrentMonth": [
+    {
+      "sessions": 5467.0,
+      "activeUsers": 2370.0,
+      "engagedSessions": 4124.0,
+      "ecommercePurchases": 536.0,
+      "purchaseRevenue": 615353.62,
+      "channel": "Paid Search",
+      "purchaseRatePct": 9.8,
+      "revenuePerSession": 112.56
+    },
+    {
+      "sessions": 4272.0,
+      "activeUsers": 2080.0,
+      "engagedSessions": 2789.0,
+      "ecommercePurchases": 315.0,
+      "purchaseRevenue": 371259.06,
+      "channel": "Direct",
+      "purchaseRatePct": 7.37,
+      "revenuePerSession": 86.91
+    },
+    {
+      "sessions": 1390.0,
+      "activeUsers": 684.0,
+      "engagedSessions": 712.0,
+      "ecommercePurchases": 139.0,
+      "purchaseRevenue": 163990.34,
+      "channel": "Unassigned",
+      "purchaseRatePct": 10.0,
+      "revenuePerSession": 117.98
+    },
+    {
+      "sessions": 2055.0,
+      "activeUsers": 1112.0,
+      "engagedSessions": 1579.0,
+      "ecommercePurchases": 132.0,
+      "purchaseRevenue": 156756.75,
+      "channel": "Organic Search",
+      "purchaseRatePct": 6.42,
+      "revenuePerSession": 76.28
+    },
+    {
+      "sessions": 2229.0,
+      "activeUsers": 1202.0,
+      "engagedSessions": 1325.0,
+      "ecommercePurchases": 58.0,
+      "purchaseRevenue": 83366.0,
+      "channel": "Paid Social",
+      "purchaseRatePct": 2.6,
+      "revenuePerSession": 37.4
+    },
+    {
+      "sessions": 1155.0,
+      "activeUsers": 706.0,
+      "engagedSessions": 823.0,
+      "ecommercePurchases": 69.0,
+      "purchaseRevenue": 60227.98,
+      "channel": "Cross-network",
+      "purchaseRatePct": 5.97,
+      "revenuePerSession": 52.15
+    },
+    {
+      "sessions": 579.0,
+      "activeUsers": 274.0,
+      "engagedSessions": 376.0,
+      "ecommercePurchases": 31.0,
+      "purchaseRevenue": 34341.21,
+      "channel": "Email",
+      "purchaseRatePct": 5.35,
+      "revenuePerSession": 59.31
+    },
+    {
+      "sessions": 534.0,
+      "activeUsers": 238.0,
+      "engagedSessions": 412.0,
+      "ecommercePurchases": 40.0,
+      "purchaseRevenue": 28569.01,
+      "channel": "Referral",
+      "purchaseRatePct": 7.49,
+      "revenuePerSession": 53.5
+    },
+    {
+      "sessions": 965.0,
+      "activeUsers": 540.0,
+      "engagedSessions": 656.0,
+      "ecommercePurchases": 24.0,
+      "purchaseRevenue": 28167.48,
+      "channel": "Organic Social",
+      "purchaseRatePct": 2.49,
+      "revenuePerSession": 29.19
+    },
+    {
+      "sessions": 7.0,
+      "activeUsers": 3.0,
+      "engagedSessions": 5.0,
+      "ecommercePurchases": 7.0,
+      "purchaseRevenue": 14061.0,
+      "channel": "AI Assistant",
+      "purchaseRatePct": 100.0,
+      "revenuePerSession": 2008.71
+    },
+    {
+      "sessions": 28.0,
+      "activeUsers": 18.0,
+      "engagedSessions": 20.0,
+      "ecommercePurchases": 4.0,
+      "purchaseRevenue": 6803.0,
+      "channel": "Paid Shopping",
+      "purchaseRatePct": 14.29,
+      "revenuePerSession": 242.96
+    },
+    {
+      "sessions": 29.0,
+      "activeUsers": 13.0,
+      "engagedSessions": 18.0,
+      "ecommercePurchases": 3.0,
+      "purchaseRevenue": 4884.0,
+      "channel": "Organic Shopping",
+      "purchaseRatePct": 10.34,
+      "revenuePerSession": 168.41
+    }
+  ],
+  "landingPages7d": [
+    {
+      "sessions": 6881.0,
+      "activeUsers": 3678.0,
+      "ecommercePurchases": 596.0,
+      "purchaseRevenue": 704169.05,
+      "landingPage": "/",
+      "purchaseRatePct": 8.66
+    },
+    {
+      "sessions": 2540.0,
+      "activeUsers": 1286.0,
+      "ecommercePurchases": 139.0,
+      "purchaseRevenue": 180919.57,
+      "landingPage": "/kosik/",
+      "purchaseRatePct": 5.47
+    },
+    {
+      "sessions": 523.0,
+      "activeUsers": 338.0,
+      "ecommercePurchases": 81.0,
+      "purchaseRevenue": 88260.36,
+      "landingPage": "/clanek/928/konecne-vam-je-muzeme-prozradit-2-novinky-kralovskych-rozmeru/",
+      "purchaseRatePct": 15.49
+    },
+    {
+      "sessions": 642.0,
+      "activeUsers": 510.0,
+      "ecommercePurchases": 75.0,
+      "purchaseRevenue": 82748.73,
+      "landingPage": "/?tw_source=google&tw_adid=770941956618&tw_campaign=22937164471&tw_kwdid=kwd-15329323563",
+      "purchaseRatePct": 11.68
+    },
+    {
+      "sessions": 1559.0,
+      "activeUsers": 1085.0,
+      "ecommercePurchases": 55.0,
+      "purchaseRevenue": 76002.33,
+      "landingPage": "/more-slev/",
+      "purchaseRatePct": 3.53
+    },
+    {
+      "sessions": 396.0,
+      "activeUsers": 282.0,
+      "ecommercePurchases": 49.0,
+      "purchaseRevenue": 58979.0,
+      "landingPage": "/?tw_source=google&tw_adid=799192097500&tw_campaign=22937164471&tw_kwdid=kwd-899992010367",
+      "purchaseRatePct": 12.37
+    },
+    {
+      "sessions": 224.0,
+      "activeUsers": 172.0,
+      "ecommercePurchases": 33.0,
+      "purchaseRevenue": 42219.18,
+      "landingPage": "/?tw_source=google&tw_adid=799192097500&tw_campaign=22937164471&tw_kwdid=kwd-899992010527",
+      "purchaseRatePct": 14.73
+    },
+    {
+      "sessions": 143.0,
+      "activeUsers": 105.0,
+      "ecommercePurchases": 29.0,
+      "purchaseRevenue": 34674.66,
+      "landingPage": "/?tw_source=google&tw_adid=770941956618&tw_campaign=22937164471&tw_kwdid=aud-2488713596817:kwd-15329323563",
+      "purchaseRatePct": 20.28
+    },
+    {
+      "sessions": 105.0,
+      "activeUsers": 73.0,
+      "ecommercePurchases": 24.0,
+      "purchaseRevenue": 25955.8,
+      "landingPage": "/?tw_source=google&tw_adid=799192097500&tw_campaign=22937164471&tw_kwdid=aud-2488713596817:kwd-899992010367",
+      "purchaseRatePct": 22.86
+    },
+    {
+      "sessions": 592.0,
+      "activeUsers": 498.0,
+      "ecommercePurchases": 19.0,
+      "purchaseRevenue": 24889.1,
+      "landingPage": "/akce_k601/letni-vyprodej_k1265/",
+      "purchaseRatePct": 3.21
+    },
+    {
+      "sessions": 1186.0,
+      "activeUsers": 806.0,
+      "ecommercePurchases": 20.0,
+      "purchaseRevenue": 21941.9,
+      "landingPage": "/akcni-zbozi/",
+      "purchaseRatePct": 1.69
+    },
+    {
+      "sessions": 627.0,
+      "activeUsers": 518.0,
+      "ecommercePurchases": 15.0,
+      "purchaseRevenue": 19588.54,
+      "landingPage": "/kosik/doprava-platba/",
+      "purchaseRatePct": 2.39
+    }
+  ],
+  "topPages7d": [
+    {
+      "pageTitle": "Království-tianDe.cz",
+      "screenPageViews": 15952.0,
+      "activeUsers": 5342.0
+    },
+    {
+      "pageTitle": "Nákupní košík - Království-tianDe.cz",
+      "screenPageViews": 14469.0,
+      "activeUsers": 3101.0
+    },
+    {
+      "pageTitle": "Akce a dárkové balíčky TianDe | Přírodní kosmetika se slevou - Království-tianDe.cz",
+      "screenPageViews": 5971.0,
+      "activeUsers": 2736.0
+    },
+    {
+      "pageTitle": "Extra slevy - Království-tianDe.cz",
+      "screenPageViews": 5303.0,
+      "activeUsers": 2416.0
+    },
+    {
+      "pageTitle": "Můj účet - Království-tianDe.cz",
+      "screenPageViews": 3951.0,
+      "activeUsers": 1541.0
+    },
+    {
+      "pageTitle": "Akční balíčky - Království-tianDe.cz",
+      "screenPageViews": 3371.0,
+      "activeUsers": 1689.0
+    },
+    {
+      "pageTitle": "Doprava a platba - Království-tianDe.cz",
+      "screenPageViews": 3233.0,
+      "activeUsers": 2003.0
+    },
+    {
+      "pageTitle": "Dodací údaje - Království-tianDe.cz",
+      "screenPageViews": 2562.0,
+      "activeUsers": 1875.0
+    },
+    {
+      "pageTitle": "Novinky - Království-tianDe.cz",
+      "screenPageViews": 2221.0,
+      "activeUsers": 1374.0
+    },
+    {
+      "pageTitle": "Moje objednávky - Království-tianDe.cz",
+      "screenPageViews": 1988.0,
+      "activeUsers": 697.0
+    },
+    {
+      "pageTitle": "Letní výprodej - Království-tianDe.cz",
+      "screenPageViews": 1928.0,
+      "activeUsers": 1146.0
+    },
+    {
+      "pageTitle": "Království tianDe",
+      "screenPageViews": 1800.0,
+      "activeUsers": 589.0
+    }
+  ],
+  "countries7d": [
+    {
+      "country": "Czechia",
+      "activeUsers": 8961.0,
+      "ecommercePurchases": 1860.0,
+      "purchaseRevenue": 2336655.46
+    },
+    {
+      "country": "Slovakia",
+      "activeUsers": 1172.0,
+      "ecommercePurchases": 163.0,
+      "purchaseRevenue": 11131.38
+    },
+    {
+      "country": "United States",
+      "activeUsers": 458.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0
+    },
+    {
+      "country": "Germany",
+      "activeUsers": 61.0,
+      "ecommercePurchases": 6.0,
+      "purchaseRevenue": 7345.02
+    },
+    {
+      "country": "Austria",
+      "activeUsers": 48.0,
+      "ecommercePurchases": 8.0,
+      "purchaseRevenue": 11680.77
+    },
+    {
+      "country": "Italy",
+      "activeUsers": 33.0,
+      "ecommercePurchases": 5.0,
+      "purchaseRevenue": 3186.25
+    },
+    {
+      "country": "Netherlands",
+      "activeUsers": 33.0,
+      "ecommercePurchases": 5.0,
+      "purchaseRevenue": 331.61
+    },
+    {
+      "country": "Albania",
+      "activeUsers": 22.0,
+      "ecommercePurchases": 1.0,
+      "purchaseRevenue": 923.58
+    },
+    {
+      "country": "France",
+      "activeUsers": 21.0,
+      "ecommercePurchases": 2.0,
+      "purchaseRevenue": 1493.18
+    },
+    {
+      "country": "Bulgaria",
+      "activeUsers": 15.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0
+    }
+  ],
+  "sourcePerformance7d": [
+    {
+      "sessions": 7441.0,
+      "activeUsers": 3271.0,
+      "engagedSessions": 5518.0,
+      "ecommercePurchases": 743.0,
+      "purchaseRevenue": 831279.77,
+      "sourceMedium": "google / cpc",
+      "purchaseRatePct": 9.99,
+      "revenuePerSession": 111.72
+    },
+    {
+      "sessions": 5632.0,
+      "activeUsers": 2756.0,
+      "engagedSessions": 3715.0,
+      "ecommercePurchases": 486.0,
+      "purchaseRevenue": 566143.78,
+      "sourceMedium": "(direct) / (none)",
+      "purchaseRatePct": 8.63,
+      "revenuePerSession": 100.52
+    },
+    {
+      "sessions": 1372.0,
+      "activeUsers": 697.0,
+      "engagedSessions": 1033.0,
+      "ecommercePurchases": 171.0,
+      "purchaseRevenue": 214973.27,
+      "sourceMedium": "seznam / cpc",
+      "purchaseRatePct": 12.46,
+      "revenuePerSession": 156.69
+    },
+    {
+      "sessions": 1162.0,
+      "activeUsers": 463.0,
+      "engagedSessions": 820.0,
+      "ecommercePurchases": 111.0,
+      "purchaseRevenue": 134860.15,
+      "sourceMedium": "Klaviyo / campaign",
+      "purchaseRatePct": 9.55,
+      "revenuePerSession": 116.06
+    },
+    {
+      "sessions": 989.0,
+      "activeUsers": 481.0,
+      "engagedSessions": 737.0,
+      "ecommercePurchases": 78.0,
+      "purchaseRevenue": 94310.24,
+      "sourceMedium": "email.seznam.cz / referral",
+      "purchaseRatePct": 7.89,
+      "revenuePerSession": 95.36
+    },
+    {
+      "sessions": 2277.0,
+      "activeUsers": 1129.0,
+      "engagedSessions": 1270.0,
+      "ecommercePurchases": 76.0,
+      "purchaseRevenue": 92443.03,
+      "sourceMedium": "facebook / cpc",
+      "purchaseRatePct": 3.34,
+      "revenuePerSession": 40.6
+    },
+    {
+      "sessions": 562.0,
+      "activeUsers": 415.0,
+      "engagedSessions": 70.0,
+      "ecommercePurchases": 71.0,
+      "purchaseRevenue": 81039.27,
+      "sourceMedium": "(not set)",
+      "purchaseRatePct": 12.63,
+      "revenuePerSession": 144.2
+    },
+    {
+      "sessions": 272.0,
+      "activeUsers": 160.0,
+      "engagedSessions": 212.0,
+      "ecommercePurchases": 42.0,
+      "purchaseRevenue": 56713.71,
+      "sourceMedium": "bing / organic",
+      "purchaseRatePct": 15.44,
+      "revenuePerSession": 208.51
+    },
+    {
+      "sessions": 1060.0,
+      "activeUsers": 652.0,
+      "engagedSessions": 818.0,
+      "ecommercePurchases": 55.0,
+      "purchaseRevenue": 45878.54,
+      "sourceMedium": "google / organic",
+      "purchaseRatePct": 5.19,
+      "revenuePerSession": 43.28
+    },
+    {
+      "sessions": 472.0,
+      "activeUsers": 203.0,
+      "engagedSessions": 314.0,
+      "ecommercePurchases": 28.0,
+      "purchaseRevenue": 35041.66,
+      "sourceMedium": "notification / email",
+      "purchaseRatePct": 5.93,
+      "revenuePerSession": 74.24
+    },
+    {
+      "sessions": 333.0,
+      "activeUsers": 205.0,
+      "engagedSessions": 271.0,
+      "ecommercePurchases": 26.0,
+      "purchaseRevenue": 29780.15,
+      "sourceMedium": "seznam / organic",
+      "purchaseRatePct": 7.81,
+      "revenuePerSession": 89.43
+    },
+    {
+      "sessions": 502.0,
+      "activeUsers": 311.0,
+      "engagedSessions": 353.0,
+      "ecommercePurchases": 12.0,
+      "purchaseRevenue": 19790.5,
+      "sourceMedium": "fb / cpc",
+      "purchaseRatePct": 2.39,
+      "revenuePerSession": 39.42
+    },
+    {
+      "sessions": 185.0,
+      "activeUsers": 62.0,
+      "engagedSessions": 147.0,
+      "ecommercePurchases": 14.0,
+      "purchaseRevenue": 16729.62,
+      "sourceMedium": "kralovstvi-tiande.sk / referral",
+      "purchaseRatePct": 7.57,
+      "revenuePerSession": 90.43
+    },
+    {
+      "sessions": 279.0,
+      "activeUsers": 113.0,
+      "engagedSessions": 184.0,
+      "ecommercePurchases": 14.0,
+      "purchaseRevenue": 15402.78,
+      "sourceMedium": "ecomail / email",
+      "purchaseRatePct": 5.02,
+      "revenuePerSession": 55.21
+    },
+    {
+      "sessions": 7.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 5.0,
+      "ecommercePurchases": 7.0,
+      "purchaseRevenue": 14061.0,
+      "sourceMedium": "claude.ai / ai-assistant",
+      "purchaseRatePct": 100.0,
+      "revenuePerSession": 2008.71
+    },
+    {
+      "sessions": 282.0,
+      "activeUsers": 103.0,
+      "engagedSessions": 203.0,
+      "ecommercePurchases": 11.0,
+      "purchaseRevenue": 13653.54,
+      "sourceMedium": "l.facebook.com / referral",
+      "purchaseRatePct": 3.9,
+      "revenuePerSession": 48.42
+    },
+    {
+      "sessions": 45.0,
+      "activeUsers": 17.0,
+      "engagedSessions": 29.0,
+      "ecommercePurchases": 7.0,
+      "purchaseRevenue": 12936.67,
+      "sourceMedium": "incomaker / email",
+      "purchaseRatePct": 15.56,
+      "revenuePerSession": 287.48
+    },
+    {
+      "sessions": 310.0,
+      "activeUsers": 190.0,
+      "engagedSessions": 230.0,
+      "ecommercePurchases": 9.0,
+      "purchaseRevenue": 12264.73,
+      "sourceMedium": "lm.facebook.com / referral",
+      "purchaseRatePct": 2.9,
+      "revenuePerSession": 39.56
+    },
+    {
+      "sessions": 83.0,
+      "activeUsers": 38.0,
+      "engagedSessions": 59.0,
+      "ecommercePurchases": 11.0,
+      "purchaseRevenue": 11998.12,
+      "sourceMedium": "search.seznam.cz / ppd",
+      "purchaseRatePct": 13.25,
+      "revenuePerSession": 144.56
+    },
+    {
+      "sessions": 328.0,
+      "activeUsers": 231.0,
+      "engagedSessions": 195.0,
+      "ecommercePurchases": 13.0,
+      "purchaseRevenue": 10533.76,
+      "sourceMedium": "m.facebook.com / referral",
+      "purchaseRatePct": 3.96,
+      "revenuePerSession": 32.12
+    },
+    {
+      "sessions": 63.0,
+      "activeUsers": 35.0,
+      "engagedSessions": 49.0,
+      "ecommercePurchases": 8.0,
+      "purchaseRevenue": 8265.0,
+      "sourceMedium": "mail.centrum.cz / referral",
+      "purchaseRatePct": 12.7,
+      "revenuePerSession": 131.19
+    },
+    {
+      "sessions": 58.0,
+      "activeUsers": 27.0,
+      "engagedSessions": 45.0,
+      "ecommercePurchases": 6.0,
+      "purchaseRevenue": 8042.69,
+      "sourceMedium": "Klaviyo / flow",
+      "purchaseRatePct": 10.34,
+      "revenuePerSession": 138.67
+    },
+    {
+      "sessions": 136.0,
+      "activeUsers": 78.0,
+      "engagedSessions": 90.0,
+      "ecommercePurchases": 3.0,
+      "purchaseRevenue": 7608.0,
+      "sourceMedium": "ig / cpc",
+      "purchaseRatePct": 2.21,
+      "revenuePerSession": 55.94
+    },
+    {
+      "sessions": 35.0,
+      "activeUsers": 14.0,
+      "engagedSessions": 32.0,
+      "ecommercePurchases": 5.0,
+      "purchaseRevenue": 7133.0,
+      "sourceMedium": "t-mail.centrum.cz / referral",
+      "purchaseRatePct": 14.29,
+      "revenuePerSession": 203.8
+    },
+    {
+      "sessions": 85.0,
+      "activeUsers": 57.0,
+      "engagedSessions": 56.0,
+      "ecommercePurchases": 7.0,
+      "purchaseRevenue": 6049.8,
+      "sourceMedium": "(data not available)",
+      "purchaseRatePct": 8.24,
+      "revenuePerSession": 71.17
+    },
+    {
+      "sessions": 73.0,
+      "activeUsers": 66.0,
+      "engagedSessions": 48.0,
+      "ecommercePurchases": 5.0,
+      "purchaseRevenue": 5371.13,
+      "sourceMedium": "funnelkit / email",
+      "purchaseRatePct": 6.85,
+      "revenuePerSession": 73.58
+    },
+    {
+      "sessions": 95.0,
+      "activeUsers": 27.0,
+      "engagedSessions": 74.0,
+      "ecommercePurchases": 5.0,
+      "purchaseRevenue": 5362.26,
+      "sourceMedium": "ntp.msn.com / referral",
+      "purchaseRatePct": 5.26,
+      "revenuePerSession": 56.44
+    },
+    {
+      "sessions": 9.0,
+      "activeUsers": 5.0,
+      "engagedSessions": 8.0,
+      "ecommercePurchases": 3.0,
+      "purchaseRevenue": 4582.85,
+      "sourceMedium": "yahoo / organic",
+      "purchaseRatePct": 33.33,
+      "revenuePerSession": 509.21
+    },
+    {
+      "sessions": 231.0,
+      "activeUsers": 169.0,
+      "engagedSessions": 165.0,
+      "ecommercePurchases": 3.0,
+      "purchaseRevenue": 4419.58,
+      "sourceMedium": "facebook.com / referral",
+      "purchaseRatePct": 1.3,
+      "revenuePerSession": 19.13
+    },
+    {
+      "sessions": 9.0,
+      "activeUsers": 6.0,
+      "engagedSessions": 8.0,
+      "ecommercePurchases": 3.0,
+      "purchaseRevenue": 3861.0,
+      "sourceMedium": "firmy.cz / ppd",
+      "purchaseRatePct": 33.33,
+      "revenuePerSession": 429.0
+    },
+    {
+      "sessions": 15.0,
+      "activeUsers": 6.0,
+      "engagedSessions": 11.0,
+      "ecommercePurchases": 3.0,
+      "purchaseRevenue": 3759.28,
+      "sourceMedium": "vmail.centrum.cz / referral",
+      "purchaseRatePct": 20.0,
+      "revenuePerSession": 250.62
+    },
+    {
+      "sessions": 35.0,
+      "activeUsers": 24.0,
+      "engagedSessions": 28.0,
+      "ecommercePurchases": 2.0,
+      "purchaseRevenue": 3065.0,
+      "sourceMedium": "fb / paid",
+      "purchaseRatePct": 5.71,
+      "revenuePerSession": 87.57
+    },
+    {
+      "sessions": 14.0,
+      "activeUsers": 9.0,
+      "engagedSessions": 12.0,
+      "ecommercePurchases": 2.0,
+      "purchaseRevenue": 2721.28,
+      "sourceMedium": "kralovstvi-tiande.typeform.com / referral",
+      "purchaseRatePct": 14.29,
+      "revenuePerSession": 194.38
+    },
+    {
+      "sessions": 28.0,
+      "activeUsers": 9.0,
+      "engagedSessions": 16.0,
+      "ecommercePurchases": 2.0,
+      "purchaseRevenue": 2605.0,
+      "sourceMedium": "Unassigned",
+      "purchaseRatePct": 7.14,
+      "revenuePerSession": 93.04
+    },
+    {
+      "sessions": 4.0,
+      "activeUsers": 3.0,
+      "engagedSessions": 4.0,
+      "ecommercePurchases": 2.0,
+      "purchaseRevenue": 2080.85,
+      "sourceMedium": "email.tiscali.cz / referral",
+      "purchaseRatePct": 50.0,
+      "revenuePerSession": 520.21
+    },
+    {
+      "sessions": 8.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 6.0,
+      "ecommercePurchases": 1.0,
+      "purchaseRevenue": 1716.85,
+      "sourceMedium": "instagram.com / referral",
+      "purchaseRatePct": 12.5,
+      "revenuePerSession": 214.61
+    },
+    {
+      "sessions": 7.0,
+      "activeUsers": 5.0,
+      "engagedSessions": 5.0,
+      "ecommercePurchases": 1.0,
+      "purchaseRevenue": 1515.58,
+      "sourceMedium": "ecpaper / catalogue",
+      "purchaseRatePct": 14.29,
+      "revenuePerSession": 216.51
+    },
+    {
+      "sessions": 144.0,
+      "activeUsers": 85.0,
+      "engagedSessions": 115.0,
+      "ecommercePurchases": 15.0,
+      "purchaseRevenue": 1011.73,
+      "sourceMedium": "kralovstvi-tiande.cz / referral",
+      "purchaseRatePct": 10.42,
+      "revenuePerSession": 7.03
+    },
+    {
+      "sessions": 5.0,
+      "activeUsers": 3.0,
+      "engagedSessions": 5.0,
+      "ecommercePurchases": 1.0,
+      "purchaseRevenue": 990.0,
+      "sourceMedium": "univerzita.kralovstvi-tiande.cloud / referral",
+      "purchaseRatePct": 20.0,
+      "revenuePerSession": 198.0
+    },
+    {
+      "sessions": 31.0,
+      "activeUsers": 6.0,
+      "engagedSessions": 23.0,
+      "ecommercePurchases": 1.0,
+      "purchaseRevenue": 939.0,
+      "sourceMedium": "twisto.cz / referral",
+      "purchaseRatePct": 3.23,
+      "revenuePerSession": 30.29
+    },
+    {
+      "sessions": 67.0,
+      "activeUsers": 28.0,
+      "engagedSessions": 40.0,
+      "ecommercePurchases": 1.0,
+      "purchaseRevenue": 196.28,
+      "sourceMedium": "tiande.ecomailapp.cz / referral",
+      "purchaseRatePct": 1.49,
+      "revenuePerSession": 2.93
+    },
+    {
+      "sessions": 12.0,
+      "activeUsers": 4.0,
+      "engagedSessions": 8.0,
+      "ecommercePurchases": 2.0,
+      "purchaseRevenue": 74.3,
+      "sourceMedium": "mail.centrum.sk / referral",
+      "purchaseRatePct": 16.67,
+      "revenuePerSession": 6.19
+    },
+    {
+      "sessions": 71.0,
+      "activeUsers": 10.0,
+      "engagedSessions": 33.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "an / cpc",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 48.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 30.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "127.0.0.1:5173 / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 48.0,
+      "activeUsers": 43.0,
+      "engagedSessions": 27.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "ig / paid",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 22.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 17.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "rkonfal.github.io / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 20.0,
+      "activeUsers": 18.0,
+      "engagedSessions": 17.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "facebook / sponsored-content-eshoptiande",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 16.0,
+      "activeUsers": 13.0,
+      "engagedSessions": 14.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "l.instagram.com / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 8.0,
+      "activeUsers": 3.0,
+      "engagedSessions": 4.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "koenigreich-tiande.de / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 6.0,
+      "activeUsers": 4.0,
+      "engagedSessions": 4.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "ostatni-kosmeticke-pomucky.heureka.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 5.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 2.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "tagassistant.google.com / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 4.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 3.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "chatgpt.com / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 4.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 4.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "t-vmail.centrum.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 3.0,
+      "activeUsers": 2.0,
+      "engagedSessions": 3.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "account-content.smartemailing.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 3.0,
+      "activeUsers": 3.0,
+      "engagedSessions": 3.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "amail.centrum.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 3.0,
+      "activeUsers": 0.0,
+      "engagedSessions": 3.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "centrum.cz / organic",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 4.0,
+      "activeUsers": 3.0,
+      "engagedSessions": 3.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "ig / social",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 3.0,
+      "activeUsers": 0.0,
+      "engagedSessions": 3.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "kondicionery-a-balzamy-vlasu.heureka.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 3.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 3.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "m.email.tiscali.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 3.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "petranekovarova.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 3.0,
+      "activeUsers": 2.0,
+      "engagedSessions": 3.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "search.brave.com / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 2.0,
+      "activeUsers": 0.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "1url.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 2.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 2.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "intimni-myci-prostredky.heureka.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 13.0,
+      "activeUsers": 5.0,
+      "engagedSessions": 8.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "link.azet.sk / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 2.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 2.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "mojekorenizivota.com / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 3.0,
+      "activeUsers": 2.0,
+      "engagedSessions": 2.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "pmail.centrum.sk / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 2.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 2.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "t-amail.centrum.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 5.0,
+      "activeUsers": 2.0,
+      "engagedSessions": 2.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "t-mail.centrum.sk / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 2.0,
+      "activeUsers": 2.0,
+      "engagedSessions": 2.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "tuzky-oboci.heureka.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 0.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "127.0.0.1:8765 / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "chatgpt.com / ai-assistant",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "codex_test / qa",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "duckduckgo / organic",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "gemini.google.com / ai-assistant",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "heureka.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "mail.google.com / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 0.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "naplasti.heureka.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "pece-o-ocni-okoli.heureka.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 0.0,
+      "engagedSessions": 0.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "prekvapeni.kafe.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "pripravky-na-cisteni-pleti.heureka.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "search.seznam.cz / sum",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "service2.finbricks.com / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "slevovykupon.net / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "sniperdesign.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 1.0,
+      "activeUsers": 0.0,
+      "engagedSessions": 1.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "zubni-pasty.heureka.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 32.0,
+      "activeUsers": 22.0,
+      "engagedSessions": 24.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "facebook-SiteLink / cpc",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 4.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 2.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "nib.vub.sk / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    },
+    {
+      "sessions": 2.0,
+      "activeUsers": 1.0,
+      "engagedSessions": 2.0,
+      "ecommercePurchases": 0.0,
+      "purchaseRevenue": 0.0,
+      "sourceMedium": "gate.thepay.cz / referral",
+      "purchaseRatePct": 0.0,
+      "revenuePerSession": 0.0
+    }
+  ],
+  "aiTraffic": {
+    "ready": true,
+    "methodology": {
+      "sessionsWindow": "last7days",
+      "purchaseWindowDays": 30,
+      "note": "Explicit AI referrals jsou tvrdě měřené. Assistant-like a organic/direct proxy jsou trendové bucketi, ne absolutní pravda."
+    },
+    "summary": {
+      "explicitAiSessions7d": 13,
+      "assistantLikeSessions7d": 367,
+      "proxyTransactions30d": 1295,
+      "explicitAiRevenue30dInfluenced": 0.0,
+      "assistantLikeRevenue30dInfluenced": 130827.82,
+      "proxyRevenue30dInfluenced": 1605700.23
+    },
+    "buckets": [
+      {
+        "key": "explicit_ai",
+        "label": "Explicitní AI referral",
+        "confidence": "high",
+        "description": "Referrer je přímo z AI nástroje typu ChatGPT nebo Perplexity.",
+        "sessions7d": 13,
+        "activeUsers7d": 4,
+        "purchases7d": 7.0,
+        "revenue7d": 14061.0,
+        "transactions30dLastClick": 27,
+        "revenue30dLastClick": 41058.38,
+        "transactions30dInfluenced": 0,
+        "revenue30dInfluenced": 0.0,
+        "topSessionSources7d": [
+          {
+            "label": "claude.ai / ai-assistant",
+            "value": 7.0
+          },
+          {
+            "label": "chatgpt.com / referral",
+            "value": 4.0
+          },
+          {
+            "label": "chatgpt.com / ai-assistant",
+            "value": 1.0
+          },
+          {
+            "label": "gemini.google.com / ai-assistant",
+            "value": 1.0
+          }
+        ],
+        "topLastClickSources30d": [
+          {
+            "label": "claude.ai / ai-assistant",
+            "value": 41058.38
+          }
+        ],
+        "topInfluenceSources30d": [],
+        "topLandingPages30d": [
+          {
+            "label": "/kosik/",
+            "value": 19561.27
+          },
+          {
+            "label": "/kosik/?prepocitat=",
+            "value": 16006.94
+          },
+          {
+            "label": "/",
+            "value": 5490.17
+          }
+        ]
+      },
+      {
+        "key": "assistant_like",
+        "label": "Pravděpodobný assistant / Bing vstup",
+        "confidence": "medium",
+        "description": "Zdroje, které často souvisí s Copilotem, Bingem nebo assistant vrstvou, ale nejsou stoprocentní důkaz.",
+        "sessions7d": 367,
+        "activeUsers7d": 187,
+        "purchases7d": 47.0,
+        "revenue7d": 62075.97,
+        "transactions30dLastClick": 247,
+        "revenue30dLastClick": 329191.94,
+        "transactions30dInfluenced": 96,
+        "revenue30dInfluenced": 130827.82,
+        "topSessionSources7d": [
+          {
+            "label": "bing / organic",
+            "value": 272.0
+          },
+          {
+            "label": "ntp.msn.com / referral",
+            "value": 95.0
+          }
+        ],
+        "topLastClickSources30d": [
+          {
+            "label": "bing / organic",
+            "value": 269354.35
+          },
+          {
+            "label": "ntp.msn.com / referral",
+            "value": 59837.59
+          }
+        ],
+        "topInfluenceSources30d": [
+          {
+            "label": "bing / organic",
+            "value": 123729.35
+          },
+          {
+            "label": "ntp.msn.com / referral",
+            "value": 7098.47
+          }
+        ],
+        "topLandingPages30d": [
+          {
+            "label": "/",
+            "value": 237362.06
+          },
+          {
+            "label": "/more-slev/",
+            "value": 19214.02
+          },
+          {
+            "label": "/kosik/",
+            "value": 12014.2
+          },
+          {
+            "label": "/kosik/doprava-platba/",
+            "value": 5622.82
+          },
+          {
+            "label": "/?backlink=",
+            "value": 5264.35
+          }
+        ]
+      },
+      {
+        "key": "organic_direct_proxy",
+        "label": "Proxy organic/direct",
+        "confidence": "low",
+        "description": "Nepřímý odhad nad organic/direct vstupy na hlubší obsahové landing pages. Trendově užitečné, ne tvrdá pravda.",
+        "sessions7d": 0,
+        "activeUsers7d": 0,
+        "purchases7d": 0.0,
+        "revenue7d": 0.0,
+        "transactions30dLastClick": 630,
+        "revenue30dLastClick": 726252.47,
+        "transactions30dInfluenced": 1295,
+        "revenue30dInfluenced": 1605700.23,
+        "topSessionSources7d": [],
+        "topLastClickSources30d": [
+          {
+            "label": "(direct) / (none)",
+            "value": 693616.71
+          },
+          {
+            "label": "google / organic",
+            "value": 32635.76
+          }
+        ],
+        "topInfluenceSources30d": [
+          {
+            "label": "(direct) / (none)",
+            "value": 1541433.36
+          },
+          {
+            "label": "google / organic",
+            "value": 64266.87
+          }
+        ],
+        "topLandingPages30d": [
+          {
+            "label": "/clanek/928/konecne-vam-je-muzeme-prozradit-2-novinky-kralovskych-rozmeru/",
+            "value": 727671.16
+          },
+          {
+            "label": "/more-slev/",
+            "value": 244588.84
+          },
+          {
+            "label": "/akce_k601/letni-vyprodej_k1265/",
+            "value": 113451.88
+          },
+          {
+            "label": "/akcni-zbozi/",
+            "value": 83688.52
+          },
+          {
+            "label": "/akcni-balicky/",
+            "value": 59656.37
+          }
+        ]
+      }
+    ]
+  },
+  "purchaseJourneyWindow": {
+    "dateFrom": "2026-07-07",
+    "dateTo": "2026-08-05",
+    "transactions": 8788,
+    "purchaseRevenue": 10504075.31
+  }
+}

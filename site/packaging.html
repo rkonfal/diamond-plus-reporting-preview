@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond Plus Reporting V2, Obalový materiál</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .mini-note { color: var(--text-muted); font-size: 13px; }
+    .pack-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap:20px; }
+    .bar-table { display:grid; gap:12px; }
+    .bar-row { display:grid; grid-template-columns: 140px 1fr 88px; gap:12px; align-items:center; }
+    .bar-track { height: 12px; border-radius: 999px; background: rgba(95,124,246,.10); overflow:hidden; }
+    .bar-fill { height:100%; border-radius:999px; background: linear-gradient(90deg, var(--brand), var(--accent)); }
+    .risk-high { color: var(--danger); }
+    .risk-medium { color: var(--warning); }
+    .risk-ok { color: var(--success); }
+    .table td strong { font-size: 14px; }
+    .coverage-stack { display:grid; gap:14px; }
+    .coverage-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--card-soft);
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow-soft);
+    }
+    .coverage-card.high { border-color: rgba(201,106,118,.35); background: rgba(201,106,118,.07); }
+    .coverage-card.medium { border-color: rgba(193,138,63,.35); background: rgba(193,138,63,.08); }
+    .coverage-card.ok { border-color: rgba(77,155,118,.20); }
+    .coverage-top {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+    }
+    .coverage-size {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      font-size:18px;
+      letter-spacing:-.02em;
+    }
+    .coverage-badge {
+      display:inline-flex;
+      align-items:center;
+      border-radius:999px;
+      padding:5px 10px;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+    .coverage-badge.high { background: rgba(201,106,118,.14); color: var(--danger); }
+    .coverage-badge.medium { background: rgba(193,138,63,.16); color: var(--warning); }
+    .coverage-badge.ok { background: rgba(77,155,118,.14); color: var(--success); }
+    .coverage-weeks {
+      font-size:28px;
+      font-weight:900;
+      letter-spacing:-.04em;
+      line-height:1;
+    }
+    .coverage-sub {
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+    .coverage-metric {
+      border-radius:14px;
+      padding:10px 12px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--border);
+    }
+    [data-theme="dark"] .coverage-metric { background: rgba(255,255,255,.04); }
+    .coverage-metric span {
+      display:block;
+      color: var(--text-muted);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      margin-bottom:4px;
+    }
+    .coverage-metric strong { font-size:15px; }
+    .coverage-action {
+      margin-top:12px;
+      font-size:13px;
+      color: var(--text-muted);
+    }
+    @media (max-width: 980px) {
+      .pack-grid { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 110px 1fr 74px; }
+      .coverage-sub { grid-template-columns: 1fr; }
+      .coverage-top { align-items:flex-start; flex-direction:column; }
+    }
+  </style>
+</head>
+<body class="page-packaging-simplified">
+  <aside class="sidebar" data-sidebar-page="packaging.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Spotřeba obalového materiálu" data-sidebar-section="Logistika a sklad" data-sidebar-footer="Týdenní spotřeba obalů, mix velikostí a orientační krytí zásob."></aside>
+
+  <main class="main page-stack">
+    <header class="header">
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Logistika • obalový materiál</div>
+          <h1 class="ux-title">Spotřeba obalového materiálu</h1>
+          <p class="ux-subtitle">Jedna stránka pro týdenní spotřebu, mix velikostí, dopravce a rychlou kontrolu, kde může začít docházet zásoba.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/packaging_consumption.json" target="_blank" rel="noopener">Zdrojová data</a>
+            <a class="ux-button secondary" href="logistics.html">Logistika</a>
+            <a class="ux-button secondary" href="inventory.html">Sklad</a>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+      <section class="ux-hero-metrics" id="packaging-hero"></section>
+      <div class="status-strip" id="packaging-status"></div>
+      <div class="ux-date-note" id="packaging-date-note">Načítám období…</div>
+    </header>
+
+    <section class="layer-shell" id="packaging-step-1" data-section-nav-label="Krok 1: co znamená spotřeba" data-section-nav-order="1">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 1</div>
+          <h2 class="layer-title">Co z obalů plyne pro provoz</h2>
+          <p class="layer-subtitle">Nejdřív týdenní signál, potom velikosti, které jedou nejvíc, a nakonec riziko zásob podle posledních 4 týdnů.</p>
+        </div>
+        <div class="layer-note">Nejdřív tlak a riziko, až potom detail týdnů.</div>
+      </div>
+      <section class="signal-grid" id="decision-grid"></section>
+    </section>
+
+    <section class="layer-shell" id="packaging-inputs" data-section-nav-label="Hlavní vstupy" data-section-nav-order="2">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Hlavní vstupy</div>
+          <h2 class="layer-title">Trend spotřeby a krytí zásob</h2>
+          <p class="layer-subtitle">Týdny vedle sebe a pod nimi rychlý přepočet, kolik týdnů zásoba vydrží při aktuálním tempu.</p>
+        </div>
+      </div>
+      <section class="pack-grid">
+        <div class="ux-panel-card">
+          <div class="ux-section-head">
+            <div>
+              <h2 class="ux-section-title">Týdenní spotřeba celkem</h2>
+              <p class="ux-section-subtitle">Součet všech obalů v daném týdnu.</p>
+            </div>
+          </div>
+          <div class="section-nav-links" id="packaging-route-links" style="margin-bottom:16px;"></div>
+          <div class="bar-table" id="weekly-bars"></div>
+        </div>
+
+        <div class="ux-panel-card">
+          <div class="ux-section-head">
+            <div>
+              <h2 class="ux-section-title">Krytí zásob podle velikosti</h2>
+              <p class="ux-section-subtitle">Výpočet z aktuální zásoby a průměrné spotřeby za poslední 4 týdny. Alert je nastavený na lead time krabic 4 týdny.</p>
+            </div>
+          </div>
+          <div class="coverage-stack" id="coverage-list"></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="layer-shell" id="packaging-step-2" data-section-nav-label="Krok 2: pracovní vrstva" data-section-nav-order="3">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 2</div>
+          <h2 class="layer-title">Kde se obaly opravdu točí</h2>
+          <p class="layer-subtitle">Rozpad podle velikostí, dopravců a účtů, ať je jasné, co tvoří hlavní tlak na materiál.</p>
+        </div>
+      </div>
+      <section class="summary-grid" id="mix-grid"></section>
+    </section>
+
+    <details class="secondary-details" id="packaging-secondary" data-section-nav-label="Sekundární vrstva" data-section-nav-order="4">
+      <summary>Sekundární vrstva a týdenní detail</summary>
+
+    <section class="card" style="margin-top:18px;">
+      <div class="ux-section-head" style="margin-bottom:16px;">
+        <div>
+          <h2 class="ux-section-title">Týdenní detail po velikostech</h2>
+          <p class="ux-section-subtitle">Každý týden zvlášť, aby bylo vidět, co se zvedá a kde zásoba padá.</p>
+        </div>
+      </div>
+      <div class="ux-table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Týden</th>
+              <th class="num">Celkem</th>
+              <th class="num">S</th>
+              <th class="num">M</th>
+              <th class="num">L</th>
+              <th class="num">XL</th>
+              <th class="num">XXL</th>
+              <th class="num">Oversize</th>
+            </tr>
+          </thead>
+          <tbody id="weekly-table"></tbody>
+        </table>
+      </div>
+    </section>
+    </details>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    const fmtNum = value => DP.fmtNumber(Math.round(value || 0));
+    const pct = value => `${Number(value || 0).toFixed(1)} %`;
+    const riskClass = risk => risk === 'high' ? 'risk-high' : risk === 'medium' ? 'risk-medium' : 'risk-ok';
+    const riskLabel = risk => risk === 'high' ? 'objednat teď' : risk === 'medium' ? 'objednat brzy' : 'v pořádku';
+    const riskAction = item => {
+      if (item.risk === 'high') return `Krytí je na nebo pod lead timem ${item.leadTimeWeeks} týdnů. Tohle je na okamžité objednání.`;
+      if (item.risk === 'medium') return `Jsme v pásmu ${item.leadTimeWeeks} až ${item.warningThresholdWeeks} týdnů krytí. Objednávku bych už připravil.`;
+      return `Rezerva je nad ${item.warningThresholdWeeks} týdnů, tahle velikost je při aktuálním tempu zatím v klidu.`;
+    };
+
+    (async () => {
+      const data = await DP.loadJson('../data/current/packaging_consumption.json');
+      DP.renderRouteLinks('packaging-route-links', [
+        ['Logistika', 'logistics.html', 'Navazující operativní pohled na expedici, expirace a párování.'],
+        ['Sklad', 'inventory.html', 'Prověř, jestli tlak na obaly souvisí s dostupností nebo tokem SKU.'],
+        ['Objednávání', 'ordering.html', 'Navazující krok, pokud tlak na obaly souvisí s plánem zásob.'],
+        ['Obalová data', '../data/current/packaging_consumption.json', 'Surový vstup spotřeby a krytí obalů.'],
+      ]);
+      const totalMax = Math.max(...data.weekly.map(week => week.totalConsumed || 0), 1);
+      const packageMap = Object.fromEntries(data.totalsByPackage.map(item => [item.packageType, item]));
+      const latestHighRisk = data.stockCoverage.filter(item => item.risk === 'high').map(item => item.packageType);
+      const latestMediumRisk = data.stockCoverage.filter(item => item.risk === 'medium').map(item => item.packageType);
+
+      document.getElementById('packaging-date-note').innerHTML = `<strong>Období:</strong> ${data.period.label} · ${data.period.weeksTracked} týdnů · refresh ${DP.fmtDateTime(data.generatedAt)}`;
+
+      document.getElementById('packaging-hero').innerHTML = [
+        {
+          label: 'Spotřeba za celé období',
+          value: fmtNum(data.summary.totalConsumed),
+          sub: `${fmtNum(data.summary.averageWeeklyConsumption)} týdně v průměru`
+        },
+        {
+          label: 'Poslední týden',
+          value: fmtNum(data.summary.lastWeekConsumed),
+          sub: `${data.summary.lastWeekLabel} · top velikost ${data.summary.topPackageLastWeek}`
+        },
+        {
+          label: 'Aktuálně sledovaná zásoba',
+          value: fmtNum(data.summary.currentTrackedStock),
+          sub: `${data.summary.estimatedWeeksOfCoverOverall4w == null ? '–' : `${Number(data.summary.estimatedWeeksOfCoverOverall4w).toFixed(1)} týdne krytí`} při tempu posledních 4 týdnů`
+        }
+      ].map(card => `
+        <div class="ux-hero-metric">
+          <div class="label">${card.label}</div>
+          <div class="value">${card.value}</div>
+          <div class="sub">${card.sub}</div>
+        </div>
+      `).join('');
+
+      DP.renderStatusStrip('packaging-status', [
+        { label: 'Sledované týdny', value: String(data.period.weeksTracked), tone: 'info' },
+        { label: 'Hlavní velikost', value: `${data.summary.topPackageOverall} (${pct(packageMap[data.summary.topPackageOverall]?.sharePct)})`, tone: 'info' },
+        { label: 'Rizikové zásoby', value: latestHighRisk.length ? latestHighRisk.join(', ') : (latestMediumRisk.length ? latestMediumRisk.join(', ') : 'Žádné kritické'), tone: latestHighRisk.length ? 'danger' : latestMediumRisk.length ? 'warn' : 'success' },
+        { label: 'Nejsilnější dopravce', value: `${data.shipmentsByCarrier[0]?.name || '–'} (${pct(data.shipmentsByCarrier[0]?.sharePct)})`, tone: 'info' }
+      ]);
+
+      document.getElementById('decision-grid').innerHTML = [
+        {
+          eyebrow: 'Týdenní signál',
+          value: fmtNum(data.summary.lastWeekConsumed),
+          sub: `Poslední sledovaný týden ${data.summary.lastWeekLabel}.`,
+          meta: `Proti průměru ${data.summary.lastWeekConsumed >= data.summary.averageWeeklyConsumption ? 'nad' : 'pod'} dlouhodobým tempem ${fmtNum(data.summary.averageWeeklyConsumption)} / týden`,
+          tone: data.summary.lastWeekConsumed > data.summary.averageWeeklyConsumption ? 'warn' : 'accent'
+        },
+        {
+          eyebrow: 'Hlavní tlak na obaly',
+          value: `${data.summary.topPackageOverall} · ${fmtNum(data.summary.topPackageOverallConsumed)}`,
+          sub: `Nejvíc se dlouhodobě točí velikost ${data.summary.topPackageOverall}.`,
+          meta: `${pct(packageMap[data.summary.topPackageOverall]?.sharePct)} z celé spotřeby`,
+          tone: 'accent'
+        },
+        {
+          eyebrow: 'Riziko doplnění',
+          value: latestHighRisk.length ? latestHighRisk.join(', ') : (latestMediumRisk.join(', ') || 'OK'),
+          sub: latestHighRisk.length ? `Tady už krytí padá na nebo pod lead time ${data.summary.leadTimeWeeks} týdnů.` : (latestMediumRisk.length ? `Tady už jsme v pásmu pro přípravu objednávky.` : 'Žádná velikost teď nevypadá kriticky.'),
+          meta: `Červená do ${data.summary.leadTimeWeeks} týdnů, oranžová do ${data.summary.warningThresholdWeeks} týdnů`,
+          tone: latestHighRisk.length ? 'danger' : latestMediumRisk.length ? 'warn' : ''
+        },
+        {
+          eyebrow: 'Účet / provoz',
+          value: `${data.shipmentsByCustomer[0]?.name || '–'}`,
+          sub: `${pct(data.shipmentsByCustomer[0]?.sharePct)} všech zásilek`,
+          meta: `Druhý účet ${data.shipmentsByCustomer[1]?.name || '–'} · ${pct(data.shipmentsByCustomer[1]?.sharePct)}`,
+          tone: ''
+        }
+      ].map(card => `
+        <article class="signal-card ${card.tone || ''}">
+          <div class="eyebrow">${card.eyebrow}</div>
+          <div class="signal-value">${card.value}</div>
+          <div class="signal-sub">${card.sub}</div>
+          <div class="signal-meta">${card.meta}</div>
+        </article>
+      `).join('');
+
+      document.getElementById('weekly-bars').innerHTML = data.weekly.map(week => `
+        <div class="bar-row">
+          <strong>${week.label}</strong>
+          <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, (week.totalConsumed / totalMax) * 100)}%"></div></div>
+          <strong style="text-align:right;">${fmtNum(week.totalConsumed)}</strong>
+        </div>
+      `).join('');
+
+      const coverageRank = { high: 0, medium: 1, ok: 2 };
+      document.getElementById('coverage-list').innerHTML = [...data.stockCoverage]
+        .sort((a, b) => (coverageRank[a.risk] ?? 9) - (coverageRank[b.risk] ?? 9) || (a.weeksOfCover4w ?? 9999) - (b.weeksOfCover4w ?? 9999))
+        .map(item => `
+          <div class="coverage-card ${item.risk}">
+            <div class="coverage-top">
+              <div class="coverage-size">
+                <span>${item.packageType}</span>
+                <span class="coverage-badge ${item.risk}">${riskLabel(item.risk)}</span>
+              </div>
+              <div class="coverage-weeks ${riskClass(item.risk)}">${item.weeksOfCover4w == null ? 'bez spotřeby' : `${Number(item.weeksOfCover4w).toFixed(1)} týd.`}</div>
+            </div>
+            <div class="coverage-sub">
+              <div class="coverage-metric">
+                <span>Skladem</span>
+                <strong>${fmtNum(item.currentStock)}</strong>
+              </div>
+              <div class="coverage-metric">
+                <span>Průměr 4 týdny</span>
+                <strong>${Number(item.avgWeeklyConsumption4w).toFixed(1)} / týden</strong>
+              </div>
+              <div class="coverage-metric">
+                <span>Status</span>
+                <strong class="${riskClass(item.risk)}">${riskLabel(item.risk)}</strong>
+              </div>
+            </div>
+            <div class="coverage-action">${riskAction(item)}</div>
+          </div>
+        `).join('');
+
+      const topCarrier = data.shipmentsByCarrier[0];
+      const secondCarrier = data.shipmentsByCarrier[1];
+      const topCustomer = data.shipmentsByCustomer[0];
+      const secondCustomer = data.shipmentsByCustomer[1];
+      document.getElementById('mix-grid').innerHTML = [
+        {
+          title: 'Mix velikostí',
+          text: 'Jaká velikost tvoří největší tlak na obalový materiál.',
+          body: data.totalsByPackage.map(item => [item.packageType, `${fmtNum(item.consumed)} · ${pct(item.sharePct)}`])
+        },
+        {
+          title: 'Dopravci',
+          text: 'Kdo reálně táhne spotřebu podle počtu zásilek.',
+          body: [
+            [topCarrier?.name || '–', `${fmtNum(topCarrier?.shipments)} · ${pct(topCarrier?.sharePct)}`],
+            [secondCarrier?.name || '–', `${fmtNum(secondCarrier?.shipments)} · ${pct(secondCarrier?.sharePct)}`],
+            ['Top velikost top dopravce', topCarrier?.topPackage || '–']
+          ]
+        },
+        {
+          title: 'Účty',
+          text: 'Rozpad mezi CZ a SK provoz.',
+          body: [
+            [topCustomer?.name || '–', `${fmtNum(topCustomer?.shipments)} · ${pct(topCustomer?.sharePct)}`],
+            [secondCustomer?.name || '–', `${fmtNum(secondCustomer?.shipments)} · ${pct(secondCustomer?.sharePct)}`],
+            ['Top velikost top účtu', topCustomer?.topPackage || '–']
+          ]
+        },
+        {
+          title: 'Co hlídat dál',
+          text: 'Jednoduchý operativní závěr pro další nákup obalů.',
+          body: [
+            ['Doplnit nejdřív', latestHighRisk[0] || latestMediumRisk[0] || 'nic kritického'],
+            ['Nejvyšší spotřeba', data.summary.topPackageOverall],
+            ['Poslední týden', fmtNum(data.summary.lastWeekConsumed)]
+          ]
+        }
+      ].map(card => `
+        <article class="summary-card">
+          <h3>${card.title}</h3>
+          <p>${card.text}</p>
+          <div class="ux-stat-list">
+            ${card.body.map(([label, value]) => `
+              <div class="ux-stat-row">
+                <span>${label}</span>
+                <strong>${value}</strong>
+              </div>
+            `).join('')}
+          </div>
+        </article>
+      `).join('');
+
+      document.getElementById('weekly-table').innerHTML = data.weekly.map(week => {
+        const values = Object.fromEntries(week.byPackage.map(item => [item.packageType, item.consumed]));
+        return `
+          <tr>
+            <td><strong>${week.label}</strong><div class="mini-note">${week.sourceFile}</div></td>
+            <td class="num">${fmtNum(week.totalConsumed)}</td>
+            <td class="num">${fmtNum(values.S)}</td>
+            <td class="num">${fmtNum(values.M)}</td>
+            <td class="num">${fmtNum(values.L)}</td>
+            <td class="num">${fmtNum(values.XL)}</td>
+            <td class="num">${fmtNum(values.XXL)}</td>
+            <td class="num">${fmtNum(values.OVERSIZE)}</td>
+          </tr>
+        `;
+      }).join('');
+    })().catch(err => {
+      document.getElementById('packaging-date-note').textContent = `Nepodařilo se načíst data: ${err.message}`;
+    });
+  </script>
+</body>
+</html>

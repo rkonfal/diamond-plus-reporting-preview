@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logistika / 4PX, Reporting V2</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="page-logistics-simplified">
+  <aside class="sidebar" data-sidebar-page="logistics.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Expedice 4PX pro běžný provoz" data-sidebar-section="Logistika" data-sidebar-footer="Nejdřív expedice a rizika, detail až potom."></aside>
+
+  <main class="main page-stack">
+    <header class="header">
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Expedice 4PX • operativní logistika</div>
+          <h1 class="ux-title">Logistika ve stejném operativním standardu</h1>
+          <p class="ux-subtitle">Nejdřív zásilky, expirační tlak a párovací problém. Detail až když je jasné proč.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/morning_report_previous_day.txt" target="_blank" rel="noopener">Ranní report</a>
+            <a class="ux-button secondary" href="index.html">Přehled</a>
+            <a class="ux-button secondary" href="ordering.html">Objednávání</a>
+            <a class="ux-button secondary" href="store-expiry.html">Prodejny expirace</a>
+            <a class="ux-button secondary" href="inventory.html">Sklad</a>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+      <section class="ux-hero-metrics" id="logistics-hero"></section>
+      <div class="status-strip" id="logistics-status-strip"></div>
+      <div class="ux-date-note"><strong>Období:</strong> expedice za včerejšek, expirace a nepárované SKU podle posledního 4PX refreshi.</div>
+    </header>
+
+    <section class="layer-shell" id="logistics-step-1" data-section-nav-label="Krok 1: co řešit dnes" data-section-nav-order="1">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 1</div>
+          <h2 class="layer-title">Co dnes v logistice řešit nejdřív</h2>
+          <p class="layer-subtitle">Nejdřív signál a první rozhodnutí. Až potom operativní přehled a detailní tabulky.</p>
+        </div>
+      </div>
+      <section class="signal-grid" id="logistics-decision-grid"></section>
+    </section>
+
+    <section class="layer-shell" id="logistics-inputs" data-section-nav-label="Hlavní vstupy" data-section-nav-order="2">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Hlavní vstupy</div>
+          <h2 class="layer-title">Kam se přepnout a co zkontrolovat jako první</h2>
+          <p class="layer-subtitle">Krátká pracovní fronta, navazující vstupy a stručný kontext bez technického balastu.</p>
+        </div>
+      </div>
+      <section class="ux-grid">
+      <div class="ux-focus-card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="ux-section-title">Na co se podívat jako první</h2>
+            <p class="ux-section-subtitle">Krátký seznam pro expedici, expirace a nespárované položky.</p>
+          </div>
+          <span class="badge warn" id="log-expiry">Načítám rizika…</span>
+        </div>
+        <div class="ux-list" id="logistics-focus"></div>
+      </div>
+
+      <div class="ux-side-stack">
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Hlavní vstupy</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Otevři jen to, co dnes skutečně navazuje na logistický problém.</p>
+          <div class="section-nav-links" id="logistics-route-links" style="margin-top:16px;"></div>
+        </div>
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Logistika stručně</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Krátký kontext pro dnešní průchod bez rozklikávání detailu.</p>
+          <div class="ux-stat-list" id="logistics-stat-list"></div>
+        </div>
+      </div>
+    </section>
+
+    </section>
+
+    <section class="layer-shell" id="logistics-step-2" data-section-nav-label="Krok 2: hlavní vrstva" data-section-nav-order="3">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 2</div>
+          <h2 class="layer-title">Hlavní pracovní vrstva logistiky</h2>
+          <p class="layer-subtitle">Nejdřív agregovaný přehled, potom operativní tabulky s expedicí a dopravci.</p>
+        </div>
+      </div>
+      <section class="summary-grid" id="logistics-work-grid"></section>
+    </section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2 class="section-title">Nejvíc expedované produkty včera</h2>
+        <div class="section-subtitle">Co se včera nejvíc expedovalo.</div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Kód / produkt</th>
+                <th class="num">Expedované kusy</th>
+                <th class="num">Zásilky</th>
+              </tr>
+            </thead>
+            <tbody id="top-outbound-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h2 class="section-title">Zásilky podle dopravce</h2>
+        <div class="section-subtitle">Kolik zásilek šlo přes kterého dopravce.</div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Dopravce</th>
+                <th class="num">Zásilek</th>
+              </tr>
+            </thead>
+            <tbody id="carrier-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <details class="secondary-details" id="logistics-secondary" data-section-nav-label="Sekundární vrstva" data-section-nav-order="4">
+      <summary>Sekundární vrstva: KPI, expirační a párovací detail</summary>
+
+      <section class="layer-shell" style="margin-top:20px;">
+        <div class="layer-head">
+          <div>
+            <div class="layer-label">Sekundární vrstva</div>
+            <h2 class="layer-title">Vedlejší tabulky a datový detail</h2>
+            <p class="layer-subtitle">KPI, expirační fronta, nepárované SKU a datové poznámky patří až po hlavní operativní vrstvě.</p>
+          </div>
+        </div>
+        <section class="grid kpi-grid" id="log-kpis"></section>
+      </section>
+
+      <section class="card" style="margin-top:20px;">
+        <h2 class="section-title">Poznámky k datům</h2>
+        <div class="section-subtitle">Kontrolní kontext ke zdrojům a publikaci až tehdy, když řešíš proč čísla vypadají takto.</div>
+        <div class="ux-side-list" id="logistics-notes" style="margin-top:16px;"></div>
+      </section>
+
+      <section class="grid two-col" style="margin-top:18px;">
+        <div class="card">
+          <h2 class="section-title">Nejvyšší expirační riziko</h2>
+          <div class="section-subtitle">Řazeno podle blízkosti expirace a velikosti zásoby.</div>
+          <div class="ux-table-wrap" style="margin-top:16px;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Kód / produkt</th>
+                  <th class="num">Účet</th>
+                  <th class="num">Expirace</th>
+                  <th class="num">Dní do expirace</th>
+                  <th class="num">Expirující sklad</th>
+                </tr>
+              </thead>
+              <tbody id="expiry-table"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h2 class="section-title">Položky jen ve 4PX</h2>
+          <div class="section-subtitle">Položky, které ve 4PX jsou, ale ve WPJ ještě nejsou správně napojené.</div>
+          <div class="ux-table-wrap" style="margin-top:16px;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Kód / produkt</th>
+                  <th class="num">4PX sklad</th>
+                  <th class="num">Expedované kusy</th>
+                </tr>
+              </thead>
+              <tbody id="only-4px-log-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </details>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+    function fmt(value) { return DP.fmtNumber(Math.round(Number(value || 0))); }
+    function label(row) { return `${row.code || row.sku || '–'} · ${row.title || 'Bez názvu'}`; }
+    function shortTs(value) { return value ? DP.fmtDateTime(value) : '–'; }
+    async function loadOptionalJson(path) {
+      try {
+        return await DP.loadJson(path);
+      } catch (err) {
+        return null;
+      }
+    }
+
+    (async () => {
+      const [overview, report, expiries, stuck] = await Promise.all([
+        DP.loadJson('../data/current/combined_inventory_overview.json'),
+        DP.loadJson('../data/current/morning_report_previous_day.json'),
+        DP.loadJson('../data/current/4px_expiry_overview.json'),
+        loadOptionalJson('../data/current/stuck_shipments_watchdog.json')
+      ]);
+
+      const refreshTs = shortTs(expiries.generatedAt || overview.generatedAt || report.generatedAt);
+      const stuckTotal = stuck?.summary?.total || 0;
+      const stuckTop = stuck?.top?.[0] || null;
+      document.getElementById('log-expiry').textContent = (overview.onlyIn4px?.length || 0)
+        ? `Nepárované SKU: ${fmt(overview.onlyIn4px.length)}`
+        : `Expirační SKU: ${fmt(expiries.summary.datedSkuCount || 0)}`;
+      const topCarrier = report.logistics.carrierCounts[0]?.name || '–';
+      document.getElementById('logistics-decision-grid').innerHTML = [
+        {
+          eyebrow: 'Expedice dne',
+          value: fmt(report.logistics.shipmentsTotal),
+          sub: `CZ ${fmt(report.logistics.byAccount.CZ)} · SK ${fmt(report.logistics.byAccount.SK)} zásilek.`,
+          meta: `Top dopravce ${topCarrier} · ${fmt(report.logistics.carrierCounts[0]?.count || 0)} zásilek`,
+          tone: 'accent',
+        },
+        {
+          eyebrow: 'Expirační tlak',
+          value: fmt(expiries.summary.datedSkuCount || 0),
+          sub: `${fmt(expiries.summary.czSkuCount || 0)} CZ SKU a ${fmt(expiries.summary.skSkuCount || 0)} SK SKU s expirací.`,
+          meta: expiries.topExpiring?.[0] ? `${expiries.topExpiring[0].sku} expiruje ${expiries.topExpiring[0].dateExpiry}` : 'Bez top rizika.',
+          tone: expiries.topExpiring?.[0] ? 'warn' : '',
+        },
+        {
+          eyebrow: 'Párovací problém',
+          value: fmt(overview.onlyIn4px?.length || 0),
+          sub: 'Položky pouze ve 4PX zůstávají oddělené od čisté logistické operativy.',
+          meta: overview.onlyIn4px?.[0] ? `${overview.onlyIn4px[0].code} · ${overview.onlyIn4px[0].title}` : 'Bez nepárovaného SKU.',
+          tone: (overview.onlyIn4px?.length || 0) ? 'warn' : '',
+        },
+        {
+          eyebrow: 'Datové pokrytí',
+          value: report.logistics.coverageWarnings?.length ? 'Pozor' : 'OK',
+          sub: report.logistics.coverageWarnings?.[0] || 'Pokrytí včerejšího okna nevypadá problematicky.',
+          meta: `Refresh ${DP.fmtDateTime(expiries.generatedAt || report.generatedAt)}`,
+          tone: report.logistics.coverageWarnings?.length ? 'danger' : '',
+        },
+        {
+          eyebrow: '48h bez pohybu',
+          value: stuck ? fmt(stuckTotal) : 'Čeká',
+          sub: stuck
+            ? (stuckTotal ? `${fmt(stuck.summary.alertCount + stuck.summary.criticalCount)} zásilek je už 72h+ bez pohybu.` : 'Aktuální import je bez otevřených případů.')
+            : 'Import CSV exportu zatím není k dispozici.',
+          meta: stuckTop
+            ? `${stuckTop.orderCode} · ${Math.round(stuckTop.hoursWithoutMovement)} h bez pohybu`
+            : (stuck ? `Import ${shortTs(stuck.generatedAt)}` : 'Po importu se ukáže priorita.'),
+          tone: stuckTotal ? 'danger' : '',
+        }
+      ].map(card => `
+        <article class="signal-card ${card.tone || ''}">
+          <div class="eyebrow">${card.eyebrow}</div>
+          <div class="signal-value">${card.value}</div>
+          <div class="signal-sub">${card.sub}</div>
+          <div class="signal-meta">${card.meta}</div>
+        </article>
+      `).join('');
+
+      const hero = [
+        ['Zásilky celkem', fmt(report.logistics.shipmentsTotal), `CZ ${fmt(report.logistics.byAccount.CZ)} · SK ${fmt(report.logistics.byAccount.SK)}`, 'accent'],
+        ['Nejčastější dopravce', topCarrier, `${fmt(report.logistics.carrierCounts[0]?.count || 0)} zásilek`, ''],
+        ['SKU s expirací', fmt(expiries.summary.datedSkuCount || 0), `CZ ${fmt(expiries.summary.czSkuCount || 0)} · SK ${fmt(expiries.summary.skSkuCount || 0)}`, '']
+      ];
+      document.getElementById('logistics-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
+        <div class="ux-hero-metric ${klass}">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          <div class="sub">${sub}</div>
+        </div>
+      `).join('');
+
+      DP.renderStatusStrip('logistics-status-strip', [
+        { label: 'Stav', value: (overview.onlyIn4px?.length || 0) ? 'Pozor' : 'OK', tone: (overview.onlyIn4px?.length || 0) ? 'warn' : 'success' },
+        { label: 'Data', value: '4PX live + včerejší report', tone: 'info' },
+        { label: 'Priorita', value: expiries.topExpiring?.[0]?.sku ? `Zkontrolovat ${expiries.topExpiring[0].sku}` : 'Bez kritické expirace', tone: expiries.topExpiring?.[0] ? 'warn' : 'success' },
+        { label: 'Refresh', value: refreshTs, tone: 'info' }
+      ]);
+
+      const focusRows = [];
+      focusRows.push([
+        `Expedice včera: ${fmt(report.logistics.shipmentsTotal)} zásilek`,
+        `CZ ${fmt(report.logistics.byAccount.CZ)} · SK ${fmt(report.logistics.byAccount.SK)} · top dopravce ${topCarrier}.`
+      ]);
+      if (expiries.topExpiring?.[0]) {
+        const top = expiries.topExpiring[0];
+        focusRows.push([`Nejvyšší expirační riziko: ${top.sku}`, `Expirace ${top.dateExpiry}, expirující sklad ${fmt(top.datedStock)} ks.`]);
+      }
+      if (overview.onlyIn4px?.length) {
+        focusRows.push([`Pouze v 4PX: ${fmt(overview.onlyIn4px.length)} položek`, `Nepárované SKU je potřeba postupně dopárovat nebo vědomě ignorovat.`]);
+      }
+      if (report.logistics.coverageWarnings?.length) {
+        focusRows.push([`Pozor na pokrytí včerejšího okna`, report.logistics.coverageWarnings[0]]);
+      }
+      if (stuck) {
+        if (stuckTotal) {
+          focusRows.push([
+            `48h+ bez pohybu: ${fmt(stuckTotal)} zásilek`,
+            stuckTop
+              ? `Nejstarší je ${stuckTop.orderCode}, bez pohybu už ${Math.round(stuckTop.hoursWithoutMovement)} hodin.`
+              : 'Export bez pohybu už hlásí otevřené případy.'
+          ]);
+        } else {
+          focusRows.push(['48h+ bez pohybu je čisté', 'Poslední import CSV exportu nehlásí žádnou otevřenou zásilku bez pohybu.']);
+        }
+      }
+      if (!overview.onlyIn4px?.length && !report.logistics.coverageWarnings?.length) {
+        focusRows.push(['Datový dluh je pod kontrolou', 'Párovací vrstva teď nehlásí nic nového a logistika zůstává hlavně provozní disciplína.']);
+      }
+      document.getElementById('logistics-focus').innerHTML = (focusRows.length ? focusRows : [['Nic zásadního teď nehoří', 'Momentálně není nic kritického na první pohled.']]).map(([title, text], index) => `
+        <div class="ux-item">
+          <span class="ux-dot ${index === 1 ? 'gold' : index === 2 ? 'green' : 'blue'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('logistics-stat-list').innerHTML = [
+        ['Datum reportu', new Date(report.window.from).toLocaleDateString('cs-CZ')],
+        ['Zásilky celkem', fmt(report.logistics.shipmentsTotal)],
+        ['CZ účet', fmt(report.logistics.byAccount.CZ)],
+        ['SK účet', fmt(report.logistics.byAccount.SK)],
+        ['48h+ bez pohybu', stuck ? fmt(stuckTotal) : 'čeká na import'],
+        ['Refresh', refreshTs],
+      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+      const logisticsRoutes = [
+        ['Prodejny expirace', 'store-expiry.html', 'FIFO watchdog nad rucne zadanou evidenci sarzi a automatickymi prodeji z pokladen.'],
+        ['Sklad', 'inventory.html', 'Navazuje sem hlavní zásobový explorer, nesoulady a párování.'],
+        ['Objednávání', 'ordering.html', overview.counts.lowAfterSales ? 'Když chybí sklad po prodeji, pokračuj shortlistem objednávky.' : 'Shortlist, simulace a export objednávky.'],
+        ['Přehled firmy', 'index.html', 'Vrať se na hlavní decision layer a širší kontext firmy.'],
+        ['Expirační data', '../data/current/4px_expiry_overview.json', 'Surový expirační vstup pro detailní kontrolu.'],
+        ['48h bez pohybu', '../data/current/stuck_shipments_watchdog.json', 'Poslední import a prioritizace zásilek bez pohybu.']
+      ];
+      document.getElementById('logistics-route-links').innerHTML = logisticsRoutes.map(([label, href, hint]) => `
+        <a href="${href}" ${href.startsWith('..') ? 'target="_blank" rel="noopener"' : ''} title="${hint}">${label}</a>
+      `).join('');
+
+      document.getElementById('logistics-notes').innerHTML = [
+        ['Expirace', 'Expirace bereme z detailního 4PX inventory pullu po SKU dávkách.'],
+        ['Párování SKU', 'Primárně párujeme přes kód produktu / SKU, nepárované položky zůstávají na seznamu ke kontrole.'],
+        ['48h bez pohybu', 'Vrstva bez pohybu se plní z CSV exportu a po importu vytváří vlastní Telegram summary.'],
+        ['Automatické publikování', 'Po refreshi se preview publikuje na GitHub Pages bez ručního zásahu.']
+      ].map(([title, text], index) => `
+        <div class="ux-side-item">
+          <span class="ux-dot ${index === 1 ? 'gold' : index === 2 ? 'blue' : 'green'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('logistics-work-grid').innerHTML = [
+        {
+          title: 'Pořadí po prvním přečtení',
+          text: 'Krátký pracovní tah po načtení horního signálu.',
+          body: [
+            ['1', expiries.topExpiring?.[0]?.sku ? `Prověřit ${expiries.topExpiring[0].sku}` : 'Projít včerejší expedici'],
+            ['2', (overview.onlyIn4px?.length || 0) ? 'Zkontrolovat nepárované SKU' : 'Ověřit dopravce a coverage'],
+            ['3', 'Teprve potom otevřít detailní tabulky dole'],
+            ['4', 'Datové poznámky jen při nejasnosti'],
+          ]
+        },
+        {
+          title: 'Expediční rytmus',
+          text: 'První pracovní souhrn pro včerejší pohyb zásilek.',
+          body: [
+            ['Zásilky celkem', fmt(report.logistics.shipmentsTotal)],
+            ['CZ účet', fmt(report.logistics.byAccount.CZ)],
+            ['SK účet', fmt(report.logistics.byAccount.SK)],
+            ['Top dopravce', topCarrier],
+          ]
+        },
+        {
+          title: 'Expirační fronta',
+          text: 'Kde je potřeba řešit doprodej, přesun nebo zvýšenou pozornost.',
+          body: [
+            ['SKU s expirací', fmt(expiries.summary.datedSkuCount || 0)],
+            ['Top riziko', expiries.topExpiring?.[0]?.sku || '–'],
+            ['Dní do expirace', fmt(expiries.topExpiring?.[0]?.daysToExpiry || 0)],
+            ['Expirující sklad', fmt(expiries.topExpiring?.[0]?.datedStock || 0)],
+          ]
+        },
+        {
+          title: 'Párování a data',
+          text: 'Oddělená vrstva, aby bylo jasné, co je operativa a co datový dluh.',
+          body: [
+            ['Jen ve 4PX', fmt(overview.onlyIn4px?.length || 0)],
+            ['Coverage warning', report.logistics.coverageWarnings?.length ? 'Ano' : 'Ne'],
+            ['Auto alias', fmt(overview.counts?.autoMapped4pxAliases || 0)],
+            ['Další krok', (overview.onlyIn4px?.length || 0) ? 'Projít párování' : 'Běžná kontrola'],
+          ]
+        }
+      ].map(card => `
+        <article class="summary-card">
+          <h3>${card.title}</h3>
+          <p>${card.text}</p>
+          <div class="ux-stat-list">
+            ${card.body.map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('')}
+          </div>
+        </article>
+      `).join('');
+
+      document.getElementById('log-kpis').innerHTML = [
+        ['Zásilky celkem', fmt(report.logistics.shipmentsTotal), `CZ ${fmt(report.logistics.byAccount.CZ)} / SK ${fmt(report.logistics.byAccount.SK)}`, 'green'],
+        ['Nejčastější dopravce', topCarrier, `${fmt(report.logistics.carrierCounts[0]?.count || 0)} zásilek`, 'gold'],
+        ['SKU s expirací', fmt(expiries.summary.datedSkuCount || 0), `CZ ${fmt(expiries.summary.czSkuCount || 0)} / SK ${fmt(expiries.summary.skSkuCount || 0)}`, 'red'],
+        ['Nejvíc expedované SKU', label(overview.topOutboundProducts[0] || { code: '–', title: '–' }), `${fmt((overview.topOutboundProducts[0]?.yesterdayOutbound?.czUnits || 0) + (overview.topOutboundProducts[0]?.yesterdayOutbound?.skUnits || 0))} ks`, 'blue']
+      ].map(([label, value, sub, klass]) => `
+        <div class="card kpi-card ${klass}">
+          <div class="kpi-label">${label}</div>
+          <div class="kpi-value">${value}</div>
+          <div class="kpi-sub">${sub}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('top-outbound-table').innerHTML = overview.topOutboundProducts.map(row => `
+        <tr>
+          <td>${label(row)}</td>
+          <td class="num">${fmt(row.yesterdayOutbound.czUnits + row.yesterdayOutbound.skUnits)}</td>
+          <td class="num">${fmt(row.yesterdayOutbound.shipments)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="3">Zatím bez včerejších expedic.</td></tr>';
+
+      document.getElementById('carrier-table').innerHTML = report.logistics.carrierCounts.map(row => `
+        <tr>
+          <td>${row.name}</td>
+          <td class="num">${fmt(row.count)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="2">Žádná data o dopravci.</td></tr>';
+
+      document.getElementById('expiry-table').innerHTML = (expiries.topExpiring || []).slice(0, 20).map(row => `
+        <tr>
+          <td>${row.sku} · ${row.title}</td>
+          <td class="num">${row.account}</td>
+          <td class="num">${row.dateExpiry}</td>
+          <td class="num">${fmt(row.daysToExpiry)}</td>
+          <td class="num">${fmt(row.datedStock)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="5">Zatím bez expiračních dat.</td></tr>';
+
+      document.getElementById('only-4px-log-table').innerHTML = overview.onlyIn4px.map(row => `
+        <tr>
+          <td>${label(row)}</td>
+          <td class="num">${fmt(row.fourpx.availableTotal)}</td>
+          <td class="num">${fmt(row.yesterdayOutbound.czUnits + row.yesterdayOutbound.skUnits)}</td>
+        </tr>
+      `).join('') || '<tr><td colspan="3">Aktuálně bez nepárované 4PX SKU.</td></tr>';
+    })().catch(err => {
+      document.getElementById('logistics-focus').innerHTML = `<div class="ux-item"><span class="ux-dot"></span><div><strong>Nepodařilo se načíst logistiku</strong><span>${err.message}</span></div></div>`;
+    });
+  </script>
+</body>
+</html>

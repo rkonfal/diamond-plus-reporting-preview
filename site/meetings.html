@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Porady | Diamond Plus Reporting</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .meetings-hero { display:grid; gap:18px; margin-bottom:24px; }
+    .meetings-hero-card { background: linear-gradient(135deg, rgba(92,36,80,.08), rgba(230,168,23,.08)); border:1px solid var(--border); border-radius:24px; padding:28px; }
+    .meetings-hero-card h1 { margin:0; font-size:34px; color:var(--brand); letter-spacing:-.03em; }
+    .meetings-hero-card p { margin:10px 0 0; max-width:760px; color:var(--text-muted); line-height:1.7; }
+    .meetings-toolbar { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+    .meetings-chip { border:1px solid var(--border); background:#fff; color:var(--text); padding:10px 14px; border-radius:999px; font-size:14px; font-weight:700; cursor:pointer; }
+    .meetings-chip.active { background:var(--brand); color:#fff; border-color:var(--brand); }
+    .meetings-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:18px; margin-bottom:24px; }
+    .meetings-kpi { background:#fff; border:1px solid var(--border); border-radius:20px; padding:20px 22px; }
+    .meetings-kpi .label { color:var(--text-muted); font-size:12px; text-transform:uppercase; letter-spacing:.08em; font-weight:700; }
+    .meetings-kpi .value { margin-top:8px; font-size:30px; font-weight:800; letter-spacing:-.03em; }
+    .meetings-kpi .sub { margin-top:6px; color:var(--text-muted); font-size:13px; }
+    .meetings-layout { display:grid; grid-template-columns: 1.45fr .95fr; gap:22px; }
+    .meetings-stack { display:grid; gap:16px; }
+    .meeting-card { background:#fff; border:1px solid var(--border); border-radius:22px; padding:22px; }
+    .meeting-head { display:flex; justify-content:space-between; gap:14px; align-items:flex-start; flex-wrap:wrap; }
+    .meeting-head h3 { margin:0; font-size:22px; letter-spacing:-.03em; }
+    .meeting-date { color:var(--text-muted); font-size:13px; font-weight:700; }
+    .meeting-summary { margin-top:12px; color:var(--text-muted); line-height:1.7; }
+    .meeting-pills, .meeting-links, .meeting-people, .task-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .pill { padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+    .pill.brand { background:rgba(92,36,80,.09); color:var(--brand); }
+    .pill.gold { background:rgba(230,168,23,.16); color:#9b6700; }
+    .pill.green { background:rgba(34,197,94,.12); color:#15803d; }
+    .meeting-links a { color:var(--brand); font-weight:700; text-decoration:none; overflow-wrap:anywhere; word-break:break-word; }
+    .meta-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px; margin-top:14px; }
+    .meta-box { border:1px dashed var(--border); border-radius:16px; padding:12px 14px; }
+    .meta-box strong { display:block; margin-bottom:4px; }
+    .task-list, .decision-list, .owner-list { display:grid; gap:12px; }
+    .task-item, .decision-item, .owner-item { background:#fff; border:1px solid var(--border); border-radius:18px; padding:14px 16px; }
+    .task-item.is-done { background:#f8faf8; border-color:#d7eadc; }
+    .task-top, .owner-top { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+    .task-top { display:grid; grid-template-columns:auto 1fr auto; }
+    .task-check { width:18px; height:18px; margin-top:3px; accent-color:#15803d; cursor:pointer; }
+    .task-text, .decision-text { margin-top:6px; line-height:1.65; overflow-wrap:anywhere; word-break:break-word; }
+    .task-item.is-done .task-text { text-decoration:line-through; color:var(--text-muted); }
+    .tag { padding:5px 8px; border-radius:999px; font-size:11px; font-weight:800; }
+    .priority-high { background:#fee2e2; color:#991b1b; }
+    .priority-medium { background:#fef3c7; color:#92400e; }
+    .status-open { background:#ede9fe; color:#5b21b6; }
+    .status-done { background:#dcfce7; color:#166534; }
+    .section-note { color:var(--text-muted); margin-top:4px; margin-bottom:14px; }
+    @media (max-width: 1100px) { .meetings-layout { grid-template-columns:1fr; } }
+    @media (max-width: 768px) {
+      .meetings-hero-card,
+      .meeting-card,
+      .meetings-kpi,
+      .task-item,
+      .decision-item,
+      .owner-item {
+        padding: 16px;
+        border-radius: 18px;
+      }
+      .meetings-hero-card h1 { font-size: 26px; line-height: 1.12; }
+      .meetings-hero-card p,
+      .meeting-summary,
+      .section-note { font-size: 13px; line-height: 1.6; }
+      .meetings-toolbar { display:grid; grid-template-columns:1fr; }
+      .meetings-chip { width:100%; justify-content:center; text-align:center; }
+      .meetings-grid,
+      .meta-grid,
+      .meeting-pills,
+      .meeting-links,
+      .meeting-people,
+      .task-tags { gap: 10px; }
+      .meeting-head,
+      .task-top,
+      .owner-top { grid-template-columns: 1fr; display:grid; }
+      .task-check { margin-top: 0; }
+      .meeting-head h3 { font-size: 19px; }
+    }
+    @media (max-width: 560px) {
+      .meetings-hero-card h1 { font-size: 23px; }
+      .meetings-kpi .value { font-size: 24px; }
+      .meeting-date { font-size: 12px; }
+    }
+  </style>
+</head>
+<body class="page-meetings-simplified">
+  <aside class="sidebar" data-sidebar-page="meetings.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Porady, rozhodnutí a follow-upy" data-sidebar-section="Porady" data-sidebar-footer="Schůzky podle data, s otevřenými úkoly a rozhodnutími na jednom místě."></aside>
+
+  <main class="main page-stack">
+    <header class="header meetings-hero">
+      <div class="ux-topbar">
+        <div class="ux-intro meetings-hero-card" style="width:100%;">
+          <div class="ux-kicker">Porady • rozhodnutí • follow-upy</div>
+          <h1 class="ux-title">Porady ve stejném rozhodovacím standardu</h1>
+          <p class="ux-subtitle">Nejdřív přehled úkolů a termínů, potom pracovní pohledy na lidi, rozhodnutí a chronologii.</p>
+          <div class="ux-actions">
+            <button class="ux-button secondary is-active" type="button" data-view="timeline">Chronologicky</button>
+            <button class="ux-button secondary" type="button" data-view="owners">Podle lidí</button>
+            <button class="ux-button secondary" type="button" data-view="urgent">Blízké termíny</button>
+            <button class="ux-button secondary" type="button" data-view="decisions">Rozhodnutí</button>
+          </div>
+          <div class="status-strip compact" id="meetings-status-strip">
+            <div class="status-chip info"><span class="label">Stav</span><span class="value">Načítám</span></div>
+            <div class="status-chip info"><span class="label">Fokus</span><span class="value">Otevřené úkoly</span></div>
+            <div class="status-chip info"><span class="label">Akce</span><span class="value">Blízké termíny</span></div>
+          </div>
+          <div class="ux-date-note"><strong>Období:</strong> nejnovější porady jsou nahoře, termíny se hlídají jen u otevřených follow-upů a stav odškrtnutých úkolů se drží lokálně v tomhle prohlížeči.</div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+      <section class="ux-hero-metrics meetings-grid" id="kpis"></section>
+    </header>
+
+    <section class="layer-shell" id="meetings-step-1" data-section-nav-label="Krok 1: co je důležité" data-section-nav-order="1">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 1</div>
+          <h2 class="layer-title">Co je dnes u porad opravdu důležité</h2>
+          <p class="layer-subtitle">Odděleně vidíš stav follow-upů, tlak termínů, zapojené lidi a rozhodnutí.</p>
+        </div>
+      </div>
+      <section class="signal-grid" id="meetings-decision-grid"></section>
+    </section>
+
+    <section class="layer-shell" id="meetings-inputs" data-section-nav-label="Hlavní vstupy" data-section-nav-order="2">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Hlavní vstupy</div>
+          <h2 class="layer-title">Co projít jako první</h2>
+          <p class="layer-subtitle">Krátká pracovní fronta, než člověk začne listovat celou historií porad.</p>
+        </div>
+      </div>
+      <section class="ux-grid">
+        <div class="ux-focus-card">
+          <div class="ux-section-head">
+            <div>
+              <h2 class="ux-section-title">První průchod follow-upy</h2>
+              <p class="ux-section-subtitle">Nejdřív termíny, potom lidé, až nakonec chronologie a archiv.</p>
+            </div>
+            <span class="badge warn" id="meetings-focus-badge">Načítám pohled…</span>
+          </div>
+          <div class="ux-list" id="meetings-focus-list"></div>
+        </div>
+
+        <div class="ux-side-stack">
+          <div class="ux-panel-card">
+            <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Hlavní vstupy</h3>
+            <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Rychlý přechod do pracovního pohledu nebo do sekundární vrstvy porad.</p>
+            <div class="section-nav-links" id="meetings-route-links" style="margin-top:16px;"></div>
+          </div>
+
+          <div class="ux-panel-card">
+            <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Porady stručně</h3>
+            <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Jedna orientační karta před detailním průchodem.</p>
+            <div class="ux-stat-list" id="meetings-focus-summary"></div>
+          </div>
+
+          <div class="ux-panel-card">
+            <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Další krok</h3>
+            <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Doporučený další pohyb podle aktuální situace.</p>
+            <div class="ux-list" id="meetings-next-step" style="margin-top:16px;"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="layer-shell" id="meetings-step-2" data-section-nav-label="Krok 2: pracovní vrstva" data-section-nav-order="3">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 2</div>
+          <h2 class="layer-title">Jak ty porady prakticky používat</h2>
+          <p class="layer-subtitle">První pracovní vrstva před detailním listováním jednotlivých porad.</p>
+        </div>
+      </div>
+      <section class="summary-grid" id="meetings-work-grid"></section>
+    </section>
+
+    <details class="secondary-details" id="meetings-secondary" data-section-nav-label="Sekundární vrstva" data-section-nav-order="4" open>
+      <summary>Sekundární vrstva: detailní pohledy a doporučené čtení porad</summary>
+      <section class="meetings-layout" style="margin-top:18px;">
+      <div class="card" id="meetings-main" style="padding:22px; border-radius:24px;">
+        <div class="ux-section-head" style="margin-bottom:14px;">
+          <div>
+            <h2 class="ux-section-title" id="main-title">Porady podle data</h2>
+            <p class="ux-section-subtitle" id="main-subtitle">Výchozí pohled pro rychlou orientaci.</p>
+          </div>
+        </div>
+        <div id="main-content"></div>
+      </div>
+      <aside class="card" style="padding:22px; border-radius:24px; align-self:start;">
+        <div class="ux-section-head" style="margin-bottom:14px;">
+          <div>
+            <h2 class="ux-section-title">Doporučené pohledy</h2>
+            <p class="ux-section-subtitle">Takhle bych to nechal používat i dál.</p>
+          </div>
+        </div>
+        <div class="owner-list">
+          <div class="owner-item"><strong>Chronologicky</strong><div class="decision-text">Jedna porada za druhou podle data, aby bylo jasné, co se řešilo kdy.</div></div>
+          <div class="owner-item"><strong>Podle lidí</strong><div class="decision-text">Kdo má otevřené úkoly a kde se práce hromadí.</div></div>
+          <div class="owner-item"><strong>Blízké termíny</strong><div class="decision-text">Co je potřeba dotlačit dnes, zítra a tento týden.</div></div>
+          <div class="owner-item"><strong>Rozhodnutí</strong><div class="decision-text">Co už je odsouhlasené a nemá se znovu zbytečně otvírat.</div></div>
+        </div>
+      </aside>
+    </section>
+    </details>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+    DP.renderRouteLinks('meetings-route-links', [
+      ['Pracovní pohled', '#meetings-main', 'Hlavní obsah s přepínatelnými pohledy porad'],
+      ['Sekundární vrstva', '#meetings-secondary', 'Doporučené čtení a detailní vrstva porad'],
+      ['Zdroj dat', 'assets/meetings.json', 'Strukturovaný zdroj porad a follow-upů'],
+    ]);
+    const STORAGE_KEY = 'dp-meetings-task-statuses';
+    const taskStatusOverrides = loadTaskStatusOverrides();
+    const state = { meetings: [], view: 'timeline' };
+    const fmtDate = value => new Date(value).toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' });
+    const relative = value => {
+      const d = new Date(value + 'T00:00:00');
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      const diff = Math.round((d - today) / 86400000);
+      if (diff === 0) return 'dnes';
+      if (diff === 1) return 'zítra';
+      if (diff > 1) return `za ${diff} dní`;
+      return `${Math.abs(diff)} dní zpět`;
+    };
+    const allTasks = () => state.meetings.flatMap(m => (m.tasks || []).map(t => ({ ...t, meetingTitle: m.title, meetingDate: m.date, sourceUrl: m.sourceUrl })));
+    const nextDue = tasks => {
+      const open = (tasks || []).filter(t => t.status === 'open').sort((a,b) => a.due.localeCompare(b.due));
+      return open[0] ? `${fmtDate(open[0].due)} (${relative(open[0].due)})` : 'bez termínu';
+    };
+
+    function loadTaskStatusOverrides() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      } catch {
+        return {};
+      }
+    }
+
+    function saveTaskStatus(taskId, status) {
+      taskStatusOverrides[taskId] = status;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(taskStatusOverrides));
+    }
+
+    function setTaskStatus(taskId, status) {
+      for (const meeting of state.meetings) {
+        const task = (meeting.tasks || []).find(item => item.id === taskId);
+        if (task) {
+          task.status = status;
+          saveTaskStatus(taskId, status);
+          renderKpis();
+          renderView();
+          return;
+        }
+      }
+    }
+
+    fetch('assets/meetings.json').then(r => r.json()).then(data => {
+      state.meetings = data
+        .sort((a,b) => (a.date < b.date ? 1 : -1))
+        .map(meeting => ({
+          ...meeting,
+          tasks: (meeting.tasks || []).map((task, index) => ({
+            ...task,
+            id: `${meeting.id || meeting.date || 'meeting'}-${index}`,
+            status: taskStatusOverrides[`${meeting.id || meeting.date || 'meeting'}-${index}`] || task.status || 'open'
+          }))
+        }));
+      renderKpis();
+      renderView();
+    });
+
+    function renderKpis() {
+      const tasks = allTasks();
+      const openTasks = tasks.filter(t => t.status === 'open');
+      const owners = new Set(openTasks.flatMap(t => t.owner.split('+').map(x => x.trim())));
+      const urgent = openTasks.filter(t => t.due <= new Date(Date.now() + 3*86400000).toISOString().slice(0,10));
+      const lastMeeting = state.meetings[0];
+      const focusBadge = document.getElementById('meetings-focus-badge');
+      const strip = document.getElementById('meetings-status-strip');
+      if (strip) {
+        strip.innerHTML = `
+          <div class="status-chip ${urgent.length ? 'warn' : 'success'}"><span class="label">Stav</span><span class="value">${urgent.length ? 'Pozor' : 'OK'}</span></div>
+          <div class="status-chip info"><span class="label">Otevřené</span><span class="value">${openTasks.length}</span></div>
+          <div class="status-chip info"><span class="label">Lidé</span><span class="value">${owners.size}</span></div>
+          <div class="status-chip ${urgent.length ? 'warn' : 'info'}"><span class="label">Akce</span><span class="value">${urgent.length ? 'Projít blízké termíny' : 'Běžný follow-up'}</span></div>
+        `;
+      }
+      if (focusBadge) {
+        focusBadge.textContent = urgent.length ? `${urgent.length} blízkých termínů` : openTasks.length ? `${openTasks.length} otevřených úkolů` : 'Nic akutního';
+        focusBadge.className = `badge ${urgent.length ? 'warn' : openTasks.length ? 'info' : 'live'}`;
+      }
+      document.getElementById('kpis').innerHTML = `
+        <div class="meetings-kpi"><div class="label">Porady</div><div class="value">${state.meetings.length}</div><div class="sub">Seřazené podle data</div></div>
+        <div class="meetings-kpi"><div class="label">Otevřené úkoly</div><div class="value">${openTasks.length}</div><div class="sub">Ze všech aktivních porad</div></div>
+        <div class="meetings-kpi"><div class="label">Blízké termíny</div><div class="value">${urgent.length}</div><div class="sub">Dnes až za 3 dny</div></div>
+      `;
+      const decisions = state.meetings.flatMap(m => m.decisions || []);
+      document.getElementById('meetings-decision-grid').innerHTML = [
+        {
+          eyebrow: 'Follow-up stav',
+          value: openTasks.length,
+          sub: `Otevřené úkoly napříč všemi poradami.`,
+          meta: urgent.length ? `${urgent.length} termínů je v nejbližších 3 dnech.` : 'Bez akutního termínu v příštích 3 dnech.',
+          tone: urgent.length ? 'warn' : 'accent',
+        },
+        {
+          eyebrow: 'Lidé v akci',
+          value: owners.size,
+          sub: 'Kolik lidí má právě otevřený follow-up.',
+          meta: openTasks[0] ? `${openTasks[0].owner} drží nejbližší úkol.` : 'Nikdo nemá otevřený úkol.',
+          tone: '',
+        },
+        {
+          eyebrow: 'Rozhodnutí',
+          value: decisions.length,
+          sub: 'Počet zaznamenaných rozhodnutí, ke kterým se lze vracet bez znovuotevírání tématu.',
+          meta: state.meetings[0]?.title ? `Poslední porada: ${state.meetings[0].title}` : 'Bez záznamu porady.',
+          tone: '',
+        },
+        {
+          eyebrow: 'Další termín',
+          value: nextDue(openTasks),
+          sub: 'Nejbližší otevřený follow-up napříč poradami.',
+          meta: state.view === 'urgent' ? 'Aktuálně jsi v urgent pohledu.' : 'Urgent pohled použij pro rychlý průchod.',
+          tone: urgent.length ? 'danger' : '',
+        }
+      ].map(card => `
+        <article class="signal-card ${card.tone || ''}">
+          <div class="eyebrow">${card.eyebrow}</div>
+          <div class="signal-value">${card.value}</div>
+          <div class="signal-sub">${card.sub}</div>
+          <div class="signal-meta">${card.meta}</div>
+        </article>
+      `).join('');
+      document.getElementById('meetings-focus-list').innerHTML = [
+        urgent[0] ? [`Nejbližší termín: ${urgent[0].owner}`, `${urgent[0].task} · ${fmtDate(urgent[0].due)} (${relative(urgent[0].due)}) · ${urgent[0].meetingTitle}`] : null,
+        openTasks[0] ? [`Kde začít`, `${openTasks.length} otevřených úkolů napříč ${owners.size} lidmi. První průchod udělej přes blízké termíny a pak přes pohled podle lidí.`] : ['Žádný otevřený follow-up', 'Momentálně není co eskalovat, takže stačí běžná kontrola rozhodnutí a poslední porady.'],
+        lastMeeting ? [`Poslední porada`, `${lastMeeting.title} z ${fmtDate(lastMeeting.date)} drží ${(lastMeeting.tasks || []).filter(t => t.status === 'open').length} otevřených úkolů.`] : null,
+        decisions[0] ? [`Rozhodnutí jako paměť`, `V poradách je zapsáno ${decisions.length} rozhodnutí, takže stejné téma není potřeba znovu rozjíždět od nuly.`] : null,
+      ].filter(Boolean).map(([title, text], index) => `
+        <div class="ux-item">
+          <span class="ux-dot ${index === 0 && urgent[0] ? 'gold' : 'blue'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+      document.getElementById('meetings-focus-summary').innerHTML = [
+        ['Otevřené úkoly', openTasks.length],
+        ['Blízké termíny', urgent.length],
+        ['Lidé v follow-upu', owners.size],
+        ['Poslední porada', lastMeeting ? fmtDate(lastMeeting.date) : '–'],
+      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+      document.getElementById('meetings-next-step').innerHTML = [
+        urgent.length
+          ? ['Dnešní akce', `Otevři nejdřív pohled „Blízké termíny“ a dočisti ${urgent.length} úkolů v nejbližších 3 dnech.`]
+          : openTasks.length
+            ? ['Další akce', 'Přepni se do pohledu „Podle lidí“ a projdi, kde se follow-upy hromadí u jednoho ownera.']
+            : ['Kontrolní akce', 'Stačí projet „Rozhodnutí“ a zkontrolovat, jestli poslední porada nechce nový follow-up.']
+      ].map(([title, text]) => `
+        <div class="ux-item">
+          <span class="ux-dot ${urgent.length ? 'gold' : 'blue'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+      document.getElementById('meetings-work-grid').innerHTML = [
+        {
+          title: 'Doporučený workflow',
+          text: 'Jak tím procházet, aby porady nebyly jen archiv.',
+          body: [
+            ['1', 'Urgent termíny'],
+            ['2', 'Podle lidí'],
+            ['3', 'Rozhodnutí'],
+            ['4', 'Pak teprve timeline'],
+          ]
+        },
+        {
+          title: 'Co hlídat',
+          text: 'Krátký přehled, kde se follow-upy nejčastěji zaseknou.',
+          body: [
+            ['Otevřené úkoly', openTasks.length],
+            ['Blízké termíny', urgent.length],
+            ['Lidé v úkolech', owners.size],
+            ['Porady', state.meetings.length],
+          ]
+        },
+        {
+          title: 'Paměť rozhodnutí',
+          text: 'Aby se stejné věci neřešily pořád dokola.',
+          body: [
+            ['Rozhodnutí', decisions.length],
+            ['Poslední porada', state.meetings[0]?.date || '–'],
+            ['Nejbližší due', nextDue(openTasks)],
+            ['Default pohled', 'Chronologicky + urgent'],
+          ]
+        }
+      ].map(card => `
+        <article class="summary-card">
+          <h3>${card.title}</h3>
+          <p>${card.text}</p>
+          <div class="ux-stat-list">
+            ${card.body.map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('')}
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function taskHtml(t, showMeeting=false) {
+      return `
+        <div class="task-item ${t.status === 'done' ? 'is-done' : ''}">
+          <div class="task-top">
+            <input class="task-check" type="checkbox" ${t.status === 'done' ? 'checked' : ''} onchange="setTaskStatus('${t.id}', this.checked ? 'done' : 'open')" aria-label="Označit úkol jako hotový">
+            <div>
+              <strong>${t.owner}</strong>
+              <div class="task-text">${t.task}</div>
+            </div>
+            <div class="meeting-date">${fmtDate(t.due)}</div>
+          </div>
+          <div class="task-tags">
+            <span class="tag priority-${t.priority}">${t.priority === 'high' ? 'vysoká priorita' : 'střední priorita'}</span>
+            <span class="tag status-${t.status}">${t.status === 'open' ? 'otevřeno' : t.status === 'done' ? 'hotovo' : t.status}</span>
+            ${showMeeting ? `<span class="tag pill brand">${t.meetingTitle}</span>` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderView() {
+      const title = document.getElementById('main-title');
+      const subtitle = document.getElementById('main-subtitle');
+      const main = document.getElementById('main-content');
+
+      if (state.view === 'timeline') {
+        title.textContent = 'Porady podle data';
+        subtitle.textContent = 'Výchozí pohled pro rychlou orientaci.';
+        main.innerHTML = state.meetings.map(m => `
+          <article class="meeting-card">
+            <div class="meeting-head">
+              <div>
+                <h3>${m.title}</h3>
+                <div class="meeting-pills">
+                  <span class="pill brand">${m.type}</span>
+                  <span class="pill green">${m.status === 'active' ? 'aktivní' : m.status}</span>
+                  ${(m.tags || []).map(tag => `<span class="pill gold">${tag}</span>`).join('')}
+                </div>
+              </div>
+              <div class="meeting-date">${fmtDate(m.date)}</div>
+            </div>
+            <div class="meeting-summary">${m.summary}</div>
+            <div class="meeting-people">${m.participants.map(p => `<span class="pill brand">${p}</span>`).join('')}</div>
+            <div class="meta-grid">
+              <div class="meta-box"><strong>Otevřené úkoly</strong>${(m.tasks || []).filter(t => t.status === 'open').length}</div>
+              <div class="meta-box"><strong>Nejbližší termín</strong>${nextDue(m.tasks)}</div>
+              <div class="meta-box"><strong>Zdroj</strong><a href="${m.sourceUrl}" target="_blank" rel="noopener">Notta přepis</a></div>
+            </div>
+            ${(m.tasks || []).length ? `<div class="task-list" style="margin-top:14px;">${(m.tasks || []).sort((a,b) => a.due.localeCompare(b.due)).map(t => taskHtml(t)).join('')}</div>` : ''}
+          </article>
+        `).join('');
+      }
+
+      if (state.view === 'owners') {
+        title.textContent = 'Úkoly podle lidí';
+        subtitle.textContent = 'Kdo má kolik otevřených úkolů napříč poradami.';
+        const map = new Map();
+        allTasks().forEach(t => {
+          t.owner.split('+').map(x => x.trim()).forEach(owner => {
+            if (!map.has(owner)) map.set(owner, []);
+            map.get(owner).push(t);
+          });
+        });
+        main.innerHTML = [...map.entries()].sort((a,b) => {
+          const aOpen = a[1].filter(t => t.status === 'open').length;
+          const bOpen = b[1].filter(t => t.status === 'open').length;
+          return bOpen - aOpen || b[1].length - a[1].length;
+        }).map(([owner, tasks]) => `
+          <article class="meeting-card">
+            <div class="meeting-head"><h3>${owner}</h3><div class="meeting-date">${tasks.filter(t => t.status === 'open').length} otevřených</div></div>
+            <div class="task-list">${tasks.map(t => taskHtml(t, true)).join('')}</div>
+          </article>
+        `).join('');
+      }
+
+      if (state.view === 'urgent') {
+        title.textContent = 'Blízké termíny';
+        subtitle.textContent = 'Co je potřeba dotlačit dnes, zítra a během pár dní.';
+        const cutoff = new Date(Date.now() + 3*86400000).toISOString().slice(0,10);
+        const urgent = allTasks().filter(t => t.status === 'open' && t.due <= cutoff).sort((a,b) => a.due.localeCompare(b.due));
+        main.innerHTML = `<div class="task-list">${urgent.map(t => taskHtml(t, true)).join('')}</div>`;
+      }
+
+      if (state.view === 'decisions') {
+        title.textContent = 'Rozhodnutí';
+        subtitle.textContent = 'Co už padlo a nemá se znovu rozbíhat od nuly.';
+        main.innerHTML = state.meetings.flatMap(m => (m.decisions || []).map(d => `
+          <div class="decision-item">
+            <div class="meeting-date">${fmtDate(m.date)} • ${m.title}</div>
+            <div class="decision-text">${d}</div>
+          </div>
+        `)).join('');
+      }
+    }
+
+    document.querySelectorAll('[data-view]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-view]').forEach(x => x.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        state.view = btn.dataset.view;
+        renderView();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond Plus Reporting V2, Twisto watchdog</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="page-marketing-simplified">
+  <aside class="sidebar" data-sidebar-page="twisto.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Twisto watchdog bez ruční kontroly" data-sidebar-section="Twisto" data-sidebar-footer="Kontrola payoutů mezi WPJ, Twistem a bankou."></aside>
+
+  <main class="main page-stack">
+    <header class="header">
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Twisto • kontrola vyplacených peněz</div>
+          <h1 class="ux-title">Kontrola, že Twisto opravdu posílá peníze</h1>
+          <p class="ux-subtitle">Na jednom místě vidíš: co tvrdí Twisto, co opravdu přišlo do banky a jestli někde nechybí peníze.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/twisto_watchdog.json" target="_blank" rel="noopener">Twisto watchdog data</a>
+            <a class="ux-button secondary" href="finance.html">Finance</a>
+            <a class="ux-button secondary" href="index.html">Na přehled</a>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+      <section class="ux-hero-metrics" id="twisto-hero"></section>
+      <div class="status-strip" id="twisto-status-strip"></div>
+      <div class="ux-date-note"><strong>Okno:</strong> banka se kontroluje za posledních 90 dní. Starší Twisto dávky si držíme v historii, aby šlo dopočítat i pozdější dorovnání.</div>
+    </header>
+
+    <section class="layer-shell" id="twisto-step-1" data-section-nav-label="Krok 1: sedí peníze?" data-section-nav-order="1">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 1</div>
+          <h2 class="layer-title">Jde všechno, jak má?</h2>
+          <p class="layer-subtitle">Hned nahoře je vidět, jestli něco chybí, kolik peněz je otevřeno a jestli banka sedí s Twistem.</p>
+        </div>
+        <div class="layer-note">Nejdřív rozdíl proti bance, až potom párovací detail.</div>
+      </div>
+      <section class="signal-grid" id="twisto-decision-grid"></section>
+    </section>
+
+    <section class="layer-shell" id="twisto-inputs" data-section-nav-label="Hlavní vstupy" data-section-nav-order="2">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Hlavní vstupy</div>
+          <h2 class="layer-title">Kam se podívat po horním verdictu</h2>
+          <p class="layer-subtitle">Rychlá orientace v alertu, zdroji a navazujících pohledech bez pátrání v tabulkách.</p>
+        </div>
+      </div>
+      <section class="ux-grid">
+        <div class="ux-focus-card">
+          <div class="ux-section-head">
+            <div>
+              <h2 class="ux-section-title">Co je teď důležité</h2>
+              <p class="ux-section-subtitle">Krátký výtah z watchdogu a hlavní další krok.</p>
+            </div>
+            <span class="badge warn" id="twisto-focus-badge">Načítám watchdog…</span>
+          </div>
+          <div class="ux-list" id="twisto-focus"></div>
+        </div>
+
+        <div class="ux-side-stack">
+          <div class="ux-panel-card">
+            <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Hlavní vstupy</h3>
+            <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Otevři jen navazující pohledy, které pomůžou ověřit rozdíl nebo jeho dopad.</p>
+            <div class="section-nav-links" id="twisto-route-links" style="margin-top:16px;"></div>
+          </div>
+          <div class="ux-panel-card">
+            <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Stav stručně</h3>
+            <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Základ bez čtení všech párovacích tabulek.</p>
+            <div class="ux-stat-list" id="twisto-stat-list"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="layer-shell" id="twisto-step-2" data-section-nav-label="Krok 2: pracovní vrstva" data-section-nav-order="3">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 2</div>
+          <h2 class="layer-title">Co přesně se spárovalo a co ne</h2>
+          <p class="layer-subtitle">Vyplacené dávky, nevyplacené dávky a bankovní příchozí platby na jednom místě.</p>
+        </div>
+      </div>
+      <section class="summary-grid" id="twisto-work-grid"></section>
+    </section>
+
+    <details class="secondary-details" id="twisto-secondary" data-section-nav-label="Sekundární vrstva" data-section-nav-order="4">
+      <summary>Sekundární vrstva a párovací detail</summary>
+
+    <section class="grid two-col" style="margin-top:18px;">
+      <section class="card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="section-title">Nezmatchované batchy</h2>
+            <div class="section-subtitle">Jen batchy z posledních 90 dní, které ještě nevidíme v bance.</div>
+          </div>
+        </div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Settlement</th>
+                <th>Batch ID</th>
+                <th class="num">Částka</th>
+                <th class="num">Objednávky</th>
+                <th class="num">Refundy</th>
+              </tr>
+            </thead>
+            <tbody id="unmatched-batches-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="section-title">Twisto payouty v bance</h2>
+            <div class="section-subtitle">Příchozí platby od Twista v bance, které jsme použili pro párování.</div>
+          </div>
+        </div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Datum</th>
+                <th>Komentář</th>
+                <th class="num">Částka</th>
+              </tr>
+            </thead>
+            <tbody id="bank-payouts-table"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section class="grid two-col">
+      <section class="card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="section-title">Spárované payouty</h2>
+            <div class="section-subtitle">Spárované platby podle částky a data. Někdy 1:1, někdy jedna bankovní platba pokrývá víc Twisto dávek.</div>
+          </div>
+        </div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Typ</th>
+                <th>Settlement od–do</th>
+                <th>Banka</th>
+                <th class="num">Batch</th>
+                <th class="num">Banka</th>
+              </tr>
+            </thead>
+            <tbody id="matches-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="section-title">WPJ stopa</h2>
+            <div class="section-subtitle">Pomocný seznam objednávek, kde se v historii objevuje zmínka o Twistu.</div>
+          </div>
+        </div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Datum</th>
+                <th>Objednávka</th>
+                <th>Stav</th>
+                <th class="num">Částka</th>
+              </tr>
+            </thead>
+            <tbody id="wpj-table"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+    </details>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+    const money = value => `${DP.fmtNumber(Math.round(value || 0))} Kč`;
+    const moneyPrecise = value => `${Number(value || 0).toLocaleString('cs-CZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Kč`;
+
+    (async () => {
+      const data = await DP.loadJson('../data/current/twisto_watchdog.json');
+      const summary = data.summary || {};
+      const alert = data.alert || {};
+      const source = data.source || {};
+      const tone = alert.status === 'critical' ? 'danger' : alert.status === 'warn' ? 'warn' : 'success';
+      document.getElementById('twisto-focus-badge').textContent = alert.status === 'critical' ? 'Kritické' : alert.status === 'warn' ? 'Pozor' : 'OK';
+      document.getElementById('twisto-focus-badge').className = `badge ${tone}`;
+      DP.renderRouteLinks('twisto-route-links', [
+        ['Finance', 'finance.html', 'Mrkni, jak se rozdíl proti bance propisuje do cash a závazků.'],
+        ['E-shop', 'eshop.html', 'Pomocný pohled, pokud chceš číst Twisto v kontextu výkonu a objednávek.'],
+        ['Twisto data', '../data/current/twisto_watchdog.json', 'Surový watchdog vstup pro hlubší kontrolu.'],
+      ]);
+
+      DP.renderStatusStrip('twisto-status-strip', [
+        { label: 'Stav', value: alert.status === 'critical' ? 'Kritické' : alert.status === 'warn' ? 'Pozor' : 'OK', tone },
+        { label: 'Fio účet', value: `${source.fio?.accountId || '–'}/${source.fio?.bankId || '–'}`, tone: 'info' },
+        { label: 'Refresh', value: DP.fmtDateTime(data.generatedAt), tone: 'info' },
+        { label: 'WPJ kontrola', value: data.wpj?.ready ? 'pomocná kontrola aktivní' : 'není k dispozici', tone: data.wpj?.ready ? 'info' : 'warn' },
+      ]);
+
+      document.getElementById('twisto-focus').innerHTML = [
+        [`Rozdíl proti bance`, summary.openBatchAmount > 0 ? `${moneyPrecise(summary.openBatchAmount)} ještě nevidíme v bance.` : 'Za kontrolované okno teď nic nechybí.' ],
+        [`Otevřené dávky`, `${summary.unmatchedBatchCount || 0} batchů a nejstarší otevřený ${summary.oldestOpenBatchDays == null ? '0 dní' : `${summary.oldestOpenBatchDays} dní`}.`],
+        [`Alert watchdogu`, alert.lines?.[0] || 'Nic teď nehoří.' ],
+        [`WPJ stopa`, `${summary.wpjTwistoOrderCount || 0} objednávek a ${moneyPrecise(summary.wpjTwistoOrderAmount || 0)} jako pomocná kontrola.`],
+      ].map(([title, text], index) => `
+        <div class="ux-item">
+          <span class="ux-dot ${index === 0 ? 'gold' : 'blue'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('twisto-stat-list').innerHTML = [
+        ['Otevřeno proti bance', moneyPrecise(summary.openBatchAmount || 0)],
+        ['Dávky za 90 dní', `${summary.twistoBatchCount || 0}`],
+        ['Bankovní payouty', `${summary.bankTwistoTransactionCount || 0}`],
+        ['Historicky dopočteno', moneyPrecise(summary.historicalMatchedBatchAmount || 0)],
+        ['WPJ stopa', `${summary.wpjTwistoOrderCount || 0} objednávek`],
+      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+      document.getElementById('twisto-hero').innerHTML = [
+        ['Otevřeno proti bance', moneyPrecise(summary.openBatchAmount || 0), `${summary.unmatchedBatchCount || 0} batchů`, (summary.openBatchAmount || 0) > 0 ? 'accent' : ''],
+        ['Payouty v bance', moneyPrecise(summary.bankReceivedAmount || 0), `${summary.bankTwistoTransactionCount || 0} transakcí`, ''],
+        ['Twisto dávky 90 dní', moneyPrecise(summary.twistoPaidAmount || 0), `${summary.twistoBatchCount || 0} dávek`, ''],
+        ['Nejstarší otevřený', summary.oldestOpenBatchDays == null ? '0 dní' : `${summary.oldestOpenBatchDays} dní`, data.alert?.lines?.[0] || 'Bez otevřeného payoutu', '']
+      ].map(([label, value, sub, klass]) => `
+        <div class="ux-hero-metric ${klass}">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          <div class="sub">${sub}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('twisto-decision-grid').innerHTML = [
+        {
+          eyebrow: 'Twisto → banka',
+          value: summary.openBatchAmount > 0 ? moneyPrecise(summary.openBatchAmount) : 'Sedí',
+          sub: summary.openBatchAmount > 0 ? `${summary.unmatchedBatchCount} dávek ještě nevidíme v bance.` : 'Za posledních 90 dní teď nevidíme chybějící výplatu od Twista.',
+          meta: `Rozdíl Twisto vs banka: ${moneyPrecise(summary.bankVsTwistoDelta || 0)}`,
+          tone: summary.openBatchAmount > 0 ? 'danger' : 'accent'
+        },
+        {
+          eyebrow: 'Banka → Twisto',
+          value: summary.unmatchedBankTransactions ? `${summary.unmatchedBankTransactions} navíc` : 'Bez rozdílu',
+          sub: summary.unmatchedBankTransactions ? 'V bance je platba od Twista, kterou jsme ještě nepřiřadili ke konkrétní dávce.' : 'Každá bankovní platba od Twista má přiřazenou Twisto dávku nebo skupinu dávek.',
+          meta: `Použito ${summary.bankTwistoTransactionCount || 0} bankovních plateb`,
+          tone: summary.unmatchedBankTransactions ? 'warn' : ''
+        },
+        {
+          eyebrow: 'Historicky dopočteno',
+          value: moneyPrecise(summary.historicalMatchedBatchAmount || 0),
+          sub: 'Tady vidíš i pozdější dorovnání: jedna větší platba v bance může pokrýt starší Twisto dávky.',
+          meta: `Celkem spárované platby: ${summary.twistoMatchedAmount ? moneyPrecise(summary.twistoMatchedAmount) : '–'}`,
+          tone: ''
+        },
+        {
+          eyebrow: 'WPJ stopa',
+          value: `${summary.wpjTwistoOrderCount || 0} objednávek`,
+          sub: 'Tohle je jen pomocná kontrola z historie objednávek. Hlavní pravda pro peníze je Twisto + banka.',
+          meta: moneyPrecise(summary.wpjTwistoOrderAmount || 0),
+          tone: ''
+        }
+      ].map(card => `
+        <article class="signal-card ${card.tone || ''}">
+          <div class="eyebrow">${card.eyebrow}</div>
+          <div class="signal-value">${card.value}</div>
+          <div class="signal-sub">${card.sub}</div>
+          <div class="signal-meta">${card.meta}</div>
+        </article>
+      `).join('');
+
+      document.getElementById('twisto-work-grid').innerHTML = [
+        {
+          title: 'Alerty watchdogu',
+          value: alert.lines?.length ? alert.lines[0] : 'Bez alertu',
+          body: (alert.lines || ['Nic teď nehoří.']).slice(0, 4).map(line => `<div class="ux-list-row"><strong>${line}</strong></div>`).join('')
+        },
+        {
+          title: 'Podle čeho to hlídáme',
+          value: 'Twisto dávky + Fio banka',
+          body: `
+            <div class="ux-list-row">Twisto endpoint: <strong>${source.twisto?.batchEndpoint || '–'}</strong></div>
+            <div class="ux-list-row">Fio účet: <strong>${source.fio?.accountId || '–'}/${source.fio?.bankId || '–'}</strong></div>
+            <div class="ux-list-row">WPJ: <strong>${data.wpj?.message || '–'}</strong></div>
+            <div class="ux-list-row">Jednoduše: když je nahoře <strong>Otevřeno proti bance 0 Kč</strong>, Twisto teď nic nezadržuje v rámci kontrolovaného okna.</div>
+          `
+        }
+      ].map(card => `
+        <article class="summary-card">
+          <div class="summary-head">
+            <div>
+              <div class="summary-title">${card.title}</div>
+              <div class="summary-value">${card.value}</div>
+            </div>
+          </div>
+          <div class="ux-list">${card.body}</div>
+        </article>
+      `).join('');
+
+      const fillRows = (id, rows, render, colspan = 5) => {
+        document.getElementById(id).innerHTML = rows.length ? rows.map(render).join('') : `<tr><td colspan="${colspan}">Nic otevřeného.</td></tr>`;
+      };
+
+      fillRows('unmatched-batches-table', data.unmatchedBatches || [], row => `
+        <tr>
+          <td>${row.settlementDate || '–'}</td>
+          <td><code>${row.id || '–'}</code></td>
+          <td class="num">${moneyPrecise(row.amount || 0)}</td>
+          <td class="num">${moneyPrecise(row.orderAmount || 0)}</td>
+          <td class="num">${moneyPrecise(row.refundAmount || 0)}</td>
+        </tr>
+      `, 5);
+
+      fillRows('bank-payouts-table', data.bankTransactions || [], row => `
+        <tr>
+          <td>${row.date ? row.date.slice(0, 10) : '–'}</td>
+          <td>${row.comment || '–'}</td>
+          <td class="num">${moneyPrecise(row.amount || 0)}</td>
+        </tr>
+      `, 3);
+
+      fillRows('matches-table', data.matches || [], row => `
+        <tr>
+          <td>${row.kind === 'group' ? 'Více dávek do jedné platby' : 'Jedna dávka = jedna platba'}</td>
+          <td>${row.settlementDateFrom || '–'}${row.settlementDateTo && row.settlementDateTo !== row.settlementDateFrom ? ` → ${row.settlementDateTo}` : ''}</td>
+          <td>${row.bankDate ? row.bankDate.slice(0, 10) : '–'} · ${row.comment || '–'}</td>
+          <td class="num">${moneyPrecise(row.batchAmount || 0)}</td>
+          <td class="num">${moneyPrecise(row.bankAmount || 0)}</td>
+        </tr>
+      `, 5);
+
+      fillRows('wpj-table', (data.wpj?.orders || []).slice(-40).reverse(), row => `
+        <tr>
+          <td>${row.dateCreated ? row.dateCreated.slice(0, 10) : '–'}</td>
+          <td>${row.code || '–'}</td>
+          <td>${row.status || '–'}</td>
+          <td class="num">${moneyPrecise(row.amount || 0)}</td>
+        </tr>
+      `, 4);
+    })().catch(err => {
+      document.getElementById('twisto-hero').innerHTML = `<div class="alert danger">Nepodařilo se načíst Twisto watchdog: ${err.message}</div>`;
+    });
+  </script>
+</body>
+</html>

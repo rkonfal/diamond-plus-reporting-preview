@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sklad / párování WPJ + 4PX, Reporting V2</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="page-inventory-simplified">
+  <aside class="sidebar" data-sidebar-page="inventory.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Sklad pro každodenní rozhodování" data-sidebar-section="Sklad" data-sidebar-footer="Nejdřív co řešit hned, detail až potom."></aside>
+
+  <main class="main page-stack">
+    <header class="header">
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Sklad • operativní dashboard</div>
+          <h1 class="ux-title">Sklad jako hlavní operativní pracovní dashboard</h1>
+          <p class="ux-subtitle">Nejdřív signál, potom hlavní akce. Detail a širší analýza až níž.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/morning_report_previous_day.txt" target="_blank" rel="noopener">Ranní report</a>
+            <a class="ux-button secondary" href="index.html">Přehled</a>
+            <a class="ux-button secondary" href="ordering.html">Objednávání</a>
+            <a class="ux-button secondary" href="logistics.html">Logistika</a>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+      <section class="ux-hero-metrics" id="inventory-hero"></section>
+      <div class="status-strip" id="inventory-status-strip"></div>
+      <div class="ux-date-note"><strong>Období:</strong> sklad a nesoulady jsou aktuální stav po refreshi, prodeje včerejší kontext, pohyby proti minulému snapshotu.</div>
+    </header>
+
+    <section class="layer-shell" id="inventory-step-1" data-section-nav-label="Krok 1: co řešit dnes" data-section-nav-order="1">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 1</div>
+          <h2 class="layer-title">Co dnes ve skladu řešit nejdřív</h2>
+          <p class="layer-subtitle">Nejdřív signál a vstup do práce. Až potom samotný seznam položek.</p>
+        </div>
+      </div>
+      <section class="signal-grid" id="inventory-decision-grid"></section>
+    </section>
+
+    <section class="layer-shell" id="inventory-inputs" data-section-nav-label="Hlavní vstupy" data-section-nav-order="2">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Hlavní vstupy</div>
+          <h2 class="layer-title">Kam se přepnout a co zkontrolovat jako první</h2>
+          <p class="layer-subtitle">Krátká pracovní fronta, navazující vstupy a stručný kontext bez vedlejší analytiky.</p>
+        </div>
+      </div>
+      <section class="ux-grid">
+      <div class="ux-focus-card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="ux-section-title">Na co se podívat jako první</h2>
+            <p class="ux-section-subtitle">Krátký seznam pro první kontrolu skladu.</p>
+          </div>
+          <span class="badge warn" id="inventory-attention-badge">Načítám důležité body…</span>
+        </div>
+        <div class="ux-list" id="inventory-attention-list"></div>
+      </div>
+
+      <div class="ux-side-stack">
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Hlavní vstupy</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Otevři jen to, co dnes opravdu vede práci.</p>
+          <div class="section-nav-links" id="inventory-route-links" style="margin-top:16px;"></div>
+        </div>
+        <div class="ux-panel-card">
+          <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Sklad stručně</h3>
+          <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Krátký kontext pro dnešní rozhodnutí bez dlouhých tabulek.</p>
+          <div class="ux-stat-list" id="inventory-stat-list"></div>
+        </div>
+      </div>
+    </section>
+
+    </section>
+
+    <section class="card" id="inventory-step-2" data-section-nav-label="Krok 2: hlavní explorer" data-section-nav-order="3" style="margin-top:20px;">
+      <div class="toolbar-card workspace-toolbar">
+        <div class="toolbar">
+          <div>
+            <h2 class="section-title">Krok 2: hlavní pracovní seznam skladu</h2>
+            <div class="section-subtitle">Jeden pracovní explorer pro přepínání skladu a tématu. Vedlejší tabulky a širší analytika jsou až dole.</div>
+          </div>
+          <div class="toolbar-controls">
+            <label class="control-group control-group-wide">
+              <span class="control-label">Hledat</span>
+              <input id="inventory-search" class="input" type="search" placeholder="Kód, název, alias nebo vazba…" />
+            </label>
+            <label class="control-group">
+              <span class="control-label">Trh</span>
+              <select id="inventory-market" class="select">
+                <option value="cz" selected>CZ</option>
+                <option value="sk">SK</option>
+              </select>
+            </label>
+            <label class="control-group">
+              <span class="control-label">Stav</span>
+              <select id="inventory-filter" class="select">
+                <option value="all">Všechny stavy</option>
+                <option value="expiryRisk6m">Expirace do 6 měsíců</option>
+                <option value="fastLowCover">Dochází zásoba</option>
+                <option value="lowAfterSales">Po prodeji dochází</option>
+                <option value="mismatch">Nesoulad stavů</option>
+                <option value="only4px">Jen ve 4PX</option>
+                <option value="deadStock">Bez prodeje</option>
+                <option value="slowMover">Pomalejší pohyb</option>
+                <option value="overstocked">Přebytková zásoba</option>
+                <option value="overstockedNoPromo">Přebytková zásoba bez PROMO</option>
+                <option value="promo">PROMO</option>
+                <option value="manualAlias">Ručně spárováno</option>
+                <option value="autoAlias">Automatický návrh</option>
+                <option value="lte10">Do 10 ks</option>
+                <option value="ok">V pořádku</option>
+              </select>
+            </label>
+            <label class="control-group">
+              <span class="control-label">Řadit</span>
+              <select id="inventory-sort" class="select">
+                <option value="priority">Priorita / relevance</option>
+                <option value="stockInView">Největší sklad v pohledu</option>
+                <option value="stockValue">Největší hodnota skladu</option>
+                <option value="sales365d">Největší prodej 365d</option>
+                <option value="avgMonthly">Největší průměr / měsíc</option>
+                <option value="coverAsc">Nejnižší pokrytí</option>
+                <option value="code">Kód A–Z</option>
+              </select>
+            </label>
+            <label class="control-group control-group-compact">
+              <span class="control-label">Na stránku</span>
+              <select id="inventory-page-size" class="select">
+                <option value="25">25</option>
+                <option value="50" selected>50</option>
+                <option value="100">100</option>
+              </select>
+            </label>
+            <button id="inventory-export-csv" class="quick-filter quick-filter-quiet" type="button">Export CSV</button>
+          </div>
+        </div>
+
+        <div class="toolbar-meta">
+          <div class="toolbar-meta-item"><strong>Postup:</strong> vyber nejdřív CZ nebo SK, potom stav a teprve pak případně dolaď hledání.</div>
+          <div class="toolbar-meta-item"><strong>Doporučení:</strong> začni kombinací `CZ/SK` + `Nesoulady` nebo `Nízký sklad po prodeji`.</div>
+        </div>
+        <div class="toolbar-inline-summary"><strong>Pracovní režim:</strong> horní panel zůstává při skrolování po ruce, aby šlo rychle měnit trh, stav i řazení bez návratu nahoru.</div>
+      </div>
+
+      <div class="section-subtitle" id="inventory-view-summary">Načítám přehled skladu…</div>
+
+      <div class="section-subtitle" id="inventory-explorer-summary">Načítám seznam položek…</div>
+      <div class="toolbar-inline-summary"><strong>Tip:</strong> nejdřív omez trh a stav, hledání používej až na konci, když už víš, co přesně dohledáváš.</div>
+
+      <div class="ux-table-wrap">
+        <table class="table">
+          <thead id="inventory-explorer-head"></thead>
+          <tbody id="inventory-explorer-table"></tbody>
+        </table>
+      </div>
+
+      <div class="toolbar" style="margin-top:16px;">
+        <div class="section-subtitle" id="inventory-pagination-summary">Načítám stránkování…</div>
+        <div class="quick-filters" style="margin:0;">
+          <div class="quick-filters" id="inventory-page-numbers" style="margin:0;"></div>
+          <button id="inventory-page-prev" class="quick-filter" type="button">Předchozí</button>
+          <button id="inventory-page-next" class="quick-filter" type="button">Další</button>
+        </div>
+      </div>
+    </section>
+
+    <details class="secondary-details" id="inventory-secondary" data-section-nav-label="Sekundární vrstva" data-section-nav-order="4" style="margin-top:20px;">
+      <summary>Sekundární vrstva: vedlejší tabulky, širší analýza a technický detail</summary>
+
+    <section class="layer-shell" style="margin-top:20px;">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 3</div>
+          <h2 class="layer-title">Co řešit až po hlavním průchodu</h2>
+          <p class="layer-subtitle">Sekundární workflow shrnutí a širší zásobový kontext až poté, co projdeš horní explorer.</p>
+        </div>
+      </div>
+      <section class="summary-grid" id="inventory-work-grid"></section>
+    </section>
+
+    <section class="layer-shell" style="margin-top:20px;">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Sekundární vrstva</div>
+          <h2 class="layer-title">Vedlejší analýza a kontrolní tabulky</h2>
+          <p class="layer-subtitle">KPI, delší tabulky a širší zásobový kontext patří až sem, ne do horního rozhodovacího toku.</p>
+        </div>
+      </div>
+      <section class="summary-grid" id="inventory-secondary-grid"></section>
+    </section>
+
+    <section class="grid kpi-grid" id="inventory-kpis"></section>
+
+    <section class="card" style="margin-top:20px;">
+      <h2 class="section-title">Největší nesoulady</h2>
+      <div class="section-subtitle">Seznam věcí s největším dopadem na provoz.</div>
+      <div class="ux-table-wrap">
+        <table class="table" data-sortable-table="priority-shortlist">
+          <thead>
+            <tr>
+              <th><button type="button" class="table-sort" data-sort-table="priority-shortlist" data-sort-key="product">Priorita / produkt <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="priority-shortlist" data-sort-key="score">Score <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="priority-shortlist" data-sort-key="wpj4pxStock">WPJ 4PX <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="priority-shortlist" data-sort-key="fourpxAvailable">4PX available <span class="table-sort-arrow">↕</span></button></th>
+              <th>Důvod / doporučení</th>
+            </tr>
+          </thead>
+          <tbody id="priority-shortlist-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid two-col" style="margin-top:20px;">
+      <div class="card">
+        <h2 class="section-title">Nejtočivější produkty za poslední rok</h2>
+      <div class="section-subtitle">Nejtočivější produkty za poslední rok a orientační pokrytí zásob.</div>
+        <table class="table" data-sortable-table="turnover">
+          <thead>
+            <tr>
+              <th><button type="button" class="table-sort" data-sort-table="turnover" data-sort-key="product">Kód / produkt <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="turnover" data-sort-key="units365d">Prodej 365d <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="turnover" data-sort-key="effectiveStock">Aktuální sklad <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="turnover" data-sort-key="daysOfCover365d">Dny pokrytí <span class="table-sort-arrow">↕</span></button></th>
+            </tr>
+          </thead>
+          <tbody id="turnover-table"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Riziko brzkého vyprodání</h2>
+      <div class="section-subtitle">Rychle se prodávají a zásoba je nízko.</div>
+        <table class="table" data-sortable-table="fast-low-cover">
+          <thead>
+            <tr>
+              <th><button type="button" class="table-sort" data-sort-table="fast-low-cover" data-sort-key="product">Kód / produkt <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="fast-low-cover" data-sort-key="units365d">Prodej 365d <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="fast-low-cover" data-sort-key="effectiveStock">Aktuální sklad <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="fast-low-cover" data-sort-key="daysOfCover365d">Dny pokrytí <span class="table-sort-arrow">↕</span></button></th>
+            </tr>
+          </thead>
+          <tbody id="fast-low-cover-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid two-col" style="margin-top:20px;">
+      <div class="card">
+        <h2 class="section-title">Zboží bez pohybu</h2>
+      <div class="section-subtitle">Zásoba leží dlouho bez pohybu nebo má extrémně dlouhé pokrytí.</div>
+        <table class="table" data-sortable-table="slow-movers">
+          <thead>
+            <tr>
+              <th><button type="button" class="table-sort" data-sort-table="slow-movers" data-sort-key="product">Kód / produkt <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="slow-movers" data-sort-key="effectiveStock">Aktuální sklad <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="slow-movers" data-sort-key="daysSinceLastSale">Bez prodeje dnů <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="slow-movers" data-sort-key="daysOfCover365d">Dny pokrytí <span class="table-sort-arrow">↕</span></button></th>
+            </tr>
+          </thead>
+          <tbody id="slow-movers-table"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+      <h2 class="section-title">Sklad bez prodeje</h2>
+        <div class="section-subtitle">Zboží na skladu bez prodeje za posledních 365 dní.</div>
+        <table class="table" data-sortable-table="dead-stock">
+          <thead>
+            <tr>
+              <th><button type="button" class="table-sort" data-sort-table="dead-stock" data-sort-key="product">Kód / produkt <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="dead-stock" data-sort-key="effectiveStock">Aktuální sklad <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="dead-stock" data-sort-key="units365d">Prodej 365d <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="dead-stock" data-sort-key="stockValueSelling">Prodejní hodnota skladu <span class="table-sort-arrow">↕</span></button></th>
+            </tr>
+          </thead>
+          <tbody id="dead-stock-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid two-col" style="margin-top:20px;">
+      <div class="card">
+        <h2 class="section-title">Po včerejšku dochází zásoba</h2>
+        <div class="section-subtitle">Produkty, které se včera prodaly a dnes jsou už na hraně.</div>
+        <table class="table" data-sortable-table="low-stock">
+          <thead>
+            <tr>
+              <th><button type="button" class="table-sort" data-sort-table="low-stock" data-sort-key="product">Kód / produkt <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="low-stock" data-sort-key="soldYesterday">Prodáno včera <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="low-stock" data-sort-key="fourpxAvailable">4PX sklad <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="low-stock" data-sort-key="stockDelta">Delta WPJ vs 4PX <span class="table-sort-arrow">↕</span></button></th>
+            </tr>
+          </thead>
+          <tbody id="low-stock-table"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Jen ve 4PX</h2>
+        <div class="section-subtitle">Produkty, které jsou fyzicky v 4PX, ale ve WPJ zatím nemají správnou vazbu.</div>
+        <table class="table" data-sortable-table="only-4px">
+          <thead>
+            <tr>
+              <th><button type="button" class="table-sort" data-sort-table="only-4px" data-sort-key="product">Kód / produkt <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="only-4px" data-sort-key="fourpxAvailable">4PX sklad <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="only-4px" data-sort-key="outboundYesterday">Včerejší expedice <span class="table-sort-arrow">↕</span></button></th>
+            </tr>
+          </thead>
+          <tbody id="only-4px-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:20px;">
+      <h2 class="section-title">Návrhy napojení pro nespárované kódy</h2>
+      <div class="section-subtitle">Ukazuje automatické návrhy přes suffix typu <code>/01</code> i ruční vazby z mapy.</div>
+      <table class="table" data-sortable-table="mapping-suggestions">
+        <thead>
+          <tr>
+            <th><button type="button" class="table-sort" data-sort-table="mapping-suggestions" data-sort-key="orphanProduct">4PX nepárované SKU <span class="table-sort-arrow">↕</span></button></th>
+            <th><button type="button" class="table-sort" data-sort-table="mapping-suggestions" data-sort-key="suggestedProduct">Navržený WPJ produkt <span class="table-sort-arrow">↕</span></button></th>
+            <th class="num"><button type="button" class="table-sort" data-sort-table="mapping-suggestions" data-sort-key="yesterdayOutboundUnits">Expedováno včera <span class="table-sort-arrow">↕</span></button></th>
+            <th class="num"><button type="button" class="table-sort" data-sort-table="mapping-suggestions" data-sort-key="fourpxAvailable">4PX sklad <span class="table-sort-arrow">↕</span></button></th>
+            <th><button type="button" class="table-sort" data-sort-table="mapping-suggestions" data-sort-key="rule">Pravidlo <span class="table-sort-arrow">↕</span></button></th>
+          </tr>
+        </thead>
+        <tbody id="mapping-suggestions-table"></tbody>
+      </table>
+    </section>
+
+    <section class="card" style="margin-top:20px;">
+      <h2 class="section-title">Největší rozdíly mezi systémy</h2>
+      <div class="section-subtitle">Porovnání stavu ve WPJ a skutečného stavu v 4PX.</div>
+      <table class="table" data-sortable-table="mismatch">
+        <thead>
+          <tr>
+            <th><button type="button" class="table-sort" data-sort-table="mismatch" data-sort-key="product">Kód / produkt <span class="table-sort-arrow">↕</span></button></th>
+            <th class="num"><button type="button" class="table-sort" data-sort-table="mismatch" data-sort-key="wpj4pxStoreTotal">WPJ 4PX sklady <span class="table-sort-arrow">↕</span></button></th>
+            <th class="num"><button type="button" class="table-sort" data-sort-table="mismatch" data-sort-key="fourpxAvailable">4PX available <span class="table-sort-arrow">↕</span></button></th>
+            <th class="num"><button type="button" class="table-sort" data-sort-table="mismatch" data-sort-key="stockDelta">Delta <span class="table-sort-arrow">↕</span></button></th>
+            <th>Flagy</th>
+          </tr>
+        </thead>
+        <tbody id="mismatch-table"></tbody>
+      </table>
+    </section>
+    </details>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+
+    function fmt(value) {
+      return DP.fmtNumber(Math.round(Number(value || 0)));
+    }
+
+    function productLabel(row) {
+      return `${row.code || '–'} · ${row.title || 'Bez názvu'}`;
+    }
+
+    function flagsHtml(flags) {
+      if (!flags?.length) return '<span class="pill info">OK</span>';
+      return flags.map(flag => `<span class="pill warning">${flag}</span>`).join(' ');
+    }
+
+    function priorityPill(priority) {
+      const tone = priority === 'critical' ? 'danger' : priority === 'high' ? 'warning' : 'info';
+      const labels = { critical: 'hned řešit', high: 'vysoká priorita', info: 'sledovat' };
+      return `<span class="pill ${tone}">${labels[priority] || 'sledovat'}</span>`;
+    }
+
+    function fmtCover(value) {
+      return value == null ? '–' : Number(value).toFixed(1);
+    }
+
+    function fmtOne(value) {
+      return value == null ? '–' : Number(value).toLocaleString('cs-CZ', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    }
+
+    function money(value) {
+      return `${DP.fmtNumber(Math.round(Number(value || 0)))} Kč`;
+    }
+
+    function percent(value, digits = 1) {
+      return `${Number(value || 0).toLocaleString('cs-CZ', { minimumFractionDigits: digits, maximumFractionDigits: digits })} %`;
+    }
+
+    function list(value) {
+      return Array.isArray(value) ? value : [];
+    }
+
+    function analyticsBadges(metric) {
+      const tags = new Set(list(metric?.tags));
+      const badges = [];
+      if (tags.has('fast_mover_low_cover')) badges.push('<span class="pill danger">dochází zásoba</span>');
+      if (tags.has('dead_stock')) badges.push('<span class="pill warning">bez prodeje</span>');
+      if (tags.has('slow_mover')) badges.push('<span class="pill info">pomalejší pohyb</span>');
+      if (tags.has('overstocked')) badges.push('<span class="pill warning">přebytková zásoba</span>');
+      return badges.join(' ');
+    }
+
+    function hasExpiryRiskInView(row, view) {
+      return expiryRiskMatchesInView(row, view).length > 0;
+    }
+
+    function expiryRiskMatchesInView6m(row, view) {
+      return list(row.expiryRisk6m?.byAccount?.[accountForView(view)]);
+    }
+
+    function hasExpiryRiskInView6m(row, view) {
+      return expiryRiskMatchesInView6m(row, view).length > 0;
+    }
+
+    function inventoryBadges(row, metric, expiryRisk, view) {
+      const badges = [];
+      const flags = new Set(list(row.flags));
+      if (expiryRisk?.hasRisk && hasExpiryRiskInView(row, view)) badges.push('<span class="pill danger">expirace do 3 měsíců</span>');
+      if (row.expiryRisk6m?.hasRisk && hasExpiryRiskInView6m(row, view) && !hasExpiryRiskInView(row, view)) badges.push('<span class="pill warning">expirace do 6 měsíců</span>');
+      if (flags.has('stock_mismatch')) badges.push('<span class="pill danger">nesoulad stavů</span>');
+      if (flags.has('only_in_4px')) badges.push('<span class="pill warning">jen ve 4PX</span>');
+      if (flags.has('low_after_sales')) badges.push('<span class="pill danger">po prodeji dochází</span>');
+      if (list(row.fourpx?.manualMappedSourceCodes).length) badges.push('<span class="pill success">ručně spárováno</span>');
+      if (flags.has('auto_mapped_4px_alias')) badges.push('<span class="pill info">automatický návrh</span>');
+      const analytics = analyticsBadges(metric);
+      if (analytics) badges.push(analytics);
+      return badges.length ? badges.join(' ') : '<span class="pill info">v pořádku</span>'; 
+    }
+
+    function explorerSourceCodes(row) {
+      const manual = list(row.fourpx?.manualMappedSourceCodes);
+      const auto = list(row.fourpx?.autoMappedSourceCodes);
+      const source = list(row.fourpx?.sourceCodes);
+      const lines = [];
+      if (manual.length) lines.push(`<div class="code-list"><strong>ručně:</strong> ${manual.join(', ')}</div>`);
+      if (auto.length) lines.push(`<div class="code-list"><strong>automaticky:</strong> ${auto.join(', ')}</div>`);
+      if (!manual.length && !auto.length && source.length) lines.push(`<div class="code-list">${source.join(', ')}</div>`);
+      return lines.join('') || '<span class="muted small">bez vazby</span>';
+    }
+
+    function normalizeStoreName(value) {
+      return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+
+    function warehouseQty(row, matcher) {
+      return (row.wpj?.stores || [])
+        .filter(store => matcher(normalizeStoreName(store.storeName)))
+        .reduce((sum, store) => sum + Number(store.inStore || 0), 0);
+    }
+
+    function ltmQty(row) {
+      return warehouseQty(row, name => name.includes('ltm'));
+    }
+
+    function mecinQty(row) {
+      return warehouseQty(row, name => name.includes('mecin'));
+    }
+
+    function expiryTimingLabel(daysToExpiry) {
+      const days = Number(daysToExpiry);
+      if (!Number.isFinite(days)) return '';
+      if (days < 0) return `po expiraci ${fmt(Math.abs(days))} dní`;
+      return `${fmt(days)} dní`;
+    }
+
+    function explorerSearchBlob(row, metric, view) {
+      return [
+        row.code,
+        row.title,
+        ...list(row.flags),
+        ...list(metric?.tags),
+        ...expiryRiskMatchesInView(row, view).map(match => `${match.sku} ${match.daysToExpiry} ${match.dateExpiry}`),
+        ...(row.wpj?.stores || []).map(store => store.storeName),
+        ...list(row.fourpx?.sourceCodes),
+        ...list(row.yesterdaySales?.sourceCodes),
+        ...list(row.yesterdayOutbound?.sourceCodes)
+      ].join(' ').toLowerCase();
+    }
+
+    function isPromoRow(row) {
+      const values = [
+        row.code,
+        row.title,
+        ...list(row.fourpx?.sourceCodes),
+        ...list(row.fourpx?.manualMappedSourceCodes),
+        ...list(row.fourpx?.autoMappedSourceCodes),
+      ];
+      return values.some(value => String(value || '').toUpperCase().includes('PROMO'));
+    }
+
+    function isSetRow(row) {
+      const values = [
+        row.code,
+        row.title,
+        ...list(row.fourpx?.sourceCodes),
+        ...list(row.fourpx?.manualMappedSourceCodes),
+        ...list(row.fourpx?.autoMappedSourceCodes),
+      ];
+      return values.some(value => String(value || '').toUpperCase().startsWith('SET'));
+    }
+
+    function hasSkuStarting0000(row) {
+      const values = [
+        row.code,
+        ...list(row.fourpx?.sourceCodes),
+        ...list(row.fourpx?.manualMappedSourceCodes),
+        ...list(row.fourpx?.autoMappedSourceCodes),
+      ];
+      return values.some(value => String(value || '').startsWith('0000'));
+    }
+
+    function matchesExplorerFilter(row, metric, filter, view) {
+      const flags = new Set(list(row.flags));
+      const tags = new Set(list(metric?.tags));
+      switch (filter) {
+        case 'lte10': {
+          const _lte10stock = view === 'sk'
+            ? Number(row.fourpx?.sk?.availableStock || 0)
+            : Number(row.fourpx?.cz?.availableStock || 0);
+          return _lte10stock <= 10;
+        }
+        case 'expiryRisk6m': return hasExpiryRiskInView6m(row, view);
+        case 'mismatch': return flags.has('stock_mismatch');
+        case 'only4px': return flags.has('only_in_4px');
+        case 'lowAfterSales': return flags.has('low_after_sales');
+        case 'manualAlias': return list(row.fourpx?.manualMappedSourceCodes).length > 0;
+        case 'autoAlias': return flags.has('auto_mapped_4px_alias');
+        case 'fastLowCover': return tags.has('fast_mover_low_cover');
+        case 'deadStock': return tags.has('dead_stock');
+        case 'slowMover': return tags.has('slow_mover') && !isPromoRow(row) && !isSetRow(row) && !hasSkuStarting0000(row);
+        case 'overstocked': return tags.has('overstocked');
+        case 'overstockedNoPromo': return tags.has('overstocked') && !isPromoRow(row) && !isSetRow(row) && !hasSkuStarting0000(row);
+        case 'promo': return isPromoRow(row);
+        case 'ok':
+          return !hasExpiryRiskInView(row, view)
+            && !flags.has('stock_mismatch')
+            && !flags.has('only_in_4px')
+            && !flags.has('low_after_sales')
+            && !flags.has('auto_mapped_4px_alias')
+            && !list(row.fourpx?.manualMappedSourceCodes).length
+            && !tags.has('fast_mover_low_cover')
+            && !tags.has('dead_stock')
+            && !tags.has('slow_mover')
+            && !tags.has('overstocked');
+        default: return true;
+      }
+    }
+
+    function explorerScore(row, metric, view) {
+      let score = 0;
+      const flags = new Set(list(row.flags));
+      const tags = new Set(list(metric?.tags));
+      if (flags.has('only_in_4px')) score += 2000;
+      if (flags.has('low_after_sales')) score += 1800;
+      if (hasExpiryRiskInView(row, view)) {
+        const nearestDays = expiryRiskMatchesInView(row, view)[0]?.daysToExpiry;
+        score += 1700 + Math.max(0, 120 - Number(nearestDays ?? 120)) * 5;
+      }
+      if (flags.has('stock_mismatch')) score += Math.min(Math.abs(Number(row.stockDelta || 0)), 1500);
+      if (list(row.fourpx?.manualMappedSourceCodes).length) score += 900;
+      if (flags.has('auto_mapped_4px_alias')) score += 600;
+      if (tags.has('fast_mover_low_cover')) score += 1200;
+      if (tags.has('dead_stock')) score += 700;
+      score += Number(metric?.units365d || 0) / 10;
+      score += Number(row.yesterdayOutbound?.czUnits || 0) + Number(row.yesterdayOutbound?.skUnits || 0);
+      return score;
+    }
+
+    function csvCell(value) {
+      const text = String(value ?? '');
+      return `"${text.replace(/"/g, '""')}"`;
+    }
+
+    function buildVariantSourceMap(items, marketKey) {
+      const map = new Map();
+      list(items).forEach(item => {
+        const sourceCode = String(item?.sku_code || '').trim();
+        if (!sourceCode) return;
+        const row = map.get(sourceCode) || {
+          sourceCode,
+          availableTotal: 0,
+          czAvailableStock: 0,
+          skAvailableStock: 0,
+        };
+        const qty = Number(item?.warehouse_stock || item?.available_stock || 0);
+        row.availableTotal += qty;
+        if (marketKey === 'cz') row.czAvailableStock += qty;
+        if (marketKey === 'sk') row.skAvailableStock += qty;
+        map.set(sourceCode, row);
+      });
+      return map;
+    }
+
+    function mergeVariantBreakdown(entries) {
+      const grouped = new Map();
+      list(entries).forEach(entry => {
+        const sourceCode = String(entry?.sourceCode || '').trim();
+        if (!sourceCode) return;
+        const row = grouped.get(sourceCode) || {
+          sourceCode,
+          availableTotal: 0,
+          czAvailableStock: 0,
+          skAvailableStock: 0,
+        };
+        row.availableTotal += Number(entry?.availableTotal ?? entry?.availableStock ?? 0);
+        row.czAvailableStock += Number(entry?.czAvailableStock || 0);
+        row.skAvailableStock += Number(entry?.skAvailableStock || 0);
+        grouped.set(sourceCode, row);
+      });
+      return [...grouped.values()].sort((a, b) => String(a.sourceCode || '').localeCompare(String(b.sourceCode || ''), 'cs'));
+    }
+
+    function variantBreakdownTotals(entries) {
+      return list(entries).reduce((totals, entry) => {
+        totals.availableTotal += Number(entry?.availableTotal ?? entry?.availableStock ?? 0);
+        totals.czAvailableStock += Number(entry?.czAvailableStock || 0);
+        totals.skAvailableStock += Number(entry?.skAvailableStock || 0);
+        return totals;
+      }, {
+        availableTotal: 0,
+        czAvailableStock: 0,
+        skAvailableStock: 0,
+      });
+    }
+
+    function variantBreakdownMatchesRow(entries, row) {
+      const totals = variantBreakdownTotals(entries);
+      return Math.abs(totals.availableTotal - Number(row.fourpx?.availableTotal || 0)) < 0.001
+        && Math.abs(totals.czAvailableStock - Number(row.fourpx?.cz?.availableStock || 0)) < 0.001
+        && Math.abs(totals.skAvailableStock - Number(row.fourpx?.sk?.availableStock || 0)) < 0.001;
+    }
+
+    function resolveVariantBreakdown(row, variantSourceMap) {
+      const existingVariants = mergeVariantBreakdown(list(row.fourpx?.variantBreakdown));
+      const fallbackVariants = list(row.fourpx?.sourceCodes)
+        .map(sourceCode => variantSourceMap.get(sourceCode))
+        .filter(Boolean);
+      if (!fallbackVariants.length) {
+        return existingVariants;
+      }
+      const fallbackBreakdown = mergeVariantBreakdown(fallbackVariants);
+      if (variantBreakdownMatchesRow(existingVariants, row)) {
+        const existingCodes = new Set(existingVariants.map(entry => String(entry?.sourceCode || '').trim()).filter(Boolean));
+        return mergeVariantBreakdown([
+          ...existingVariants,
+          ...fallbackBreakdown.filter(entry => !existingCodes.has(String(entry?.sourceCode || '').trim())),
+        ]);
+      }
+      if (fallbackBreakdown.length && variantBreakdownMatchesRow(fallbackBreakdown, row)) {
+        return fallbackBreakdown;
+      }
+      return existingVariants.length ? existingVariants : fallbackBreakdown;
+    }
+
+    function shouldShowVariantBreakdown(row) {
+      const variants = list(row.fourpx?.variantBreakdown);
+      if (!variants.length) return false;
+      return variants.length > 1 || variants.some(entry => String(entry?.sourceCode || '') !== String(row.code || ''));
+    }
+
+    function variantBreakdownHtml(row) {
+      if (!shouldShowVariantBreakdown(row)) return '';
+      return `
+        <div class="code-list" style="margin-top:8px;"><strong>varianty / stavy:</strong></div>
+        ${list(row.fourpx?.variantBreakdown).map(entry => `
+          <div class="muted small">${entry.sourceCode}: CZ ${fmt(entry.czAvailableStock || 0)} · SK ${fmt(entry.skAvailableStock || 0)} · celkem ${fmt(entry.availableTotal || 0)}</div>
+        `).join('')}
+      `;
+    }
+
+    function variantBreakdownCsv(row) {
+      return list(row.fourpx?.variantBreakdown)
+        .map(entry => `${entry.sourceCode}:CZ ${entry.czAvailableStock || 0}|SK ${entry.skAvailableStock || 0}|ALL ${entry.availableTotal || 0}`)
+        .join(', ');
+    }
+
+    function buildDetailExpiryMap(items) {
+      const now = Date.now();
+      const map = new Map();
+      list(items).forEach(item => {
+        if (!item.expiry_date) return;
+        const sku = String(item.sku_code || '').trim();
+        if (!sku) return;
+        const expiryMs = Number(item.expiry_date);
+        if (!Number.isFinite(expiryMs) || expiryMs <= 0) return;
+        const stock = Number(item.warehouse_stock || 0);
+        const daysToExpiry = (expiryMs - now) / 86400000;
+        const dateExpiry = new Date(expiryMs).toISOString().split('T')[0];
+        const perDate = map.get(sku) || new Map();
+        const bucket = perDate.get(dateExpiry) || { dateExpiry, stock: 0, daysToExpiry };
+        bucket.stock += stock;
+        perDate.set(dateExpiry, bucket);
+        map.set(sku, perDate);
+      });
+      const result = new Map();
+      for (const [sku, perDate] of map) {
+        result.set(sku, [...perDate.values()].sort((a, b) => a.daysToExpiry - b.daysToExpiry));
+      }
+      return result;
+    }
+
+    function resolveExpiryDetail(row, czDetailMap, skDetailMap) {
+      const sourceCodes = list(row.fourpx?.sourceCodes).length
+        ? list(row.fourpx?.sourceCodes)
+        : [String(row.code || '').trim()].filter(Boolean);
+      function gather(detailMap) {
+        const byDate = new Map();
+        for (const code of sourceCodes) {
+          for (const e of (detailMap.get(code) || [])) {
+            const existing = byDate.get(e.dateExpiry);
+            if (existing) {
+              existing.stock += e.stock;
+            } else {
+              byDate.set(e.dateExpiry, { ...e });
+            }
+          }
+        }
+        return [...byDate.values()].sort((a, b) => a.daysToExpiry - b.daysToExpiry);
+      }
+      return { CZ: gather(czDetailMap), SK: gather(skDetailMap) };
+    }
+
+    function accountForView(view) {
+      return view === 'sk' ? 'SK' : 'CZ';
+    }
+
+    function buildExpiryRiskMap(rows, windowDays = 90) {
+      const map = new Map();
+      list(rows).forEach(row => {
+        const account = String(row?.account || '').trim().toUpperCase();
+        const sku = String(row?.sku || '').trim();
+        const daysToExpiry = Number(row?.daysToExpiry);
+        if (!account || !sku || !Number.isFinite(daysToExpiry) || daysToExpiry > windowDays) {
+          return;
+        }
+        const key = `${account}::${sku}`;
+        const normalized = {
+          account,
+          sku,
+          daysToExpiry,
+          dateExpiry: row?.dateExpiry || '',
+          datedStock: Number(row?.datedStock || 0),
+          batchCount: Number(row?.batchCount || 0),
+        };
+        const existing = map.get(key);
+        if (!existing || normalized.daysToExpiry < existing.daysToExpiry) {
+          map.set(key, normalized);
+        }
+      });
+      return map;
+    }
+
+    function resolveExpiryRisk(row, expiryRiskMap) {
+      const sourceCodes = new Set([
+        String(row.code || '').trim(),
+        ...list(row.fourpx?.sourceCodes).map(code => String(code || '').trim()),
+        ...list(row.fourpx?.variantBreakdown).map(entry => String(entry?.sourceCode || '').trim()),
+      ].filter(Boolean));
+      const byAccount = { CZ: [], SK: [] };
+      sourceCodes.forEach(code => {
+        for (const account of ['CZ', 'SK']) {
+          const match = expiryRiskMap.get(`${account}::${code}`);
+          if (match) byAccount[account].push(match);
+        }
+      });
+      for (const account of ['CZ', 'SK']) {
+        byAccount[account].sort((a, b) => a.daysToExpiry - b.daysToExpiry || String(a.sku).localeCompare(String(b.sku), 'cs'));
+      }
+      const nearestDays = [...byAccount.CZ, ...byAccount.SK].reduce((best, match) => {
+        if (best == null || match.daysToExpiry < best) return match.daysToExpiry;
+        return best;
+      }, null);
+      return {
+        byAccount,
+        matches: [...byAccount.CZ, ...byAccount.SK],
+        hasRisk: byAccount.CZ.length > 0 || byAccount.SK.length > 0,
+        nearestDays,
+      };
+    }
+
+    function expiryRiskMatchesInView(row, view) {
+      return list(row.expiryRisk?.byAccount?.[accountForView(view)]);
+    }
+
+    function expiryRiskDetailHtml(row, view) {
+      const matches = expiryRiskMatchesInView(row, view);
+      if (!matches.length) return '';
+      return `
+        <div class="code-list" style="margin-top:8px;"><strong>expirace do 90 dní:</strong></div>
+        ${matches.slice(0, 3).map(match => `
+          <div class="muted small">${match.sku}: ${expiryTimingLabel(match.daysToExpiry)} · ${fmt(match.datedStock)} ks · ${match.dateExpiry}</div>
+        `).join('')}
+        ${matches.length > 3 ? `<div class="muted small">+ ${fmt(matches.length - 3)} další expirační řádky</div>` : ''}
+      `;
+    }
+
+    function expiryDetailHtml(row, view) {
+      const account = accountForView(view);
+      const entries = list(row.expiryDetail?.[account]);
+      if (!entries.length) return '';
+      const expiryColor = days => {
+        const d = Number(days);
+        if (d < 0) return '#c0392b';
+        if (d < 90) return '#c97700';
+        return '';
+      };
+      const shown = entries.slice(0, 4);
+      const remaining = entries.length - shown.length;
+      return `
+        <div class="code-list" style="margin-top:8px;"><strong>expirace ${account}:</strong></div>
+        ${shown.map(e => {
+          const color = expiryColor(e.daysToExpiry);
+          const label = expiryTimingLabel(e.daysToExpiry);
+          return `<div class="muted small"${color ? ` style="color:${color}"` : ''}>${e.dateExpiry} · ${label} · ${fmt(e.stock)} ks</div>`;
+        }).join('')}
+        ${remaining > 0 ? `<div class="muted small">+ ${fmt(remaining)} dalších šarží</div>` : ''}
+      `;
+    }
+
+    function expiryRiskCsv(row, view) {
+      return expiryRiskMatchesInView(row, view)
+        .map(match => `${match.sku}:${expiryTimingLabel(match.daysToExpiry)}|${match.datedStock}ks|${match.dateExpiry}`)
+        .join(', ');
+    }
+
+    const EXPLORER_STATE_KEY = 'dp-inventory-explorer-state-v1';
+
+    (async () => {
+      const [overview, analytics, combined, czInventoryDetail, skInventoryDetail, expiryOverview] = await Promise.all([
+        DP.loadJson('../data/current/combined_inventory_overview.json'),
+        DP.loadJson('../data/current/inventory_analytics_365d.json'),
+        DP.loadJson('../data/current/combined_product_index.json'),
+        DP.loadJson('../data/current/4px_cz_inventory_detail.json').catch(() => ({ items: [] })),
+        DP.loadJson('../data/current/4px_sk_inventory_detail.json').catch(() => ({ items: [] })),
+        DP.loadJson('../data/current/4px_expiry_overview.json').catch(() => ({ topExpiring: [], _loadError: true }))
+      ]);
+
+      const expiryDataAvailable = expiryOverview?._loadError !== true;
+      const analyticsItems = analytics.items || [];
+      const expiryRiskMap = buildExpiryRiskMap(expiryOverview.topExpiring || [], 90);
+      const expiryRiskMap6m = buildExpiryRiskMap(expiryOverview.topExpiring || [], 183);
+      const variantSourceMap = new Map(
+        mergeVariantBreakdown([
+          ...buildVariantSourceMap(czInventoryDetail.items || [], 'cz').values(),
+          ...buildVariantSourceMap(skInventoryDetail.items || [], 'sk').values(),
+        ]).map(entry => [entry.sourceCode, entry])
+      );
+      const czDetailExpiryMap = buildDetailExpiryMap(czInventoryDetail.items || []);
+      const skDetailExpiryMap = buildDetailExpiryMap(skInventoryDetail.items || []);
+      const combinedItems = (combined.items || [])
+        .map(row => {
+          return {
+            ...row,
+            expiryRisk: resolveExpiryRisk(row, expiryRiskMap),
+            expiryRisk6m: resolveExpiryRisk(row, expiryRiskMap6m),
+            expiryDetail: resolveExpiryDetail(row, czDetailExpiryMap, skDetailExpiryMap),
+            fourpx: {
+              ...row.fourpx,
+              variantBreakdown: resolveVariantBreakdown(row, variantSourceMap),
+            },
+          };
+        });
+      const analyticsByCode = new Map(analyticsItems.map(row => [row.code, row]));
+      const explorerRows = combinedItems.map(row => ({
+        row,
+        metric: analyticsByCode.get(row.code) || {}
+      }));
+
+      const healthRows = analyticsItems.filter(row => row.orderable !== false);
+      const aRows = healthRows.filter(row => row.orderingRole === 'top_sku');
+      const aCriticalRows = aRows.filter(row => Number(row.effectiveStock || 0) <= 0 || Number(row.daysOfCover90d ?? row.daysOfCover365d ?? Infinity) < 7 || row.reorderRisk === 'critical');
+      const aWarningRows = aRows.filter(row => !aCriticalRows.includes(row) && (Number(row.daysOfCover90d ?? row.daysOfCover365d ?? Infinity) < 14 || ['soon', 'watch'].includes(row.reorderRisk)));
+      const deadRows = healthRows.filter(row => Math.max(0, Number(row.effectiveStock || 0)) > 0 && Number(row.daysOfCover90d ?? row.daysOfCover365d ?? 0) > 180);
+      const slowRows = healthRows.filter(row => {
+        const cover = Number(row.daysOfCover90d ?? row.daysOfCover365d ?? 0);
+        return Math.max(0, Number(row.effectiveStock || 0)) > 0 && cover > 90 && cover <= 180;
+      });
+      const overstockRows = healthRows.filter(row => {
+        const tags = new Set(list(row.tags));
+        return Math.max(0, Number(row.effectiveStock || 0)) > 0 && (tags.has('overstocked') || Number(row.daysOfCover90d ?? row.daysOfCover365d ?? 0) > 90 || row.turnoverZone === 'red');
+      });
+      const totalStockValue = healthRows.reduce((sum, row) => sum + Math.max(0, Number(row.stockValueSelling || 0)), 0);
+      const deadValue = deadRows.reduce((sum, row) => sum + Math.max(0, Number(row.stockValueSelling || 0)), 0);
+      const slowValue = slowRows.reduce((sum, row) => sum + Math.max(0, Number(row.stockValueSelling || 0)), 0);
+      const slowDeadValue = deadValue + slowValue;
+      const overstockValue = overstockRows.reduce((sum, row) => sum + Math.max(0, Number(row.stockValueSelling || 0)), 0);
+      const dailySalesValue90 = healthRows.reduce((sum, row) => sum + (Math.max(0, Number(row.units90d || 0)) * Math.max(0, Number(row.unitSellingPrice || 0)) / 90), 0);
+      const totalCoverDays = dailySalesValue90 > 0 ? totalStockValue / dailySalesValue90 : null;
+      const slowDeadShare = totalStockValue > 0 ? (slowDeadValue / totalStockValue) * 100 : 0;
+      const deadShare = totalStockValue > 0 ? (deadValue / totalStockValue) * 100 : 0;
+      let healthScore = 100;
+      healthScore -= aCriticalRows.length * 8;
+      healthScore -= aWarningRows.length * 3;
+      if (deadShare > 15) healthScore -= 20;
+      else if (deadShare > 8) healthScore -= 10;
+      if (slowDeadShare > 35) healthScore -= 15;
+      else if (slowDeadShare > 20) healthScore -= 8;
+      if (totalCoverDays != null && totalCoverDays > 120) healthScore -= 15;
+      else if (totalCoverDays != null && totalCoverDays > 90) healthScore -= 8;
+      if (totalStockValue > 0 && (overstockValue / totalStockValue) * 100 > 20) healthScore -= 10;
+      healthScore = Math.max(0, Math.round(healthScore));
+
+      const totalCzAvailable = explorerRows.reduce((sum, item) => sum + czQty(item.row), 0);
+      const totalSkAvailable = explorerRows.reduce((sum, item) => sum + skQty(item.row), 0);
+      const total4pxAvailable = explorerRows.reduce((sum, item) => sum + czQty(item.row) + skQty(item.row), 0);
+      const totalStockValueCost = healthRows.reduce((sum, row) => sum + Math.max(0, Number(row.stockValueAbraAvg || 0)), 0);
+      const expiryRiskRows = explorerRows.filter(item => item.row.expiryRisk?.hasRisk);
+      const expiryRiskCzRows = expiryRiskRows.filter(item => item.row.expiryRisk?.byAccount?.CZ?.length);
+      const expiryRiskSkRows = expiryRiskRows.filter(item => item.row.expiryRisk?.byAccount?.SK?.length);
+      const expiryPriorityActive = expiryDataAvailable && expiryRiskRows.length > 0;
+      const expiryCountLabel = expiryDataAvailable ? fmt(expiryRiskRows.length) : 'nedostupné';
+      const expirySplitLabel = expiryDataAvailable ? `${fmt(expiryRiskCzRows.length)} / ${fmt(expiryRiskSkRows.length)}` : 'nedostupné';
+
+      const searchInput = document.getElementById('inventory-search');
+      const marketSelect = document.getElementById('inventory-market');
+      const filterSelect = document.getElementById('inventory-filter');
+      const sortSelect = document.getElementById('inventory-sort');
+      const pageSizeSelect = document.getElementById('inventory-page-size');
+      const exportButton = document.getElementById('inventory-export-csv');
+      const explorerSummary = document.getElementById('inventory-explorer-summary');
+      const explorerHead = document.getElementById('inventory-explorer-head');
+      const explorerTable = document.getElementById('inventory-explorer-table');
+      const viewSummary = document.getElementById('inventory-view-summary');
+      const paginationSummary = document.getElementById('inventory-pagination-summary');
+      const pageNumbersWrap = document.getElementById('inventory-page-numbers');
+      const prevPageButton = document.getElementById('inventory-page-prev');
+      const nextPageButton = document.getElementById('inventory-page-next');
+
+      let activeView = 'cz';
+      let currentPage = 1;
+      let sortDirection = 'desc';
+
+      const viewDefs = {
+        cz: {
+          label: 'CZ',
+          stockLabel: 'CZ sklad',
+          stockValue: row => czQty(row),
+          matches: row => czQty(row) > 0,
+          detail: row => `CZ ${fmt(czQty(row))} · SK ${fmt(skQty(row))}`,
+        },
+        sk: {
+          label: 'SK',
+          stockLabel: 'SK sklad',
+          stockValue: row => skQty(row),
+          matches: row => skQty(row) > 0,
+          detail: row => `SK ${fmt(skQty(row))} · CZ ${fmt(czQty(row))}`,
+        },
+      };
+
+      function czQty(row) {
+        return Number(row.fourpx?.cz?.availableStock || 0);
+      }
+
+      function skQty(row) {
+        return Number(row.fourpx?.sk?.availableStock || 0);
+      }
+
+      function stockInView(row, view = activeView) {
+        return viewDefs[view].stockValue(row);
+      }
+
+      function nestedNumber(source, path) {
+        let current = source;
+        for (const key of path) {
+          if (current == null || typeof current !== 'object' || !(key in current)) return null;
+          current = current[key];
+        }
+        const value = Number(current);
+        return Number.isFinite(value) ? value : null;
+      }
+
+      function salesUnitsInView(row, view = activeView) {
+        const splitValue = nestedNumber(row, ['yesterdaySales', 'byView', view, 'units']);
+        if (splitValue != null) return splitValue;
+        if (view === 'complete') return Number(row.yesterdaySales?.units || 0);
+        if (view === 'cz') return nestedNumber(row, ['yesterdaySales', 'czUnits']) ?? Number(row.yesterdaySales?.units || 0);
+        if (view === 'sk') return nestedNumber(row, ['yesterdaySales', 'skUnits']) ?? Number(row.yesterdaySales?.units || 0);
+        return nestedNumber(row, ['yesterdaySales', `${view}Units`]) ?? 0;
+      }
+
+      function units365dInView(metric, view = activeView) {
+        const splitValue = nestedNumber(metric, ['byView', view, 'units365d']);
+        if (splitValue != null) return splitValue;
+        if (view === 'complete') return Number(metric.units365d || 0);
+        return nestedNumber(metric, [`${view}Units365d`]) ?? Number(metric.units365d || 0);
+      }
+
+      function stockValueCostInView(row, metric, view = activeView) {
+        const stock = stockInView(row, view);
+        if (!(stock > 0)) return 0;
+        const scopedStockValue = nestedNumber(metric, ['byView', view, 'stockValueAbraAvg']);
+        if (scopedStockValue != null) return Math.max(0, scopedStockValue);
+        const unitCost = nestedNumber(metric, ['byView', view, 'unitCostAbraAvg']) ?? nestedNumber(metric, ['unitCostAbraAvg']);
+        if (unitCost != null) return Math.max(0, stock * unitCost);
+        const totalStockValueCost = nestedNumber(metric, ['stockValueAbraAvg']) ?? 0;
+        const denominator = Number(metric.effectiveStock || (czQty(row) + skQty(row)) || 0);
+        if (totalStockValueCost > 0 && denominator > 0) {
+          return Math.max(0, totalStockValueCost * (stock / denominator));
+        }
+        return 0;
+      }
+
+      function stockValueInView(row, metric, view = activeView) {
+        const stock = stockInView(row, view);
+        if (!(stock > 0)) return 0;
+        const scopedStockValue = nestedNumber(metric, ['byView', view, 'stockValueSelling']);
+        if (scopedStockValue != null) return Math.max(0, scopedStockValue);
+        const unitSellingPrice = nestedNumber(metric, ['byView', view, 'unitSellingPrice']) ?? nestedNumber(metric, ['unitSellingPrice']);
+        if (unitSellingPrice != null) return Math.max(0, stock * unitSellingPrice);
+        const totalStockValue = nestedNumber(metric, ['stockValueSelling']) ?? 0;
+        const denominator = Number(metric.effectiveStock || (czQty(row) + skQty(row)) || 0);
+        if (totalStockValue > 0 && denominator > 0) {
+          return Math.max(0, totalStockValue * (stock / denominator));
+        }
+        return 0;
+      }
+
+      function avgMonthlyUnitsInView(metric, view = activeView) {
+        const splitValue = nestedNumber(metric, ['byView', view, 'avgMonthlyUnits365d']);
+        if (splitValue != null) return splitValue;
+        const units365d = units365dInView(metric, view);
+        return units365d ? units365d / 12 : 0;
+      }
+
+      function daysOfCoverInView(row, metric, view = activeView) {
+        const units365d = units365dInView(metric, view);
+        const stock = stockInView(row, view);
+        if (!units365d) return stock > 0 ? null : 0;
+        return stock * 365 / units365d;
+      }
+
+      function resetExplorerPage() {
+        currentPage = 1;
+      }
+
+      function defaultSortDirection(sortKey) {
+        return sortKey === 'coverAsc' || sortKey === 'code' ? 'asc' : 'desc';
+      }
+
+      function sortLabel(sortKey) {
+        const option = [...sortSelect.options].find(item => item.value === sortKey);
+        return option?.text || 'Vlastní řazení';
+      }
+
+      function sortDirectionLabel(direction) {
+        return direction === 'asc' ? 'vzestupně' : 'sestupně';
+      }
+
+      function setSort(sortKey, direction = defaultSortDirection(sortKey)) {
+        if ([...sortSelect.options].some(option => option.value === sortKey)) {
+          sortSelect.value = sortKey;
+        }
+        sortDirection = direction === 'asc' ? 'asc' : 'desc';
+      }
+
+      function persistExplorerState() {
+        localStorage.setItem(EXPLORER_STATE_KEY, JSON.stringify({
+          search: searchInput.value,
+          market: marketSelect.value,
+          filter: filterSelect.value,
+          sort: sortSelect.value,
+          sortDirection,
+          pageSize: pageSizeSelect.value,
+          activeView,
+          currentPage,
+        }));
+      }
+
+      function applyExplorerState(nextState) {
+        if (!nextState) return;
+        if (typeof nextState.search === 'string') searchInput.value = nextState.search;
+        if ([...marketSelect.options].some(option => option.value === nextState.market)) marketSelect.value = nextState.market;
+        if ([...filterSelect.options].some(option => option.value === nextState.filter)) filterSelect.value = nextState.filter;
+        if ([...sortSelect.options].some(option => option.value === nextState.sort)) sortSelect.value = nextState.sort;
+        sortDirection = nextState.sortDirection === 'asc' ? 'asc' : defaultSortDirection(sortSelect.value);
+        if ([...pageSizeSelect.options].some(option => option.value === String(nextState.pageSize))) pageSizeSelect.value = String(nextState.pageSize);
+        if (viewDefs[nextState.activeView]) activeView = nextState.activeView;
+        if (Number.isFinite(Number(nextState.currentPage)) && Number(nextState.currentPage) > 0) currentPage = Number(nextState.currentPage);
+      }
+
+      try {
+        const savedState = JSON.parse(localStorage.getItem(EXPLORER_STATE_KEY) || 'null');
+        applyExplorerState(savedState);
+      } catch (_) {}
+
+      document.getElementById('inventory-hero').innerHTML = [
+        ['Spárované produkty', fmt(overview.counts.pairedProducts), `auto alias ${fmt(overview.counts.autoMapped4pxAliases || 0)} · ruční ${fmt(overview.counts.manualMapped4pxAliases || 0)}`, 'accent'],
+        ['Vázaný kapitál', money(totalStockValueCost), 'hodnota skladu podle ABRA avg cost', ''],
+        ['Nesoulady skladu', fmt(overview.counts.stockMismatch), `${fmt(overview.counts.lowAfterSales || 0)} nízký sklad po prodeji`, ''],
+        ['Jen ve 4PX', fmt(overview.counts.onlyIn4px), `${fmt(overview.counts.onlyInWpj || 0)} jen ve WPJ`, '']
+      ].map(([label, value, sub, klass]) => `
+        <div class="ux-hero-metric ${klass}">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          <div class="sub">${sub}</div>
+        </div>
+      `).join('');
+
+      const analyticsRefresh = analytics.generatedAt ? DP.fmtDateTime(analytics.generatedAt) : '–';
+      const analyticsSource = analytics.sourceGeneratedAt ? DP.fmtDateTime(analytics.sourceGeneratedAt) : null;
+
+      DP.renderStatusStrip('inventory-status-strip', [
+        { label: 'Stav', value: overview.counts.stockMismatch || expiryPriorityActive ? 'Pozor' : 'OK', tone: overview.counts.stockMismatch || expiryPriorityActive ? 'warn' : 'success' },
+        { label: 'Data', value: analyticsSource ? `Sklad live, analytika snapshot ${analyticsSource}` : 'Aktuální sklad po refreshi', tone: 'info' },
+        { label: 'Priorita', value: overview.counts.lowAfterSales ? 'Nízký sklad po prodeji' : expiryPriorityActive ? 'Expirace do 90 dní' : 'Bez kritického výpadku', tone: overview.counts.lowAfterSales || expiryPriorityActive ? 'warn' : 'success' },
+        { label: 'Expirace', value: expiryDataAvailable ? `${fmt(expiryRiskRows.length)} SKU do 90 dní` : 'Feed nedostupný', tone: expiryDataAvailable ? (expiryRiskRows.length ? 'warn' : 'success') : 'warn' },
+        { label: 'Refresh', value: analyticsRefresh, tone: 'info' },
+      ]);
+
+      document.getElementById('inventory-decision-grid').innerHTML = [
+        {
+          eyebrow: 'A produkty v riziku',
+          value: fmt(aCriticalRows.length),
+          sub: `${fmt(aWarningRows.length)} dalších A SKU je pod warning hranou.`,
+          meta: aCriticalRows[0] ? `${aCriticalRows[0].code} · ${aCriticalRows[0].title}` : 'Top SKU jsou bez kritického výpadku.',
+          tone: aCriticalRows.length ? 'danger' : 'accent',
+        },
+        {
+          eyebrow: 'Kapitál ve slow + dead stock',
+          value: money(slowDeadValue),
+          sub: `${percent(slowDeadShare)} z objednatelné zásoby dnes nevydělává dost rychle.`,
+          meta: `Dead ${money(deadValue)} · slow ${money(slowValue)}`,
+          tone: slowDeadShare > 35 ? 'danger' : slowDeadShare > 20 ? 'warn' : '',
+        },
+        {
+          eyebrow: 'Stock-to-sales cover',
+          value: totalCoverDays == null ? '–' : `${fmtOne(totalCoverDays)} dní`,
+          sub: 'Cover skladu podle 90d tempa a selling-price proxy.',
+          meta: totalCoverDays > 120 ? 'Kritický přebytek zásoby.' : totalCoverDays > 90 ? 'Pozor na přezásobení.' : totalCoverDays != null && totalCoverDays < 30 ? 'Pozor na podzásobení.' : 'Cover je v pracovním pásmu.',
+          tone: totalCoverDays > 120 ? 'danger' : totalCoverDays > 90 || (totalCoverDays != null && totalCoverDays < 30) ? 'warn' : '',
+        },
+        {
+          eyebrow: 'Nesoulad a mapování',
+          value: fmt(overview.counts.stockMismatch || 0),
+          sub: `${fmt(overview.counts.onlyIn4px || 0)} jen ve 4PX · ${fmt(overview.counts.manualMapped4pxAliases || 0)} ručních map.`,
+          meta: `Health score ${fmt(healthScore)} / 100 · overstock ${money(overstockValue)}`,
+          tone: overview.counts.stockMismatch ? 'warn' : '',
+        }
+      ].map(card => `
+        <article class="signal-card ${card.tone || ''}">
+          <div class="eyebrow">${card.eyebrow}</div>
+          <div class="signal-value">${card.value}</div>
+          <div class="signal-sub">${card.sub}</div>
+          <div class="signal-meta">${card.meta}</div>
+        </article>
+      `).join('');
+
+      document.getElementById('inventory-kpis').innerHTML = [
+        ['A SKU kritické', fmt(aCriticalRows.length), 'klíčové položky s rizikem výpadku', 'red'],
+        ['Slow + dead podíl', percent(slowDeadShare), 'kolik zásoby dnes váže cash', slowDeadShare > 20 ? 'gold' : 'green'],
+        ['Dead stock podíl', percent(deadShare), 'položky s pokrytím nad 180 dní', deadShare > 15 ? 'red' : deadShare > 8 ? 'gold' : 'green'],
+        ['Health score', `${fmt(healthScore)} / 100`, 'rychlý health signál skladu', healthScore < 60 ? 'red' : healthScore < 80 ? 'gold' : 'blue']
+      ].map(([label, value, sub, klass]) => `
+        <div class="card kpi-card ${klass}">
+          <div class="kpi-label">${label}</div>
+          <div class="kpi-value">${value}</div>
+          <div class="kpi-sub">${sub}</div>
+        </div>
+      `).join('');
+
+      const lowStockRows = overview.lowAfterSales || [];
+      const only4pxRows = overview.onlyIn4px || [];
+      const priorityRows = overview.priorityShortlist || [];
+
+      document.getElementById('inventory-attention-badge').textContent = `${fmt(lowStockRows.length + only4pxRows.length + Math.min(priorityRows.length, 3))} signálů k řešení`;
+      document.getElementById('inventory-attention-list').innerHTML = [
+        lowStockRows[0] ? [`Po včerejšku dochází zásoba`, `${lowStockRows[0].code} · ${lowStockRows[0].title} má teď ${fmt(lowStockRows[0].fourpx?.availableTotal)} ks.`] : null,
+        priorityRows[0] ? [`Prioritní nesoulad`, `${priorityRows[0].code} · ${priorityRows[0].title} patří mezi nejdůležitější ke kontrole.`] : null,
+        only4pxRows[0] ? [`Položky pouze v 4PX`, `${fmt(only4pxRows.length)} nepárované SKU je potřeba dopárovat nebo vědomě ignorovat.`] : null,
+      ].filter(Boolean).map(([title, text], index) => `
+        <div class="ux-item">
+          <span class="ux-dot ${index === 1 ? 'gold' : 'blue'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      const inventoryRoutes = [
+        ['Objednávání', 'ordering.html', overview.counts.lowAfterSales ? 'Navazuje tam rozhodnutí, co skutečně doobjednat.' : 'Shortlist, simulace a export objednávky.'],
+        ['Logistika', 'logistics.html', 'Navazuje sem řešení pohybů, expedice a provozního toku.'],
+        ['Přehled firmy', 'index.html', 'Vrať se na hlavní decision layer a širší kontext firmy.'],
+        ['Ranní report', '../data/current/morning_report_previous_day.txt', 'Rychlý textový vstup do dnešního stavu napříč firmou.']
+      ];
+      document.getElementById('inventory-route-links').innerHTML = inventoryRoutes.map(([label, href, hint]) => `
+        <a href="${href}" ${href.startsWith('..') ? 'target="_blank" rel="noopener"' : ''} title="${hint}">${label}</a>
+      `).join('');
+
+      document.getElementById('inventory-stat-list').innerHTML = [
+        ['Datum reportu', new Date(overview.window.from).toLocaleDateString('cs-CZ')],
+        ['CZ celkem', `${fmt(totalCzAvailable)} ks`],
+        ['SK celkem', `${fmt(totalSkAvailable)} ks`],
+        ['Vázaný kapitál', money(totalStockValueCost)],
+        ['Jen ve WPJ', fmt(overview.counts.onlyInWpj || 0)],
+        ['Nízký sklad po prodeji', fmt(overview.counts.lowAfterSales || 0)],
+        ['Expirace do 90 dní', expiryCountLabel],
+        ['Ruční mapování', fmt(overview.counts.manualMapped4pxAliases || 0)],
+      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+      document.getElementById('inventory-work-grid').innerHTML = [
+        {
+          title: 'Pořadí po hlavním průchodu',
+          text: 'Krátký follow-up až ve chvíli, kdy už máš hotový horní explorer.',
+          body: [
+            ['1', overview.counts.lowAfterSales ? 'Přepnout do objednávání' : 'Vrátit se k top nesouladům'],
+            ['2', overview.counts.onlyIn4px ? 'Dopárovat 4PX orphan SKU' : 'Projít ruční mapování'],
+            ['3', 'Otevřít kontrolní tabulky dole'],
+            ['4', 'Teprve potom širší zásobovou analýzu'],
+          ]
+        },
+        {
+          title: 'Rizikové fronty',
+          text: 'Kolik práce čeká v jednotlivých sekundárních frontách.',
+          body: [
+            ['Nesoulady', fmt(overview.counts.stockMismatch || 0)],
+            ['Nízký sklad po prodeji', fmt(overview.counts.lowAfterSales || 0)],
+            ['Expirace do 90 dní', expiryCountLabel],
+            ['Jen ve 4PX', fmt(overview.counts.onlyIn4px || 0)],
+            ['Jen ve WPJ', fmt(overview.counts.onlyInWpj || 0)],
+          ]
+        },
+        {
+          title: 'Kam to nejspíš povede dál',
+          text: 'Až po hlavním průchodu skladu, ne jako první navigace dne.',
+          body: [
+            ['Objednávání', overview.counts.lowAfterSales ? 'navazuje hned' : 'dle potřeby'],
+            ['Logistika', overview.counts.onlyIn4px ? 'zkontrolovat orphan flow' : 'jen provozní follow-up'],
+            ['CZ + SK', `${fmt(total4pxAvailable)} ks`],
+            ['Doporučení', 'Nahoře rozhodnutí, dole kontext'],
+          ]
+        }
+      ].map(card => `
+        <article class="summary-card">
+          <h3>${card.title}</h3>
+          <p>${card.text}</p>
+          <div class="ux-stat-list">
+            ${card.body.map(([label, value]) => `
+              <div class="ux-stat-row">
+                <span>${label}</span>
+                <strong>${value}</strong>
+              </div>
+            `).join('')}
+          </div>
+        </article>
+      `).join('');
+
+      document.getElementById('inventory-secondary-grid').innerHTML = [
+        {
+          title: 'KPI a health kontext',
+          text: 'Souhrnný health score a podíl slow/dead zásoby pro širší obrázek po hlavním rozhodnutí.',
+          body: [
+            ['Health score', `${fmt(healthScore)} / 100`],
+            ['Slow + dead', percent(slowDeadShare)],
+            ['Dead stock', percent(deadShare)],
+            ['Cover', totalCoverDays == null ? '–' : `${fmtOne(totalCoverDays)} dní`],
+          ]
+        },
+        {
+          title: 'Kontrolní tabulky',
+          text: 'Nesoulady, low stock, jen ve 4PX a mapovací návrhy pro hlubší kontrolu.',
+          body: [
+            ['Největší nesoulady', fmt(priorityRows.length)],
+            ['Po včerejšku dochází', fmt(lowStockRows.length)],
+            ['Expirace CZ/SK', expirySplitLabel],
+            ['Jen ve 4PX', fmt(only4pxRows.length)],
+            ['Ruční mapování', fmt(overview.counts.manualMapped4pxAliases || 0)],
+          ]
+        },
+        {
+          title: 'Širší zásobový kontext',
+          text: 'Až když potřebuješ víc než hlavní explorer a sekundární kontrolní tabulky.',
+          body: [
+            ['Slow movers', fmt(slowRows.length)],
+            ['Dead stock', fmt(deadRows.length)],
+            ['Overstock value', money(overstockValue)],
+            ['Doporučení', 'Nech až po hlavním průchodu'],
+          ]
+        }
+      ].map(card => `
+        <article class="summary-card">
+          <h3>${card.title}</h3>
+          <p>${card.text}</p>
+          <div class="ux-stat-list">
+            ${card.body.map(([label, value]) => `
+              <div class="ux-stat-row">
+                <span>${label}</span>
+                <strong>${value}</strong>
+              </div>
+            `).join('')}
+          </div>
+        </article>
+      `).join('');
+
+      function compareNullableNumber(aValue, bValue, direction, nullsLast = true) {
+        const aMissing = aValue == null || Number.isNaN(Number(aValue));
+        const bMissing = bValue == null || Number.isNaN(Number(bValue));
+        if (aMissing && bMissing) return 0;
+        if (aMissing) return nullsLast ? 1 : -1;
+        if (bMissing) return nullsLast ? -1 : 1;
+        return direction === 'asc' ? Number(aValue) - Number(bValue) : Number(bValue) - Number(aValue);
+      }
+
+      function getExplorerRows() {
+        const query = searchInput.value.trim().toLowerCase();
+        activeView = marketSelect.value === 'sk' ? 'sk' : 'cz';
+        const filter = filterSelect.value;
+        const sort = sortSelect.value;
+        const direction = sortDirection;
+        const rows = explorerRows
+          .filter(({ row }) => viewDefs[activeView].matches(row))
+          .filter(({ row, metric }) => matchesExplorerFilter(row, metric, filter, activeView))
+          .filter(({ row, metric }) => !query || explorerSearchBlob(row, metric, activeView).includes(query));
+
+        rows.sort((a, b) => {
+          if (sort === 'stockInView') {
+            return compareNullableNumber(stockInView(a.row), stockInView(b.row), direction, false)
+              || explorerScore(b.row, b.metric, activeView) - explorerScore(a.row, a.metric, activeView);
+          }
+          if (sort === 'stockValue') {
+            return compareNullableNumber(stockValueInView(a.row, a.metric), stockValueInView(b.row, b.metric), direction, false)
+              || explorerScore(b.row, b.metric, activeView) - explorerScore(a.row, a.metric, activeView);
+          }
+          if (sort === 'sales365d') {
+            return compareNullableNumber(units365dInView(a.metric), units365dInView(b.metric), direction, false)
+              || explorerScore(b.row, b.metric, activeView) - explorerScore(a.row, a.metric, activeView);
+          }
+          if (sort === 'avgMonthly') {
+            return compareNullableNumber(avgMonthlyUnitsInView(a.metric), avgMonthlyUnitsInView(b.metric), direction, false)
+              || explorerScore(b.row, b.metric, activeView) - explorerScore(a.row, a.metric, activeView);
+          }
+          if (sort === 'coverAsc') {
+            return compareNullableNumber(daysOfCoverInView(a.row, a.metric), daysOfCoverInView(b.row, b.metric), direction, true)
+              || explorerScore(b.row, b.metric, activeView) - explorerScore(a.row, a.metric, activeView);
+          }
+          if (sort === 'code') {
+            const codeCompare = String(a.row.code || '').localeCompare(String(b.row.code || ''), 'cs');
+            return direction === 'asc' ? codeCompare : -codeCompare;
+          }
+          const scoreCompare = compareNullableNumber(explorerScore(a.row, a.metric, activeView), explorerScore(b.row, b.metric, activeView), direction, false);
+          return scoreCompare
+            || stockInView(b.row) - stockInView(a.row)
+            || units365dInView(b.metric) - units365dInView(a.metric)
+            || String(a.row.code || '').localeCompare(String(b.row.code || ''), 'cs');
+        });
+
+        return rows;
+      }
+
+      function renderExplorerHead() {
+        const columns = [
+          { key: 'code', label: 'Produkt', align: '' },
+          { key: null, label: 'Stav', align: '' },
+          { key: 'stockInView', label: viewDefs[activeView].stockLabel, align: 'num' },
+          { key: 'stockValue', label: 'Hodnota skladu', align: 'num' },
+          { key: 'sales365d', label: 'Prodej 365d', align: 'num' },
+          { key: 'avgMonthly', label: 'Průměr / měsíc', align: 'num' },
+          { key: 'coverAsc', label: 'Pokrytí', align: 'num' },
+          { key: null, label: 'Detail / SKU', align: '' },
+        ];
+
+        explorerHead.innerHTML = `
+          <tr>
+            ${columns.map(({ key, label, align }) => {
+              if (!key) return `<th class="${align}">${label}</th>`;
+              const active = sortSelect.value === key;
+              const arrow = active ? (sortDirection === 'asc' ? '↑' : '↓') : '↕';
+              return `<th class="${align}"><button type="button" class="table-sort${active ? ' active' : ''}" data-sort-key="${key}" aria-label="Řadit podle ${label}">${label} <span class="table-sort-arrow">${arrow}</span></button></th>`;
+            }).join('')}
+          </tr>
+        `;
+      }
+
+      function buildPageNumberItems(totalPages, page) {
+        if (totalPages <= 7) {
+          return Array.from({ length: totalPages }, (_, index) => index + 1);
+        }
+        if (page <= 3) return [1, 2, 3, 4, 'ellipsis-end', totalPages];
+        if (page >= totalPages - 2) return [1, 'ellipsis-start', totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+        return [1, 'ellipsis-start', page - 1, page, page + 1, 'ellipsis-end', totalPages];
+      }
+
+      function renderPaginationControls(totalPages) {
+        if (!pageNumbersWrap) return;
+        if (totalPages <= 1) {
+          pageNumbersWrap.innerHTML = '';
+          return;
+        }
+        pageNumbersWrap.innerHTML = buildPageNumberItems(totalPages, currentPage).map(item => {
+          if (typeof item !== 'number') return '<span class="pagination-inline-meta">…</span>';
+          const activeClass = item === currentPage ? ' active' : '';
+          const currentAttr = item === currentPage ? ' aria-current="page"' : '';
+          return `<button type="button" class="quick-filter${activeClass}" data-page-number="${item}"${currentAttr}>${fmt(item)}</button>`;
+        }).join('');
+      }
+
+      function renderExplorer() {
+        const filter = filterSelect.value;
+        const sort = sortSelect.value;
+        const pageSize = Number(pageSizeSelect.value || 50);
+        const rows = getExplorerRows();
+
+        const totalUnits = rows.reduce((sum, item) => sum + stockInView(item.row), 0);
+        const totalStockValueInView = rows.reduce((sum, item) => sum + stockValueInView(item.row, item.metric), 0);
+        const totalPages = Math.max(1, Math.ceil(rows.length / pageSize));
+        currentPage = Math.min(currentPage, totalPages);
+        const pageStart = (currentPage - 1) * pageSize;
+        const visible = rows.slice(pageStart, pageStart + pageSize);
+
+        viewSummary.textContent = `Pohled ${viewDefs[activeView].label}: ${fmt(rows.length)} SKU, ${fmt(totalUnits)} ks celkem, hodnota skladu ${money(totalStockValueInView)}.`;
+        explorerSummary.textContent = `Filtr: ${filterSelect.options[filterSelect.selectedIndex].text}. Řazení: ${sortLabel(sort)} (${sortDirectionLabel(sortDirection)}). Hodnota skladu v tabulce je prodejní hodnota; vázaný kapitál nahoře je ABRA avg cost.${!expiryDataAvailable ? ' Expirační feed je teď nedostupný, takže stav EXPIRACE nemusí být kompletní.' : ''}`;
+        paginationSummary.textContent = `Strana ${fmt(currentPage)} z ${fmt(totalPages)} · zobrazeno ${fmt(visible.length)} z ${fmt(rows.length)} řádků.`;
+        persistExplorerState();
+        renderExplorerHead();
+
+        prevPageButton.disabled = currentPage <= 1;
+        nextPageButton.disabled = currentPage >= totalPages;
+        renderPaginationControls(totalPages);
+
+        explorerTable.innerHTML = visible.map(({ row, metric }) => `
+          <tr>
+            <td>
+              <div><strong>${productLabel(row)}</strong></div>
+              <div class="muted small" style="margin-top:6px;">${viewDefs[activeView].detail(row)}</div>
+            </td>
+            <td>${inventoryBadges(row, metric, row.expiryRisk, activeView)}</td>
+            <td class="num">${fmt(stockInView(row))}</td>
+            <td class="num">${money(stockValueInView(row, metric))}</td>
+            <td class="num">${fmt(units365dInView(metric))}</td>
+            <td class="num">${fmtOne(avgMonthlyUnitsInView(metric))}</td>
+            <td class="num">${daysOfCoverInView(row, metric) == null ? 'bez prodeje' : `${fmtCover(daysOfCoverInView(row, metric))} dnů`}</td>
+            <td>
+              ${expiryDetailHtml(row, activeView)}
+              ${variantBreakdownHtml(row)}
+              ${explorerSourceCodes(row)}
+              <div class="muted small" style="margin-top:6px;">včera prodáno ${fmt(salesUnitsInView(row))} ks · expedováno ${fmt(Number(row.yesterdayOutbound?.czUnits || 0) + Number(row.yesterdayOutbound?.skUnits || 0))} ks · nákupka ${money(nestedNumber(metric, ['unitCostAbraAvg']) ?? 0)}/ks · cost hodnota ${money(stockValueCostInView(row, metric))}</div>
+            </td>
+          </tr>
+        `).join('') || '<tr><td colspan="8">Nic neodpovídá aktuálnímu pohledu nebo filtru.</td></tr>';
+      }
+
+      searchInput.addEventListener('input', () => {
+        resetExplorerPage();
+        renderExplorer();
+      });
+      filterSelect.addEventListener('change', () => {
+        resetExplorerPage();
+        renderExplorer();
+      });
+      marketSelect.addEventListener('change', () => {
+        resetExplorerPage();
+        renderExplorer();
+      });
+      sortSelect.addEventListener('change', () => {
+        setSort(sortSelect.value, defaultSortDirection(sortSelect.value));
+        resetExplorerPage();
+        renderExplorer();
+      });
+      pageSizeSelect.addEventListener('change', () => {
+        resetExplorerPage();
+        renderExplorer();
+      });
+      explorerHead.addEventListener('click', event => {
+        const button = event.target.closest('[data-sort-key]');
+        if (!button) return;
+        const nextSort = button.dataset.sortKey;
+        const nextDirection = sortSelect.value === nextSort
+          ? (sortDirection === 'desc' ? 'asc' : 'desc')
+          : defaultSortDirection(nextSort);
+        setSort(nextSort, nextDirection);
+        resetExplorerPage();
+        renderExplorer();
+      });
+      exportButton.addEventListener('click', () => {
+        const rows = getExplorerRows();
+        const header = [
+          'view',
+          'code',
+          'title',
+          'flags',
+          'stock_in_view',
+          'stock_value_selling_in_view',
+          'stock_value_cost_in_view',
+          'unit_cost_abra_avg',
+          'units_365d',
+          'avg_units_per_month',
+          'days_of_cover_in_view',
+          'cz_stock',
+          'sk_stock',
+          'sold_yesterday_units',
+          'outbound_yesterday_units',
+          'expiry_risk_in_view',
+          'source_codes',
+          'variant_breakdown',
+          'manual_aliases',
+          'auto_aliases'
+        ];
+        const lines = [header.map(csvCell).join(';')];
+        rows.forEach(({ row, metric }) => {
+          lines.push([
+            viewDefs[activeView].label,
+            row.code,
+            row.title,
+            list(row.flags).join(','),
+            stockInView(row),
+            stockValueInView(row, metric).toFixed(2),
+            stockValueCostInView(row, metric).toFixed(2),
+            nestedNumber(metric, ['unitCostAbraAvg']) ?? '',
+            units365dInView(metric),
+            avgMonthlyUnitsInView(metric).toFixed(1),
+            daysOfCoverInView(row, metric) == null ? '' : daysOfCoverInView(row, metric).toFixed(1),
+            czQty(row),
+            skQty(row),
+            salesUnitsInView(row),
+            Number(row.yesterdayOutbound?.czUnits || 0) + Number(row.yesterdayOutbound?.skUnits || 0),
+            expiryRiskCsv(row, activeView),
+            list(row.fourpx?.sourceCodes).join(','),
+            variantBreakdownCsv(row),
+            list(row.fourpx?.manualMappedSourceCodes).join(','),
+            list(row.fourpx?.autoMappedSourceCodes).join(','),
+          ].map(csvCell).join(';'));
+        });
+
+        const blob = new Blob(['\uFEFF' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `inventory-explorer-${new Date().toISOString().slice(0, 10)}.csv`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      });
+      prevPageButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage -= 1;
+          renderExplorer();
+        }
+      });
+      nextPageButton.addEventListener('click', () => {
+        currentPage += 1;
+        renderExplorer();
+      });
+      pageNumbersWrap?.addEventListener('click', event => {
+        const button = event.target.closest('[data-page-number]');
+        if (!button) return;
+        const nextPage = Number(button.dataset.pageNumber || 0);
+        if (!Number.isFinite(nextPage) || nextPage === currentPage) return;
+        currentPage = nextPage;
+        renderExplorer();
+      });
+
+      renderExplorer();
+
+      const SORT_PRIORITY_RANK = { critical: 3, high: 2, medium: 1, low: 0 };
+      const sortableTableStates = {
+        'priority-shortlist': { key: 'score', direction: 'desc' },
+        'turnover': { key: 'units365d', direction: 'desc' },
+        'fast-low-cover': { key: 'daysOfCover365d', direction: 'asc' },
+        'slow-movers': { key: 'daysSinceLastSale', direction: 'desc' },
+        'dead-stock': { key: 'stockValueSelling', direction: 'desc' },
+        'low-stock': { key: 'soldYesterday', direction: 'desc' },
+        'only-4px': { key: 'fourpxAvailable', direction: 'desc' },
+        'mapping-suggestions': { key: 'yesterdayOutboundUnits', direction: 'desc' },
+        'mismatch': { key: 'stockDelta', direction: 'desc' },
+      };
+
+      function sortableText(value) {
+        return String(value || '').toLocaleLowerCase('cs');
+      }
+
+      function compareSortableValues(aValue, bValue, direction = 'asc', type = 'text') {
+        if (type === 'number') {
+          return compareNullableNumber(aValue, bValue, direction, true);
+        }
+        const compare = sortableText(aValue).localeCompare(sortableText(bValue), 'cs');
+        return direction === 'asc' ? compare : -compare;
+      }
+
+      function getSortableRows(config) {
+        const state = sortableTableStates[config.id] || { key: config.defaultSortKey, direction: config.defaultDirection || 'desc' };
+        const rows = [...config.rows];
+        const column = config.columns[state.key] || config.columns[config.defaultSortKey];
+        rows.sort((a, b) => {
+          const primary = compareSortableValues(column.value(a), column.value(b), state.direction, column.type);
+          if (primary) return primary;
+          const fallback = config.fallbackKey && config.columns[config.fallbackKey]
+            ? config.columns[config.fallbackKey]
+            : null;
+          if (fallback && fallback !== column) {
+            return compareSortableValues(fallback.value(a), fallback.value(b), fallback.defaultDirection || 'asc', fallback.type);
+          }
+          return 0;
+        });
+        return rows;
+      }
+
+      function updateSortableTableHead(config) {
+        document.querySelectorAll(`[data-sort-table="${config.id}"]`).forEach(button => {
+          const active = sortableTableStates[config.id]?.key === button.dataset.sortKey;
+          const direction = active ? sortableTableStates[config.id].direction : null;
+          const arrow = active ? (direction === 'asc' ? '↑' : '↓') : '↕';
+          button.classList.toggle('active', active);
+          const arrowEl = button.querySelector('.table-sort-arrow');
+          if (arrowEl) arrowEl.textContent = arrow;
+        });
+      }
+
+      function renderSortableTable(config) {
+        const rows = getSortableRows(config);
+        const tbody = document.getElementById(config.bodyId);
+        tbody.innerHTML = rows.length
+          ? rows.map(config.renderRow).join('')
+          : `<tr><td colspan="${config.colspan}">${config.emptyMessage}</td></tr>`;
+        updateSortableTableHead(config);
+      }
+
+      const sortableTableConfigs = [
+        {
+          id: 'priority-shortlist',
+          bodyId: 'priority-shortlist-table',
+          rows: overview.priorityShortlist || [],
+          defaultSortKey: 'score',
+          defaultDirection: 'desc',
+          fallbackKey: 'product',
+          colspan: 5,
+          emptyMessage: 'Zatím bez prioritního shortlistu.',
+          columns: {
+            product: { type: 'text', defaultDirection: 'asc', value: row => `${row.code || ''} ${row.title || ''}` },
+            score: { type: 'number', defaultDirection: 'desc', value: row => row.score },
+            wpj4pxStock: { type: 'number', defaultDirection: 'desc', value: row => row.wpj4pxStock },
+            fourpxAvailable: { type: 'number', defaultDirection: 'desc', value: row => row.fourpxAvailable },
+            priority: { type: 'number', defaultDirection: 'desc', value: row => SORT_PRIORITY_RANK[row.priority] ?? -1 },
+          },
+          renderRow: row => `
+            <tr>
+              <td>${priorityPill(row.priority)}<div style="margin-top:8px;">${row.code} · ${row.title}</div></td>
+              <td class="num">${fmt(row.score)}</td>
+              <td class="num">${fmt(row.wpj4pxStock)}</td>
+              <td class="num">${fmt(row.fourpxAvailable)}</td>
+              <td>
+                <div>${(row.reasons || []).join(', ')}</div>
+                <div class="muted small" style="margin-top:6px;">${row.recommendedAction}</div>
+              </td>
+            </tr>
+          `,
+        },
+        {
+          id: 'turnover',
+          bodyId: 'turnover-table',
+          rows: (analytics.topTurnover || []).slice(0, 20),
+          defaultSortKey: 'units365d',
+          defaultDirection: 'desc',
+          fallbackKey: 'product',
+          colspan: 4,
+          emptyMessage: 'Zatím bez roční analytiky.',
+          columns: {
+            product: { type: 'text', defaultDirection: 'asc', value: row => `${row.code || ''} ${row.title || ''}` },
+            units365d: { type: 'number', defaultDirection: 'desc', value: row => row.units365d },
+            effectiveStock: { type: 'number', defaultDirection: 'desc', value: row => row.effectiveStock },
+            daysOfCover365d: { type: 'number', defaultDirection: 'asc', value: row => row.daysOfCover365d },
+          },
+          renderRow: row => `
+            <tr>
+              <td>${row.code} · ${row.title}</td>
+              <td class="num">${fmt(row.units365d)}</td>
+              <td class="num">${fmt(row.effectiveStock)}</td>
+              <td class="num">${row.daysOfCover365d ?? '–'}</td>
+            </tr>
+          `,
+        },
+        {
+          id: 'fast-low-cover',
+          bodyId: 'fast-low-cover-table',
+          rows: (analytics.fastLowCover || []).slice(0, 20),
+          defaultSortKey: 'daysOfCover365d',
+          defaultDirection: 'asc',
+          fallbackKey: 'product',
+          colspan: 4,
+          emptyMessage: 'Aktuálně bez low-cover shortlistu.',
+          columns: {
+            product: { type: 'text', defaultDirection: 'asc', value: row => `${row.code || ''} ${row.title || ''}` },
+            units365d: { type: 'number', defaultDirection: 'desc', value: row => row.units365d },
+            effectiveStock: { type: 'number', defaultDirection: 'desc', value: row => row.effectiveStock },
+            daysOfCover365d: { type: 'number', defaultDirection: 'asc', value: row => row.daysOfCover365d },
+          },
+          renderRow: row => `
+            <tr>
+              <td>${row.code} · ${row.title}</td>
+              <td class="num">${fmt(row.units365d)}</td>
+              <td class="num">${fmt(row.effectiveStock)}</td>
+              <td class="num">${row.daysOfCover365d ?? '–'}</td>
+            </tr>
+          `,
+        },
+        {
+          id: 'slow-movers',
+          bodyId: 'slow-movers-table',
+          rows: (analytics.slowMovers || []).slice(0, 20),
+          defaultSortKey: 'daysSinceLastSale',
+          defaultDirection: 'desc',
+          fallbackKey: 'product',
+          colspan: 4,
+          emptyMessage: 'Aktuálně bez ležáků.',
+          columns: {
+            product: { type: 'text', defaultDirection: 'asc', value: row => `${row.code || ''} ${row.title || ''}` },
+            effectiveStock: { type: 'number', defaultDirection: 'desc', value: row => row.effectiveStock },
+            daysSinceLastSale: { type: 'number', defaultDirection: 'desc', value: row => row.daysSinceLastSale },
+            daysOfCover365d: { type: 'number', defaultDirection: 'desc', value: row => row.daysOfCover365d },
+          },
+          renderRow: row => `
+            <tr>
+              <td>${row.code} · ${row.title}</td>
+              <td class="num">${fmt(row.effectiveStock)}</td>
+              <td class="num">${row.daysSinceLastSale ?? '–'}</td>
+              <td class="num">${row.daysOfCover365d ?? '–'}</td>
+            </tr>
+          `,
+        },
+        {
+          id: 'dead-stock',
+          bodyId: 'dead-stock-table',
+          rows: (analytics.deadStock || []).slice(0, 20),
+          defaultSortKey: 'stockValueSelling',
+          defaultDirection: 'desc',
+          fallbackKey: 'product',
+          colspan: 4,
+          emptyMessage: 'Aktuálně bez mrtvého skladu.',
+          columns: {
+            product: { type: 'text', defaultDirection: 'asc', value: row => `${row.code || ''} ${row.title || ''}` },
+            effectiveStock: { type: 'number', defaultDirection: 'desc', value: row => row.effectiveStock },
+            units365d: { type: 'number', defaultDirection: 'desc', value: row => row.units365d },
+            stockValueSelling: { type: 'number', defaultDirection: 'desc', value: row => row.stockValueSelling },
+          },
+          renderRow: row => `
+            <tr>
+              <td>${row.code} · ${row.title}</td>
+              <td class="num">${fmt(row.effectiveStock)}</td>
+              <td class="num">${fmt(row.units365d)}</td>
+              <td class="num">${row.stockValueSelling ? `${fmt(row.stockValueSelling)} Kč` : '–'}</td>
+            </tr>
+          `,
+        },
+        {
+          id: 'low-stock',
+          bodyId: 'low-stock-table',
+          rows: overview.lowAfterSales || [],
+          defaultSortKey: 'soldYesterday',
+          defaultDirection: 'desc',
+          fallbackKey: 'product',
+          colspan: 4,
+          emptyMessage: 'Aktuálně bez kritického shortlistu.',
+          columns: {
+            product: { type: 'text', defaultDirection: 'asc', value: row => `${row.code || ''} ${row.title || ''}` },
+            soldYesterday: { type: 'number', defaultDirection: 'desc', value: row => row.yesterdaySales?.units },
+            fourpxAvailable: { type: 'number', defaultDirection: 'desc', value: row => row.fourpx?.availableTotal },
+            stockDelta: { type: 'number', defaultDirection: 'desc', value: row => row.stockDelta },
+          },
+          renderRow: row => `
+            <tr>
+              <td>${productLabel(row)}</td>
+              <td class="num">${fmt(row.yesterdaySales.units)}</td>
+              <td class="num">${fmt(row.fourpx.availableTotal)}</td>
+              <td class="num">${fmt(row.stockDelta)}</td>
+            </tr>
+          `,
+        },
+        {
+          id: 'only-4px',
+          bodyId: 'only-4px-table',
+          rows: overview.onlyIn4px || [],
+          defaultSortKey: 'fourpxAvailable',
+          defaultDirection: 'desc',
+          fallbackKey: 'product',
+          colspan: 3,
+          emptyMessage: 'Aktuálně bez nepárované 4PX SKU.',
+          columns: {
+            product: { type: 'text', defaultDirection: 'asc', value: row => `${row.code || ''} ${row.title || ''}` },
+            fourpxAvailable: { type: 'number', defaultDirection: 'desc', value: row => row.fourpx?.availableTotal },
+            outboundYesterday: { type: 'number', defaultDirection: 'desc', value: row => Number(row.yesterdayOutbound?.czUnits || 0) + Number(row.yesterdayOutbound?.skUnits || 0) },
+          },
+          renderRow: row => `
+            <tr>
+              <td>${productLabel(row)}</td>
+              <td class="num">${fmt(row.fourpx.availableTotal)}</td>
+              <td class="num">${fmt(row.yesterdayOutbound.czUnits + row.yesterdayOutbound.skUnits)}</td>
+            </tr>
+          `,
+        },
+        {
+          id: 'mapping-suggestions',
+          bodyId: 'mapping-suggestions-table',
+          rows: overview.mappingSuggestions || [],
+          defaultSortKey: 'yesterdayOutboundUnits',
+          defaultDirection: 'desc',
+          fallbackKey: 'orphanProduct',
+          colspan: 5,
+          emptyMessage: 'Zatím bez mapovacích návrhů.',
+          columns: {
+            orphanProduct: { type: 'text', defaultDirection: 'asc', value: row => `${row.orphanCode || ''} ${row.orphanTitle || ''}` },
+            suggestedProduct: { type: 'text', defaultDirection: 'asc', value: row => `${row.suggestedWpjCode || ''} ${row.suggestedWpjTitle || ''}` },
+            yesterdayOutboundUnits: { type: 'number', defaultDirection: 'desc', value: row => row.yesterdayOutboundUnits },
+            fourpxAvailable: { type: 'number', defaultDirection: 'desc', value: row => row.fourpxAvailable },
+            rule: { type: 'text', defaultDirection: 'asc', value: row => row.rule },
+          },
+          renderRow: row => `
+            <tr>
+              <td>${row.orphanCode} · ${row.orphanTitle}</td>
+              <td>${row.suggestedWpjCode} · ${row.suggestedWpjTitle}</td>
+              <td class="num">${fmt(row.yesterdayOutboundUnits)}</td>
+              <td class="num">${fmt(row.fourpxAvailable)}</td>
+              <td>${row.rule}${row.applied ? ' • applied' : ''}</td>
+            </tr>
+          `,
+        },
+        {
+          id: 'mismatch',
+          bodyId: 'mismatch-table',
+          rows: overview.stockMismatches || [],
+          defaultSortKey: 'stockDelta',
+          defaultDirection: 'desc',
+          fallbackKey: 'product',
+          colspan: 5,
+          emptyMessage: 'Žádné nesoulady.',
+          columns: {
+            product: { type: 'text', defaultDirection: 'asc', value: row => `${row.code || ''} ${row.title || ''}` },
+            wpj4pxStoreTotal: { type: 'number', defaultDirection: 'desc', value: row => row.wpj?.fourpxStoreTotal },
+            fourpxAvailable: { type: 'number', defaultDirection: 'desc', value: row => row.fourpx?.availableTotal },
+            stockDelta: { type: 'number', defaultDirection: 'desc', value: row => row.stockDelta },
+          },
+          renderRow: row => `
+            <tr>
+              <td>${productLabel(row)}</td>
+              <td class="num">${fmt(row.wpj.fourpxStoreTotal)}</td>
+              <td class="num">${fmt(row.fourpx.availableTotal)}</td>
+              <td class="num">${fmt(row.stockDelta)}</td>
+              <td>${flagsHtml(row.flags)}</td>
+            </tr>
+          `,
+        },
+      ];
+
+      document.addEventListener('click', event => {
+        const button = event.target.closest('[data-sort-table]');
+        if (!button) return;
+        const tableId = button.dataset.sortTable;
+        const config = sortableTableConfigs.find(item => item.id === tableId);
+        if (!config) return;
+        const key = button.dataset.sortKey;
+        const column = config.columns[key];
+        if (!column) return;
+        const state = sortableTableStates[tableId];
+        sortableTableStates[tableId] = {
+          key,
+          direction: state.key === key
+            ? (state.direction === 'desc' ? 'asc' : 'desc')
+            : (column.defaultDirection || 'desc'),
+        };
+        renderSortableTable(config);
+      });
+
+      sortableTableConfigs.forEach(renderSortableTable);
+    })().catch(err => {
+      document.getElementById('inventory-window').textContent = `Nepodařilo se načíst data: ${err.message}`;
+    });
+  </script>
+</body>
+</html>

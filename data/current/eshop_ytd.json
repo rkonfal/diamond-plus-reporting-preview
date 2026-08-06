@@ -1,0 +1,143 @@
+{
+  "generatedAt": "2026-08-06T15:48:37.259702+02:00",
+  "currentCutoff": "2026-08-06T15:48:37.259702+02:00",
+  "previousCutoff": "2025-08-06T15:48:37.259702+02:00",
+  "years": {
+    "previous": 2025,
+    "current": 2026
+  },
+  "months": [
+    {
+      "month": 1,
+      "label": "Leden",
+      "partial": false,
+      "previous": {
+        "year": 2025,
+        "count": 12103,
+        "revenueWithVat": 18415525.16
+      },
+      "current": {
+        "year": 2026,
+        "count": 9846,
+        "revenueWithVat": 16599591.12
+      }
+    },
+    {
+      "month": 2,
+      "label": "Únor",
+      "partial": false,
+      "previous": {
+        "year": 2025,
+        "count": 12773,
+        "revenueWithVat": 19037043.5
+      },
+      "current": {
+        "year": 2026,
+        "count": 10445,
+        "revenueWithVat": 16901482.66
+      }
+    },
+    {
+      "month": 3,
+      "label": "Březen",
+      "partial": false,
+      "previous": {
+        "year": 2025,
+        "count": 13298,
+        "revenueWithVat": 19161358.82
+      },
+      "current": {
+        "year": 2026,
+        "count": 12064,
+        "revenueWithVat": 19861069.94
+      }
+    },
+    {
+      "month": 4,
+      "label": "Duben",
+      "partial": false,
+      "previous": {
+        "year": 2025,
+        "count": 13446,
+        "revenueWithVat": 21297840.28
+      },
+      "current": {
+        "year": 2026,
+        "count": 10602,
+        "revenueWithVat": 17746446.24
+      }
+    },
+    {
+      "month": 5,
+      "label": "Květen",
+      "partial": false,
+      "previous": {
+        "year": 2025,
+        "count": 11627,
+        "revenueWithVat": 18483202.9
+      },
+      "current": {
+        "year": 2026,
+        "count": 10492,
+        "revenueWithVat": 17750152.43
+      }
+    },
+    {
+      "month": 6,
+      "label": "Červen",
+      "partial": false,
+      "previous": {
+        "year": 2025,
+        "count": 10734,
+        "revenueWithVat": 17057670.71
+      },
+      "current": {
+        "year": 2026,
+        "count": 9041,
+        "revenueWithVat": 15182385.23
+      }
+    },
+    {
+      "month": 7,
+      "label": "Červenec",
+      "partial": false,
+      "previous": {
+        "year": 2025,
+        "count": 11719,
+        "revenueWithVat": 18545961.58
+      },
+      "current": {
+        "year": 2026,
+        "count": 9576,
+        "revenueWithVat": 15646719.36
+      }
+    },
+    {
+      "month": 8,
+      "label": "Srpen",
+      "partial": true,
+      "previous": {
+        "year": 2025,
+        "count": 2138,
+        "revenueWithVat": 3046200.42
+      },
+      "current": {
+        "year": 2026,
+        "count": 1739,
+        "revenueWithVat": 2726195.65
+      }
+    }
+  ],
+  "totals": {
+    "previous": {
+      "count": 87838,
+      "revenueWithVat": 135044803.37,
+      "averageOrderValue": 1537.43
+    },
+    "current": {
+      "count": 73805,
+      "revenueWithVat": 122414042.63,
+      "averageOrderValue": 1658.61
+    }
+  }
+}

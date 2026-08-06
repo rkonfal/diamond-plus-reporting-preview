@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solo report expirací, Reporting V2</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .expiry-solo-table th, .expiry-solo-table td { vertical-align: top; }
+    .expiry-solo-table .num { white-space: nowrap; }
+    .expiry-solo-toolbar {
+      display:grid;
+      grid-template-columns: minmax(220px, 1.3fr) repeat(4, minmax(140px, .7fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .expiry-solo-toolbar input,
+    .expiry-solo-toolbar select {
+      width:100%;
+      border:1px solid var(--border-color);
+      border-radius:12px;
+      background:var(--surface-raised);
+      color:var(--text);
+      padding:10px 12px;
+      font:inherit;
+      box-sizing:border-box;
+    }
+    .expiry-chip-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:12px;
+    }
+    .expiry-chip {
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border-color);
+      color:var(--text-muted);
+    }
+    .expiry-chip.danger { color:#ffb4b4; border-color:rgba(255,97,97,.35); background:rgba(255,97,97,.12); }
+    .expiry-chip.warn { color:#ffd88d; border-color:rgba(255,184,77,.35); background:rgba(255,184,77,.12); }
+    .expiry-chip.info { color:#a8d1ff; border-color:rgba(91,160,255,.35); background:rgba(91,160,255,.12); }
+    .muted-note { color: var(--text-muted); font-size: 13px; }
+    @media (max-width: 980px) {
+      .expiry-solo-toolbar { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar" data-sidebar-page="expiry-solo.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Solo report expirací" data-sidebar-section="Akce a expirace" data-sidebar-footer="Kompletní přehled položek s expirací, prodejem za den a stavem skladu."></aside>
+
+  <main class="main page-stack">
+    <header class="header" id="expiry-solo-step-1" data-section-nav-label="Krok 1: co znamenají expirace" data-section-nav-order="1">
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Akce a expirace • solo report</div>
+          <h1 class="ux-title">Kompletní přehled expirací</h1>
+          <p class="ux-subtitle">Všechny položky s expirací včetně průměrného prodeje za den za posledních 30 dní, aktuálního skladu a nejbližší expirace.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/4px_expiry_overview.json" target="_blank" rel="noopener">Expirační data</a>
+            <a class="ux-button secondary" href="expiry.html">Původní expirace</a>
+            <a class="ux-button secondary" href="inventory.html">Sklad</a>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+      <section class="ux-hero-metrics" id="hero-metrics"></section>
+      <div class="status-strip" id="status-strip"></div>
+      <div class="ux-date-note" id="date-note"></div>
+    </header>
+
+    <section class="layer-shell" id="expiry-solo-inputs" data-section-nav-label="Hlavní vstupy" data-section-nav-order="2">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Hlavní vstupy</div>
+          <h2 class="layer-title">Filtry a rychlá orientace</h2>
+          <p class="layer-subtitle">Průměr za den je počítaný jako prodej za posledních 30 dní / 30. Nejdřív filtruj, až potom čti celé tabulky.</p>
+        </div>
+      </div>
+      <section class="ux-grid">
+        <div class="ux-focus-card">
+          <div class="ux-section-head">
+            <div>
+              <h2 class="ux-section-title">První průchod solo reportem</h2>
+              <p class="ux-section-subtitle">Začni filtrem, pak skoč do CZ/SK tabulek a mismatchů.</p>
+            </div>
+            <span class="badge info">Solo pohled</span>
+          </div>
+          <div class="ux-list">
+            <div class="ux-item">
+              <span class="ux-dot gold"></span>
+              <div>
+                <strong>1. Zúžit problém</strong>
+                <span>Filtruj účet, urgenci a stav 4PX vs WPJ, než půjdeš po konkrétním SKU.</span>
+              </div>
+            </div>
+            <div class="ux-item">
+              <span class="ux-dot blue"></span>
+              <div>
+                <strong>2. Číst po trhu</strong>
+                <span>Nejdřív CZ, potom SK. Solo report je nejlepší na ruční dohledání konkrétní položky.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ux-side-stack">
+          <div class="ux-panel-card">
+            <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Hlavní vstupy</h3>
+            <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Přeskoč rovnou na filtr, CZ detail, SK detail nebo technickou poznámku.</p>
+            <div class="section-nav-links" id="expiry-solo-route-links" style="margin-top:16px;"></div>
+          </div>
+          <div class="ux-panel-card">
+            <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Jak to použít</h3>
+            <div class="ux-stat-list">
+              <div><span>Nejdřív</span><strong>filtr + urgence</strong></div>
+              <div><span>Pak</span><strong>CZ / SK tabulky</strong></div>
+              <div><span>Nakonec</span><strong>WPJ mismatch detail</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="expiry-solo-toolbar">
+        <input id="search" type="search" placeholder="Hledat podle SKU nebo názvu" />
+        <select id="account-filter">
+          <option value="all">Všechny účty</option>
+          <option value="CZ">CZ</option>
+          <option value="SK">SK</option>
+        </select>
+        <select id="urgency-filter">
+          <option value="all">Všechny expirace</option>
+          <option value="expired">Již po expiraci</option>
+          <option value="7">Do 7 dní</option>
+          <option value="30">Do 30 dní</option>
+          <option value="90">Do 90 dní</option>
+        </select>
+        <select id="wpj-filter">
+          <option value="all">4PX vs WPJ: vše</option>
+          <option value="mismatch">Jen nesoulad</option>
+          <option value="missing_wpj_4px_stock">Jen 4PX ano / WPJ ne</option>
+          <option value="missing_wpj_variant">Jen 4PX ano / WPJ jen základ</option>
+          <option value="no_wpj_product">Jen 4PX ano / WPJ produkt chybí</option>
+          <option value="aligned">Jen 4PX ano / WPJ ano</option>
+        </select>
+        <select id="sort-by">
+          <option value="days">Seřadit podle nejbližší expirace</option>
+          <option value="runRate">Seřadit podle prodeje za den</option>
+          <option value="stock">Seřadit podle skladu</option>
+          <option value="risk">Seřadit podle risk score</option>
+        </select>
+      </div>
+      <div class="expiry-chip-row" id="chip-row"></div>
+    </section>
+
+    <section class="layer-shell" id="expiry-solo-step-2" data-section-nav-label="Krok 2: pracovní vrstva" data-section-nav-order="3">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 2</div>
+          <h2 class="layer-title">Pracovní pohled na expirace podle trhu</h2>
+          <p class="layer-subtitle">Solo report je čistý detailní explorer. CZ a SK drž odděleně a používej ho pro konkrétní SKU, ne pro první management čtení.</p>
+        </div>
+      </div>
+    <section class="card">
+      <div class="ux-section-head" style="margin-bottom:0;">
+        <div>
+          <h2 class="ux-section-title">CZ položky s expirací</h2>
+          <p class="ux-section-subtitle" id="table-subtitle-cz">Načítám…</p>
+        </div>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table mobile-stack expiry-solo-table">
+          <thead>
+            <tr>
+              <th>SKU / produkt</th>
+              <th class="num">Průměr / den (30d)</th>
+              <th class="num">Prodej 90d</th>
+              <th class="num">Aktuální sklad</th>
+              <th class="num">Expirační sklad</th>
+              <th class="num">Nejbližší batch</th>
+              <th class="num">Expirace</th>
+              <th class="num">Dní do expirace</th>
+              <th class="num">Pokrytí skladu</th>
+              <th>4PX vs WPJ</th>
+            </tr>
+          </thead>
+          <tbody id="table-body-cz"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="ux-section-head" style="margin-bottom:0;">
+        <div>
+          <h2 class="ux-section-title">SK položky s expirací</h2>
+          <p class="ux-section-subtitle" id="table-subtitle-sk">Načítám…</p>
+        </div>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table mobile-stack expiry-solo-table">
+          <thead>
+            <tr>
+              <th>SKU / produkt</th>
+              <th class="num">Průměr / den (30d)</th>
+              <th class="num">Prodej 90d</th>
+              <th class="num">Aktuální sklad</th>
+              <th class="num">Expirační sklad</th>
+              <th class="num">Nejbližší batch</th>
+              <th class="num">Expirace</th>
+              <th class="num">Dní do expirace</th>
+              <th class="num">Pokrytí skladu</th>
+              <th>4PX vs WPJ</th>
+            </tr>
+          </thead>
+          <tbody id="table-body-sk"></tbody>
+        </table>
+      </div>
+      <p class="muted-note" style="margin-top:14px;">Aktuální sklad bere 4PX available z inventurní analytiky. Expirační sklad = součet zásoby na položkách s dohledaným datem expirace.</p>
+    </section>
+    </section>
+
+    <details class="secondary-details" id="expiry-solo-secondary" data-section-nav-label="Sekundární vrstva" data-section-nav-order="4" open>
+      <summary>Sekundární vrstva: technická poznámka k solo reportu</summary>
+      <section class="card" style="margin-top:18px;">
+        <div class="ux-section-head" style="margin-bottom:0;">
+          <div>
+            <h2 class="ux-section-title">Kdy použít solo report</h2>
+            <p class="ux-section-subtitle">Není to hlavní rozhodovací stránka. Je to detailní dohledávací vrstva pro konkrétní SKU, mismatch nebo expirační batch.</p>
+          </div>
+        </div>
+        <div class="ux-side-list" style="margin-top:16px;">
+          <div>Nejlépe funguje po vstupním rozhodnutí z hlavní stránky `expiry.html`.</div>
+          <div>Je vhodný pro ruční audit rozdílů `4PX vs WPJ`, ne pro rychlý management přehled.</div>
+          <div>Filtry nahoře drž jako první krok, ať se neztratíš v celém seznamu SKU.</div>
+        </div>
+      </section>
+    </details>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+    DP.renderRouteLinks('expiry-solo-route-links', [
+      ['Filtr', '#expiry-solo-inputs', 'Hledání, účet, urgence a WPJ mismatchy'],
+      ['CZ detail', '#table-subtitle-cz', 'CZ položky s expirací'],
+      ['SK detail', '#table-subtitle-sk', 'SK položky s expirací'],
+      ['Technická vrstva', '#expiry-solo-secondary', 'Kdy použít solo report a jak ho číst'],
+    ]);
+
+    const fmt = value => DP.fmtNumber(Number(value || 0));
+    const fmt1 = value => new Intl.NumberFormat('cs-CZ', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(Number(value || 0));
+    const fmtUnits = value => `${fmt(value)} ks`;
+    const fmtUnits1 = value => `${fmt1(value)} ks`;
+    const fmtDays = value => value == null ? '–' : `${fmt(value)} dní`;
+    const fmtDate = value => {
+      if (!value) return '–';
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return value;
+      return new Intl.DateTimeFormat('cs-CZ', { day: 'numeric', month: 'numeric', year: 'numeric' }).format(d);
+    };
+    const wpjFourpxStoreTotal = product => {
+      const stores = Array.isArray(product?.stores) ? product.stores : [];
+      return stores
+        .filter(store => String(store?.store?.name || '').startsWith('4PX'))
+        .reduce((sum, store) => sum + Number(store?.inStore || 0), 0);
+    };
+    const deriveWpjSync = (row, exactProduct = null, fallbackProduct = null) => {
+      if (row.wpjSyncStatus && row.wpjSyncLabel) return row;
+      const exactStoreTotal = wpjFourpxStoreTotal(exactProduct);
+      if (exactProduct?.code && exactStoreTotal > 0) {
+        return {
+          ...row,
+          wpjSyncStatus: 'aligned',
+          wpjSyncLabel: '4PX ano / WPJ ano',
+          wpjSyncTone: 'success',
+          wpjSyncNote: `WPJ hlásí 4PX sklad ${fmt(exactStoreTotal)} ks pro přesnou variantu ${exactProduct.code}.`
+        };
+      }
+      if (exactProduct?.code) {
+        return {
+          ...row,
+          wpjSyncStatus: 'missing_wpj_4px_stock',
+          wpjSyncLabel: '4PX ano / WPJ ne',
+          wpjSyncTone: 'warning',
+          wpjSyncNote: `WPJ má přesnou variantu ${exactProduct.code}, ale 4PX sklad 0 ks, visible ${exactProduct.visible ? 'ano' : 'ne'}.`
+        };
+      }
+      if (fallbackProduct?.code) {
+        const fallbackStoreTotal = wpjFourpxStoreTotal(fallbackProduct);
+        return {
+          ...row,
+          wpjSyncStatus: 'missing_wpj_variant',
+          wpjSyncLabel: '4PX ano / WPJ jen základ',
+          wpjSyncTone: 'warning',
+          wpjSyncNote: `Ve WPJ chybí přesná varianta ${row.sku}; existuje jen ${fallbackProduct.code} s 4PX skladem ${fmt(fallbackStoreTotal)} ks, visible ${fallbackProduct.visible ? 'ano' : 'ne'}.`
+        };
+      }
+      return {
+        ...row,
+        wpjSyncStatus: 'no_wpj_product',
+        wpjSyncLabel: '4PX ano / WPJ produkt chybí',
+        wpjSyncTone: 'danger',
+        wpjSyncNote: 'SKU v direct 4PX datech existuje, ale ve WPJ není produkt.'
+      };
+    };
+    const renderWpjSync = row => {
+      const pill = DP.statusPill(row.wpjSyncLabel || 'Bez dat', row.wpjSyncTone || 'info');
+      const note = row.wpjSyncNote ? `<br /><span style="color:var(--text-muted);">${row.wpjSyncNote}</span>` : '';
+      return `${pill}${note}`;
+    };
+
+    const searchEl = document.getElementById('search');
+    const accountFilterEl = document.getElementById('account-filter');
+    const urgencyFilterEl = document.getElementById('urgency-filter');
+    const wpjFilterEl = document.getElementById('wpj-filter');
+    const sortByEl = document.getElementById('sort-by');
+    const tableBodyCz = document.getElementById('table-body-cz');
+    const tableBodySk = document.getElementById('table-body-sk');
+    const tableSubtitleCz = document.getElementById('table-subtitle-cz');
+    const tableSubtitleSk = document.getElementById('table-subtitle-sk');
+    const chipRow = document.getElementById('chip-row');
+    const heroMetrics = document.getElementById('hero-metrics');
+    const statusStrip = document.getElementById('status-strip');
+    const dateNote = document.getElementById('date-note');
+
+    let rows = [];
+
+    function urgencyMeta(days) {
+      if (days == null) return { label: 'Bez data', cls: 'info' };
+      if (days < 0) return { label: 'Po expiraci', cls: 'danger' };
+      if (days <= 7) return { label: 'Do 7 dní', cls: 'danger' };
+      if (days <= 30) return { label: 'Do 30 dní', cls: 'warn' };
+      return { label: '30+ dní', cls: 'info' };
+    }
+
+    function matchesUrgency(row, urgency) {
+      if (urgency === 'all') return true;
+      if (urgency === 'expired') return row.daysToExpiry != null && row.daysToExpiry < 0;
+      const limit = Number(urgency);
+      return row.daysToExpiry != null && row.daysToExpiry >= 0 && row.daysToExpiry <= limit;
+    }
+
+    function matchesWpjSync(row, wpjFilter) {
+      if (wpjFilter === 'all') return true;
+      const status = row.wpjSyncStatus || '';
+      if (wpjFilter === 'mismatch') return Boolean(status) && status !== 'aligned';
+      if (wpjFilter === 'aligned') return status === 'aligned';
+      return status === wpjFilter;
+    }
+
+    function renderSummary(list) {
+      const expired = list.filter(row => row.daysToExpiry != null && row.daysToExpiry < 0);
+      const due7 = list.filter(row => row.daysToExpiry != null && row.daysToExpiry >= 0 && row.daysToExpiry <= 7);
+      const due30 = list.filter(row => row.daysToExpiry != null && row.daysToExpiry >= 0 && row.daysToExpiry <= 30);
+      const wpjMismatch = list.filter(row => row.wpjSyncStatus && row.wpjSyncStatus !== 'aligned');
+      const totalStock = list.reduce((sum, row) => sum + (row.currentStock || 0), 0);
+      const datedStock = list.reduce((sum, row) => sum + (row.datedStock || 0), 0);
+      const totalRunRate = list.reduce((sum, row) => sum + (row.dailySales30 || 0), 0);
+      const totalUnits90d = list.reduce((sum, row) => sum + (row.units90d || 0), 0);
+      const czRows = list.filter(row => row.account === 'CZ');
+      const skRows = list.filter(row => row.account === 'SK');
+      const summarizeAccount = accountRows => ({
+        items: accountRows.length,
+        stock: accountRows.reduce((sum, row) => sum + (row.currentStock || 0), 0),
+        datedStock: accountRows.reduce((sum, row) => sum + (row.datedStock || 0), 0),
+        units90d: accountRows.reduce((sum, row) => sum + (row.units90d || 0), 0),
+        runRate: accountRows.reduce((sum, row) => sum + (row.dailySales30 || 0), 0),
+      });
+      const cz = summarizeAccount(czRows);
+      const sk = summarizeAccount(skRows);
+
+      heroMetrics.innerHTML = [
+        { label: 'Položky s expirací', value: fmt(list.length), tone: 'neutral' },
+        { label: 'Po expiraci', value: fmt(expired.length), tone: expired.length ? 'danger' : 'success' },
+        { label: 'Do 7 dní', value: fmt(due7.length), tone: due7.length ? 'danger' : 'success' },
+        { label: 'Do 30 dní', value: fmt(due30.length), tone: due30.length ? 'warn' : 'success' },
+        { label: 'Aktuální sklad', value: fmtUnits(totalStock), tone: 'neutral' },
+        { label: 'Expirační sklad', value: fmtUnits(datedStock), tone: 'neutral' },
+        { label: 'Prodej za 90 dní', value: fmtUnits(totalUnits90d), tone: 'neutral' },
+        { label: 'Součet průměru / den', value: fmtUnits1(totalRunRate), tone: 'neutral' },
+        { label: 'CZ sklad / 90d', value: `${fmtUnits(cz.stock)} • ${fmtUnits(cz.units90d)}`, tone: 'neutral' },
+        { label: 'SK sklad / 90d', value: `${fmtUnits(sk.stock)} • ${fmtUnits(sk.units90d)}`, tone: 'neutral' },
+        { label: 'CZ průměr / den', value: fmtUnits1(cz.runRate), tone: 'neutral' },
+        { label: 'SK průměr / den', value: fmtUnits1(sk.runRate), tone: 'neutral' }
+      ].map(metric => `
+        <article class="metric-card ${metric.tone || ''}">
+          <div class="metric-label">${metric.label}</div>
+          <div class="metric-value">${metric.value}</div>
+        </article>`).join('');
+
+      statusStrip.innerHTML = `
+        <div class="status-pill ${expired.length ? 'danger' : 'success'}">${expired.length ? `${fmt(expired.length)} položek je po expiraci` : 'Nic není po expiraci'}</div>
+        <div class="status-pill ${due7.length ? 'danger' : 'success'}">${due7.length ? `${fmt(due7.length)} položek končí do 7 dní` : 'Nic nekončí do 7 dní'}</div>
+        <div class="status-pill ${due30.length ? 'warn' : 'success'}">${due30.length ? `${fmt(due30.length)} položek končí do 30 dní` : 'Nic nekončí do 30 dní'}</div>
+        <div class="status-pill ${wpjMismatch.length ? 'warn' : 'success'}">${wpjMismatch.length ? `${fmt(wpjMismatch.length)} řádků nesedí proti WPJ` : '4PX a WPJ jsou sladěné'}</div>`;
+
+      chipRow.innerHTML = [
+        { label: `Po expiraci: ${fmt(expired.length)}`, cls: 'danger' },
+        { label: `Do 7 dní: ${fmt(due7.length)}`, cls: 'danger' },
+        { label: `Do 30 dní: ${fmt(due30.length)}`, cls: 'warn' },
+        { label: `Aktuální sklad: ${fmtUnits(totalStock)}`, cls: 'info' },
+        { label: `Expirační sklad: ${fmtUnits(datedStock)}`, cls: 'info' },
+        { label: `Prodej za 90 dní: ${fmtUnits(totalUnits90d)}`, cls: 'info' },
+        { label: `4PX vs WPJ nesoulad: ${fmt(wpjMismatch.length)}`, cls: wpjMismatch.length ? 'warn' : 'success' },
+        { label: `CZ: ${fmt(cz.items)} položek, sklad ${fmtUnits(cz.stock)}, 90d ${fmtUnits(cz.units90d)}`, cls: 'info' },
+        { label: `SK: ${fmt(sk.items)} položek, sklad ${fmtUnits(sk.stock)}, 90d ${fmtUnits(sk.units90d)}`, cls: 'info' },
+        { label: `Součet průměru za den: ${fmtUnits1(totalRunRate)}`, cls: 'info' }
+      ].map(chip => `<span class="expiry-chip ${chip.cls}">${chip.label}</span>`).join('');
+    }
+
+    function renderRows(list, targetBody, targetSubtitle, label) {
+      targetSubtitle.textContent = `Zobrazeno ${fmt(list.length)} ${label}.`;
+      targetBody.innerHTML = list.map(row => {
+        const urgency = urgencyMeta(row.daysToExpiry);
+        const coverLabel = row.dailySales30 > 0 ? fmtDays(Math.round((row.currentStock || 0) / row.dailySales30)) : 'bez prodeje';
+        return `
+          <tr>
+            <td data-label="SKU / produkt">
+              <strong>${row.sku}</strong><br />
+              <span>${row.title || 'Bez názvu'}</span>
+            </td>
+            <td class="num" data-label="Průměr / den (30d)">${fmt1(row.dailySales30 || 0)} ks</td>
+            <td class="num" data-label="Prodej 90d">${fmt(row.units90d || 0)} ks</td>
+            <td class="num" data-label="Aktuální sklad">${fmt(row.currentStock || 0)} ks</td>
+            <td class="num" data-label="Expirační sklad">${fmt(row.datedStock || 0)} ks</td>
+            <td class="num" data-label="Nejbližší batch">${fmt(row.stockAtNearestExpiry || 0)} ks</td>
+            <td class="num" data-label="Expirace">${fmtDate(row.dateExpiry)}</td>
+            <td class="num" data-label="Dní do expirace"><span class="badge ${urgency.cls === 'danger' ? 'danger' : urgency.cls === 'warn' ? 'warn' : 'info'}">${row.daysToExpiry == null ? '–' : fmt(row.daysToExpiry)}</span></td>
+            <td class="num" data-label="Pokrytí skladu">${coverLabel}</td>
+            <td data-label="4PX vs WPJ">${renderWpjSync(row)}</td>
+          </tr>`;
+      }).join('');
+    }
+
+    function renderTable() {
+      const term = (searchEl.value || '').trim().toLowerCase();
+      const account = accountFilterEl.value;
+      const urgency = urgencyFilterEl.value;
+      const wpjFilter = wpjFilterEl.value;
+      const sortBy = sortByEl.value;
+
+      let list = rows.filter(row => {
+        if (account !== 'all' && row.account !== account) return false;
+        if (!matchesUrgency(row, urgency)) return false;
+        if (!matchesWpjSync(row, wpjFilter)) return false;
+        if (!term) return true;
+        return `${row.sku} ${row.title || ''}`.toLowerCase().includes(term);
+      });
+
+      list.sort((a, b) => {
+        if (sortBy === 'runRate') return (b.dailySales30 || 0) - (a.dailySales30 || 0) || (a.daysToExpiry ?? 999999) - (b.daysToExpiry ?? 999999);
+        if (sortBy === 'stock') return (b.currentStock || 0) - (a.currentStock || 0) || (a.daysToExpiry ?? 999999) - (b.daysToExpiry ?? 999999);
+        if (sortBy === 'risk') return (b.riskScore || 0) - (a.riskScore || 0) || (a.daysToExpiry ?? 999999) - (b.daysToExpiry ?? 999999);
+        return (a.daysToExpiry ?? 999999) - (b.daysToExpiry ?? 999999) || (b.riskScore || 0) - (a.riskScore || 0);
+      });
+
+      const czList = list.filter(row => row.account === 'CZ');
+      const skList = list.filter(row => row.account === 'SK');
+      renderRows(czList, tableBodyCz, tableSubtitleCz, 'CZ položek');
+      renderRows(skList, tableBodySk, tableSubtitleSk, 'SK položek');
+    }
+
+    async function init() {
+      const [expiryOverview, analytics, analyticsCz, analyticsSk, productsPayload] = await Promise.all([
+        DP.loadJson('../data/current/4px_expiry_overview.json'),
+        DP.loadJson('../data/current/inventory_analytics_730d.json'),
+        DP.loadJson('../data/current/inventory_analytics_730d_cz.json'),
+        DP.loadJson('../data/current/inventory_analytics_730d_sk.json'),
+        DP.loadJson('../data/current/wpj_products.json')
+      ]);
+
+      const analyticsMap = Object.fromEntries((analytics.items || []).map(item => [item.code, item]));
+      const marketAnalyticsMaps = {
+        CZ: Object.fromEntries((analyticsCz.items || []).map(item => [item.code, item])),
+        SK: Object.fromEntries((analyticsSk.items || []).map(item => [item.code, item]))
+      };
+      const productMap = Object.fromEntries((productsPayload.items || []).map(item => [item.code, item]));
+      rows = (expiryOverview.topExpiring || []).map(item => {
+        const plainSku = (item.sku || '').split('/')[0];
+        const exactAnalytics = item.exactAnalytics || {};
+        const analyticsItem =
+          marketAnalyticsMaps[item.account]?.[item.sku]
+          || marketAnalyticsMaps[item.account]?.[plainSku]
+          || analyticsMap[item.sku]
+          || analyticsMap[plainSku]
+          || null;
+        const exactProduct = productMap[item.sku] || null;
+        const fallbackProduct = plainSku && plainSku !== item.sku ? (productMap[plainSku] || null) : null;
+        const exactUnits30d = exactAnalytics.units30d;
+        const exactUnits90d = exactAnalytics.units90d;
+        const exactAvailableStock = exactAnalytics.availableStock;
+        const units30d = Number(exactUnits30d != null ? exactUnits30d : (analyticsItem?.units30d || 0));
+        const units90d = Number(exactUnits90d != null ? exactUnits90d : (analyticsItem?.units90d || 0));
+        const currentStock = Number(exactAvailableStock != null ? exactAvailableStock : (analyticsItem?.fourpxAvailable ?? analyticsItem?.effectiveStock ?? 0));
+        const daysOfCover30 = exactAnalytics.daysOfCover30d != null
+          ? Number(exactAnalytics.daysOfCover30d)
+          : (units30d > 0 ? Number((currentStock / (units30d / 30)).toFixed(1)) : null);
+        return {
+          ...deriveWpjSync(item, exactProduct, fallbackProduct),
+          title: item.title || analyticsItem?.title || '',
+          currentStock,
+          dailySales30: units30d / 30,
+          units30d,
+          units90d,
+          daysOfCover30,
+        };
+      });
+
+      const generatedAt = expiryOverview.generatedAt ? new Date(expiryOverview.generatedAt) : null;
+      dateNote.innerHTML = `<strong>Data:</strong> ${generatedAt ? new Intl.DateTimeFormat('cs-CZ', { dateStyle: 'medium', timeStyle: 'short' }).format(generatedAt) : 'neuvedeno'} • Průměr za den = posledních 30 dní / 30. Pokrytí se v solo reportu počítá nad expirační zásobou konkrétního řádku, ne nad celým available stockem SKU.`;
+
+      const params = new URLSearchParams(window.location.search);
+      const requestedWpjFilter = params.get('wpj');
+      const allowedWpjFilters = new Set(['all', 'mismatch', 'missing_wpj_4px_stock', 'missing_wpj_variant', 'no_wpj_product', 'aligned']);
+      if (requestedWpjFilter && allowedWpjFilters.has(requestedWpjFilter)) {
+        wpjFilterEl.value = requestedWpjFilter;
+      }
+
+      renderSummary(rows);
+      renderTable();
+    }
+
+    [searchEl, accountFilterEl, urgencyFilterEl, wpjFilterEl, sortByEl].forEach(el => el.addEventListener('input', renderTable));
+    [accountFilterEl, urgencyFilterEl, wpjFilterEl, sortByEl].forEach(el => el.addEventListener('change', renderTable));
+
+    init();
+  </script>
+</body>
+</html>

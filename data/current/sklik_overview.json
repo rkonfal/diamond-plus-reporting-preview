@@ -1,0 +1,1285 @@
+{
+  "source": {
+    "status": "live_api",
+    "platform": "sklik",
+    "message": "Sklik account and campaign list fetched directly from API Drak."
+  },
+  "account": {
+    "userId": 360707,
+    "username": "eshop-tiande@seznam.cz",
+    "agencyStatus": "normal"
+  },
+  "foreignAccounts": [],
+  "campaignSummary": {
+    "count": 53,
+    "byStatus": {
+      "active": 6,
+      "suspend": 47
+    },
+    "byType": {
+      "product": 5,
+      "fulltext": 29,
+      "context": 18,
+      "zbozi": 1
+    }
+  },
+  "statsStatusCurrentMonth": [
+    {
+      "date": "20260801T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260802T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260803T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260804T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260805T00:00:00+0000",
+      "status": "preparing"
+    }
+  ],
+  "currentMonth": {
+    "dateFrom": "2026-08-01",
+    "dateTo": "2026-08-05",
+    "total": {
+      "date": "20260801T00:00:00+0000",
+      "impressions": 11633,
+      "clicks": 458,
+      "ctr": 3.94,
+      "cpcCzk": 1.94,
+      "priceCzk": 889.32,
+      "conversions": 166.0,
+      "conversionValueCzk": 219819.0,
+      "transactions": 162,
+      "avgPosition": 1.36
+    },
+    "daily": [
+      {
+        "date": "20260801T00:00:00+0000",
+        "impressions": 1896,
+        "clicks": 93,
+        "ctr": 4.91,
+        "cpcCzk": 1.86,
+        "priceCzk": 173.38,
+        "conversions": 21.0,
+        "conversionValueCzk": 32336.0,
+        "transactions": 20,
+        "avgPosition": 1.32
+      },
+      {
+        "date": "20260802T00:00:00+0000",
+        "impressions": 2081,
+        "clicks": 82,
+        "ctr": 3.94,
+        "cpcCzk": 1.9,
+        "priceCzk": 155.95,
+        "conversions": 27.0,
+        "conversionValueCzk": 38954.0,
+        "transactions": 26,
+        "avgPosition": 1.39
+      },
+      {
+        "date": "20260803T00:00:00+0000",
+        "impressions": 2578,
+        "clicks": 109,
+        "ctr": 4.23,
+        "cpcCzk": 1.96,
+        "priceCzk": 213.79,
+        "conversions": 37.0,
+        "conversionValueCzk": 43119.0,
+        "transactions": 36,
+        "avgPosition": 1.33
+      },
+      {
+        "date": "20260804T00:00:00+0000",
+        "impressions": 2661,
+        "clicks": 91,
+        "ctr": 3.42,
+        "cpcCzk": 1.87,
+        "priceCzk": 170.49,
+        "conversions": 45.0,
+        "conversionValueCzk": 62448.0,
+        "transactions": 44,
+        "avgPosition": 1.39
+      },
+      {
+        "date": "20260805T00:00:00+0000",
+        "impressions": 2417,
+        "clicks": 83,
+        "ctr": 3.43,
+        "cpcCzk": 2.12,
+        "priceCzk": 175.71,
+        "conversions": 36.0,
+        "conversionValueCzk": 42962.0,
+        "transactions": 36,
+        "avgPosition": 1.35
+      }
+    ]
+  },
+  "campaignPerformanceCurrentMonth": [
+    {
+      "id": 3439761,
+      "name": "FM-VYHL-RETENCE-kralovstvi-tiande (EX:CZ-SEA-Brand-Království-tianDe)",
+      "status": "active",
+      "type": "fulltext",
+      "date": "20260801",
+      "impressions": 466,
+      "clicks": 281,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 366.29,
+      "conversions": 116.0,
+      "conversionValueCzk": 1516.17,
+      "transactions": 0,
+      "avgPosition": 0.0
+    },
+    {
+      "id": 4412598,
+      "name": "FM-AKVIZICE-Zboží.cz: Království TianDe",
+      "status": "active",
+      "type": "zbozi",
+      "date": "20260801",
+      "impressions": 504,
+      "clicks": 8,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 33.4,
+      "conversions": 0.0,
+      "conversionValueCzk": 0.0,
+      "transactions": 0,
+      "avgPosition": 0.0
+    },
+    {
+      "id": 7683318,
+      "name": "FM-AKVIZICE-VYHLE-Competitors",
+      "status": "active",
+      "type": "fulltext",
+      "date": "20260801",
+      "impressions": 15,
+      "clicks": 3,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 4.3,
+      "conversions": 0.0,
+      "conversionValueCzk": 0.0,
+      "transactions": 0,
+      "avgPosition": 0.0
+    },
+    {
+      "id": 7778036,
+      "name": "FM-AKVIZICE-VYHL-Kategorie-AKV",
+      "status": "active",
+      "type": "fulltext",
+      "date": "20260801",
+      "impressions": 34,
+      "clicks": 2,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 4.5,
+      "conversions": 0.0,
+      "conversionValueCzk": 0.0,
+      "transactions": 0,
+      "avgPosition": 0.0
+    },
+    {
+      "id": 7840350,
+      "name": "FM-DRTG-produkty-AKVIZICE-kralovstviTiande.cz",
+      "status": "active",
+      "type": "product",
+      "date": "20260801",
+      "impressions": 8197,
+      "clicks": 81,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 305.12,
+      "conversions": 14.0,
+      "conversionValueCzk": 252.4,
+      "transactions": 0,
+      "avgPosition": 0.0
+    }
+  ],
+  "statsStatusPreviousMonth": [
+    {
+      "date": "20260705T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260727T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260706T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260728T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260707T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260729T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260708T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260709T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260730T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260731T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260710T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260711T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260712T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260713T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260714T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260715T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260716T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260717T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260718T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260719T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260720T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260721T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260722T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260701T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260723T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260702T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260724T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260703T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260725T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260704T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260726T00:00:00+0000",
+      "status": "complete"
+    }
+  ],
+  "previousMonth": {
+    "dateFrom": "2026-07-01",
+    "dateTo": "2026-07-31",
+    "total": {
+      "date": "20260701T00:00:00+0000",
+      "impressions": 88610,
+      "clicks": 2994,
+      "ctr": 3.38,
+      "cpcCzk": 2.07,
+      "priceCzk": 6189.02,
+      "conversions": 1221.0,
+      "conversionValueCzk": 1615491.0,
+      "transactions": 1182,
+      "avgPosition": 1.39
+    },
+    "daily": [
+      {
+        "date": "20260701T00:00:00+0000",
+        "impressions": 3486,
+        "clicks": 159,
+        "ctr": 4.56,
+        "cpcCzk": 1.87,
+        "priceCzk": 296.89,
+        "conversions": 52.0,
+        "conversionValueCzk": 71094.0,
+        "transactions": 50,
+        "avgPosition": 1.22
+      },
+      {
+        "date": "20260702T00:00:00+0000",
+        "impressions": 3129,
+        "clicks": 102,
+        "ctr": 3.26,
+        "cpcCzk": 2.25,
+        "priceCzk": 229.18,
+        "conversions": 53.0,
+        "conversionValueCzk": 63112.0,
+        "transactions": 51,
+        "avgPosition": 1.39
+      },
+      {
+        "date": "20260703T00:00:00+0000",
+        "impressions": 2917,
+        "clicks": 87,
+        "ctr": 2.98,
+        "cpcCzk": 2.42,
+        "priceCzk": 210.62,
+        "conversions": 29.0,
+        "conversionValueCzk": 33448.0,
+        "transactions": 28,
+        "avgPosition": 1.2
+      },
+      {
+        "date": "20260704T00:00:00+0000",
+        "impressions": 2102,
+        "clicks": 67,
+        "ctr": 3.19,
+        "cpcCzk": 2.65,
+        "priceCzk": 177.25,
+        "conversions": 12.0,
+        "conversionValueCzk": 18012.0,
+        "transactions": 12,
+        "avgPosition": 1.31
+      },
+      {
+        "date": "20260705T00:00:00+0000",
+        "impressions": 2616,
+        "clicks": 82,
+        "ctr": 3.13,
+        "cpcCzk": 2.18,
+        "priceCzk": 178.36,
+        "conversions": 19.0,
+        "conversionValueCzk": 19274.0,
+        "transactions": 18,
+        "avgPosition": 1.24
+      },
+      {
+        "date": "20260706T00:00:00+0000",
+        "impressions": 2785,
+        "clicks": 115,
+        "ctr": 4.13,
+        "cpcCzk": 2.01,
+        "priceCzk": 230.73,
+        "conversions": 60.0,
+        "conversionValueCzk": 70734.0,
+        "transactions": 58,
+        "avgPosition": 1.35
+      },
+      {
+        "date": "20260707T00:00:00+0000",
+        "impressions": 3181,
+        "clicks": 113,
+        "ctr": 3.55,
+        "cpcCzk": 1.84,
+        "priceCzk": 208.07,
+        "conversions": 74.0,
+        "conversionValueCzk": 86494.0,
+        "transactions": 72,
+        "avgPosition": 1.25
+      },
+      {
+        "date": "20260708T00:00:00+0000",
+        "impressions": 3155,
+        "clicks": 102,
+        "ctr": 3.23,
+        "cpcCzk": 2.23,
+        "priceCzk": 227.63,
+        "conversions": 41.0,
+        "conversionValueCzk": 51680.0,
+        "transactions": 40,
+        "avgPosition": 1.42
+      },
+      {
+        "date": "20260709T00:00:00+0000",
+        "impressions": 3034,
+        "clicks": 85,
+        "ctr": 2.8,
+        "cpcCzk": 2.24,
+        "priceCzk": 190.43,
+        "conversions": 25.0,
+        "conversionValueCzk": 50593.0,
+        "transactions": 24,
+        "avgPosition": 1.34
+      },
+      {
+        "date": "20260710T00:00:00+0000",
+        "impressions": 2823,
+        "clicks": 77,
+        "ctr": 2.73,
+        "cpcCzk": 2.14,
+        "priceCzk": 164.78,
+        "conversions": 30.0,
+        "conversionValueCzk": 43279.0,
+        "transactions": 29,
+        "avgPosition": 1.38
+      },
+      {
+        "date": "20260711T00:00:00+0000",
+        "impressions": 2336,
+        "clicks": 63,
+        "ctr": 2.7,
+        "cpcCzk": 2.48,
+        "priceCzk": 156.48,
+        "conversions": 27.0,
+        "conversionValueCzk": 41187.0,
+        "transactions": 26,
+        "avgPosition": 1.45
+      },
+      {
+        "date": "20260712T00:00:00+0000",
+        "impressions": 2616,
+        "clicks": 92,
+        "ctr": 3.52,
+        "cpcCzk": 2.4,
+        "priceCzk": 220.71,
+        "conversions": 35.0,
+        "conversionValueCzk": 41078.0,
+        "transactions": 34,
+        "avgPosition": 1.4
+      },
+      {
+        "date": "20260713T00:00:00+0000",
+        "impressions": 2844,
+        "clicks": 92,
+        "ctr": 3.23,
+        "cpcCzk": 1.94,
+        "priceCzk": 178.59,
+        "conversions": 60.0,
+        "conversionValueCzk": 85030.0,
+        "transactions": 58,
+        "avgPosition": 1.39
+      },
+      {
+        "date": "20260714T00:00:00+0000",
+        "impressions": 3570,
+        "clicks": 173,
+        "ctr": 4.85,
+        "cpcCzk": 1.73,
+        "priceCzk": 298.95,
+        "conversions": 58.0,
+        "conversionValueCzk": 69460.0,
+        "transactions": 56,
+        "avgPosition": 1.41
+      },
+      {
+        "date": "20260715T00:00:00+0000",
+        "impressions": 2992,
+        "clicks": 123,
+        "ctr": 4.11,
+        "cpcCzk": 1.91,
+        "priceCzk": 235.29,
+        "conversions": 50.0,
+        "conversionValueCzk": 67684.0,
+        "transactions": 48,
+        "avgPosition": 1.52
+      },
+      {
+        "date": "20260716T00:00:00+0000",
+        "impressions": 2934,
+        "clicks": 96,
+        "ctr": 3.27,
+        "cpcCzk": 2.45,
+        "priceCzk": 234.75,
+        "conversions": 27.0,
+        "conversionValueCzk": 30865.0,
+        "transactions": 26,
+        "avgPosition": 1.7
+      },
+      {
+        "date": "20260717T00:00:00+0000",
+        "impressions": 2880,
+        "clicks": 90,
+        "ctr": 3.12,
+        "cpcCzk": 2.3,
+        "priceCzk": 206.86,
+        "conversions": 31.0,
+        "conversionValueCzk": 37903.0,
+        "transactions": 30,
+        "avgPosition": 1.51
+      },
+      {
+        "date": "20260718T00:00:00+0000",
+        "impressions": 2416,
+        "clicks": 59,
+        "ctr": 2.44,
+        "cpcCzk": 2.5,
+        "priceCzk": 147.5,
+        "conversions": 24.0,
+        "conversionValueCzk": 44508.0,
+        "transactions": 24,
+        "avgPosition": 1.5
+      },
+      {
+        "date": "20260719T00:00:00+0000",
+        "impressions": 2420,
+        "clicks": 96,
+        "ctr": 3.97,
+        "cpcCzk": 2.26,
+        "priceCzk": 217.13,
+        "conversions": 52.0,
+        "conversionValueCzk": 47634.0,
+        "transactions": 50,
+        "avgPosition": 1.53
+      },
+      {
+        "date": "20260720T00:00:00+0000",
+        "impressions": 2952,
+        "clicks": 91,
+        "ctr": 3.08,
+        "cpcCzk": 1.86,
+        "priceCzk": 169.63,
+        "conversions": 31.0,
+        "conversionValueCzk": 46169.0,
+        "transactions": 30,
+        "avgPosition": 1.57
+      },
+      {
+        "date": "20260721T00:00:00+0000",
+        "impressions": 3224,
+        "clicks": 124,
+        "ctr": 3.85,
+        "cpcCzk": 1.77,
+        "priceCzk": 219.95,
+        "conversions": 43.0,
+        "conversionValueCzk": 51962.0,
+        "transactions": 42,
+        "avgPosition": 1.54
+      },
+      {
+        "date": "20260722T00:00:00+0000",
+        "impressions": 3325,
+        "clicks": 114,
+        "ctr": 3.43,
+        "cpcCzk": 1.85,
+        "priceCzk": 211.12,
+        "conversions": 54.0,
+        "conversionValueCzk": 92340.0,
+        "transactions": 52,
+        "avgPosition": 1.37
+      },
+      {
+        "date": "20260723T00:00:00+0000",
+        "impressions": 3399,
+        "clicks": 85,
+        "ctr": 2.5,
+        "cpcCzk": 2.3,
+        "priceCzk": 195.59,
+        "conversions": 33.0,
+        "conversionValueCzk": 58450.0,
+        "transactions": 32,
+        "avgPosition": 1.26
+      },
+      {
+        "date": "20260724T00:00:00+0000",
+        "impressions": 2654,
+        "clicks": 80,
+        "ctr": 3.01,
+        "cpcCzk": 2.17,
+        "priceCzk": 173.39,
+        "conversions": 21.0,
+        "conversionValueCzk": 31320.0,
+        "transactions": 20,
+        "avgPosition": 1.45
+      },
+      {
+        "date": "20260725T00:00:00+0000",
+        "impressions": 2406,
+        "clicks": 46,
+        "ctr": 1.91,
+        "cpcCzk": 2.44,
+        "priceCzk": 112.11,
+        "conversions": 12.0,
+        "conversionValueCzk": 13272.0,
+        "transactions": 12,
+        "avgPosition": 1.33
+      },
+      {
+        "date": "20260726T00:00:00+0000",
+        "impressions": 2532,
+        "clicks": 75,
+        "ctr": 2.96,
+        "cpcCzk": 2.01,
+        "priceCzk": 151.04,
+        "conversions": 23.0,
+        "conversionValueCzk": 25312.0,
+        "transactions": 22,
+        "avgPosition": 1.3
+      },
+      {
+        "date": "20260727T00:00:00+0000",
+        "impressions": 3005,
+        "clicks": 131,
+        "ctr": 4.36,
+        "cpcCzk": 1.76,
+        "priceCzk": 230.5,
+        "conversions": 64.0,
+        "conversionValueCzk": 74762.0,
+        "transactions": 62,
+        "avgPosition": 1.39
+      },
+      {
+        "date": "20260728T00:00:00+0000",
+        "impressions": 2835,
+        "clicks": 83,
+        "ctr": 2.93,
+        "cpcCzk": 2.25,
+        "priceCzk": 187.09,
+        "conversions": 49.0,
+        "conversionValueCzk": 72464.0,
+        "transactions": 48,
+        "avgPosition": 1.35
+      },
+      {
+        "date": "20260729T00:00:00+0000",
+        "impressions": 3012,
+        "clicks": 116,
+        "ctr": 3.85,
+        "cpcCzk": 1.73,
+        "priceCzk": 200.71,
+        "conversions": 31.0,
+        "conversionValueCzk": 49618.0,
+        "transactions": 30,
+        "avgPosition": 1.32
+      },
+      {
+        "date": "20260730T00:00:00+0000",
+        "impressions": 2759,
+        "clicks": 92,
+        "ctr": 3.33,
+        "cpcCzk": 1.89,
+        "priceCzk": 173.96,
+        "conversions": 50.0,
+        "conversionValueCzk": 49718.0,
+        "transactions": 48,
+        "avgPosition": 1.33
+      },
+      {
+        "date": "20260731T00:00:00+0000",
+        "impressions": 2271,
+        "clicks": 84,
+        "ctr": 3.7,
+        "cpcCzk": 1.83,
+        "priceCzk": 153.73,
+        "conversions": 51.0,
+        "conversionValueCzk": 77035.0,
+        "transactions": 50,
+        "avgPosition": 1.3
+      }
+    ]
+  },
+  "campaignPerformancePreviousMonth": [
+    {
+      "id": 3439761,
+      "name": "FM-VYHL-RETENCE-kralovstvi-tiande (EX:CZ-SEA-Brand-Království-tianDe)",
+      "status": "active",
+      "type": "fulltext",
+      "date": "20260701",
+      "impressions": 4192,
+      "clicks": 2173,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 2779.51,
+      "conversions": 1124.0,
+      "conversionValueCzk": 14692.73,
+      "transactions": 0,
+      "avgPosition": 0.0
+    },
+    {
+      "id": 4412598,
+      "name": "FM-AKVIZICE-Zboží.cz: Království TianDe",
+      "status": "active",
+      "type": "zbozi",
+      "date": "20260701",
+      "impressions": 5562,
+      "clicks": 101,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 447.34,
+      "conversions": 1.0,
+      "conversionValueCzk": 4.68,
+      "transactions": 0,
+      "avgPosition": 0.0
+    },
+    {
+      "id": 7683318,
+      "name": "FM-AKVIZICE-VYHLE-Competitors",
+      "status": "active",
+      "type": "fulltext",
+      "date": "20260701",
+      "impressions": 156,
+      "clicks": 22,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 29.67,
+      "conversions": 12.0,
+      "conversionValueCzk": 200.44,
+      "transactions": 0,
+      "avgPosition": 0.0
+    },
+    {
+      "id": 7778036,
+      "name": "FM-AKVIZICE-VYHL-Kategorie-AKV",
+      "status": "active",
+      "type": "fulltext",
+      "date": "20260701",
+      "impressions": 327,
+      "clicks": 16,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 45.68,
+      "conversions": 0.0,
+      "conversionValueCzk": 0.0,
+      "transactions": 0,
+      "avgPosition": 0.0
+    },
+    {
+      "id": 7840350,
+      "name": "FM-DRTG-produkty-AKVIZICE-kralovstviTiande.cz",
+      "status": "active",
+      "type": "product",
+      "date": "20260701",
+      "impressions": 78373,
+      "clicks": 682,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 2886.82,
+      "conversions": 84.0,
+      "conversionValueCzk": 1257.06,
+      "transactions": 0,
+      "avgPosition": 0.0
+    }
+  ],
+  "campaigns": [
+    {
+      "endDate": null,
+      "name": "FM-DRTG-produkty-AKVIZICE-kralovstviTiande.cz",
+      "id": 7840350,
+      "type": "product",
+      "startDate": null,
+      "status": "active",
+      "createDate": "20260615T14:07:13+0200"
+    },
+    {
+      "endDate": null,
+      "name": "FM-AKVIZICE-VYHL-Kategorie-AKV",
+      "id": 7778036,
+      "type": "fulltext",
+      "startDate": "20220210T00:00:00+0100",
+      "status": "active",
+      "createDate": "20260503T21:12:47+0200"
+    },
+    {
+      "endDate": null,
+      "name": "FM-AKVIZICE-VYHLE-Competitors",
+      "id": 7683318,
+      "type": "fulltext",
+      "startDate": "20260221T00:00:00+0100",
+      "status": "active",
+      "createDate": "20260223T23:37:31+0100"
+    },
+    {
+      "endDate": null,
+      "name": "[S]_[D]_[BANNER]_2024_TianDe",
+      "id": 5490369,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20240617T15:54:17+0200"
+    },
+    {
+      "endDate": "20240229T00:00:00+0100",
+      "name": "DIS_RMKT_BAN: Slaviton opět skladem",
+      "id": 4989800,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20240123T20:46:27+0100"
+    },
+    {
+      "endDate": null,
+      "name": "DIS_AKV: Propagace článků",
+      "id": 4946643,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20240104T14:49:13+0100"
+    },
+    {
+      "endDate": "20240108T00:00:00+0100",
+      "name": "DIS_AKV: Doprava zdarma od 500 Kč",
+      "id": 4941266,
+      "type": "context",
+      "startDate": "20240102T00:00:00+0100",
+      "status": "suspend",
+      "createDate": "20240102T11:17:00+0100"
+    },
+    {
+      "endDate": "20250207T00:00:00+0100",
+      "name": "DIS_RMKT: Doprava zdarma od 500 Kč",
+      "id": 4941259,
+      "type": "context",
+      "startDate": "20250201T00:00:00+0100",
+      "status": "suspend",
+      "createDate": "20240102T11:11:44+0100"
+    },
+    {
+      "endDate": "20231219T00:00:00+0100",
+      "name": "DIS_AKV_BAN: Vánoční balíčky",
+      "id": 4893271,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20231206T18:14:11+0100"
+    },
+    {
+      "endDate": "20231219T00:00:00+0100",
+      "name": "DIS_RMKT_BAN: Vánoční balíčky",
+      "id": 4893227,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20231206T18:10:57+0100"
+    },
+    {
+      "endDate": "20231124T00:00:00+0100",
+      "name": "DIS_RMKT_BAN: Black Friday 15 %",
+      "id": 4852449,
+      "type": "context",
+      "startDate": "20231122T00:00:00+0100",
+      "status": "suspend",
+      "createDate": "20231121T16:31:45+0100"
+    },
+    {
+      "endDate": null,
+      "name": "DRTG: Návštěvníci Seznamu",
+      "id": 4597250,
+      "type": "product",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20231023T12:12:43+0200"
+    },
+    {
+      "endDate": null,
+      "name": "SEA: Padání vlasů",
+      "id": 4586491,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20231020T10:55:43+0200"
+    },
+    {
+      "endDate": null,
+      "name": "DIS_RMKT: Opuštěný košík",
+      "id": 4586476,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20231020T10:40:53+0200"
+    },
+    {
+      "endDate": null,
+      "name": "DRTG: Kategorie",
+      "id": 4458596,
+      "type": "product",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20230918T10:26:51+0200"
+    },
+    {
+      "endDate": null,
+      "name": "FM-AKVIZICE-Zboží.cz: Království TianDe",
+      "id": 4412598,
+      "type": "zbozi",
+      "startDate": "20230901T00:00:00+0200",
+      "status": "active",
+      "createDate": "20230905T16:22:39+0200"
+    },
+    {
+      "endDate": null,
+      "name": "SDN_hr_nativka_052023",
+      "id": 4248126,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20230524T17:44:05+0200"
+    },
+    {
+      "endDate": null,
+      "name": "SEA: TOP Produkty",
+      "id": 4057190,
+      "type": "fulltext",
+      "startDate": "20230207T00:00:00+0100",
+      "status": "suspend",
+      "createDate": "20230213T09:54:36+0100"
+    },
+    {
+      "endDate": null,
+      "name": "DIS_RMKT_BAN: Reaktivace nakupujících",
+      "id": 3893236,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20221101T16:47:19+0100"
+    },
+    {
+      "endDate": null,
+      "name": "SEA: Brand - obecně tianDe, new",
+      "id": 3659852,
+      "type": "fulltext",
+      "startDate": "20220210T00:00:00+0100",
+      "status": "suspend",
+      "createDate": "20220607T10:40:10+0200"
+    },
+    {
+      "endDate": null,
+      "name": "[S]_[S]_[Brand] - Království tianDe, NEW",
+      "id": 3659851,
+      "type": "fulltext",
+      "startDate": "20220210T00:00:00+0100",
+      "status": "suspend",
+      "createDate": "20220607T10:40:10+0200"
+    },
+    {
+      "endDate": null,
+      "name": "Sleva 100 Kč | Remarketing | RTG | NEW",
+      "id": 3643323,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20220530T16:34:35+0200"
+    },
+    {
+      "endDate": null,
+      "name": "Sleva 100 Kč | Zájmy o koupi | NEW",
+      "id": 3643211,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20220530T15:26:54+0200"
+    },
+    {
+      "endDate": null,
+      "name": "SEA | Brand | Města",
+      "id": 3439768,
+      "type": "fulltext",
+      "startDate": "20220210T00:00:00+0100",
+      "status": "suspend",
+      "createDate": "20220223T13:05:17+0100"
+    },
+    {
+      "endDate": null,
+      "name": "SEA | Problémy",
+      "id": 3439766,
+      "type": "fulltext",
+      "startDate": "20220214T00:00:00+0100",
+      "status": "suspend",
+      "createDate": "20220223T13:05:16+0100"
+    },
+    {
+      "endDate": null,
+      "name": "SEA | DSA | Produkty a kategorie",
+      "id": 3439764,
+      "type": "fulltext",
+      "startDate": "20220221T00:00:00+0100",
+      "status": "active",
+      "createDate": "20220223T13:05:16+0100"
+    },
+    {
+      "endDate": null,
+      "name": "CZ-SEA-Kategorie-tianDe",
+      "id": 3439763,
+      "type": "fulltext",
+      "startDate": "20220210T00:00:00+0100",
+      "status": "suspend",
+      "createDate": "20220223T13:05:16+0100"
+    },
+    {
+      "endDate": null,
+      "name": "FM-VYHL-RETENCE-kralovstvi-tiande (EX:CZ-SEA-Brand-Království-tianDe)",
+      "id": 3439761,
+      "type": "fulltext",
+      "startDate": "20220210T00:00:00+0100",
+      "status": "active",
+      "createDate": "20220223T13:05:16+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Registrace_klub_recenze ad | VYS | EXT",
+      "id": 2102206,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20200701T18:47:31+0200"
+    },
+    {
+      "endDate": null,
+      "name": "Registrace_klub_recenze_ad | VYS | BMM",
+      "id": 2102205,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20200701T18:47:20+0200"
+    },
+    {
+      "endDate": null,
+      "name": "Remarketing - soutěže | OBS",
+      "id": 1577147,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20190615T00:00:46+0200"
+    },
+    {
+      "endDate": null,
+      "name": "Remarketing | Opuštěný košík | OBS | RTG",
+      "id": 1569729,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20190604T15:42:36+0200"
+    },
+    {
+      "endDate": "20190214T00:00:00+0100",
+      "name": "Remarketing | OBS",
+      "id": 1511327,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20190206T13:11:49+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Brand | SE | EXT | Plzeň",
+      "id": 1464365,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20181106T12:27:33+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Brand | SE | BMM | Plzeň",
+      "id": 1464364,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20181106T12:27:18+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Brand | SE | EXT | ČR",
+      "id": 1464363,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20181106T12:26:58+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Brand | SE | BMM | ČR",
+      "id": 1464362,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20181106T12:26:37+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Brand - Města | SE | EXT",
+      "id": 1431400,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20180906T10:13:44+0200"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Brand - Města | SE | BMM",
+      "id": 1431399,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20180906T10:13:06+0200"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Problémy | SE | EXT",
+      "id": 1424021,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20180822T17:54:03+0200"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Problémy | SE | BMM",
+      "id": 1424020,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20180822T17:53:55+0200"
+    },
+    {
+      "endDate": null,
+      "name": "Tiande | OBS |",
+      "id": 1331770,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20180220T14:04:34+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Brand | SE | EXT",
+      "id": 1315942,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20180117T17:26:11+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Produkty | SE | BMM",
+      "id": 1315941,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20180117T17:26:03+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Katalog | SE | EXT",
+      "id": 1315940,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20180117T17:25:58+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Katalog | SE |BMM",
+      "id": 1315939,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20180117T17:25:53+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Produkty | SE | EXT",
+      "id": 1315938,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20180117T17:25:45+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Eshop-Tiande | Brand | SE | BMM",
+      "id": 1315937,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20180117T17:25:33+0100"
+    },
+    {
+      "endDate": null,
+      "name": "DRTG: Product",
+      "id": 1315840,
+      "type": "product",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20180117T14:40:32+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Dynamický remarketing - DRTG",
+      "id": 1300128,
+      "type": "context",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20171213T12:27:01+0100"
+    },
+    {
+      "endDate": null,
+      "name": "CZ_V Tiande",
+      "id": 1300127,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20171213T12:26:53+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Produktove kampane",
+      "id": 1300087,
+      "type": "product",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20171213T11:57:53+0100"
+    },
+    {
+      "endDate": null,
+      "name": "Produktova-kampan-zrusena",
+      "id": 1299993,
+      "type": "fulltext",
+      "startDate": null,
+      "status": "suspend",
+      "createDate": "20171213T11:42:35+0100"
+    }
+  ]
+}

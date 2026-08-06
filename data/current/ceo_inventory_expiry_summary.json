@@ -1,0 +1,667 @@
+{
+  "generatedAt": "2026-08-06T16:26:28.453399+02:00",
+  "sourceGeneratedAt": {
+    "inventory": "2026-08-06T15:48:37.259702+02:00",
+    "expiry": "2026-08-06T16:25:20.497990+02:00",
+    "crosscheck": "2026-07-13T10:43:57.854963+02:00"
+  },
+  "sourceReportDir": "inventory-crosscheck-2026-07-13",
+  "headline": "Sklad jako celek není v krizi, ale máme výrazný problém s důvěryhodností skladové pravdy mezi WPJ a 4PX, systémově přestřelené SK zásoby a expirační dashboard, který teď přeceňuje rozsah problému a neumí spolehlivě spočítat obchodní prioritu bez opravy refresh logiky.",
+  "hero": {
+    "skCzRatio": 0.1801,
+    "top20MismatchDelta": 56822,
+    "urgentExpiryStock30d": 93,
+    "expiryRowsWithoutSalesContext": 96
+  },
+  "status": {
+    "inventoryTruth": "Nedůvěryhodná",
+    "inventoryTruthDetail": "716 mismatch řádků mezi WPJ a 4PX",
+    "allocation": "Mimo cíl",
+    "allocationDetail": "SK/CZ 18.01 % vs. očekávání okolo 10 %",
+    "expiryDecisioning": "Zkreslené",
+    "expiryDecisioningDetail": "652 řádků je za hranicí 180 dnů a 96 řádků má nulový prodejní kontext",
+    "coreAvailability": "Spíš zdravá",
+    "coreAvailabilityDetail": "Jen 1 položky jsou v low-after-sales frontě"
+  },
+  "executiveSummary": [
+    "Core fast movers jsou obecně skladem, takže problém není plošný stockout.",
+    "Největší provozní riziko je důvěryhodnost dat mezi WPJ a 4PX, ne samotné fyzické zásoby.",
+    "Rozdělení zásob mezi CZ a SK je strukturálně mimo cíl a u 70 % sledovaných SKU je SK přestřelené.",
+    "Expirace do 30 a 90 dní jsou objemově zvládnutelné, ale dashboard je dnes přifouknutý vzdálenými expiracemi a nulovým sales kontextem."
+  ],
+  "inventory": {
+    "counts": {
+      "allCodes": 3033,
+      "pairedProducts": 372,
+      "onlyInWpj": 1594,
+      "onlyIn4px": 1,
+      "stockMismatch": 716,
+      "lowAfterSales": 1,
+      "manualMapped4pxAliases": 0,
+      "autoMapped4pxAliases": 74
+    },
+    "crosscheck": {
+      "snapshotGeneratedAt": "2026-07-13T10:43:57.854963+02:00",
+      "wpjProductCount": 2994,
+      "fourpxCanonicalSkuCount": 376,
+      "aliasAwareMissingInWpj": 1,
+      "rawMissingSourceSkus": 48,
+      "autoMappedSourceSkus": 47,
+      "fullyUnmappedSourceSkus": 1,
+      "totalCzAvailable": 323494,
+      "totalSkAvailable": 58253,
+      "totalSkCzRatio": 0.1801,
+      "meaningfulComparisons": 349,
+      "bandWithinCount": 71,
+      "bandWithinBase": 349,
+      "bandUnderCount": 42,
+      "bandUnderBase": 349,
+      "bandOverCount": 236,
+      "bandOverBase": 349,
+      "bandWithinPct": 0.2034383954154728,
+      "bandUnderPct": 0.12034383954154727,
+      "bandOverPct": 0.6762177650429799
+    },
+    "mismatch": {
+      "top20Delta": 56822,
+      "top20VisibleDelta": 12281,
+      "top20HiddenDelta": 44541,
+      "topVisible": [
+        {
+          "code": "AU672",
+          "title": "Úleva pro bedra",
+          "stockDelta": 8528,
+          "wpj4pxStock": 8528,
+          "fourpxAvailable": 0,
+          "recommendedAction": "Prověřit, jestli WPJ 4PX stav není historická nebo špatně navázaná vazba."
+        },
+        {
+          "code": "RT364",
+          "title": "Svěžest, která vydrží",
+          "stockDelta": 3753,
+          "wpj4pxStock": 3753,
+          "fourpxAvailable": 0,
+          "recommendedAction": "Prověřit, jestli WPJ 4PX stav není historická nebo špatně navázaná vazba."
+        }
+      ]
+    },
+    "allocation": {
+      "topOverstock": [
+        {
+          "code": "63601",
+          "title": "Denní vložka Energie života",
+          "czAvailable": 4430,
+          "skAvailable": 3139,
+          "skCzRatio": 70.9,
+          "deltaToTenPct": 2696.0
+        },
+        {
+          "code": "30117",
+          "title": "Kosmetická fytonáplast Jian Kang",
+          "czAvailable": 2610,
+          "skAvailable": 1242,
+          "skCzRatio": 47.6,
+          "deltaToTenPct": 981.0
+        },
+        {
+          "code": "41106",
+          "title": "Preventivní krém na nohy s hadím olejem",
+          "czAvailable": 2213,
+          "skAvailable": 1193,
+          "skCzRatio": 53.9,
+          "deltaToTenPct": 971.7
+        },
+        {
+          "code": "60145",
+          "title": "Denní hygienická vložka „Jemná péče“",
+          "czAvailable": 3361,
+          "skAvailable": 969,
+          "skCzRatio": 28.8,
+          "deltaToTenPct": 632.9
+        },
+        {
+          "code": "30118",
+          "title": "Kosmetická fytonáplast Wutong",
+          "czAvailable": 2529,
+          "skAvailable": 868,
+          "skCzRatio": 34.3,
+          "deltaToTenPct": 615.1
+        },
+        {
+          "code": "000090",
+          "title": "Královská čelenka",
+          "czAvailable": 2658,
+          "skAvailable": 866,
+          "skCzRatio": 32.6,
+          "deltaToTenPct": 600.2
+        },
+        {
+          "code": "41105",
+          "title": "Regenerační krém na nohy s hadím olejem",
+          "czAvailable": 1111,
+          "skAvailable": 685,
+          "skCzRatio": 61.7,
+          "deltaToTenPct": 573.9
+        },
+        {
+          "code": "980155",
+          "title": "Spa rukavice",
+          "czAvailable": 1157,
+          "skAvailable": 606,
+          "skCzRatio": 52.4,
+          "deltaToTenPct": 490.3
+        }
+      ],
+      "topUnderstock": [
+        {
+          "code": "15TOP",
+          "title": "TOP 15 produktů",
+          "czAvailable": 20715,
+          "skAvailable": 711,
+          "skCzRatio": 3.4,
+          "deltaToTenPct": -1360.5
+        },
+        {
+          "code": "PROMO74",
+          "title": "Královská bylinná směs zdravá žena ",
+          "czAvailable": 8043,
+          "skAvailable": 0,
+          "skCzRatio": 0.0,
+          "deltaToTenPct": -804.3
+        },
+        {
+          "code": "PROMO75",
+          "title": "Královská bylinná směs detoxikační",
+          "czAvailable": 5587,
+          "skAvailable": 69,
+          "skCzRatio": 1.2,
+          "deltaToTenPct": -489.7
+        },
+        {
+          "code": "000062",
+          "title": "Zákaznická karta tianDe",
+          "czAvailable": 2981,
+          "skAvailable": 20,
+          "skCzRatio": 0.7,
+          "deltaToTenPct": -278.1
+        },
+        {
+          "code": "46903-2",
+          "title": " Krém na nohy s 30 % močoviny na pokožku s prasklinami a otlaky",
+          "czAvailable": 2920,
+          "skAvailable": 37,
+          "skCzRatio": 1.3,
+          "deltaToTenPct": -255.0
+        },
+        {
+          "code": "000074",
+          "title": "Lexikon tradiční čínské medicíny",
+          "czAvailable": 2473,
+          "skAvailable": 45,
+          "skCzRatio": 1.8,
+          "deltaToTenPct": -202.3
+        },
+        {
+          "code": "61902",
+          "title": "Denní menstruační vložky s fytomembránou „Energie bylin“",
+          "czAvailable": 2943,
+          "skAvailable": 101,
+          "skCzRatio": 3.4,
+          "deltaToTenPct": -193.3
+        },
+        {
+          "code": "61903",
+          "title": "Noční menstruační vložky s fytomembránou „Energie bylin“",
+          "czAvailable": 3026,
+          "skAvailable": 139,
+          "skCzRatio": 4.6,
+          "deltaToTenPct": -163.6
+        }
+      ],
+      "specialCases": [
+        {
+          "code": "135415",
+          "title": "Zlatý amarantový olej",
+          "skAvailable": 346
+        },
+        {
+          "code": "PROMO7",
+          "title": "Piknik koš černý",
+          "skAvailable": 152
+        },
+        {
+          "code": "PROMO117",
+          "title": "Leták - informace o kurzu hubnutí 2",
+          "skAvailable": 67
+        },
+        {
+          "code": "135415-1",
+          "title": "Zlatý amarantový olej",
+          "skAvailable": 49
+        },
+        {
+          "code": "SET09",
+          "title": "SET09",
+          "skAvailable": 29
+        },
+        {
+          "code": "PROMO33",
+          "title": "Královské zrcátko lesklé",
+          "skAvailable": 21
+        }
+      ]
+    },
+    "mapping": {
+      "aliasAwareOnlyIn4px": 1,
+      "canonical4pxWithStock": 376,
+      "rawMissingSourceSkus": 48,
+      "autoMappedSourceSkus": 47,
+      "fullyUnmappedSourceSkus": 1,
+      "autoMappedAliasesLive": 74,
+      "onlyIn4pxRows": [
+        {
+          "code": "TEST",
+          "title": "Bez nazvu",
+          "totalAvailable": 10
+        }
+      ]
+    },
+    "coreAvailability": {
+      "topOutboundHealthy": [
+        {
+          "code": "90148",
+          "title": "Zubní kartáček ProDental",
+          "availableTotal": 866,
+          "yesterdayOutboundUnits": 362,
+          "daysOfCoverAtYesterdayRate": 2.4,
+          "stockDelta": 0
+        },
+        {
+          "code": "90153",
+          "title": "Dětský zubní kartáček ",
+          "availableTotal": 633,
+          "yesterdayOutboundUnits": 180,
+          "daysOfCoverAtYesterdayRate": 3.5,
+          "stockDelta": 0
+        },
+        {
+          "code": "50116",
+          "title": "Čisticí zlatá slupovací pleťová maska",
+          "availableTotal": 274,
+          "yesterdayOutboundUnits": 50,
+          "daysOfCoverAtYesterdayRate": 5.5,
+          "stockDelta": -1
+        },
+        {
+          "code": "63601",
+          "title": "Denní vložka Energie života",
+          "availableTotal": 7834,
+          "yesterdayOutboundUnits": 1288,
+          "daysOfCoverAtYesterdayRate": 6.1,
+          "stockDelta": 0
+        },
+        {
+          "code": "12106",
+          "title": "Intenzivní komplex na pokožku kolem očí",
+          "availableTotal": 1164,
+          "yesterdayOutboundUnits": 108,
+          "daysOfCoverAtYesterdayRate": 10.8,
+          "stockDelta": 0
+        }
+      ],
+      "fastMoverWatch": [
+        {
+          "code": "PROMO81",
+          "title": "Vyzkoušej mě ,,vložka,,",
+          "availableTotal": 441,
+          "yesterdayOutboundUnits": 715,
+          "daysOfCoverAtYesterdayRate": 0.6,
+          "stockDelta": -3
+        },
+        {
+          "code": "90148",
+          "title": "Zubní kartáček ProDental",
+          "availableTotal": 866,
+          "yesterdayOutboundUnits": 362,
+          "daysOfCoverAtYesterdayRate": 2.4,
+          "stockDelta": 0
+        },
+        {
+          "code": "90153",
+          "title": "Dětský zubní kartáček ",
+          "availableTotal": 633,
+          "yesterdayOutboundUnits": 180,
+          "daysOfCoverAtYesterdayRate": 3.5,
+          "stockDelta": 0
+        },
+        {
+          "code": "50116",
+          "title": "Čisticí zlatá slupovací pleťová maska",
+          "availableTotal": 274,
+          "yesterdayOutboundUnits": 50,
+          "daysOfCoverAtYesterdayRate": 5.5,
+          "stockDelta": -1
+        },
+        {
+          "code": "63601",
+          "title": "Denní vložka Energie života",
+          "availableTotal": 7834,
+          "yesterdayOutboundUnits": 1288,
+          "daysOfCoverAtYesterdayRate": 6.1,
+          "stockDelta": 0
+        }
+      ],
+      "lowAfterSales": [
+        {
+          "code": "10262",
+          "title": "Hydrofilní butter",
+          "availableTotal": 10,
+          "yesterdaySalesUnits": 1,
+          "yesterdayOutboundUnits": 1
+        }
+      ]
+    }
+  },
+  "expiry": {
+    "summary": {
+      "datedSkuCount": 328,
+      "czSkuCount": 316,
+      "skSkuCount": 298,
+      "datedRowCount": 721,
+      "czRowCount": 382,
+      "skRowCount": 339
+    },
+    "dataQuality": {
+      "rowsTotal": 721,
+      "rowsBeyond180d": 652,
+      "stockBeyond180d": 288611,
+      "rowsWithoutSalesContext": 96
+    },
+    "windows": {
+      "within30d": {
+        "CZ": {
+          "rows": 2,
+          "stock": 8
+        },
+        "SK": {
+          "rows": 5,
+          "stock": 85
+        }
+      },
+      "within90d": {
+        "CZ": {
+          "rows": 7,
+          "stock": 509
+        },
+        "SK": {
+          "rows": 12,
+          "stock": 352
+        }
+      },
+      "within180d": {
+        "CZ": {
+          "rows": 32,
+          "stock": 23009
+        },
+        "SK": {
+          "rows": 37,
+          "stock": 3569
+        }
+      },
+      "beyond180d": {
+        "CZ": {
+          "rows": 350,
+          "stock": 259486
+        },
+        "SK": {
+          "rows": 302,
+          "stock": 29125
+        }
+      },
+      "expired": {
+        "rows": 1,
+        "stock": 4
+      }
+    },
+    "urgentRows": [
+      {
+        "account": "SK",
+        "sku": "11317/01",
+        "title": "Čistící náplast na nos na černé tečky a akné 1ks",
+        "daysToExpiry": -53,
+        "datedStock": 4,
+        "batchCount": 2
+      },
+      {
+        "account": "CZ",
+        "sku": "52911",
+        "title": "Obnovující maska na obličej a krk s fullereny a polypeptidy",
+        "daysToExpiry": 1,
+        "datedStock": 7,
+        "batchCount": 1
+      },
+      {
+        "account": "SK",
+        "sku": "41328/07",
+        "title": "Levandulová náplast na nohy",
+        "daysToExpiry": 1,
+        "datedStock": 1,
+        "batchCount": 1
+      },
+      {
+        "account": "SK",
+        "sku": "52911",
+        "title": "Obnovující maska na obličej a krk s fullereny a polypeptidy",
+        "daysToExpiry": 1,
+        "datedStock": 1,
+        "batchCount": 1
+      },
+      {
+        "account": "CZ",
+        "sku": "35412-02",
+        "title": "Povzbuzující krém pro dokonalá stehna",
+        "daysToExpiry": 5,
+        "datedStock": 1,
+        "batchCount": 1
+      },
+      {
+        "account": "SK",
+        "sku": "54108",
+        "title": "Pleťová beauty maska \"levandulová provence\"",
+        "daysToExpiry": 20,
+        "datedStock": 55,
+        "batchCount": 3
+      },
+      {
+        "account": "SK",
+        "sku": "54106",
+        "title": "Pleťová beauty maska \"Amino-koktejl\"",
+        "daysToExpiry": 25,
+        "datedStock": 24,
+        "batchCount": 3
+      },
+      {
+        "account": "SK",
+        "sku": "12710",
+        "title": "Křišťálová kolagenová maska na oční víčka",
+        "daysToExpiry": 31,
+        "datedStock": 7,
+        "batchCount": 2
+      },
+      {
+        "account": "CZ",
+        "sku": "12710",
+        "title": "Křišťálová kolagenová maska na oční víčka",
+        "daysToExpiry": 31,
+        "datedStock": 2,
+        "batchCount": 1
+      },
+      {
+        "account": "CZ",
+        "sku": "52901/03",
+        "title": "Intenzivní hydratační maska na obličej a krk Hyaluronová kyselina",
+        "daysToExpiry": 48,
+        "datedStock": 17,
+        "batchCount": 2
+      }
+    ],
+    "highExposureRows": [
+      {
+        "account": "CZ",
+        "sku": "30111",
+        "title": "Kosmetická tělová fytonáplast Yaoshen Forte",
+        "daysToExpiry": 126,
+        "datedStock": 7584,
+        "batchCount": 36
+      },
+      {
+        "account": "CZ",
+        "sku": "63601/01",
+        "title": "Denní vložka Energie života",
+        "daysToExpiry": 147,
+        "datedStock": 4948,
+        "batchCount": 25
+      },
+      {
+        "account": "CZ",
+        "sku": "57010",
+        "title": "Hydratační pleťová PGA-maska s pivoňkou a pupečníkem asijským",
+        "daysToExpiry": 156,
+        "datedStock": 4409,
+        "batchCount": 23
+      },
+      {
+        "account": "CZ",
+        "sku": "41328/01",
+        "title": "Levandulová náplast na nohy",
+        "daysToExpiry": 151,
+        "datedStock": 2142,
+        "batchCount": 7
+      },
+      {
+        "account": "SK",
+        "sku": "30111",
+        "title": "Kosmetická tělová fytonáplast Yaoshen Forte",
+        "daysToExpiry": 126,
+        "datedStock": 963,
+        "batchCount": 3
+      },
+      {
+        "account": "CZ",
+        "sku": "120105",
+        "title": "Zázvorový nápoj",
+        "daysToExpiry": 137,
+        "datedStock": 692,
+        "batchCount": 4
+      },
+      {
+        "account": "CZ",
+        "sku": "135455",
+        "title": "Zlatophyt",
+        "daysToExpiry": 118,
+        "datedStock": 571,
+        "batchCount": 8
+      },
+      {
+        "account": "CZ",
+        "sku": "25106",
+        "title": "ŠAMPON NA VLASY “SNAKE FACTOR”",
+        "daysToExpiry": 158,
+        "datedStock": 568,
+        "batchCount": 4
+      },
+      {
+        "account": "SK",
+        "sku": "63601/01",
+        "title": "Denní vložka Energie života",
+        "daysToExpiry": 147,
+        "datedStock": 460,
+        "batchCount": 3
+      },
+      {
+        "account": "CZ",
+        "sku": "195453",
+        "title": "Proteinový koktejl s karobem a lněným semínkem",
+        "daysToExpiry": 62,
+        "datedStock": 303,
+        "batchCount": 7
+      }
+    ]
+  },
+  "decisionHorizon": {
+    "48h": [
+      {
+        "decision": "Pozastavit větší promo rozhodnutí podle expiry dashboardu.",
+        "owner": "Data/BI",
+        "deadline": "48h",
+        "whyNow": "Aktuální expirační view míchá 180+ dní a nemá validní 30d/90d prodejní kontext."
+      },
+      {
+        "decision": "Potvrdit zdroj pravdy pro top 6 visible mismatch SKU mezi WPJ a 4PX.",
+        "owner": "Ops + sklad",
+        "deadline": "48h",
+        "whyNow": "Bez toho není bezpečné měnit replenishment ani pouštět větší promo zásahy."
+      },
+      {
+        "decision": "Ručně rozhodnout expirace do 30 dní v CZ a SK.",
+        "owner": "Supply + obchod",
+        "deadline": "48h",
+        "whyNow": "Urgentní tlak je úzký, ale koncentrovaný do několika SKU a batchů."
+      }
+    ],
+    "7d": [
+      {
+        "decision": "Schválit rebalancing CZ vs SK pro top overstock a understock SKU.",
+        "owner": "Supply",
+        "deadline": "7 dní",
+        "whyNow": "SK alokace je strukturálně nad cílem a týká se většiny porovnatelných SKU."
+      },
+      {
+        "decision": "Oddělit v reportingu fyzický stock problém, systémový mismatch a expirační risk.",
+        "owner": "Data/BI",
+        "deadline": "7 dní",
+        "whyNow": "Dnes jsou tři různé typy problému smíchané do jedné pracovní vrstvy."
+      },
+      {
+        "decision": "Sepsat board-approved seznam legitimních SK-only výjimek.",
+        "owner": "Supply + obchod",
+        "deadline": "7 dní",
+        "whyNow": "Bez seznamu výjimek se do rebalancingu pletou validní stavy typu amarant a promo materiály."
+      }
+    ],
+    "30d": [
+      {
+        "decision": "Zavést pravidelný rebalancing režim CZ vs SK pro top SKU.",
+        "owner": "Supply",
+        "deadline": "30 dní",
+        "whyNow": "Jednorázový zásah nestačí na strukturálně rozhozenou alokaci zásob."
+      },
+      {
+        "decision": "Napojit expirace na validní prodejní rytmus a promo ekonomiku.",
+        "owner": "Data/BI + obchod",
+        "deadline": "30 dní",
+        "whyNow": "Bez správných sales metrik nejde bezpečně dělat bundle, dárek ani discount plán."
+      },
+      {
+        "decision": "Zavést board-level reporting pro data truth, core availability a expirační tlak.",
+        "owner": "CEO + BI",
+        "deadline": "30 dní",
+        "whyNow": "Vedení potřebuje trvale oddělené signály, ne směs operativních a datových alertů."
+      }
+    ]
+  },
+  "appendix": {
+    "notes": [
+      "CZ/SK crosscheck vychází z nejnovějšího snapshotu `inventory-crosscheck-2026-07-13` a z live combined inventory overview.",
+      "Expirační dashboard dnes obsahuje i vzdálené expirace za hranicí 180 dní; proto je vhodné CEO view stavět na odděleném summary, ne na raw řádcích.",
+      "Amarant je známá business výjimka: v CZ se neprodává, proto může být SK-only zásoba validní.",
+      "Mismatch alert count je product-level signál a nelze ho číst jako počet unikátních fyzických SKU problémů.",
+      "Snapshoty nejsou synchronní na jednu sekundu; používej je jako směrový management signál, ne jako účetní reconciliaci."
+    ]
+  },
+  "dataQualityFlags": [
+    "Mismatch count obsahuje product-level duplicity přes bundly a sdílené 4PX pooly.",
+    "Low-after-sales fronta obsahuje voucher artefakt DP100; fyzicky akční je hlavně SKU 14802.",
+    "Expirační bucketty jsou dated-stock view, ne kompletní total-stock view."
+  ]
+}

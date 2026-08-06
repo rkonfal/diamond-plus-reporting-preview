@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond Plus Reporting V2, Finance</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="page-finance-simplified">
+  <aside class="sidebar" data-sidebar-page="finance.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Finance bez zbytečné složitosti" data-sidebar-section="Finance" data-sidebar-footer="Nejdřív peníze, které je potřeba hlídat. Detail až potom."></aside>
+
+  <main class="main page-stack">
+    <header class="header">
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Finance • cash a risk dashboard</div>
+          <h1 class="ux-title">Finance jako jasný cash a risk dashboard</h1>
+          <p class="ux-subtitle">Nejdřív peníze, tlak závazků a trend měsíce. Účetní detail zůstává až ve spodní vrstvě.</p>
+          <div class="ux-actions">
+            <button class="ux-button secondary" type="button" data-view-toggle="current">Současný stav</button>
+            <button class="ux-button secondary" type="button" data-view-toggle="previous">Minulý měsíc</button>
+            <a class="ux-button primary" href="../data/current/finance_overview.json" target="_blank" rel="noopener">Finance data</a>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+      <section class="ux-hero-metrics" id="finance-hero"></section>
+      <div class="status-strip" id="finance-status-strip"></div>
+      <div class="ux-date-note"><strong>Období:</strong> P&amp;L za poslední uzavřený měsíc, závazky jako aktuální stav, deník za poslední 3 měsíce.</div>
+    </header>
+
+    <section class="layer-shell" id="finance-step-1" data-section-nav-label="Krok 1: co hlídat teď" data-section-nav-order="1">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 1</div>
+          <h2 class="layer-title">Co hlídat teď ve financích</h2>
+          <p class="layer-subtitle">Jedním pohledem poznáš, jestli je potřeba řešit cash, závazky nebo výsledek měsíce.</p>
+        </div>
+        <div class="layer-note">Nejdřív signál, až potom účetní detail.</div>
+      </div>
+      <section class="signal-grid" id="finance-decision-grid"></section>
+    </section>
+
+    <section class="layer-shell" id="finance-inputs" data-section-nav-label="Hlavní vstupy" data-section-nav-order="2">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Hlavní vstupy</div>
+          <h2 class="layer-title">Kam se přepnout po prvním signálu</h2>
+          <p class="layer-subtitle">Horní vrstva má dát pracovní kontext a zkratky k dalším finančním krokům.</p>
+        </div>
+      </div>
+      <section class="ux-grid">
+        <div class="ux-focus-card">
+          <div class="ux-section-head">
+            <div>
+              <h2 class="ux-section-title">Co řešit hned</h2>
+              <p class="ux-section-subtitle">Krátká orientace bez zbytečného přepínání.</p>
+            </div>
+            <span class="badge warn" id="source-mode">Načítám přehled…</span>
+          </div>
+          <div class="ux-list" id="finance-focus"></div>
+        </div>
+
+        <div class="ux-side-stack">
+          <div class="ux-panel-card">
+            <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Hlavní vstupy</h3>
+            <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Otevři jen to, co typicky vede další finanční práci ještě dnes.</p>
+            <div class="section-nav-links" id="finance-route-links" style="margin-top:16px;"></div>
+          </div>
+          <div class="ux-panel-card">
+            <h3 id="finance-period-title" style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Tento měsíc stručně</h3>
+            <p id="finance-period-subtitle" style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Jen to hlavní z posledního měsíce.</p>
+            <div class="ux-stat-list" id="current-month-list"></div>
+          </div>
+          <div class="ux-panel-card">
+            <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Hotovost stručně</h3>
+            <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Kolik máme a co z toho ukrajují závazky.</p>
+            <div class="ux-stat-list" id="cash-list"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="layer-shell" id="finance-step-2" data-section-nav-label="Krok 2: pracovní vrstva" data-section-nav-order="3">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 2</div>
+          <h2 class="layer-title">Pracovní vrstva pro cash a závazky</h2>
+          <p class="layer-subtitle">Krátké pracovní bloky před tím, než člověk spadne do účetního detailu.</p>
+        </div>
+      </div>
+      <section class="summary-grid" id="finance-work-grid"></section>
+    </section>
+
+    <details class="secondary-details" id="finance-secondary" data-section-nav-label="Sekundární vrstva" data-section-nav-order="4">
+      <summary>Sekundární vrstva a účetní detail</summary>
+
+      <section class="layer-shell" style="margin-top:20px;">
+        <div class="layer-head">
+          <div>
+            <div class="layer-label">Sekundární vrstva</div>
+            <h2 class="layer-title">Zdroj, důvěra dat a účetní drilldown</h2>
+            <p class="layer-subtitle">Zdrojovou poznámku, trend a detail dokladů řeš až ve chvíli, kdy horní vrstvy nestačí.</p>
+          </div>
+        </div>
+        <div id="source-alert"></div>
+      </section>
+
+      <section class="card" style="margin-top:18px;">
+        <h2 class="section-title">Vývoj roku po měsících</h2>
+        <div class="section-subtitle">Výnosy a zisk přehledně v čase.</div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table mobile-stack">
+            <thead>
+              <tr>
+                <th>Měsíc</th>
+                <th class="num">Výnosy</th>
+                <th class="num">Zisk</th>
+                <th class="num">Provozní marže</th>
+                <th class="num">Marketing</th>
+                <th class="num">Logistika</th>
+              </tr>
+            </thead>
+            <tbody id="monthly-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+    <section class="card">
+      <h2 class="section-title">Co je potřeba zaplatit</h2>
+      <div class="section-subtitle">Položky, které stojí za rychlou kontrolu.</div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table mobile-stack">
+          <thead>
+            <tr>
+              <th>Kód</th>
+              <th>Dodavatel</th>
+              <th>Splatnost</th>
+              <th>Status</th>
+              <th class="num">Zbývá uhradit</th>
+            </tr>
+          </thead>
+          <tbody id="payables-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2 class="section-title">Účetní přehled za 3 měsíce</h2>
+        <div class="section-subtitle">Jednoduchý pohled na náklady a výnosy.</div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table mobile-stack">
+            <thead>
+              <tr>
+                <th>Měsíc</th>
+                <th class="num">Náklady</th>
+                <th class="num">Výnosy</th>
+                <th>Hlavní nákladová třída</th>
+              </tr>
+            </thead>
+            <tbody id="journal-trend-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Kam šlo nejvíc peněz</h2>
+        <div class="section-subtitle">Největší výdaje ve vybraném měsíci.</div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table mobile-stack">
+            <thead>
+              <tr>
+                <th>Účet</th>
+                <th>Třída</th>
+                <th class="num">Částka</th>
+              </tr>
+            </thead>
+            <tbody id="journal-accounts-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Detail plateb a dokladů</h2>
+        <div class="section-subtitle">Filtrování pro dohledání konkrétní platby nebo dokladu.</div>
+      <div id="journal-filter-bar" class="journal-filter-bar" style="margin-top:18px;"></div>
+      <div id="journal-filter-note" class="section-subtitle" style="margin-top:12px;"></div>
+      <div id="journal-pagination" style="margin-top:12px;"></div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table mobile-stack">
+          <thead>
+            <tr>
+              <th>Datum</th>
+              <th>Doklad</th>
+              <th>Směr</th>
+              <th>Účet</th>
+              <th>Protiúčet</th>
+              <th>Popis</th>
+              <th class="num">Částka</th>
+            </tr>
+          </thead>
+          <tbody id="journal-entries-table"></tbody>
+        </table>
+      </div>
+    </section>
+    </details>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+    const money = value => `${DP.fmtNumber(Math.round(value || 0))} Kč`;
+    const pct = value => value == null ? '–' : `${Number(value).toFixed(1)} %`;
+    const shortTs = value => value ? DP.fmtDateTime(value) : '–';
+    const sourceMeta = status => ({
+      legacy_snapshot: { label: 'starší uložený přehled', tone: 'warn' },
+      mixed_live_legacy: { label: 'živé závazky + starší P&L', tone: 'success' },
+      live_payables_only: { label: 'živé závazky', tone: 'success' },
+      legacy_with_live_error: { label: 'starší data + chyba API', tone: 'danger' },
+      error: { label: 'chyba API', tone: 'danger' },
+      missing: { label: 'bez zdroje', tone: 'danger' },
+    }[status] || { label: status || 'finance připravené', tone: 'info' });
+
+    (async () => {
+      const data = await DP.loadJson('../data/current/finance_overview.json');
+      const source = sourceMeta(data.source?.status);
+      document.getElementById('source-mode').textContent = source.label;
+      document.getElementById('source-mode').className = `badge ${source.tone}`;
+      document.getElementById('source-alert').innerHTML = `<div class="alert ${source.tone === 'success' ? 'success' : source.tone === 'danger' ? 'danger' : 'warn'}">${data.source?.message || 'Bez zdrojové poznámky.'}</div>`;
+
+      const current = data.currentMonth || {};
+      const cash = data.cash || {};
+      const previous = data.previousMonth || {};
+      DP.renderRouteLinks('finance-route-links', [
+        ['Přehled firmy', 'index.html', 'Vrať se na hlavní firemní signál a širší kontext.'],
+        ['Marketing', 'marketing.html', current.marketing ? `Marketing v měsíci ${money(current.marketing)}.` : 'Mrkni na rozpad spendu a kanálů.'],
+        ['Twisto', 'twisto.html', Number(cash.overdueInvoicesCount || 0) ? `${DP.fmtNumber(cash.overdueInvoicesCount || 0)} položek po splatnosti a kontrola, co opravdu dorazilo.` : 'Zkontroluj, že payouty a doručené peníze sedí.'],
+        ['Finance data', '../data/current/finance_overview.json', 'Surový finanční vstup pro hlubší kontrolu.'],
+      ]);
+      const toggleButtons = [...document.querySelectorAll('[data-view-toggle]')];
+      let activeMode = 'current';
+      const journal = data.journal || {};
+      const monthlyJournal = journal.monthly || [];
+      const monthCache = new Map((monthlyJournal || []).map(row => [row.label, row]));
+      const journalCurrent = journal.currentMonth || {};
+      const journalTopClass = (journalCurrent.topExpenseClasses || [])[0];
+      const journalState = {
+        month: journalCurrent.label || monthlyJournal[monthlyJournal.length - 1]?.label || '',
+        side: 'all',
+        account: 'all',
+        vendor: 'all',
+        page: 1,
+        pageSize: 250,
+      };
+
+      const emptyMonth = { recentEntries: [], topExpenseAccounts: [], topVendors: [], topExpenseClasses: [] };
+      const getSelectedMonth = () => monthCache.get(journalState.month) || monthlyJournal[monthlyJournal.length - 1] || emptyMonth;
+      const monthFileName = label => `../data/current/finance_journal_${String(label || '').replace('/', '-')}.json`;
+      const selectHtml = (id, label, value, options) => `
+        <label class="journal-select-label">
+          <span>${label}</span>
+          <select id="${id}" class="journal-select">
+            ${options.map(option => `<option value="${option.value}" ${option.value === value ? 'selected' : ''}>${option.label}</option>`).join('')}
+          </select>
+        </label>
+      `;
+      function selectedMonthData() {
+        return activeMode === 'previous' && previous.label ? previous : current;
+      }
+
+      function syncJournalMonthToActiveMode() {
+        const targetLabel = selectedMonthData()?.label;
+        if (targetLabel && monthlyJournal.some(row => row.label === targetLabel)) {
+          journalState.month = targetLabel;
+          journalState.account = 'all';
+          journalState.vendor = 'all';
+          journalState.side = 'all';
+        }
+      }
+
+      function deltaText(currentValue, compareValue, suffix = '') {
+        if (!Number.isFinite(Number(currentValue)) || !Number.isFinite(Number(compareValue)) || Number(compareValue) === 0) return 'bez srovnání';
+        const delta = ((Number(currentValue) - Number(compareValue)) / Math.abs(Number(compareValue))) * 100;
+        const sign = delta > 0 ? '+' : '';
+        return `${sign}${delta.toFixed(1)} %${suffix}`;
+      }
+
+      function renderFinanceTop() {
+        const month = selectedMonthData();
+        const compareMonth = activeMode === 'previous' ? current : previous;
+        toggleButtons.forEach(button => button.classList.toggle('is-active', button.dataset.viewToggle === activeMode));
+        document.getElementById('finance-period-title').textContent = activeMode === 'previous' ? `Minulý měsíc stručně (${month.label || '–'})` : `Tento měsíc stručně (${month.label || '–'})`;
+        document.getElementById('finance-period-subtitle').textContent = activeMode === 'previous'
+          ? 'Stejný rychlý výřez, ale pro minulý uzavřený měsíc.'
+          : 'Jen to hlavní z posledního měsíce.';
+
+        const decisionCards = [
+          {
+            eyebrow: 'Cash now',
+            value: money(cash.netCashPosition),
+            sub: `Na účtech ${money(cash.cashOnAccounts)} minus závazky ${money(cash.unpaidInvoices)}.`,
+            meta: Number(cash.netCashPosition || 0) < 0 ? 'Cash pozice je pod nulou.' : 'Cash pozice zůstává kladná.',
+            tone: Number(cash.netCashPosition || 0) < 0 ? 'danger' : 'accent',
+          },
+          {
+            eyebrow: 'Tlak závazků',
+            value: Number(cash.overdueInvoicesCount || 0) ? `${DP.fmtNumber(cash.overdueInvoicesCount || 0)} po splatnosti` : 'Bez prodlení',
+            sub: `${money(cash.overdueInvoicesAmount)} po splatnosti, celkem k úhradě ${money(cash.unpaidInvoices)}.`,
+            meta: (cash.largestPayables || [])[0] ? `Největší závazek ${(cash.largestPayables || [])[0].vendor} za ${money((cash.largestPayables || [])[0].amountDue)}` : 'Bez většího závazku k rychlé pozornosti.',
+            tone: Number(cash.overdueInvoicesCount || 0) ? 'warn' : '',
+          },
+          {
+            eyebrow: `Výsledek ${month.label || 'měsíce'}`,
+            value: money(month.profit),
+            sub: `Výnosy ${money(month.revenue)} · provozní marže ${money(month.operatingMargin)}.`,
+            meta: compareMonth?.label ? `Vs ${compareMonth.label}: ${deltaText(month.profit, compareMonth.profit, ' na zisku')}` : 'Bez porovnání s jiným měsícem.',
+            tone: Number(month.profit || 0) < 0 ? 'danger' : '',
+          },
+          {
+            eyebrow: 'Zdroj a důvěra',
+            value: source.label,
+            sub: data.source?.message || 'Bez zdrojové poznámky.',
+            meta: compareMonth?.label ? `Výnosy vs ${compareMonth.label}: ${deltaText(month.revenue, compareMonth.revenue)}` : 'Bez druhého období pro srovnání.',
+            tone: source.tone === 'danger' ? 'danger' : source.tone === 'warn' ? 'warn' : '',
+          }
+        ];
+        document.getElementById('finance-decision-grid').innerHTML = decisionCards.map(card => `
+          <article class="signal-card ${card.tone || ''}">
+            <div class="eyebrow">${card.eyebrow}</div>
+            <div class="signal-value">${card.value}</div>
+            <div class="signal-sub">${card.sub}</div>
+            <div class="signal-meta">${card.meta}</div>
+          </article>
+        `).join('');
+
+        const hero = [
+          ['Výnosy', money(month.revenue), `${pct(month.grossMarginPct)} hrubá marže · ${compareMonth?.label ? deltaText(month.revenue, compareMonth.revenue) : 'bez srovnání'}`, 'accent'],
+          ['Čistý zisk', money(month.profit), `${pct(month.profitPct)} z výnosů · ${compareMonth?.label ? deltaText(month.profit, compareMonth.profit) : 'bez srovnání'}`, ''],
+          ['Čistá cash pozice', money(cash.netCashPosition), `${DP.fmtNumber(cash.overdueInvoicesCount || 0)} po splatnosti`, '']
+        ];
+        document.getElementById('finance-hero').innerHTML = hero.map(([label, value, sub, klass]) => `
+          <div class="ux-hero-metric ${klass}">
+            <div class="label">${label}</div>
+            <div class="value">${value}</div>
+            <div class="sub">${sub}</div>
+          </div>
+        `).join('');
+
+        DP.renderStatusStrip('finance-status-strip', [
+          { label: 'Stav', value: Number(cash.overdueInvoicesCount || 0) ? 'Pozor' : 'OK', tone: Number(cash.overdueInvoicesCount || 0) ? 'warn' : 'success' },
+          { label: 'Zdroj', value: source.label, tone: source.tone === 'danger' ? 'danger' : source.tone === 'warn' ? 'warn' : 'info' },
+          { label: 'Cash', value: money(cash.netCashPosition), tone: Number(cash.netCashPosition || 0) < 0 ? 'danger' : 'success' },
+          { label: 'Refresh', value: shortTs(data.generatedAt), tone: 'info' },
+        ]);
+
+        const overdueText = Number(cash.overdueInvoicesCount || 0)
+          ? `${DP.fmtNumber(cash.overdueInvoicesCount || 0)} závazek po splatnosti, celkem ${money(cash.overdueInvoicesAmount)}.`
+          : 'Nic zásadního po splatnosti teď nevidíme.';
+
+        document.getElementById('finance-focus').innerHTML = [
+          [`Měsíc ${month.label || '–'}`, `Výnosy ${money(month.revenue)}, provozní marže ${money(month.operatingMargin)} a zisk ${money(month.profit)}.`],
+          [`Cash po závazcích`, `Na účtech ${money(cash.cashOnAccounts)}, k úhradě ${money(cash.unpaidInvoices)}, čistá pozice ${money(cash.netCashPosition)}.`],
+          [`Co potřebuje pozornost`, overdueText],
+          compareMonth?.label ? [`Srovnání s ${compareMonth.label}`, `${compareMonth.label} měl výnosy ${money(compareMonth.revenue)} a zisk ${money(compareMonth.profit)}.`] : null,
+        ].filter(Boolean).map(([title, text], index) => `
+          <div class="ux-item">
+            <span class="ux-dot ${index === 1 ? 'gold' : 'blue'}"></span>
+            <div>
+              <strong>${title}</strong>
+              <span>${text}</span>
+            </div>
+          </div>
+        `).join('');
+
+        document.getElementById('current-month-list').innerHTML = [
+          ['Hrubá marže', money(month.grossMargin)],
+          ['Provozní marže', `${money(month.operatingMargin)} (${pct(month.operatingMarginPct)})`],
+          ['Marketing', money(month.marketing)],
+          ['Logistika', money(month.logistics)],
+        ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+      }
+
+      renderFinanceTop();
+
+      document.getElementById('finance-work-grid').innerHTML = [
+        {
+          title: 'Závazky k rychlé kontrole',
+          text: 'Krátký shortlist z největších plateb, aby bylo hned jasné, kdo tlačí na cash.',
+          body: (cash.largestPayables || []).slice(0, 4).map(item => [item.vendor, `${money(item.amountDue)} · ${item.status}`])
+        },
+        {
+          title: 'Měsíc v kostce',
+          text: 'Shrnutí výsledku zvoleného měsíce bez účetního detailu.',
+          body: [
+            ['Výnosy', money(current.revenue)],
+            ['Hrubá marže', money(current.grossMargin)],
+            ['Provozní marže', `${money(current.operatingMargin)} (${pct(current.operatingMarginPct)})`],
+            ['Zisk', `${money(current.profit)} (${pct(current.profitPct)})`],
+          ]
+        },
+        {
+          title: 'Srovnání s minulým měsícem',
+          text: 'Rychlý delta pohled na výkonnost a nákladové páky.',
+          body: previous.label ? [
+            ['Výnosy', deltaText(current.revenue, previous.revenue)],
+            ['Zisk', deltaText(current.profit, previous.profit)],
+            ['Marketing', deltaText(current.marketing, previous.marketing)],
+            ['Logistika', deltaText(current.logistics, previous.logistics)],
+          ] : [['Srovnání', 'Minulý měsíc zatím není k dispozici']]
+        }
+      ].map(card => `
+        <article class="summary-card">
+          <h3>${card.title}</h3>
+          <p>${card.text}</p>
+          <div class="ux-stat-list">
+            ${card.body.map(([label, value]) => `
+              <div class="ux-stat-row">
+                <span>${label}</span>
+                <strong>${value}</strong>
+              </div>
+            `).join('')}
+          </div>
+        </article>
+      `).join('');
+
+      document.getElementById('cash-list').innerHTML = [
+        ['Cash na účtech', money(cash.cashOnAccounts)],
+        ['K úhradě', money(cash.unpaidInvoices)],
+        ['Čistá cash pozice', money(cash.netCashPosition)],
+        ['Po splatnosti', `${DP.fmtNumber(cash.overdueInvoicesCount || 0)} ks za ${money(cash.overdueInvoicesAmount)}`],
+      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+      document.getElementById('monthly-table').innerHTML = (data.monthly || []).map(row => `
+        <tr>
+          <td data-label="Měsíc">${row.label}</td>
+          <td class="num" data-label="Výnosy">${money(row.revenue)}</td>
+          <td class="num" data-label="Zisk">${money(row.profit)}</td>
+          <td class="num" data-label="Provozní marže">${money(row.operatingMargin)}</td>
+          <td class="num" data-label="Marketing">${money(row.marketing)}</td>
+          <td class="num" data-label="Logistika">${money(row.logistics)}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('payables-table').innerHTML = (cash.largestPayables || []).map(row => `
+        <tr>
+          <td data-label="Kód">${row.code}</td>
+          <td data-label="Dodavatel">${row.vendor}</td>
+          <td data-label="Splatnost">${row.dueDate}</td>
+          <td data-label="Status">${row.status}</td>
+          <td class="num" data-label="Zbývá uhradit">${money(row.amountDue)}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('journal-trend-table').innerHTML = (journal.monthly || []).map(row => `
+          <tr>
+            <td data-label="Měsíc">${row.label}</td>
+            <td class="num" data-label="Náklady">${money(row.expenseTotal)}</td>
+            <td class="num" data-label="Výnosy">${money(row.revenueTotal)}</td>
+            <td data-label="Hlavní nákladová třída">${row.topExpenseClass ? `${row.topExpenseClass.label} (${money(row.topExpenseClass.amount)})` : '–'}</td>
+          </tr>
+      `).join('') || '<tr><td colspan="4">Trendy z účetního deníku zatím nejsou dostupné.</td></tr>';
+
+      async function ensureJournalMonthLoaded(label) {
+        const month = monthCache.get(label);
+        if (!label || !month || Array.isArray(month.recentEntries)) return month || emptyMonth;
+        const loaded = await DP.loadJson(monthFileName(label));
+        monthCache.set(label, loaded || month);
+        return monthCache.get(label) || emptyMonth;
+      }
+
+      function rerenderJournalSafely() {
+        renderJournalTables().catch(err => {
+          document.getElementById('journal-filter-note').textContent = `Nepodařilo se načíst detail měsíce: ${err.message}`;
+        });
+      }
+
+      function renderJournalFilterBar() {
+        const selectedMonth = getSelectedMonth();
+        const accountOptions = [{ value: 'all', label: 'Všechny účty' }].concat(
+          Array.from(new Map((selectedMonth.recentEntries || []).map(row => [row.accountCode, row.accountLabel || row.accountCode])).entries())
+            .filter(([code]) => code)
+            .map(([code, label]) => ({ value: code, label: `${code}: ${label}` }))
+        );
+        const vendorOptions = [{ value: 'all', label: 'Všichni dodavatelé / protistrany' }].concat(
+          Array.from(new Set((selectedMonth.recentEntries || []).map(row => row.vendor).filter(Boolean)))
+            .map(name => ({ value: name, label: name }))
+        );
+
+        if (!accountOptions.some(option => option.value === journalState.account)) journalState.account = 'all';
+        if (!vendorOptions.some(option => option.value === journalState.vendor)) journalState.vendor = 'all';
+
+        document.getElementById('journal-filter-bar').innerHTML = [
+          selectHtml('journal-month-filter', 'Měsíc', journalState.month, monthlyJournal.map(row => ({ value: row.label, label: row.label }))),
+          selectHtml('journal-side-filter', 'Směr', journalState.side, [
+            { value: 'all', label: 'Náklady i výnosy' },
+            { value: 'náklad', label: 'Jen náklady' },
+            { value: 'výnos', label: 'Jen výnosy' },
+          ]),
+          selectHtml('journal-account-filter', 'Účet', journalState.account, accountOptions),
+          selectHtml('journal-vendor-filter', 'Dodavatel', journalState.vendor, vendorOptions),
+        ].join('');
+
+        document.getElementById('journal-month-filter').addEventListener('change', event => {
+          journalState.month = event.target.value;
+          journalState.account = 'all';
+          journalState.vendor = 'all';
+          journalState.page = 1;
+          rerenderJournalSafely();
+        });
+        document.getElementById('journal-side-filter').addEventListener('change', event => {
+          journalState.side = event.target.value;
+          journalState.page = 1;
+          rerenderJournalSafely();
+        });
+        document.getElementById('journal-account-filter').addEventListener('change', event => {
+          journalState.account = event.target.value;
+          journalState.page = 1;
+          rerenderJournalSafely();
+        });
+        document.getElementById('journal-vendor-filter').addEventListener('change', event => {
+          journalState.vendor = event.target.value;
+          journalState.page = 1;
+          rerenderJournalSafely();
+        });
+      }
+
+      async function renderJournalTables() {
+        await ensureJournalMonthLoaded(journalState.month);
+        const selectedMonth = getSelectedMonth();
+        const entries = (selectedMonth.recentEntries || []).filter(row => {
+          if (journalState.side !== 'all' && row.side !== journalState.side) return false;
+          if (journalState.account !== 'all' && row.accountCode !== journalState.account) return false;
+          if (journalState.vendor !== 'all' && row.vendor !== journalState.vendor) return false;
+          return true;
+        });
+        const totalPages = Math.max(1, Math.ceil(entries.length / journalState.pageSize));
+        if (journalState.page > totalPages) journalState.page = totalPages;
+        const pageStart = (journalState.page - 1) * journalState.pageSize;
+        const pagedEntries = entries.slice(pageStart, pageStart + journalState.pageSize);
+
+        document.getElementById('journal-accounts-table').innerHTML = (selectedMonth.topExpenseAccounts || []).map(row => `
+          <tr>
+            <td data-label="Účet">${row.code}: ${row.label}</td>
+            <td data-label="Třída">${row.classLabel}</td>
+            <td class="num" data-label="Částka">${money(row.amount)}</td>
+          </tr>
+      `).join('') || '<tr><td colspan="3">Největší nákladové účty zatím nejsou k dispozici.</td></tr>';
+
+        document.getElementById('journal-entries-table').innerHTML = pagedEntries.map(row => `
+          <tr>
+            <td data-label="Datum">${row.date}</td>
+            <td data-label="Doklad">${row.document}</td>
+            <td data-label="Směr">${row.side}</td>
+            <td data-label="Účet">${row.accountCode ? `${row.accountCode}: ${row.accountLabel || ''}` : '–'}</td>
+            <td data-label="Protiúčet">${row.counterCode ? `${row.counterCode}: ${row.counterLabel || ''}` : '–'}</td>
+            <td data-label="Popis">${row.description}</td>
+            <td class="num" data-label="Částka">${money(row.amount)}</td>
+          </tr>
+        `).join('') || '<tr><td colspan="7">Pro zvolenou kombinaci filtrů tu teď nic není.</td></tr>';
+
+        document.getElementById('journal-pagination').innerHTML = entries.length > journalState.pageSize ? `
+          <div class="pagination-inline">
+            <button id="journal-page-prev" class="ux-button secondary" ${journalState.page <= 1 ? 'disabled' : ''}>Předchozí</button>
+            <span class="pagination-inline-meta">Zobrazeno ${pageStart + 1}-${Math.min(pageStart + journalState.pageSize, entries.length)} z ${entries.length} zápisů, stránka ${journalState.page} z ${totalPages}</span>
+            <button id="journal-page-next" class="ux-button secondary" ${journalState.page >= totalPages ? 'disabled' : ''}>Další</button>
+          </div>
+        ` : (entries.length ? `<div class="pagination-inline-meta">Zobrazeno všech ${entries.length} zápisů.</div>` : '');
+        const prevBtn = document.getElementById('journal-page-prev');
+        const nextBtn = document.getElementById('journal-page-next');
+        if (prevBtn) prevBtn.addEventListener('click', () => {
+          if (journalState.page <= 1) return;
+          journalState.page -= 1;
+          rerenderJournalSafely();
+        });
+        if (nextBtn) nextBtn.addEventListener('click', () => {
+          if (journalState.page >= totalPages) return;
+          journalState.page += 1;
+          rerenderJournalSafely();
+        });
+
+        const totalExpenseEntries = (selectedMonth.recentEntries || []).filter(row => row.side === 'náklad').length;
+        const missingExpenseDetailNote = totalExpenseEntries === 0 && Number(selectedMonth.expenseTotal || 0) > 0
+          ? ' • Nákladové doklady v detailu tu teď chybí, ale souhrn nákladů je výše v tabulce Kam šlo nejvíc peněz.'
+          : '';
+        document.getElementById('journal-filter-note').textContent = `${selectedMonth.label || '–'} • ${entries.length} zápisů • hlavní třída: ${selectedMonth.topExpenseClass ? selectedMonth.topExpenseClass.label : '–'}${missingExpenseDetailNote}`;
+        renderJournalFilterBar();
+      }
+
+      syncJournalMonthToActiveMode();
+      rerenderJournalSafely();
+
+      const hasPrevious = Boolean(previous.label);
+      toggleButtons.forEach(button => {
+        if (button.dataset.viewToggle === 'previous' && !hasPrevious) {
+          button.disabled = true;
+          button.title = 'Minulý měsíc bude dostupný po dalším refreshi finance dat.';
+        }
+        button.addEventListener('click', () => {
+          if (button.disabled) return;
+          activeMode = button.dataset.viewToggle;
+          renderFinanceTop();
+          syncJournalMonthToActiveMode();
+          journalState.page = 1;
+          rerenderJournalSafely();
+        });
+      });
+    })().catch(err => {
+      document.getElementById('source-alert').innerHTML = `<div class="alert danger">Nepodařilo se načíst finance data: ${err.message}</div>`;
+    });
+  </script>
+</body>
+</html>

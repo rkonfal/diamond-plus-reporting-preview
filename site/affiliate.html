@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond Plus Reporting V2, Affiliate</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="page-marketing-simplified">
+  <aside class="sidebar" data-sidebar-page="affiliate.html" data-sidebar-title="Diamond Plus" data-sidebar-subtitle="Affiliate bez zbytečné složitosti" data-sidebar-section="Affiliate" data-sidebar-footer="Nováčci, síť a tržby partnerů v jednom provozním pohledu."></aside>
+
+  <main class="main page-stack">
+    <header class="header">
+      <div class="ux-topbar">
+        <div class="ux-intro">
+          <div class="ux-kicker">Affiliate • nováčci a MLM síť</div>
+          <h1 class="ux-title">Affiliate výkon v samostatné pracovní vrstvě</h1>
+          <p class="ux-subtitle">Rychle ukáže, kolik affiliate přináší v nováčcích, objednávkách a obratu, plus kdo táhne nejvíc.</p>
+          <div class="ux-actions">
+            <a class="ux-button primary" href="../data/current/affiliate_overview.json" target="_blank" rel="noopener">Affiliate data</a>
+            <a class="ux-button secondary" href="marketing.html">Marketing</a>
+            <a class="ux-button secondary" href="index.html">Na přehled</a>
+          </div>
+        </div>
+        <button class="theme-toggle" data-theme-toggle>Tmavý režim</button>
+      </div>
+      <section class="ux-hero-metrics" id="affiliate-hero"></section>
+      <div class="status-strip" id="affiliate-status-strip"></div>
+      <div class="ux-date-note"><strong>Období:</strong> bere se poslední dostupný affiliate export za aktuální sezónu od 1. 10. do posledního dostupného dne.</div>
+    </header>
+
+    <section class="layer-shell" id="affiliate-step-1" data-section-nav-label="Krok 1: co znamená affiliate" data-section-nav-order="1">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 1</div>
+          <h2 class="layer-title">Co affiliate právě znamená</h2>
+          <p class="layer-subtitle">Odděleně pro nováčky a pro MLM síť, aby bylo hned vidět nábor vs. výkon celé sítě.</p>
+        </div>
+        <div class="layer-note">Nejdřív nábor vs. síť, až potom detail partnerů.</div>
+      </div>
+      <section class="signal-grid" id="affiliate-decision-grid"></section>
+    </section>
+
+    <section class="layer-shell" id="affiliate-inputs" data-section-nav-label="Hlavní vstupy" data-section-nav-order="2">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Hlavní vstupy</div>
+          <h2 class="layer-title">Kam se podívat po prvním signálu</h2>
+          <p class="layer-subtitle">Krátký kontext období, tahounů a návazných pohledů bez přeskakování do detailu partnerů.</p>
+        </div>
+      </div>
+      <section class="ux-grid">
+        <div class="ux-focus-card">
+          <div class="ux-section-head">
+            <div>
+              <h2 class="ux-section-title">Co je v affiliate důležité</h2>
+              <p class="ux-section-subtitle">Rychlý pohled na nábor, síť a tahouny období.</p>
+            </div>
+            <span class="badge live" id="affiliate-source-mode">Načítám affiliate…</span>
+          </div>
+          <div class="ux-list" id="affiliate-focus"></div>
+        </div>
+
+        <div class="ux-side-stack">
+          <div class="ux-panel-card">
+            <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Hlavní vstupy</h3>
+            <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Otevři jen navazující pohledy, které pomůžou další rozhodnutí.</p>
+            <div class="section-nav-links" id="affiliate-route-links" style="margin-top:16px;"></div>
+          </div>
+          <div class="ux-panel-card">
+            <h3 style="margin:0 0 8px; font-size:18px; letter-spacing:-.02em;">Období stručně</h3>
+            <p style="margin:0; color:var(--text-muted); font-size:13px; line-height:1.6;">Základ bez čtení celé tabulky partnerů.</p>
+            <div class="ux-stat-list" id="affiliate-stat-list"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="layer-shell" id="affiliate-step-2" data-section-nav-label="Krok 2: pracovní vrstva" data-section-nav-order="3">
+      <div class="layer-head">
+        <div>
+          <div class="layer-label">Krok 2</div>
+          <h2 class="layer-title">Kdo táhne affiliate výkon</h2>
+          <p class="layer-subtitle">Nahoře souhrn a pod ním top partneři pro oba pohledy.</p>
+        </div>
+      </div>
+      <section class="summary-grid" id="affiliate-work-grid"></section>
+    </section>
+
+    <details class="secondary-details" id="affiliate-secondary" data-section-nav-label="Sekundární vrstva" data-section-nav-order="4">
+      <summary>Sekundární vrstva a detail partnerů</summary>
+
+    <section class="grid two-col" style="margin-top:18px;">
+      <section class="card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="section-title">Top partneři, získaní nováčci</h2>
+            <div class="section-subtitle">Seřazeno podle obratu partnerů získaných nováčků.</div>
+          </div>
+        </div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Partner</th>
+                <th>Kód</th>
+                <th class="num">Kontakty</th>
+                <th class="num">Nakupující</th>
+                <th class="num">Objednávky</th>
+                <th class="num">Obrat</th>
+              </tr>
+            </thead>
+            <tbody id="novice-top-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="section-title">Top partneři, MLM síť</h2>
+            <div class="section-subtitle">Seřazeno podle obratu celé MLM sítě partnera.</div>
+          </div>
+        </div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Partner</th>
+                <th>Kód</th>
+                <th class="num">Síť</th>
+                <th class="num">Nakupující</th>
+                <th class="num">Objednávky</th>
+                <th class="num">Obrat</th>
+              </tr>
+            </thead>
+            <tbody id="network-top-table"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section class="grid two-col">
+      <section class="card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="section-title">Měsíční trend, nováčci</h2>
+            <div class="section-subtitle">Součet za všechny partnery v aktuálním exportu.</div>
+          </div>
+        </div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Měsíc</th>
+                <th class="num">Kontakty</th>
+                <th class="num">Nakupující</th>
+                <th class="num">Objednávky</th>
+                <th class="num">Obrat</th>
+              </tr>
+            </thead>
+            <tbody id="novice-monthly-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="ux-section-head">
+          <div>
+            <h2 class="section-title">Měsíční trend, MLM síť</h2>
+            <div class="section-subtitle">Součet za všechny partnery v aktuálním exportu.</div>
+          </div>
+        </div>
+        <div class="ux-table-wrap" style="margin-top:16px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Měsíc</th>
+                <th class="num">Síť</th>
+                <th class="num">Nakupující</th>
+                <th class="num">Objednávky</th>
+                <th class="num">Obrat</th>
+              </tr>
+            </thead>
+            <tbody id="network-monthly-table"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+    </details>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>
+    DP.initThemeToggle();
+    const money = value => `${DP.fmtNumber(Math.round(value || 0))} Kč`;
+
+    (async () => {
+      const data = await DP.loadJson('../data/current/affiliate_overview.json');
+      const novice = data.reports?.novice || {};
+      const network = data.reports?.network || {};
+      const summary = data.summary || {};
+      const period = data.period || {};
+      const source = data.source || {};
+      const sourceLabelMap = {
+        live_api: 'Živé affiliate API',
+        live_html_reports: 'Affiliate HTML export'
+      };
+      const sourceLabel = sourceLabelMap[source.status] || source.message || source.status || 'Affiliate data';
+      document.getElementById('affiliate-source-mode').textContent = sourceLabel;
+      document.getElementById('affiliate-source-mode').className = `badge ${source.status === 'live_api' ? 'success' : 'info'}`;
+      DP.renderRouteLinks('affiliate-route-links', [
+        ['Přehled firmy', 'index.html', 'Vrať se na hlavní firemní signál a priority dne.'],
+        ['Marketing', 'marketing.html', 'Porovnej affiliate výkon proti placeným kanálům a CRM.'],
+        ['E-shop', 'eshop.html', 'Navazující pohled, pokud chceš číst affiliate v kontextu celého výkonu e-shopu.'],
+        ['Affiliate data', '../data/current/affiliate_overview.json', 'Surový affiliate vstup pro hlubší kontrolu.'],
+      ]);
+
+      DP.renderStatusStrip('affiliate-status-strip', [
+        { label: 'Stav', value: 'OK', tone: 'success' },
+        { label: 'Zdroj', value: sourceLabelMap[source.status] || source.message || source.status || '–', tone: 'info' },
+        { label: 'Období', value: period.label || '–', tone: 'info' },
+        { label: 'Refresh', value: DP.fmtDateTime(data.generatedAt), tone: 'info' },
+      ]);
+
+      document.getElementById('affiliate-focus').innerHTML = [
+        [`Období ${period.label || '–'}`, `Nováčci ${money(summary.noviceRevenueCzkEquiv)} a MLM síť ${money(summary.networkRevenueCzkEquiv)} ve stejném výřezu.`],
+        [`Tahoun náboru`, `${summary.topNovicePartner?.partnerName || '–'} · ${money(summary.topNovicePartner?.revenueCzkEquiv || 0)} obratu.`],
+        [`Tahoun sítě`, `${summary.topNetworkPartner?.partnerName || '–'} · ${money(summary.topNetworkPartner?.revenueCzkEquiv || 0)} obratu.`],
+        [`Základna`, `${DP.fmtNumber(summary.novicePartners || 0)} partnerů v nováčcích a ${DP.fmtNumber(summary.networkPartners || 0)} partnerů v síti.`],
+      ].map(([title, text], index) => `
+        <div class="ux-item">
+          <span class="ux-dot ${index % 2 ? 'gold' : 'blue'}"></span>
+          <div>
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('affiliate-stat-list').innerHTML = [
+        ['Zdroj', sourceLabel],
+        ['Nováčci obrat', money(summary.noviceRevenueCzkEquiv)],
+        ['Síť obrat', money(summary.networkRevenueCzkEquiv)],
+        ['Top nováčci', summary.topNovicePartner?.partnerName || '–'],
+        ['Top MLM', summary.topNetworkPartner?.partnerName || '–'],
+      ].map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('');
+
+      document.getElementById('affiliate-hero').innerHTML = [
+        ['Nováčci, obrat', money(summary.noviceRevenueCzkEquiv), `${DP.fmtNumber(Math.round(summary.noviceOrders || 0))} objednávek`, 'accent'],
+        ['MLM síť, obrat', money(summary.networkRevenueCzkEquiv), `${DP.fmtNumber(Math.round(summary.networkOrders || 0))} objednávek`, ''],
+        ['Aktivní základna', `${DP.fmtNumber(Math.round(summary.noviceOrderingContacts || 0))} / ${DP.fmtNumber(Math.round(summary.networkOrderingCustomers || 0))}`, 'nakupující nováčci / nakupující síť', '']
+      ].map(([label, value, sub, klass]) => `
+        <div class="ux-hero-metric ${klass}">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          <div class="sub">${sub}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('affiliate-decision-grid').innerHTML = [
+        {
+          eyebrow: 'Nábor přes affiliate',
+          value: DP.fmtNumber(Math.round(summary.noviceOrderingContacts || 0)),
+          sub: `${DP.fmtNumber(Math.round(novice.totals?.contacts || 0))} kontaktů, ${DP.fmtNumber(Math.round(novice.totals?.orders || 0))} objednávek a ${money(novice.totals?.revenueCzkEquiv || 0)} obratu.`,
+          meta: `Top partner ${summary.topNovicePartner?.partnerName || '–'}`,
+          tone: 'accent'
+        },
+        {
+          eyebrow: 'Výkon celé MLM sítě',
+          value: DP.fmtNumber(Math.round(summary.networkOrderingCustomers || 0)),
+          sub: `${DP.fmtNumber(Math.round(network.totals?.networkCustomers || 0))} lidí v síti, ${DP.fmtNumber(Math.round(network.totals?.orders || 0))} objednávek a ${money(network.totals?.revenueCzkEquiv || 0)} obratu.`,
+          meta: `Top partner ${summary.topNetworkPartner?.partnerName || '–'}`,
+          tone: ''
+        },
+        {
+          eyebrow: 'Rozsah reportu',
+          value: `${DP.fmtNumber(summary.novicePartners || 0)} / ${DP.fmtNumber(summary.networkPartners || 0)}`,
+          sub: 'Počet partnerů v reportu nováčků a MLM sítě.',
+          meta: period.label || '–',
+          tone: ''
+        }
+      ].map(card => `
+        <article class="signal-card ${card.tone || ''}">
+          <div class="eyebrow">${card.eyebrow}</div>
+          <div class="signal-value">${card.value}</div>
+          <div class="signal-sub">${card.sub}</div>
+          <div class="signal-meta">${card.meta}</div>
+        </article>
+      `).join('');
+
+      document.getElementById('affiliate-work-grid').innerHTML = [
+        {
+          title: 'Nováčci',
+          text: 'Kolik nových kontaktů už opravdu nakoupilo a jaký obrat tím vznikl.',
+          body: [
+            ['Kontakty', DP.fmtNumber(Math.round(novice.totals?.contacts || 0))],
+            ['Nakupující', DP.fmtNumber(Math.round(novice.totals?.orderingContacts || 0))],
+            ['Objednávky', DP.fmtNumber(Math.round(novice.totals?.orders || 0))],
+            ['Obrat', money(novice.totals?.revenueCzkEquiv || 0)],
+          ]
+        },
+        {
+          title: 'MLM síť',
+          text: 'Jak silná je síť partnerů a jak se to propisuje do obratu.',
+          body: [
+            ['Síť', DP.fmtNumber(Math.round(network.totals?.networkCustomers || 0))],
+            ['Nakupující', DP.fmtNumber(Math.round(network.totals?.orderingCustomers || 0))],
+            ['Objednávky', DP.fmtNumber(Math.round(network.totals?.orders || 0))],
+            ['Obrat', money(network.totals?.revenueCzkEquiv || 0)],
+          ]
+        },
+        {
+          title: 'Nejsilnější partneři',
+          text: 'Kdo teď táhne affiliate výkon podle obratu.',
+          body: [
+            ['Top nováčci', summary.topNovicePartner?.partnerName || '–'],
+            ['Top nováčci obrat', money(summary.topNovicePartner?.revenueCzkEquiv || 0)],
+            ['Top MLM', summary.topNetworkPartner?.partnerName || '–'],
+            ['Top MLM obrat', money(summary.topNetworkPartner?.revenueCzkEquiv || 0)],
+          ]
+        }
+      ].map(card => `
+        <article class="summary-card">
+          <h3>${card.title}</h3>
+          <p>${card.text}</p>
+          <div class="ux-stat-list">
+            ${card.body.map(([label, value]) => `<div class="ux-stat-row"><span>${label}</span><strong>${value}</strong></div>`).join('')}
+          </div>
+        </article>
+      `).join('');
+
+      document.getElementById('novice-top-table').innerHTML = (novice.topPartners || []).slice(0, 12).map(row => `
+        <tr>
+          <td>${row.partnerName || '–'}</td>
+          <td>${row.partnerCode || '–'}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.contacts || 0))}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.orderingContacts || 0))}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.orders || 0))}</td>
+          <td class="num">${money(row.revenueCzkEquiv || 0)}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('network-top-table').innerHTML = (network.topPartners || []).slice(0, 12).map(row => `
+        <tr>
+          <td>${row.partnerName || '–'}</td>
+          <td>${row.partnerCode || '–'}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.networkCustomers || 0))}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.orderingCustomers || 0))}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.orders || 0))}</td>
+          <td class="num">${money(row.revenueCzkEquiv || 0)}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('novice-monthly-table').innerHTML = (novice.monthly || []).map(row => `
+        <tr>
+          <td>${row.label}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.contacts || 0))}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.orderingContacts || 0))}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.orders || 0))}</td>
+          <td class="num">${money(row.revenueCzkEquiv || 0)}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('network-monthly-table').innerHTML = (network.monthly || []).map(row => `
+        <tr>
+          <td>${row.label}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.networkCustomers || 0))}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.orderingCustomers || 0))}</td>
+          <td class="num">${DP.fmtNumber(Math.round(row.orders || 0))}</td>
+          <td class="num">${money(row.revenueCzkEquiv || 0)}</td>
+        </tr>
+      `).join('');
+    })().catch(err => {
+      document.getElementById('affiliate-hero').innerHTML = `<div class="alert warn">Affiliate se nepodařilo načíst: ${err.message}</div>`;
+    });
+  </script>
+</body>
+</html>
