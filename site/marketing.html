@@ -210,6 +210,7 @@
             <tbody id="ga4-channel-table"></tbody>
           </table>
           <div class="mobile-only mobile-campaign-list" id="ga4-channel-mobile"></div>
+          <p id="ga4-channel-footnote" style="font-size:12px; color:var(--text-muted); margin-top:8px; display:none;"></p>
         </div>
         <div class="ux-table-wrap">
           <table class="table desktop-only">
@@ -344,7 +345,7 @@
         { label: 'Assistant / Bing sessions 7d', value: DP.fmtNumber(aiTraffic.summary?.assistantLikeSessions7d || 0), tone: 'warn' },
         { label: 'Proxy trans. 30d', value: DP.fmtNumber(aiTraffic.summary?.proxyTransactions30d || 0), tone: 'info' },
       ], { compact: true });
-      document.getElementById('ga4-ai-note').textContent = aiTraffic.methodology?.note || '';
+      document.getElementById('ga4-ai-note').textContent = (aiTraffic.methodology?.note || '') + ' Čísla v závorce (LC) = přímá last-click konverze; Vliv = multi-touch, kde kanál byl kdekoli v cestě zákazníka.';
 
       const topSourceText = bucket => {
         const sessionSources = bucket.topSessionSources7d || [];
@@ -356,13 +357,23 @@
 
       document.getElementById('ga4-ai-table').innerHTML = buckets.map(bucket => {
         const confidence = aiConfidence[bucket.confidence] || aiConfidence.low;
+        const infTrans = bucket.transactions30dInfluenced || 0;
+        const lcTrans  = bucket.transactions30dLastClick  || 0;
+        const infRev   = bucket.revenue30dInfluenced      || 0;
+        const lcRev    = bucket.revenue30dLastClick       || 0;
+        const transCell = (infTrans === 0 && lcTrans > 0)
+          ? `<span title="Influenced (multi-touch): 0; Last-click: ${DP.fmtNumber(lcTrans)}" style="cursor:help;">${DP.fmtNumber(infTrans)} <small style="color:var(--text-muted); white-space:nowrap;">(LC: ${DP.fmtNumber(lcTrans)})</small></span>`
+          : DP.fmtNumber(infTrans);
+        const revCell = (infRev === 0 && lcRev > 0)
+          ? `<span title="Influenced (multi-touch): 0 Kč; Last-click: ${money(lcRev)}" style="cursor:help;">${money(infRev)} <small style="color:var(--text-muted); white-space:nowrap;">(LC: ${money(lcRev)})</small></span>`
+          : money(infRev);
         return `
           <tr>
             <td><strong>${bucket.label}</strong><br><span style="color:var(--text-muted); font-size:12px;">${bucket.description}</span></td>
             <td>${confidence.label}</td>
             <td class="num">${bucket.sessions7d ? DP.fmtNumber(Math.round(bucket.sessions7d || 0)) : '–'}</td>
-            <td class="num">${DP.fmtNumber(bucket.transactions30dInfluenced || 0)}</td>
-            <td class="num">${money(bucket.revenue30dInfluenced || 0)}</td>
+            <td class="num">${transCell}</td>
+            <td class="num">${revCell}</td>
             <td>${topSourceText(bucket)}</td>
           </tr>
         `;
@@ -370,6 +381,16 @@
 
       document.getElementById('ga4-ai-mobile').innerHTML = buckets.map(bucket => {
         const confidence = aiConfidence[bucket.confidence] || aiConfidence.low;
+        const infTrans = bucket.transactions30dInfluenced || 0;
+        const lcTrans  = bucket.transactions30dLastClick  || 0;
+        const infRev   = bucket.revenue30dInfluenced      || 0;
+        const lcRev    = bucket.revenue30dLastClick       || 0;
+        const transDisp = (infTrans === 0 && lcTrans > 0)
+          ? `${DP.fmtNumber(infTrans)} <small style="color:var(--text-muted);">(LC: ${DP.fmtNumber(lcTrans)})</small>`
+          : DP.fmtNumber(infTrans);
+        const revDisp = (infRev === 0 && lcRev > 0)
+          ? `${money(infRev)} <small style="color:var(--text-muted);">(LC: ${money(lcRev)})</small>`
+          : money(infRev);
         return `
           <div class="mobile-campaign-card">
             <strong>${bucket.label}</strong>
@@ -377,8 +398,8 @@
             <div class="mobile-metric-grid" style="margin-top:10px;">
               <div><span>Důvěra</span><br>${confidence.label}</div>
               <div><span>Sessions 7d</span><br>${bucket.sessions7d ? DP.fmtNumber(Math.round(bucket.sessions7d || 0)) : '–'}</div>
-              <div><span>Trans. 30d</span><br>${DP.fmtNumber(bucket.transactions30dInfluenced || 0)}</div>
-              <div><span>Revenue 30d</span><br>${money(bucket.revenue30dInfluenced || 0)}</div>
+              <div><span>Trans. 30d</span><br>${transDisp}</div>
+              <div><span>Revenue 30d</span><br>${revDisp}</div>
             </div>
             <div style="margin-top:10px; color:var(--text-muted); font-size:12px;">${topSourceText(bucket)}</div>
           </div>
@@ -911,16 +932,32 @@
             </div>
           `).join('');
 
+          const fmtCR = pct => {
+            if (pct == null) return '–';
+            const cr = Number(pct);
+            if (cr > 100) return `<span title="CR > 100 % = GA4 cross-session atribuční artefakt (nákupy přičítány přes více sessions/zařízení)" style="color:var(--warn, #d97706); cursor:help;">${cr.toFixed(2)} %*</span>`;
+            return `${cr.toFixed(2)} %`;
+          };
+
           document.getElementById('ga4-channel-table').innerHTML = (ga4.channelPerformanceCurrentMonth || []).map(row => `
             <tr>
               <td>${row.channel || '–'}</td>
               <td class="num">${DP.fmtNumber(Math.round(row.sessions || 0))}</td>
               <td class="num">${DP.fmtNumber(Math.round(row.ecommercePurchases || 0))}</td>
               <td class="num">${money(row.purchaseRevenue || 0)}</td>
-              <td class="num">${row.purchaseRatePct == null ? '–' : `${Number(row.purchaseRatePct).toFixed(2)} %`}</td>
+              <td class="num">${fmtCR(row.purchaseRatePct)}</td>
               <td class="num">${row.revenuePerSession == null ? '–' : `${Number(row.revenuePerSession).toFixed(2)} Kč`}</td>
             </tr>
           `).join('') || '<tr><td colspan="6">GA4 kanály zatím nejsou k dispozici.</td></tr>';
+
+          (() => {
+            const hasOverCR = (ga4.channelPerformanceCurrentMonth || []).some(r => Number(r.purchaseRatePct) > 100);
+            const fn = document.getElementById('ga4-channel-footnote');
+            if (fn && hasOverCR) {
+              fn.textContent = '* CR > 100 % = GA4 cross-session atribuční artefakt. Nákupy jsou přičítány přes více sessions a zařízení; u malých kanálů (AI Assistant, Paid Shopping) může počet konverzí převýšit počet sessions.';
+              fn.style.display = '';
+            }
+          })();
 
           document.getElementById('ga4-channel-mobile').innerHTML = (ga4.channelPerformanceCurrentMonth || []).map(row => `
             <div class="mobile-campaign-card">
@@ -929,7 +966,7 @@
                 <div><span>Sessions</span><br>${DP.fmtNumber(Math.round(row.sessions || 0))}</div>
                 <div><span>Nákupy</span><br>${DP.fmtNumber(Math.round(row.ecommercePurchases || 0))}</div>
                 <div><span>Revenue</span><br>${money(row.purchaseRevenue || 0)}</div>
-                <div><span>CR</span><br>${row.purchaseRatePct == null ? '–' : `${Number(row.purchaseRatePct).toFixed(2)} %`}</div>
+                <div><span>CR</span><br>${fmtCR(row.purchaseRatePct)}</div>
               </div>
             </div>
           `).join('') || '<div class="mobile-campaign-card"><strong>Bez GA4 kanálů</strong></div>';

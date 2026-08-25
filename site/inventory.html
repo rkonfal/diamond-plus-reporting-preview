@@ -100,6 +100,7 @@
               <span class="control-label">Stav</span>
               <select id="inventory-filter" class="select">
                 <option value="all">Všechny stavy</option>
+                <option value="expiryRisk3m">Expirace do 3 měsíců</option>
                 <option value="expiryRisk6m">Expirace do 6 měsíců</option>
                 <option value="fastLowCover">Dochází zásoba</option>
                 <option value="lowAfterSales">Po prodeji dochází</option>
@@ -125,6 +126,7 @@
                 <option value="sales365d">Největší prodej 365d</option>
                 <option value="avgMonthly">Největší průměr / měsíc</option>
                 <option value="coverAsc">Nejnižší pokrytí</option>
+                <option value="expiryAsc">Nejbližší expirace</option>
                 <option value="code">Kód A–Z</option>
               </select>
             </label>
@@ -395,8 +397,17 @@
       return Array.isArray(value) ? value : [];
     }
 
-    function analyticsBadges(metric) {
-      const tags = new Set(list(metric?.tags));
+    // Returns merged tags: combined + view-specific SK tags when view='sk'
+    function effectiveTags(metric, skMetric, view) {
+      const combined = new Set(list(metric?.tags));
+      if (view === 'sk' && skMetric) {
+        for (const tag of list(skMetric.tags)) combined.add(tag);
+      }
+      return combined;
+    }
+
+    function analyticsBadges(metric, skMetric, view) {
+      const tags = effectiveTags(metric, skMetric, view);
       const badges = [];
       if (tags.has('fast_mover_low_cover')) badges.push('<span class="pill danger">dochází zásoba</span>');
       if (tags.has('dead_stock')) badges.push('<span class="pill warning">bez prodeje</span>');
@@ -427,7 +438,7 @@
       if (flags.has('low_after_sales')) badges.push('<span class="pill danger">po prodeji dochází</span>');
       if (list(row.fourpx?.manualMappedSourceCodes).length) badges.push('<span class="pill success">ručně spárováno</span>');
       if (flags.has('auto_mapped_4px_alias')) badges.push('<span class="pill info">automatický návrh</span>');
-      const analytics = analyticsBadges(metric);
+      const analytics = analyticsBadges(metric, row._skMetric || null, view);
       if (analytics) badges.push(analytics);
       return badges.length ? badges.join(' ') : '<span class="pill info">v pořádku</span>'; 
     }
@@ -473,7 +484,7 @@
         row.code,
         row.title,
         ...list(row.flags),
-        ...list(metric?.tags),
+        ...[...effectiveTags(metric, row._skMetric, view)],
         ...expiryRiskMatchesInView(row, view).map(match => `${match.sku} ${match.daysToExpiry} ${match.dateExpiry}`),
         ...(row.wpj?.stores || []).map(store => store.storeName),
         ...list(row.fourpx?.sourceCodes),
@@ -516,7 +527,7 @@
 
     function matchesExplorerFilter(row, metric, filter, view) {
       const flags = new Set(list(row.flags));
-      const tags = new Set(list(metric?.tags));
+      const tags = effectiveTags(metric, row._skMetric, view);
       switch (filter) {
         case 'lte10': {
           const _lte10stock = view === 'sk'
@@ -524,6 +535,7 @@
             : Number(row.fourpx?.cz?.availableStock || 0);
           return _lte10stock <= 10;
         }
+        case 'expiryRisk3m': return hasExpiryRiskInView(row, view);
         case 'expiryRisk6m': return hasExpiryRiskInView6m(row, view);
         case 'mismatch': return flags.has('stock_mismatch');
         case 'only4px': return flags.has('only_in_4px');
@@ -554,7 +566,7 @@
     function explorerScore(row, metric, view) {
       let score = 0;
       const flags = new Set(list(row.flags));
-      const tags = new Set(list(metric?.tags));
+      const tags = effectiveTags(metric, row._skMetric, view);
       if (flags.has('only_in_4px')) score += 2000;
       if (flags.has('low_after_sales')) score += 1800;
       if (hasExpiryRiskInView(row, view)) {
@@ -831,13 +843,14 @@
     const EXPLORER_STATE_KEY = 'dp-inventory-explorer-state-v1';
 
     (async () => {
-      const [overview, analytics, combined, czInventoryDetail, skInventoryDetail, expiryOverview] = await Promise.all([
+      const [overview, analytics, combined, czInventoryDetail, skInventoryDetail, expiryOverview, analyticsSk] = await Promise.all([
         DP.loadJson('../data/current/combined_inventory_overview.json'),
         DP.loadJson('../data/current/inventory_analytics_365d.json'),
         DP.loadJson('../data/current/combined_product_index.json'),
         DP.loadJson('../data/current/4px_cz_inventory_detail.json').catch(() => ({ items: [] })),
         DP.loadJson('../data/current/4px_sk_inventory_detail.json').catch(() => ({ items: [] })),
-        DP.loadJson('../data/current/4px_expiry_overview.json').catch(() => ({ topExpiring: [], _loadError: true }))
+        DP.loadJson('../data/current/4px_expiry_overview.json').catch(() => ({ topExpiring: [], _loadError: true })),
+        DP.loadJson('../data/current/inventory_analytics_730d_sk.json').catch(() => ({ items: [] }))
       ]);
 
       const expiryDataAvailable = expiryOverview?._loadError !== true;
@@ -866,10 +879,16 @@
           };
         });
       const analyticsByCode = new Map(analyticsItems.map(row => [row.code, row]));
-      const explorerRows = combinedItems.map(row => ({
-        row,
-        metric: analyticsByCode.get(row.code) || {}
-      }));
+      const skAnalyticsItems = analyticsSk?.items || [];
+      const skAnalyticsByCode = new Map(skAnalyticsItems.map(row => [row.code, row]));
+      const explorerRows = combinedItems.map(row => {
+        // Attach SK-specific analytics as _skMetric so view-aware functions can use it
+        row._skMetric = skAnalyticsByCode.get(row.code) || null;
+        return {
+          row,
+          metric: analyticsByCode.get(row.code) || {},
+        };
+      });
 
       const healthRows = analyticsItems.filter(row => row.orderable !== false);
       const aRows = healthRows.filter(row => row.orderingRole === 'top_sku');
@@ -915,6 +934,10 @@
       const expiryPriorityActive = expiryDataAvailable && expiryRiskRows.length > 0;
       const expiryCountLabel = expiryDataAvailable ? fmt(expiryRiskRows.length) : 'nedostupné';
       const expirySplitLabel = expiryDataAvailable ? `${fmt(expiryRiskCzRows.length)} / ${fmt(expiryRiskSkRows.length)}` : 'nedostupné';
+      const soonestExpiryRow = expiryRiskRows.slice().sort((a, b) => (a.row.expiryRisk?.nearestDays ?? 999) - (b.row.expiryRisk?.nearestDays ?? 999))[0];
+      const soonestExpiryMeta = soonestExpiryRow
+        ? `Nejbližší: ${soonestExpiryRow.row.code} · ${expiryTimingLabel(soonestExpiryRow.row.expiryRisk?.nearestDays)} dní`
+        : 'Žádné produkty nexpirují do 90 dní.';
 
       const searchInput = document.getElementById('inventory-search');
       const marketSelect = document.getElementById('inventory-market');
@@ -1039,7 +1062,7 @@
       }
 
       function defaultSortDirection(sortKey) {
-        return sortKey === 'coverAsc' || sortKey === 'code' ? 'asc' : 'desc';
+        return sortKey === 'coverAsc' || sortKey === 'code' || sortKey === 'expiryAsc' ? 'asc' : 'desc';
       }
 
       function sortLabel(sortKey) {
@@ -1140,6 +1163,14 @@
           sub: `${fmt(overview.counts.onlyIn4px || 0)} jen ve 4PX · ${fmt(overview.counts.manualMapped4pxAliases || 0)} ručních map.`,
           meta: `Health score ${fmt(healthScore)} / 100 · overstock ${money(overstockValue)}`,
           tone: overview.counts.stockMismatch ? 'warn' : '',
+        },
+        {
+          eyebrow: 'Expirace do 3 měsíců',
+          value: expiryDataAvailable ? fmt(expiryRiskRows.length) : '–',
+          sub: expiryDataAvailable ? `CZ: ${fmt(expiryRiskCzRows.length)} SKU · SK: ${fmt(expiryRiskSkRows.length)} SKU` : 'Feed nedostupný.',
+          meta: expiryDataAvailable ? soonestExpiryMeta : 'Expirační data nejsou k dispozici.',
+          tone: !expiryDataAvailable ? 'warn' : expiryRiskRows.length > 10 ? 'danger' : expiryRiskRows.length > 0 ? 'warn' : '',
+          action: expiryRiskRows.length > 0 ? { label: 'Zobrazit', filter: 'expiryRisk3m' } : null,
         }
       ].map(card => `
         <article class="signal-card ${card.tone || ''}">
@@ -1147,8 +1178,21 @@
           <div class="signal-value">${card.value}</div>
           <div class="signal-sub">${card.sub}</div>
           <div class="signal-meta">${card.meta}</div>
+          ${card.action ? `<button type="button" class="signal-card-action" data-set-filter="${card.action.filter}">${card.action.label}</button>` : ''}
         </article>
       `).join('');
+
+      document.getElementById('inventory-decision-grid').querySelectorAll('[data-set-filter]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filterEl = document.getElementById('inventory-filter');
+          if (filterEl) {
+            filterEl.value = btn.dataset.setFilter;
+            filterEl.dispatchEvent(new Event('change'));
+            const step2 = document.getElementById('inventory-step-2');
+            if (step2) step2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
 
       document.getElementById('inventory-kpis').innerHTML = [
         ['A SKU kritické', fmt(aCriticalRows.length), 'klíčové položky s rizikem výpadku', 'red'],
@@ -1337,6 +1381,12 @@
           if (sort === 'coverAsc') {
             return compareNullableNumber(daysOfCoverInView(a.row, a.metric), daysOfCoverInView(b.row, b.metric), direction, true)
               || explorerScore(b.row, b.metric, activeView) - explorerScore(a.row, a.metric, activeView);
+          }
+          if (sort === 'expiryAsc') {
+            const aDays = a.row.expiryRisk?.nearestDays ?? Infinity;
+            const bDays = b.row.expiryRisk?.nearestDays ?? Infinity;
+            const diff = direction === 'asc' ? aDays - bDays : bDays - aDays;
+            return diff || explorerScore(b.row, b.metric, activeView) - explorerScore(a.row, a.metric, activeView);
           }
           if (sort === 'code') {
             const codeCompare = String(a.row.code || '').localeCompare(String(b.row.code || ''), 'cs');

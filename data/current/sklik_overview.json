@@ -25,7 +25,63 @@
   },
   "statsStatusCurrentMonth": [
     {
+      "date": "20260806T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260817T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260807T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260818T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260808T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260819T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260809T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260820T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260810T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260821T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260811T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260822T00:00:00+0000",
+      "status": "complete"
+    },
+    {
       "date": "20260801T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260812T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260823T00:00:00+0000",
       "status": "complete"
     },
     {
@@ -33,7 +89,19 @@
       "status": "complete"
     },
     {
+      "date": "20260813T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260824T00:00:00+0000",
+      "status": "preparing"
+    },
+    {
       "date": "20260803T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20260814T00:00:00+0000",
       "status": "complete"
     },
     {
@@ -41,24 +109,32 @@
       "status": "complete"
     },
     {
+      "date": "20260815T00:00:00+0000",
+      "status": "complete"
+    },
+    {
       "date": "20260805T00:00:00+0000",
-      "status": "preparing"
+      "status": "complete"
+    },
+    {
+      "date": "20260816T00:00:00+0000",
+      "status": "complete"
     }
   ],
   "currentMonth": {
     "dateFrom": "2026-08-01",
-    "dateTo": "2026-08-05",
+    "dateTo": "2026-08-24",
     "total": {
       "date": "20260801T00:00:00+0000",
-      "impressions": 11633,
-      "clicks": 458,
-      "ctr": 3.94,
-      "cpcCzk": 1.94,
-      "priceCzk": 889.32,
-      "conversions": 166.0,
-      "conversionValueCzk": 219819.0,
-      "transactions": 162,
-      "avgPosition": 1.36
+      "impressions": 60466,
+      "clicks": 2134,
+      "ctr": 3.53,
+      "cpcCzk": 2.02,
+      "priceCzk": 4305.45,
+      "conversions": 781.0,
+      "conversionValueCzk": 1055262.0,
+      "transactions": 760,
+      "avgPosition": 1.39
     },
     "daily": [
       {
@@ -111,15 +187,243 @@
       },
       {
         "date": "20260805T00:00:00+0000",
-        "impressions": 2417,
-        "clicks": 83,
-        "ctr": 3.43,
+        "impressions": 2462,
+        "clicks": 89,
+        "ctr": 3.61,
+        "cpcCzk": 2.06,
+        "priceCzk": 183.31,
+        "conversions": 39.0,
+        "conversionValueCzk": 47166.0,
+        "transactions": 38,
+        "avgPosition": 1.37
+      },
+      {
+        "date": "20260806T00:00:00+0000",
+        "impressions": 2535,
+        "clicks": 102,
+        "ctr": 4.02,
+        "cpcCzk": 2.3,
+        "priceCzk": 234.43,
+        "conversions": 45.0,
+        "conversionValueCzk": 51335.0,
+        "transactions": 44,
+        "avgPosition": 1.39
+      },
+      {
+        "date": "20260807T00:00:00+0000",
+        "impressions": 2619,
+        "clicks": 103,
+        "ctr": 3.93,
         "cpcCzk": 2.12,
-        "priceCzk": 175.71,
-        "conversions": 36.0,
-        "conversionValueCzk": 42962.0,
-        "transactions": 36,
+        "priceCzk": 218.82,
+        "conversions": 72.0,
+        "conversionValueCzk": 89242.0,
+        "transactions": 70,
+        "avgPosition": 1.38
+      },
+      {
+        "date": "20260808T00:00:00+0000",
+        "impressions": 2066,
+        "clicks": 43,
+        "ctr": 2.08,
+        "cpcCzk": 2.09,
+        "priceCzk": 89.79,
+        "conversions": 8.0,
+        "conversionValueCzk": 9048.0,
+        "transactions": 8,
+        "avgPosition": 1.53
+      },
+      {
+        "date": "20260809T00:00:00+0000",
+        "impressions": 2213,
+        "clicks": 72,
+        "ctr": 3.25,
+        "cpcCzk": 2.0,
+        "priceCzk": 144.03,
+        "conversions": 23.0,
+        "conversionValueCzk": 29985.0,
+        "transactions": 22,
+        "avgPosition": 1.38
+      },
+      {
+        "date": "20260810T00:00:00+0000",
+        "impressions": 2867,
+        "clicks": 119,
+        "ctr": 4.15,
+        "cpcCzk": 1.94,
+        "priceCzk": 231.15,
+        "conversions": 39.0,
+        "conversionValueCzk": 61530.0,
+        "transactions": 38,
+        "avgPosition": 1.46
+      },
+      {
+        "date": "20260811T00:00:00+0000",
+        "impressions": 2825,
+        "clicks": 96,
+        "ctr": 3.4,
+        "cpcCzk": 1.8,
+        "priceCzk": 172.48,
+        "conversions": 41.0,
+        "conversionValueCzk": 48525.0,
+        "transactions": 40,
+        "avgPosition": 1.47
+      },
+      {
+        "date": "20260812T00:00:00+0000",
+        "impressions": 2757,
+        "clicks": 90,
+        "ctr": 3.26,
+        "cpcCzk": 1.97,
+        "priceCzk": 177.41,
+        "conversions": 43.0,
+        "conversionValueCzk": 82991.0,
+        "transactions": 42,
+        "avgPosition": 1.46
+      },
+      {
+        "date": "20260813T00:00:00+0000",
+        "impressions": 2664,
+        "clicks": 94,
+        "ctr": 3.53,
+        "cpcCzk": 2.23,
+        "priceCzk": 209.35,
+        "conversions": 39.0,
+        "conversionValueCzk": 45251.0,
+        "transactions": 38,
+        "avgPosition": 1.34
+      },
+      {
+        "date": "20260814T00:00:00+0000",
+        "impressions": 2304,
+        "clicks": 78,
+        "ctr": 3.39,
+        "cpcCzk": 2.33,
+        "priceCzk": 181.75,
+        "conversions": 27.0,
+        "conversionValueCzk": 41717.0,
+        "transactions": 26,
         "avgPosition": 1.35
+      },
+      {
+        "date": "20260815T00:00:00+0000",
+        "impressions": 2055,
+        "clicks": 54,
+        "ctr": 2.63,
+        "cpcCzk": 2.32,
+        "priceCzk": 125.31,
+        "conversions": 18.0,
+        "conversionValueCzk": 27648.0,
+        "transactions": 18,
+        "avgPosition": 1.27
+      },
+      {
+        "date": "20260816T00:00:00+0000",
+        "impressions": 2340,
+        "clicks": 75,
+        "ctr": 3.21,
+        "cpcCzk": 2.28,
+        "priceCzk": 170.92,
+        "conversions": 29.0,
+        "conversionValueCzk": 45737.0,
+        "transactions": 28,
+        "avgPosition": 1.41
+      },
+      {
+        "date": "20260817T00:00:00+0000",
+        "impressions": 2897,
+        "clicks": 125,
+        "ctr": 4.31,
+        "cpcCzk": 1.88,
+        "priceCzk": 235.11,
+        "conversions": 41.0,
+        "conversionValueCzk": 57421.0,
+        "transactions": 40,
+        "avgPosition": 1.36
+      },
+      {
+        "date": "20260818T00:00:00+0000",
+        "impressions": 2830,
+        "clicks": 104,
+        "ctr": 3.67,
+        "cpcCzk": 1.75,
+        "priceCzk": 182.43,
+        "conversions": 23.0,
+        "conversionValueCzk": 36456.0,
+        "transactions": 22,
+        "avgPosition": 1.42
+      },
+      {
+        "date": "20260819T00:00:00+0000",
+        "impressions": 2637,
+        "clicks": 107,
+        "ctr": 4.06,
+        "cpcCzk": 1.82,
+        "priceCzk": 194.83,
+        "conversions": 44.0,
+        "conversionValueCzk": 45591.0,
+        "transactions": 43,
+        "avgPosition": 1.37
+      },
+      {
+        "date": "20260820T00:00:00+0000",
+        "impressions": 2881,
+        "clicks": 96,
+        "ctr": 3.33,
+        "cpcCzk": 1.67,
+        "priceCzk": 159.89,
+        "conversions": 37.0,
+        "conversionValueCzk": 40730.0,
+        "transactions": 36,
+        "avgPosition": 1.41
+      },
+      {
+        "date": "20260821T00:00:00+0000",
+        "impressions": 2745,
+        "clicks": 100,
+        "ctr": 3.64,
+        "cpcCzk": 2.18,
+        "priceCzk": 217.5,
+        "conversions": 25.0,
+        "conversionValueCzk": 41215.0,
+        "transactions": 24,
+        "avgPosition": 1.3
+      },
+      {
+        "date": "20260822T00:00:00+0000",
+        "impressions": 2522,
+        "clicks": 57,
+        "ctr": 2.26,
+        "cpcCzk": 2.27,
+        "priceCzk": 129.43,
+        "conversions": 10.0,
+        "conversionValueCzk": 18360.0,
+        "transactions": 10,
+        "avgPosition": 1.32
+      },
+      {
+        "date": "20260823T00:00:00+0000",
+        "impressions": 2289,
+        "clicks": 77,
+        "ctr": 3.36,
+        "cpcCzk": 2.34,
+        "priceCzk": 180.07,
+        "conversions": 31.0,
+        "conversionValueCzk": 42345.0,
+        "transactions": 30,
+        "avgPosition": 1.49
+      },
+      {
+        "date": "20260824T00:00:00+0000",
+        "impressions": 2742,
+        "clicks": 78,
+        "ctr": 2.84,
+        "cpcCzk": 1.97,
+        "priceCzk": 153.83,
+        "conversions": 17.0,
+        "conversionValueCzk": 16112.0,
+        "transactions": 17,
+        "avgPosition": 1.34
       }
     ]
   },
@@ -130,13 +434,13 @@
       "status": "active",
       "type": "fulltext",
       "date": "20260801",
-      "impressions": 466,
-      "clicks": 281,
+      "impressions": 2599,
+      "clicks": 1493,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 366.29,
-      "conversions": 116.0,
-      "conversionValueCzk": 1516.17,
+      "priceCzk": 1873.63,
+      "conversions": 685.0,
+      "conversionValueCzk": 9185.77,
       "transactions": 0,
       "avgPosition": 0.0
     },
@@ -146,13 +450,13 @@
       "status": "active",
       "type": "zbozi",
       "date": "20260801",
-      "impressions": 504,
-      "clicks": 8,
+      "impressions": 3420,
+      "clicks": 56,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 33.4,
-      "conversions": 0.0,
-      "conversionValueCzk": 0.0,
+      "priceCzk": 252.8,
+      "conversions": 1.0,
+      "conversionValueCzk": 16.63,
       "transactions": 0,
       "avgPosition": 0.0
     },
@@ -162,11 +466,11 @@
       "status": "active",
       "type": "fulltext",
       "date": "20260801",
-      "impressions": 15,
-      "clicks": 3,
+      "impressions": 99,
+      "clicks": 11,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 4.3,
+      "priceCzk": 14.03,
       "conversions": 0.0,
       "conversionValueCzk": 0.0,
       "transactions": 0,
@@ -178,11 +482,11 @@
       "status": "active",
       "type": "fulltext",
       "date": "20260801",
-      "impressions": 34,
-      "clicks": 2,
+      "impressions": 177,
+      "clicks": 9,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 4.5,
+      "priceCzk": 21.92,
       "conversions": 0.0,
       "conversionValueCzk": 0.0,
       "transactions": 0,
@@ -194,13 +498,13 @@
       "status": "active",
       "type": "product",
       "date": "20260801",
-      "impressions": 8197,
-      "clicks": 81,
+      "impressions": 51429,
+      "clicks": 487,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 305.12,
-      "conversions": 14.0,
-      "conversionValueCzk": 252.4,
+      "priceCzk": 1989.24,
+      "conversions": 78.0,
+      "conversionValueCzk": 1189.1,
       "transactions": 0,
       "avgPosition": 0.0
     }

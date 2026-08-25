@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-06T15:48:37.259702+02:00",
+  "generatedAt": "2026-08-25T10:05:44.804451+02:00",
   "source": {
     "status": "live_report",
     "message": "Měsíční finance se tahají přímo z ABRA reportu Výkaz hospodaření za měsíc za všechna střediska. Cash a závazky jsou také live z ABRA API."
@@ -42,15 +42,15 @@
       "cogsAndFees": 9704980.64,
       "logistics": 1102853.08,
       "marketing": 911050.12,
-      "opex": 1951830.77,
+      "opex": 1952350.56,
       "depreciation": 385502.0,
       "other": 56476.2,
       "grossMargin": 4061703.68,
       "afterLogistics": 2958850.6,
       "afterMarketing": 2047800.48,
-      "operatingMargin": 95969.71,
-      "ebit": -289532.29,
-      "profit": -233056.09,
+      "operatingMargin": 95449.92,
+      "ebit": -290052.08,
+      "profit": -233575.88,
       "grossMarginPct": 29.5,
       "marketingPct": 6.6,
       "logisticsPct": 8.0,
@@ -143,103 +143,111 @@
     },
     {
       "label": "7/2026",
-      "revenue": 11692225.04,
-      "cogsAndFees": 9331444.77,
-      "logistics": 68021.99,
-      "marketing": 130956.99,
-      "opex": 894270.66,
-      "depreciation": 401319.0,
-      "other": 15059.66,
-      "grossMargin": 2360780.27,
-      "afterLogistics": 2292758.28,
-      "afterMarketing": 2161801.29,
-      "operatingMargin": 1267530.63,
-      "ebit": 866211.63,
-      "profit": 881271.29,
-      "grossMarginPct": 20.2,
-      "marketingPct": 1.1,
-      "logisticsPct": 0.6,
-      "operatingMarginPct": 10.8,
-      "profitPct": 7.5
+      "revenue": 12942561.79,
+      "cogsAndFees": 9106540.98,
+      "logistics": 1024311.52,
+      "marketing": 305972.73,
+      "opex": 1899613.72,
+      "depreciation": 399556.0,
+      "other": -47366.33,
+      "grossMargin": 3836020.81,
+      "afterLogistics": 2811709.29,
+      "afterMarketing": 2505736.56,
+      "operatingMargin": 606122.84,
+      "ebit": 206566.84,
+      "profit": 159200.51,
+      "grossMarginPct": 29.6,
+      "marketingPct": 2.4,
+      "logisticsPct": 7.9,
+      "operatingMarginPct": 4.7,
+      "profitPct": 1.2
     },
     {
       "label": "8/2026",
-      "revenue": 1987030.94,
-      "cogsAndFees": 1793324.42,
-      "logistics": 0.0,
-      "marketing": 0.0,
-      "opex": 29458.85,
-      "depreciation": 401319.0,
-      "other": -3483.03,
-      "grossMargin": 193706.52,
-      "afterLogistics": 193706.52,
-      "afterMarketing": 193706.52,
-      "operatingMargin": 164247.67,
-      "ebit": -237071.33,
-      "profit": -240554.36,
-      "grossMarginPct": 9.7,
-      "marketingPct": 0.0,
-      "logisticsPct": 0.0,
-      "operatingMarginPct": 8.3,
-      "profitPct": -12.1
+      "revenue": 7962881.15,
+      "cogsAndFees": 6319862.59,
+      "logistics": 43802.09,
+      "marketing": 177728.1,
+      "opex": 552825.9,
+      "depreciation": 399556.0,
+      "other": -3620.02,
+      "grossMargin": 1643018.56,
+      "afterLogistics": 1599216.47,
+      "afterMarketing": 1421488.37,
+      "operatingMargin": 868662.47,
+      "ebit": 469106.47,
+      "profit": 465486.45,
+      "grossMarginPct": 20.6,
+      "marketingPct": 2.2,
+      "logisticsPct": 0.6,
+      "operatingMarginPct": 10.9,
+      "profitPct": 5.8
     }
   ],
   "currentMonth": {
     "label": "8/2026",
-    "revenue": 1987030.94,
-    "cogsAndFees": 1793324.42,
-    "logistics": 0.0,
-    "marketing": 0.0,
-    "opex": 29458.85,
-    "depreciation": 401319.0,
-    "other": -3483.03,
-    "grossMargin": 193706.52,
-    "afterLogistics": 193706.52,
-    "afterMarketing": 193706.52,
-    "operatingMargin": 164247.67,
-    "ebit": -237071.33,
-    "profit": -240554.36,
-    "grossMarginPct": 9.7,
-    "marketingPct": 0.0,
-    "logisticsPct": 0.0,
-    "operatingMarginPct": 8.3,
-    "profitPct": -12.1
+    "revenue": 7962881.15,
+    "cogsAndFees": 6319862.59,
+    "logistics": 43802.09,
+    "marketing": 177728.1,
+    "opex": 552825.9,
+    "depreciation": 399556.0,
+    "other": -3620.02,
+    "grossMargin": 1643018.56,
+    "afterLogistics": 1599216.47,
+    "afterMarketing": 1421488.37,
+    "operatingMargin": 868662.47,
+    "ebit": 469106.47,
+    "profit": 465486.45,
+    "grossMarginPct": 20.6,
+    "marketingPct": 2.2,
+    "logisticsPct": 0.6,
+    "operatingMarginPct": 10.9,
+    "profitPct": 5.8
   },
   "previousMonth": {
     "label": "7/2026",
-    "revenue": 11692225.04,
-    "cogsAndFees": 9331444.77,
-    "logistics": 68021.99,
-    "marketing": 130956.99,
-    "opex": 894270.66,
-    "depreciation": 401319.0,
-    "other": 15059.66,
-    "grossMargin": 2360780.27,
-    "afterLogistics": 2292758.28,
-    "afterMarketing": 2161801.29,
-    "operatingMargin": 1267530.63,
-    "ebit": 866211.63,
-    "profit": 881271.29,
-    "grossMarginPct": 20.2,
-    "marketingPct": 1.1,
-    "logisticsPct": 0.6,
-    "operatingMarginPct": 10.8,
-    "profitPct": 7.5
+    "revenue": 12942561.79,
+    "cogsAndFees": 9106540.98,
+    "logistics": 1024311.52,
+    "marketing": 305972.73,
+    "opex": 1899613.72,
+    "depreciation": 399556.0,
+    "other": -47366.33,
+    "grossMargin": 3836020.81,
+    "afterLogistics": 2811709.29,
+    "afterMarketing": 2505736.56,
+    "operatingMargin": 606122.84,
+    "ebit": 206566.84,
+    "profit": 159200.51,
+    "grossMarginPct": 29.6,
+    "marketingPct": 2.4,
+    "logisticsPct": 7.9,
+    "operatingMarginPct": 4.7,
+    "profitPct": 1.2
   },
   "cash": {
-    "cashOnAccounts": 6943880.25,
-    "unpaidInvoices": 645987.14,
-    "netCashPosition": 6297893.11,
-    "overdueInvoicesCount": 0,
-    "overdueInvoicesAmount": 0.0,
+    "cashOnAccounts": 12842510.23,
+    "unpaidInvoices": 1467989.61,
+    "netCashPosition": 11374520.62,
+    "overdueInvoicesCount": 2,
+    "overdueInvoicesAmount": 7364.39,
     "largestPayables": [
+      {
+        "code": "PF1004/2026",
+        "vendor": "4PX Express CZ",
+        "dueDate": "30.08.2026",
+        "amountTotal": 621163.0,
+        "amountDue": 621163.0,
+        "status": "5 dní do splatnosti"
+      },
       {
         "code": "PF0971/2026",
         "vendor": "4PX Express CZ",
         "dueDate": "30.08.2026",
         "amountTotal": 434438.4,
         "amountDue": 434438.4,
-        "status": "24 dní do splatnosti"
+        "status": "5 dní do splatnosti"
       },
       {
         "code": "PF0965/2026",
@@ -247,47 +255,47 @@
         "dueDate": "30.08.2026",
         "amountTotal": 100466.61,
         "amountDue": 100466.61,
-        "status": "24 dní do splatnosti"
+        "status": "5 dní do splatnosti"
       },
       {
-        "code": "PF0969/2026",
-        "vendor": "KODAP Ltm s.r.o.",
-        "dueDate": "15.08.2026",
-        "amountTotal": 62920.0,
-        "amountDue": 62920.0,
-        "status": "9 dní do splatnosti"
+        "code": "PF1001/2026",
+        "vendor": "Pechmannova Partners s.r.o.",
+        "dueDate": "31.08.2026",
+        "amountTotal": 71390.0,
+        "amountDue": 71390.0,
+        "status": "6 dní do splatnosti"
       },
       {
-        "code": "Z0039/2026",
-        "vendor": "Le-Investment, spol. s r.o.",
-        "dueDate": "19.08.2026",
-        "amountTotal": 18850.0,
-        "amountDue": 18850.0,
-        "status": "13 dní do splatnosti"
+        "code": "PF1084/2026",
+        "vendor": "wpj s.r.o.",
+        "dueDate": "31.08.2026",
+        "amountTotal": 67760.0,
+        "amountDue": 67760.0,
+        "status": "6 dní do splatnosti"
       },
       {
-        "code": "PF0966/2026",
-        "vendor": "Meta Platforms Ireland Limited",
+        "code": "PF0997/2026",
+        "vendor": "coworkers.ai s.r.o.",
         "dueDate": "30.08.2026",
-        "amountTotal": 13920.13,
-        "amountDue": 13920.13,
-        "status": "24 dní do splatnosti"
+        "amountTotal": 43560.0,
+        "amountDue": 43560.0,
+        "status": "5 dní do splatnosti"
       },
       {
-        "code": "PF0770/2026",
-        "vendor": "ALLIANZ POJIŠŤOVNA, A. S.",
-        "dueDate": "06.09.2026",
-        "amountTotal": 9463.0,
-        "amountDue": 9463.0,
-        "status": "31 dní do splatnosti"
+        "code": "PF1090/2026",
+        "vendor": "FILIPES MEDIA s.r.o.",
+        "dueDate": "31.08.2026",
+        "amountTotal": 33880.0,
+        "amountDue": 33880.0,
+        "status": "6 dní do splatnosti"
       },
       {
-        "code": "PF0972/2026",
-        "vendor": "4PX Express CZ",
-        "dueDate": "30.08.2026",
-        "amountTotal": 5929.0,
-        "amountDue": 5929.0,
-        "status": "24 dní do splatnosti"
+        "code": "PF1091/2026",
+        "vendor": "Rocketas s.r.o.",
+        "dueDate": "31.08.2026",
+        "amountTotal": 19693.0,
+        "amountDue": 19693.0,
+        "status": "6 dní do splatnosti"
       }
     ],
     "cashAccountsSource": {
@@ -298,57 +306,43 @@
           "accountCode": "221115",
           "accountLabel": "221115: 131-3675980207/0100 KB CZK",
           "currency": "CZK: Česká koruna",
-          "balance": 1990493.29,
-          "includedBalance": 1990493.29
-        },
-        {
-          "accountCode": "221001",
-          "accountLabel": "221001: 2901338673/2010 FIO CZK",
-          "currency": "CZK: Česká koruna",
-          "balance": 1528991.29,
-          "includedBalance": 1528991.29
+          "balance": 5705937.09,
+          "includedBalance": 5705937.09
         },
         {
           "accountCode": "221006",
           "accountLabel": "221006: 2202503115/2010 FIO CZK",
           "currency": "CZK: Česká koruna",
-          "balance": 1426448.8,
-          "includedBalance": 1426448.8
+          "balance": 2612148.94,
+          "includedBalance": 2612148.94
         },
         {
-          "accountCode": "221002",
-          "accountLabel": "221002: 131-1211280297/0100 KB EUR",
+          "accountCode": "221118",
+          "accountLabel": "221118: JT banka",
           "currency": "CZK: Česká koruna",
-          "balance": 1235415.44,
-          "includedBalance": 1235415.44
+          "balance": 2500000.0,
+          "includedBalance": 2500000.0
+        },
+        {
+          "accountCode": "221001",
+          "accountLabel": "221001: 2901338673/2010 FIO CZK",
+          "currency": "CZK: Česká koruna",
+          "balance": 1423562.14,
+          "includedBalance": 1423562.14
         },
         {
           "accountCode": "221005",
           "accountLabel": "221005: 2501338690/2010 FIO EUR",
           "currency": "CZK: Česká koruna",
-          "balance": 163346.86,
-          "includedBalance": 163346.86
-        },
-        {
-          "accountCode": "211001",
-          "accountLabel": "211001: Pokladna Czk",
-          "currency": "CZK: Česká koruna",
-          "balance": 145640.07,
-          "includedBalance": 145640.07
-        },
-        {
-          "accountCode": "211000",
-          "accountLabel": "211000: Pokladna - Klinika Biorezonance",
-          "currency": "CZK: Česká koruna",
-          "balance": 142932.0,
-          "includedBalance": 142932.0
+          "balance": 225469.96,
+          "includedBalance": 225469.96
         },
         {
           "accountCode": "221111",
           "accountLabel": "221111: 107-164902 Czk THEPAY",
           "currency": "CZK: Česká koruna",
-          "balance": 139281.68,
-          "includedBalance": 139281.68
+          "balance": 175279.26,
+          "includedBalance": 175279.26
         },
         {
           "accountCode": "221117",
@@ -358,25 +352,46 @@
           "includedBalance": 99497.24
         },
         {
+          "accountCode": "221002",
+          "accountLabel": "221002: 131-1211280297/0100 KB EUR",
+          "currency": "CZK: Česká koruna",
+          "balance": 41672.47,
+          "includedBalance": 41672.47
+        },
+        {
+          "accountCode": "211001",
+          "accountLabel": "211001: Pokladna Czk",
+          "currency": "CZK: Česká koruna",
+          "balance": 23445.28,
+          "includedBalance": 23445.28
+        },
+        {
+          "accountCode": "211000",
+          "accountLabel": "211000: Pokladna - Klinika Biorezonance",
+          "currency": "CZK: Česká koruna",
+          "balance": 12606.0,
+          "includedBalance": 12606.0
+        },
+        {
           "accountCode": "221112",
           "accountLabel": "221112: 107-164902 EUR THEPAY",
           "currency": "CZK: Česká koruna",
-          "balance": 58149.64,
-          "includedBalance": 58149.64
+          "balance": 9707.51,
+          "includedBalance": 9707.51
         },
         {
           "accountCode": "221004",
           "accountLabel": "221004: 2601338698/2010 FIO CZK výplaty",
           "currency": "CZK: Česká koruna",
-          "balance": 6770.0,
-          "includedBalance": 6770.0
+          "balance": 6260.0,
+          "includedBalance": 6260.0
         },
         {
           "accountCode": "221007",
           "accountLabel": "221007: 2002503110/2010 FIO CZK",
           "currency": "CZK: Česká koruna",
-          "balance": 4533.27,
-          "includedBalance": 4533.27
+          "balance": 4543.67,
+          "includedBalance": 4543.67
         },
         {
           "accountCode": "221116",
@@ -407,6 +422,20 @@
           "includedBalance": 0.0
         },
         {
+          "accountCode": "211002",
+          "accountLabel": "211002: Pokladna Eur",
+          "currency": "CZK: Česká koruna",
+          "balance": -482.4,
+          "includedBalance": 0.0
+        },
+        {
+          "accountCode": "211002",
+          "accountLabel": "211002: Pokladna Eur",
+          "currency": "EUR: Euro",
+          "balance": -20.0,
+          "includedBalance": 0.0
+        },
+        {
           "accountCode": "221000",
           "accountLabel": "221000: Bankovní účty",
           "currency": "EUR: Euro",
@@ -430,36 +459,15 @@
         {
           "accountCode": "221001",
           "accountLabel": "221001: 2901338673/2010 FIO CZK",
-          "currency": "PLN: Polský zlotý",
-          "balance": -1040.78,
+          "currency": "EUR: Euro",
+          "balance": 6606.84,
           "includedBalance": 0.0
         },
         {
           "accountCode": "221001",
           "accountLabel": "221001: 2901338673/2010 FIO CZK",
           "currency": "USD: Americký dolar",
-          "balance": -36455.4,
-          "includedBalance": 0.0
-        },
-        {
-          "accountCode": "221001",
-          "accountLabel": "221001: 2901338673/2010 FIO CZK",
-          "currency": "EUR: Euro",
-          "balance": 7433.96,
-          "includedBalance": 0.0
-        },
-        {
-          "accountCode": "221002",
-          "accountLabel": "221002: 131-1211280297/0100 KB EUR",
-          "currency": "EUR: Euro",
-          "balance": 51507.13,
-          "includedBalance": 0.0
-        },
-        {
-          "accountCode": "221003",
-          "accountLabel": "221003: 131-7690227/0100 KB CZk",
-          "currency": "CZK: Česká koruna",
-          "balance": -10122139.87,
+          "balance": -37840.23,
           "includedBalance": 0.0
         }
       ]
@@ -643,8 +651,8 @@
       },
       {
         "label": "7/2026",
-        "expenseTotal": 3948227.2,
-        "revenueTotal": 4936348.53,
+        "expenseTotal": 3955427.31,
+        "revenueTotal": 5497836.82,
         "topExpenseClass": {
           "code": "50",
           "label": "Spotřeba a zboží",
@@ -696,7 +704,7 @@
           {
             "code": "518401",
             "label": "Licenční poplatky",
-            "amount": 18627.85,
+            "amount": 20347.34,
             "classCode": "51",
             "classLabel": "Služby"
           },
@@ -745,12 +753,12 @@
           {
             "code": "51",
             "label": "Služby",
-            "amount": 266866.04
+            "amount": 273792.46
           },
           {
             "code": "56",
             "label": "Finanční náklady",
-            "amount": 33681.65
+            "amount": 33955.34
           },
           {
             "code": "54",
@@ -808,101 +816,124 @@
             "amount": 9750.0
           }
         ],
-        "entryCount": 11808,
+        "entryCount": 12484,
         "detailFile": "finance_journal_7-2026.json"
       },
       {
         "label": "8/2026",
-        "expenseTotal": 2086809.08,
-        "revenueTotal": 1857370.08,
+        "expenseTotal": 4138688.86,
+        "revenueTotal": 4837766.98,
         "topExpenseClass": {
           "code": "50",
           "label": "Spotřeba a zboží",
-          "amount": 1660046.29
+          "amount": 3583572.63
         },
         "topExpenseAccounts": [
           {
             "code": "504001",
             "label": "Nákup zboží 2",
-            "amount": 1654197.95,
+            "amount": 3577227.04,
             "classCode": "50",
             "classLabel": "Spotřeba a zboží"
           },
           {
-            "code": "551100",
-            "label": "Odpisy majetku",
-            "amount": 365295.0,
-            "classCode": "55",
-            "classLabel": "Odpisy a rezervy"
-          },
-          {
-            "code": "551001",
-            "label": "Odpisy eshop",
-            "amount": 18273.0,
-            "classCode": "55",
-            "classLabel": "Odpisy a rezervy"
-          },
-          {
-            "code": "551002",
-            "label": "Odpisy stavby",
-            "amount": 17751.0,
-            "classCode": "55",
-            "classLabel": "Odpisy a rezervy"
-          },
-          {
-            "code": "548200",
-            "label": "Pojistné",
-            "amount": 13196.0,
-            "classCode": "54",
-            "classLabel": "Jiné provozní náklady"
-          },
-          {
-            "code": "518401",
-            "label": "Licenční poplatky",
-            "amount": 12180.85,
+            "code": "518901",
+            "label": "Reklama a marketing",
+            "amount": 165000.0,
             "classCode": "51",
             "classLabel": "Služby"
           },
           {
-            "code": "502100",
-            "label": "Energie",
-            "amount": 5848.34,
-            "classCode": "50",
-            "classLabel": "Spotřeba a zboží"
+            "code": "518700",
+            "label": "Software a IT",
+            "amount": 133542.0,
+            "classCode": "51",
+            "classLabel": "Služby"
           },
           {
-            "code": "563001",
-            "label": "Kurzové rozdíly",
-            "amount": 66.94,
+            "code": "518300",
+            "label": "Telefony, internet",
+            "amount": 82644.63,
+            "classCode": "51",
+            "classLabel": "Služby"
+          },
+          {
+            "code": "518100",
+            "label": "Režie - služby",
+            "amount": 59823.8,
+            "classCode": "51",
+            "classLabel": "Služby"
+          },
+          {
+            "code": "518402",
+            "label": "Serverovna & hosting",
+            "amount": 31700.0,
+            "classCode": "51",
+            "classLabel": "Služby"
+          },
+          {
+            "code": "568100",
+            "label": "Bankovní poplatky",
+            "amount": 29499.16,
             "classCode": "56",
             "classLabel": "Finanční náklady"
+          },
+          {
+            "code": "518401",
+            "label": "Licenční poplatky",
+            "amount": 22415.78,
+            "classCode": "51",
+            "classLabel": "Služby"
+          },
+          {
+            "code": "518201",
+            "label": "Přepravní služby",
+            "amount": 16157.73,
+            "classCode": "51",
+            "classLabel": "Služby"
+          },
+          {
+            "code": "548200",
+            "label": "Pojistné",
+            "amount": 6301.0,
+            "classCode": "54",
+            "classLabel": "Jiné provozní náklady"
+          },
+          {
+            "code": "518900",
+            "label": "PPC kredit",
+            "amount": 4958.68,
+            "classCode": "51",
+            "classLabel": "Služby"
+          },
+          {
+            "code": "501200",
+            "label": "Spotřeba PHM",
+            "amount": 2650.53,
+            "classCode": "50",
+            "classLabel": "Spotřeba a zboží"
           }
         ],
         "topExpenseClasses": [
           {
             "code": "50",
             "label": "Spotřeba a zboží",
-            "amount": 1660046.29
-          },
-          {
-            "code": "55",
-            "label": "Odpisy a rezervy",
-            "amount": 401319.0
-          },
-          {
-            "code": "54",
-            "label": "Jiné provozní náklady",
-            "amount": 13196.0
+            "amount": 3583572.63
           },
           {
             "code": "51",
             "label": "Služby",
-            "amount": 12180.85
+            "amount": 517242.62
           },
           {
             "code": "56",
             "label": "Finanční náklady",
-            "amount": 66.94
+            "amount": 31572.61
+          },
+          {
+            "code": "54",
+            "label": "Jiné provozní náklady",
+            "amount": 6301.0
           }
         ],
         "topVendors": [
@@ -911,146 +942,169 @@
             "amount": 179933.92
           },
           {
-            "name": "Diamond",
-            "amount": 51729.05
+            "name": "Selfcareacademy s.r.o.",
+            "amount": 174250.0
           },
           {
-            "name": "BMW Financial Services Czech Republic s.r.o.",
-            "amount": 13196.0
+            "name": "wpj s.r.o.",
+            "amount": 124292.0
+          },
+          {
+            "name": "ProfiSMS s.r.o.",
+            "amount": 82644.63
+          },
+          {
+            "name": "J&T SERVICES ČR, a.s.",
+            "amount": 46345.59
+          },
+          {
+            "name": "ECOMAIL.CZ, s.r.o.",
+            "amount": 31700.0
           },
           {
             "name": "FAKAR s.r.o.",
-            "amount": 12646.6
+            "amount": 31294.92
+          },
+          {
+            "name": "Zásilkovna s.r.o.",
+            "amount": 16157.73
+          },
+          {
+            "name": "Petra Demková",
+            "amount": 16099.68
           },
           {
             "name": "Pavel Minář",
             "amount": 12180.85
           },
           {
-            "name": "AUTOBOND GROUP a.s.",
-            "amount": 9441.0
+            "name": "Anthropic Ireland, Limited",
+            "amount": 9571.28
           },
           {
-            "name": "Petra Demková",
-            "amount": 7478.78
-          },
-          {
-            "name": "BIOMED CZ s.r.o.",
-            "amount": 5464.0
-          },
-          {
-            "name": "Zdeňka Žáková",
-            "amount": 5335.63
-          },
-          {
-            "name": "Erika Stopková",
-            "amount": 5255.93
-          },
-          {
-            "name": "Dana Grogerová",
-            "amount": 5057.74
-          },
-          {
-            "name": "Éva Derencsényi",
-            "amount": 4519.97
+            "name": "BMW Financial Services Czech Republic s.r.o.",
+            "amount": 6301.0
           }
         ],
-        "entryCount": 3564,
+        "entryCount": 11548,
         "detailFile": "finance_journal_8-2026.json"
       }
     ],
     "currentMonth": {
       "label": "8/2026",
-      "expenseTotal": 2086809.08,
-      "revenueTotal": 1857370.08,
+      "expenseTotal": 4138688.86,
+      "revenueTotal": 4837766.98,
       "topExpenseClass": {
         "code": "50",
         "label": "Spotřeba a zboží",
-        "amount": 1660046.29
+        "amount": 3583572.63
       },
       "topExpenseAccounts": [
         {
           "code": "504001",
           "label": "Nákup zboží 2",
-          "amount": 1654197.95,
+          "amount": 3577227.04,
           "classCode": "50",
           "classLabel": "Spotřeba a zboží"
         },
         {
-          "code": "551100",
-          "label": "Odpisy majetku",
-          "amount": 365295.0,
-          "classCode": "55",
-          "classLabel": "Odpisy a rezervy"
-        },
-        {
-          "code": "551001",
-          "label": "Odpisy eshop",
-          "amount": 18273.0,
-          "classCode": "55",
-          "classLabel": "Odpisy a rezervy"
-        },
-        {
-          "code": "551002",
-          "label": "Odpisy stavby",
-          "amount": 17751.0,
-          "classCode": "55",
-          "classLabel": "Odpisy a rezervy"
-        },
-        {
-          "code": "548200",
-          "label": "Pojistné",
-          "amount": 13196.0,
-          "classCode": "54",
-          "classLabel": "Jiné provozní náklady"
-        },
-        {
-          "code": "518401",
-          "label": "Licenční poplatky",
-          "amount": 12180.85,
+          "code": "518901",
+          "label": "Reklama a marketing",
+          "amount": 165000.0,
           "classCode": "51",
           "classLabel": "Služby"
         },
         {
-          "code": "502100",
-          "label": "Energie",
-          "amount": 5848.34,
-          "classCode": "50",
-          "classLabel": "Spotřeba a zboží"
+          "code": "518700",
+          "label": "Software a IT",
+          "amount": 133542.0,
+          "classCode": "51",
+          "classLabel": "Služby"
         },
         {
-          "code": "563001",
-          "label": "Kurzové rozdíly",
-          "amount": 66.94,
+          "code": "518300",
+          "label": "Telefony, internet",
+          "amount": 82644.63,
+          "classCode": "51",
+          "classLabel": "Služby"
+        },
+        {
+          "code": "518100",
+          "label": "Režie - služby",
+          "amount": 59823.8,
+          "classCode": "51",
+          "classLabel": "Služby"
+        },
+        {
+          "code": "518402",
+          "label": "Serverovna & hosting",
+          "amount": 31700.0,
+          "classCode": "51",
+          "classLabel": "Služby"
+        },
+        {
+          "code": "568100",
+          "label": "Bankovní poplatky",
+          "amount": 29499.16,
           "classCode": "56",
           "classLabel": "Finanční náklady"
+        },
+        {
+          "code": "518401",
+          "label": "Licenční poplatky",
+          "amount": 22415.78,
+          "classCode": "51",
+          "classLabel": "Služby"
+        },
+        {
+          "code": "518201",
+          "label": "Přepravní služby",
+          "amount": 16157.73,
+          "classCode": "51",
+          "classLabel": "Služby"
+        },
+        {
+          "code": "548200",
+          "label": "Pojistné",
+          "amount": 6301.0,
+          "classCode": "54",
+          "classLabel": "Jiné provozní náklady"
+        },
+        {
+          "code": "518900",
+          "label": "PPC kredit",
+          "amount": 4958.68,
+          "classCode": "51",
+          "classLabel": "Služby"
+        },
+        {
+          "code": "501200",
+          "label": "Spotřeba PHM",
+          "amount": 2650.53,
+          "classCode": "50",
+          "classLabel": "Spotřeba a zboží"
         }
       ],
       "topExpenseClasses": [
         {
           "code": "50",
           "label": "Spotřeba a zboží",
-          "amount": 1660046.29
-        },
-        {
-          "code": "55",
-          "label": "Odpisy a rezervy",
-          "amount": 401319.0
-        },
-        {
-          "code": "54",
-          "label": "Jiné provozní náklady",
-          "amount": 13196.0
+          "amount": 3583572.63
         },
         {
           "code": "51",
           "label": "Služby",
-          "amount": 12180.85
+          "amount": 517242.62
         },
         {
           "code": "56",
           "label": "Finanční náklady",
-          "amount": 66.94
+          "amount": 31572.61
+        },
+        {
+          "code": "54",
+          "label": "Jiné provozní náklady",
+          "amount": 6301.0
         }
       ],
       "topVendors": [
@@ -1059,51 +1113,51 @@
           "amount": 179933.92
         },
         {
-          "name": "Diamond",
-          "amount": 51729.05
+          "name": "Selfcareacademy s.r.o.",
+          "amount": 174250.0
         },
         {
-          "name": "BMW Financial Services Czech Republic s.r.o.",
-          "amount": 13196.0
+          "name": "wpj s.r.o.",
+          "amount": 124292.0
+        },
+        {
+          "name": "ProfiSMS s.r.o.",
+          "amount": 82644.63
+        },
+        {
+          "name": "J&T SERVICES ČR, a.s.",
+          "amount": 46345.59
+        },
+        {
+          "name": "ECOMAIL.CZ, s.r.o.",
+          "amount": 31700.0
         },
         {
           "name": "FAKAR s.r.o.",
-          "amount": 12646.6
+          "amount": 31294.92
+        },
+        {
+          "name": "Zásilkovna s.r.o.",
+          "amount": 16157.73
+        },
+        {
+          "name": "Petra Demková",
+          "amount": 16099.68
         },
         {
           "name": "Pavel Minář",
           "amount": 12180.85
         },
         {
-          "name": "AUTOBOND GROUP a.s.",
-          "amount": 9441.0
+          "name": "Anthropic Ireland, Limited",
+          "amount": 9571.28
         },
         {
-          "name": "Petra Demková",
-          "amount": 7478.78
-        },
-        {
-          "name": "BIOMED CZ s.r.o.",
-          "amount": 5464.0
-        },
-        {
-          "name": "Zdeňka Žáková",
-          "amount": 5335.63
-        },
-        {
-          "name": "Erika Stopková",
-          "amount": 5255.93
-        },
-        {
-          "name": "Dana Grogerová",
-          "amount": 5057.74
-        },
-        {
-          "name": "Éva Derencsényi",
-          "amount": 4519.97
+          "name": "BMW Financial Services Czech Republic s.r.o.",
+          "amount": 6301.0
         }
       ],
-      "entryCount": 3564,
+      "entryCount": 11548,
       "detailFile": "finance_journal_8-2026.json"
     }
   }
