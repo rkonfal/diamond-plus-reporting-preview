@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T10:05:44.804451+02:00",
+  "generatedAt": "2026-09-06T23:00:53.308273+02:00",
   "source": {
     "twisto": {
       "status": "ok",
@@ -10,8 +10,8 @@
       "accountId": "2901338673",
       "bankId": "2010",
       "currency": "CZK",
-      "dateStart": "2026-05-27+0200",
-      "dateEnd": "2026-08-25+0200"
+      "dateStart": "2026-06-08+0200",
+      "dateEnd": "2026-09-06+0200"
     },
     "wpj": {
       "status": "ok",
@@ -20,22 +20,22 @@
   },
   "summary": {
     "windowDays": 90,
-    "twistoBatchCount": 33,
-    "twistoPaidBatchCount": 33,
-    "bankTwistoTransactionCount": 31,
-    "matchedBatchCount": 31,
+    "twistoBatchCount": 31,
+    "twistoPaidBatchCount": 31,
+    "bankTwistoTransactionCount": 32,
+    "matchedBatchCount": 32,
     "unmatchedBatchCount": 0,
     "unmatchedBankTransactions": 0,
-    "twistoPaidAmount": 162845.0,
-    "twistoMatchedAmount": 323001.0,
-    "bankReceivedAmount": 323001.0,
+    "twistoPaidAmount": 154988.0,
+    "twistoMatchedAmount": 325370.0,
+    "bankReceivedAmount": 325370.0,
     "openBatchAmount": 0,
     "bankVsTwistoDelta": 0.0,
-    "wpjTwistoOrderCount": 4,
-    "wpjTwistoOrderAmount": 5501.0,
-    "twistoOrderAmount": 689795.0,
-    "historicalMatchedBatchAmount": 323001.0,
-    "wpjVsTwistoOrderDelta": -684294.0,
+    "wpjTwistoOrderCount": 3,
+    "wpjTwistoOrderAmount": 4750.0,
+    "twistoOrderAmount": 696398.0,
+    "historicalMatchedBatchAmount": 325370.0,
+    "wpjVsTwistoOrderDelta": -691648.0,
     "oldestOpenBatchDays": null
   },
   "alert": {
@@ -43,46 +43,6 @@
     "lines": []
   },
   "batches": [
-    {
-      "id": "64e0988c-323c-402f-8ed9-10c88d3dc38b",
-      "state": "paid",
-      "settlementDate": "2026-05-27",
-      "amount": 3406.0,
-      "orderAmount": 3406.0,
-      "refundAmount": 0.0,
-      "marginAmount": 0.0,
-      "deductMargin": false
-    },
-    {
-      "id": "354808f2-497e-4f49-8e93-6de1124bab2b",
-      "state": "paid",
-      "settlementDate": "2026-06-02",
-      "amount": 3803.0,
-      "orderAmount": 3803.0,
-      "refundAmount": 0.0,
-      "marginAmount": 0.0,
-      "deductMargin": false
-    },
-    {
-      "id": "b7561aa8-aacf-490b-87e5-2c815a5aae9a",
-      "state": "paid",
-      "settlementDate": "2026-06-02",
-      "amount": 3017.0,
-      "orderAmount": 3017.0,
-      "refundAmount": 0.0,
-      "marginAmount": 0.0,
-      "deductMargin": false
-    },
-    {
-      "id": "38d8e859-b641-49d0-b2f4-7e3348eeeaf3",
-      "state": "paid",
-      "settlementDate": "2026-06-03",
-      "amount": 4234.0,
-      "orderAmount": 4234.0,
-      "refundAmount": 0.0,
-      "marginAmount": 0.0,
-      "deductMargin": false
-    },
     {
       "id": "067ec575-5be5-4906-be03-41137412c9d8",
       "state": "paid",
@@ -372,19 +332,29 @@
       "refundAmount": 0.0,
       "marginAmount": 0.0,
       "deductMargin": false
+    },
+    {
+      "id": "6c7ca5c1-000c-4c02-9da5-be5cab66ec93",
+      "state": "paid",
+      "settlementDate": "2026-09-01",
+      "amount": 3018.0,
+      "orderAmount": 3018.0,
+      "refundAmount": 0.0,
+      "marginAmount": 0.0,
+      "deductMargin": false
+    },
+    {
+      "id": "222eb83c-c250-4d54-b333-419d8536da2f",
+      "state": "paid",
+      "settlementDate": "2026-09-02",
+      "amount": 3585.0,
+      "orderAmount": 3585.0,
+      "refundAmount": 0.0,
+      "marginAmount": 0.0,
+      "deductMargin": false
     }
   ],
   "bankTransactions": [
-    {
-      "id": "27670828107",
-      "date": "2026-06-04+0200",
-      "amount": 4234.0,
-      "counterAccount": "2500719088",
-      "counterAccountName": "Twisto payments a.s.",
-      "comment": "9334207639",
-      "type": "Příjem převodem uvnitř banky",
-      "variableSymbol": "9334207639"
-    },
     {
       "id": "27677788694",
       "date": "2026-06-09+0200",
@@ -684,24 +654,29 @@
       "comment": "8588382722",
       "type": "Příjem převodem uvnitř banky",
       "variableSymbol": "8588382722"
+    },
+    {
+      "id": "27823005109",
+      "date": "2026-09-02+0200",
+      "amount": 3018.0,
+      "counterAccount": "2500719088",
+      "counterAccountName": "Twisto payments a.s.",
+      "comment": "0577509785",
+      "type": "Příjem převodem uvnitř banky",
+      "variableSymbol": "0577509785"
+    },
+    {
+      "id": "27824719520",
+      "date": "2026-09-03+0200",
+      "amount": 3585.0,
+      "counterAccount": "2500719088",
+      "counterAccountName": "Twisto payments a.s.",
+      "comment": "1831566737",
+      "type": "Příjem převodem uvnitř banky",
+      "variableSymbol": "1831566737"
     }
   ],
   "matches": [
-    {
-      "kind": "single",
-      "batchIds": [
-        "38d8e859-b641-49d0-b2f4-7e3348eeeaf3"
-      ],
-      "batchCount": 1,
-      "settlementDateFrom": "2026-06-03",
-      "settlementDateTo": "2026-06-03",
-      "batchAmount": 4234.0,
-      "bankTransactionId": "27670828107",
-      "bankDate": "2026-06-04+0200",
-      "bankAmount": 4234.0,
-      "comment": "9334207639",
-      "counterAccountName": "Twisto payments a.s."
-    },
     {
       "kind": "single",
       "batchIds": [
@@ -1189,6 +1164,36 @@
       "bankAmount": 3049.0,
       "comment": "8588382722",
       "counterAccountName": "Twisto payments a.s."
+    },
+    {
+      "kind": "single",
+      "batchIds": [
+        "6c7ca5c1-000c-4c02-9da5-be5cab66ec93"
+      ],
+      "batchCount": 1,
+      "settlementDateFrom": "2026-09-01",
+      "settlementDateTo": "2026-09-01",
+      "batchAmount": 3018.0,
+      "bankTransactionId": "27823005109",
+      "bankDate": "2026-09-02+0200",
+      "bankAmount": 3018.0,
+      "comment": "0577509785",
+      "counterAccountName": "Twisto payments a.s."
+    },
+    {
+      "kind": "single",
+      "batchIds": [
+        "222eb83c-c250-4d54-b333-419d8536da2f"
+      ],
+      "batchCount": 1,
+      "settlementDateFrom": "2026-09-02",
+      "settlementDateTo": "2026-09-02",
+      "batchAmount": 3585.0,
+      "bankTransactionId": "27824719520",
+      "bankDate": "2026-09-03+0200",
+      "bankAmount": 3585.0,
+      "comment": "1831566737",
+      "counterAccountName": "Twisto payments a.s."
     }
   ],
   "unmatchedBatches": [],
@@ -1197,16 +1202,6 @@
     "ready": true,
     "message": "WPJ je tu jen jako pomocná kontrola podle zmínek o Twistu v historii objednávek.",
     "orders": [
-      {
-        "id": 3618405,
-        "code": "261284253",
-        "dateCreated": "2026-05-27T10:42:56+02:00",
-        "amount": 751.0,
-        "status": "doručeno",
-        "isPaid": true,
-        "cancelled": false,
-        "historySnippet": "Za tento nákup přičteno na účet uživatele 22.1 bodů. <p>Děkujeme vám za vaši objednávku č. 261284253, na jejím vyřízení již pilně pracujeme.</p><p>Aby k vám balíček dorazil v pořádku a co nejdříve, pečlivě vše připravuje"
-      },
       {
         "id": 3624869,
         "code": "261290421",
