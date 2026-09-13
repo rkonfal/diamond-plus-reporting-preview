@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond Plus · Reklamní výkon</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* ── Platform tabs ─────────────────────────────────────────────────── */
+    .ads-tabs {
+      display: flex; flex-wrap: wrap; gap: 6px; margin: 20px 0 0;
+    }
+    .ads-tab {
+      padding: 7px 18px; border-radius: 22px; border: 1px solid var(--border);
+      background: transparent; cursor: pointer; font-size: 13px; font-weight: 600;
+      color: var(--text-muted); transition: .15s; white-space: nowrap;
+    }
+    .ads-tab.active {
+      background: var(--accent, #d8b189); color: #fff; border-color: transparent;
+    }
+    .ads-tab:hover:not(.active) { background: rgba(0,0,0,.04); }
+    [data-theme="dark"] .ads-tab:hover:not(.active) { background: rgba(255,255,255,.07); }
+
+    /* ── ROAS colors ───────────────────────────────────────────────────── */
+    .roas-great { color: #1d9a52; font-weight: 700; }
+    .roas-ok    { color: #c9a84c; font-weight: 700; }
+    .roas-bad   { color: #d14b4b; font-weight: 700; }
+
+    /* ── Campaign type badges ──────────────────────────────────────────── */
+    .camp-type {
+      display: inline-block; padding: 2px 8px; border-radius: 10px;
+      font-size: 11px; font-weight: 700; letter-spacing: .02em; white-space: nowrap;
+    }
+    .camp-type.akvizice   { background: rgba(29,154,82,.12);  color: #1a7a40; }
+    .camp-type.retence    { background: rgba(63,106,255,.13); color: #2a5fbf; }
+    .camp-type.remarketing{ background: rgba(140,60,220,.12); color: #7040c0; }
+    .camp-type.brand      { background: rgba(200,158,40,.15); color: #8a6a10; }
+    .camp-type.competitors{ background: rgba(220,60,60,.12);  color: #b03020; }
+    .camp-type.lead       { background: rgba(30,190,160,.13); color: #168070; }
+    .camp-type.other      { background: rgba(150,150,150,.12);color: #666; }
+
+    /* ── Status badge ─────────────────────────────────────────────────── */
+    .camp-status { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+    .camp-status.active { background: rgba(29,154,82,.12); color: #1a7a40; }
+    .camp-status.paused { background: rgba(150,150,150,.10); color: #999; }
+
+    /* ── Hero summary strip ───────────────────────────────────────────── */
+    .ads-hero-strip {
+      display: flex; flex-wrap: wrap; gap: 0;
+      background: var(--card, rgba(255,255,255,.92));
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; margin-top: 24px;
+    }
+    .ads-hero-item {
+      flex: 1 1 140px; padding: 18px 22px;
+      border-right: 1px solid var(--border);
+    }
+    .ads-hero-item:last-child { border-right: none; }
+    .ads-hero-item .hi-label { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+    .ads-hero-item .hi-value { font-size: 22px; font-weight: 700; line-height: 1.1; }
+    .ads-hero-item .hi-sub   { font-size: 12px; color: var(--text-muted); margin-top: 3px; line-height: 1.4; }
+
+    /* ── Platform sections ────────────────────────────────────────────── */
+    .platform-section { display: none; margin-top: 20px; }
+    .platform-section.active { display: block; }
+
+    /* ── Filter bar ───────────────────────────────────────────────────── */
+    .filter-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 16px 0 4px; }
+    .filter-select {
+      padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--card, #fff); font-size: 13px; color: var(--text);
+    }
+
+    /* ── Ecomail campaign cards ───────────────────────────────────────── */
+    .eco-card {
+      padding: 16px 20px; border: 1px solid var(--border); border-radius: 12px;
+      margin-bottom: 10px; background: var(--card, rgba(255,255,255,.9));
+    }
+    .eco-card .eco-title { font-weight: 700; font-size: 14px; }
+    .eco-card .eco-meta  { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+    .eco-card .eco-stats { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 12px; }
+    .eco-card .eco-stat .sl { font-size: 11px; color: var(--text-muted); }
+    .eco-card .eco-stat .sv { font-size: 15px; font-weight: 700; }
+
+    /* ── Sortable th ──────────────────────────────────────────────────── */
+    .sortable { cursor: pointer; user-select: none; }
+    .sortable:hover { opacity: .75; }
+
+    /* ── Alert row ────────────────────────────────────────────────────── */
+    tr.row-alert td { background: rgba(220,60,60,.04); }
+
+    /* ── Mobile ───────────────────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .ads-hero-strip { flex-direction: column; }
+      .ads-hero-item  { border-right: none; border-bottom: 1px solid var(--border); }
+      .ads-hero-item:last-child { border-bottom: none; }
+      .ux-table-wrap  { overflow-x: auto; }
+      .filter-bar     { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<aside class="sidebar"
+  data-sidebar-page="ads.html"
+  data-sidebar-title="Diamond Plus"
+  data-sidebar-subtitle="Reklamní výkon"
+  data-sidebar-section="Marketing"
+  data-sidebar-footer="Meta Ads, Google Ads, Sklik, Ecomail — kompletní kampaňový přehled.">
+</aside>
+
+<main class="main">
+
+  <!-- ── Page header ─────────────────────────────────────────────────── -->
+  <div class="page-header">
+    <div class="breadcrumb"><a href="marketing.html">Marketing</a> &rsaquo; Reklamní výkon</div>
+    <div class="page-title-row">
+      <h1 class="page-title">Reklamní výkon</h1>
+      <div id="theme-toggle-mount"></div>
+    </div>
+    <p class="page-subtitle" id="ads-window-label">Kompletní přehled aktivních kampaní podle kanálu.</p>
+  </div>
+
+  <!-- ── Hero strip ──────────────────────────────────────────────────── -->
+  <div class="ads-hero-strip" id="ads-hero">
+    <div class="ads-hero-item"><div class="hi-label">Načítám…</div><div class="hi-value">–</div></div>
+  </div>
+
+  <!-- ── Platform tabs ───────────────────────────────────────────────── -->
+  <div class="ads-tabs" id="ads-tabs">
+    <button class="ads-tab active" data-tab="meta-cz">📘 Meta CZ</button>
+    <button class="ads-tab"        data-tab="meta-sk">📘 Meta SK</button>
+    <button class="ads-tab"        data-tab="google-cz">🔍 Google CZ</button>
+    <button class="ads-tab"        data-tab="google-sk">🔍 Google SK</button>
+    <button class="ads-tab"        data-tab="sklik">🟧 Sklik</button>
+    <button class="ads-tab"        data-tab="ecomail">📧 Ecomail</button>
+    <button class="ads-tab"        data-tab="trend">📅 Denní trend</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!-- META CZ                                                            -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <div class="platform-section active" id="tab-meta-cz">
+    <div class="card">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">Meta Ads — CZ</h2>
+          <div class="section-subtitle" id="meta-cz-subtitle">Načítám…</div>
+        </div>
+        <a class="ux-button secondary" href="../data/current/meta_ads_overview.json" target="_blank" rel="noopener" style="font-size:12px;">Raw data ↗</a>
+      </div>
+      <div class="filter-bar">
+        <select class="filter-select" id="meta-cz-type" onchange="filterMetaCz()">
+          <option value="">Všechny typy kampaní</option>
+          <option value="akvizice">Akvizice</option>
+          <option value="retence">Retence</option>
+          <option value="remarketing">Remarketing / DRM</option>
+          <option value="brand">Brand</option>
+          <option value="competitors">Competitors</option>
+          <option value="lead">Lead / Formulář</option>
+        </select>
+        <select class="filter-select" id="meta-cz-status" onchange="filterMetaCz()">
+          <option value="">Vše (aktivní + pozastavené)</option>
+          <option value="active">Jen aktivní</option>
+        </select>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:12px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kampaň</th>
+              <th>Typ</th>
+              <th>Status</th>
+              <th class="num sortable" data-sort-table="meta-cz-table" data-sort-col="3">Útrata ↕</th>
+              <th class="num sortable" data-sort-table="meta-cz-table" data-sort-col="4">Imprese</th>
+              <th class="num sortable" data-sort-table="meta-cz-table" data-sort-col="5">Kliknutí</th>
+              <th class="num sortable" data-sort-table="meta-cz-table" data-sort-col="6">Konverze</th>
+              <th class="num sortable" data-sort-table="meta-cz-table" data-sort-col="7">Obrat</th>
+              <th class="num sortable" data-sort-table="meta-cz-table" data-sort-col="8">ROAS</th>
+            </tr>
+          </thead>
+          <tbody id="meta-cz-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!-- META SK                                                            -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <div class="platform-section" id="tab-meta-sk">
+    <div class="card">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">Meta Ads — SK</h2>
+          <div class="section-subtitle" id="meta-sk-subtitle">Načítám…</div>
+        </div>
+      </div>
+      <div class="filter-bar">
+        <select class="filter-select" id="meta-sk-status" onchange="filterMetaSk()">
+          <option value="">Vše (aktivní + pozastavené)</option>
+          <option value="active">Jen aktivní</option>
+        </select>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:12px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kampaň</th>
+              <th>Typ</th>
+              <th>Status</th>
+              <th class="num sortable" data-sort-table="meta-sk-table" data-sort-col="3">Útrata ↕</th>
+              <th class="num sortable" data-sort-table="meta-sk-table" data-sort-col="4">Imprese</th>
+              <th class="num sortable" data-sort-table="meta-sk-table" data-sort-col="5">Kliknutí</th>
+              <th class="num sortable" data-sort-table="meta-sk-table" data-sort-col="6">Konverze</th>
+              <th class="num sortable" data-sort-table="meta-sk-table" data-sort-col="7">Obrat</th>
+              <th class="num sortable" data-sort-table="meta-sk-table" data-sort-col="8">ROAS</th>
+            </tr>
+          </thead>
+          <tbody id="meta-sk-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!-- GOOGLE CZ                                                          -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <div class="platform-section" id="tab-google-cz">
+    <div class="card">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">Google Ads — CZ</h2>
+          <div class="section-subtitle" id="google-cz-subtitle">Načítám…</div>
+        </div>
+        <a class="ux-button secondary" href="../data/current/google_ads_overview.json" target="_blank" rel="noopener" style="font-size:12px;">Raw data ↗</a>
+      </div>
+      <div class="filter-bar">
+        <select class="filter-select" id="google-cz-type" onchange="filterGoogleCz()">
+          <option value="">Všechny typy kampaní</option>
+          <option value="akvizice">Akvizice</option>
+          <option value="retence">Retence</option>
+          <option value="remarketing">Remarketing</option>
+          <option value="brand">Brand</option>
+          <option value="competitors">Competitors</option>
+        </select>
+        <select class="filter-select" id="google-cz-status" onchange="filterGoogleCz()">
+          <option value="">Vše (aktivní + pozastavené)</option>
+          <option value="active">Jen aktivní</option>
+        </select>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:12px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kampaň</th>
+              <th>Typ</th>
+              <th>Status</th>
+              <th class="num sortable" data-sort-table="google-cz-table" data-sort-col="3">Útrata ↕</th>
+              <th class="num sortable" data-sort-table="google-cz-table" data-sort-col="4">Kliknutí</th>
+              <th class="num sortable" data-sort-table="google-cz-table" data-sort-col="5">Konverze</th>
+              <th class="num sortable" data-sort-table="google-cz-table" data-sort-col="6">Obrat</th>
+              <th class="num sortable" data-sort-table="google-cz-table" data-sort-col="7">ROAS</th>
+            </tr>
+          </thead>
+          <tbody id="google-cz-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!-- GOOGLE SK                                                          -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <div class="platform-section" id="tab-google-sk">
+    <div class="card">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">Google Ads — SK</h2>
+          <div class="section-subtitle" id="google-sk-subtitle">Načítám…</div>
+        </div>
+      </div>
+      <div class="filter-bar">
+        <select class="filter-select" id="google-sk-status" onchange="filterGoogleSk()">
+          <option value="">Vše (aktivní + pozastavené)</option>
+          <option value="active">Jen aktivní</option>
+        </select>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:12px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kampaň</th>
+              <th>Typ</th>
+              <th>Status</th>
+              <th class="num sortable" data-sort-table="google-sk-table" data-sort-col="3">Útrata ↕</th>
+              <th class="num sortable" data-sort-table="google-sk-table" data-sort-col="4">Kliknutí</th>
+              <th class="num sortable" data-sort-table="google-sk-table" data-sort-col="5">Konverze</th>
+              <th class="num sortable" data-sort-table="google-sk-table" data-sort-col="6">Obrat</th>
+              <th class="num sortable" data-sort-table="google-sk-table" data-sort-col="7">ROAS</th>
+            </tr>
+          </thead>
+          <tbody id="google-sk-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!-- SKLIK                                                              -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <div class="platform-section" id="tab-sklik">
+    <div class="card">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">Sklik</h2>
+          <div class="section-subtitle" id="sklik-subtitle">Načítám…</div>
+        </div>
+        <a class="ux-button secondary" href="../data/current/sklik_overview.json" target="_blank" rel="noopener" style="font-size:12px;">Raw data ↗</a>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kampaň</th>
+              <th>Typ</th>
+              <th>Status</th>
+              <th class="num">Útrata</th>
+              <th class="num">Kliknutí</th>
+              <th class="num">CTR</th>
+              <th class="num">Konverze</th>
+              <th class="num">Obrat</th>
+              <th class="num">ROAS</th>
+            </tr>
+          </thead>
+          <tbody id="sklik-table"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Sklik denní detail -->
+    <div class="card" style="margin-top:20px;">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">Sklik — denní detail</h2>
+          <div class="section-subtitle">Denní útrata a konverze za aktuální měsíc.</div>
+        </div>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Den</th>
+              <th class="num">Imprese</th>
+              <th class="num">Kliknutí</th>
+              <th class="num">CTR</th>
+              <th class="num">Útrata</th>
+              <th class="num">Konverze</th>
+              <th class="num">Obrat</th>
+            </tr>
+          </thead>
+          <tbody id="sklik-daily-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!-- ECOMAIL                                                            -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <div class="platform-section" id="tab-ecomail">
+    <div class="card">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">Ecomail — kampaně</h2>
+          <div class="section-subtitle" id="ecomail-subtitle">Načítám…</div>
+        </div>
+        <a class="ux-button secondary" href="../data/current/ecomail_overview.json" target="_blank" rel="noopener" style="font-size:12px;">Raw data ↗</a>
+      </div>
+      <div class="grid kpi-grid" id="ecomail-kpis" style="margin-top:16px;"></div>
+      <h3 style="margin: 24px 0 12px; font-size:16px; font-weight:700;">Naposledy odeslané kampaně</h3>
+      <div id="ecomail-campaign-list"></div>
+    </div>
+    <!-- Ecomail denní -->
+    <div class="card" style="margin-top:20px;">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">Ecomail — denní výkon</h2>
+          <div class="section-subtitle">Obrat a objednávky z e-mailů po dnech.</div>
+        </div>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Den</th>
+              <th class="num">Příjemci</th>
+              <th class="num">Kliknutí</th>
+              <th class="num">Click rate</th>
+              <th class="num">Objednávky</th>
+              <th class="num">Obrat</th>
+            </tr>
+          </thead>
+          <tbody id="ecomail-daily-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!-- DENNÍ TREND (cross-channel)                                        -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <div class="platform-section" id="tab-trend">
+    <div class="card">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">Denní trend — všechny kanály</h2>
+          <div class="section-subtitle">Útrata a ROAS za každý den aktuálního měsíce napříč kanály.</div>
+        </div>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Den</th>
+              <th class="num">Meta útrata</th>
+              <th class="num">Meta ROAS</th>
+              <th class="num">Google útrata</th>
+              <th class="num">Google ROAS</th>
+              <th class="num">Sklik útrata</th>
+              <th class="num">Sklik konv.</th>
+              <th class="num"><strong>Celkem</strong></th>
+              <th class="num">Ecomail obrat</th>
+            </tr>
+          </thead>
+          <tbody id="trend-table"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- vs. minulý měsíc -->
+    <div class="card" style="margin-top:20px;">
+      <div class="ux-section-head">
+        <div>
+          <h2 class="section-title">Srovnání s minulým měsícem — Google Ads</h2>
+          <div class="section-subtitle">Denní útrata a ROAS: aktuální vs. minulý měsíc (Google).</div>
+        </div>
+      </div>
+      <div class="ux-table-wrap" style="margin-top:16px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Den</th>
+              <th class="num">Útrata (letos)</th>
+              <th class="num">ROAS (letos)</th>
+              <th class="num">Útrata (min. měs.)</th>
+              <th class="num">ROAS (min. měs.)</th>
+            </tr>
+          </thead>
+          <tbody id="google-compare-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="assets/app.js"></script>
+<script>
+  DP.initThemeToggle();
+  const money   = v => `${DP.fmtNumber(Math.round(v || 0))} Kč`;
+  const pct     = v => v == null ? '–' : `${(Number(v) * 100).toFixed(1)} %`;
+  const pctPlain= v => v == null ? '–' : `${Number(v).toFixed(1)} %`;
+
+  /* ── Helpers ──────────────────────────────────────────────────────── */
+  function campType(name) {
+    const n = (name || '').toUpperCase();
+    if (n.includes('COMPETITOR') || n.includes('COMPET')) return 'competitors';
+    if (n.includes('RETENCE')    || n.includes('RETENT')) return 'retence';
+    if (n.includes('LEAD'))                               return 'lead';
+    if (n.includes('AKVIZICE')   || n.includes('AKV'))    return 'akvizice';
+    if (n.includes('RMK') || n.includes('RMKT') || n.includes('REMARKE') || n.includes('RTG') || n.includes('DRMKT') || n.includes('DRTG')) return 'remarketing';
+    if (n.includes('BRAND') || n.includes('VYH-') || n.includes('FM-VYH') || n.includes('FM-VYHL')) return 'brand';
+    return 'other';
+  }
+  function campTypeBadge(name) {
+    const t = campType(name);
+    const labels = { akvizice:'Akvizice', retence:'Retence', remarketing:'Remarketing', brand:'Brand', competitors:'Competitors', lead:'Lead', other:'Ostatní' };
+    return `<span class="camp-type ${t}">${labels[t]}</span>`;
+  }
+  function statusBadge(status) {
+    const s = (status || '').toLowerCase();
+    const active = s === 'active' || s === 'enabled' || s === 'sent';
+    return `<span class="camp-status ${active ? 'active' : 'paused'}">${active ? 'aktivní' : 'pozastavena'}</span>`;
+  }
+  function roasCell(roas) {
+    if (roas == null || roas === 0) return '<span style="color:var(--text-muted);">–</span>';
+    const cls = roas >= 30 ? 'roas-great' : roas >= 15 ? 'roas-ok' : 'roas-bad';
+    return `<span class="${cls}">${Number(roas).toFixed(1)}×</span>`;
+  }
+  function fmtDate(dateStr) {
+    if (!dateStr) return '–';
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('cs-CZ', { weekday:'short', day:'numeric', month:'numeric' });
+  }
+  function normalizeSklikDate(raw) {
+    if (!raw) return '';
+    // "20260901T00:00:00+0000" → "2026-09-01"
+    const m = String(raw).match(/^(\d{4})(\d{2})(\d{2})/);
+    return m ? `${m[1]}-${m[2]}-${m[3]}` : String(raw).slice(0, 10);
+  }
+
+  /* ── Campaign data stores ─────────────────────────────────────────── */
+  let _metaCz = [], _metaSk = [], _googleCz = [], _googleSk = [];
+
+  /* ── Render campaigns table ───────────────────────────────────────── */
+  function renderCampaigns(campaigns, tbodyId, opts = {}) {
+    const tbody = document.getElementById(tbodyId);
+    if (!tbody) return;
+    const { typeFilter, statusFilter, showImpressions = true } = opts;
+    let rows = campaigns.filter(c => {
+      if (typeFilter && campType(c.campaignName || c.name || '') !== typeFilter) return false;
+      if (statusFilter === 'active') {
+        const s = (c.effectiveStatus || c.status || '').toLowerCase();
+        if (s !== 'active' && s !== 'enabled') return false;
+      }
+      return true;
+    });
+    if (!rows.length) {
+      tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:20px;color:var(--text-muted);">Žádné kampaně neodpovídají filtru.</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = rows.map(c => {
+      const name    = c.campaignName || c.name || '–';
+      const spend   = c.spendCzk  || 0;
+      const impr    = c.impressions || 0;
+      const clicks  = c.clicks    || 0;
+      const conv    = c.purchaseConversions ?? c.conversions ?? 0;
+      const revenue = c.purchaseValueCzk   || c.conversionValueCzk || 0;
+      const roas    = c.roas || (spend > 0 && revenue > 0 ? revenue / spend : null);
+      const statusStr = c.effectiveStatus || c.status || '';
+      const alert   = roas != null && roas < 5 && spend > 500;
+      return `<tr${alert ? ' class="row-alert"' : ''}>
+        <td style="max-width:280px;word-break:break-word;font-size:13px;">${name}</td>
+        <td>${campTypeBadge(name)}</td>
+        <td>${statusBadge(statusStr)}</td>
+        <td class="num">${spend > 0 ? money(spend) : '<span style="color:var(--text-muted)">–</span>'}</td>
+        ${showImpressions ? `<td class="num">${DP.fmtNumber(impr)}</td>` : ''}
+        <td class="num">${DP.fmtNumber(clicks)}</td>
+        <td class="num">${conv > 0 ? DP.fmtNumber(Math.round(conv)) : '–'}</td>
+        <td class="num">${revenue > 0 ? money(revenue) : '–'}</td>
+        <td class="num">${roasCell(roas)}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  /* ── Filter functions ─────────────────────────────────────────────── */
+  function filterMetaCz() {
+    renderCampaigns(_metaCz, 'meta-cz-table', {
+      typeFilter:   document.getElementById('meta-cz-type')?.value,
+      statusFilter: document.getElementById('meta-cz-status')?.value,
+      showImpressions: true,
+    });
+  }
+  function filterMetaSk() {
+    renderCampaigns(_metaSk, 'meta-sk-table', {
+      statusFilter: document.getElementById('meta-sk-status')?.value,
+      showImpressions: true,
+    });
+  }
+  function filterGoogleCz() {
+    renderCampaigns(_googleCz, 'google-cz-table', {
+      typeFilter:   document.getElementById('google-cz-type')?.value,
+      statusFilter: document.getElementById('google-cz-status')?.value,
+      showImpressions: false,
+    });
+  }
+  function filterGoogleSk() {
+    renderCampaigns(_googleSk, 'google-sk-table', {
+      statusFilter: document.getElementById('google-sk-status')?.value,
+      showImpressions: false,
+    });
+  }
+
+  /* ── Table sort ───────────────────────────────────────────────────── */
+  document.querySelectorAll('.sortable').forEach(th => {
+    th.addEventListener('click', () => {
+      const tbodyId = th.dataset.sortTable;
+      const col     = parseInt(th.dataset.sortCol, 10);
+      const tbody   = document.getElementById(tbodyId);
+      if (!tbody) return;
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+      const parse = cell => parseFloat((cell?.textContent || '').replace(/[^\d.,\-]/g,'').replace(',','.')) || 0;
+      rows.sort((a, b) => parse(a.cells[col]) > parse(b.cells[col]) ? -1 : 1);
+      rows.forEach(r => tbody.appendChild(r));
+    });
+  });
+
+  /* ── Platform tab switching ───────────────────────────────────────── */
+  document.querySelectorAll('.ads-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.ads-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.platform-section').forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      const section = document.getElementById('tab-' + btn.dataset.tab);
+      if (section) section.classList.add('active');
+    });
+  });
+
+  /* ══════════════════════════════════════════════════════════════════ */
+  /* Main data load                                                     */
+  /* ══════════════════════════════════════════════════════════════════ */
+  (async () => {
+    const [meta, google, sklik, ecomail] = await Promise.all([
+      DP.loadJson('../data/current/meta_ads_overview.json').catch(() => ({})),
+      DP.loadJson('../data/current/google_ads_overview.json').catch(() => ({})),
+      DP.loadJson('../data/current/sklik_overview.json').catch(() => ({})),
+      DP.loadJson('../data/current/ecomail_overview.json').catch(() => ({})),
+    ]);
+
+    const win = meta.window || google.window || {};
+    document.getElementById('ads-window-label').textContent =
+      `Kompletní přehled kampaní · ${win.dateFrom || ''}–${win.dateTo || ''}`;
+
+    /* ── Hero strip ────────────────────────────────────────────────── */
+    const metaSum    = meta.summary     || {};
+    const googleSum  = google.summary   || {};
+    const sklikSum   = (sklik.currentMonth || {}).total || {};
+    const ecoSum     = ecomail.currentMonth || {};
+    const ecoPrevSum = ecomail.previousMonth || {};
+
+    const totalSpend   = (metaSum.spendCzk || 0) + (googleSum.spendCzk || 0) + (sklikSum.priceCzk || 0);
+    const totalRevenue = (metaSum.purchaseValueCzk || 0) + (googleSum.conversionValueCzk || 0);
+    const overallRoas  = totalSpend > 0 ? totalRevenue / totalSpend : null;
+    const roasCls      = overallRoas == null ? '' : overallRoas >= 30 ? 'roas-great' : overallRoas >= 15 ? 'roas-ok' : 'roas-bad';
+
+    document.getElementById('ads-hero').innerHTML = `
+      <div class="ads-hero-item">
+        <div class="hi-label">Celková útrata paid</div>
+        <div class="hi-value">${money(totalSpend)}</div>
+        <div class="hi-sub">Meta + Google + Sklik</div>
+      </div>
+      <div class="ads-hero-item">
+        <div class="hi-label">Celkový ROAS</div>
+        <div class="hi-value ${roasCls}">${overallRoas != null ? overallRoas.toFixed(1)+'×' : '–'}</div>
+        <div class="hi-sub">paid (bez Ecomailu)</div>
+      </div>
+      <div class="ads-hero-item">
+        <div class="hi-label">📘 Meta Ads</div>
+        <div class="hi-value">${money(metaSum.spendCzk || 0)}</div>
+        <div class="hi-sub">ROAS ${metaSum.roas != null ? metaSum.roas.toFixed(1)+'×' : '–'} · ${DP.fmtNumber(metaSum.purchaseConversions || 0)} konverzí</div>
+      </div>
+      <div class="ads-hero-item">
+        <div class="hi-label">🔍 Google Ads</div>
+        <div class="hi-value">${money(googleSum.spendCzk || 0)}</div>
+        <div class="hi-sub">ROAS ${googleSum.roas != null ? googleSum.roas.toFixed(1)+'×' : '–'} · ${DP.fmtNumber(Math.round(googleSum.conversions || 0))} konverzí</div>
+      </div>
+      <div class="ads-hero-item">
+        <div class="hi-label">🟧 Sklik</div>
+        <div class="hi-value">${money(sklikSum.priceCzk || 0)}</div>
+        <div class="hi-sub">${DP.fmtNumber(sklikSum.conversions || 0)} konverzí · ${DP.fmtNumber(sklikSum.clicks || 0)} kliků</div>
+      </div>
+      <div class="ads-hero-item">
+        <div class="hi-label">📧 Ecomail obrat</div>
+        <div class="hi-value">${money(ecoSum.totalAttributedRevenueCzk || 0)}</div>
+        <div class="hi-sub">${DP.fmtNumber(ecoSum.totalAttributedOrders || 0)} obj. · ${ecoSum.campaignCount || 0} kampaní</div>
+      </div>
+    `;
+
+    /* ── Meta CZ ───────────────────────────────────────────────────── */
+    const metaAccCz  = (meta.accounts || []).find(a => String(a.accountId).includes('1029119328060291'));
+    const metaCzMon  = metaAccCz?.currentMonth || {};
+    document.getElementById('meta-cz-subtitle').textContent =
+      `${win.dateFrom || ''}–${win.dateTo || ''} · Útrata: ${money(metaCzMon.spend || 0)} · ROAS: ${metaCzMon.roas != null ? metaCzMon.roas.toFixed(1)+'×' : '–'} · Dosah: ${DP.fmtNumber(metaCzMon.reach || 0)} · Konverze: ${DP.fmtNumber(metaCzMon.purchaseConversions || 0)}`;
+    _metaCz = (meta.campaignsCurrentMonth || []).filter(c => String(c.accountId).includes('1029119328060291'));
+    renderCampaigns(_metaCz, 'meta-cz-table', { showImpressions: true });
+
+    /* ── Meta SK ───────────────────────────────────────────────────── */
+    const metaAccSk  = (meta.accounts || []).find(a => String(a.accountId).includes('1110798449947750'));
+    const metaSkMon  = metaAccSk?.currentMonth || {};
+    document.getElementById('meta-sk-subtitle').textContent =
+      `${win.dateFrom || ''}–${win.dateTo || ''} · Útrata: ${money(metaSkMon.spend || 0)} · ROAS: ${metaSkMon.roas != null ? metaSkMon.roas.toFixed(1)+'×' : '–'} · Dosah: ${DP.fmtNumber(metaSkMon.reach || 0)} · Konverze: ${DP.fmtNumber(metaSkMon.purchaseConversions || 0)}`;
+    _metaSk = (meta.campaignsCurrentMonth || []).filter(c => String(c.accountId).includes('1110798449947750'));
+    renderCampaigns(_metaSk, 'meta-sk-table', { showImpressions: true });
+
+    /* ── Google CZ ─────────────────────────────────────────────────── */
+    const gAccCz  = (google.accounts || []).find(a => String(a.id) === '9119204286');
+    const gCzMon  = gAccCz?.currentMonth || {};
+    document.getElementById('google-cz-subtitle').textContent =
+      `${win.dateFrom || ''}–${win.dateTo || ''} · Útrata: ${money(gCzMon.spend || 0)} · ROAS: ${gCzMon.roas != null ? gCzMon.roas.toFixed(1)+'×' : '–'} · Konverze: ${DP.fmtNumber(Math.round(gCzMon.conversions || 0))}`;
+    _googleCz = (google.campaignsCurrentMonth || []).filter(c => String(c.accountId) === '9119204286');
+    renderCampaigns(_googleCz, 'google-cz-table', { showImpressions: false });
+
+    /* ── Google SK ─────────────────────────────────────────────────── */
+    const gAccSk  = (google.accounts || []).find(a => String(a.id) === '3600677296');
+    const gSkMon  = gAccSk?.currentMonth || {};
+    document.getElementById('google-sk-subtitle').textContent =
+      `${win.dateFrom || ''}–${win.dateTo || ''} · Útrata: ${money(gSkMon.spend || 0)} · ROAS: ${gSkMon.roas != null ? gSkMon.roas.toFixed(1)+'×' : '–'} · Konverze: ${DP.fmtNumber(Math.round(gSkMon.conversions || 0))}`;
+    _googleSk = (google.campaignsCurrentMonth || []).filter(c => String(c.accountId) === '3600677296');
+    renderCampaigns(_googleSk, 'google-sk-table', { showImpressions: false });
+
+    /* ── Sklik campaigns ───────────────────────────────────────────── */
+    const sklikCamps = sklik.campaignPerformanceCurrentMonth || [];
+    const sklikTotCur = (sklik.currentMonth || {}).total || {};
+    document.getElementById('sklik-subtitle').textContent =
+      `${(sklik.currentMonth || {}).dateFrom || ''}–${(sklik.currentMonth || {}).dateTo || ''} · Útrata: ${money(sklikTotCur.priceCzk || 0)} · Konverze: ${DP.fmtNumber(sklikTotCur.conversions || 0)} · Obrat: ${money(sklikTotCur.conversionValueCzk || 0)}`;
+    const typeMap = { fulltext:'Fulltext', product:'Produktová', context:'Kontextová', zbozi:'Zboží.cz' };
+    document.getElementById('sklik-table').innerHTML = sklikCamps.length
+      ? sklikCamps.map(c => {
+          const spend   = c.priceCzk || 0;
+          const conv    = c.conversions || 0;
+          const revenue = c.conversionValueCzk || 0;
+          const roas    = spend > 0 && revenue > 0 ? revenue / spend : null;
+          return `<tr>
+            <td style="max-width:280px;word-break:break-word;font-size:13px;">${c.name || '–'}</td>
+            <td><span class="camp-type other">${typeMap[c.type] || c.type || '–'}</span></td>
+            <td>${statusBadge(c.status)}</td>
+            <td class="num">${spend > 0 ? money(spend) : '–'}</td>
+            <td class="num">${DP.fmtNumber(c.clicks || 0)}</td>
+            <td class="num">${c.ctr != null ? Number(c.ctr).toFixed(1)+'%' : '–'}</td>
+            <td class="num">${conv > 0 ? DP.fmtNumber(conv) : '–'}</td>
+            <td class="num">${revenue > 0 ? money(revenue) : '–'}</td>
+            <td class="num">${roasCell(roas)}</td>
+          </tr>`;
+        }).join('')
+      : '<tr><td colspan="9" style="text-align:center;padding:20px;color:var(--text-muted);">Žádné Sklik kampaně k zobrazení.</td></tr>';
+
+    /* ── Sklik daily ───────────────────────────────────────────────── */
+    const sklikDaily = (sklik.currentMonth || {}).daily || [];
+    document.getElementById('sklik-daily-table').innerHTML = sklikDaily.length
+      ? sklikDaily.map(d => `<tr>
+          <td>${fmtDate(normalizeSklikDate(d.date))}</td>
+          <td class="num">${DP.fmtNumber(d.impressions || 0)}</td>
+          <td class="num">${DP.fmtNumber(d.clicks || 0)}</td>
+          <td class="num">${d.ctr != null ? Number(d.ctr).toFixed(1)+'%' : '–'}</td>
+          <td class="num">${money(d.priceCzk || 0)}</td>
+          <td class="num">${DP.fmtNumber(d.conversions || 0)}</td>
+          <td class="num">${d.conversionValueCzk > 0 ? money(d.conversionValueCzk) : '–'}</td>
+        </tr>`).join('')
+      : '<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--text-muted);">Žádná denní data.</td></tr>';
+
+    /* ── Ecomail ───────────────────────────────────────────────────── */
+    document.getElementById('ecomail-subtitle').textContent =
+      `${ecoSum.dateFrom || ''}–${ecoSum.dateTo || ''} · ${ecoSum.campaignCount || 0} kampaní · Příjemci: ${DP.fmtNumber(ecoSum.totalRecipients || 0)} · Kliknutí: ${DP.fmtNumber(ecoSum.totalClicks || 0)}`;
+
+    document.getElementById('ecomail-kpis').innerHTML = [
+      { label: 'Obrat (Ecomail)',  value: money(ecoSum.totalAttributedRevenueCzk || 0), sub: `min. měsíc: ${money(ecoPrevSum.totalAttributedRevenueCzk || 0)}`, cls: 'gold' },
+      { label: 'Objednávky',       value: DP.fmtNumber(ecoSum.totalAttributedOrders || 0), sub: `min. měsíc: ${DP.fmtNumber(ecoPrevSum.totalAttributedOrders || 0)}`, cls: 'green' },
+      { label: 'Příjemci',          value: DP.fmtNumber(ecoSum.totalRecipients || 0), sub: `min. měsíc: ${DP.fmtNumber(ecoPrevSum.totalRecipients || 0)}`, cls: 'blue' },
+      { label: 'Click rate',        value: pct(ecoSum.clickRate), sub: `min. měsíc: ${pct(ecoPrevSum.clickRate)}`, cls: 'blue' },
+    ].map(k => `<div class="card kpi-card ${k.cls}"><div class="kpi-label">${k.label}</div><div class="kpi-value">${k.value}</div><div class="kpi-sub">${k.sub}</div></div>`).join('');
+
+    const ecoCamps = ecomail.recentCampaigns || [];
+    document.getElementById('ecomail-campaign-list').innerHTML = ecoCamps.length
+      ? ecoCamps.map(c => {
+          const sentAt = c.sentAt ? new Date(c.sentAt).toLocaleString('cs-CZ', { day:'numeric', month:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit' }) : '–';
+          return `
+            <div class="eco-card">
+              <div class="eco-title">${c.name || c.flowName || '–'}</div>
+              <div class="eco-meta">Odesláno: ${sentAt} · Příjemci: ${DP.fmtNumber(c.recipients || 0)}</div>
+              <div class="eco-stats">
+                <div class="eco-stat"><div class="sl">Open rate</div><div class="sv">${c.openRate != null ? (c.openRate*100).toFixed(1)+'%' : '–'}</div></div>
+                <div class="eco-stat"><div class="sl">Click rate</div><div class="sv">${c.clickRate != null ? (c.clickRate*100).toFixed(2)+'%' : '–'}</div></div>
+                <div class="eco-stat"><div class="sl">Conv. rate</div><div class="sv">${c.conversionRate != null ? (c.conversionRate*100).toFixed(3)+'%' : '–'}</div></div>
+                <div class="eco-stat"><div class="sl">Objednávky</div><div class="sv">${DP.fmtNumber(c.attributedOrders || 0)}</div></div>
+                <div class="eco-stat"><div class="sl">Obrat</div><div class="sv">${money(c.attributedRevenueCzk || 0)}</div></div>
+              </div>
+              ${c.archiveUrl ? `<a href="${c.archiveUrl}" target="_blank" rel="noopener" style="font-size:12px;margin-top:12px;display:inline-block;color:var(--link,#6070c0);">Zobrazit kampaň ↗</a>` : ''}
+            </div>`;
+        }).join('')
+      : '<div style="color:var(--text-muted);padding:20px;">Žádné nedávné kampaně.</div>';
+
+    /* Ecomail denní */
+    const ecoDaily = ecomail.dailySummary || [];
+    document.getElementById('ecomail-daily-table').innerHTML = ecoDaily.length
+      ? ecoDaily.map(d => `<tr>
+          <td>${fmtDate(d.date)}</td>
+          <td class="num">${DP.fmtNumber(d.totalRecipients || 0)}</td>
+          <td class="num">${DP.fmtNumber(d.totalClicks || 0)}</td>
+          <td class="num">${d.clickRate != null ? (d.clickRate*100).toFixed(2)+'%' : '–'}</td>
+          <td class="num">${DP.fmtNumber(d.totalAttributedOrders || 0)}</td>
+          <td class="num">${d.totalAttributedRevenueCzk > 0 ? money(d.totalAttributedRevenueCzk) : '–'}</td>
+        </tr>`).join('')
+      : '<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--text-muted);">Žádná denní data.</td></tr>';
+
+    /* ── Denní trend (cross-channel) ───────────────────────────────── */
+    const metaDaily   = meta.dailySummary   || [];
+    const googleDaily = google.dailySummary || [];
+    const sklDaily    = (sklik.currentMonth || {}).daily || [];
+    const sklDailyN   = sklDaily.map(d => ({ ...d, date: normalizeSklikDate(d.date) }));
+
+    const allDates = [...new Set([
+      ...metaDaily.map(d => d.date),
+      ...googleDaily.map(d => d.date),
+    ])].sort();
+
+    document.getElementById('trend-table').innerHTML = allDates.map(date => {
+      const m = metaDaily.find(d => d.date === date) || {};
+      const g = googleDaily.find(d => d.date === date) || {};
+      const s = sklDailyN.find(d => d.date === date)  || {};
+      const e = ecoDaily.find(d => d.date === date)    || {};
+      const totalSpend = (m.spendCzk || 0) + (g.spendCzk || 0) + (s.priceCzk || 0);
+      return `<tr>
+        <td>${fmtDate(date)}</td>
+        <td class="num">${m.spendCzk ? money(m.spendCzk) : '–'}</td>
+        <td class="num">${m.roas != null ? roasCell(m.roas) : '–'}</td>
+        <td class="num">${g.spendCzk ? money(g.spendCzk) : '–'}</td>
+        <td class="num">${g.roas != null ? roasCell(g.roas) : '–'}</td>
+        <td class="num">${s.priceCzk ? money(s.priceCzk) : '–'}</td>
+        <td class="num">${s.conversions > 0 ? DP.fmtNumber(s.conversions) : '–'}</td>
+        <td class="num"><strong>${money(totalSpend)}</strong></td>
+        <td class="num">${e.totalAttributedRevenueCzk > 0 ? money(e.totalAttributedRevenueCzk) : '–'}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="9" style="text-align:center;padding:20px;color:var(--text-muted);">Žádná data.</td></tr>';
+
+    /* ── Google compare vs. previous month ─────────────────────────── */
+    const googlePrevDaily = google.dailySummaryPreviousMonth || [];
+    document.getElementById('google-compare-table').innerHTML = googleDaily.map((d, i) => {
+      const p = googlePrevDaily[i] || {};
+      return `<tr>
+        <td>${fmtDate(d.date)}</td>
+        <td class="num">${money(d.spendCzk || 0)}</td>
+        <td class="num">${roasCell(d.roas)}</td>
+        <td class="num">${p.spendCzk ? money(p.spendCzk) : '–'}</td>
+        <td class="num">${p.roas != null ? roasCell(p.roas) : '–'}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text-muted);">Žádná data.</td></tr>';
+
+  })();
+</script>
+</body>
+</html>
