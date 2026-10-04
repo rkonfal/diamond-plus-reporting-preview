@@ -2123,6 +2123,14 @@
         return '<span class="badge">běžná položka</span>';
       };
 
+      const promoLabelBadge = row => {
+        if (!row.promoLabel) return '';
+        const label = row.promoLabel;
+        const isSleva = label.startsWith('SLEVA');
+        const tone = isSleva ? 'danger' : 'warn';
+        return `<span class="badge ${tone}" title="Promo září/říjen 2026">${escapeHtml(label)}</span>`;
+      };
+
       const packStepLabel = kind => {
         if (kind === 'carton') return 'karton';
         if (kind === 'pack') return 'balení';
@@ -3489,6 +3497,7 @@
               <p class="ux-section-subtitle">${escapeHtml(row.code)} · ${escapeHtml(row.title)}</p>
             </div>
             <div class="planning-row-tags">
+              ${promoLabelBadge(row)}
               ${riskBadge(row)}
               ${roleBadge(row)}
               ${packagingBadge(row)}
@@ -3561,6 +3570,7 @@
               <div class="planning-row-head">
                 <div class="planning-row-title"><strong>${escapeHtml(row.code)}</strong>${escapeHtml(row.title)}</div>
                 <div class="planning-row-tags">
+                  ${promoLabelBadge(row)}
                   ${roleBadge(row)}
                   ${sourceChannelBadge(row)}
                   ${expiryBadge(row)}
@@ -4539,7 +4549,7 @@
               ${renderOrderingVariantStockList(row, row.market || currentMarket, { compact: true })}
               <div class="ordering-reason-text" title="${escapeHtml(row.excludeFromOrderingReason || 'Položka je pro nákup povolená a bez blokace.')}">${escapeHtml(row.excludeFromOrderingReason || 'Položka je pro nákup povolená a bez blokace.')}</div>
             </td>
-            <td><div class="ordering-badge-wrap">${orderableBadge(row)} ${typeBadge(row)} ${roleBadge(row)} ${sourceChannelBadge(row)} ${packagingBadge(row)} ${expiryBadge(row)} ${riskBadge(row)} ${zoneBadge(row)} ${trendBadge(row)}</div></td>
+            <td><div class="ordering-badge-wrap">${promoLabelBadge(row)} ${orderableBadge(row)} ${typeBadge(row)} ${roleBadge(row)} ${sourceChannelBadge(row)} ${packagingBadge(row)} ${expiryBadge(row)} ${riskBadge(row)} ${zoneBadge(row)} ${trendBadge(row)}</div></td>
             <td class="num">${fmt(row.effectiveStock)}</td>
             <td class="num">
               <div class="ordering-cell-stack">
