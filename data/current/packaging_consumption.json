@@ -1,104 +1,104 @@
 {
-  "generatedAt": "2026-05-04T11:17:11",
+  "generatedAt": "2026-10-05T09:25:08",
   "period": {
-    "weeksTracked": 10,
+    "weeksTracked": 28,
     "startDate": "2026-02-16",
-    "endDate": "2026-04-26",
-    "label": "16. 2. - 22. 2. 2026 až 20. 4. - 26. 4. 2026"
+    "endDate": "2026-10-04",
+    "label": "16. 2. - 22. 2. 2026 až 28. 9. - 4. 10. 2026"
   },
   "summary": {
-    "totalConsumed": 27333,
-    "averageWeeklyConsumption": 2733.3,
-    "lastWeekConsumed": 2315,
-    "lastWeekLabel": "20. 4. - 26. 4. 2026",
+    "totalConsumed": 70047,
+    "averageWeeklyConsumption": 2501.7,
+    "lastWeekConsumed": 2947,
+    "lastWeekLabel": "28. 9. - 4. 10. 2026",
     "topPackageOverall": "M",
-    "topPackageOverallConsumed": 13875,
+    "topPackageOverallConsumed": 35960,
     "topPackageLastWeek": "M",
-    "currentTrackedStock": 53080,
-    "estimatedWeeksOfCoverOverall4w": 18.9,
+    "currentTrackedStock": 108225,
+    "estimatedWeeksOfCoverOverall4w": 42.8,
     "leadTimeWeeks": 4,
     "warningThresholdWeeks": 6
   },
   "totalsByPackage": [
     {
       "packageType": "S",
-      "consumed": 824,
-      "sharePct": 3.0,
-      "currentStock": 19330
+      "consumed": 2195,
+      "sharePct": 3.1,
+      "currentStock": 17600
     },
     {
       "packageType": "M",
-      "consumed": 13875,
-      "sharePct": 50.8,
-      "currentStock": 6450
+      "consumed": 35960,
+      "sharePct": 51.3,
+      "currentStock": 22950
     },
     {
       "packageType": "L",
-      "consumed": 9297,
-      "sharePct": 34.0,
-      "currentStock": 7000
+      "consumed": 22574,
+      "sharePct": 32.2,
+      "currentStock": 32625
     },
     {
       "packageType": "XL",
-      "consumed": 2669,
-      "sharePct": 9.8,
-      "currentStock": 17300
+      "consumed": 7325,
+      "sharePct": 10.5,
+      "currentStock": 30250
     },
     {
       "packageType": "XXL",
-      "consumed": 607,
-      "sharePct": 2.2,
-      "currentStock": 3000
+      "consumed": 1888,
+      "sharePct": 2.7,
+      "currentStock": 4800
     },
     {
       "packageType": "OVERSIZE",
-      "consumed": 61,
-      "sharePct": 0.2,
+      "consumed": 105,
+      "sharePct": 0.1,
       "currentStock": 0
     }
   ],
   "stockCoverage": [
     {
       "packageType": "S",
-      "currentStock": 19330,
-      "avgWeeklyConsumption4w": 84.2,
-      "weeksOfCover4w": 229.4,
+      "currentStock": 17600,
+      "avgWeeklyConsumption4w": 30.5,
+      "weeksOfCover4w": 577.0,
       "risk": "ok",
       "leadTimeWeeks": 4,
       "warningThresholdWeeks": 6
     },
     {
       "packageType": "M",
-      "currentStock": 6450,
-      "avgWeeklyConsumption4w": 1446.2,
-      "weeksOfCover4w": 4.5,
-      "risk": "medium",
+      "currentStock": 22950,
+      "avgWeeklyConsumption4w": 1190.0,
+      "weeksOfCover4w": 19.3,
+      "risk": "ok",
       "leadTimeWeeks": 4,
       "warningThresholdWeeks": 6
     },
     {
       "packageType": "L",
-      "currentStock": 7000,
-      "avgWeeklyConsumption4w": 953.5,
-      "weeksOfCover4w": 7.3,
+      "currentStock": 32625,
+      "avgWeeklyConsumption4w": 866.5,
+      "weeksOfCover4w": 37.7,
       "risk": "ok",
       "leadTimeWeeks": 4,
       "warningThresholdWeeks": 6
     },
     {
       "packageType": "XL",
-      "currentStock": 17300,
-      "avgWeeklyConsumption4w": 258.0,
-      "weeksOfCover4w": 67.1,
+      "currentStock": 30250,
+      "avgWeeklyConsumption4w": 354.2,
+      "weeksOfCover4w": 85.4,
       "risk": "ok",
       "leadTimeWeeks": 4,
       "warningThresholdWeeks": 6
     },
     {
       "packageType": "XXL",
-      "currentStock": 3000,
-      "avgWeeklyConsumption4w": 62.2,
-      "weeksOfCover4w": 48.2,
+      "currentStock": 4800,
+      "avgWeeklyConsumption4w": 81.0,
+      "weeksOfCover4w": 59.3,
       "risk": "ok",
       "leadTimeWeeks": 4,
       "warningThresholdWeeks": 6
@@ -106,7 +106,7 @@
     {
       "packageType": "OVERSIZE",
       "currentStock": 0,
-      "avgWeeklyConsumption4w": 1.2,
+      "avgWeeklyConsumption4w": 4.5,
       "weeksOfCover4w": 0.0,
       "risk": "high",
       "leadTimeWeeks": 4,
@@ -775,58 +775,1338 @@
         }
       ],
       "sourceFile": "Spotr_eba_obalove_ho_materia_lu_20-26.04.2026---cb9346e1-d94a-471e-8f76-d5e4745efa84.xlsx"
+    },
+    {
+      "weekKey": "2026-06-01_2026-06-07",
+      "label": "1. 6. - 7. 6. 2026",
+      "startDate": "2026-06-01",
+      "endDate": "2026-06-07",
+      "totalConsumed": 2714,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 18970,
+          "consumed": 22
+        },
+        {
+          "packageType": "M",
+          "currentStock": 40875,
+          "consumed": 1676
+        },
+        {
+          "packageType": "L",
+          "currentStock": 43825,
+          "consumed": 736
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 34275,
+          "consumed": 200
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 6200,
+          "consumed": 77
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 3
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 2278
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 289
+        },
+        {
+          "name": "GLS",
+          "shipments": 99
+        },
+        {
+          "name": "DPD",
+          "shipments": 48
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 2452
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 262
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_01-07.06.2026---8eedb13e-820c-45c9-ab01-e8d6caf08bba.xlsx"
+    },
+    {
+      "weekKey": "2026-06-08_2026-06-14",
+      "label": "8. 6. - 14. 6. 2026",
+      "startDate": "2026-06-08",
+      "endDate": "2026-06-14",
+      "totalConsumed": 2528,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 18930,
+          "consumed": 46
+        },
+        {
+          "packageType": "M",
+          "currentStock": 39725,
+          "consumed": 1408
+        },
+        {
+          "packageType": "L",
+          "currentStock": 42800,
+          "consumed": 739
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 33975,
+          "consumed": 229
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 6000,
+          "consumed": 105
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 1
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 2039
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 338
+        },
+        {
+          "name": "GLS",
+          "shipments": 100
+        },
+        {
+          "name": "DPD",
+          "shipments": 51
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 2287
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 241
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_08-14.06.2026---d1283ced-106d-4d3b-bf73-ceed4320c6c6.xlsx"
+    },
+    {
+      "weekKey": "2026-06-15_2026-06-21",
+      "label": "15. 6. - 21. 6. 2026",
+      "startDate": "2026-06-15",
+      "endDate": "2026-06-21",
+      "totalConsumed": 2476,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 18860,
+          "consumed": 109
+        },
+        {
+          "packageType": "M",
+          "currentStock": 39725,
+          "consumed": 1191
+        },
+        {
+          "packageType": "L",
+          "currentStock": 42450,
+          "consumed": 801
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 33775,
+          "consumed": 266
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 6000,
+          "consumed": 108
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 1
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 1969
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 293
+        },
+        {
+          "name": "GLS",
+          "shipments": 130
+        },
+        {
+          "name": "DPD",
+          "shipments": 84
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 2233
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 243
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_15-21.06.2026---3d83bd04-8643-4e7e-905b-f085393c298f.xlsx"
+    },
+    {
+      "weekKey": "2026-06-22_2026-06-28",
+      "label": "22. 6. - 28. 6. 2026",
+      "startDate": "2026-06-22",
+      "endDate": "2026-06-28",
+      "totalConsumed": 2134,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 18810,
+          "consumed": 77
+        },
+        {
+          "packageType": "M",
+          "currentStock": 37875,
+          "consumed": 983
+        },
+        {
+          "packageType": "L",
+          "currentStock": 41790,
+          "consumed": 720
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 33475,
+          "consumed": 244
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 5900,
+          "consumed": 106
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 4
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 1693
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 246
+        },
+        {
+          "name": "GLS",
+          "shipments": 129
+        },
+        {
+          "name": "DPD",
+          "shipments": 66
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 1916
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 218
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_22-28.06.2026---0da2ee0a-e470-4e51-8b33-e03597e0d930.xlsx"
+    },
+    {
+      "weekKey": "2026-06-29_2026-07-05",
+      "label": "29. 6. - 5. 7. 2026",
+      "startDate": "2026-06-29",
+      "endDate": "2026-07-05",
+      "totalConsumed": 1934,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 18720,
+          "consumed": 88
+        },
+        {
+          "packageType": "M",
+          "currentStock": 36975,
+          "consumed": 973
+        },
+        {
+          "packageType": "L",
+          "currentStock": 41375,
+          "consumed": 633
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 33475,
+          "consumed": 175
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 5800,
+          "consumed": 63
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 2
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 1578
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 197
+        },
+        {
+          "name": "GLS",
+          "shipments": 93
+        },
+        {
+          "name": "DPD",
+          "shipments": 66
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 1746
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 188
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_29.06-05.07.2026---4186468d-c14a-4c4f-bccf-bf48be9fe01a.xlsx"
+    },
+    {
+      "weekKey": "2026-07-06_2026-07-12",
+      "label": "6. 7. - 12. 7. 2026",
+      "startDate": "2026-07-06",
+      "endDate": "2026-07-12",
+      "totalConsumed": 2018,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 18660,
+          "consumed": 49
+        },
+        {
+          "packageType": "M",
+          "currentStock": 35825,
+          "consumed": 1093
+        },
+        {
+          "packageType": "L",
+          "currentStock": 40475,
+          "consumed": 635
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 33300,
+          "consumed": 184
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 5800,
+          "consumed": 57
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 0
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 1623
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 260
+        },
+        {
+          "name": "GLS",
+          "shipments": 88
+        },
+        {
+          "name": "DPD",
+          "shipments": 47
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 1775
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 243
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_06.07-12.07.2026---63510b76-a8e5-4f86-8a73-4a0a612a15b0.xlsx"
+    },
+    {
+      "weekKey": "2026-07-13_2026-07-19",
+      "label": "13. 7. - 19. 7. 2026",
+      "startDate": "2026-07-13",
+      "endDate": "2026-07-19",
+      "totalConsumed": 2620,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 18530,
+          "consumed": 135
+        },
+        {
+          "packageType": "M",
+          "currentStock": 34775,
+          "consumed": 1304
+        },
+        {
+          "packageType": "L",
+          "currentStock": 40475,
+          "consumed": 805
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 33100,
+          "consumed": 307
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 5700,
+          "consumed": 68
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 1
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 2089
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 322
+        },
+        {
+          "name": "GLS",
+          "shipments": 128
+        },
+        {
+          "name": "DPD",
+          "shipments": 81
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 2399
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 221
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_13.07-19.07.2026---c3c4862d-ea9f-46f7-bf7b-85e93b155abf.xlsx"
+    },
+    {
+      "weekKey": "2026-07-20_2026-07-26",
+      "label": "20. 7. - 26. 7. 2026",
+      "startDate": "2026-07-20",
+      "endDate": "2026-07-26",
+      "totalConsumed": 2112,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 18380,
+          "consumed": 155
+        },
+        {
+          "packageType": "M",
+          "currentStock": 33585,
+          "consumed": 1048
+        },
+        {
+          "packageType": "L",
+          "currentStock": 39400,
+          "consumed": 627
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 31420,
+          "consumed": 224
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 5600,
+          "consumed": 58
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 0
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 1712
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 233
+        },
+        {
+          "name": "GLS",
+          "shipments": 110
+        },
+        {
+          "name": "DPD",
+          "shipments": 57
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 1940
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 172
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_20.07-26.07.2026---e7962f25-5db3-41bd-9973-3cc38c207e1f.xlsx"
+    },
+    {
+      "weekKey": "2026-07-27_2026-08-02",
+      "label": "27. 7. - 2. 8. 2026",
+      "startDate": "2026-07-27",
+      "endDate": "2026-08-02",
+      "totalConsumed": 2517,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 18180,
+          "consumed": 223
+        },
+        {
+          "packageType": "M",
+          "currentStock": 32750,
+          "consumed": 1342
+        },
+        {
+          "packageType": "L",
+          "currentStock": 38825,
+          "consumed": 691
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 31420,
+          "consumed": 222
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 5600,
+          "consumed": 38
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 1
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 2025
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 283
+        },
+        {
+          "name": "GLS",
+          "shipments": 124
+        },
+        {
+          "name": "DPD",
+          "shipments": 85
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 2300
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 217
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_27.07-02.08.2026---b451f6e2-cece-49fe-89fb-39f15109e909.xlsx"
+    },
+    {
+      "weekKey": "2026-08-03_2026-08-09",
+      "label": "3. 8. - 9. 8. 2026",
+      "startDate": "2026-08-03",
+      "endDate": "2026-08-09",
+      "totalConsumed": 2817,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 18080,
+          "consumed": 127
+        },
+        {
+          "packageType": "M",
+          "currentStock": 31300,
+          "consumed": 1544
+        },
+        {
+          "packageType": "L",
+          "currentStock": 36550,
+          "consumed": 809
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 32100,
+          "consumed": 257
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 5550,
+          "consumed": 77
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 3
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 2313
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 283
+        },
+        {
+          "name": "GLS",
+          "shipments": 172
+        },
+        {
+          "name": "DPD",
+          "shipments": 49
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 2507
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 310
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_03.08-09.08.2026---8cee7659-55ea-49c0-b84f-c14d924fabcf.xlsx"
+    },
+    {
+      "weekKey": "2026-08-10_2026-08-16",
+      "label": "10. 8. - 16. 8. 2026",
+      "startDate": "2026-08-10",
+      "endDate": "2026-08-16",
+      "totalConsumed": 2112,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 17970,
+          "consumed": 108
+        },
+        {
+          "packageType": "M",
+          "currentStock": 30300,
+          "consumed": 1112
+        },
+        {
+          "packageType": "L",
+          "currentStock": 36550,
+          "consumed": 645
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 32025,
+          "consumed": 184
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 5500,
+          "consumed": 63
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 0
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 1685
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 231
+        },
+        {
+          "name": "GLS",
+          "shipments": 126
+        },
+        {
+          "name": "DPD",
+          "shipments": 70
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 1906
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 206
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_10.08-16.08.2026---a8ffa6d9-2f89-4ed1-a542-8961746f3ace.xlsx"
+    },
+    {
+      "weekKey": "2026-08-17_2026-08-23",
+      "label": "17. 8. - 23. 8. 2026",
+      "startDate": "2026-08-17",
+      "endDate": "2026-08-23",
+      "totalConsumed": 2014,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 17920,
+          "consumed": 64
+        },
+        {
+          "packageType": "M",
+          "currentStock": 29600,
+          "consumed": 1070
+        },
+        {
+          "packageType": "L",
+          "currentStock": 36550,
+          "consumed": 630
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 31825,
+          "consumed": 205
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 5500,
+          "consumed": 41
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 4
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 1632
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 226
+        },
+        {
+          "name": "GLS",
+          "shipments": 85
+        },
+        {
+          "name": "DPD",
+          "shipments": 71
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 1851
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 163
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_17.08-23.08.2026---1954ba54-0f86-4da8-b8d3-fd181cec1059.xlsx"
+    },
+    {
+      "weekKey": "2026-08-24_2026-08-30",
+      "label": "24. 8. - 30. 8. 2026",
+      "startDate": "2026-08-24",
+      "endDate": "2026-08-30",
+      "totalConsumed": 1858,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 17920,
+          "consumed": 25
+        },
+        {
+          "packageType": "M",
+          "currentStock": 27000,
+          "consumed": 1039
+        },
+        {
+          "packageType": "L",
+          "currentStock": 35455,
+          "consumed": 548
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 31550,
+          "consumed": 206
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 5200,
+          "consumed": 36
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 4
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 1447
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 187
+        },
+        {
+          "name": "GLS",
+          "shipments": 168
+        },
+        {
+          "name": "DPD",
+          "shipments": 56
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 1692
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 166
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_24.08-30.08.2026---2238aa20-76e4-4f39-bb50-322d36f1fd69.xlsx"
+    },
+    {
+      "weekKey": "2026-08-31_2026-09-06",
+      "label": "31. 8. - 6. 9. 2026",
+      "startDate": "2026-08-31",
+      "endDate": "2026-09-06",
+      "totalConsumed": 2753,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 17670,
+          "consumed": 21
+        },
+        {
+          "packageType": "M",
+          "currentStock": 26850,
+          "consumed": 1542
+        },
+        {
+          "packageType": "L",
+          "currentStock": 34825,
+          "consumed": 792
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 31550,
+          "consumed": 336
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 5200,
+          "consumed": 60
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 2
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 1951
+        },
+        {
+          "name": "GLS",
+          "shipments": 534
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 226
+        },
+        {
+          "name": "DPD",
+          "shipments": 42
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 2494
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 259
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_31.08-06.09.2026---3adb8d3b-aec3-4f92-a504-a7afe4ba4637.xlsx"
+    },
+    {
+      "weekKey": "2026-09-07_2026-09-13",
+      "label": "7. 9. - 13. 9. 2026",
+      "startDate": "2026-09-07",
+      "endDate": "2026-09-13",
+      "totalConsumed": 2929,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 17670,
+          "consumed": 34
+        },
+        {
+          "packageType": "M",
+          "currentStock": 25750,
+          "consumed": 1575
+        },
+        {
+          "packageType": "L",
+          "currentStock": 32625,
+          "consumed": 925
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 31170,
+          "consumed": 330
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 5100,
+          "consumed": 61
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 4
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 2030
+        },
+        {
+          "name": "GLS",
+          "shipments": 624
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 240
+        },
+        {
+          "name": "DPD",
+          "shipments": 35
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 2629
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 300
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_07-13.09.2026---3256c179-93ee-48ec-b525-aaf8792d0fdf.xlsx"
+    },
+    {
+      "weekKey": "2026-09-14_2026-09-20",
+      "label": "14. 9. - 20. 9. 2026",
+      "startDate": "2026-09-14",
+      "endDate": "2026-09-20",
+      "totalConsumed": 2207,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 17620,
+          "consumed": 37
+        },
+        {
+          "packageType": "M",
+          "currentStock": 24200,
+          "consumed": 928
+        },
+        {
+          "packageType": "L",
+          "currentStock": 32625,
+          "consumed": 761
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 30710,
+          "consumed": 380
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 4900,
+          "consumed": 94
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 7
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 1680
+        },
+        {
+          "name": "GLS",
+          "shipments": 291
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 206
+        },
+        {
+          "name": "DPD",
+          "shipments": 30
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 2021
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 186
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_14-20.09.2026---27fdf680-fe64-4118-972b-8fbc094e23c1.xlsx"
+    },
+    {
+      "weekKey": "2026-09-21_2026-09-27",
+      "label": "21. 9. - 27. 9. 2026",
+      "startDate": "2026-09-21",
+      "endDate": "2026-09-27",
+      "totalConsumed": 2024,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 17600,
+          "consumed": 22
+        },
+        {
+          "packageType": "M",
+          "currentStock": 22950,
+          "consumed": 848
+        },
+        {
+          "packageType": "L",
+          "currentStock": 32625,
+          "consumed": 730
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 30450,
+          "consumed": 341
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 4800,
+          "consumed": 77
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 6
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 1531
+        },
+        {
+          "name": "GLS",
+          "shipments": 282
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 180
+        },
+        {
+          "name": "DPD",
+          "shipments": 31
+        },
+        {
+          "name": "Neznámý dopravce",
+          "shipments": 1
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 1838
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 186
+        },
+        {
+          "name": "Neznámý účet",
+          "shipments": 1
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_21-27.09.2026---be462352-ccfe-4a5e-b293-fd1ddf64e17c.xlsx"
+    },
+    {
+      "weekKey": "2026-09-28_2026-10-04",
+      "label": "28. 9. - 4. 10. 2026",
+      "startDate": "2026-09-28",
+      "endDate": "2026-10-04",
+      "totalConsumed": 2947,
+      "byPackage": [
+        {
+          "packageType": "S",
+          "currentStock": 17600,
+          "consumed": 29
+        },
+        {
+          "packageType": "M",
+          "currentStock": 22950,
+          "consumed": 1409
+        },
+        {
+          "packageType": "L",
+          "currentStock": 32625,
+          "consumed": 1050
+        },
+        {
+          "packageType": "XL",
+          "currentStock": 30250,
+          "consumed": 366
+        },
+        {
+          "packageType": "XXL",
+          "currentStock": 4800,
+          "consumed": 92
+        },
+        {
+          "packageType": "OVERSIZE",
+          "currentStock": 0,
+          "consumed": 1
+        }
+      ],
+      "topPackage": "M",
+      "carriers": [
+        {
+          "name": "Česká pošta",
+          "shipments": 2103
+        },
+        {
+          "name": "GLS",
+          "shipments": 553
+        },
+        {
+          "name": "PACKETA",
+          "shipments": 260
+        },
+        {
+          "name": "DPD",
+          "shipments": 31
+        }
+      ],
+      "customers": [
+        {
+          "name": "TIANDE_CZ",
+          "shipments": 2651
+        },
+        {
+          "name": "TIANDE_SK",
+          "shipments": 296
+        }
+      ],
+      "sourceFile": "Spotr_eba_obalove_ho_materia_lu_28.09-04.10.2026---2fd999a4-8f71-4e5f-bcdb-61f539d8a5ad.xlsx"
     }
   ],
   "shipmentsByCarrier": [
     {
       "name": "Česká pošta",
-      "shipments": 21238,
-      "sharePct": 77.7,
+      "shipments": 54616,
+      "sharePct": 78.0,
       "topPackage": "M"
     },
     {
       "name": "PACKETA",
-      "shipments": 4335,
-      "sharePct": 15.9,
-      "topPackage": "M"
-    },
-    {
-      "name": "DPD",
-      "shipments": 1508,
-      "sharePct": 5.5,
+      "shipments": 8835,
+      "sharePct": 12.6,
       "topPackage": "M"
     },
     {
       "name": "GLS",
-      "shipments": 252,
-      "sharePct": 0.9,
-      "topPackage": "L"
+      "shipments": 4088,
+      "sharePct": 5.8,
+      "topPackage": "M"
+    },
+    {
+      "name": "DPD",
+      "shipments": 2508,
+      "sharePct": 3.6,
+      "topPackage": "M"
+    },
+    {
+      "name": "Neznámý dopravce",
+      "shipments": 1,
+      "sharePct": 0.0,
+      "topPackage": "Neznámý typ"
     }
   ],
   "shipmentsByCustomer": [
     {
       "name": "TIANDE_CZ",
-      "shipments": 24664,
-      "sharePct": 90.2,
+      "shipments": 63301,
+      "sharePct": 90.4,
       "topPackage": "M"
     },
     {
       "name": "TIANDE_SK",
-      "shipments": 2669,
-      "sharePct": 9.8,
+      "shipments": 6746,
+      "sharePct": 9.6,
       "topPackage": "M"
+    },
+    {
+      "name": "Neznámý účet",
+      "shipments": 1,
+      "sharePct": 0.0,
+      "topPackage": "Neznámý typ"
     }
   ],
   "sourceFiles": [
+    "Spotr_eba_obalove_ho_materia_lu_01-07.06.2026---8eedb13e-820c-45c9-ab01-e8d6caf08bba.xlsx",
     "Spotr_eba_obalove_ho_materia_lu_02.03-08.03.2026---cfd43fe8-3f12-48cc-b17a-389ff97437aa.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_03.08-09.08.2026---8cee7659-55ea-49c0-b84f-c14d924fabcf.xlsx",
     "Spotr_eba_obalove_ho_materia_lu_06-12.04.2026---3661c957-b59a-40b3-9d1c-0dc79f43e3f9.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_06.07-12.07.2026---63510b76-a8e5-4f86-8a73-4a0a612a15b0.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_07-13.09.2026---3256c179-93ee-48ec-b525-aaf8792d0fdf.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_08-14.06.2026---d1283ced-106d-4d3b-bf73-ceed4320c6c6.xlsx",
     "Spotr_eba_obalove_ho_materia_lu_09.03-15.03.2026---3291ff3c-f756-4f73-ba97-99c8de9a6d52.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_10.08-16.08.2026---a8ffa6d9-2f89-4ed1-a542-8961746f3ace.xlsx",
     "Spotr_eba_obalove_ho_materia_lu_13-19.04.2026---96c22998-653e-410c-8bd6-fc5e84626757.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_13.07-19.07.2026---c3c4862d-ea9f-46f7-bf7b-85e93b155abf.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_14-20.09.2026---27fdf680-fe64-4118-972b-8fbc094e23c1.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_15-21.06.2026---3d83bd04-8643-4e7e-905b-f085393c298f.xlsx",
     "Spotr_eba_obalove_ho_materia_lu_16-22.02.2026---5d195c51-dea7-4938-b5c3-d247c9f373fa.xlsx",
     "Spotr_eba_obalove_ho_materia_lu_16.03-22.03.2026_1---a8111c7d-aad6-44d6-b2ed-22eefed5cfe7.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_17.08-23.08.2026---1954ba54-0f86-4da8-b8d3-fd181cec1059.xlsx",
     "Spotr_eba_obalove_ho_materia_lu_20-26.04.2026---cb9346e1-d94a-471e-8f76-d5e4745efa84.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_20.07-26.07.2026---e7962f25-5db3-41bd-9973-3cc38c207e1f.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_21-27.09.2026---be462352-ccfe-4a5e-b293-fd1ddf64e17c.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_22-28.06.2026---0da2ee0a-e470-4e51-8b33-e03597e0d930.xlsx",
     "Spotr_eba_obalove_ho_materia_lu_23-29.03.2026---13a1320e-2909-4c39-915a-ca0a62dff042.xlsx",
     "Spotr_eba_obalove_ho_materia_lu_23.02-01.03.2026---fdf7b399-698b-41cc-b610-789f8ed83f80.xlsx",
-    "Spotr_eba_obalove_ho_materia_lu_30.03-05.04.2026---4075a855-e8af-4785-860a-b427f0ce3ee8.xlsx"
+    "Spotr_eba_obalove_ho_materia_lu_24.08-30.08.2026---2238aa20-76e4-4f39-bb50-322d36f1fd69.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_27.07-02.08.2026---b451f6e2-cece-49fe-89fb-39f15109e909.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_28.09-04.10.2026---2fd999a4-8f71-4e5f-bcdb-61f539d8a5ad.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_29.06-05.07.2026---4186468d-c14a-4c4f-bccf-bf48be9fe01a.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_30.03-05.04.2026---4075a855-e8af-4785-860a-b427f0ce3ee8.xlsx",
+    "Spotr_eba_obalove_ho_materia_lu_31.08-06.09.2026---3adb8d3b-aec3-4f92-a504-a7afe4ba4637.xlsx"
   ]
 }

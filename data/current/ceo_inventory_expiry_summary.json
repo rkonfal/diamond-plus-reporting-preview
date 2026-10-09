@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-08-25T10:59:31.371625+02:00",
+  "generatedAt": "2026-10-09T14:02:38.130800+02:00",
   "sourceGeneratedAt": {
-    "inventory": "2026-08-25T10:05:44.804451+02:00",
-    "expiry": "2026-08-25T10:57:58.341284+02:00",
+    "inventory": "2026-10-09T13:02:11.541169+02:00",
+    "expiry": "2026-10-09T14:01:13.057766+02:00",
     "crosscheck": "2026-07-13T10:43:57.854963+02:00"
   },
   "sourceReportDir": "inventory-crosscheck-2026-07-13",
   "headline": "Sklad jako celek není v krizi, ale máme výrazný problém s důvěryhodností skladové pravdy mezi WPJ a 4PX, systémově přestřelené SK zásoby a expirační dashboard, který teď přeceňuje rozsah problému a neumí spolehlivě spočítat obchodní prioritu bez opravy refresh logiky.",
   "hero": {
     "skCzRatio": 0.1801,
-    "top20MismatchDelta": 46822,
-    "urgentExpiryStock30d": 18,
-    "expiryRowsWithoutSalesContext": 90
+    "top20MismatchDelta": 61710,
+    "urgentExpiryStock30d": 0,
+    "expiryRowsWithoutSalesContext": 82
   },
   "status": {
     "inventoryTruth": "Nedůvěryhodná",
-    "inventoryTruthDetail": "692 mismatch řádků mezi WPJ a 4PX",
+    "inventoryTruthDetail": "714 mismatch řádků mezi WPJ a 4PX",
     "allocation": "Mimo cíl",
     "allocationDetail": "SK/CZ 18.01 % vs. očekávání okolo 10 %",
     "expiryDecisioning": "Zkreslené",
-    "expiryDecisioningDetail": "635 řádků je za hranicí 180 dnů a 90 řádků má nulový prodejní kontext",
+    "expiryDecisioningDetail": "655 řádků je za hranicí 180 dnů a 82 řádků má nulový prodejní kontext",
     "coreAvailability": "Spíš zdravá",
-    "coreAvailabilityDetail": "Jen 4 položky jsou v low-after-sales frontě"
+    "coreAvailabilityDetail": "Jen 6 položky jsou v low-after-sales frontě"
   },
   "executiveSummary": [
     "Core fast movers jsou obecně skladem, takže problém není plošný stockout.",
@@ -31,14 +31,14 @@
   ],
   "inventory": {
     "counts": {
-      "allCodes": 3060,
-      "pairedProducts": 365,
-      "onlyInWpj": 1631,
+      "allCodes": 3091,
+      "pairedProducts": 358,
+      "onlyInWpj": 1667,
       "onlyIn4px": 1,
-      "stockMismatch": 692,
-      "lowAfterSales": 4,
+      "stockMismatch": 714,
+      "lowAfterSales": 6,
       "manualMapped4pxAliases": 0,
-      "autoMapped4pxAliases": 74
+      "autoMapped4pxAliases": 76
     },
     "crosscheck": {
       "snapshotGeneratedAt": "2026-07-13T10:43:57.854963+02:00",
@@ -63,39 +63,23 @@
       "bandOverPct": 0.6762177650429799
     },
     "mismatch": {
-      "top20Delta": 46822,
-      "top20VisibleDelta": 7700,
-      "top20HiddenDelta": 39122,
+      "top20Delta": 61710,
+      "top20VisibleDelta": 8347,
+      "top20HiddenDelta": 53363,
       "topVisible": [
         {
-          "code": "RT364",
-          "title": "Svěžest, která vydrží",
-          "stockDelta": 2951,
-          "wpj4pxStock": 2951,
+          "code": "TR433",
+          "title": "STOP nepohodlí zad a kloubů",
+          "stockDelta": 5948,
+          "wpj4pxStock": 5948,
           "fourpxAvailable": 0,
           "recommendedAction": "Prověřit, jestli WPJ 4PX stav není historická nebo špatně navázaná vazba."
         },
         {
-          "code": "NM997",
-          "title": "Vinné omlazení",
-          "stockDelta": 1734,
-          "wpj4pxStock": 1734,
-          "fourpxAvailable": 0,
-          "recommendedAction": "Prověřit, jestli WPJ 4PX stav není historická nebo špatně navázaná vazba."
-        },
-        {
-          "code": "KT566",
-          "title": "Hřejivý pomocník pro vaše záda",
-          "stockDelta": 1515,
-          "wpj4pxStock": 1515,
-          "fourpxAvailable": 0,
-          "recommendedAction": "Prověřit, jestli WPJ 4PX stav není historická nebo špatně navázaná vazba."
-        },
-        {
-          "code": "DP1000",
-          "title": "Dárkový poukaz 1000 Kč",
-          "stockDelta": 1500,
-          "wpj4pxStock": 1500,
+          "code": "TV498",
+          "title": "Svěžest a pohodlí",
+          "stockDelta": 2399,
+          "wpj4pxStock": 2399,
           "fourpxAvailable": 0,
           "recommendedAction": "Prověřit, jestli WPJ 4PX stav není historická nebo špatně navázaná vazba."
         }
@@ -273,7 +257,7 @@
       "rawMissingSourceSkus": 48,
       "autoMappedSourceSkus": 47,
       "fullyUnmappedSourceSkus": 1,
-      "autoMappedAliasesLive": 74,
+      "autoMappedAliasesLive": 76,
       "onlyIn4pxRows": [
         {
           "code": "TEST",
@@ -285,341 +269,355 @@
     "coreAvailability": {
       "topOutboundHealthy": [
         {
-          "code": "61912",
-          "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
-          "availableTotal": 1040,
-          "yesterdayOutboundUnits": 83,
-          "daysOfCoverAtYesterdayRate": 12.5,
+          "code": "57010",
+          "title": "Hydratační pleťová PGA-maska s pivoňkou a pupečníkem asijským",
+          "availableTotal": 1485,
+          "yesterdayOutboundUnits": 115,
+          "daysOfCoverAtYesterdayRate": 12.9,
           "stockDelta": 0
         },
         {
-          "code": "TOP15",
-          "title": "TOP 15 produktů",
-          "availableTotal": 3183,
-          "yesterdayOutboundUnits": 235,
-          "daysOfCoverAtYesterdayRate": 13.5,
-          "stockDelta": -7
+          "code": "56311",
+          "title": "Pleťová maska s kyselinou azelaovou a vitamínem C",
+          "availableTotal": 1460,
+          "yesterdayOutboundUnits": 36,
+          "daysOfCoverAtYesterdayRate": 40.6,
+          "stockDelta": 0
         },
         {
           "code": "61902",
           "title": "Denní menstruační vložky s fytomembránou „Energie bylin“",
-          "availableTotal": 1001,
-          "yesterdayOutboundUnits": 59,
-          "daysOfCoverAtYesterdayRate": 17.0,
-          "stockDelta": -2
+          "availableTotal": 2248,
+          "yesterdayOutboundUnits": 50,
+          "daysOfCoverAtYesterdayRate": 45.0,
+          "stockDelta": -3
         },
         {
-          "code": "61915",
-          "title": "Dámské bylinné slipové vložky s anionty Nefritová svěžest",
-          "availableTotal": 1100,
-          "yesterdayOutboundUnits": 64,
-          "daysOfCoverAtYesterdayRate": 17.2,
-          "stockDelta": 0
+          "code": "61912",
+          "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
+          "availableTotal": 3317,
+          "yesterdayOutboundUnits": 60,
+          "daysOfCoverAtYesterdayRate": 55.3,
+          "stockDelta": -9
         },
         {
-          "code": "135460",
-          "title": "Instantní nápoj s čekankou a L-karnitinem",
-          "availableTotal": 1167,
-          "yesterdayOutboundUnits": 54,
-          "daysOfCoverAtYesterdayRate": 21.6,
+          "code": "61921",
+          "title": "Dámské bylinné slipové vložky Nefritová svěžest - super tenké",
+          "availableTotal": 2409,
+          "yesterdayOutboundUnits": 40,
+          "daysOfCoverAtYesterdayRate": 60.2,
           "stockDelta": 0
         }
       ],
       "fastMoverWatch": [
         {
-          "code": "198812",
-          "title": "Rozpustný čekankový nápoj s extrakty parchy saflorové a rezavce šikmého",
-          "availableTotal": 348,
-          "yesterdayOutboundUnits": 52,
-          "daysOfCoverAtYesterdayRate": 6.7,
+          "code": "60150",
+          "title": "Aroma-tyčinka s vůní višní a máty",
+          "availableTotal": 294,
+          "yesterdayOutboundUnits": 47,
+          "daysOfCoverAtYesterdayRate": 6.3,
+          "stockDelta": -3
+        },
+        {
+          "code": "57010",
+          "title": "Hydratační pleťová PGA-maska s pivoňkou a pupečníkem asijským",
+          "availableTotal": 1485,
+          "yesterdayOutboundUnits": 115,
+          "daysOfCoverAtYesterdayRate": 12.9,
           "stockDelta": 0
         },
         {
-          "code": "61912",
-          "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
-          "availableTotal": 1040,
-          "yesterdayOutboundUnits": 83,
-          "daysOfCoverAtYesterdayRate": 12.5,
+          "code": "56311",
+          "title": "Pleťová maska s kyselinou azelaovou a vitamínem C",
+          "availableTotal": 1460,
+          "yesterdayOutboundUnits": 36,
+          "daysOfCoverAtYesterdayRate": 40.6,
           "stockDelta": 0
-        },
-        {
-          "code": "TOP15",
-          "title": "TOP 15 produktů",
-          "availableTotal": 3183,
-          "yesterdayOutboundUnits": 235,
-          "daysOfCoverAtYesterdayRate": 13.5,
-          "stockDelta": -7
         },
         {
           "code": "61902",
           "title": "Denní menstruační vložky s fytomembránou „Energie bylin“",
-          "availableTotal": 1001,
-          "yesterdayOutboundUnits": 59,
-          "daysOfCoverAtYesterdayRate": 17.0,
-          "stockDelta": -2
+          "availableTotal": 2248,
+          "yesterdayOutboundUnits": 50,
+          "daysOfCoverAtYesterdayRate": 45.0,
+          "stockDelta": -3
         },
         {
-          "code": "61915",
-          "title": "Dámské bylinné slipové vložky s anionty Nefritová svěžest",
-          "availableTotal": 1100,
-          "yesterdayOutboundUnits": 64,
-          "daysOfCoverAtYesterdayRate": 17.2,
-          "stockDelta": 0
+          "code": "61912",
+          "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
+          "availableTotal": 3317,
+          "yesterdayOutboundUnits": 60,
+          "daysOfCoverAtYesterdayRate": 55.3,
+          "stockDelta": -9
         }
       ],
       "lowAfterSales": [
         {
+          "code": "000091",
+          "title": "Královský průvodce ženským zdravím ",
+          "availableTotal": 0,
+          "yesterdaySalesUnits": 1,
+          "yesterdayOutboundUnits": 1
+        },
+        {
+          "code": "30132/02",
+          "title": "Pánské spodní prádlo s bodovou turmalínovou vrstvou - velikost XXL",
+          "availableTotal": 0,
+          "yesterdaySalesUnits": 1,
+          "yesterdayOutboundUnits": 1
+        },
+        {
+          "code": "90186",
+          "title": "Kosmetická špachtle na krém",
+          "availableTotal": 0,
+          "yesterdaySalesUnits": 1,
+          "yesterdayOutboundUnits": 1
+        },
+        {
           "code": "BIOANALYZA001",
           "title": "BIOREZONANČNÍ ANALÝZA ENERGETICKÉHO STAVU + Následná HARMONIZACE ENERGETICKÉHO STAVU vč. nahrání čip",
           "availableTotal": 0,
-          "yesterdaySalesUnits": 2,
+          "yesterdaySalesUnits": 1,
           "yesterdayOutboundUnits": 0
         },
         {
-          "code": "44402-1",
-          "title": "Fytogel na nohy Slaviton",
+          "code": "DP300",
+          "title": "Dárkový poukaz 300 Kč",
           "availableTotal": 0,
           "yesterdaySalesUnits": 1,
           "yesterdayOutboundUnits": 0
         },
         {
-          "code": "10263",
-          "title": "Peelingové tampony na obličej s obsahem kyselin AHA a PHA",
-          "availableTotal": 1,
-          "yesterdaySalesUnits": 2,
-          "yesterdayOutboundUnits": 2
-        },
-        {
-          "code": "30129",
-          "title": "Nákoleníky s bodovou turmalínovou vrstvou",
+          "code": "BAL034",
+          "title": "Hřejivá bylinná péče",
           "availableTotal": 10,
           "yesterdaySalesUnits": 1,
-          "yesterdayOutboundUnits": 1
+          "yesterdayOutboundUnits": 0
         }
       ]
     }
   },
   "expiry": {
     "summary": {
-      "datedSkuCount": 317,
-      "czSkuCount": 306,
-      "skSkuCount": 296,
-      "datedRowCount": 693,
-      "czRowCount": 358,
-      "skRowCount": 335
+      "datedSkuCount": 318,
+      "czSkuCount": 313,
+      "skSkuCount": 300,
+      "datedRowCount": 717,
+      "czRowCount": 363,
+      "skRowCount": 354
     },
     "dataQuality": {
-      "rowsTotal": 693,
-      "rowsBeyond180d": 635,
-      "stockBeyond180d": 263574,
-      "rowsWithoutSalesContext": 90
+      "rowsTotal": 717,
+      "rowsBeyond180d": 655,
+      "stockBeyond180d": 301217,
+      "rowsWithoutSalesContext": 82
     },
     "windows": {
       "within30d": {
         "CZ": {
-          "rows": 1,
-          "stock": 1
+          "rows": 0,
+          "stock": 0
         },
         "SK": {
-          "rows": 3,
-          "stock": 17
+          "rows": 0,
+          "stock": 0
         }
       },
       "within90d": {
         "CZ": {
-          "rows": 6,
-          "stock": 109
+          "rows": 14,
+          "stock": 8702
         },
         "SK": {
-          "rows": 7,
-          "stock": 153
+          "rows": 15,
+          "stock": 1372
         }
       },
       "within180d": {
         "CZ": {
-          "rows": 27,
-          "stock": 21363
+          "rows": 28,
+          "stock": 14137
         },
         "SK": {
-          "rows": 31,
-          "stock": 2971
+          "rows": 34,
+          "stock": 3267
         }
       },
       "beyond180d": {
         "CZ": {
-          "rows": 331,
-          "stock": 236027
+          "rows": 335,
+          "stock": 265749
         },
         "SK": {
-          "rows": 304,
-          "stock": 27547
+          "rows": 320,
+          "stock": 35468
         }
       },
       "expired": {
-        "rows": 1,
-        "stock": 4
+        "rows": 0,
+        "stock": 0
       }
     },
     "urgentRows": [
       {
+        "account": "CZ",
+        "sku": "135455",
+        "title": "Zlatophyt",
+        "daysToExpiry": 54,
+        "datedStock": 139,
+        "batchCount": 9
+      },
+      {
         "account": "SK",
-        "sku": "11317/01",
-        "title": "Čistící náplast na nos na černé tečky a akné 1ks",
-        "daysToExpiry": -72,
-        "datedStock": 4,
+        "sku": "135455",
+        "title": "Zlatophyt",
+        "daysToExpiry": 54,
+        "datedStock": 123,
+        "batchCount": 2
+      },
+      {
+        "account": "CZ",
+        "sku": "21316",
+        "title": "Balzám na poškozené vlasy",
+        "daysToExpiry": 60,
+        "datedStock": 62,
+        "batchCount": 2
+      },
+      {
+        "account": "CZ",
+        "sku": "30111",
+        "title": "Kosmetická tělová fytonáplast Yaoshen Forte",
+        "daysToExpiry": 62,
+        "datedStock": 1397,
+        "batchCount": 19
+      },
+      {
+        "account": "SK",
+        "sku": "30111",
+        "title": "Kosmetická tělová fytonáplast Yaoshen Forte",
+        "daysToExpiry": 62,
+        "datedStock": 263,
+        "batchCount": 4
+      },
+      {
+        "account": "SK",
+        "sku": "30117/03",
+        "title": "Kosmetická fytonáplast Jian Kang",
+        "daysToExpiry": 65,
+        "datedStock": 58,
         "batchCount": 2
       },
       {
         "account": "SK",
-        "sku": "54106",
-        "title": "Pleťová beauty maska \"Amino-koktejl\"",
-        "daysToExpiry": 6,
-        "datedStock": 1,
-        "batchCount": 1
-      },
-      {
-        "account": "SK",
-        "sku": "52901/03",
-        "title": "Intenzivní hydratační maska na obličej a krk Hyaluronová kyselina",
-        "daysToExpiry": 29,
-        "datedStock": 12,
-        "batchCount": 1
-      },
-      {
-        "account": "CZ",
-        "sku": "52901/03",
-        "title": "Intenzivní hydratační maska na obličej a krk Hyaluronová kyselina",
-        "daysToExpiry": 29,
-        "datedStock": 1,
-        "batchCount": 1
-      },
-      {
-        "account": "CZ",
-        "sku": "10263",
-        "title": "Peelingové tampony na obličej s obsahem kyselin AHA a PHA",
-        "daysToExpiry": 35,
-        "datedStock": 2,
-        "batchCount": 1
-      },
-      {
-        "account": "SK",
-        "sku": "195453",
-        "title": "Proteinový koktejl s karobem a lněným semínkem",
-        "daysToExpiry": 43,
-        "datedStock": 16,
-        "batchCount": 1
-      },
-      {
-        "account": "CZ",
-        "sku": "195453",
-        "title": "Proteinový koktejl s karobem a lněným semínkem",
-        "daysToExpiry": 43,
+        "sku": "20151",
+        "title": "Regenerační šampon s kořenem ženšenu",
+        "daysToExpiry": 68,
         "datedStock": 9,
         "batchCount": 1
-      },
-      {
-        "account": "SK",
-        "sku": "54103",
-        "title": "Pleťová beauty maska \"Vinná terapie\"",
-        "daysToExpiry": 51,
-        "datedStock": 88,
-        "batchCount": 1
-      },
-      {
-        "account": "SK",
-        "sku": "30201",
-        "title": "Peeling Citrónový",
-        "daysToExpiry": 67,
-        "datedStock": 24,
-        "batchCount": 1
-      },
-      {
-        "account": "CZ",
-        "sku": "30201",
-        "title": "Peeling Citrónový",
-        "daysToExpiry": 67,
-        "datedStock": 18,
-        "batchCount": 2
-      }
-    ],
-    "highExposureRows": [
-      {
-        "account": "CZ",
-        "sku": "30111",
-        "title": "Kosmetická tělová fytonáplast Yaoshen Forte",
-        "daysToExpiry": 107,
-        "datedStock": 6777,
-        "batchCount": 37
-      },
-      {
-        "account": "CZ",
-        "sku": "63601/01",
-        "title": "Denní vložka Energie života",
-        "daysToExpiry": 128,
-        "datedStock": 4427,
-        "batchCount": 25
-      },
-      {
-        "account": "CZ",
-        "sku": "57010",
-        "title": "Hydratační pleťová PGA-maska s pivoňkou a pupečníkem asijským",
-        "daysToExpiry": 137,
-        "datedStock": 4052,
-        "batchCount": 17
-      },
-      {
-        "account": "CZ",
-        "sku": "41328/01",
-        "title": "Levandulová náplast na nohy",
-        "daysToExpiry": 132,
-        "datedStock": 1604,
-        "batchCount": 8
-      },
-      {
-        "account": "CZ",
-        "sku": "135460",
-        "title": "Instantní nápoj s čekankou a L-karnitinem",
-        "daysToExpiry": 170,
-        "datedStock": 915,
-        "batchCount": 1
-      },
-      {
-        "account": "SK",
-        "sku": "30111",
-        "title": "Kosmetická tělová fytonáplast Yaoshen Forte",
-        "daysToExpiry": 107,
-        "datedStock": 855,
-        "batchCount": 3
-      },
-      {
-        "account": "CZ",
-        "sku": "PROMO74",
-        "title": "Královská bylinná směs zdravá žena",
-        "daysToExpiry": 168,
-        "datedStock": 811,
-        "batchCount": 19
       },
       {
         "account": "CZ",
         "sku": "120105",
         "title": "Zázvorový nápoj",
-        "daysToExpiry": 118,
-        "datedStock": 572,
+        "daysToExpiry": 73,
+        "datedStock": 159,
+        "batchCount": 4
+      },
+      {
+        "account": "SK",
+        "sku": "120105",
+        "title": "Zázvorový nápoj",
+        "daysToExpiry": 73,
+        "datedStock": 74,
+        "batchCount": 1
+      },
+      {
+        "account": "CZ",
+        "sku": "56005",
+        "title": "Hydrogelové polštářky na oční víčka s červenými mořskými řasami a yuzu",
+        "daysToExpiry": 81,
+        "datedStock": 283,
+        "batchCount": 4
+      }
+    ],
+    "highExposureRows": [
+      {
+        "account": "CZ",
+        "sku": "41328/01",
+        "title": "Levandulová náplast na nohy",
+        "daysToExpiry": 87,
+        "datedStock": 3062,
+        "batchCount": 4
+      },
+      {
+        "account": "CZ",
+        "sku": "63601/01",
+        "title": "Denní vložka Energie života",
+        "daysToExpiry": 83,
+        "datedStock": 2163,
+        "batchCount": 27
+      },
+      {
+        "account": "CZ",
+        "sku": "57010",
+        "title": "Hydratační pleťová PGA-maska s pivoňkou a pupečníkem asijským",
+        "daysToExpiry": 92,
+        "datedStock": 1439,
+        "batchCount": 19
+      },
+      {
+        "account": "CZ",
+        "sku": "30111",
+        "title": "Kosmetická tělová fytonáplast Yaoshen Forte",
+        "daysToExpiry": 62,
+        "datedStock": 1397,
+        "batchCount": 19
+      },
+      {
+        "account": "CZ",
+        "sku": "60149-2",
+        "title": "Jemný ženský intimní bylinný extraktový gel",
+        "daysToExpiry": 84,
+        "datedStock": 1116,
+        "batchCount": 5
+      },
+      {
+        "account": "CZ",
+        "sku": "PROMO74",
+        "title": "Královská bylinná směs zdravá žena ",
+        "daysToExpiry": 123,
+        "datedStock": 700,
+        "batchCount": 19
+      },
+      {
+        "account": "CZ",
+        "sku": "10206-2",
+        "title": "Micelární voda s fytokomplexem",
+        "daysToExpiry": 176,
+        "datedStock": 496,
         "batchCount": 3
       },
       {
         "account": "CZ",
-        "sku": "135455",
-        "title": "Zlatophyt",
-        "daysToExpiry": 99,
-        "datedStock": 488,
-        "batchCount": 8
+        "sku": "65914-2",
+        "title": "Hygienický ústní sprej Jedlový esenciální olej a propolis",
+        "daysToExpiry": 175,
+        "datedStock": 484,
+        "batchCount": 3
+      },
+      {
+        "account": "SK",
+        "sku": "63601/01",
+        "title": "Denní vložka Energie života",
+        "daysToExpiry": 160,
+        "datedStock": 480,
+        "batchCount": 1
       },
       {
         "account": "CZ",
         "sku": "PROMO73",
         "title": "Královská bylinná směs silná imunita",
-        "daysToExpiry": 168,
+        "daysToExpiry": 123,
         "datedStock": 385,
         "batchCount": 1
       }
