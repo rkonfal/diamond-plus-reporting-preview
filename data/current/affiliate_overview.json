@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T13:02:11.541169+02:00",
+  "generatedAt": "2026-10-09T13:56:10.368909+02:00",
   "source": {
     "status": "live_api",
     "message": "Affiliate přehled se skládá přímo z živých API endpointů affiliate portálu, bez závislosti na HTML exportech.",
@@ -26,8 +26,8 @@
       "monthly": [],
       "topPartners": [
         {
-          "partnerCode": "pqopo3",
-          "partnerName": "tarabovamilka66@gmail.com",
+          "partnerCode": "yn8wxm",
+          "partnerName": "Iveta Liptayová",
           "contacts": 0.0,
           "orderingContacts": 0.0,
           "orders": 0.0,
@@ -42,8 +42,8 @@
           "revenueCzkEquiv": 0.0
         },
         {
-          "partnerCode": "yn8wxm",
-          "partnerName": "Iveta Liptayová",
+          "partnerCode": "pqopo3",
+          "partnerName": "tarabovamilka66@gmail.com",
           "contacts": 0.0,
           "orderingContacts": 0.0,
           "orders": 0.0,
@@ -58,10 +58,10 @@
       "error": null,
       "partners": 50,
       "totals": {
-        "networkCustomers": 17200.0,
+        "networkCustomers": 17202.0,
         "orderingCustomers": 4584.0,
-        "orders": 18271.0,
-        "revenueCzkEquiv": 29582260.0
+        "orders": 18273.0,
+        "revenueCzkEquiv": 29590487.0
       },
       "monthly": [
         {
@@ -201,8 +201,8 @@
           "orderingContacts": 0.0,
           "networkCustomers": 0.0,
           "orderingCustomers": 0.0,
-          "orders": 648.0,
-          "revenueCzkEquiv": 910917.0
+          "orders": 650.0,
+          "revenueCzkEquiv": 919144.0
         }
       ],
       "topPartners": [
@@ -324,6 +324,15 @@
           "revenueCzkEquiv": 579987.0
         },
         {
+          "partnerCode": "4jl9i8",
+          "partnerName": "Pavla Kavinová",
+          "partnerTiandeId": null,
+          "networkCustomers": 341.0,
+          "orderingCustomers": 82.0,
+          "orders": 358.0,
+          "revenueCzkEquiv": 562581.0
+        },
+        {
           "partnerCode": "kliz70",
           "partnerName": "Alena Mikulášková",
           "partnerTiandeId": null,
@@ -331,15 +340,6 @@
           "orderingCustomers": 76.0,
           "orders": 368.0,
           "revenueCzkEquiv": 559598.0
-        },
-        {
-          "partnerCode": "4jl9i8",
-          "partnerName": "Pavla Kavinová",
-          "partnerTiandeId": null,
-          "networkCustomers": 339.0,
-          "orderingCustomers": 82.0,
-          "orders": 356.0,
-          "revenueCzkEquiv": 554354.0
         },
         {
           "partnerCode": "db8csr",
@@ -391,16 +391,16 @@
   },
   "summary": {
     "noviceRevenueCzkEquiv": 0.0,
-    "networkRevenueCzkEquiv": 29582260.0,
+    "networkRevenueCzkEquiv": 29590487.0,
     "novicePartners": 3,
     "networkPartners": 50,
     "noviceOrders": 0.0,
-    "networkOrders": 18271.0,
+    "networkOrders": 18273.0,
     "noviceOrderingContacts": 0.0,
     "networkOrderingCustomers": 4584.0,
     "topNovicePartner": {
-      "partnerCode": "pqopo3",
-      "partnerName": "tarabovamilka66@gmail.com",
+      "partnerCode": "yn8wxm",
+      "partnerName": "Iveta Liptayová",
       "revenueCzkEquiv": 0.0
     },
     "topNetworkPartner": {

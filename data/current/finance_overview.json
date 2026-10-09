@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T13:02:11.541169+02:00",
+  "generatedAt": "2026-10-09T13:56:10.368909+02:00",
   "source": {
     "status": "live_report",
     "message": "Měsíční finance se tahají přímo z ABRA reportu Výkaz hospodaření za měsíc za všechna střediska. Cash a závazky jsou také live z ABRA API."
@@ -208,46 +208,46 @@
     },
     {
       "label": "10/2026",
-      "revenue": 3588593.26,
-      "cogsAndFees": 2667135.03,
+      "revenue": 3635356.45,
+      "cogsAndFees": 2704979.9,
       "logistics": 9494.92,
       "marketing": 2479.34,
       "opex": 336309.57,
       "depreciation": 399556.0,
       "other": -39536.96,
-      "grossMargin": 921458.23,
-      "afterLogistics": 911963.31,
-      "afterMarketing": 909483.97,
-      "operatingMargin": 573174.4,
-      "ebit": 173618.4,
-      "profit": 134081.44,
-      "grossMarginPct": 25.7,
+      "grossMargin": 930376.55,
+      "afterLogistics": 920881.63,
+      "afterMarketing": 918402.29,
+      "operatingMargin": 582092.72,
+      "ebit": 182536.72,
+      "profit": 142999.76,
+      "grossMarginPct": 25.6,
       "marketingPct": 0.1,
       "logisticsPct": 0.3,
       "operatingMarginPct": 16.0,
-      "profitPct": 3.7
+      "profitPct": 3.9
     }
   ],
   "currentMonth": {
     "label": "10/2026",
-    "revenue": 3588593.26,
-    "cogsAndFees": 2667135.03,
+    "revenue": 3635356.45,
+    "cogsAndFees": 2704979.9,
     "logistics": 9494.92,
     "marketing": 2479.34,
     "opex": 336309.57,
     "depreciation": 399556.0,
     "other": -39536.96,
-    "grossMargin": 921458.23,
-    "afterLogistics": 911963.31,
-    "afterMarketing": 909483.97,
-    "operatingMargin": 573174.4,
-    "ebit": 173618.4,
-    "profit": 134081.44,
-    "grossMarginPct": 25.7,
+    "grossMargin": 930376.55,
+    "afterLogistics": 920881.63,
+    "afterMarketing": 918402.29,
+    "operatingMargin": 582092.72,
+    "ebit": 182536.72,
+    "profit": 142999.76,
+    "grossMarginPct": 25.6,
     "marketingPct": 0.1,
     "logisticsPct": 0.3,
     "operatingMarginPct": 16.0,
-    "profitPct": 3.7
+    "profitPct": 3.9
   },
   "previousMonth": {
     "label": "9/2026",
@@ -271,9 +271,9 @@
     "profitPct": 0.9
   },
   "cash": {
-    "cashOnAccounts": 9432946.0,
+    "cashOnAccounts": 9442485.0,
     "unpaidInvoices": 2784510.79,
-    "netCashPosition": 6648435.21,
+    "netCashPosition": 6657974.21,
     "overdueInvoicesCount": 4,
     "overdueInvoicesAmount": 508275.51,
     "largestPayables": [
@@ -364,8 +364,8 @@
           "accountCode": "221001",
           "accountLabel": "221001: 2901338673/2010 FIO CZK",
           "currency": "CZK: Česká koruna",
-          "balance": 1804246.66,
-          "includedBalance": 1804246.66
+          "balance": 1813785.66,
+          "includedBalance": 1813785.66
         },
         {
           "accountCode": "221111",
@@ -865,18 +865,18 @@
       },
       {
         "label": "10/2026",
-        "expenseTotal": 3090533.57,
-        "revenueTotal": 3230399.86,
+        "expenseTotal": 3128378.44,
+        "revenueTotal": 3278070.08,
         "topExpenseClass": {
           "code": "50",
           "label": "Spotřeba a zboží",
-          "amount": 2332971.78
+          "amount": 2370816.65
         },
         "topExpenseAccounts": [
           {
             "code": "504001",
             "label": "Nákup zboží 2",
-            "amount": 2302562.29,
+            "amount": 2340407.16,
             "classCode": "50",
             "classLabel": "Spotřeba a zboží"
           },
@@ -962,7 +962,7 @@
           {
             "code": "50",
             "label": "Spotřeba a zboží",
-            "amount": 2332971.78
+            "amount": 2370816.65
           },
           {
             "code": "55",
@@ -1035,24 +1035,24 @@
             "amount": 9441.0
           }
         ],
-        "entryCount": 7746,
+        "entryCount": 7844,
         "detailFile": "finance_journal_10-2026.json"
       }
     ],
     "currentMonth": {
       "label": "10/2026",
-      "expenseTotal": 3090533.57,
-      "revenueTotal": 3230399.86,
+      "expenseTotal": 3128378.44,
+      "revenueTotal": 3278070.08,
       "topExpenseClass": {
         "code": "50",
         "label": "Spotřeba a zboží",
-        "amount": 2332971.78
+        "amount": 2370816.65
       },
       "topExpenseAccounts": [
         {
           "code": "504001",
           "label": "Nákup zboží 2",
-          "amount": 2302562.29,
+          "amount": 2340407.16,
           "classCode": "50",
           "classLabel": "Spotřeba a zboží"
         },
@@ -1138,7 +1138,7 @@
         {
           "code": "50",
           "label": "Spotřeba a zboží",
-          "amount": 2332971.78
+          "amount": 2370816.65
         },
         {
           "code": "55",
@@ -1211,7 +1211,7 @@
           "amount": 9441.0
         }
       ],
-      "entryCount": 7746,
+      "entryCount": 7844,
       "detailFile": "finance_journal_10-2026.json"
     }
   }

@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-10-09T14:02:38.130800+02:00",
+  "generatedAt": "2026-10-09T14:30:33.788354+02:00",
   "sourceGeneratedAt": {
-    "inventory": "2026-10-09T13:02:11.541169+02:00",
-    "expiry": "2026-10-09T14:01:13.057766+02:00",
+    "inventory": "2026-10-09T13:56:10.368909+02:00",
+    "expiry": "2026-10-09T13:56:10.368909+02:00",
     "crosscheck": "2026-07-13T10:43:57.854963+02:00"
   },
   "sourceReportDir": "inventory-crosscheck-2026-07-13",
   "headline": "Sklad jako celek není v krizi, ale máme výrazný problém s důvěryhodností skladové pravdy mezi WPJ a 4PX, systémově přestřelené SK zásoby a expirační dashboard, který teď přeceňuje rozsah problému a neumí spolehlivě spočítat obchodní prioritu bez opravy refresh logiky.",
   "hero": {
     "skCzRatio": 0.1801,
-    "top20MismatchDelta": 61710,
+    "top20MismatchDelta": 61651,
     "urgentExpiryStock30d": 0,
     "expiryRowsWithoutSalesContext": 82
   },
   "status": {
     "inventoryTruth": "Nedůvěryhodná",
-    "inventoryTruthDetail": "714 mismatch řádků mezi WPJ a 4PX",
+    "inventoryTruthDetail": "708 mismatch řádků mezi WPJ a 4PX",
     "allocation": "Mimo cíl",
     "allocationDetail": "SK/CZ 18.01 % vs. očekávání okolo 10 %",
     "expiryDecisioning": "Zkreslené",
@@ -35,7 +35,7 @@
       "pairedProducts": 358,
       "onlyInWpj": 1667,
       "onlyIn4px": 1,
-      "stockMismatch": 714,
+      "stockMismatch": 708,
       "lowAfterSales": 6,
       "manualMapped4pxAliases": 0,
       "autoMapped4pxAliases": 76
@@ -63,15 +63,15 @@
       "bandOverPct": 0.6762177650429799
     },
     "mismatch": {
-      "top20Delta": 61710,
-      "top20VisibleDelta": 8347,
-      "top20HiddenDelta": 53363,
+      "top20Delta": 61651,
+      "top20VisibleDelta": 8345,
+      "top20HiddenDelta": 53306,
       "topVisible": [
         {
           "code": "TR433",
           "title": "STOP nepohodlí zad a kloubů",
-          "stockDelta": 5948,
-          "wpj4pxStock": 5948,
+          "stockDelta": 5946,
+          "wpj4pxStock": 5946,
           "fourpxAvailable": 0,
           "recommendedAction": "Prověřit, jestli WPJ 4PX stav není historická nebo špatně navázaná vazba."
         },
@@ -279,31 +279,31 @@
         {
           "code": "56311",
           "title": "Pleťová maska s kyselinou azelaovou a vitamínem C",
-          "availableTotal": 1460,
+          "availableTotal": 1459,
           "yesterdayOutboundUnits": 36,
-          "daysOfCoverAtYesterdayRate": 40.6,
+          "daysOfCoverAtYesterdayRate": 40.5,
           "stockDelta": 0
         },
         {
           "code": "61902",
           "title": "Denní menstruační vložky s fytomembránou „Energie bylin“",
-          "availableTotal": 2248,
+          "availableTotal": 2236,
           "yesterdayOutboundUnits": 50,
-          "daysOfCoverAtYesterdayRate": 45.0,
-          "stockDelta": -3
+          "daysOfCoverAtYesterdayRate": 44.7,
+          "stockDelta": 0
         },
         {
           "code": "61912",
           "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
-          "availableTotal": 3317,
+          "availableTotal": 3302,
           "yesterdayOutboundUnits": 60,
-          "daysOfCoverAtYesterdayRate": 55.3,
-          "stockDelta": -9
+          "daysOfCoverAtYesterdayRate": 55.0,
+          "stockDelta": -3
         },
         {
           "code": "61921",
           "title": "Dámské bylinné slipové vložky Nefritová svěžest - super tenké",
-          "availableTotal": 2409,
+          "availableTotal": 2407,
           "yesterdayOutboundUnits": 40,
           "daysOfCoverAtYesterdayRate": 60.2,
           "stockDelta": 0
@@ -313,10 +313,10 @@
         {
           "code": "60150",
           "title": "Aroma-tyčinka s vůní višní a máty",
-          "availableTotal": 294,
+          "availableTotal": 290,
           "yesterdayOutboundUnits": 47,
-          "daysOfCoverAtYesterdayRate": 6.3,
-          "stockDelta": -3
+          "daysOfCoverAtYesterdayRate": 6.2,
+          "stockDelta": 0
         },
         {
           "code": "57010",
@@ -329,26 +329,26 @@
         {
           "code": "56311",
           "title": "Pleťová maska s kyselinou azelaovou a vitamínem C",
-          "availableTotal": 1460,
+          "availableTotal": 1459,
           "yesterdayOutboundUnits": 36,
-          "daysOfCoverAtYesterdayRate": 40.6,
+          "daysOfCoverAtYesterdayRate": 40.5,
           "stockDelta": 0
         },
         {
           "code": "61902",
           "title": "Denní menstruační vložky s fytomembránou „Energie bylin“",
-          "availableTotal": 2248,
+          "availableTotal": 2236,
           "yesterdayOutboundUnits": 50,
-          "daysOfCoverAtYesterdayRate": 45.0,
-          "stockDelta": -3
+          "daysOfCoverAtYesterdayRate": 44.7,
+          "stockDelta": 0
         },
         {
           "code": "61912",
           "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
-          "availableTotal": 3317,
+          "availableTotal": 3302,
           "yesterdayOutboundUnits": 60,
-          "daysOfCoverAtYesterdayRate": 55.3,
-          "stockDelta": -9
+          "daysOfCoverAtYesterdayRate": 55.0,
+          "stockDelta": -3
         }
       ],
       "lowAfterSales": [

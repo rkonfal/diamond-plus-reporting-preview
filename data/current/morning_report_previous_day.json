@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T13:37:24.398003+02:00",
+  "generatedAt": "2026-10-09T14:27:26.780943+02:00",
   "reportDate": "2026-10-08",
   "detailUrl": "https://rkonfal.github.io/diamond-plus-reporting-preview/site/index.html",
   "window": {
@@ -63,16 +63,16 @@
         "count": 114
       },
       {
-        "name": "expedováno",
-        "count": 38
+        "name": "doručeno",
+        "count": 36
       },
       {
-        "name": "doručeno",
-        "count": 25
+        "name": "expedováno",
+        "count": 28
       },
       {
         "name": "připraveno k vyzvednutí",
-        "count": 15
+        "count": 14
       },
       {
         "name": "nová",
@@ -862,16 +862,16 @@
             "count": 114
           },
           {
-            "name": "expedováno",
-            "count": 38
+            "name": "doručeno",
+            "count": 36
           },
           {
-            "name": "doručeno",
-            "count": 25
+            "name": "expedováno",
+            "count": 28
           },
           {
             "name": "připraveno k vyzvednutí",
-            "count": 15
+            "count": 14
           },
           {
             "name": "nová",
@@ -1661,16 +1661,16 @@
             "count": 106
           },
           {
-            "name": "expedováno",
-            "count": 35
+            "name": "doručeno",
+            "count": 28
           },
           {
-            "name": "doručeno",
-            "count": 18
+            "name": "expedováno",
+            "count": 26
           },
           {
             "name": "připraveno k vyzvednutí",
-            "count": 14
+            "count": 13
           },
           {
             "name": "nová",
@@ -2392,11 +2392,11 @@
             "count": 5
           },
           {
-            "name": "expedováno",
+            "name": "doručeno",
             "count": 3
           },
           {
-            "name": "doručeno",
+            "name": "expedováno",
             "count": 2
           },
           {
@@ -3730,83 +3730,83 @@
     ],
     "largestMovesSinceLastSnapshot": [
       {
-        "code": "FU717",
-        "title": "Energie života 6+2",
-        "currentStock": 662.0,
-        "previousStock": 446.0,
-        "delta": 216.0
-      },
-      {
-        "code": "41328",
-        "title": "Levandulová náplast na nohy",
-        "currentStock": 3406.0,
-        "previousStock": 3425.0,
-        "delta": -19.0
-      },
-      {
-        "code": "GP767",
-        "title": "Lehké nohy přes noc s levandulí 1+1",
-        "currentStock": 3365.0,
-        "previousStock": 3384.0,
-        "delta": -19.0
-      },
-      {
         "code": "63601",
         "title": "Denní vložka Energie života",
-        "currentStock": 5231.0,
-        "previousStock": 5242.0,
-        "delta": -11.0
+        "currentStock": 5211.0,
+        "previousStock": 5231.0,
+        "delta": -20.0
+      },
+      {
+        "code": "DJ334",
+        "title": "Balíček Zdravá žena",
+        "currentStock": 2352.0,
+        "previousStock": 2372.0,
+        "delta": -20.0
+      },
+      {
+        "code": "SN162",
+        "title": "Menopauza s lehkostí",
+        "currentStock": 2352.0,
+        "previousStock": 2372.0,
+        "delta": -20.0
       },
       {
         "code": "61911",
         "title": "Denní vložky s extraktem aloe Nefritová svěžest",
-        "currentStock": 2694.0,
-        "previousStock": 2704.0,
-        "delta": -10.0
+        "currentStock": 2683.0,
+        "previousStock": 2694.0,
+        "delta": -11.0
       },
       {
-        "code": "67108",
-        "title": "Super tenké slipové vložky s bylinným komplexem Artemisia, 20 ks",
-        "currentStock": 1593.0,
-        "previousStock": 1603.0,
-        "delta": -10.0
-      },
-      {
-        "code": "EY635",
-        "title": "Sada s bylinným komplexem Artemisia na měsíc",
-        "currentStock": 1591.0,
-        "previousStock": 1601.0,
-        "delta": -10.0
-      },
-      {
-        "code": "PO402",
-        "title": "Balíček Harmonizace cyklu",
-        "currentStock": 1591.0,
-        "previousStock": 1601.0,
-        "delta": -10.0
-      },
-      {
-        "code": "KI216",
-        "title": "Ženská bylinná péče",
-        "currentStock": 1591.0,
-        "previousStock": 1601.0,
-        "delta": -10.0
+        "code": "61902",
+        "title": "Denní menstruační vložky s fytomembránou „Energie bylin“",
+        "currentStock": 2236.0,
+        "previousStock": 2245.0,
+        "delta": -9.0
       },
       {
         "code": "61912",
         "title": "Dámské bylinné menstruační vložky Nefritová svěžest. denní super",
-        "currentStock": 3308.0,
-        "previousStock": 3317.0,
+        "currentStock": 3299.0,
+        "previousStock": 3308.0,
         "delta": -9.0
+      },
+      {
+        "code": "195429",
+        "title": "Kolagen s višňovou a granátovou šťávou",
+        "currentStock": 706.0,
+        "previousStock": 712.0,
+        "delta": -6.0
+      },
+      {
+        "code": "15TOP",
+        "title": "TOP 15 produktů",
+        "currentStock": 14711.0,
+        "previousStock": 14717.0,
+        "delta": -6.0
+      },
+      {
+        "code": "MF192",
+        "title": "Balíček Úleva a regenerace",
+        "currentStock": 1329.0,
+        "previousStock": 1334.0,
+        "delta": -5.0
+      },
+      {
+        "code": "EE147",
+        "title": "Úleva a regenerace",
+        "currentStock": 1329.0,
+        "previousStock": 1334.0,
+        "delta": -5.0
       }
     ]
   },
   "inventory": {
-    "availableStockTotal": 363648.0,
+    "availableStockTotal": 363388.0,
     "itemsTotal": 1467,
     "byAccount": {
-      "CZ": 316301.0,
-      "SK": 47347.0
+      "CZ": 316098.0,
+      "SK": 47290.0
     },
     "itemsByAccount": {
       "CZ": 808,
@@ -3821,13 +3821,13 @@
     "aWarningShare": 62.9,
     "aBaseCount": 116,
     "topSkuCount": 116,
-    "slowDeadValue": 9179184.3,
+    "slowDeadValue": 9170809.69,
     "slowDeadShare": 3.6,
-    "deadValue": 3499761.72,
+    "deadValue": 3494292.34,
     "deadShare": 1.4,
-    "overstockValue": 9179184.3,
+    "overstockValue": 9170809.69,
     "overstockShare": 3.6,
-    "totalCoverDays": 305.3,
+    "totalCoverDays": 305.2,
     "topRiskCodes": [
       "30115"
     ],
@@ -3877,11 +3877,7 @@
     "statusCounts": [
       {
         "name": "C",
-        "count": 217
-      },
-      {
-        "name": "P",
-        "count": 23
+        "count": 240
       }
     ],
     "coverageWarnings": [],
@@ -3891,23 +3887,23 @@
         "sku": "41328/01",
         "dateExpiry": "2027-01-04",
         "daysToExpiry": 87,
-        "datedStock": 3079.0,
-        "stockAtNearestExpiry": 3079.0,
+        "datedStock": 3062.0,
+        "stockAtNearestExpiry": 3062.0,
         "batchCount": 4,
-        "riskScore": 9.13,
+        "riskScore": 9.08,
         "title": "Levandulová náplast na nohy",
         "label": "41328/01 · Levandulová náplast na nohy (CZ)",
         "exactAnalytics": {
           "code": "41328/01",
-          "availableStock": 3052.0,
-          "coverStock": 3079.0,
+          "availableStock": 3043.0,
+          "coverStock": 3062.0,
           "units90d": 1490.0,
           "units30d": 1490.0,
           "units14d": 932.0,
-          "daysOfCover30d": 62.0,
-          "daysOfCover90d": 186.0,
-          "daysOfCover30dAvailable": 61.4,
-          "daysOfCover90dAvailable": 184.3,
+          "daysOfCover30d": 61.7,
+          "daysOfCover90d": 185.0,
+          "daysOfCover30dAvailable": 61.3,
+          "daysOfCover90dAvailable": 183.8,
           "lastSaleDate": "2026-10-08T18:50:20+02:00"
         }
       },
@@ -3916,23 +3912,23 @@
         "sku": "63601/01",
         "dateExpiry": "2026-12-31",
         "daysToExpiry": 83,
-        "datedStock": 2177.0,
-        "stockAtNearestExpiry": 2177.0,
+        "datedStock": 2163.0,
+        "stockAtNearestExpiry": 2163.0,
         "batchCount": 27,
-        "riskScore": 6.86,
+        "riskScore": 6.82,
         "title": "Denní vložka Energie života",
         "label": "63601/01 · Denní vložka Energie života (CZ)",
         "exactAnalytics": {
           "code": "63601/01",
-          "availableStock": 2199.0,
-          "coverStock": 2177.0,
+          "availableStock": 2171.0,
+          "coverStock": 2163.0,
           "units90d": 1535.0,
           "units30d": 1535.0,
           "units14d": 763.0,
-          "daysOfCover30d": 42.5,
-          "daysOfCover90d": 127.6,
-          "daysOfCover30dAvailable": 43.0,
-          "daysOfCover90dAvailable": 128.9,
+          "daysOfCover30d": 42.3,
+          "daysOfCover90d": 126.8,
+          "daysOfCover30dAvailable": 42.4,
+          "daysOfCover90dAvailable": 127.3,
           "lastSaleDate": "2026-10-08T20:12:31+02:00"
         }
       },
@@ -3941,21 +3937,21 @@
         "sku": "30111",
         "dateExpiry": "2026-12-10",
         "daysToExpiry": 62,
-        "datedStock": 1399.0,
-        "stockAtNearestExpiry": 1399.0,
+        "datedStock": 1397.0,
+        "stockAtNearestExpiry": 1397.0,
         "batchCount": 19,
-        "riskScore": 6.41,
+        "riskScore": 6.4,
         "title": "Kosmetická tělová fytonáplast Yaoshen Forte",
         "label": "30111 · Kosmetická tělová fytonáplast Yaoshen Forte (CZ)",
         "exactAnalytics": {
           "code": "30111",
           "availableStock": 1400.0,
-          "coverStock": 1399.0,
+          "coverStock": 1397.0,
           "units90d": 320.0,
           "units30d": 320.0,
           "units14d": 126.0,
-          "daysOfCover30d": 131.2,
-          "daysOfCover90d": 393.5,
+          "daysOfCover30d": 131.0,
+          "daysOfCover90d": 392.9,
           "daysOfCover30dAvailable": 131.2,
           "daysOfCover90dAvailable": 393.8,
           "lastSaleDate": "2026-10-08T23:51:47+02:00"
@@ -3991,21 +3987,21 @@
         "sku": "30117/01",
         "dateExpiry": "2027-06-13",
         "daysToExpiry": 247,
-        "datedStock": 6137.0,
-        "stockAtNearestExpiry": 6137.0,
+        "datedStock": 6124.0,
+        "stockAtNearestExpiry": 6124.0,
         "batchCount": 10,
-        "riskScore": 4.73,
+        "riskScore": 4.72,
         "title": "Kosmetická fytonáplast Jian Kang",
         "label": "30117/01 · Kosmetická fytonáplast Jian Kang (CZ)",
         "exactAnalytics": {
           "code": "30117/01",
           "availableStock": 6123.0,
-          "coverStock": 6137.0,
+          "coverStock": 6124.0,
           "units90d": 1905.0,
           "units30d": 1905.0,
           "units14d": 868.0,
-          "daysOfCover30d": 96.6,
-          "daysOfCover90d": 289.9,
+          "daysOfCover30d": 96.4,
+          "daysOfCover90d": 289.3,
           "daysOfCover30dAvailable": 96.4,
           "daysOfCover90dAvailable": 289.3,
           "lastSaleDate": "2026-10-08T21:00:23+02:00"
