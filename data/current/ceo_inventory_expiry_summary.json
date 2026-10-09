@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-09T14:30:33.788354+02:00",
+  "generatedAt": "2026-10-09T14:35:52.191085+02:00",
   "sourceGeneratedAt": {
-    "inventory": "2026-10-09T13:56:10.368909+02:00",
-    "expiry": "2026-10-09T13:56:10.368909+02:00",
+    "inventory": "2026-10-09T14:00:06.976098+02:00",
+    "expiry": "2026-10-09T14:34:11.293223+02:00",
     "crosscheck": "2026-07-13T10:43:57.854963+02:00"
   },
   "sourceReportDir": "inventory-crosscheck-2026-07-13",
@@ -426,7 +426,7 @@
       "within90d": {
         "CZ": {
           "rows": 14,
-          "stock": 8702
+          "stock": 8782
         },
         "SK": {
           "rows": 15,
@@ -436,7 +436,7 @@
       "within180d": {
         "CZ": {
           "rows": 28,
-          "stock": 14137
+          "stock": 14217
         },
         "SK": {
           "rows": 34,
@@ -464,8 +464,8 @@
         "sku": "135455",
         "title": "Zlatophyt",
         "daysToExpiry": 54,
-        "datedStock": 139,
-        "batchCount": 9
+        "datedStock": 219,
+        "batchCount": 10
       },
       {
         "account": "SK",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T13:56:10.368909+02:00",
+  "generatedAt": "2026-10-09T14:00:06.976098+02:00",
   "summary": {
     "trackedItems": 3090,
     "orderableItems": 2596,
@@ -1747,8 +1747,8 @@
         1
       ],
       "recommendedOrderStep": 1,
-      "recommendedOrderUnits": 20,
-      "recommendedMinUnits": 20,
+      "recommendedOrderUnits": 21,
+      "recommendedMinUnits": 21,
       "effectiveStock": 119.0,
       "units365d": 3444.0,
       "daysOfCover90d": 25.7
@@ -5437,8 +5437,8 @@
         1
       ],
       "recommendedOrderStep": 1,
-      "recommendedOrderUnits": 20,
-      "recommendedMinUnits": 20,
+      "recommendedOrderUnits": 21,
+      "recommendedMinUnits": 21,
       "effectiveStock": 119.0,
       "units365d": 3444.0,
       "daysOfCover90d": 25.7
@@ -15514,8 +15514,8 @@
         540
       ],
       "recommendedOrderStep": 540,
-      "recommendedOrderUnits": 251,
-      "recommendedMinUnits": 251,
+      "recommendedOrderUnits": 255,
+      "recommendedMinUnits": 255,
       "effectiveStock": 290.0,
       "units365d": 8026.0,
       "daysOfCover90d": 18.3
@@ -15570,8 +15570,8 @@
         96
       ],
       "recommendedOrderStep": 96,
-      "recommendedOrderUnits": 226,
-      "recommendedMinUnits": 226,
+      "recommendedOrderUnits": 232,
+      "recommendedMinUnits": 232,
       "effectiveStock": 319.0,
       "units365d": 3887.0,
       "daysOfCover90d": 18.1
@@ -15784,8 +15784,8 @@
         250
       ],
       "recommendedOrderStep": 250,
-      "recommendedOrderUnits": 95,
-      "recommendedMinUnits": 95,
+      "recommendedOrderUnits": 96,
+      "recommendedMinUnits": 96,
       "effectiveStock": 164.0,
       "units365d": 3133.0,
       "daysOfCover90d": 19.0
@@ -15841,8 +15841,8 @@
         34
       ],
       "recommendedOrderStep": 34,
-      "recommendedOrderUnits": 79,
-      "recommendedMinUnits": 79,
+      "recommendedOrderUnits": 81,
+      "recommendedMinUnits": 81,
       "effectiveStock": 165.0,
       "units365d": 1488.0,
       "daysOfCover90d": 20.7
@@ -15904,6 +15904,34 @@
       "daysOfCover90d": 12.7
     },
     {
+      "code": "191005",
+      "title": "Fytokoncentrát s hruštičkou okrouhlolistou a tryprofanem pro ženy",
+      "supplierSkus": [
+        "191005"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "override:sku",
+      "referenceFlags": [],
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 66",
+      "orderPackOptions": [
+        1,
+        66
+      ],
+      "recommendedOrderStep": 66,
+      "recommendedOrderUnits": 63,
+      "recommendedMinUnits": 63,
+      "effectiveStock": 52.0,
+      "units365d": 1384.0,
+      "daysOfCover90d": 14.4
+    },
+    {
       "code": "20127",
       "title": "Posilující maska na vlasy Hadí olej",
       "supplierSkus": [
@@ -15959,34 +15987,6 @@
       "effectiveStock": 343.0,
       "units365d": 4372.0,
       "daysOfCover90d": 25.7
-    },
-    {
-      "code": "191005",
-      "title": "Fytokoncentrát s hruštičkou okrouhlolistou a tryprofanem pro ženy",
-      "supplierSkus": [
-        "191005"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "top_sku",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "override:sku",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 66",
-      "orderPackOptions": [
-        1,
-        66
-      ],
-      "recommendedOrderStep": 66,
-      "recommendedOrderUnits": 61,
-      "recommendedMinUnits": 61,
-      "effectiveStock": 52.0,
-      "units365d": 1384.0,
-      "daysOfCover90d": 14.4
     },
     {
       "code": "135455",
@@ -16145,8 +16145,8 @@
         400
       ],
       "recommendedOrderStep": 400,
-      "recommendedOrderUnits": 34,
-      "recommendedMinUnits": 34,
+      "recommendedOrderUnits": 36,
+      "recommendedMinUnits": 36,
       "effectiveStock": 378.0,
       "units365d": 4913.0,
       "daysOfCover90d": 27.8
@@ -16485,6 +16485,35 @@
       "daysOfCover90d": 28.9
     },
     {
+      "code": "20117",
+      "title": "Šampon s extraktem aloe",
+      "supplierSkus": [
+        "20117HM"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "base_code",
+      "packagingRaw": "1 / 1 / 1 / 12 / 12 / 48 / 48",
+      "orderPackOptions": [
+        1,
+        12,
+        48
+      ],
+      "recommendedOrderStep": 48,
+      "recommendedOrderUnits": 10,
+      "recommendedMinUnits": 10,
+      "effectiveStock": 232.0,
+      "units365d": 4008.0,
+      "daysOfCover90d": 29.3
+    },
+    {
       "code": "20163-2",
       "title": "Šampon a sprchový gel pro muže 2 v 1       ",
       "supplierSkus": [
@@ -16539,35 +16568,6 @@
       "effectiveStock": 96.0,
       "units365d": 3200.0,
       "daysOfCover90d": 27.2
-    },
-    {
-      "code": "20117",
-      "title": "Šampon s extraktem aloe",
-      "supplierSkus": [
-        "20117HM"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "top_sku",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "default",
-      "referenceFlags": [],
-      "packagingMatchStatus": "base_code",
-      "packagingRaw": "1 / 1 / 1 / 12 / 12 / 48 / 48",
-      "orderPackOptions": [
-        1,
-        12,
-        48
-      ],
-      "recommendedOrderStep": 48,
-      "recommendedOrderUnits": 9,
-      "recommendedMinUnits": 9,
-      "effectiveStock": 232.0,
-      "units365d": 4008.0,
-      "daysOfCover90d": 29.3
     },
     {
       "code": "135415-1",
