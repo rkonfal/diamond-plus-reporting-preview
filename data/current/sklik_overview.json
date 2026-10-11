@@ -26,7 +26,7 @@
   "statsStatusCurrentMonth": [
     {
       "date": "20261008T00:00:00+0000",
-      "status": "preparing"
+      "status": "complete"
     },
     {
       "date": "20261007T00:00:00+0000",
@@ -39,6 +39,14 @@
     {
       "date": "20261005T00:00:00+0000",
       "status": "complete"
+    },
+    {
+      "date": "20261009T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261010T00:00:00+0000",
+      "status": "preparing"
     },
     {
       "date": "20261004T00:00:00+0000",
@@ -59,18 +67,18 @@
   ],
   "currentMonth": {
     "dateFrom": "2026-10-01",
-    "dateTo": "2026-10-08",
+    "dateTo": "2026-10-10",
     "total": {
       "date": "20261001T00:00:00+0000",
-      "impressions": 24462,
-      "clicks": 871,
-      "ctr": 3.56,
-      "cpcCzk": 2.02,
-      "priceCzk": 1756.01,
-      "conversions": 342.0,
-      "conversionValueCzk": 432905.0,
-      "transactions": 334,
-      "avgPosition": 1.37
+      "impressions": 30501,
+      "clicks": 1022,
+      "ctr": 3.35,
+      "cpcCzk": 2.09,
+      "priceCzk": 2133.23,
+      "conversions": 382.0,
+      "conversionValueCzk": 502099.0,
+      "transactions": 372,
+      "avgPosition": 1.35
     },
     "daily": [
       {
@@ -159,15 +167,39 @@
       },
       {
         "date": "20261008T00:00:00+0000",
-        "impressions": 2913,
+        "impressions": 2974,
         "clicks": 105,
-        "ctr": 3.6,
+        "ctr": 3.53,
         "cpcCzk": 2.09,
         "priceCzk": 219.37,
-        "conversions": 24.0,
-        "conversionValueCzk": 32182.0,
+        "conversions": 25.0,
+        "conversionValueCzk": 33646.0,
         "transactions": 24,
         "avgPosition": 1.41
+      },
+      {
+        "date": "20261009T00:00:00+0000",
+        "impressions": 2793,
+        "clicks": 78,
+        "ctr": 2.79,
+        "cpcCzk": 2.28,
+        "priceCzk": 177.46,
+        "conversions": 27.0,
+        "conversionValueCzk": 50328.0,
+        "transactions": 26,
+        "avgPosition": 1.29
+      },
+      {
+        "date": "20261010T00:00:00+0000",
+        "impressions": 3185,
+        "clicks": 73,
+        "ctr": 2.29,
+        "cpcCzk": 2.74,
+        "priceCzk": 199.76,
+        "conversions": 12.0,
+        "conversionValueCzk": 17402.0,
+        "transactions": 12,
+        "avgPosition": 1.3
       }
     ]
   },
@@ -178,13 +210,13 @@
       "status": "active",
       "type": "fulltext",
       "date": "20261001",
-      "impressions": 1043,
-      "clicks": 598,
+      "impressions": 1300,
+      "clicks": 725,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 813.62,
-      "conversions": 286.0,
-      "conversionValueCzk": 3652.37,
+      "priceCzk": 976.55,
+      "conversions": 336.0,
+      "conversionValueCzk": 4474.87,
       "transactions": 0,
       "avgPosition": 0.0
     },
@@ -194,11 +226,11 @@
       "status": "active",
       "type": "zbozi",
       "date": "20261001",
-      "impressions": 1096,
-      "clicks": 16,
+      "impressions": 1347,
+      "clicks": 20,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 69.15,
+      "priceCzk": 84.0,
       "conversions": 0.0,
       "conversionValueCzk": 0.0,
       "transactions": 0,
@@ -210,11 +242,11 @@
       "status": "active",
       "type": "fulltext",
       "date": "20261001",
-      "impressions": 35,
-      "clicks": 6,
+      "impressions": 45,
+      "clicks": 7,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 7.76,
+      "priceCzk": 9.16,
       "conversions": 0.0,
       "conversionValueCzk": 0.0,
       "transactions": 0,
@@ -226,11 +258,11 @@
       "status": "active",
       "type": "fulltext",
       "date": "20261001",
-      "impressions": 40,
-      "clicks": 4,
+      "impressions": 57,
+      "clicks": 5,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 12.13,
+      "priceCzk": 13.57,
       "conversions": 0.0,
       "conversionValueCzk": 0.0,
       "transactions": 0,
@@ -242,13 +274,13 @@
       "status": "active",
       "type": "product",
       "date": "20261001",
-      "impressions": 19335,
-      "clicks": 142,
+      "impressions": 24567,
+      "clicks": 192,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 633.98,
-      "conversions": 32.0,
-      "conversionValueCzk": 354.86,
+      "priceCzk": 850.19,
+      "conversions": 34.0,
+      "conversionValueCzk": 372.1,
       "transactions": 0,
       "avgPosition": 0.0
     }

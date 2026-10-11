@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T14:00:06.976098+02:00",
+  "generatedAt": "2026-10-11T02:14:34.975609+02:00",
   "source": {
     "twisto": {
       "status": "ok",
@@ -10,8 +10,8 @@
       "accountId": "2901338673",
       "bankId": "2010",
       "currency": "CZK",
-      "dateStart": "2026-07-11+0200",
-      "dateEnd": "2026-10-09+0200"
+      "dateStart": "2026-07-13+0200",
+      "dateEnd": "2026-10-11+0200"
     },
     "wpj": {
       "status": "ok",
@@ -20,13 +20,13 @@
   },
   "summary": {
     "windowDays": 90,
-    "twistoBatchCount": 22,
-    "twistoPaidBatchCount": 22,
+    "twistoBatchCount": 21,
+    "twistoPaidBatchCount": 21,
     "bankTwistoTransactionCount": 22,
     "matchedBatchCount": 22,
     "unmatchedBatchCount": 0,
     "unmatchedBankTransactions": 0,
-    "twistoPaidAmount": 88288.0,
+    "twistoPaidAmount": 84403.0,
     "twistoMatchedAmount": 88288.0,
     "bankReceivedAmount": 88288.0,
     "openBatchAmount": 0,
@@ -43,16 +43,6 @@
     "lines": []
   },
   "batches": [
-    {
-      "id": "f8d7fea4-e3e9-4991-bc00-b52a96f1b9f8",
-      "state": "paid",
-      "settlementDate": "2026-07-12",
-      "amount": 3885.0,
-      "orderAmount": 3885.0,
-      "refundAmount": 0.0,
-      "marginAmount": 0.0,
-      "deductMargin": false
-    },
     {
       "id": "a32aebca-db65-435f-96ac-c568b5bd9754",
       "state": "paid",
