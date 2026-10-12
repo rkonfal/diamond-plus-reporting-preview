@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T14:00:06.976098+02:00",
+  "generatedAt": "2026-10-12T08:00:06.496617+02:00",
   "source": {
     "twisto": {
       "status": "ok",
@@ -10,8 +10,8 @@
       "accountId": "2901338673",
       "bankId": "2010",
       "currency": "CZK",
-      "dateStart": "2026-07-11+0200",
-      "dateEnd": "2026-10-09+0200"
+      "dateStart": "2026-07-14+0200",
+      "dateEnd": "2026-10-12+0200"
     },
     "wpj": {
       "status": "ok",
@@ -20,21 +20,21 @@
   },
   "summary": {
     "windowDays": 90,
-    "twistoBatchCount": 22,
-    "twistoPaidBatchCount": 22,
-    "bankTwistoTransactionCount": 22,
-    "matchedBatchCount": 22,
+    "twistoBatchCount": 21,
+    "twistoPaidBatchCount": 21,
+    "bankTwistoTransactionCount": 21,
+    "matchedBatchCount": 21,
     "unmatchedBatchCount": 0,
     "unmatchedBankTransactions": 0,
-    "twistoPaidAmount": 88288.0,
-    "twistoMatchedAmount": 88288.0,
-    "bankReceivedAmount": 88288.0,
+    "twistoPaidAmount": 84403.0,
+    "twistoMatchedAmount": 84403.0,
+    "bankReceivedAmount": 84403.0,
     "openBatchAmount": 0,
     "bankVsTwistoDelta": 0.0,
     "wpjTwistoOrderCount": 1,
     "wpjTwistoOrderAmount": 875.0,
     "twistoOrderAmount": 724612.0,
-    "historicalMatchedBatchAmount": 88288.0,
+    "historicalMatchedBatchAmount": 84403.0,
     "wpjVsTwistoOrderDelta": -723737.0,
     "oldestOpenBatchDays": null
   },
@@ -43,16 +43,6 @@
     "lines": []
   },
   "batches": [
-    {
-      "id": "f8d7fea4-e3e9-4991-bc00-b52a96f1b9f8",
-      "state": "paid",
-      "settlementDate": "2026-07-12",
-      "amount": 3885.0,
-      "orderAmount": 3885.0,
-      "refundAmount": 0.0,
-      "marginAmount": 0.0,
-      "deductMargin": false
-    },
     {
       "id": "a32aebca-db65-435f-96ac-c568b5bd9754",
       "state": "paid",
@@ -266,16 +256,6 @@
   ],
   "bankTransactions": [
     {
-      "id": "27735253051",
-      "date": "2026-07-13+0200",
-      "amount": 3885.0,
-      "counterAccount": "2500719088",
-      "counterAccountName": "Twisto payments a.s.",
-      "comment": "5593639246",
-      "type": "Příjem převodem uvnitř banky",
-      "variableSymbol": "5593639246"
-    },
-    {
       "id": "27739706205",
       "date": "2026-07-15+0200",
       "amount": 3084.0,
@@ -487,21 +467,6 @@
     }
   ],
   "matches": [
-    {
-      "kind": "single",
-      "batchIds": [
-        "f8d7fea4-e3e9-4991-bc00-b52a96f1b9f8"
-      ],
-      "batchCount": 1,
-      "settlementDateFrom": "2026-07-12",
-      "settlementDateTo": "2026-07-12",
-      "batchAmount": 3885.0,
-      "bankTransactionId": "27735253051",
-      "bankDate": "2026-07-13+0200",
-      "bankAmount": 3885.0,
-      "comment": "5593639246",
-      "counterAccountName": "Twisto payments a.s."
-    },
     {
       "kind": "single",
       "batchIds": [
