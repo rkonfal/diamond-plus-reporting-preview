@@ -1,40 +1,10 @@
 {
-  "generatedAt": "2026-10-12T08:00:06.496617+02:00",
+  "generatedAt": "2026-10-17T22:43:21.725754+02:00",
   "window": {
-    "from": "2026-10-04T00:00:01+02:00",
-    "to": "2026-10-12T00:00:00+02:00"
+    "from": "2026-10-09T00:00:01+02:00",
+    "to": "2026-10-17T00:00:00+02:00"
   },
   "days": [
-    {
-      "date": "2026-10-04",
-      "orders": 291,
-      "revenueWithVat": 452760.91,
-      "averageOrderValue": 1555.88
-    },
-    {
-      "date": "2026-10-05",
-      "orders": 404,
-      "revenueWithVat": 602659.71,
-      "averageOrderValue": 1491.73
-    },
-    {
-      "date": "2026-10-06",
-      "orders": 573,
-      "revenueWithVat": 879425.52,
-      "averageOrderValue": 1534.77
-    },
-    {
-      "date": "2026-10-07",
-      "orders": 703,
-      "revenueWithVat": 1063437.45,
-      "averageOrderValue": 1512.71
-    },
-    {
-      "date": "2026-10-08",
-      "orders": 201,
-      "revenueWithVat": 370698.26,
-      "averageOrderValue": 1844.27
-    },
     {
       "date": "2026-10-09",
       "orders": 216,
@@ -52,6 +22,36 @@
       "orders": 208,
       "revenueWithVat": 344972.88,
       "averageOrderValue": 1658.52
+    },
+    {
+      "date": "2026-10-12",
+      "orders": 356,
+      "revenueWithVat": 625655.56,
+      "averageOrderValue": 1757.46
+    },
+    {
+      "date": "2026-10-13",
+      "orders": 348,
+      "revenueWithVat": 597208.34,
+      "averageOrderValue": 1716.12
+    },
+    {
+      "date": "2026-10-14",
+      "orders": 332,
+      "revenueWithVat": 571946.8,
+      "averageOrderValue": 1722.73
+    },
+    {
+      "date": "2026-10-15",
+      "orders": 283,
+      "revenueWithVat": 461414.61,
+      "averageOrderValue": 1630.44
+    },
+    {
+      "date": "2026-10-16",
+      "orders": 219,
+      "revenueWithVat": 371570.3,
+      "averageOrderValue": 1696.67
     }
   ]
 }
