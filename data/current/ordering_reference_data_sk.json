@@ -1,32 +1,32 @@
 {
-  "generatedAt": "2026-10-12T08:00:06.496617+02:00",
+  "generatedAt": "2026-10-24T16:34:36.547589+02:00",
   "summary": {
-    "trackedItems": 3091,
-    "orderableItems": 2597,
-    "excludedItems": 494,
+    "trackedItems": 3126,
+    "orderableItems": 2630,
+    "excludedItems": 496,
     "byItemType": {
       "gift": 67,
       "internal": 3,
-      "print": 64,
-      "product": 2722,
+      "print": 66,
+      "product": 2755,
       "promo": 200,
       "service": 35
     },
     "bySourceChannel": {
-      "both": 2721,
-      "praha": 360,
+      "both": 2754,
+      "praha": 362,
       "riga": 1,
       "unknown": 9
     },
     "byOrderingRole": {
-      "excluded": 494,
-      "standard": 2583,
-      "top_sku": 14
+      "excluded": 496,
+      "standard": 2606,
+      "top_sku": 24
     },
     "byPackagingMatchStatus": {
       "base_code": 63,
-      "exact_code": 199,
-      "missing": 2829
+      "exact_code": 198,
+      "missing": 2865
     }
   },
   "excludedTop": [
@@ -1670,9 +1670,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 56.0,
+      "effectiveStock": 50.0,
       "units365d": 9.0,
-      "daysOfCover90d": 2520.0
+      "daysOfCover90d": 2250.0
     },
     {
       "code": "DOPL001",
@@ -1746,7 +1746,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 16.0,
+      "units365d": 15.0,
       "daysOfCover90d": null
     },
     {
@@ -1796,7 +1796,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 18.0,
+      "units365d": 17.0,
       "daysOfCover90d": null
     },
     {
@@ -1921,7 +1921,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 33.0,
-      "units365d": 32.0,
+      "units365d": 31.0,
       "daysOfCover90d": null
     },
     {
@@ -2835,7 +2835,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 20.0,
+      "units365d": 6.0,
       "daysOfCover90d": null
     },
     {
@@ -2863,9 +2863,9 @@
       "recommendedOrderStep": 1,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 46.0,
-      "units365d": 439.0,
-      "daysOfCover90d": 94.1
+      "effectiveStock": 36.0,
+      "units365d": 448.0,
+      "daysOfCover90d": 68.9
     },
     {
       "code": "101916",
@@ -3291,6 +3291,56 @@
       "daysOfCover90d": null
     },
     {
+      "code": "PROMO151",
+      "title": "Brožura úklid",
+      "supplierSkus": [],
+      "itemType": "print",
+      "orderable": false,
+      "sourceChannel": "praha",
+      "strategicPriority": "supplement",
+      "orderingRole": "excluded",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": "brožura nebo tiskovina",
+      "referenceSource": "override:title",
+      "referenceFlags": [
+        "print_title"
+      ],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "PROMO152",
+      "title": "leták Úklid v klidu",
+      "supplierSkus": [],
+      "itemType": "print",
+      "orderable": false,
+      "sourceChannel": "praha",
+      "strategicPriority": "supplement",
+      "orderingRole": "excluded",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": "leták nebo tiskovina",
+      "referenceSource": "override:title",
+      "referenceFlags": [
+        "print_title"
+      ],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "ZE734",
       "title": "Katalog 2025 1+1",
       "supplierSkus": [],
@@ -3362,38 +3412,10 @@
         1000
       ],
       "recommendedOrderStep": 1000,
-      "recommendedOrderUnits": 7,
-      "recommendedMinUnits": 7,
+      "recommendedOrderUnits": 3,
+      "recommendedMinUnits": 3,
       "effectiveStock": 0,
       "units365d": 313.0,
-      "daysOfCover90d": 0.0
-    },
-    {
-      "code": "10262",
-      "title": "Hydrofilní butter",
-      "supplierSkus": [
-        "10262"
-      ],
-      "itemType": "product",
-      "orderable": false,
-      "sourceChannel": "both",
-      "strategicPriority": "risky",
-      "orderingRole": "excluded",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": "trvale vyřazené zboží",
-      "referenceSource": "override:sku",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 24",
-      "orderPackOptions": [
-        1,
-        24
-      ],
-      "recommendedOrderStep": 24,
-      "recommendedOrderUnits": 1,
-      "recommendedMinUnits": 1,
-      "effectiveStock": 0,
-      "units365d": 45.0,
       "daysOfCover90d": 0.0
     },
     {
@@ -3415,9 +3437,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 139.0,
-      "units365d": 152.0,
-      "daysOfCover90d": 260.6
+      "effectiveStock": 132.0,
+      "units365d": 159.0,
+      "daysOfCover90d": 232.9
     },
     {
       "code": "10105",
@@ -3439,7 +3461,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 35.0,
+      "units365d": 26.0,
       "daysOfCover90d": null
     },
     {
@@ -3487,6 +3509,34 @@
       "effectiveStock": 0,
       "units365d": 0,
       "daysOfCover90d": null
+    },
+    {
+      "code": "10262",
+      "title": "Hydrofilní butter",
+      "supplierSkus": [
+        "10262"
+      ],
+      "itemType": "product",
+      "orderable": false,
+      "sourceChannel": "both",
+      "strategicPriority": "risky",
+      "orderingRole": "excluded",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": "trvale vyřazené zboží",
+      "referenceSource": "override:sku",
+      "referenceFlags": [],
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 24",
+      "orderPackOptions": [
+        1,
+        24
+      ],
+      "recommendedOrderStep": 24,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 42.0,
+      "daysOfCover90d": 0.0
     },
     {
       "code": "113014",
@@ -3554,7 +3604,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 15.0,
+      "units365d": 7.0,
       "daysOfCover90d": null
     },
     {
@@ -3661,52 +3711,6 @@
       "giftCandidate": false,
       "excludeFromOrderingReason": "trvale vyřazené zboží",
       "referenceSource": "override:sku",
-      "referenceFlags": [],
-      "packagingMatchStatus": "missing",
-      "packagingRaw": null,
-      "orderPackOptions": [],
-      "recommendedOrderStep": null,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 0,
-      "units365d": 0,
-      "daysOfCover90d": null
-    },
-    {
-      "code": "12701",
-      "title": "Čistící krémový gel z kolagenu",
-      "supplierSkus": [],
-      "itemType": "product",
-      "orderable": false,
-      "sourceChannel": "both",
-      "strategicPriority": "risky",
-      "orderingRole": "excluded",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": "trvale vyřazené zboží",
-      "referenceSource": "override:sku",
-      "referenceFlags": [],
-      "packagingMatchStatus": "missing",
-      "packagingRaw": null,
-      "orderPackOptions": [],
-      "recommendedOrderStep": null,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 0,
-      "units365d": 0,
-      "daysOfCover90d": null
-    },
-    {
-      "code": "12710-01",
-      "title": "Křišťálová kolagenová maska na oční víčka",
-      "supplierSkus": [],
-      "itemType": "product",
-      "orderable": false,
-      "sourceChannel": "both",
-      "strategicPriority": "risky",
-      "orderingRole": "excluded",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": "trvale vyřazené zboží",
-      "referenceSource": "override:title_stem",
       "referenceFlags": [],
       "packagingMatchStatus": "missing",
       "packagingRaw": null,
@@ -5360,9 +5364,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 56.0,
+      "effectiveStock": 50.0,
       "units365d": 9.0,
-      "daysOfCover90d": 2520.0
+      "daysOfCover90d": 2250.0
     },
     {
       "code": "DOPL001",
@@ -5436,7 +5440,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 16.0,
+      "units365d": 15.0,
       "daysOfCover90d": null
     },
     {
@@ -5486,7 +5490,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 18.0,
+      "units365d": 17.0,
       "daysOfCover90d": null
     },
     {
@@ -5611,7 +5615,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 33.0,
-      "units365d": 32.0,
+      "units365d": 31.0,
       "daysOfCover90d": null
     },
     {
@@ -6525,7 +6529,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 20.0,
+      "units365d": 6.0,
       "daysOfCover90d": null
     },
     {
@@ -6553,9 +6557,9 @@
       "recommendedOrderStep": 1,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 46.0,
-      "units365d": 439.0,
-      "daysOfCover90d": 94.1
+      "effectiveStock": 36.0,
+      "units365d": 448.0,
+      "daysOfCover90d": 68.9
     },
     {
       "code": "101916",
@@ -6981,6 +6985,56 @@
       "daysOfCover90d": null
     },
     {
+      "code": "PROMO151",
+      "title": "Brožura úklid",
+      "supplierSkus": [],
+      "itemType": "print",
+      "orderable": false,
+      "sourceChannel": "praha",
+      "strategicPriority": "supplement",
+      "orderingRole": "excluded",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": "brožura nebo tiskovina",
+      "referenceSource": "override:title",
+      "referenceFlags": [
+        "print_title"
+      ],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "PROMO152",
+      "title": "leták Úklid v klidu",
+      "supplierSkus": [],
+      "itemType": "print",
+      "orderable": false,
+      "sourceChannel": "praha",
+      "strategicPriority": "supplement",
+      "orderingRole": "excluded",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": "leták nebo tiskovina",
+      "referenceSource": "override:title",
+      "referenceFlags": [
+        "print_title"
+      ],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "ZE734",
       "title": "Katalog 2025 1+1",
       "supplierSkus": [],
@@ -7052,38 +7106,10 @@
         1000
       ],
       "recommendedOrderStep": 1000,
-      "recommendedOrderUnits": 7,
-      "recommendedMinUnits": 7,
+      "recommendedOrderUnits": 3,
+      "recommendedMinUnits": 3,
       "effectiveStock": 0,
       "units365d": 313.0,
-      "daysOfCover90d": 0.0
-    },
-    {
-      "code": "10262",
-      "title": "Hydrofilní butter",
-      "supplierSkus": [
-        "10262"
-      ],
-      "itemType": "product",
-      "orderable": false,
-      "sourceChannel": "both",
-      "strategicPriority": "risky",
-      "orderingRole": "excluded",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": "trvale vyřazené zboží",
-      "referenceSource": "override:sku",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 24",
-      "orderPackOptions": [
-        1,
-        24
-      ],
-      "recommendedOrderStep": 24,
-      "recommendedOrderUnits": 1,
-      "recommendedMinUnits": 1,
-      "effectiveStock": 0,
-      "units365d": 45.0,
       "daysOfCover90d": 0.0
     },
     {
@@ -7105,9 +7131,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 139.0,
-      "units365d": 152.0,
-      "daysOfCover90d": 260.6
+      "effectiveStock": 132.0,
+      "units365d": 159.0,
+      "daysOfCover90d": 232.9
     },
     {
       "code": "10105",
@@ -7129,7 +7155,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 35.0,
+      "units365d": 26.0,
       "daysOfCover90d": null
     },
     {
@@ -7177,6 +7203,34 @@
       "effectiveStock": 0,
       "units365d": 0,
       "daysOfCover90d": null
+    },
+    {
+      "code": "10262",
+      "title": "Hydrofilní butter",
+      "supplierSkus": [
+        "10262"
+      ],
+      "itemType": "product",
+      "orderable": false,
+      "sourceChannel": "both",
+      "strategicPriority": "risky",
+      "orderingRole": "excluded",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": "trvale vyřazené zboží",
+      "referenceSource": "override:sku",
+      "referenceFlags": [],
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 24",
+      "orderPackOptions": [
+        1,
+        24
+      ],
+      "recommendedOrderStep": 24,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 42.0,
+      "daysOfCover90d": 0.0
     },
     {
       "code": "113014",
@@ -7244,7 +7298,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 15.0,
+      "units365d": 7.0,
       "daysOfCover90d": null
     },
     {
@@ -7456,7 +7510,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 148.0,
+      "units365d": 137.0,
       "daysOfCover90d": null
     },
     {
@@ -7571,7 +7625,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 70.0,
+      "units365d": 66.0,
       "daysOfCover90d": null
     },
     {
@@ -7709,7 +7763,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 25.0,
+      "units365d": 23.0,
       "daysOfCover90d": null
     },
     {
@@ -7916,7 +7970,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 97.0,
+      "units365d": 95.0,
       "daysOfCover90d": null
     },
     {
@@ -7944,7 +7998,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 194.0,
+      "units365d": 184.0,
       "daysOfCover90d": null
     },
     {
@@ -8059,7 +8113,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 117.0,
+      "units365d": 111.0,
       "daysOfCover90d": null
     },
     {
@@ -8385,9 +8439,9 @@
       "recommendedOrderStep": 1500,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 263.0,
-      "units365d": 1711.0,
-      "daysOfCover90d": 63.1
+      "effectiveStock": 222.0,
+      "units365d": 1726.0,
+      "daysOfCover90d": 60.4
     },
     {
       "code": "30127",
@@ -8528,9 +8582,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 83.0,
-      "units365d": 296.0,
-      "daysOfCover90d": 94.6
+      "effectiveStock": 81.0,
+      "units365d": 283.0,
+      "daysOfCover90d": 94.7
     },
     {
       "code": "30213",
@@ -8557,9 +8611,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 40.0,
-      "units365d": 191.0,
-      "daysOfCover90d": 116.1
+      "effectiveStock": 38.0,
+      "units365d": 188.0,
+      "daysOfCover90d": 126.7
     },
     {
       "code": "30221",
@@ -8673,7 +8727,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 30.0,
+      "units365d": 29.0,
       "daysOfCover90d": null
     },
     {
@@ -8788,7 +8842,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 311.0,
+      "units365d": 307.0,
       "daysOfCover90d": null
     },
     {
@@ -8926,7 +8980,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 57.0,
+      "units365d": 55.0,
       "daysOfCover90d": null
     },
     {
@@ -9294,7 +9348,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 63.0,
+      "units365d": 54.0,
       "daysOfCover90d": null
     },
     {
@@ -9528,9 +9582,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 341.0,
-      "units365d": 3178.0,
-      "daysOfCover90d": 43.4
+      "effectiveStock": 295.0,
+      "units365d": 3158.0,
+      "daysOfCover90d": 39.7
     },
     {
       "code": "61911-01",
@@ -9621,7 +9675,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 14.0,
+      "units365d": 12.0,
       "daysOfCover90d": null
     },
     {
@@ -9667,7 +9721,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 12.0,
+      "units365d": 10.0,
       "daysOfCover90d": null
     },
     {
@@ -9952,29 +10006,6 @@
       "daysOfCover90d": null
     },
     {
-      "code": "PROMO116",
-      "title": "Krabička vzorky",
-      "supplierSkus": [],
-      "itemType": "promo",
-      "orderable": false,
-      "sourceChannel": "praha",
-      "strategicPriority": "supplement",
-      "orderingRole": "excluded",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": "promo nebo merch položka, ne standardní SKU pro doskladnění",
-      "referenceSource": "override:prefix",
-      "referenceFlags": [],
-      "packagingMatchStatus": "missing",
-      "packagingRaw": null,
-      "orderPackOptions": [],
-      "recommendedOrderStep": null,
-      "recommendedOrderUnits": 4,
-      "recommendedMinUnits": 4,
-      "effectiveStock": 0,
-      "units365d": 84.0,
-      "daysOfCover90d": 0.0
-    },
-    {
       "code": "SET03",
       "title": "Zázvorový nápoj 2+1",
       "supplierSkus": [],
@@ -10041,8 +10072,8 @@
       "packagingRaw": null,
       "orderPackOptions": [],
       "recommendedOrderStep": null,
-      "recommendedOrderUnits": 2,
-      "recommendedMinUnits": 2,
+      "recommendedOrderUnits": 1,
+      "recommendedMinUnits": 1,
       "effectiveStock": 0,
       "units365d": 6.0,
       "daysOfCover90d": 0.0
@@ -10367,7 +10398,7 @@
       "recommendedMinUnits": 0,
       "effectiveStock": 6.0,
       "units365d": 3.0,
-      "daysOfCover90d": 540.0
+      "daysOfCover90d": null
     },
     {
       "code": "000017",
@@ -10946,9 +10977,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 119.0,
-      "units365d": 30.0,
-      "daysOfCover90d": 892.5
+      "effectiveStock": 111.0,
+      "units365d": 29.0,
+      "daysOfCover90d": 908.2
     },
     {
       "code": "000041",
@@ -11316,7 +11347,7 @@
       "recommendedMinUnits": 0,
       "effectiveStock": 34.0,
       "units365d": 2.0,
-      "daysOfCover90d": null
+      "daysOfCover90d": 1530.0
     },
     {
       "code": "000060",
@@ -11527,9 +11558,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 41.0,
-      "units365d": 25.0,
-      "daysOfCover90d": 738.0
+      "effectiveStock": 40.0,
+      "units365d": 26.0,
+      "daysOfCover90d": 600.0
     },
     {
       "code": "000076",
@@ -11551,7 +11582,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 1.0,
+      "units365d": 0,
       "daysOfCover90d": null
     },
     {
@@ -11692,13 +11723,13 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 29.0,
-      "units365d": 44.0,
-      "daysOfCover90d": 163.1
+      "effectiveStock": 28.0,
+      "units365d": 43.0,
+      "daysOfCover90d": 148.2
     },
     {
       "code": "000086",
-      "title": "Látková taška Království tianDe růžová",
+      "title": "Látková taška Království tianDe",
       "supplierSkus": [],
       "itemType": "promo",
       "orderable": false,
@@ -11762,8 +11793,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 861.0,
-      "units365d": 32.0,
-      "daysOfCover90d": 25830.0
+      "units365d": 31.0,
+      "daysOfCover90d": 77490.0
     },
     {
       "code": "000091",
@@ -11785,7 +11816,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 9.0,
+      "units365d": 8.0,
       "daysOfCover90d": null
     },
     {
@@ -11982,9 +12013,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 74.0,
-      "units365d": 81.0,
-      "daysOfCover90d": 246.7
+      "effectiveStock": 71.0,
+      "units365d": 84.0,
+      "daysOfCover90d": 213.0
     },
     {
       "code": "PROMO1",
@@ -12120,7 +12151,7 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 160.0,
+      "effectiveStock": 133.0,
       "units365d": 3.0,
       "daysOfCover90d": null
     },
@@ -12191,6 +12222,29 @@
       "recommendedMinUnits": 0,
       "effectiveStock": 47.0,
       "units365d": 3.0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "PROMO116",
+      "title": "Krabička vzorky",
+      "supplierSkus": [],
+      "itemType": "promo",
+      "orderable": false,
+      "sourceChannel": "praha",
+      "strategicPriority": "supplement",
+      "orderingRole": "excluded",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": "promo nebo merch položka, ne standardní SKU pro doskladnění",
+      "referenceSource": "override:prefix",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 84.0,
       "daysOfCover90d": null
     },
     {
@@ -12353,8 +12407,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 50.0,
-      "units365d": 9.0,
-      "daysOfCover90d": 562.5
+      "units365d": 10.0,
+      "daysOfCover90d": 1125.0
     },
     {
       "code": "PROMO124",
@@ -12377,7 +12431,7 @@
       "recommendedMinUnits": 0,
       "effectiveStock": 41.0,
       "units365d": 28.0,
-      "daysOfCover90d": 160.4
+      "daysOfCover90d": 922.5
     },
     {
       "code": "PROMO125",
@@ -12398,7 +12452,7 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 89.0,
+      "effectiveStock": 61.0,
       "units365d": 2.0,
       "daysOfCover90d": null
     },
@@ -12605,13 +12659,13 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 96.0,
+      "effectiveStock": 90.0,
       "units365d": 0,
       "daysOfCover90d": null
     },
     {
       "code": "PROMO136",
-      "title": "Nová taška - šedivá",
+      "title": "Nová taška - šedivá ",
       "supplierSkus": [],
       "itemType": "promo",
       "orderable": false,
@@ -12697,9 +12751,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 55.0,
+      "effectiveStock": 44.0,
       "units365d": 1.0,
-      "daysOfCover90d": 4950.0
+      "daysOfCover90d": 3960.0
     },
     {
       "code": "PROMO148",
@@ -12720,9 +12774,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 55.0,
+      "effectiveStock": 44.0,
       "units365d": 1.0,
-      "daysOfCover90d": 4950.0
+      "daysOfCover90d": 3960.0
     },
     {
       "code": "PROMO149",
@@ -12743,7 +12797,7 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 0,
+      "effectiveStock": 20.0,
       "units365d": 0,
       "daysOfCover90d": null
     },
@@ -12789,7 +12843,7 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 0,
+      "effectiveStock": 11.0,
       "units365d": 0,
       "daysOfCover90d": null
     },
@@ -12843,7 +12897,7 @@
     },
     {
       "code": "PROMO2",
-      "title": "Královská lahev  červená",
+      "title": "Královská lahev ",
       "supplierSkus": [],
       "itemType": "promo",
       "orderable": false,
@@ -12998,9 +13052,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 26.0,
-      "units365d": 15.0,
-      "daysOfCover90d": 585.0
+      "effectiveStock": 24.0,
+      "units365d": 17.0,
+      "daysOfCover90d": 360.0
     },
     {
       "code": "PROMO26",
@@ -13045,7 +13099,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 18.0,
-      "units365d": 3.0,
+      "units365d": 2.0,
       "daysOfCover90d": null
     },
     {
@@ -13068,7 +13122,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 32.0,
-      "units365d": 15.0,
+      "units365d": 13.0,
       "daysOfCover90d": null
     },
     {
@@ -13091,7 +13145,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 3.0,
+      "units365d": 2.0,
       "daysOfCover90d": null
     },
     {
@@ -13136,9 +13190,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 60.0,
+      "effectiveStock": 59.0,
       "units365d": 10.0,
-      "daysOfCover90d": 675.0
+      "daysOfCover90d": null
     },
     {
       "code": "PROMO31",
@@ -13159,8 +13213,8 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 46.0,
-      "units365d": 7.0,
+      "effectiveStock": 44.0,
+      "units365d": 6.0,
       "daysOfCover90d": null
     },
     {
@@ -13251,7 +13305,7 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 94.0,
+      "effectiveStock": 92.0,
       "units365d": 0,
       "daysOfCover90d": null
     },
@@ -13321,7 +13375,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 3.0,
+      "units365d": 2.0,
       "daysOfCover90d": null
     },
     {
@@ -14080,7 +14134,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 1944.0,
-      "units365d": 15.0,
+      "units365d": 14.0,
       "daysOfCover90d": 174960.0
     },
     {
@@ -14125,7 +14179,7 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 416.0,
+      "effectiveStock": 403.0,
       "units365d": 45.0,
       "daysOfCover90d": null
     },
@@ -14148,9 +14202,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 370.0,
+      "effectiveStock": 364.0,
       "units365d": 39.0,
-      "daysOfCover90d": 3027.3
+      "daysOfCover90d": 2978.2
     },
     {
       "code": "PROMO75",
@@ -14171,9 +14225,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 205.0,
-      "units365d": 27.0,
-      "daysOfCover90d": null
+      "effectiveStock": 201.0,
+      "units365d": 31.0,
+      "daysOfCover90d": 4522.5
     },
     {
       "code": "PROMO76",
@@ -14333,7 +14387,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 47.0,
+      "units365d": 44.0,
       "daysOfCover90d": null
     },
     {
@@ -14356,7 +14410,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 17.0,
-      "units365d": 67.0,
+      "units365d": 56.0,
       "daysOfCover90d": null
     },
     {
@@ -15369,7 +15423,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 1.0,
+      "units365d": 0,
       "daysOfCover90d": null
     },
     {
@@ -15486,11 +15540,11 @@
         96
       ],
       "recommendedOrderStep": 96,
-      "recommendedOrderUnits": 358,
-      "recommendedMinUnits": 358,
-      "effectiveStock": 244.0,
-      "units365d": 5759.0,
-      "daysOfCover90d": 12.2
+      "recommendedOrderUnits": 400,
+      "recommendedMinUnits": 400,
+      "effectiveStock": 156.0,
+      "units365d": 5775.0,
+      "daysOfCover90d": 8.4
     },
     {
       "code": "57010",
@@ -15514,17 +15568,17 @@
         480
       ],
       "recommendedOrderStep": 480,
-      "recommendedOrderUnits": 140,
-      "recommendedMinUnits": 140,
-      "effectiveStock": 34.0,
-      "units365d": 1004.0,
-      "daysOfCover90d": 5.9
+      "recommendedOrderUnits": 145,
+      "recommendedMinUnits": 145,
+      "effectiveStock": 39.0,
+      "units365d": 1029.0,
+      "daysOfCover90d": 6.3
     },
     {
-      "code": "54108",
-      "title": "Pleťová beauty maska \"levandulová provence\"",
+      "code": "61901",
+      "title": "Denní vložky s fytomembránou „Energie bylin“",
       "supplierSkus": [
-        "54108"
+        "61901"
       ],
       "itemType": "product",
       "orderable": true,
@@ -15536,17 +15590,17 @@
       "referenceSource": "default",
       "referenceFlags": [],
       "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 360",
+      "packagingRaw": "1 / 48",
       "orderPackOptions": [
         1,
-        360
+        48
       ],
-      "recommendedOrderStep": 360,
-      "recommendedOrderUnits": 31,
-      "recommendedMinUnits": 31,
-      "effectiveStock": 0,
-      "units365d": 297.0,
-      "daysOfCover90d": 0.0
+      "recommendedOrderStep": 48,
+      "recommendedOrderUnits": 71,
+      "recommendedMinUnits": 71,
+      "effectiveStock": 116.0,
+      "units365d": 2605.0,
+      "daysOfCover90d": 18.6
     },
     {
       "code": "56005",
@@ -15570,16 +15624,18 @@
         96
       ],
       "recommendedOrderStep": 96,
-      "recommendedOrderUnits": 29,
-      "recommendedMinUnits": 29,
-      "effectiveStock": 32.0,
-      "units365d": 490.0,
-      "daysOfCover90d": 15.7
+      "recommendedOrderUnits": 45,
+      "recommendedMinUnits": 45,
+      "effectiveStock": 18.0,
+      "units365d": 504.0,
+      "daysOfCover90d": 8.5
     },
     {
-      "code": "20165",
-      "title": "Profesionální keratinový  šampon bez sulfátů  pro silné a lesklé vlasy, 300 ml ",
-      "supplierSkus": [],
+      "code": "54108",
+      "title": "Pleťová beauty maska \"levandulová provence\"",
+      "supplierSkus": [
+        "54108"
+      ],
       "itemType": "product",
       "orderable": true,
       "sourceChannel": "both",
@@ -15589,15 +15645,46 @@
       "excludeFromOrderingReason": null,
       "referenceSource": "default",
       "referenceFlags": [],
-      "packagingMatchStatus": "missing",
-      "packagingRaw": null,
-      "orderPackOptions": [],
-      "recommendedOrderStep": null,
-      "recommendedOrderUnits": 26,
-      "recommendedMinUnits": 26,
-      "effectiveStock": 2.0,
-      "units365d": 84.0,
-      "daysOfCover90d": 2.1
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 360",
+      "orderPackOptions": [
+        1,
+        360
+      ],
+      "recommendedOrderStep": 360,
+      "recommendedOrderUnits": 30,
+      "recommendedMinUnits": 30,
+      "effectiveStock": 0,
+      "units365d": 283.0,
+      "daysOfCover90d": 0.0
+    },
+    {
+      "code": "60150",
+      "title": "Aroma-tyčinka s vůní višní a máty",
+      "supplierSkus": [
+        "60150"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "override:sku",
+      "referenceFlags": [],
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 540",
+      "orderPackOptions": [
+        1,
+        540
+      ],
+      "recommendedOrderStep": 540,
+      "recommendedOrderUnits": 20,
+      "recommendedMinUnits": 20,
+      "effectiveStock": 46.0,
+      "units365d": 703.0,
+      "daysOfCover90d": 21.0
     },
     {
       "code": "30115",
@@ -15621,17 +15708,17 @@
         20
       ],
       "recommendedOrderStep": 20,
-      "recommendedOrderUnits": 23,
-      "recommendedMinUnits": 23,
+      "recommendedOrderUnits": 19,
+      "recommendedMinUnits": 19,
       "effectiveStock": 0,
-      "units365d": 514.0,
+      "units365d": 507.0,
       "daysOfCover90d": 0.0
     },
     {
-      "code": "54105",
-      "title": "Pleťová beauty maska s granátovým jablkem",
+      "code": "120105",
+      "title": "Zázvorový nápoj",
       "supplierSkus": [
-        "54105"
+        "120105"
       ],
       "itemType": "product",
       "orderable": true,
@@ -15640,71 +15727,20 @@
       "orderingRole": "top_sku",
       "giftCandidate": false,
       "excludeFromOrderingReason": null,
-      "referenceSource": "default",
+      "referenceSource": "override:sku",
       "referenceFlags": [],
       "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 360",
+      "packagingRaw": "1 / 240",
       "orderPackOptions": [
         1,
-        360
+        240
       ],
-      "recommendedOrderStep": 360,
-      "recommendedOrderUnits": 17,
-      "recommendedMinUnits": 17,
-      "effectiveStock": 0,
-      "units365d": 350.0,
-      "daysOfCover90d": 0.0
-    },
-    {
-      "code": "195466",
-      "title": "Čaga s mumiem",
-      "supplierSkus": [
-        "195466"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "top_sku",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "default",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 60",
-      "orderPackOptions": [
-        1,
-        60
-      ],
-      "recommendedOrderStep": 60,
-      "recommendedOrderUnits": 13,
-      "recommendedMinUnits": 13,
-      "effectiveStock": 10.0,
-      "units365d": 224.0,
-      "daysOfCover90d": 12.9
-    },
-    {
-      "code": "195453",
-      "title": "Proteinový koktejl s karobem a lněným semínkem",
-      "supplierSkus": [],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "top_sku",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "default",
-      "referenceFlags": [],
-      "packagingMatchStatus": "missing",
-      "packagingRaw": null,
-      "orderPackOptions": [],
-      "recommendedOrderStep": null,
-      "recommendedOrderUnits": 11,
-      "recommendedMinUnits": 11,
-      "effectiveStock": 0,
-      "units365d": 253.0,
-      "daysOfCover90d": 0.0
+      "recommendedOrderStep": 240,
+      "recommendedOrderUnits": 16,
+      "recommendedMinUnits": 16,
+      "effectiveStock": 11.0,
+      "units365d": 582.0,
+      "daysOfCover90d": 12.4
     },
     {
       "code": "54106",
@@ -15728,11 +15764,253 @@
         360
       ],
       "recommendedOrderStep": 360,
-      "recommendedOrderUnits": 6,
-      "recommendedMinUnits": 6,
-      "effectiveStock": 36.0,
+      "recommendedOrderUnits": 13,
+      "recommendedMinUnits": 13,
+      "effectiveStock": 29.0,
       "units365d": 313.0,
-      "daysOfCover90d": 25.9
+      "daysOfCover90d": 20.7
+    },
+    {
+      "code": "195466",
+      "title": "Čaga s mumiem",
+      "supplierSkus": [
+        "195466"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 60",
+      "orderPackOptions": [
+        1,
+        60
+      ],
+      "recommendedOrderStep": 60,
+      "recommendedOrderUnits": 11,
+      "recommendedMinUnits": 11,
+      "effectiveStock": 8.0,
+      "units365d": 220.0,
+      "daysOfCover90d": 12.4
+    },
+    {
+      "code": "60144",
+      "title": "Zubní pasta Zelený čaj a ženšen Sanchi",
+      "supplierSkus": [
+        "60144"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 72",
+      "orderPackOptions": [
+        1,
+        72
+      ],
+      "recommendedOrderStep": 72,
+      "recommendedOrderUnits": 9,
+      "recommendedMinUnits": 9,
+      "effectiveStock": 29.0,
+      "units365d": 497.0,
+      "daysOfCover90d": 23.1
+    },
+    {
+      "code": "195453",
+      "title": "Proteinový koktejl s karobem a lněným semínkem",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 8,
+      "recommendedMinUnits": 8,
+      "effectiveStock": 0,
+      "units365d": 248.0,
+      "daysOfCover90d": 0.0
+    },
+    {
+      "code": "12115",
+      "title": "Vyživující krém na obličej na vrásky",
+      "supplierSkus": [
+        "12115HM"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "base_code",
+      "packagingRaw": "1 / 96",
+      "orderPackOptions": [
+        1,
+        96
+      ],
+      "recommendedOrderStep": 96,
+      "recommendedOrderUnits": 4,
+      "recommendedMinUnits": 4,
+      "effectiveStock": 14.0,
+      "units365d": 236.0,
+      "daysOfCover90d": 22.9
+    },
+    {
+      "code": "30115-2",
+      "title": "Tělový deodorant-spray „Přírodní alunit a šalvěj\"",
+      "supplierSkus": [
+        "30115-2"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "override:sku",
+      "referenceFlags": [],
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 96",
+      "orderPackOptions": [
+        1,
+        96
+      ],
+      "recommendedOrderStep": 96,
+      "recommendedOrderUnits": 4,
+      "recommendedMinUnits": 4,
+      "effectiveStock": 42.0,
+      "units365d": 138.0,
+      "daysOfCover90d": 27.6
+    },
+    {
+      "code": "10118",
+      "title": "Sérum pro hloubkovou obnovu pleti Ženšen a fytoextrakty",
+      "supplierSkus": [
+        "10118"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 100",
+      "orderPackOptions": [
+        1,
+        100
+      ],
+      "recommendedOrderStep": 100,
+      "recommendedOrderUnits": 3,
+      "recommendedMinUnits": 3,
+      "effectiveStock": 10.0,
+      "units365d": 104.0,
+      "daysOfCover90d": 23.1
+    },
+    {
+      "code": "54105",
+      "title": "Pleťová beauty maska s granátovým jablkem",
+      "supplierSkus": [
+        "54105"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 360",
+      "orderPackOptions": [
+        1,
+        360
+      ],
+      "recommendedOrderStep": 360,
+      "recommendedOrderUnits": 3,
+      "recommendedMinUnits": 3,
+      "effectiveStock": 0,
+      "units365d": 325.0,
+      "daysOfCover90d": 0.0
+    },
+    {
+      "code": "80906",
+      "title": "Tužka na obočí",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 3,
+      "recommendedMinUnits": 3,
+      "effectiveStock": 0,
+      "units365d": 106.0,
+      "daysOfCover90d": 0.0
+    },
+    {
+      "code": "10117",
+      "title": "Krém pro hloubkovou obnovu pleti Ženšen a orchidej",
+      "supplierSkus": [
+        "10117"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 100",
+      "orderPackOptions": [
+        1,
+        100
+      ],
+      "recommendedOrderStep": 100,
+      "recommendedOrderUnits": 2,
+      "recommendedMinUnits": 2,
+      "effectiveStock": 16.0,
+      "units365d": 124.0,
+      "daysOfCover90d": 26.2
     },
     {
       "code": "10263",
@@ -15756,40 +16034,17 @@
         24
       ],
       "recommendedOrderStep": 24,
-      "recommendedOrderUnits": 4,
-      "recommendedMinUnits": 4,
+      "recommendedOrderUnits": 2,
+      "recommendedMinUnits": 2,
       "effectiveStock": 0,
-      "units365d": 207.0,
+      "units365d": 204.0,
       "daysOfCover90d": 0.0
     },
     {
-      "code": "80906",
-      "title": "Tužka na obočí",
-      "supplierSkus": [],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "top_sku",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "default",
-      "referenceFlags": [],
-      "packagingMatchStatus": "missing",
-      "packagingRaw": null,
-      "orderPackOptions": [],
-      "recommendedOrderStep": null,
-      "recommendedOrderUnits": 4,
-      "recommendedMinUnits": 4,
-      "effectiveStock": 0,
-      "units365d": 108.0,
-      "daysOfCover90d": 0.0
-    },
-    {
-      "code": "14602",
-      "title": "Krém na oči s mucinem hlemýžďů",
+      "code": "54104",
+      "title": "Pleťová beauty maska s mořskými řasami",
       "supplierSkus": [
-        "14602"
+        "54104"
       ],
       "itemType": "product",
       "orderable": true,
@@ -15801,17 +16056,45 @@
       "referenceSource": "default",
       "referenceFlags": [],
       "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 250",
+      "packagingRaw": "1 / 360",
       "orderPackOptions": [
         1,
-        250
+        360
       ],
-      "recommendedOrderStep": 250,
-      "recommendedOrderUnits": 1,
-      "recommendedMinUnits": 1,
-      "effectiveStock": 21.0,
-      "units365d": 199.0,
-      "daysOfCover90d": 28.6
+      "recommendedOrderStep": 360,
+      "recommendedOrderUnits": 2,
+      "recommendedMinUnits": 2,
+      "effectiveStock": 16.0,
+      "units365d": 221.0,
+      "daysOfCover90d": 26.2
+    },
+    {
+      "code": "90175",
+      "title": "Zubní kartáček Bambusové uhlí",
+      "supplierSkus": [
+        "90175"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 300",
+      "orderPackOptions": [
+        1,
+        300
+      ],
+      "recommendedOrderStep": 300,
+      "recommendedOrderUnits": 2,
+      "recommendedMinUnits": 2,
+      "effectiveStock": 22.0,
+      "units365d": 282.0,
+      "daysOfCover90d": 27.9
     },
     {
       "code": "BAL037",
@@ -15830,11 +16113,39 @@
       "packagingRaw": null,
       "orderPackOptions": [],
       "recommendedOrderStep": null,
+      "recommendedOrderUnits": 2,
+      "recommendedMinUnits": 2,
+      "effectiveStock": 0,
+      "units365d": 6.0,
+      "daysOfCover90d": 0.0
+    },
+    {
+      "code": "140110",
+      "title": "Kapsle na hygienické praní",
+      "supplierSkus": [
+        "140110HM"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "top_sku",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "override:sku",
+      "referenceFlags": [],
+      "packagingMatchStatus": "base_code",
+      "packagingRaw": "1 / 36",
+      "orderPackOptions": [
+        1,
+        36
+      ],
+      "recommendedOrderStep": 36,
       "recommendedOrderUnits": 1,
       "recommendedMinUnits": 1,
-      "effectiveStock": 0,
-      "units365d": 3.0,
-      "daysOfCover90d": 0.0
+      "effectiveStock": 41.0,
+      "units365d": 415.0,
+      "daysOfCover90d": 29.1
     },
     {
       "code": "00109",
@@ -16642,9 +16953,9 @@
       "recommendedOrderStep": 300,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 138.0,
+      "effectiveStock": 131.0,
       "units365d": 450.0,
-      "daysOfCover90d": 94.1
+      "daysOfCover90d": 95.9
     },
     {
       "code": "10106",
@@ -16670,9 +16981,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 36.0,
-      "units365d": 197.0,
-      "daysOfCover90d": 101.2
+      "effectiveStock": 32.0,
+      "units365d": 196.0,
+      "daysOfCover90d": 92.9
     },
     {
       "code": "10108",
@@ -16699,9 +17010,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 35.0,
-      "units365d": 126.0,
-      "daysOfCover90d": 137.0
+      "effectiveStock": 34.0,
+      "units365d": 124.0,
+      "daysOfCover90d": 191.2
     },
     {
       "code": "10110",
@@ -16727,9 +17038,9 @@
       "recommendedOrderStep": 100,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 31.0,
-      "units365d": 166.0,
-      "daysOfCover90d": 121.3
+      "effectiveStock": 27.0,
+      "units365d": 149.0,
+      "daysOfCover90d": 121.5
     },
     {
       "code": "10111",
@@ -16755,9 +17066,9 @@
       "recommendedOrderStep": 100,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 58.0,
-      "units365d": 191.0,
-      "daysOfCover90d": 180.0
+      "effectiveStock": 53.0,
+      "units365d": 177.0,
+      "daysOfCover90d": 170.4
     },
     {
       "code": "10112",
@@ -16783,9 +17094,9 @@
       "recommendedOrderStep": 100,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 65.0,
-      "units365d": 164.0,
-      "daysOfCover90d": 585.0
+      "effectiveStock": 62.0,
+      "units365d": 149.0,
+      "daysOfCover90d": 429.2
     },
     {
       "code": "10114",
@@ -16811,9 +17122,9 @@
       "recommendedOrderStep": 120,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 58.0,
-      "units365d": 212.0,
-      "daysOfCover90d": 326.2
+      "effectiveStock": 56.0,
+      "units365d": 194.0,
+      "daysOfCover90d": 315.0
     },
     {
       "code": "10115",
@@ -16839,9 +17150,9 @@
       "recommendedOrderStep": 70,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 47.0,
-      "units365d": 434.0,
-      "daysOfCover90d": 169.2
+      "effectiveStock": 46.0,
+      "units365d": 435.0,
+      "daysOfCover90d": 188.2
     },
     {
       "code": "10116",
@@ -16867,65 +17178,9 @@
       "recommendedOrderStep": 100,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 37.0,
-      "units365d": 62.0,
-      "daysOfCover90d": 158.6
-    },
-    {
-      "code": "10117",
-      "title": "Krém pro hloubkovou obnovu pleti Ženšen a orchidej",
-      "supplierSkus": [
-        "10117"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "standard",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "default",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 100",
-      "orderPackOptions": [
-        1,
-        100
-      ],
-      "recommendedOrderStep": 100,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 21.0,
-      "units365d": 120.0,
-      "daysOfCover90d": 35.7
-    },
-    {
-      "code": "10118",
-      "title": "Sérum pro hloubkovou obnovu pleti Ženšen a fytoextrakty",
-      "supplierSkus": [
-        "10118"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "standard",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "default",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 100",
-      "orderPackOptions": [
-        1,
-        100
-      ],
-      "recommendedOrderStep": 100,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 13.0,
-      "units365d": 101.0,
-      "daysOfCover90d": 32.5
+      "effectiveStock": 35.0,
+      "units365d": 64.0,
+      "daysOfCover90d": 150.0
     },
     {
       "code": "10122",
@@ -17020,9 +17275,9 @@
       "recommendedOrderStep": 60,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 55.0,
-      "units365d": 135.0,
-      "daysOfCover90d": 141.4
+      "effectiveStock": 54.0,
+      "units365d": 133.0,
+      "daysOfCover90d": 162.0
     },
     {
       "code": "101827",
@@ -17072,9 +17327,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 42.0,
-      "units365d": 128.0,
-      "daysOfCover90d": 222.4
+      "effectiveStock": 37.0,
+      "units365d": 122.0,
+      "daysOfCover90d": 208.1
     },
     {
       "code": "10202",
@@ -17101,9 +17356,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 63.0,
-      "units365d": 123.0,
-      "daysOfCover90d": 405.0
+      "effectiveStock": 61.0,
+      "units365d": 119.0,
+      "daysOfCover90d": 457.5
     },
     {
       "code": "10204",
@@ -17198,9 +17453,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 124.0,
-      "units365d": 258.0,
-      "daysOfCover90d": 223.2
+      "effectiveStock": 115.0,
+      "units365d": 259.0,
+      "daysOfCover90d": 191.7
     },
     {
       "code": "10260",
@@ -17249,9 +17504,9 @@
       "recommendedOrderStep": 20,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 23.0,
-      "units365d": 64.0,
-      "daysOfCover90d": 121.8
+      "effectiveStock": 16.0,
+      "units365d": 69.0,
+      "daysOfCover90d": 65.5
     },
     {
       "code": "10301",
@@ -17278,9 +17533,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 60.0,
-      "units365d": 68.0,
-      "daysOfCover90d": 1800.0
+      "effectiveStock": 59.0,
+      "units365d": 69.0,
+      "daysOfCover90d": 1062.0
     },
     {
       "code": "10302",
@@ -17307,9 +17562,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 52.0,
-      "units365d": 341.0,
-      "daysOfCover90d": 80.7
+      "effectiveStock": 42.0,
+      "units365d": 342.0,
+      "daysOfCover90d": 66.3
     },
     {
       "code": "10303",
@@ -17336,9 +17591,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 54.0,
-      "units365d": 215.0,
-      "daysOfCover90d": 151.9
+      "effectiveStock": 53.0,
+      "units365d": 208.0,
+      "daysOfCover90d": 159.0
     },
     {
       "code": "10304",
@@ -17365,9 +17620,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 55.0,
-      "units365d": 373.0,
-      "daysOfCover90d": 85.3
+      "effectiveStock": 48.0,
+      "units365d": 374.0,
+      "daysOfCover90d": 75.8
     },
     {
       "code": "10305",
@@ -17394,9 +17649,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 45.0,
-      "units365d": 182.0,
-      "daysOfCover90d": 122.7
+      "effectiveStock": 43.0,
+      "units365d": 181.0,
+      "daysOfCover90d": 138.2
     },
     {
       "code": "10305/01",
@@ -17423,9 +17678,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 25.0,
+      "effectiveStock": 23.0,
       "units365d": 50.0,
-      "daysOfCover90d": 321.4
+      "daysOfCover90d": 295.7
     },
     {
       "code": "10306",
@@ -17452,9 +17707,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 71.0,
-      "units365d": 281.0,
-      "daysOfCover90d": 532.5
+      "effectiveStock": 70.0,
+      "units365d": 280.0,
+      "daysOfCover90d": 630.0
     },
     {
       "code": "10308",
@@ -17480,9 +17735,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 43.0,
-      "units365d": 161.0,
-      "daysOfCover90d": 168.3
+      "effectiveStock": 42.0,
+      "units365d": 158.0,
+      "daysOfCover90d": 157.5
     },
     {
       "code": "111111112229910",
@@ -17554,9 +17809,9 @@
       "recommendedOrderStep": 40,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 108.0,
+      "effectiveStock": 88.0,
       "units365d": 757.0,
-      "daysOfCover90d": 60.8
+      "daysOfCover90d": 50.4
     },
     {
       "code": "113007",
@@ -17582,9 +17837,9 @@
       "recommendedOrderStep": 60,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 35.0,
-      "units365d": 165.0,
-      "daysOfCover90d": 65.6
+      "effectiveStock": 27.0,
+      "units365d": 170.0,
+      "daysOfCover90d": 45.8
     },
     {
       "code": "113009",
@@ -17633,9 +17888,9 @@
       "recommendedOrderStep": 20,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 67.0,
-      "units365d": 321.0,
-      "daysOfCover90d": 167.5
+      "effectiveStock": 60.0,
+      "units365d": 316.0,
+      "daysOfCover90d": 158.8
     },
     {
       "code": "113012",
@@ -17661,9 +17916,9 @@
       "recommendedOrderStep": 20,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 18.0,
+      "effectiveStock": 144.0,
       "units365d": 182.0,
-      "daysOfCover90d": 42.6
+      "daysOfCover90d": 308.6
     },
     {
       "code": "113013",
@@ -17689,9 +17944,9 @@
       "recommendedOrderStep": 20,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 92.0,
-      "units365d": 288.0,
-      "daysOfCover90d": 123.6
+      "effectiveStock": 86.0,
+      "units365d": 287.0,
+      "daysOfCover90d": 120.9
     },
     {
       "code": "11307",
@@ -17718,9 +17973,9 @@
       "recommendedOrderStep": 360,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 194.0,
-      "units365d": 199.0,
-      "daysOfCover90d": 498.9
+      "effectiveStock": 188.0,
+      "units365d": 200.0,
+      "daysOfCover90d": 423.0
     },
     {
       "code": "11307/07",
@@ -17770,9 +18025,9 @@
       "recommendedOrderStep": 1440,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 50.0,
-      "units365d": 89.0,
-      "daysOfCover90d": 300.0
+      "effectiveStock": 45.0,
+      "units365d": 95.0,
+      "daysOfCover90d": 192.9
     },
     {
       "code": "11317-01",
@@ -17867,9 +18122,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 73.0,
-      "units365d": 207.0,
-      "daysOfCover90d": 172.9
+      "effectiveStock": 66.0,
+      "units365d": 209.0,
+      "daysOfCover90d": 144.9
     },
     {
       "code": "11320",
@@ -17895,9 +18150,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 70.0,
-      "units365d": 267.0,
-      "daysOfCover90d": 123.5
+      "effectiveStock": 60.0,
+      "units365d": 268.0,
+      "daysOfCover90d": 90.0
     },
     {
       "code": "11321",
@@ -17923,9 +18178,9 @@
       "recommendedOrderStep": 120,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 40.0,
+      "effectiveStock": 38.0,
       "units365d": 99.0,
-      "daysOfCover90d": 156.5
+      "daysOfCover90d": 162.9
     },
     {
       "code": "11322",
@@ -17974,9 +18229,9 @@
       "recommendedOrderStep": 120,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 62.0,
-      "units365d": 170.0,
-      "daysOfCover90d": 223.2
+      "effectiveStock": 52.0,
+      "units365d": 173.0,
+      "daysOfCover90d": 146.2
     },
     {
       "code": "11325/01",
@@ -18046,34 +18301,6 @@
       "effectiveStock": 0,
       "units365d": 0,
       "daysOfCover90d": null
-    },
-    {
-      "code": "120105",
-      "title": "Zázvorový nápoj",
-      "supplierSkus": [
-        "120105"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "standard",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "override:sku",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 240",
-      "orderPackOptions": [
-        1,
-        240
-      ],
-      "recommendedOrderStep": 240,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 67.0,
-      "units365d": 600.0,
-      "daysOfCover90d": 81.5
     },
     {
       "code": "12012",
@@ -18306,9 +18533,9 @@
       "recommendedOrderStep": 60,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 47.0,
-      "units365d": 144.0,
-      "daysOfCover90d": 69.3
+      "effectiveStock": 46.0,
+      "units365d": 130.0,
+      "daysOfCover90d": 72.6
     },
     {
       "code": "12112",
@@ -18380,37 +18607,9 @@
       "recommendedOrderStep": 72,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 39.0,
-      "units365d": 150.0,
-      "daysOfCover90d": 83.6
-    },
-    {
-      "code": "12115",
-      "title": "Vyživující krém na obličej na vrásky",
-      "supplierSkus": [
-        "12115HM"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "standard",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "default",
-      "referenceFlags": [],
-      "packagingMatchStatus": "base_code",
-      "packagingRaw": "1 / 96",
-      "orderPackOptions": [
-        1,
-        96
-      ],
-      "recommendedOrderStep": 96,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 31.0,
-      "units365d": 246.0,
-      "daysOfCover90d": 43.6
+      "effectiveStock": 38.0,
+      "units365d": 147.0,
+      "daysOfCover90d": 90.0
     },
     {
       "code": "12116",
@@ -18436,9 +18635,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 42.0,
-      "units365d": 248.0,
-      "daysOfCover90d": 68.7
+      "effectiveStock": 30.0,
+      "units365d": 245.0,
+      "daysOfCover90d": 45.8
     },
     {
       "code": "12117",
@@ -18465,8 +18664,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 52.0,
-      "units365d": 201.0,
-      "daysOfCover90d": 88.3
+      "units365d": 186.0,
+      "daysOfCover90d": 101.7
     },
     {
       "code": "12345",
@@ -18676,9 +18875,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 43.0,
-      "units365d": 384.0,
-      "daysOfCover90d": 54.5
+      "effectiveStock": 31.0,
+      "units365d": 386.0,
+      "daysOfCover90d": 36.7
     },
     {
       "code": "12704",
@@ -18704,9 +18903,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 42.0,
+      "effectiveStock": 39.0,
       "units365d": 219.0,
-      "daysOfCover90d": 198.9
+      "daysOfCover90d": 184.7
     },
     {
       "code": "12705",
@@ -18732,9 +18931,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 56.0,
-      "units365d": 454.0,
-      "daysOfCover90d": 85.4
+      "effectiveStock": 50.0,
+      "units365d": 451.0,
+      "daysOfCover90d": 76.3
     },
     {
       "code": "12706",
@@ -18783,9 +18982,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 71.0,
-      "units365d": 458.0,
-      "daysOfCover90d": 108.3
+      "effectiveStock": 59.0,
+      "units365d": 459.0,
+      "daysOfCover90d": 96.5
     },
     {
       "code": "12709",
@@ -18834,9 +19033,9 @@
       "recommendedOrderStep": 400,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 62.0,
-      "units365d": 446.0,
-      "daysOfCover90d": 94.6
+      "effectiveStock": 58.0,
+      "units365d": 442.0,
+      "daysOfCover90d": 88.5
     },
     {
       "code": "12712",
@@ -18863,9 +19062,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 24.0,
-      "units365d": 232.0,
-      "daysOfCover90d": 90.0
+      "effectiveStock": 22.0,
+      "units365d": 229.0,
+      "daysOfCover90d": 79.2
     },
     {
       "code": "12801",
@@ -19185,9 +19384,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 107.0,
-      "units365d": 130.0,
-      "daysOfCover90d": 74.1
+      "effectiveStock": 355.0,
+      "units365d": 140.0,
+      "daysOfCover90d": 228.2
     },
     {
       "code": "135415-1",
@@ -19209,7 +19408,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 189.0,
+      "units365d": 175.0,
       "daysOfCover90d": null
     },
     {
@@ -19236,9 +19435,9 @@
       "recommendedOrderStep": 60,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 23.0,
-      "units365d": 97.0,
-      "daysOfCover90d": 71.4
+      "effectiveStock": 18.0,
+      "units365d": 102.0,
+      "daysOfCover90d": 52.3
     },
     {
       "code": "135455",
@@ -19264,9 +19463,9 @@
       "recommendedOrderStep": 60,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 43.0,
-      "units365d": 228.0,
-      "daysOfCover90d": 39.5
+      "effectiveStock": 38.0,
+      "units365d": 230.0,
+      "daysOfCover90d": 39.8
     },
     {
       "code": "135456",
@@ -19292,9 +19491,9 @@
       "recommendedOrderStep": 60,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 54.0,
-      "units365d": 206.0,
-      "daysOfCover90d": 243.0
+      "effectiveStock": 38.0,
+      "units365d": 214.0,
+      "daysOfCover90d": 106.9
     },
     {
       "code": "135460",
@@ -19320,9 +19519,9 @@
       "recommendedOrderStep": 200,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 84.0,
-      "units365d": 1491.0,
-      "daysOfCover90d": 50.1
+      "effectiveStock": 162.0,
+      "units365d": 1483.0,
+      "daysOfCover90d": 89.4
     },
     {
       "code": "135463",
@@ -19624,34 +19823,6 @@
       "daysOfCover90d": null
     },
     {
-      "code": "140110",
-      "title": "Kapsle na hygienické praní",
-      "supplierSkus": [
-        "140110HM"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "standard",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "override:sku",
-      "referenceFlags": [],
-      "packagingMatchStatus": "base_code",
-      "packagingRaw": "1 / 36",
-      "orderPackOptions": [
-        1,
-        36
-      ],
-      "recommendedOrderStep": 36,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 60.0,
-      "units365d": 430.0,
-      "daysOfCover90d": 50.0
-    },
-    {
       "code": "140111",
       "title": "Tělové mýdlo s ženšenem",
       "supplierSkus": [
@@ -19675,9 +19846,9 @@
       "recommendedOrderStep": 120,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 61.0,
-      "units365d": 290.0,
-      "daysOfCover90d": 58.4
+      "effectiveStock": 57.0,
+      "units365d": 278.0,
+      "daysOfCover90d": 86.9
     },
     {
       "code": "144301",
@@ -19772,9 +19943,9 @@
       "recommendedOrderStep": 25,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 114.0,
-      "units365d": 819.0,
-      "daysOfCover90d": 52.1
+      "effectiveStock": 97.0,
+      "units365d": 820.0,
+      "daysOfCover90d": 50.2
     },
     {
       "code": "14601",
@@ -19800,9 +19971,9 @@
       "recommendedOrderStep": 250,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 44.0,
-      "units365d": 343.0,
-      "daysOfCover90d": 46.6
+      "effectiveStock": 40.0,
+      "units365d": 341.0,
+      "daysOfCover90d": 54.5
     },
     {
       "code": "14601-01",
@@ -19846,9 +20017,37 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 80.0,
-      "units365d": 198.0,
-      "daysOfCover90d": 156.5
+      "effectiveStock": 74.0,
+      "units365d": 204.0,
+      "daysOfCover90d": 158.6
+    },
+    {
+      "code": "14602",
+      "title": "Krém na oči s mucinem hlemýžďů",
+      "supplierSkus": [
+        "14602"
+      ],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "exact_code",
+      "packagingRaw": "1 / 250",
+      "orderPackOptions": [
+        1,
+        250
+      ],
+      "recommendedOrderStep": 250,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 19.0,
+      "units365d": 197.0,
+      "daysOfCover90d": 38.9
     },
     {
       "code": "14602-01",
@@ -19915,9 +20114,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 98.0,
-      "units365d": 88.0,
-      "daysOfCover90d": 284.5
+      "effectiveStock": 73.0,
+      "units365d": 101.0,
+      "daysOfCover90d": 152.8
     },
     {
       "code": "14604",
@@ -20178,9 +20377,9 @@
       "recommendedOrderStep": 24,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 181.0,
-      "units365d": 275.0,
-      "daysOfCover90d": 171.5
+      "effectiveStock": 159.0,
+      "units365d": 286.0,
+      "daysOfCover90d": 125.5
     },
     {
       "code": "1480207",
@@ -20367,9 +20566,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 54.0,
+      "effectiveStock": 21.0,
       "units365d": 112.0,
-      "daysOfCover90d": 186.9
+      "daysOfCover90d": 72.7
     },
     {
       "code": "15103",
@@ -20395,9 +20594,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 43.0,
-      "units365d": 246.0,
-      "daysOfCover90d": 143.3
+      "effectiveStock": 40.0,
+      "units365d": 245.0,
+      "daysOfCover90d": 116.1
     },
     {
       "code": "15104",
@@ -20423,9 +20622,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 63.0,
-      "units365d": 181.0,
-      "daysOfCover90d": 236.2
+      "effectiveStock": 60.0,
+      "units365d": 182.0,
+      "daysOfCover90d": 200.0
     },
     {
       "code": "15105",
@@ -20451,9 +20650,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 64.0,
-      "units365d": 196.0,
-      "daysOfCover90d": 822.9
+      "effectiveStock": 61.0,
+      "units365d": 199.0,
+      "daysOfCover90d": 610.0
     },
     {
       "code": "15201",
@@ -20687,7 +20886,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 65.0,
-      "units365d": 46.0,
+      "units365d": 41.0,
       "daysOfCover90d": 2925.0
     },
     {
@@ -20715,7 +20914,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 47.0,
-      "units365d": 72.0,
+      "units365d": 70.0,
       "daysOfCover90d": 384.5
     },
     {
@@ -20742,9 +20941,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 21.0,
-      "units365d": 137.0,
-      "daysOfCover90d": 90.0
+      "effectiveStock": 18.0,
+      "units365d": 132.0,
+      "daysOfCover90d": 81.0
     },
     {
       "code": "15604",
@@ -20771,7 +20970,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 139.0,
-      "units365d": 38.0,
+      "units365d": 34.0,
       "daysOfCover90d": 6255.0
     },
     {
@@ -20821,9 +21020,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 70.0,
-      "units365d": 178.0,
-      "daysOfCover90d": 450.0
+      "effectiveStock": 68.0,
+      "units365d": 177.0,
+      "daysOfCover90d": 408.0
     },
     {
       "code": "16002",
@@ -20850,9 +21049,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 38.0,
-      "units365d": 85.0,
-      "daysOfCover90d": 342.0
+      "effectiveStock": 37.0,
+      "units365d": 86.0,
+      "daysOfCover90d": 333.0
     },
     {
       "code": "16302",
@@ -20901,9 +21100,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 76.0,
-      "units365d": 119.0,
-      "daysOfCover90d": 263.1
+      "effectiveStock": 69.0,
+      "units365d": 124.0,
+      "daysOfCover90d": 221.8
     },
     {
       "code": "16309",
@@ -20930,7 +21129,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 80.0,
-      "units365d": 48.0,
+      "units365d": 47.0,
       "daysOfCover90d": 800.0
     },
     {
@@ -20957,9 +21156,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 51.0,
-      "units365d": 74.0,
-      "daysOfCover90d": 306.0
+      "effectiveStock": 49.0,
+      "units365d": 76.0,
+      "daysOfCover90d": 245.0
     },
     {
       "code": "16312",
@@ -20985,9 +21184,9 @@
       "recommendedOrderStep": 100,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 69.0,
-      "units365d": 29.0,
-      "daysOfCover90d": 690.0
+      "effectiveStock": 66.0,
+      "units365d": 32.0,
+      "daysOfCover90d": 495.0
     },
     {
       "code": "16313",
@@ -21013,9 +21212,9 @@
       "recommendedOrderStep": 100,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 73.0,
-      "units365d": 26.0,
-      "daysOfCover90d": 1642.5
+      "effectiveStock": 70.0,
+      "units365d": 29.0,
+      "daysOfCover90d": 900.0
     },
     {
       "code": "16314",
@@ -21041,9 +21240,9 @@
       "recommendedOrderStep": 100,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 64.0,
-      "units365d": 35.0,
-      "daysOfCover90d": 411.4
+      "effectiveStock": 62.0,
+      "units365d": 37.0,
+      "daysOfCover90d": 398.6
     },
     {
       "code": "17003",
@@ -21069,9 +21268,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 38.0,
-      "units365d": 89.0,
-      "daysOfCover90d": 310.9
+      "effectiveStock": 36.0,
+      "units365d": 75.0,
+      "daysOfCover90d": 324.0
     },
     {
       "code": "17101",
@@ -21097,9 +21296,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 22.0,
-      "units365d": 148.0,
-      "daysOfCover90d": 55.0
+      "effectiveStock": 18.0,
+      "units365d": 150.0,
+      "daysOfCover90d": 42.6
     },
     {
       "code": "17104",
@@ -21125,9 +21324,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 417.0,
-      "units365d": 158.0,
-      "daysOfCover90d": 3753.0
+      "effectiveStock": 416.0,
+      "units365d": 153.0,
+      "daysOfCover90d": 4160.0
     },
     {
       "code": "17105",
@@ -21153,13 +21352,36 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 69.0,
-      "units365d": 131.0,
-      "daysOfCover90d": 517.5
+      "effectiveStock": 68.0,
+      "units365d": 128.0,
+      "daysOfCover90d": 510.0
+    },
+    {
+      "code": "17110",
+      "title": "Multiaktivní krém pro rozjasnění a sjednocení tónu pleti, 50 g",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
     },
     {
       "code": "191005",
-      "title": "Fytokoncentrát s hruštičkou okrouhlolistou a tryprofanem pro ženy",
+      "title": "Fytokoncentrát s hruštičkou okrouhlolistou a tryprofanem pro ženy ",
       "supplierSkus": [
         "191005"
       ],
@@ -21181,9 +21403,9 @@
       "recommendedOrderStep": 66,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 33.0,
-      "units365d": 193.0,
-      "daysOfCover90d": 64.6
+      "effectiveStock": 62.0,
+      "units365d": 194.0,
+      "daysOfCover90d": 103.3
     },
     {
       "code": "191006",
@@ -21209,9 +21431,9 @@
       "recommendedOrderStep": 72,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 40.0,
-      "units365d": 127.0,
-      "daysOfCover90d": 138.5
+      "effectiveStock": 21.0,
+      "units365d": 143.0,
+      "daysOfCover90d": 55.6
     },
     {
       "code": "191008",
@@ -21237,13 +21459,13 @@
       "recommendedOrderStep": 200,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 403.0,
-      "units365d": 246.0,
-      "daysOfCover90d": 310.0
+      "effectiveStock": 401.0,
+      "units365d": 248.0,
+      "daysOfCover90d": 303.3
     },
     {
       "code": "191014",
-      "title": "Fytoformula s rozchodnicí",
+      "title": "Fytoformula s rozhodnicí",
       "supplierSkus": [
         "191014"
       ],
@@ -21265,9 +21487,9 @@
       "recommendedOrderStep": 34,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 36.0,
-      "units365d": 125.0,
-      "daysOfCover90d": 129.6
+      "effectiveStock": 27.0,
+      "units365d": 132.0,
+      "daysOfCover90d": 93.5
     },
     {
       "code": "195404",
@@ -21431,9 +21653,9 @@
       "recommendedOrderStep": 27,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 233.0,
-      "units365d": 706.0,
-      "daysOfCover90d": 112.7
+      "effectiveStock": 219.0,
+      "units365d": 717.0,
+      "daysOfCover90d": 113.3
     },
     {
       "code": "195429-01",
@@ -21505,9 +21727,9 @@
       "recommendedOrderStep": 200,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 130.0,
-      "units365d": 351.0,
-      "daysOfCover90d": 162.5
+      "effectiveStock": 229.0,
+      "units365d": 352.0,
+      "daysOfCover90d": 286.2
     },
     {
       "code": "195432",
@@ -21533,9 +21755,9 @@
       "recommendedOrderStep": 200,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 89.0,
-      "units365d": 488.0,
-      "daysOfCover90d": 73.5
+      "effectiveStock": 288.0,
+      "units365d": 466.0,
+      "daysOfCover90d": 235.6
     },
     {
       "code": "195433",
@@ -21632,7 +21854,7 @@
       "recommendedMinUnits": 0,
       "effectiveStock": 29.0,
       "units365d": 95.0,
-      "daysOfCover90d": 163.1
+      "daysOfCover90d": 237.3
     },
     {
       "code": "195448-01",
@@ -21727,9 +21949,9 @@
       "recommendedOrderStep": 200,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 147.0,
-      "units365d": 227.0,
-      "daysOfCover90d": 357.6
+      "effectiveStock": 125.0,
+      "units365d": 223.0,
+      "daysOfCover90d": 312.5
     },
     {
       "code": "195469",
@@ -21755,9 +21977,9 @@
       "recommendedOrderStep": 200,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 97.0,
-      "units365d": 277.0,
-      "daysOfCover90d": 150.5
+      "effectiveStock": 61.0,
+      "units365d": 298.0,
+      "daysOfCover90d": 58.4
     },
     {
       "code": "195474",
@@ -21783,9 +22005,9 @@
       "recommendedOrderStep": 34,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 34.0,
-      "units365d": 194.0,
-      "daysOfCover90d": 41.4
+      "effectiveStock": 85.0,
+      "units365d": 202.0,
+      "daysOfCover90d": 114.2
     },
     {
       "code": "195926",
@@ -21811,9 +22033,9 @@
       "recommendedOrderStep": 72,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 33.0,
-      "units365d": 122.0,
-      "daysOfCover90d": 110.0
+      "effectiveStock": 21.0,
+      "units365d": 134.0,
+      "daysOfCover90d": 65.2
     },
     {
       "code": "198812",
@@ -21839,9 +22061,9 @@
       "recommendedOrderStep": 200,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 70.0,
-      "units365d": 798.0,
-      "daysOfCover90d": 116.7
+      "effectiveStock": 109.0,
+      "units365d": 783.0,
+      "daysOfCover90d": 163.5
     },
     {
       "code": "198821",
@@ -21892,8 +22114,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 37.0,
-      "units365d": 209.0,
-      "daysOfCover90d": 45.0
+      "units365d": 205.0,
+      "daysOfCover90d": 50.5
     },
     {
       "code": "20102",
@@ -21919,9 +22141,9 @@
       "recommendedOrderStep": 36,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 52.0,
-      "units365d": 345.0,
-      "daysOfCover90d": 49.8
+      "effectiveStock": 47.0,
+      "units365d": 334.0,
+      "daysOfCover90d": 45.5
     },
     {
       "code": "20107",
@@ -21948,9 +22170,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 49.0,
-      "units365d": 389.0,
-      "daysOfCover90d": 60.4
+      "effectiveStock": 42.0,
+      "units365d": 377.0,
+      "daysOfCover90d": 54.0
     },
     {
       "code": "20109",
@@ -21977,9 +22199,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 17.0,
-      "units365d": 186.0,
-      "daysOfCover90d": 49.4
+      "effectiveStock": 13.0,
+      "units365d": 182.0,
+      "daysOfCover90d": 35.5
     },
     {
       "code": "20114",
@@ -22029,9 +22251,9 @@
       "recommendedOrderStep": 30,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 25.0,
-      "units365d": 193.0,
-      "daysOfCover90d": 51.1
+      "effectiveStock": 21.0,
+      "units365d": 181.0,
+      "daysOfCover90d": 42.0
     },
     {
       "code": "20117",
@@ -22058,9 +22280,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 36.0,
-      "units365d": 321.0,
-      "daysOfCover90d": 64.8
+      "effectiveStock": 29.0,
+      "units365d": 314.0,
+      "daysOfCover90d": 49.2
     },
     {
       "code": "20118",
@@ -22271,9 +22493,9 @@
       "recommendedOrderStep": 24,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 51.0,
-      "units365d": 292.0,
-      "daysOfCover90d": 91.8
+      "effectiveStock": 49.0,
+      "units365d": 287.0,
+      "daysOfCover90d": 91.9
     },
     {
       "code": "20128",
@@ -22506,9 +22728,9 @@
       "recommendedOrderStep": 60,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 47.0,
-      "units365d": 277.0,
-      "daysOfCover90d": 84.6
+      "effectiveStock": 34.0,
+      "units365d": 281.0,
+      "daysOfCover90d": 51.9
     },
     {
       "code": "20145",
@@ -22580,9 +22802,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 28.0,
-      "units365d": 167.0,
-      "daysOfCover90d": 105.0
+      "effectiveStock": 27.0,
+      "units365d": 164.0,
+      "daysOfCover90d": 101.2
     },
     {
       "code": "20155",
@@ -22608,9 +22830,9 @@
       "recommendedOrderStep": 150,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 53.0,
-      "units365d": 315.0,
-      "daysOfCover90d": 95.4
+      "effectiveStock": 45.0,
+      "units365d": 314.0,
+      "daysOfCover90d": 77.9
     },
     {
       "code": "20159-2",
@@ -22636,9 +22858,9 @@
       "recommendedOrderStep": 24,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 117.0,
+      "effectiveStock": 116.0,
       "units365d": 133.0,
-      "daysOfCover90d": 752.1
+      "daysOfCover90d": 803.1
     },
     {
       "code": "20161-2",
@@ -22664,9 +22886,9 @@
       "recommendedOrderStep": 24,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 159.0,
-      "units365d": 146.0,
-      "daysOfCover90d": 1022.1
+      "effectiveStock": 157.0,
+      "units365d": 148.0,
+      "daysOfCover90d": 942.0
     },
     {
       "code": "20163-2",
@@ -22692,9 +22914,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 77.0,
-      "units365d": 338.0,
-      "daysOfCover90d": 64.2
+      "effectiveStock": 62.0,
+      "units365d": 340.0,
+      "daysOfCover90d": 58.7
     },
     {
       "code": "20164",
@@ -22720,9 +22942,32 @@
       "recommendedOrderStep": 100,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 47.0,
-      "units365d": 171.0,
-      "daysOfCover90d": 61.3
+      "effectiveStock": 44.0,
+      "units365d": 174.0,
+      "daysOfCover90d": 60.0
+    },
+    {
+      "code": "20165",
+      "title": "Profesionální keratinový  šampon bez sulfátů  pro silné a lesklé vlasy, 300 ml ",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 90.0,
+      "units365d": 95.0,
+      "daysOfCover90d": 85.3
     },
     {
       "code": "21308",
@@ -22748,9 +22993,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 17.0,
-      "units365d": 164.0,
-      "daysOfCover90d": 52.8
+      "effectiveStock": 16.0,
+      "units365d": 155.0,
+      "daysOfCover90d": 65.5
     },
     {
       "code": "21309",
@@ -22777,7 +23022,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 54.0,
-      "units365d": 61.0,
+      "units365d": 57.0,
       "daysOfCover90d": 972.0
     },
     {
@@ -22804,9 +23049,9 @@
       "recommendedOrderStep": 24,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 70.0,
+      "effectiveStock": 53.0,
       "units365d": 437.0,
-      "daysOfCover90d": 62.4
+      "daysOfCover90d": 45.4
     },
     {
       "code": "21311",
@@ -22833,9 +23078,9 @@
       "recommendedOrderStep": 36,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 22.0,
-      "units365d": 173.0,
-      "daysOfCover90d": 47.1
+      "effectiveStock": 15.0,
+      "units365d": 175.0,
+      "daysOfCover90d": 31.4
     },
     {
       "code": "21315",
@@ -22861,9 +23106,9 @@
       "recommendedOrderStep": 24,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 21.0,
-      "units365d": 148.0,
-      "daysOfCover90d": 90.0
+      "effectiveStock": 20.0,
+      "units365d": 150.0,
+      "daysOfCover90d": 78.3
     },
     {
       "code": "21316",
@@ -22891,8 +23136,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 29.0,
-      "units365d": 95.0,
-      "daysOfCover90d": 261.0
+      "units365d": 92.0,
+      "daysOfCover90d": 326.2
     },
     {
       "code": "23401",
@@ -22918,9 +23163,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 111.0,
-      "units365d": 632.0,
-      "daysOfCover90d": 70.9
+      "effectiveStock": 84.0,
+      "units365d": 625.0,
+      "daysOfCover90d": 46.4
     },
     {
       "code": "23402",
@@ -22946,9 +23191,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 137.0,
-      "units365d": 331.0,
-      "daysOfCover90d": 128.4
+      "effectiveStock": 115.0,
+      "units365d": 332.0,
+      "daysOfCover90d": 87.0
     },
     {
       "code": "23403",
@@ -22974,9 +23219,9 @@
       "recommendedOrderStep": 72,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 263.0,
-      "units365d": 451.0,
-      "daysOfCover90d": 202.3
+      "effectiveStock": 239.0,
+      "units365d": 448.0,
+      "daysOfCover90d": 151.5
     },
     {
       "code": "24302",
@@ -23071,9 +23316,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 65.0,
-      "units365d": 336.0,
-      "daysOfCover90d": 65.0
+      "effectiveStock": 58.0,
+      "units365d": 338.0,
+      "daysOfCover90d": 59.3
     },
     {
       "code": "25506",
@@ -23375,9 +23620,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 34.0,
-      "units365d": 187.0,
-      "daysOfCover90d": 122.4
+      "effectiveStock": 32.0,
+      "units365d": 173.0,
+      "daysOfCover90d": 125.2
     },
     {
       "code": "27006",
@@ -23403,9 +23648,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 29.0,
-      "units365d": 117.0,
-      "daysOfCover90d": 137.4
+      "effectiveStock": 26.0,
+      "units365d": 110.0,
+      "daysOfCover90d": 130.0
     },
     {
       "code": "28812",
@@ -23455,9 +23700,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 161.0,
-      "units365d": 804.0,
-      "daysOfCover90d": 100.6
+      "effectiveStock": 149.0,
+      "units365d": 764.0,
+      "daysOfCover90d": 92.5
     },
     {
       "code": "30103",
@@ -23530,9 +23775,9 @@
       "recommendedOrderStep": 720,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 359.0,
-      "units365d": 1013.0,
-      "daysOfCover90d": 125.7
+      "effectiveStock": 328.0,
+      "units365d": 1009.0,
+      "daysOfCover90d": 108.1
     },
     {
       "code": "30113",
@@ -23581,34 +23826,6 @@
       "daysOfCover90d": null
     },
     {
-      "code": "30115-2",
-      "title": "Tělový deodorant-spray „Přírodní alunit a šalvěj\"",
-      "supplierSkus": [
-        "30115-2"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "standard",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "override:sku",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 96",
-      "orderPackOptions": [
-        1,
-        96
-      ],
-      "recommendedOrderStep": 96,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 57.0,
-      "units365d": 130.0,
-      "daysOfCover90d": 39.8
-    },
-    {
       "code": "30116",
       "title": "Fytonáplast „Yaoshen“ - 1,4 bodu",
       "supplierSkus": [],
@@ -23655,9 +23872,9 @@
       "recommendedOrderStep": 400,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 1439.0,
-      "units365d": 3514.0,
-      "daysOfCover90d": 222.9
+      "effectiveStock": 1387.0,
+      "units365d": 3359.0,
+      "daysOfCover90d": 229.9
     },
     {
       "code": "30118",
@@ -23683,9 +23900,9 @@
       "recommendedOrderStep": 400,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 1558.0,
-      "units365d": 4061.0,
-      "daysOfCover90d": 208.4
+      "effectiveStock": 1504.0,
+      "units365d": 3947.0,
+      "daysOfCover90d": 204.2
     },
     {
       "code": "30119",
@@ -23804,8 +24021,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 7.0,
-      "units365d": 66.0,
-      "daysOfCover90d": 48.5
+      "units365d": 64.0,
+      "daysOfCover90d": 57.3
     },
     {
       "code": "30129",
@@ -23831,13 +24048,13 @@
       "recommendedOrderStep": 36,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 7.0,
+      "effectiveStock": 3.0,
       "units365d": 30.0,
-      "daysOfCover90d": 126.0
+      "daysOfCover90d": 67.5
     },
     {
       "code": "30132/01",
-      "title": "Pánské spodní prádlo s bodovou turmalínovou vrstvou. -velikost L",
+      "title": "Pánské spodní prádlo s bodovou turmalínovou vrstvou - vel. L",
       "supplierSkus": [
         "30132/01"
       ],
@@ -23861,7 +24078,7 @@
       "recommendedMinUnits": 0,
       "effectiveStock": 2.0,
       "units365d": 51.0,
-      "daysOfCover90d": 90.0
+      "daysOfCover90d": 180.0
     },
     {
       "code": "30132/02",
@@ -23961,9 +24178,9 @@
       "recommendedOrderStep": 200,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 30.0,
-      "units365d": 207.0,
-      "daysOfCover90d": 96.4
+      "effectiveStock": 17.0,
+      "units365d": 208.0,
+      "daysOfCover90d": 41.4
     },
     {
       "code": "30158",
@@ -23989,9 +24206,9 @@
       "recommendedOrderStep": 150,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 33.0,
-      "units365d": 141.0,
-      "daysOfCover90d": 228.5
+      "effectiveStock": 30.0,
+      "units365d": 133.0,
+      "daysOfCover90d": 158.8
     },
     {
       "code": "30160-2",
@@ -24017,9 +24234,9 @@
       "recommendedOrderStep": 15,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 38.0,
-      "units365d": 198.0,
-      "daysOfCover90d": 126.7
+      "effectiveStock": 36.0,
+      "units365d": 199.0,
+      "daysOfCover90d": 124.6
     },
     {
       "code": "30162-2",
@@ -24045,9 +24262,9 @@
       "recommendedOrderStep": 15,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 53.0,
-      "units365d": 229.0,
-      "daysOfCover90d": 340.7
+      "effectiveStock": 48.0,
+      "units365d": 233.0,
+      "daysOfCover90d": 240.0
     },
     {
       "code": "30201",
@@ -24074,9 +24291,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 28.0,
-      "units365d": 93.0,
-      "daysOfCover90d": 81.3
+      "effectiveStock": 27.0,
+      "units365d": 92.0,
+      "daysOfCover90d": 81.0
     },
     {
       "code": "30201-01",
@@ -24128,7 +24345,7 @@
       "recommendedMinUnits": 0,
       "effectiveStock": 23.0,
       "units365d": 43.0,
-      "daysOfCover90d": 345.0
+      "daysOfCover90d": 414.0
     },
     {
       "code": "30203-01",
@@ -24179,7 +24396,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 27.0,
-      "units365d": 29.0,
+      "units365d": 28.0,
       "daysOfCover90d": 347.1
     },
     {
@@ -24230,9 +24447,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 32.0,
-      "units365d": 19.0,
-      "daysOfCover90d": 320.0
+      "effectiveStock": 31.0,
+      "units365d": 20.0,
+      "daysOfCover90d": 398.6
     },
     {
       "code": "30206",
@@ -24284,7 +24501,7 @@
       "recommendedMinUnits": 0,
       "effectiveStock": 44.0,
       "units365d": 27.0,
-      "daysOfCover90d": 660.0
+      "daysOfCover90d": 990.0
     },
     {
       "code": "30208",
@@ -24449,9 +24666,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 44.0,
+      "effectiveStock": 42.0,
       "units365d": 217.0,
-      "daysOfCover90d": 110.0
+      "daysOfCover90d": 114.5
     },
     {
       "code": "30216",
@@ -24500,9 +24717,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 47.0,
-      "units365d": 333.0,
-      "daysOfCover90d": 114.3
+      "effectiveStock": 45.0,
+      "units365d": 331.0,
+      "daysOfCover90d": 122.7
     },
     {
       "code": "30223",
@@ -24528,9 +24745,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 59.0,
+      "effectiveStock": 54.0,
       "units365d": 451.0,
-      "daysOfCover90d": 68.1
+      "daysOfCover90d": 63.1
     },
     {
       "code": "30224",
@@ -24857,7 +25074,7 @@
       "recommendedMinUnits": 0,
       "effectiveStock": 36.0,
       "units365d": 134.0,
-      "daysOfCover90d": 180.0
+      "daysOfCover90d": 190.6
     },
     {
       "code": "32603",
@@ -24906,9 +25123,9 @@
       "recommendedOrderStep": 36,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 32.0,
-      "units365d": 253.0,
-      "daysOfCover90d": 62.6
+      "effectiveStock": 31.0,
+      "units365d": 250.0,
+      "daysOfCover90d": 73.4
     },
     {
       "code": "32605",
@@ -25578,9 +25795,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 589.0,
-      "units365d": 1084.0,
-      "daysOfCover90d": 169.4
+      "effectiveStock": 571.0,
+      "units365d": 1036.0,
+      "daysOfCover90d": 173.0
     },
     {
       "code": "34404-1",
@@ -25698,9 +25915,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 339.0,
-      "units365d": 665.0,
-      "daysOfCover90d": 248.0
+      "effectiveStock": 323.0,
+      "units365d": 651.0,
+      "daysOfCover90d": 259.6
     },
     {
       "code": "35412/01",
@@ -25911,9 +26128,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 25.0,
-      "units365d": 414.0,
-      "daysOfCover90d": 140.6
+      "effectiveStock": 21.0,
+      "units365d": 406.0,
+      "daysOfCover90d": 94.5
     },
     {
       "code": "36601",
@@ -25986,9 +26203,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 71.0,
-      "units365d": 272.0,
-      "daysOfCover90d": 228.2
+      "effectiveStock": 67.0,
+      "units365d": 221.0,
+      "daysOfCover90d": 194.5
     },
     {
       "code": "40102",
@@ -26015,9 +26232,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 61.0,
-      "units365d": 556.0,
-      "daysOfCover90d": 79.6
+      "effectiveStock": 55.0,
+      "units365d": 500.0,
+      "daysOfCover90d": 73.9
     },
     {
       "code": "40103",
@@ -26067,9 +26284,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 84.0,
-      "units365d": 251.0,
-      "daysOfCover90d": 210.0
+      "effectiveStock": 76.0,
+      "units365d": 248.0,
+      "daysOfCover90d": 180.0
     },
     {
       "code": "40105",
@@ -26096,9 +26313,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 91.0,
-      "units365d": 174.0,
-      "daysOfCover90d": 282.4
+      "effectiveStock": 90.0,
+      "units365d": 160.0,
+      "daysOfCover90d": 300.0
     },
     {
       "code": "40105-01",
@@ -26148,9 +26365,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 93.0,
-      "units365d": 145.0,
-      "daysOfCover90d": 837.0
+      "effectiveStock": 83.0,
+      "units365d": 150.0,
+      "daysOfCover90d": 393.2
     },
     {
       "code": "40107",
@@ -26200,9 +26417,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 79.0,
-      "units365d": 238.0,
-      "daysOfCover90d": 148.1
+      "effectiveStock": 73.0,
+      "units365d": 237.0,
+      "daysOfCover90d": 134.1
     },
     {
       "code": "40110",
@@ -26366,9 +26583,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 47.0,
-      "units365d": 230.0,
-      "daysOfCover90d": 66.1
+      "effectiveStock": 44.0,
+      "units365d": 228.0,
+      "daysOfCover90d": 70.7
     },
     {
       "code": "40126",
@@ -26436,7 +26653,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 351.0,
+      "units365d": 214.0,
       "daysOfCover90d": null
     },
     {
@@ -26510,9 +26727,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 86.0,
+      "effectiveStock": 80.0,
       "units365d": 341.0,
-      "daysOfCover90d": 120.9
+      "daysOfCover90d": 105.9
     },
     {
       "code": "41102",
@@ -26539,9 +26756,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 238.0,
-      "units365d": 277.0,
-      "daysOfCover90d": 669.4
+      "effectiveStock": 227.0,
+      "units365d": 287.0,
+      "daysOfCover90d": 464.3
     },
     {
       "code": "41105",
@@ -26568,9 +26785,9 @@
       "recommendedOrderStep": 480,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 551.0,
-      "units365d": 1059.0,
-      "daysOfCover90d": 233.9
+      "effectiveStock": 526.0,
+      "units365d": 1048.0,
+      "daysOfCover90d": 230.9
     },
     {
       "code": "41106",
@@ -26597,9 +26814,9 @@
       "recommendedOrderStep": 480,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 1073.0,
-      "units365d": 653.0,
-      "daysOfCover90d": 704.9
+      "effectiveStock": 1060.0,
+      "units365d": 648.0,
+      "daysOfCover90d": 757.1
     },
     {
       "code": "41314",
@@ -26626,9 +26843,9 @@
       "recommendedOrderStep": 400,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 276.0,
-      "units365d": 1286.0,
-      "daysOfCover90d": 105.3
+      "effectiveStock": 246.0,
+      "units365d": 1284.0,
+      "daysOfCover90d": 93.0
     },
     {
       "code": "41320",
@@ -26655,9 +26872,9 @@
       "recommendedOrderStep": 400,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 637.0,
-      "units365d": 1037.0,
-      "daysOfCover90d": 255.9
+      "effectiveStock": 617.0,
+      "units365d": 1008.0,
+      "daysOfCover90d": 297.0
     },
     {
       "code": "41321",
@@ -26684,9 +26901,9 @@
       "recommendedOrderStep": 400,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 154.0,
-      "units365d": 967.0,
-      "daysOfCover90d": 72.6
+      "effectiveStock": 125.0,
+      "units365d": 933.0,
+      "daysOfCover90d": 61.8
     },
     {
       "code": "41326",
@@ -26735,9 +26952,9 @@
       "recommendedOrderStep": 440,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 337.0,
-      "units365d": 2849.0,
-      "daysOfCover90d": 36.7
+      "effectiveStock": 231.0,
+      "units365d": 2908.0,
+      "daysOfCover90d": 41.4
     },
     {
       "code": "42301",
@@ -26851,7 +27068,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 72.0,
+      "units365d": 9.0,
       "daysOfCover90d": null
     },
     {
@@ -26878,9 +27095,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 155.0,
-      "units365d": 366.0,
-      "daysOfCover90d": 172.2
+      "effectiveStock": 150.0,
+      "units365d": 368.0,
+      "daysOfCover90d": 214.3
     },
     {
       "code": "44909",
@@ -27021,9 +27238,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 45.0,
-      "units365d": 515.0,
-      "daysOfCover90d": 48.2
+      "effectiveStock": 235.0,
+      "units365d": 510.0,
+      "daysOfCover90d": 306.5
     },
     {
       "code": "50101",
@@ -27050,9 +27267,9 @@
       "recommendedOrderStep": 600,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 40.0,
-      "units365d": 283.0,
-      "daysOfCover90d": 85.7
+      "effectiveStock": 35.0,
+      "units365d": 284.0,
+      "daysOfCover90d": 71.6
     },
     {
       "code": "50102",
@@ -27126,8 +27343,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 20.0,
-      "units365d": 22.0,
-      "daysOfCover90d": 120.0
+      "units365d": 15.0,
+      "daysOfCover90d": 163.6
     },
     {
       "code": "50106",
@@ -27223,9 +27440,9 @@
       "recommendedOrderStep": 400,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 69.0,
+      "effectiveStock": 68.0,
       "units365d": 116.0,
-      "daysOfCover90d": 270.0
+      "daysOfCover90d": 291.4
     },
     {
       "code": "50111",
@@ -27358,7 +27575,7 @@
       "orderable": true,
       "sourceChannel": "both",
       "strategicPriority": "standard",
-      "orderingRole": "standard",
+      "orderingRole": "top_sku",
       "giftCandidate": false,
       "excludeFromOrderingReason": null,
       "referenceSource": "default",
@@ -27372,9 +27589,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 22.0,
-      "units365d": 169.0,
-      "daysOfCover90d": 30.5
+      "effectiveStock": 18.0,
+      "units365d": 166.0,
+      "daysOfCover90d": 30.0
     },
     {
       "code": "50120",
@@ -27400,9 +27617,9 @@
       "recommendedOrderStep": 720,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 161.0,
-      "units365d": 241.0,
-      "daysOfCover90d": 630.0
+      "effectiveStock": 158.0,
+      "units365d": 199.0,
+      "daysOfCover90d": 646.4
     },
     {
       "code": "50141",
@@ -27543,9 +27760,9 @@
       "recommendedOrderStep": 120,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 127.0,
-      "units365d": 123.0,
-      "daysOfCover90d": 601.6
+      "effectiveStock": 125.0,
+      "units365d": 124.0,
+      "daysOfCover90d": 562.5
     },
     {
       "code": "50241",
@@ -27804,7 +28021,7 @@
       "recommendedMinUnits": 0,
       "effectiveStock": 324.0,
       "units365d": 275.0,
-      "daysOfCover90d": 857.6
+      "daysOfCover90d": 911.2
     },
     {
       "code": "52902",
@@ -27831,9 +28048,9 @@
       "recommendedOrderStep": 480,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 43.0,
-      "units365d": 330.0,
-      "daysOfCover90d": 193.5
+      "effectiveStock": 41.0,
+      "units365d": 331.0,
+      "daysOfCover90d": 230.6
     },
     {
       "code": "52902/03",
@@ -27884,8 +28101,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 34.0,
-      "units365d": 217.0,
-      "daysOfCover90d": 90.0
+      "units365d": 215.0,
+      "daysOfCover90d": 92.7
     },
     {
       "code": "52903/03",
@@ -28095,9 +28312,9 @@
       "recommendedOrderStep": 480,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 43.0,
-      "units365d": 529.0,
-      "daysOfCover90d": 110.6
+      "effectiveStock": 37.0,
+      "units365d": 522.0,
+      "daysOfCover90d": 256.2
     },
     {
       "code": "52912",
@@ -28123,9 +28340,9 @@
       "recommendedOrderStep": 300,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 217.0,
-      "units365d": 345.0,
-      "daysOfCover90d": 630.0
+      "effectiveStock": 215.0,
+      "units365d": 343.0,
+      "daysOfCover90d": 774.0
     },
     {
       "code": "54101",
@@ -28197,37 +28414,9 @@
       "recommendedOrderStep": 360,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 432.0,
-      "units365d": 259.0,
-      "daysOfCover90d": 281.7
-    },
-    {
-      "code": "54104",
-      "title": "Pleťová beauty maska s mořskými řasami",
-      "supplierSkus": [
-        "54104"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "standard",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "default",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 360",
-      "orderPackOptions": [
-        1,
-        360
-      ],
-      "recommendedOrderStep": 360,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 22.0,
-      "units365d": 218.0,
-      "daysOfCover90d": 34.7
+      "effectiveStock": 430.0,
+      "units365d": 258.0,
+      "daysOfCover90d": 293.2
     },
     {
       "code": "54107",
@@ -28254,7 +28443,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 21.0,
-      "units365d": 58.0,
+      "units365d": 43.0,
       "daysOfCover90d": null
     },
     {
@@ -28306,7 +28495,7 @@
       "recommendedMinUnits": 0,
       "effectiveStock": 42.0,
       "units365d": 24.0,
-      "daysOfCover90d": 420.0
+      "daysOfCover90d": 540.0
     },
     {
       "code": "56003",
@@ -28355,9 +28544,9 @@
       "recommendedOrderStep": 400,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 169.0,
-      "units365d": 1484.0,
-      "daysOfCover90d": 144.9
+      "effectiveStock": 164.0,
+      "units365d": 1490.0,
+      "daysOfCover90d": 135.4
     },
     {
       "code": "56201",
@@ -28452,9 +28641,9 @@
       "recommendedOrderStep": 400,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 109.0,
-      "units365d": 332.0,
-      "daysOfCover90d": 178.4
+      "effectiveStock": 78.0,
+      "units365d": 330.0,
+      "daysOfCover90d": 127.6
     },
     {
       "code": "56504",
@@ -28522,7 +28711,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 11.0,
+      "units365d": 4.0,
       "daysOfCover90d": null
     },
     {
@@ -28550,9 +28739,9 @@
       "recommendedOrderStep": 72,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 85.0,
-      "units365d": 447.0,
-      "daysOfCover90d": 77.3
+      "effectiveStock": 75.0,
+      "units365d": 448.0,
+      "daysOfCover90d": 67.5
     },
     {
       "code": "60141",
@@ -28579,9 +28768,9 @@
       "recommendedOrderStep": 72,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 23.0,
-      "units365d": 142.0,
-      "daysOfCover90d": 94.1
+      "effectiveStock": 16.0,
+      "units365d": 146.0,
+      "daysOfCover90d": 48.0
     },
     {
       "code": "60142",
@@ -28608,9 +28797,9 @@
       "recommendedOrderStep": 72,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 85.0,
-      "units365d": 431.0,
-      "daysOfCover90d": 83.2
+      "effectiveStock": 75.0,
+      "units365d": 426.0,
+      "daysOfCover90d": 71.8
     },
     {
       "code": "60143",
@@ -28637,37 +28826,9 @@
       "recommendedOrderStep": 72,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 62.0,
-      "units365d": 270.0,
-      "daysOfCover90d": 113.9
-    },
-    {
-      "code": "60144",
-      "title": "Zubní pasta Zelený čaj a ženšen Sanchi",
-      "supplierSkus": [
-        "60144"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "standard",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "default",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 72",
-      "orderPackOptions": [
-        1,
-        72
-      ],
-      "recommendedOrderStep": 72,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 40.0,
-      "units365d": 498.0,
-      "daysOfCover90d": 32.4
+      "effectiveStock": 50.0,
+      "units365d": 273.0,
+      "daysOfCover90d": 88.2
     },
     {
       "code": "60145",
@@ -28693,9 +28854,9 @@
       "recommendedOrderStep": 1350,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 2254.0,
-      "units365d": 2512.0,
-      "daysOfCover90d": 362.2
+      "effectiveStock": 2338.0,
+      "units365d": 2467.0,
+      "daysOfCover90d": 397.8
     },
     {
       "code": "60146",
@@ -28721,9 +28882,9 @@
       "recommendedOrderStep": 144,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 75.0,
-      "units365d": 295.0,
-      "daysOfCover90d": 132.4
+      "effectiveStock": 70.0,
+      "units365d": 292.0,
+      "daysOfCover90d": 131.2
     },
     {
       "code": "60146-01",
@@ -28818,37 +28979,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 313.0,
-      "units365d": 547.0,
-      "daysOfCover90d": 140.1
-    },
-    {
-      "code": "60150",
-      "title": "Aroma-tyčinka s vůní višní a máty",
-      "supplierSkus": [
-        "60150"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "standard",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "override:sku",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 540",
-      "orderPackOptions": [
-        1,
-        540
-      ],
-      "recommendedOrderStep": 540,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 225.0,
-      "units365d": 741.0,
-      "daysOfCover90d": 138.7
+      "effectiveStock": 286.0,
+      "units365d": 551.0,
+      "daysOfCover90d": 126.2
     },
     {
       "code": "60151-2",
@@ -28874,9 +29007,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 130.0,
-      "units365d": 545.0,
-      "daysOfCover90d": 158.1
+      "effectiveStock": 116.0,
+      "units365d": 535.0,
+      "daysOfCover90d": 147.0
     },
     {
       "code": "60152-2",
@@ -28902,9 +29035,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 150.0,
-      "units365d": 943.0,
-      "daysOfCover90d": 83.9
+      "effectiveStock": 118.0,
+      "units365d": 936.0,
+      "daysOfCover90d": 64.0
     },
     {
       "code": "60153-2",
@@ -28930,37 +29063,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 121.0,
-      "units365d": 590.0,
-      "daysOfCover90d": 100.8
-    },
-    {
-      "code": "61901",
-      "title": "Denní vložky s fytomembránou „Energie bylin“",
-      "supplierSkus": [
-        "61901"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "standard",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "default",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 48",
-      "orderPackOptions": [
-        1,
-        48
-      ],
-      "recommendedOrderStep": 48,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 192.0,
-      "units365d": 2615.0,
-      "daysOfCover90d": 31.0
+      "effectiveStock": 110.0,
+      "units365d": 578.0,
+      "daysOfCover90d": 100.0
     },
     {
       "code": "61902",
@@ -28986,9 +29091,9 @@
       "recommendedOrderStep": 30,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 386.0,
-      "units365d": 2258.0,
-      "daysOfCover90d": 71.8
+      "effectiveStock": 321.0,
+      "units365d": 2201.0,
+      "daysOfCover90d": 57.7
     },
     {
       "code": "61903",
@@ -29014,9 +29119,9 @@
       "recommendedOrderStep": 30,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 275.0,
-      "units365d": 1336.0,
-      "daysOfCover90d": 98.2
+      "effectiveStock": 231.0,
+      "units365d": 1337.0,
+      "daysOfCover90d": 78.2
     },
     {
       "code": "61905",
@@ -29249,9 +29354,9 @@
       "recommendedOrderStep": 30,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 490.0,
-      "units365d": 3347.0,
-      "daysOfCover90d": 56.8
+      "effectiveStock": 376.0,
+      "units365d": 3328.0,
+      "daysOfCover90d": 43.2
     },
     {
       "code": "61913",
@@ -29277,9 +29382,9 @@
       "recommendedOrderStep": 30,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 349.0,
-      "units365d": 2330.0,
-      "daysOfCover90d": 60.8
+      "effectiveStock": 272.0,
+      "units365d": 2331.0,
+      "daysOfCover90d": 46.2
     },
     {
       "code": "61914",
@@ -29305,9 +29410,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 478.0,
-      "units365d": 2966.0,
-      "daysOfCover90d": 72.4
+      "effectiveStock": 409.0,
+      "units365d": 2946.0,
+      "daysOfCover90d": 59.6
     },
     {
       "code": "61915",
@@ -29333,9 +29438,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 379.0,
-      "units365d": 2379.0,
-      "daysOfCover90d": 67.1
+      "effectiveStock": 290.0,
+      "units365d": 2369.0,
+      "daysOfCover90d": 49.0
     },
     {
       "code": "61921",
@@ -29361,9 +29466,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 321.0,
-      "units365d": 1525.0,
-      "daysOfCover90d": 85.0
+      "effectiveStock": 288.0,
+      "units365d": 1523.0,
+      "daysOfCover90d": 76.9
     },
     {
       "code": "61922",
@@ -29389,9 +29494,9 @@
       "recommendedOrderStep": 30,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 175.0,
-      "units365d": 967.0,
-      "daysOfCover90d": 72.2
+      "effectiveStock": 159.0,
+      "units365d": 949.0,
+      "daysOfCover90d": 77.8
     },
     {
       "code": "61923",
@@ -29417,9 +29522,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 162.0,
-      "units365d": 885.0,
-      "daysOfCover90d": 87.8
+      "effectiveStock": 137.0,
+      "units365d": 877.0,
+      "daysOfCover90d": 77.5
     },
     {
       "code": "63601",
@@ -29445,9 +29550,9 @@
       "recommendedOrderStep": 1250,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 2067.0,
-      "units365d": 3005.0,
-      "daysOfCover90d": 272.4
+      "effectiveStock": 1981.0,
+      "units365d": 2959.0,
+      "daysOfCover90d": 261.0
     },
     {
       "code": "640102",
@@ -29473,9 +29578,9 @@
       "recommendedOrderStep": 32,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 22.0,
-      "units365d": 74.0,
-      "daysOfCover90d": 123.8
+      "effectiveStock": 18.0,
+      "units365d": 78.0,
+      "daysOfCover90d": 85.3
     },
     {
       "code": "64404",
@@ -29547,9 +29652,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 625.0,
-      "units365d": 3079.0,
-      "daysOfCover90d": 82.8
+      "effectiveStock": 548.0,
+      "units365d": 3020.0,
+      "daysOfCover90d": 74.8
     },
     {
       "code": "65301",
@@ -29644,9 +29749,9 @@
       "recommendedOrderStep": 192,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 100.0,
-      "units365d": 1077.0,
-      "daysOfCover90d": 46.9
+      "effectiveStock": 79.0,
+      "units365d": 1053.0,
+      "daysOfCover90d": 36.6
     },
     {
       "code": "65502",
@@ -29787,9 +29892,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 30.0,
-      "units365d": 217.0,
-      "daysOfCover90d": 71.1
+      "effectiveStock": 26.0,
+      "units365d": 221.0,
+      "daysOfCover90d": 65.0
     },
     {
       "code": "65914-1",
@@ -29838,9 +29943,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 107.0,
-      "units365d": 535.0,
-      "daysOfCover90d": 155.3
+      "effectiveStock": 80.0,
+      "units365d": 539.0,
+      "daysOfCover90d": 80.9
     },
     {
       "code": "65916-2",
@@ -29866,9 +29971,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 22.0,
-      "units365d": 417.0,
-      "daysOfCover90d": 30.9
+      "effectiveStock": 100.0,
+      "units365d": 436.0,
+      "daysOfCover90d": 109.8
     },
     {
       "code": "6648",
@@ -30285,9 +30390,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 212.0,
-      "units365d": 1592.0,
-      "daysOfCover90d": 57.8
+      "effectiveStock": 170.0,
+      "units365d": 1573.0,
+      "daysOfCover90d": 44.3
     },
     {
       "code": "67007-01",
@@ -30359,9 +30464,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 252.0,
-      "units365d": 856.0,
-      "daysOfCover90d": 120.0
+      "effectiveStock": 227.0,
+      "units365d": 854.0,
+      "daysOfCover90d": 101.6
     },
     {
       "code": "67109",
@@ -30387,9 +30492,9 @@
       "recommendedOrderStep": 48,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 278.0,
-      "units365d": 620.0,
-      "daysOfCover90d": 188.1
+      "effectiveStock": 253.0,
+      "units365d": 616.0,
+      "daysOfCover90d": 154.9
     },
     {
       "code": "681922",
@@ -30906,9 +31011,9 @@
       "recommendedOrderStep": 720,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 517.0,
-      "units365d": 122.0,
-      "daysOfCover90d": 930.6
+      "effectiveStock": 499.0,
+      "units365d": 140.0,
+      "daysOfCover90d": 712.9
     },
     {
       "code": "80116/01",
@@ -32705,9 +32810,9 @@
       "recommendedOrderStep": 160,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 55.0,
-      "units365d": 229.0,
-      "daysOfCover90d": 107.6
+      "effectiveStock": 44.0,
+      "units365d": 228.0,
+      "daysOfCover90d": 101.5
     },
     {
       "code": "80146",
@@ -32751,9 +32856,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 62.0,
-      "units365d": 35.0,
-      "daysOfCover90d": 159.4
+      "effectiveStock": 59.0,
+      "units365d": 39.0,
+      "daysOfCover90d": 136.2
     },
     {
       "code": "80147/02",
@@ -32774,9 +32879,32 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 52.0,
-      "units365d": 44.0,
-      "daysOfCover90d": 106.4
+      "effectiveStock": 49.0,
+      "units365d": 47.0,
+      "daysOfCover90d": 93.8
+    },
+    {
+      "code": "80148",
+      "title": "Tónující balzám na rty Nude",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
     },
     {
       "code": "80153",
@@ -32797,9 +32925,32 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 28.0,
-      "units365d": 58.0,
-      "daysOfCover90d": 43.4
+      "effectiveStock": 29.0,
+      "units365d": 71.0,
+      "daysOfCover90d": 36.8
+    },
+    {
+      "code": "80154",
+      "title": "Hydratační rtěnka",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
     },
     {
       "code": "80202/07",
@@ -33511,7 +33662,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 7.0,
+      "units365d": 2.0,
       "daysOfCover90d": null
     },
     {
@@ -34346,9 +34497,9 @@
       "recommendedOrderStep": 2880,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 192.0,
-      "units365d": 334.0,
-      "daysOfCover90d": 178.1
+      "effectiveStock": 172.0,
+      "units365d": 353.0,
+      "daysOfCover90d": 132.3
     },
     {
       "code": "80905",
@@ -35042,9 +35193,9 @@
       "recommendedOrderStep": 240,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 21.0,
-      "units365d": 147.0,
-      "daysOfCover90d": 99.5
+      "effectiveStock": 20.0,
+      "units365d": 145.0,
+      "daysOfCover90d": 100.0
     },
     {
       "code": "81101/04",
@@ -35599,9 +35750,9 @@
       "recommendedOrderStep": 192,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 13.0,
-      "units365d": 76.0,
-      "daysOfCover90d": 68.8
+      "effectiveStock": 10.0,
+      "units365d": 79.0,
+      "daysOfCover90d": 60.0
     },
     {
       "code": "86004",
@@ -35627,9 +35778,9 @@
       "recommendedOrderStep": 96,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 39.0,
-      "units365d": 107.0,
-      "daysOfCover90d": 175.5
+      "effectiveStock": 38.0,
+      "units365d": 105.0,
+      "daysOfCover90d": 171.0
     },
     {
       "code": "86308",
@@ -35868,7 +36019,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 33.0,
-      "units365d": 52.0,
+      "units365d": 51.0,
       "daysOfCover90d": 1485.0
     },
     {
@@ -35898,9 +36049,9 @@
       "recommendedOrderStep": 300,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 140.0,
-      "units365d": 206.0,
-      "daysOfCover90d": 315.0
+      "effectiveStock": 137.0,
+      "units365d": 203.0,
+      "daysOfCover90d": 286.7
     },
     {
       "code": "90149",
@@ -35951,11 +36102,11 @@
       "recommendedMinUnits": 0,
       "effectiveStock": 19.0,
       "units365d": 36.0,
-      "daysOfCover90d": 1710.0
+      "daysOfCover90d": null
     },
     {
       "code": "90153",
-      "title": "Dětský zubní kartáček ",
+      "title": "Dětský zubní kartáček",
       "supplierSkus": [
         "90153/01",
         "90153/03"
@@ -35979,7 +36130,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 92.0,
-      "units365d": 37.0,
+      "units365d": 33.0,
       "daysOfCover90d": 1656.0
     },
     {
@@ -36213,9 +36364,9 @@
       "recommendedOrderStep": 300,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 48.0,
-      "units365d": 42.0,
-      "daysOfCover90d": 1080.0
+      "effectiveStock": 47.0,
+      "units365d": 38.0,
+      "daysOfCover90d": 1057.5
     },
     {
       "code": "90165/02",
@@ -36242,8 +36393,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 66.0,
-      "units365d": 28.0,
-      "daysOfCover90d": 1485.0
+      "units365d": 27.0,
+      "daysOfCover90d": 2970.0
     },
     {
       "code": "90165/02-01",
@@ -36474,34 +36625,6 @@
       "effectiveStock": 0,
       "units365d": 0,
       "daysOfCover90d": null
-    },
-    {
-      "code": "90175",
-      "title": "Zubní kartáček Bambusové uhlí",
-      "supplierSkus": [
-        "90175"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "standard",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "default",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 300",
-      "orderPackOptions": [
-        1,
-        300
-      ],
-      "recommendedOrderStep": 300,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 37.0,
-      "units365d": 276.0,
-      "daysOfCover90d": 54.6
     },
     {
       "code": "90176",
@@ -36745,7 +36868,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 26.0,
-      "units365d": 26.0,
+      "units365d": 24.0,
       "daysOfCover90d": 2340.0
     },
     {
@@ -36958,8 +37081,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 20.0,
-      "units365d": 72.0,
-      "daysOfCover90d": 360.0
+      "units365d": 64.0,
+      "daysOfCover90d": 450.0
     },
     {
       "code": "90201",
@@ -37033,7 +37156,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 9.0,
-      "units365d": 88.0,
+      "units365d": 82.0,
       "daysOfCover90d": 54.0
     },
     {
@@ -37129,34 +37252,6 @@
       "daysOfCover90d": null
     },
     {
-      "code": "980148/03",
-      "title": "Zubní kartáček ProDental - zelený",
-      "supplierSkus": [
-        "980148/03"
-      ],
-      "itemType": "product",
-      "orderable": true,
-      "sourceChannel": "both",
-      "strategicPriority": "standard",
-      "orderingRole": "standard",
-      "giftCandidate": false,
-      "excludeFromOrderingReason": null,
-      "referenceSource": "default",
-      "referenceFlags": [],
-      "packagingMatchStatus": "exact_code",
-      "packagingRaw": "1 / 300",
-      "orderPackOptions": [
-        1,
-        300
-      ],
-      "recommendedOrderStep": 300,
-      "recommendedOrderUnits": 0,
-      "recommendedMinUnits": 0,
-      "effectiveStock": 0,
-      "units365d": 0,
-      "daysOfCover90d": null
-    },
-    {
       "code": "980155",
       "title": "Spa rukavice",
       "supplierSkus": [
@@ -37180,9 +37275,9 @@
       "recommendedOrderStep": 300,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 576.0,
-      "units365d": 207.0,
-      "daysOfCover90d": 2356.4
+      "effectiveStock": 575.0,
+      "units365d": 206.0,
+      "daysOfCover90d": 2587.5
     },
     {
       "code": "980156",
@@ -37208,9 +37303,9 @@
       "recommendedOrderStep": 300,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 70.0,
-      "units365d": 102.0,
-      "daysOfCover90d": 331.6
+      "effectiveStock": 22.0,
+      "units365d": 106.0,
+      "daysOfCover90d": 82.5
     },
     {
       "code": "980165/01",
@@ -37282,9 +37377,9 @@
       "recommendedOrderStep": 480,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 44.0,
-      "units365d": 313.0,
-      "daysOfCover90d": 51.4
+      "effectiveStock": 32.0,
+      "units365d": 315.0,
+      "daysOfCover90d": 36.0
     },
     {
       "code": "980175",
@@ -37333,9 +37428,9 @@
       "recommendedOrderStep": 192,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 32.0,
-      "units365d": 163.0,
-      "daysOfCover90d": 192.0
+      "effectiveStock": 31.0,
+      "units365d": 162.0,
+      "daysOfCover90d": 214.6
     },
     {
       "code": "980192",
@@ -37362,8 +37457,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 59.0,
-      "units365d": 114.0,
-      "daysOfCover90d": 758.6
+      "units365d": 113.0,
+      "daysOfCover90d": 885.0
     },
     {
       "code": "980193",
@@ -37389,9 +37484,9 @@
       "recommendedOrderStep": 192,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 50.0,
-      "units365d": 458.0,
-      "daysOfCover90d": 48.9
+      "effectiveStock": 41.0,
+      "units365d": 457.0,
+      "daysOfCover90d": 39.7
     },
     {
       "code": "980198",
@@ -37419,8 +37514,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 16.0,
-      "units365d": 171.0,
-      "daysOfCover90d": 72.0
+      "units365d": 169.0,
+      "daysOfCover90d": 96.0
     },
     {
       "code": "980199",
@@ -37447,9 +37542,9 @@
       "recommendedOrderStep": 192,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 102.0,
+      "effectiveStock": 80.0,
       "units365d": 217.0,
-      "daysOfCover90d": 81.2
+      "daysOfCover90d": 84.7
     },
     {
       "code": "980201",
@@ -37476,8 +37571,8 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 39.0,
-      "units365d": 100.0,
-      "daysOfCover90d": 152.6
+      "units365d": 95.0,
+      "daysOfCover90d": 206.5
     },
     {
       "code": "980201-01",
@@ -37527,7 +37622,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 39.0,
-      "units365d": 113.0,
+      "units365d": 111.0,
       "daysOfCover90d": 167.1
     },
     {
@@ -39826,9 +39921,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 3.0,
-      "units365d": 1.0,
-      "daysOfCover90d": 270.0
+      "effectiveStock": 8.0,
+      "units365d": 3.0,
+      "daysOfCover90d": 240.0
     },
     {
       "code": "BAL035",
@@ -39849,9 +39944,9 @@
       "recommendedOrderStep": null,
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
-      "effectiveStock": 3.0,
-      "units365d": 0,
-      "daysOfCover90d": null
+      "effectiveStock": 2.0,
+      "units365d": 3.0,
+      "daysOfCover90d": 60.0
     },
     {
       "code": "BAL036",
@@ -40040,6 +40135,29 @@
     {
       "code": "BC107",
       "title": "Broskvové pohlazení pro vaši pokožku 1+1",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "BC135",
+      "title": "Peptidový zázrak na vrásky",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -43511,6 +43629,29 @@
       "daysOfCover90d": null
     },
     {
+      "code": "DM758",
+      "title": "To pravé pro pleť",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "DN168",
       "title": "Balíček pro zářivou pleť",
       "supplierSkus": [],
@@ -43789,6 +43930,29 @@
     {
       "code": "DU639",
       "title": "Přírodní rovnováha pro tělo i intimní život",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "DU952",
+      "title": "Tajemství dokonalého úsměvu",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -45443,6 +45607,29 @@
       "daysOfCover90d": null
     },
     {
+      "code": "FC794",
+      "title": "Sváteční chvíle hýčkání",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "FD527",
       "title": "Pro hebké tělo s vůni oliv",
       "supplierSkus": [],
@@ -45468,6 +45655,29 @@
     {
       "code": "FE043",
       "title": "Výživa od kořínků ke konečkům",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "FE357",
+      "title": "Sametové rty i pleť",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -45721,6 +45931,29 @@
     {
       "code": "FK524",
       "title": "Přírodní podpora pohybu, energie a ženského zdraví",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "FL304",
+      "title": "Čistý domov, klidné svátky",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -46434,6 +46667,29 @@
     {
       "code": "FY417",
       "title": "Dokonalý pohled - odstín č.01 + č.01",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "FY424",
+      "title": "Dopřejte luxus svým vlasům",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -47743,6 +47999,29 @@
       "daysOfCover90d": null
     },
     {
+      "code": "GT405",
+      "title": "Silné zuby, svěží dech",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "GU724",
       "title": "Omlazující rituál s hlemýždím mucinem",
       "supplierSkus": [],
@@ -48182,6 +48461,29 @@
     {
       "code": "HC430",
       "title": "STOP mastné pleti",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "HC843",
+      "title": "Vánoční balíček intimní péče",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -48849,6 +49151,29 @@
     {
       "code": "HS846",
       "title": "Prémiová kolagenová kúra pro obnovu pleti",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "HU674",
+      "title": "Šnečí zázrak pro pleť",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -49786,7 +50111,7 @@
       "recommendedOrderUnits": 0,
       "recommendedMinUnits": 0,
       "effectiveStock": 0,
-      "units365d": 4.0,
+      "units365d": 3.0,
       "daysOfCover90d": null
     },
     {
@@ -49976,6 +50301,29 @@
     {
       "code": "II961",
       "title": "Intimní harmonie",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "IJ123",
+      "title": "Vánoční úklid s lehkostí",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -51538,6 +51886,29 @@
       "daysOfCover90d": null
     },
     {
+      "code": "JV717",
+      "title": "Chutná svačinka plná vlákniny",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "JV906",
       "title": "Luxusní lesk pro vaše vlasy",
       "supplierSkus": [],
@@ -52184,6 +52555,29 @@
     {
       "code": "KL166",
       "title": "Šetrné praní",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "KL670",
+      "title": "Víkendový rituál krásy",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -52964,6 +53358,29 @@
       "daysOfCover90d": null
     },
     {
+      "code": "LA382",
+      "title": "Zimní elixír vitality",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "LA529",
       "title": "Aquagel na oči a obličej + Pleťové sérum",
       "supplierSkus": [],
@@ -53033,6 +53450,29 @@
       "daysOfCover90d": null
     },
     {
+      "code": "LB104",
+      "title": "Restart pro vlasy",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "LB948",
       "title": "Uvolněte unavené tělo",
       "supplierSkus": [],
@@ -53058,6 +53498,29 @@
     {
       "code": "LC478",
       "title": "Úleva na dosah",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "LD264",
+      "title": "Probuď ženskou energii",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -53541,6 +54004,29 @@
     {
       "code": "LL562",
       "title": "Tělová sůl Medová broskev + Sprchový gel Indické mango",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "LN386",
+      "title": "Koruna krásy každé ženy",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -54597,6 +55083,29 @@
       "daysOfCover90d": null
     },
     {
+      "code": "MN073",
+      "title": "Cesta k zářivému úsměvu",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "MO088",
       "title": "Balíček pro zdravou ženu",
       "supplierSkus": [],
@@ -55013,6 +55522,29 @@
     {
       "code": "MW220",
       "title": "Zbavte se celulitidy chladivou cestou",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "MW300",
+      "title": "Ranní rituál s čekankou",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -56163,6 +56695,29 @@
     {
       "code": "NU392",
       "title": "Zlatophyt a detoxikační náplasti pro celkovou pohodu",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "NV293",
+      "title": "Tajemství mládí s peptidy",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -63682,6 +64237,29 @@
       "daysOfCover90d": null
     },
     {
+      "code": "RH178",
+      "title": "Pro váš lehký krok",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "RH437",
       "title": "Denní vložky s extraktem aloe Nefritová svěžest + polštářky \"Mix peptidů\"",
       "supplierSkus": [],
@@ -63914,6 +64492,29 @@
     {
       "code": "RN508",
       "title": "STOP vypadávání vlasů",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "RO557",
+      "title": "Klíč k silným zubům",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -64604,6 +65205,29 @@
     {
       "code": "RX953",
       "title": "Intimní péče + Cushion",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "RY244",
+      "title": "Mořský elixír mládí",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -65867,6 +66491,29 @@
       "daysOfCover90d": null
     },
     {
+      "code": "SX232",
+      "title": "Vánoční mise: dokonalý muž",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "SX237",
       "title": "Domácí wellness sada s tělovou solí",
       "supplierSkus": [],
@@ -66628,6 +67275,29 @@
     {
       "code": "TJ391",
       "title": "Pro regeneraci",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "TL582",
+      "title": "Vaše malé domácí wellness",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -67431,6 +68101,29 @@
       "daysOfCover90d": null
     },
     {
+      "code": "UA521",
+      "title": "Ženšenový dotek krásy",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "UA668",
       "title": "Snail secret - dlouhé mládí",
       "supplierSkus": [],
@@ -67709,6 +68402,29 @@
     {
       "code": "UF247",
       "title": "Zlatý balíček pro krásu a vitalitu",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "UF608",
+      "title": "Přírodní síla pro zdravý úsměv",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -69296,6 +70012,29 @@
     {
       "code": "VO069",
       "title": "Postarejte se o zdraví vašich intimních partií - 5ks",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "VO145",
+      "title": "Cesta ke krásným vlasům",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -73871,6 +74610,29 @@
       "daysOfCover90d": null
     },
     {
+      "code": "XR471",
+      "title": "Tajemství bílého úsměvu",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
       "code": "XR589",
       "title": "Štíhlá linie s čekankou",
       "supplierSkus": [],
@@ -74356,6 +75118,29 @@
     {
       "code": "YD850",
       "title": "Hydratace a regenerace s Mořským elixírem",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "YF309",
+      "title": "Tvé dny, tvá jistota",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,
@@ -76495,6 +77280,29 @@
     {
       "code": "ZZ758",
       "title": "Zimní regenerační kúra se zázvorem",
+      "supplierSkus": [],
+      "itemType": "product",
+      "orderable": true,
+      "sourceChannel": "both",
+      "strategicPriority": "standard",
+      "orderingRole": "standard",
+      "giftCandidate": false,
+      "excludeFromOrderingReason": null,
+      "referenceSource": "default",
+      "referenceFlags": [],
+      "packagingMatchStatus": "missing",
+      "packagingRaw": null,
+      "orderPackOptions": [],
+      "recommendedOrderStep": null,
+      "recommendedOrderUnits": 0,
+      "recommendedMinUnits": 0,
+      "effectiveStock": 0,
+      "units365d": 0,
+      "daysOfCover90d": null
+    },
+    {
+      "code": "volné",
+      "title": "volné",
       "supplierSkus": [],
       "itemType": "product",
       "orderable": true,

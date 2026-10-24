@@ -29,7 +29,15 @@
       "status": "complete"
     },
     {
+      "date": "20261019T00:00:00+0000",
+      "status": "complete"
+    },
+    {
       "date": "20261007T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261018T00:00:00+0000",
       "status": "complete"
     },
     {
@@ -37,7 +45,15 @@
       "status": "complete"
     },
     {
+      "date": "20261017T00:00:00+0000",
+      "status": "complete"
+    },
+    {
       "date": "20261005T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261016T00:00:00+0000",
       "status": "complete"
     },
     {
@@ -46,10 +62,22 @@
     },
     {
       "date": "20261011T00:00:00+0000",
-      "status": "preparing"
+      "status": "complete"
+    },
+    {
+      "date": "20261022T00:00:00+0000",
+      "status": "complete"
     },
     {
       "date": "20261010T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261021T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261020T00:00:00+0000",
       "status": "complete"
     },
     {
@@ -57,7 +85,15 @@
       "status": "complete"
     },
     {
+      "date": "20261015T00:00:00+0000",
+      "status": "complete"
+    },
+    {
       "date": "20261003T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261014T00:00:00+0000",
       "status": "complete"
     },
     {
@@ -65,24 +101,36 @@
       "status": "complete"
     },
     {
+      "date": "20261013T00:00:00+0000",
+      "status": "complete"
+    },
+    {
       "date": "20261001T00:00:00+0000",
       "status": "complete"
+    },
+    {
+      "date": "20261012T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261023T00:00:00+0000",
+      "status": "preparing"
     }
   ],
   "currentMonth": {
     "dateFrom": "2026-10-01",
-    "dateTo": "2026-10-11",
+    "dateTo": "2026-10-23",
     "total": {
       "date": "20261001T00:00:00+0000",
-      "impressions": 33384,
-      "clicks": 1113,
-      "ctr": 3.33,
-      "cpcCzk": 2.11,
-      "priceCzk": 2346.8,
-      "conversions": 412.0,
-      "conversionValueCzk": 545297.0,
-      "transactions": 402,
-      "avgPosition": 1.36
+      "impressions": 64130,
+      "clicks": 2289,
+      "ctr": 3.57,
+      "cpcCzk": 2.19,
+      "priceCzk": 5015.02,
+      "conversions": 850.0,
+      "conversionValueCzk": 1117477.0,
+      "transactions": 829,
+      "avgPosition": 1.48
     },
     "daily": [
       {
@@ -207,15 +255,159 @@
       },
       {
         "date": "20261011T00:00:00+0000",
-        "impressions": 2692,
-        "clicks": 89,
-        "ctr": 3.31,
-        "cpcCzk": 2.34,
-        "priceCzk": 207.95,
-        "conversions": 30.0,
-        "conversionValueCzk": 43198.0,
-        "transactions": 30,
+        "impressions": 2775,
+        "clicks": 92,
+        "ctr": 3.32,
+        "cpcCzk": 2.37,
+        "priceCzk": 217.74,
+        "conversions": 35.0,
+        "conversionValueCzk": 48409.0,
+        "transactions": 34,
+        "avgPosition": 1.5
+      },
+      {
+        "date": "20261012T00:00:00+0000",
+        "impressions": 2712,
+        "clicks": 109,
+        "ctr": 4.02,
+        "cpcCzk": 2.2,
+        "priceCzk": 240.23,
+        "conversions": 45.0,
+        "conversionValueCzk": 64372.0,
+        "transactions": 44,
+        "avgPosition": 1.39
+      },
+      {
+        "date": "20261013T00:00:00+0000",
+        "impressions": 3153,
+        "clicks": 111,
+        "ctr": 3.52,
+        "cpcCzk": 2.08,
+        "priceCzk": 230.92,
+        "conversions": 53.0,
+        "conversionValueCzk": 77172.0,
+        "transactions": 52,
+        "avgPosition": 1.57
+      },
+      {
+        "date": "20261014T00:00:00+0000",
+        "impressions": 2735,
+        "clicks": 108,
+        "ctr": 3.95,
+        "cpcCzk": 2.3,
+        "priceCzk": 248.69,
+        "conversions": 49.0,
+        "conversionValueCzk": 54311.0,
+        "transactions": 48,
         "avgPosition": 1.49
+      },
+      {
+        "date": "20261015T00:00:00+0000",
+        "impressions": 2058,
+        "clicks": 88,
+        "ctr": 4.28,
+        "cpcCzk": 2.16,
+        "priceCzk": 190.41,
+        "conversions": 35.0,
+        "conversionValueCzk": 45256.0,
+        "transactions": 34,
+        "avgPosition": 1.74
+      },
+      {
+        "date": "20261016T00:00:00+0000",
+        "impressions": 2853,
+        "clicks": 88,
+        "ctr": 3.08,
+        "cpcCzk": 2.29,
+        "priceCzk": 201.68,
+        "conversions": 31.0,
+        "conversionValueCzk": 47804.0,
+        "transactions": 30,
+        "avgPosition": 1.47
+      },
+      {
+        "date": "20261017T00:00:00+0000",
+        "impressions": 1791,
+        "clicks": 57,
+        "ctr": 3.18,
+        "cpcCzk": 2.75,
+        "priceCzk": 156.73,
+        "conversions": 8.0,
+        "conversionValueCzk": 8224.0,
+        "transactions": 8,
+        "avgPosition": 1.52
+      },
+      {
+        "date": "20261018T00:00:00+0000",
+        "impressions": 1839,
+        "clicks": 102,
+        "ctr": 5.55,
+        "cpcCzk": 2.32,
+        "priceCzk": 236.88,
+        "conversions": 41.0,
+        "conversionValueCzk": 47353.0,
+        "transactions": 40,
+        "avgPosition": 1.69
+      },
+      {
+        "date": "20261019T00:00:00+0000",
+        "impressions": 3466,
+        "clicks": 106,
+        "ctr": 3.06,
+        "cpcCzk": 2.41,
+        "priceCzk": 255.22,
+        "conversions": 38.0,
+        "conversionValueCzk": 55525.0,
+        "transactions": 37,
+        "avgPosition": 1.6
+      },
+      {
+        "date": "20261020T00:00:00+0000",
+        "impressions": 2243,
+        "clicks": 101,
+        "ctr": 4.5,
+        "cpcCzk": 2.33,
+        "priceCzk": 235.31,
+        "conversions": 35.0,
+        "conversionValueCzk": 44239.0,
+        "transactions": 34,
+        "avgPosition": 1.92
+      },
+      {
+        "date": "20261021T00:00:00+0000",
+        "impressions": 2221,
+        "clicks": 115,
+        "ctr": 5.18,
+        "cpcCzk": 2.15,
+        "priceCzk": 246.98,
+        "conversions": 33.0,
+        "conversionValueCzk": 37834.0,
+        "transactions": 32,
+        "avgPosition": 1.7
+      },
+      {
+        "date": "20261022T00:00:00+0000",
+        "impressions": 2800,
+        "clicks": 93,
+        "ctr": 3.32,
+        "cpcCzk": 2.34,
+        "priceCzk": 217.63,
+        "conversions": 35.0,
+        "conversionValueCzk": 44977.0,
+        "transactions": 34,
+        "avgPosition": 1.64
+      },
+      {
+        "date": "20261023T00:00:00+0000",
+        "impressions": 2792,
+        "clicks": 95,
+        "ctr": 3.4,
+        "cpcCzk": 2.08,
+        "priceCzk": 197.75,
+        "conversions": 30.0,
+        "conversionValueCzk": 39902.0,
+        "transactions": 30,
+        "avgPosition": 1.62
       }
     ]
   },
@@ -226,13 +418,13 @@
       "status": "active",
       "type": "fulltext",
       "date": "20261001",
-      "impressions": 1368,
-      "clicks": 763,
+      "impressions": 2909,
+      "clicks": 1576,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 1022.55,
-      "conversions": 346.0,
-      "conversionValueCzk": 4589.29,
+      "priceCzk": 2142.31,
+      "conversions": 749.0,
+      "conversionValueCzk": 9710.92,
       "transactions": 0,
       "avgPosition": 0.0
     },
@@ -242,13 +434,13 @@
       "status": "active",
       "type": "zbozi",
       "date": "20261001",
-      "impressions": 1463,
-      "clicks": 27,
+      "impressions": 4168,
+      "clicks": 113,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 112.89,
-      "conversions": 0.0,
-      "conversionValueCzk": 0.0,
+      "priceCzk": 464.91,
+      "conversions": 1.0,
+      "conversionValueCzk": 2.89,
       "transactions": 0,
       "avgPosition": 0.0
     },
@@ -258,11 +450,11 @@
       "status": "active",
       "type": "fulltext",
       "date": "20261001",
-      "impressions": 47,
-      "clicks": 8,
+      "impressions": 100,
+      "clicks": 15,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 10.24,
+      "priceCzk": 19.06,
       "conversions": 0.0,
       "conversionValueCzk": 0.0,
       "transactions": 0,
@@ -274,13 +466,13 @@
       "status": "active",
       "type": "fulltext",
       "date": "20261001",
-      "impressions": 60,
-      "clicks": 6,
+      "impressions": 191,
+      "clicks": 14,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 17.37,
-      "conversions": 0.0,
-      "conversionValueCzk": 0.0,
+      "priceCzk": 41.68,
+      "conversions": 2.0,
+      "conversionValueCzk": 5.86,
       "transactions": 0,
       "avgPosition": 0.0
     },
@@ -290,13 +482,13 @@
       "status": "active",
       "type": "product",
       "date": "20261001",
-      "impressions": 27754,
-      "clicks": 220,
+      "impressions": 53970,
+      "clicks": 476,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 975.8,
-      "conversions": 36.0,
-      "conversionValueCzk": 431.7,
+      "priceCzk": 2149.31,
+      "conversions": 68.0,
+      "conversionValueCzk": 1056.08,
       "transactions": 0,
       "avgPosition": 0.0
     }
