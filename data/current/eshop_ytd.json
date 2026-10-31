@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-12T08:00:06.496617+02:00",
-  "currentCutoff": "2026-10-12T08:00:06.496617+02:00",
-  "previousCutoff": "2025-10-12T08:00:06.496617+02:00",
+  "generatedAt": "2026-10-31T15:03:06.527816+01:00",
+  "currentCutoff": "2026-10-31T15:03:06.527816+01:00",
+  "previousCutoff": "2025-10-31T15:03:06.527816+01:00",
   "years": {
     "previous": 2025,
     "current": 2026
@@ -138,8 +138,8 @@
       },
       "current": {
         "year": 2026,
-        "count": 10120,
-        "revenueWithVat": 17451126.77
+        "count": 10110,
+        "revenueWithVat": 17432424.24
       }
     },
     {
@@ -148,26 +148,26 @@
       "partial": true,
       "previous": {
         "year": 2025,
-        "count": 4526,
-        "revenueWithVat": 7285116.4
+        "count": 10852,
+        "revenueWithVat": 18107377.41
       },
       "current": {
         "year": 2026,
-        "count": 3416,
-        "revenueWithVat": 5380755.54
+        "count": 8595,
+        "revenueWithVat": 14153983.41
       }
     }
   ],
   "totals": {
     "previous": {
-      "count": 112940,
-      "revenueWithVat": 175662827.61,
-      "averageOrderValue": 1555.36
+      "count": 119266,
+      "revenueWithVat": 186485088.62,
+      "averageOrderValue": 1563.61
     },
     "current": {
-      "count": 93951,
-      "revenueWithVat": 156270908.29,
-      "averageOrderValue": 1663.32
+      "count": 99120,
+      "revenueWithVat": 165025433.63,
+      "averageOrderValue": 1664.91
     }
   }
 }
