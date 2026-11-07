@@ -25,6 +25,252 @@
   },
   "statsStatusCurrentMonth": [
     {
+      "date": "20261106T00:00:00+0000",
+      "status": "preparing"
+    },
+    {
+      "date": "20261101T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261105T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261104T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261103T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261102T00:00:00+0000",
+      "status": "complete"
+    }
+  ],
+  "currentMonth": {
+    "dateFrom": "2026-11-01",
+    "dateTo": "2026-11-06",
+    "total": {
+      "date": "20261101T00:00:00+0000",
+      "impressions": 15163,
+      "clicks": 699,
+      "ctr": 4.61,
+      "cpcCzk": 1.89,
+      "priceCzk": 1322.3,
+      "conversions": 249.0,
+      "conversionValueCzk": 329514.0,
+      "transactions": 244,
+      "avgPosition": 1.49
+    },
+    "daily": [
+      {
+        "date": "20261101T00:00:00+0000",
+        "impressions": 2372,
+        "clicks": 140,
+        "ctr": 5.9,
+        "cpcCzk": 1.73,
+        "priceCzk": 242.42,
+        "conversions": 45.0,
+        "conversionValueCzk": 64394.0,
+        "transactions": 44,
+        "avgPosition": 1.42
+      },
+      {
+        "date": "20261102T00:00:00+0000",
+        "impressions": 2026,
+        "clicks": 111,
+        "ctr": 5.48,
+        "cpcCzk": 1.84,
+        "priceCzk": 204.1,
+        "conversions": 41.0,
+        "conversionValueCzk": 52650.0,
+        "transactions": 40,
+        "avgPosition": 1.75
+      },
+      {
+        "date": "20261103T00:00:00+0000",
+        "impressions": 2391,
+        "clicks": 122,
+        "ctr": 5.1,
+        "cpcCzk": 1.94,
+        "priceCzk": 236.51,
+        "conversions": 39.0,
+        "conversionValueCzk": 48153.0,
+        "transactions": 38,
+        "avgPosition": 1.57
+      },
+      {
+        "date": "20261104T00:00:00+0000",
+        "impressions": 2899,
+        "clicks": 113,
+        "ctr": 3.9,
+        "cpcCzk": 1.75,
+        "priceCzk": 197.87,
+        "conversions": 43.0,
+        "conversionValueCzk": 66017.0,
+        "transactions": 42,
+        "avgPosition": 1.48
+      },
+      {
+        "date": "20261105T00:00:00+0000",
+        "impressions": 2837,
+        "clicks": 111,
+        "ctr": 3.91,
+        "cpcCzk": 2.06,
+        "priceCzk": 228.38,
+        "conversions": 43.0,
+        "conversionValueCzk": 51400.0,
+        "transactions": 42,
+        "avgPosition": 1.42
+      },
+      {
+        "date": "20261106T00:00:00+0000",
+        "impressions": 2638,
+        "clicks": 102,
+        "ctr": 3.87,
+        "cpcCzk": 2.09,
+        "priceCzk": 213.02,
+        "conversions": 38.0,
+        "conversionValueCzk": 46900.0,
+        "transactions": 38,
+        "avgPosition": 1.37
+      }
+    ]
+  },
+  "campaignPerformanceCurrentMonth": [
+    {
+      "id": 3439761,
+      "name": "FM-VYHL-RETENCE-kralovstvi-tiande (EX:CZ-SEA-Brand-Království-tianDe)",
+      "status": "active",
+      "type": "fulltext",
+      "date": "20261101",
+      "impressions": 766,
+      "clicks": 465,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 534.84,
+      "conversions": 183.0,
+      "conversionValueCzk": 2420.88,
+      "transactions": 0,
+      "avgPosition": 0.0
+    },
+    {
+      "id": 4412598,
+      "name": "FM-AKVIZICE-Zboží.cz: Království TianDe",
+      "status": "active",
+      "type": "zbozi",
+      "date": "20261101",
+      "impressions": 851,
+      "clicks": 23,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 101.93,
+      "conversions": 0.0,
+      "conversionValueCzk": 0.0,
+      "transactions": 0,
+      "avgPosition": 0.0
+    },
+    {
+      "id": 7683318,
+      "name": "FM-AKVIZICE-VYHLE-Competitors",
+      "status": "active",
+      "type": "fulltext",
+      "date": "20261101",
+      "impressions": 38,
+      "clicks": 9,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 10.88,
+      "conversions": 4.0,
+      "conversionValueCzk": 24.22,
+      "transactions": 0,
+      "avgPosition": 0.0
+    },
+    {
+      "id": 7778036,
+      "name": "FM-AKVIZICE-VYHL-Kategorie-AKV",
+      "status": "active",
+      "type": "fulltext",
+      "date": "20261101",
+      "impressions": 44,
+      "clicks": 3,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 9.7,
+      "conversions": 0.0,
+      "conversionValueCzk": 0.0,
+      "transactions": 0,
+      "avgPosition": 0.0
+    },
+    {
+      "id": 7840350,
+      "name": "FM-DRTG-produkty-AKVIZICE-kralovstviTiande.cz",
+      "status": "active",
+      "type": "product",
+      "date": "20261101",
+      "impressions": 10826,
+      "clicks": 97,
+      "ctr": 0.0,
+      "cpcCzk": 0.0,
+      "priceCzk": 451.93,
+      "conversions": 24.0,
+      "conversionValueCzk": 381.04,
+      "transactions": 0,
+      "avgPosition": 0.0
+    }
+  ],
+  "statsStatusPreviousMonth": [
+    {
+      "date": "20261019T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261018T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261017T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261016T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261011T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261010T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261031T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261030T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261015T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261014T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261013T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261012T00:00:00+0000",
+      "status": "complete"
+    },
+    {
       "date": "20261008T00:00:00+0000",
       "status": "complete"
     },
@@ -33,7 +279,15 @@
       "status": "complete"
     },
     {
+      "date": "20261029T00:00:00+0000",
+      "status": "complete"
+    },
+    {
       "date": "20261006T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261028T00:00:00+0000",
       "status": "complete"
     },
     {
@@ -41,15 +295,23 @@
       "status": "complete"
     },
     {
+      "date": "20261027T00:00:00+0000",
+      "status": "complete"
+    },
+    {
       "date": "20261009T00:00:00+0000",
       "status": "complete"
     },
     {
-      "date": "20261011T00:00:00+0000",
-      "status": "preparing"
+      "date": "20261022T00:00:00+0000",
+      "status": "complete"
     },
     {
-      "date": "20261010T00:00:00+0000",
+      "date": "20261021T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261020T00:00:00+0000",
       "status": "complete"
     },
     {
@@ -57,7 +319,15 @@
       "status": "complete"
     },
     {
+      "date": "20261026T00:00:00+0000",
+      "status": "complete"
+    },
+    {
       "date": "20261003T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261025T00:00:00+0000",
       "status": "complete"
     },
     {
@@ -65,24 +335,32 @@
       "status": "complete"
     },
     {
+      "date": "20261024T00:00:00+0000",
+      "status": "complete"
+    },
+    {
       "date": "20261001T00:00:00+0000",
+      "status": "complete"
+    },
+    {
+      "date": "20261023T00:00:00+0000",
       "status": "complete"
     }
   ],
-  "currentMonth": {
+  "previousMonth": {
     "dateFrom": "2026-10-01",
-    "dateTo": "2026-10-11",
+    "dateTo": "2026-10-31",
     "total": {
       "date": "20261001T00:00:00+0000",
-      "impressions": 33384,
-      "clicks": 1113,
-      "ctr": 3.33,
-      "cpcCzk": 2.11,
-      "priceCzk": 2346.8,
-      "conversions": 412.0,
-      "conversionValueCzk": 545297.0,
-      "transactions": 402,
-      "avgPosition": 1.36
+      "impressions": 86479,
+      "clicks": 3100,
+      "ctr": 3.58,
+      "cpcCzk": 2.13,
+      "priceCzk": 6588.66,
+      "conversions": 1168.0,
+      "conversionValueCzk": 1548176.0,
+      "transactions": 1138,
+      "avgPosition": 1.47
     },
     "daily": [
       {
@@ -207,597 +485,255 @@
       },
       {
         "date": "20261011T00:00:00+0000",
-        "impressions": 2692,
-        "clicks": 89,
-        "ctr": 3.31,
-        "cpcCzk": 2.34,
-        "priceCzk": 207.95,
-        "conversions": 30.0,
-        "conversionValueCzk": 43198.0,
-        "transactions": 30,
+        "impressions": 2775,
+        "clicks": 92,
+        "ctr": 3.32,
+        "cpcCzk": 2.37,
+        "priceCzk": 217.74,
+        "conversions": 35.0,
+        "conversionValueCzk": 48409.0,
+        "transactions": 34,
+        "avgPosition": 1.5
+      },
+      {
+        "date": "20261012T00:00:00+0000",
+        "impressions": 2712,
+        "clicks": 109,
+        "ctr": 4.02,
+        "cpcCzk": 2.2,
+        "priceCzk": 240.23,
+        "conversions": 45.0,
+        "conversionValueCzk": 64372.0,
+        "transactions": 44,
+        "avgPosition": 1.39
+      },
+      {
+        "date": "20261013T00:00:00+0000",
+        "impressions": 3153,
+        "clicks": 111,
+        "ctr": 3.52,
+        "cpcCzk": 2.08,
+        "priceCzk": 230.92,
+        "conversions": 53.0,
+        "conversionValueCzk": 77172.0,
+        "transactions": 52,
+        "avgPosition": 1.57
+      },
+      {
+        "date": "20261014T00:00:00+0000",
+        "impressions": 2735,
+        "clicks": 108,
+        "ctr": 3.95,
+        "cpcCzk": 2.3,
+        "priceCzk": 248.69,
+        "conversions": 49.0,
+        "conversionValueCzk": 54311.0,
+        "transactions": 48,
         "avgPosition": 1.49
-      }
-    ]
-  },
-  "campaignPerformanceCurrentMonth": [
-    {
-      "id": 3439761,
-      "name": "FM-VYHL-RETENCE-kralovstvi-tiande (EX:CZ-SEA-Brand-Království-tianDe)",
-      "status": "active",
-      "type": "fulltext",
-      "date": "20261001",
-      "impressions": 1368,
-      "clicks": 763,
-      "ctr": 0.0,
-      "cpcCzk": 0.0,
-      "priceCzk": 1022.55,
-      "conversions": 346.0,
-      "conversionValueCzk": 4589.29,
-      "transactions": 0,
-      "avgPosition": 0.0
-    },
-    {
-      "id": 4412598,
-      "name": "FM-AKVIZICE-Zboží.cz: Království TianDe",
-      "status": "active",
-      "type": "zbozi",
-      "date": "20261001",
-      "impressions": 1463,
-      "clicks": 27,
-      "ctr": 0.0,
-      "cpcCzk": 0.0,
-      "priceCzk": 112.89,
-      "conversions": 0.0,
-      "conversionValueCzk": 0.0,
-      "transactions": 0,
-      "avgPosition": 0.0
-    },
-    {
-      "id": 7683318,
-      "name": "FM-AKVIZICE-VYHLE-Competitors",
-      "status": "active",
-      "type": "fulltext",
-      "date": "20261001",
-      "impressions": 47,
-      "clicks": 8,
-      "ctr": 0.0,
-      "cpcCzk": 0.0,
-      "priceCzk": 10.24,
-      "conversions": 0.0,
-      "conversionValueCzk": 0.0,
-      "transactions": 0,
-      "avgPosition": 0.0
-    },
-    {
-      "id": 7778036,
-      "name": "FM-AKVIZICE-VYHL-Kategorie-AKV",
-      "status": "active",
-      "type": "fulltext",
-      "date": "20261001",
-      "impressions": 60,
-      "clicks": 6,
-      "ctr": 0.0,
-      "cpcCzk": 0.0,
-      "priceCzk": 17.37,
-      "conversions": 0.0,
-      "conversionValueCzk": 0.0,
-      "transactions": 0,
-      "avgPosition": 0.0
-    },
-    {
-      "id": 7840350,
-      "name": "FM-DRTG-produkty-AKVIZICE-kralovstviTiande.cz",
-      "status": "active",
-      "type": "product",
-      "date": "20261001",
-      "impressions": 27754,
-      "clicks": 220,
-      "ctr": 0.0,
-      "cpcCzk": 0.0,
-      "priceCzk": 975.8,
-      "conversions": 36.0,
-      "conversionValueCzk": 431.7,
-      "transactions": 0,
-      "avgPosition": 0.0
-    }
-  ],
-  "statsStatusPreviousMonth": [
-    {
-      "date": "20260908T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260907T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260929T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260909T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260930T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260911T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260910T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260913T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260912T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260915T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260914T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260917T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260916T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260919T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260918T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260920T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260922T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260921T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260902T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260924T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260901T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260923T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260904T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260926T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260903T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260925T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260906T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260928T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260905T00:00:00+0000",
-      "status": "complete"
-    },
-    {
-      "date": "20260927T00:00:00+0000",
-      "status": "complete"
-    }
-  ],
-  "previousMonth": {
-    "dateFrom": "2026-09-01",
-    "dateTo": "2026-09-30",
-    "total": {
-      "date": "20260901T00:00:00+0000",
-      "impressions": 58078,
-      "clicks": 3124,
-      "ctr": 5.38,
-      "cpcCzk": 1.93,
-      "priceCzk": 6022.25,
-      "conversions": 1210.0,
-      "conversionValueCzk": 1651680.0,
-      "transactions": 1205,
-      "avgPosition": 1.53
-    },
-    "daily": [
-      {
-        "date": "20260901T00:00:00+0000",
-        "impressions": 2894,
-        "clicks": 160,
-        "ctr": 5.53,
-        "cpcCzk": 1.63,
-        "priceCzk": 261.0,
-        "conversions": 36.0,
-        "conversionValueCzk": 40808.0,
-        "transactions": 36,
-        "avgPosition": 1.38
       },
       {
-        "date": "20260902T00:00:00+0000",
-        "impressions": 1450,
-        "clicks": 81,
-        "ctr": 5.59,
-        "cpcCzk": 1.58,
-        "priceCzk": 128.08,
-        "conversions": 36.0,
-        "conversionValueCzk": 48870.0,
-        "transactions": 36,
-        "avgPosition": 1.35
-      },
-      {
-        "date": "20260903T00:00:00+0000",
-        "impressions": 201,
-        "clicks": 97,
-        "ctr": 48.26,
-        "cpcCzk": 1.36,
-        "priceCzk": 132.0,
-        "conversions": 40.0,
-        "conversionValueCzk": 44034.0,
-        "transactions": 40,
-        "avgPosition": 1.87
-      },
-      {
-        "date": "20260904T00:00:00+0000",
-        "impressions": 226,
-        "clicks": 76,
-        "ctr": 33.63,
-        "cpcCzk": 1.38,
-        "priceCzk": 105.0,
-        "conversions": 38.0,
-        "conversionValueCzk": 48898.0,
-        "transactions": 38,
-        "avgPosition": 2.13
-      },
-      {
-        "date": "20260905T00:00:00+0000",
-        "impressions": 128,
-        "clicks": 61,
-        "ctr": 47.66,
-        "cpcCzk": 1.33,
-        "priceCzk": 81.0,
-        "conversions": 30.0,
-        "conversionValueCzk": 41880.0,
-        "transactions": 30,
-        "avgPosition": 1.97
-      },
-      {
-        "date": "20260906T00:00:00+0000",
-        "impressions": 160,
-        "clicks": 74,
-        "ctr": 46.25,
-        "cpcCzk": 1.38,
-        "priceCzk": 101.94,
-        "conversions": 46.0,
-        "conversionValueCzk": 49556.0,
-        "transactions": 46,
-        "avgPosition": 1.91
-      },
-      {
-        "date": "20260907T00:00:00+0000",
-        "impressions": 204,
-        "clicks": 124,
-        "ctr": 60.78,
-        "cpcCzk": 1.4,
-        "priceCzk": 174.21,
-        "conversions": 104.0,
-        "conversionValueCzk": 132746.0,
-        "transactions": 104,
-        "avgPosition": 1.87
-      },
-      {
-        "date": "20260908T00:00:00+0000",
-        "impressions": 754,
-        "clicks": 78,
-        "ctr": 10.34,
-        "cpcCzk": 1.45,
-        "priceCzk": 113.38,
-        "conversions": 26.0,
-        "conversionValueCzk": 28426.0,
-        "transactions": 26,
-        "avgPosition": 1.83
-      },
-      {
-        "date": "20260909T00:00:00+0000",
-        "impressions": 1431,
-        "clicks": 96,
-        "ctr": 6.71,
-        "cpcCzk": 1.82,
-        "priceCzk": 174.72,
-        "conversions": 38.0,
-        "conversionValueCzk": 52680.0,
-        "transactions": 38,
-        "avgPosition": 1.88
-      },
-      {
-        "date": "20260910T00:00:00+0000",
-        "impressions": 1533,
-        "clicks": 104,
-        "ctr": 6.78,
-        "cpcCzk": 1.87,
-        "priceCzk": 194.78,
-        "conversions": 23.0,
-        "conversionValueCzk": 22050.0,
-        "transactions": 23,
-        "avgPosition": 1.69
-      },
-      {
-        "date": "20260911T00:00:00+0000",
-        "impressions": 1766,
-        "clicks": 87,
-        "ctr": 4.93,
-        "cpcCzk": 2.13,
-        "priceCzk": 185.2,
-        "conversions": 20.0,
-        "conversionValueCzk": 25406.0,
-        "transactions": 20,
-        "avgPosition": 1.9
-      },
-      {
-        "date": "20260912T00:00:00+0000",
-        "impressions": 1569,
-        "clicks": 66,
-        "ctr": 4.21,
-        "cpcCzk": 2.13,
-        "priceCzk": 140.48,
-        "conversions": 24.0,
-        "conversionValueCzk": 40052.0,
-        "transactions": 24,
-        "avgPosition": 1.88
-      },
-      {
-        "date": "20260913T00:00:00+0000",
-        "impressions": 2225,
+        "date": "20261015T00:00:00+0000",
+        "impressions": 2058,
         "clicks": 88,
-        "ctr": 3.96,
-        "cpcCzk": 1.96,
-        "priceCzk": 172.65,
-        "conversions": 32.0,
-        "conversionValueCzk": 46038.0,
-        "transactions": 32,
+        "ctr": 4.28,
+        "cpcCzk": 2.16,
+        "priceCzk": 190.41,
+        "conversions": 35.0,
+        "conversionValueCzk": 45256.0,
+        "transactions": 34,
         "avgPosition": 1.74
       },
       {
-        "date": "20260914T00:00:00+0000",
-        "impressions": 2672,
-        "clicks": 140,
-        "ctr": 5.24,
-        "cpcCzk": 1.92,
-        "priceCzk": 268.63,
-        "conversions": 42.0,
-        "conversionValueCzk": 82272.0,
-        "transactions": 42,
-        "avgPosition": 1.48
+        "date": "20261016T00:00:00+0000",
+        "impressions": 2853,
+        "clicks": 88,
+        "ctr": 3.08,
+        "cpcCzk": 2.29,
+        "priceCzk": 201.68,
+        "conversions": 31.0,
+        "conversionValueCzk": 47804.0,
+        "transactions": 30,
+        "avgPosition": 1.47
       },
       {
-        "date": "20260915T00:00:00+0000",
-        "impressions": 2434,
-        "clicks": 131,
-        "ctr": 5.38,
-        "cpcCzk": 2.21,
-        "priceCzk": 290.16,
-        "conversions": 50.0,
-        "conversionValueCzk": 67924.0,
-        "transactions": 50,
-        "avgPosition": 1.51
-      },
-      {
-        "date": "20260916T00:00:00+0000",
-        "impressions": 2430,
-        "clicks": 130,
-        "ctr": 5.35,
-        "cpcCzk": 1.92,
-        "priceCzk": 249.53,
-        "conversions": 46.0,
-        "conversionValueCzk": 59276.0,
-        "transactions": 46,
-        "avgPosition": 1.53
-      },
-      {
-        "date": "20260917T00:00:00+0000",
-        "impressions": 2451,
-        "clicks": 133,
-        "ctr": 5.43,
-        "cpcCzk": 2.05,
-        "priceCzk": 272.85,
-        "conversions": 40.0,
-        "conversionValueCzk": 44378.0,
-        "transactions": 40,
-        "avgPosition": 1.49
-      },
-      {
-        "date": "20260918T00:00:00+0000",
-        "impressions": 2402,
-        "clicks": 92,
-        "ctr": 3.83,
-        "cpcCzk": 2.23,
-        "priceCzk": 204.76,
-        "conversions": 36.0,
-        "conversionValueCzk": 54480.0,
-        "transactions": 36,
-        "avgPosition": 1.44
-      },
-      {
-        "date": "20260919T00:00:00+0000",
-        "impressions": 2194,
-        "clicks": 64,
-        "ctr": 2.92,
-        "cpcCzk": 2.6,
-        "priceCzk": 166.32,
-        "conversions": 24.0,
-        "conversionValueCzk": 31500.0,
-        "transactions": 24,
-        "avgPosition": 1.49
-      },
-      {
-        "date": "20260920T00:00:00+0000",
-        "impressions": 2825,
-        "clicks": 86,
-        "ctr": 3.04,
-        "cpcCzk": 2.25,
-        "priceCzk": 193.73,
-        "conversions": 40.0,
-        "conversionValueCzk": 68810.0,
-        "transactions": 40,
-        "avgPosition": 1.33
-      },
-      {
-        "date": "20260921T00:00:00+0000",
-        "impressions": 2852,
-        "clicks": 115,
-        "ctr": 4.03,
-        "cpcCzk": 2.23,
-        "priceCzk": 256.24,
-        "conversions": 48.0,
-        "conversionValueCzk": 67582.0,
-        "transactions": 48,
-        "avgPosition": 1.43
-      },
-      {
-        "date": "20260922T00:00:00+0000",
-        "impressions": 2888,
-        "clicks": 134,
-        "ctr": 4.64,
-        "cpcCzk": 2.19,
-        "priceCzk": 293.41,
-        "conversions": 42.0,
-        "conversionValueCzk": 54016.0,
-        "transactions": 42,
-        "avgPosition": 1.43
-      },
-      {
-        "date": "20260923T00:00:00+0000",
-        "impressions": 3049,
-        "clicks": 125,
-        "ctr": 4.1,
-        "cpcCzk": 2.24,
-        "priceCzk": 280.13,
-        "conversions": 54.0,
-        "conversionValueCzk": 77898.0,
-        "transactions": 54,
-        "avgPosition": 1.32
-      },
-      {
-        "date": "20260924T00:00:00+0000",
-        "impressions": 2873,
-        "clicks": 118,
-        "ctr": 4.11,
-        "cpcCzk": 1.89,
-        "priceCzk": 223.02,
-        "conversions": 46.0,
-        "conversionValueCzk": 66672.0,
-        "transactions": 46,
-        "avgPosition": 1.82
-      },
-      {
-        "date": "20260925T00:00:00+0000",
-        "impressions": 2714,
-        "clicks": 103,
-        "ctr": 3.8,
-        "cpcCzk": 2.01,
-        "priceCzk": 207.08,
-        "conversions": 20.0,
-        "conversionValueCzk": 29878.0,
-        "transactions": 20,
-        "avgPosition": 1.4
-      },
-      {
-        "date": "20260926T00:00:00+0000",
-        "impressions": 1760,
-        "clicks": 73,
-        "ctr": 4.15,
-        "cpcCzk": 2.58,
-        "priceCzk": 188.46,
-        "conversions": 10.0,
-        "conversionValueCzk": 12428.0,
-        "transactions": 10,
-        "avgPosition": 1.42
-      },
-      {
-        "date": "20260927T00:00:00+0000",
-        "impressions": 2081,
-        "clicks": 84,
-        "ctr": 4.04,
-        "cpcCzk": 2.34,
-        "priceCzk": 196.87,
-        "conversions": 26.0,
-        "conversionValueCzk": 35774.0,
-        "transactions": 26,
+        "date": "20261017T00:00:00+0000",
+        "impressions": 1791,
+        "clicks": 57,
+        "ctr": 3.18,
+        "cpcCzk": 2.75,
+        "priceCzk": 156.73,
+        "conversions": 8.0,
+        "conversionValueCzk": 8224.0,
+        "transactions": 8,
         "avgPosition": 1.52
       },
       {
-        "date": "20260928T00:00:00+0000",
-        "impressions": 1846,
-        "clicks": 113,
-        "ctr": 6.12,
-        "cpcCzk": 2.12,
-        "priceCzk": 239.32,
-        "conversions": 43.0,
-        "conversionValueCzk": 47722.0,
-        "transactions": 42,
-        "avgPosition": 1.76
+        "date": "20261018T00:00:00+0000",
+        "impressions": 1839,
+        "clicks": 102,
+        "ctr": 5.55,
+        "cpcCzk": 2.32,
+        "priceCzk": 236.88,
+        "conversions": 41.0,
+        "conversionValueCzk": 47353.0,
+        "transactions": 40,
+        "avgPosition": 1.69
       },
       {
-        "date": "20260929T00:00:00+0000",
-        "impressions": 2881,
-        "clicks": 110,
-        "ctr": 3.82,
-        "cpcCzk": 1.98,
-        "priceCzk": 217.43,
-        "conversions": 45.0,
-        "conversionValueCzk": 63664.0,
-        "transactions": 44,
-        "avgPosition": 1.51
+        "date": "20261019T00:00:00+0000",
+        "impressions": 3466,
+        "clicks": 106,
+        "ctr": 3.06,
+        "cpcCzk": 2.41,
+        "priceCzk": 255.22,
+        "conversions": 38.0,
+        "conversionValueCzk": 55525.0,
+        "transactions": 37,
+        "avgPosition": 1.6
       },
       {
-        "date": "20260930T00:00:00+0000",
-        "impressions": 3185,
-        "clicks": 181,
-        "ctr": 5.68,
-        "cpcCzk": 1.71,
-        "priceCzk": 309.87,
-        "conversions": 105.0,
-        "conversionValueCzk": 165962.0,
-        "transactions": 102,
-        "avgPosition": 1.42
+        "date": "20261020T00:00:00+0000",
+        "impressions": 2243,
+        "clicks": 101,
+        "ctr": 4.5,
+        "cpcCzk": 2.33,
+        "priceCzk": 235.31,
+        "conversions": 35.0,
+        "conversionValueCzk": 44239.0,
+        "transactions": 34,
+        "avgPosition": 1.92
+      },
+      {
+        "date": "20261021T00:00:00+0000",
+        "impressions": 2221,
+        "clicks": 115,
+        "ctr": 5.18,
+        "cpcCzk": 2.15,
+        "priceCzk": 246.98,
+        "conversions": 33.0,
+        "conversionValueCzk": 37834.0,
+        "transactions": 32,
+        "avgPosition": 1.7
+      },
+      {
+        "date": "20261022T00:00:00+0000",
+        "impressions": 2800,
+        "clicks": 93,
+        "ctr": 3.32,
+        "cpcCzk": 2.34,
+        "priceCzk": 217.63,
+        "conversions": 35.0,
+        "conversionValueCzk": 44977.0,
+        "transactions": 34,
+        "avgPosition": 1.64
+      },
+      {
+        "date": "20261023T00:00:00+0000",
+        "impressions": 2818,
+        "clicks": 97,
+        "ctr": 3.44,
+        "cpcCzk": 2.07,
+        "priceCzk": 200.55,
+        "conversions": 35.0,
+        "conversionValueCzk": 44578.0,
+        "transactions": 34,
+        "avgPosition": 1.66
+      },
+      {
+        "date": "20261024T00:00:00+0000",
+        "impressions": 2661,
+        "clicks": 53,
+        "ctr": 1.99,
+        "cpcCzk": 2.48,
+        "priceCzk": 131.59,
+        "conversions": 10.0,
+        "conversionValueCzk": 14340.0,
+        "transactions": 10,
+        "avgPosition": 1.36
+      },
+      {
+        "date": "20261025T00:00:00+0000",
+        "impressions": 2150,
+        "clicks": 101,
+        "ctr": 4.7,
+        "cpcCzk": 2.0,
+        "priceCzk": 202.13,
+        "conversions": 35.0,
+        "conversionValueCzk": 40109.0,
+        "transactions": 34,
+        "avgPosition": 1.91
+      },
+      {
+        "date": "20261026T00:00:00+0000",
+        "impressions": 2706,
+        "clicks": 111,
+        "ctr": 4.1,
+        "cpcCzk": 2.05,
+        "priceCzk": 228.05,
+        "conversions": 29.0,
+        "conversionValueCzk": 44036.0,
+        "transactions": 28,
+        "avgPosition": 1.65
+      },
+      {
+        "date": "20261027T00:00:00+0000",
+        "impressions": 3724,
+        "clicks": 83,
+        "ctr": 2.23,
+        "cpcCzk": 2.02,
+        "priceCzk": 167.94,
+        "conversions": 33.0,
+        "conversionValueCzk": 37768.0,
+        "transactions": 32,
+        "avgPosition": 1.3
+      },
+      {
+        "date": "20261028T00:00:00+0000",
+        "impressions": 2524,
+        "clicks": 111,
+        "ctr": 4.4,
+        "cpcCzk": 2.24,
+        "priceCzk": 248.98,
+        "conversions": 28.0,
+        "conversionValueCzk": 33294.0,
+        "transactions": 27,
+        "avgPosition": 1.41
+      },
+      {
+        "date": "20261029T00:00:00+0000",
+        "impressions": 2860,
+        "clicks": 100,
+        "ctr": 3.5,
+        "cpcCzk": 1.65,
+        "priceCzk": 165.47,
+        "conversions": 39.0,
+        "conversionValueCzk": 46672.0,
+        "transactions": 38,
+        "avgPosition": 1.37
+      },
+      {
+        "date": "20261030T00:00:00+0000",
+        "impressions": 2592,
+        "clicks": 126,
+        "ctr": 4.86,
+        "cpcCzk": 1.9,
+        "priceCzk": 239.42,
+        "conversions": 51.0,
+        "conversionValueCzk": 66276.0,
+        "transactions": 50,
+        "avgPosition": 1.48
+      },
+      {
+        "date": "20261031T00:00:00+0000",
+        "impressions": 3106,
+        "clicks": 124,
+        "ctr": 3.99,
+        "cpcCzk": 1.51,
+        "priceCzk": 187.26,
+        "conversions": 88.0,
+        "conversionValueCzk": 143528.0,
+        "transactions": 86,
+        "avgPosition": 1.37
       }
     ]
   },
@@ -807,14 +743,14 @@
       "name": "FM-VYHL-RETENCE-kralovstvi-tiande (EX:CZ-SEA-Brand-Království-tianDe)",
       "status": "active",
       "type": "fulltext",
-      "date": "20260901",
-      "impressions": 4736,
-      "clicks": 2496,
+      "date": "20261001",
+      "impressions": 4037,
+      "clicks": 2255,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 3418.76,
-      "conversions": 1125.0,
-      "conversionValueCzk": 15338.74,
+      "priceCzk": 2960.15,
+      "conversions": 1054.0,
+      "conversionValueCzk": 13756.71,
       "transactions": 0,
       "avgPosition": 0.0
     },
@@ -823,14 +759,14 @@
       "name": "FM-AKVIZICE-Zboží.cz: Království TianDe",
       "status": "active",
       "type": "zbozi",
-      "date": "20260901",
-      "impressions": 4409,
-      "clicks": 118,
+      "date": "20261001",
+      "impressions": 5722,
+      "clicks": 148,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 500.54,
-      "conversions": 1.0,
-      "conversionValueCzk": 4.82,
+      "priceCzk": 600.96,
+      "conversions": 2.0,
+      "conversionValueCzk": 7.33,
       "transactions": 0,
       "avgPosition": 0.0
     },
@@ -839,14 +775,14 @@
       "name": "FM-AKVIZICE-VYHLE-Competitors",
       "status": "active",
       "type": "fulltext",
-      "date": "20260901",
-      "impressions": 222,
-      "clicks": 44,
+      "date": "20261001",
+      "impressions": 143,
+      "clicks": 20,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 50.81,
-      "conversions": 6.0,
-      "conversionValueCzk": 67.46,
+      "priceCzk": 25.64,
+      "conversions": 0.0,
+      "conversionValueCzk": 0.0,
       "transactions": 0,
       "avgPosition": 0.0
     },
@@ -855,14 +791,14 @@
       "name": "FM-AKVIZICE-VYHL-Kategorie-AKV",
       "status": "active",
       "type": "fulltext",
-      "date": "20260901",
-      "impressions": 209,
-      "clicks": 13,
+      "date": "20261001",
+      "impressions": 286,
+      "clicks": 22,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 32.98,
-      "conversions": 0.0,
-      "conversionValueCzk": 0.0,
+      "priceCzk": 61.36,
+      "conversions": 2.0,
+      "conversionValueCzk": 5.86,
       "transactions": 0,
       "avgPosition": 0.0
     },
@@ -871,14 +807,14 @@
       "name": "FM-DRTG-produkty-AKVIZICE-kralovstviTiande.cz",
       "status": "active",
       "type": "product",
-      "date": "20260901",
-      "impressions": 48502,
-      "clicks": 453,
+      "date": "20261001",
+      "impressions": 76291,
+      "clicks": 655,
       "ctr": 0.0,
       "cpcCzk": 0.0,
-      "priceCzk": 2019.16,
-      "conversions": 78.0,
-      "conversionValueCzk": 1105.78,
+      "priceCzk": 2940.55,
+      "conversions": 110.0,
+      "conversionValueCzk": 1711.86,
       "transactions": 0,
       "avgPosition": 0.0
     }

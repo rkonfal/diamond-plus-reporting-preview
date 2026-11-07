@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-12T08:00:06.496617+02:00",
-  "currentCutoff": "2026-10-12T08:00:06.496617+02:00",
-  "previousCutoff": "2025-10-12T08:00:06.496617+02:00",
+  "generatedAt": "2026-11-07T14:37:23.893986+01:00",
+  "currentCutoff": "2026-11-07T14:37:23.893986+01:00",
+  "previousCutoff": "2025-11-07T14:37:23.893986+01:00",
   "years": {
     "previous": 2025,
     "current": 2026
@@ -138,36 +138,51 @@
       },
       "current": {
         "year": 2026,
-        "count": 10120,
-        "revenueWithVat": 17451126.77
+        "count": 10110,
+        "revenueWithVat": 17432424.24
       }
     },
     {
       "month": 10,
       "label": "Říjen",
-      "partial": true,
+      "partial": false,
       "previous": {
         "year": 2025,
-        "count": 4526,
-        "revenueWithVat": 7285116.4
+        "count": 11102,
+        "revenueWithVat": 18522738.64
       },
       "current": {
         "year": 2026,
-        "count": 3416,
-        "revenueWithVat": 5380755.54
+        "count": 9038,
+        "revenueWithVat": 14958546.31
+      }
+    },
+    {
+      "month": 11,
+      "label": "Listopad",
+      "partial": true,
+      "previous": {
+        "year": 2025,
+        "count": 2830,
+        "revenueWithVat": 4549746.26
+      },
+      "current": {
+        "year": 2026,
+        "count": 2094,
+        "revenueWithVat": 3352393.26
       }
     }
   ],
   "totals": {
     "previous": {
-      "count": 112940,
-      "revenueWithVat": 175662827.61,
-      "averageOrderValue": 1555.36
+      "count": 122346,
+      "revenueWithVat": 191450196.11,
+      "averageOrderValue": 1564.83
     },
     "current": {
-      "count": 93951,
-      "revenueWithVat": 156270908.29,
-      "averageOrderValue": 1663.32
+      "count": 101657,
+      "revenueWithVat": 169182389.79,
+      "averageOrderValue": 1664.25
     }
   }
 }
