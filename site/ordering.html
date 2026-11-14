@@ -1990,6 +1990,9 @@
               <th><button type="button" class="table-sort" data-sort-table="explorer" data-sort-key="product">Produkt <span class="table-sort-arrow">↕</span></button></th>
               <th><button type="button" class="table-sort" data-sort-table="explorer" data-sort-key="signals">Nákupní signály <span class="table-sort-arrow">↕</span></button></th>
               <th class="num"><button type="button" class="table-sort" data-sort-table="explorer" data-sort-key="stock">Sklad <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="explorer" data-sort-key="sellingPrice">Prodejní cena <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="explorer" data-sort-key="purchasePrice">Nákupní cena <span class="table-sort-arrow">↕</span></button></th>
+              <th class="num"><button type="button" class="table-sort" data-sort-table="explorer" data-sort-key="stockValue">Hodnota skladu <span class="table-sort-arrow">↕</span></button></th>
               <th class="num"><button type="button" class="table-sort" data-sort-table="explorer" data-sort-key="storeStock">Prodejny <span class="table-sort-arrow">↕</span></button></th>
               <th class="num"><button type="button" class="table-sort" data-sort-table="explorer" data-sort-key="periodSales">Prodej v období <span class="table-sort-arrow">↕</span></button></th>
               <th class="num"><button type="button" class="table-sort" data-sort-table="explorer" data-sort-key="sales90">Prodej 90d <span class="table-sort-arrow">↕</span></button></th>
@@ -2086,9 +2089,16 @@
         return `<span class="badge ${tone}">${label}</span>`;
       };
 
-      const orderableBadge = row => row.orderable
-        ? '<span class="badge success">lze objednat</span>'
-        : `<span class="badge warn">neobjednávat</span>`;
+      const orderableBadge = row => {
+        if (row.orderable) return '<span class="badge success">lze objednat</span>';
+        const sticker = String(row.orderingSticker || '').trim().toLowerCase();
+        const reason = String(row.excludeFromOrderingReason || '').toLowerCase();
+        if (sticker === 'vyřazeno' || reason.includes('vyřazen')) {
+          return '<span class="badge danger">vyřazeno</span>';
+        }
+        if (sticker) return `<span class="badge warn">${escapeHtml(sticker)}</span>`;
+        return '<span class="badge warn">neobjednávat</span>';
+      };
 
       const sourceChannelBadge = row => {
         const labels = {
@@ -2538,7 +2548,7 @@
         const flags = new Set(row?.referenceFlags || []);
         const reason = String(row?.excludeFromOrderingReason || '').toLowerCase();
         const discontinued = reason.includes('trvale vyřazené zboží') || reason.includes('ukončený prodej') || reason.includes('vyřazeno z nabídky');
-        return ORDERING_HARD_EXCLUDE_CODES.has(code) || /[A-Z]/.test(code) || code.startsWith('SET') || code.startsWith('000') || flags.has('set_prefix') || discontinued;
+        return ORDERING_HARD_EXCLUDE_CODES.has(code) || code.startsWith('SET') || code.startsWith('000') || flags.has('set_prefix') || discontinued;
       }
 
       function visibleOrderingRows(rows) {
@@ -3950,6 +3960,8 @@
             product: { type: 'text', defaultDirection: 'asc', value: row => `${row.code || ''} ${row.title || ''}` },
             signals: { type: 'text', defaultDirection: 'asc', value: row => `${row.orderable ? '1' : '0'} ${row.itemType || ''} ${row.orderingRole || ''} ${row.sourceChannel || ''} ${row.reorderRisk || ''} ${row.turnoverZone || ''} ${row.trend90v365Pct || 0}` },
             stock: { type: 'number', defaultDirection: 'desc', value: row => row.effectiveStock },
+            sellingPrice: { type: 'number', defaultDirection: 'desc', value: row => row.unitSellingPrice ?? 0 },
+            purchasePrice: { type: 'number', defaultDirection: 'desc', value: row => row.unitCostAbraAvg ?? 0 },
             storeStock: { type: 'number', defaultDirection: 'desc', value: row => row.storeStockScoped ?? row.storeStockTotal ?? 0 },
             periodSales: { type: 'number', defaultDirection: 'desc', value: row => row.unitsWindow ?? row.units730d },
             sales90: { type: 'number', defaultDirection: 'desc', value: row => row.units90d },
@@ -4390,7 +4402,7 @@
       }
 
       function exportExplorerRows(rows) {
-        const header = ['Kód', 'Produkt', 'Objednatelné', 'Riziko', 'Role', 'Trend 90v365 %', 'Pokrytí 90d', 'Sklad', 'Prodejny ks', 'Rozpad prodejen', 'Prodej 90d', 'Expirace do 6m', 'Nejbližší expirace', 'Expirující ks', 'Ideál ks', 'Krok balení ks', 'Finální objednávka ks', 'Balicí pravidlo', 'Důvod'];
+        const header = ['Kód', 'Produkt', 'Objednatelné', 'Riziko', 'Role', 'Trend 90v365 %', 'Pokrytí 90d', 'Sklad', 'Prodejní cena', 'Nákupní cena', 'Hodnota skladu', 'Prodejny ks', 'Rozpad prodejen', 'Prodej 90d', 'Expirace do 6m', 'Nejbližší expirace', 'Expirující ks', 'Ideál ks', 'Krok balení ks', 'Finální objednávka ks', 'Balicí pravidlo', 'Důvod'];
         const escape = value => {
           const text = String(value ?? '');
           if (/[";,\n]/.test(text)) return `"${text.replace(/"/g, '""')}"`;
@@ -4405,6 +4417,9 @@
           row.trend90v365Pct ?? '',
           row.daysOfCover90d ?? '',
           row.effectiveStock ?? '',
+          row.unitSellingPrice ?? '',
+          row.unitCostAbraAvg ?? '',
+          row.stockValueAbraAvg ?? row.stockValueSelling ?? '',
           row.storeStockTotal ?? 0,
           row.storeBreakdownText || '',
           row.units90d ?? '',
@@ -4446,6 +4461,7 @@
           <div class="ordering-detail-grid">
             <div class="ordering-detail-card"><span class="label">Doporučeno</span><strong>${fmt(row.finalOrderUnits || 0)} ks</strong><div class="muted small" style="margin-top:6px;">Minimum ${fmt(row.recommendedMinUnits || 0)} ks, model ${fmt(row.idealUnits || 0)} ks</div></div>
             <div class="ordering-detail-card"><span class="label">Pokrytí a prodej</span><strong>${cover(row.daysOfCover90d)}</strong><div class="muted small" style="margin-top:6px;">Prodej 90d ${fmt(row.units90d)} ks, v okně ${fmt(row.unitsWindow ?? row.units730d)} ks</div></div>
+            <div class="ordering-detail-card"><span class="label">Nákupní cena</span><strong>${row.unitCostAbraAvg == null ? '–' : money(row.unitCostAbraAvg)}</strong><div class="muted small" style="margin-top:6px;">Prodejní ${row.unitSellingPrice == null ? '–' : money(row.unitSellingPrice)} · hodnota ${money(row.stockValueAbraAvg ?? row.stockValueSelling ?? 0)}</div></div>
             <div class="ordering-detail-card"><span class="label">Trend a role</span><strong>${pct(row.trend90v365Pct)}</strong><div class="muted small" style="margin-top:6px;">${row.orderingRole || 'standard'} · ${row.sourceChannel || 'zdroj neznámý'}</div></div>
             <div class="ordering-detail-card"><span class="label">Balení a pravidlo</span><strong>${escapeHtml(row.packagingRaw || 'bez mapy')}</strong><div class="muted small" style="margin-top:6px;">${escapeHtml(row.roundingMode || 'bez omezení')} · párování ${escapeHtml(row.packagingMatchStatus || 'chybí')}</div></div>
             <div class="ordering-detail-card"><span class="label">Prodejny</span><strong>${fmt(row.storeStockTotal || 0)} ks</strong><div class="muted small" style="margin-top:6px;">${escapeHtml(row.storeBreakdownText || 'Bez zásoby na prodejnách.')}</div></div>
@@ -4551,6 +4567,9 @@
             </td>
             <td><div class="ordering-badge-wrap">${promoLabelBadge(row)} ${orderableBadge(row)} ${typeBadge(row)} ${roleBadge(row)} ${sourceChannelBadge(row)} ${packagingBadge(row)} ${expiryBadge(row)} ${riskBadge(row)} ${zoneBadge(row)} ${trendBadge(row)}</div></td>
             <td class="num">${fmt(row.effectiveStock)}</td>
+            <td class="num">${row.unitSellingPrice == null ? '–' : money(row.unitSellingPrice)}</td>
+            <td class="num">${row.unitCostAbraAvg == null ? '–' : money(row.unitCostAbraAvg)}</td>
+            <td class="num">${money(row.stockValueAbraAvg ?? row.stockValueSelling ?? 0)}</td>
             <td class="num">
               <div class="ordering-cell-stack">
                 <strong>${fmt(row.storeStockScoped || 0)} ks</strong>
@@ -4566,7 +4585,7 @@
             <td class="num">${fmt((row.finalOrderUnits ?? row.recommendedOrderUnits) || 0)} ks</td>
             <td>${row.roundingMode || 'bez omezení'}</td>
           </tr>
-        `).join('') || '<tr><td colspan="12">Nic neodpovídá aktuálnímu filtru.</td></tr>';
+        `).join('') || '<tr><td colspan="15">Nic neodpovídá aktuálnímu filtru.</td></tr>';
         updateSortableTableHead('explorer');
         renderDetailPanel(rows.find(row => row.code === selectedExplorerCode) || pageRows[0] || null);
         saveExplorerState();
